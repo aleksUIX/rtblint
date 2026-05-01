@@ -1,0 +1,20 @@
+[package]
+name = "rtblint-mcp"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "MCP server for rtblint — exposes OpenRTB validation as a callable tool"
+keywords = ["openrtb", "rtb", "adtech", "mcp", "validator"]
+categories = ["development-tools", "web-programming"]
+readme = "../../README.md"
+
+[[bin]]
+name = "rtblint-mcp"
+path = "src/main.rs"
+
+[dependencies]
+rtblint-core = { path = "../rtblint-core", version = "0.0.1" }

@@ -1,0 +1,8 @@
+/target
+/npm/node_modules
+/python/.venv
+/python/dist
+/python/*.egg-info
+__pycache__
+*.pyc
+.DS_Store

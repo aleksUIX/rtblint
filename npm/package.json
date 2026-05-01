@@ -1,0 +1,39 @@
+{
+  "name": "rtblint",
+  "version": "0.0.1",
+  "description": "OpenRTB bid request / response linter — validates OpenRTB 2.x and 3.0 objects",
+  "license": "Apache-2.0",
+  "author": "Aleks <aleks@vastlint.org>",
+  "homepage": "https://github.com/aleksUIX/rtblint",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksUIX/rtblint.git"
+  },
+  "keywords": [
+    "openrtb",
+    "rtb",
+    "adtech",
+    "programmatic",
+    "validator",
+    "linter"
+  ],
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.cjs",
+    "index.d.ts",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

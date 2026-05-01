@@ -1,0 +1,16 @@
+[workspace]
+members = [
+    "crates/rtblint-core",
+    "crates/rtblint",
+    "crates/rtblint-mcp",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.74"
+authors = ["Aleks <aleks@vastlint.org>"]
+license = "Apache-2.0"
+repository = "https://github.com/aleksUIX/rtblint"
+homepage = "https://github.com/aleksUIX/rtblint"

@@ -1,0 +1,321 @@
+{
+  "kind": "openrtb_versioned_schema_manifest",
+  "version": "2.5",
+  "family": "2.x",
+  "release_date": "2016-12",
+  "archive_path": ".openrtb-specs/2.x/openrtb-2.5-final.pdf",
+  "source_of_truth": "Canonical IAB source is the archived spec referenced by archive_path; this manifest is a structured derivative for validator use.",
+  "coverage": "bootstrap_versioned_delta_paths",
+  "paths": [
+    {
+      "path": "bid.burl",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.hratio",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.language",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.lurl",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.tactic",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.wratio",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bidrequest.bseat",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.bseat_wlang"
+      ]
+    },
+    {
+      "path": "bidrequest.source",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.source"
+      ]
+    },
+    {
+      "path": "bidrequest.wlang",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.bseat_wlang"
+      ]
+    },
+    {
+      "path": "device.geo",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.device.geo"
+      ]
+    },
+    {
+      "path": "device.ifa",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.device.ifa"
+      ]
+    },
+    {
+      "path": "enum.content_category.tier2",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.1.enum.content_category.tier2"
+      ]
+    },
+    {
+      "path": "geo",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.geo.location"
+      ]
+    },
+    {
+      "path": "geo.type",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.1.geo.type"
+      ]
+    },
+    {
+      "path": "imp.audio",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.imp.audio"
+      ]
+    },
+    {
+      "path": "imp.metric",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.metric"
+      ]
+    },
+    {
+      "path": "imp.native",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.imp.native"
+      ]
+    },
+    {
+      "path": "imp.native.request",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.imp.native.request"
+      ]
+    },
+    {
+      "path": "imp.pmp.deals",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.pmp.deals"
+      ]
+    },
+    {
+      "path": "imp.secure",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.imp.secure",
+        "openrtb.2.4.imp.secure.ssl"
+      ]
+    },
+    {
+      "path": "imp.video",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.imp.video",
+        "openrtb.2.1.imp.video.behavior"
+      ]
+    },
+    {
+      "path": "imp.video.placement",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.video.placement"
+      ]
+    },
+    {
+      "path": "imp.video.playbackend",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.video.placement"
+      ]
+    },
+    {
+      "path": "imp.video.skip",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.imp.video.skip"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_BID_ID}",
+      "state": "available",
+      "since": "2.3.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.1.macro.auction_bid_id"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_LOSS}",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.macro.loss"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_MBR}",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.macro.loss"
+      ]
+    },
+    {
+      "path": "metric",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.metric"
+      ]
+    },
+    {
+      "path": "native.assets",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.native.assets"
+      ]
+    },
+    {
+      "path": "regs.coppa",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.regs.coppa"
+      ]
+    },
+    {
+      "path": "traffic.feedback.bot",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.traffic.feedback.bot"
+      ]
+    },
+    {
+      "path": "user.buyeruid",
+      "state": "available",
+      "since": "2.3.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.1.user.buyeruid"
+      ]
+    },
+    {
+      "path": "user.buyuid",
+      "state": "moved",
+      "since": "2.3.1",
+      "replacement_paths": [
+        "user.buyeruid"
+      ],
+      "matched_rules": [
+        "openrtb.2.3.1.user.buyeruid"
+      ]
+    },
+    {
+      "path": "user.data",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.user.data"
+      ]
+    }
+  ]
+}

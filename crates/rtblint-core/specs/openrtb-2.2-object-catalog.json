@@ -1,0 +1,1321 @@
+{
+  "kind": "openrtb_canonical_object_catalog",
+  "version": "2.2",
+  "family": "2.x",
+  "release_date": "2014-04",
+  "archive_path": ".openrtb-specs/2.x/openrtb-2.2-final.pdf",
+  "canonical_source_file": "source.pdf",
+  "helper_source_file": "source-layout.txt",
+  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
+  "objects": [
+    {
+      "name": "BidRequest",
+      "section": "3.3.1",
+      "description": "The top-level bid request object contains a globally unique bid request or auction ID. This “id” attribute is required as is at least one “imp” (i.e., impression) object. Other attributes are optional since an exchange may establish default values. The Default column dictates how optional parameters should be interpreted if explicit values are not provided.",
+      "citation": {
+        "section": "3.3.1",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 655,
+        "end_line": 760
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: required; type: string",
+          "description": "Unique ID of the bid request, provided by the exchange.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 664,
+            "end_line": 665
+          }
+        },
+        {
+          "name": "imp",
+          "type_spec": "scope: required; type: array of objects",
+          "description": "Array of impression objects. Multiple impression auctions may be specified in a single bid request. At least one impression is required for a valid bid request.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 666,
+            "end_line": 670
+          }
+        },
+        {
+          "name": "site",
+          "type_spec": "scope: recommended for websites; type: object",
+          "description": "See Site Object",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 671,
+            "end_line": 672
+          }
+        },
+        {
+          "name": "app",
+          "type_spec": "scope: recommended for native apps; type: object",
+          "description": "See App Object",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 673,
+            "end_line": 674
+          }
+        },
+        {
+          "name": "device",
+          "type_spec": "scope: recommended; type: object",
+          "description": "See Device Object",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 675,
+            "end_line": 675
+          }
+        },
+        {
+          "name": "user",
+          "type_spec": "scope: recommended; type: object",
+          "description": "See User Object",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 677,
+            "end_line": 677
+          }
+        },
+        {
+          "name": "at",
+          "type_spec": "scope: optional; type: int p p t e E n; default: 2 rice auction rice auction ypes can be xchange’s bu xchange spec umbered over",
+          "description": "Auction Type. If “1”, then first . If “2”, then second . Additional auction defined as per the siness rules. ific rules should be 500.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 685,
+            "end_line": 691
+          }
+        },
+        {
+          "name": "tmax",
+          "type_spec": "scope: optional; type: integer m 1 t a n e s; default: - illiseconds 20 means the o submit a b uction is co ever changes xchange, the upply this i",
+          "description": "Maximum amount of time in to submit a bid (e.g., bidder has 120ms id before the mplete). If this value across an n the exchange can nformation offline.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 692,
+            "end_line": 699
+          }
+        },
+        {
+          "name": "wseat",
+          "type_spec": "scope: optional str; type: array of ings b o F [ t e b a; default: - id on this a ptional feat or example, “4”,”34”,”82 hat only adv xchange seat id on the im uction.",
+          "description": "Array of buyer seats allowed to uction. Seats are an ure of exchange. ”,”A45”] indicates ertisers using these s are allowed to pressions in this",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 700,
+            "end_line": 708
+          }
+        },
+        {
+          "name": "allimps",
+          "type_spec": "scope: optional; type: integer E i o c a i [ e t i i p e m r a; default: 0 xchange can mpressions o f the impres ontext (e.g. vailable on mpressions a pre, mid and tc.) to supp rue value sh f the exchan mpressions i ublisher. “0 xchange cann eans that al epresent all vailable.",
+          "description": "Flag to indicate whether verify that all ffered represent all sions available in , all impressions the web page; all vailable for a video postroll spots], ort road-blocking. A ould only be passed ge is aware of all n context for the ” means the ot verify, and “1” l impressions impressions",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 709,
+            "end_line": 725
+          }
+        },
+        {
+          "name": "cur",
+          "type_spec": "scope: optional str; type: array of ings b I; default: Array of allowed currencies for ids on this SO-4217 alph",
+          "description": "bid request using abetic codes. If only one currency is used by the exchange, this parameter is not required.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 726,
+            "end_line": 736
+          }
+        },
+        {
+          "name": "bcat",
+          "type_spec": "scope: optional; type: array of strings",
+          "description": "Blocked Advertiser Categories. Note that there is no existing categorization / taxonomy of advertiser industries. However, as a substitute exchanges may decide to use IAB categories as an approximation (See Table 6.1 Content Categories)",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 737,
+            "end_line": 744
+          }
+        },
+        {
+          "name": "badv",
+          "type_spec": "scope: optional; type: array of strings",
+          "description": "Array of strings of blocked top- level domains of advertisers. For example, {“company1.com”, “company2.com”}.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 745,
+            "end_line": 748
+          }
+        },
+        {
+          "name": "regs",
+          "type_spec": "scope: optional; type: object",
+          "description": "This object is a container for any legal, governmental or industry regulations in force for the request.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 749,
+            "end_line": 752
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "description": "This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 753,
+            "end_line": 758
+          }
+        }
+      ]
+    },
+    {
+      "name": "Imp",
+      "section": "3.3.2",
+      "description": "The “imp” object describes the ad position or impression being auctioned. A single bid request can include multiple “imp” objects, a use case for which might be an exchange that supports selling all ad positions on a given page as a bundle. Each “imp” object has a required ID so that bids can reference them individually. An exchange can also conduct private auctions by restricting involvement to specific subsets of seats within bidders. The Default column dictates how optional parameters should be interpreted if explicit values are not provided.",
+      "citation": {
+        "section": "3.3.2",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 761,
+        "end_line": 859
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: required; type: string; default: - impression",
+          "description": "A unique identifier for this impression within the context of the bid request (typically, value starts with 1, and increments up to n for n s).",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 772,
+            "end_line": 782
+          }
+        },
+        {
+          "name": "banner",
+          "type_spec": "scope: required for anner mpressions; type: object; default: - Either a b (or both i be either) an impress Banner Obj",
+          "description": "A reference to a banner object. anner or video object f the impression could must be included in ion object. See ect.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 783,
+            "end_line": 788
+          }
+        },
+        {
+          "name": "video",
+          "type_spec": "scope: required for ideo mpressions; type: object; default: - Either a b (or both i be either) an impress Video Obje",
+          "description": "A reference to a video object. anner or video object f the impression could must be included in ion object. See ct.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 789,
+            "end_line": 794
+          }
+        },
+        {
+          "name": "displaymanager",
+          "type_spec": "scope: recommended or video and ative apps; type: string; default: - SDK techno player res rendering mobile). U servers to by partner",
+          "description": "Name of ad mediation partner, logy, or native ponsible for ad (typically video or sed by some ad customize ad code .",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 795,
+            "end_line": 801
+          }
+        },
+        {
+          "name": "displaymanagerver",
+          "type_spec": "scope: recommended or video and ative apps; type: string; default: - partner, S native pla rendering mobile). U servers to by partner",
+          "description": "Version of ad mediation DK technology, or yer responsible for ad (typically video or sed by some ad customize ad code",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 802,
+            "end_line": 808
+          }
+        },
+        {
+          "name": "instl",
+          "type_spec": "scope: optional; type: integer; default: 0 screen; el",
+          "description": "1 if the ad is interstitial or full se 0 (i.e., no).",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 809,
+            "end_line": 810
+          }
+        },
+        {
+          "name": "tagid",
+          "type_spec": "scope: optional; type: string; default: Identifier for specific ad placement used to in This can b debugging optimizati",
+          "description": "or ad tag that was itiate the auction. e useful for of any issues, or for on by the buyer.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 811,
+            "end_line": 816
+          }
+        },
+        {
+          "name": "bidfloor",
+          "type_spec": "scope: optional; type: float; default: 0 CPM of bid",
+          "description": "Bid floor for this impression (in floorcur).",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 817,
+            "end_line": 818
+          }
+        },
+        {
+          "name": "bidfloorcur",
+          "type_spec": "scope: optional; type: string; default: USD multiple c per bid re should be ISO-4217 a Note, this fr bi ex",
+          "description": "If bid floor is specified and urrencies supported quest, then currency specified here using lphabetic codes. may be different om bid currency returned by dder, if this is allowed on an change.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 819,
+            "end_line": 832
+          }
+        },
+        {
+          "name": "secure",
+          "type_spec": "scope: optional; type: int; default: Flag to indicate whether the im HT ma th se me th sh st HT",
+          "description": "pression requires secure TPS URL creative assets and rkup. A value of “1” means at the impression requires cure assets. A value of \"0\" ans non-secure assets. If is field is omitted the bidder ould interpret the secure ate is unknown and assume TP is supported.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 833,
+            "end_line": 843
+          }
+        },
+        {
+          "name": "iframebuster",
+          "type_spec": "scope: optional o s; type: array f tring; default: None if sp",
+          "description": "Array of names for supported rame busters. Exchange ecific.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 844,
+            "end_line": 846
+          }
+        },
+        {
+          "name": "pmp",
+          "type_spec": "scope: optional; type: object; default: A reference to the PMP object co fo th",
+          "description": "ntaining any Deals eligible r the impression object. See e PMP Object definition.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 847,
+            "end_line": 850
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object; default: - ma ag Op su st sp",
+          "description": "This object is a placeholder that y contain custom JSON reed to by the parties in an enRTB transaction to pport flexibility beyond the andard defined in this ecification.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 851,
+            "end_line": 857
+          }
+        }
+      ]
+    },
+    {
+      "name": "Banner",
+      "section": "3.3.3",
+      "description": "The “banner” object must be included directly in the impression object if the impression offered for auction is display or rich media, or it may be optionally embedded in the video object to describe the companion banners available for the linear or non-linear video ad. The banner object may include a unique identifier; this can be useful if these IDs can be leveraged in the VAST response to dictate placement of the companion creatives when multiple companion ad opportunities of the same size are available on a page. The Default column indicates how optional parameters should be interpreted if explicit values are not provided.",
+      "citation": {
+        "section": "3.3.3",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 860,
+        "end_line": 970
+      },
+      "fields": [
+        {
+          "name": "w",
+          "type_spec": "scope: recommended; type: integer",
+          "description": "Width of the impression in pixels. Since some ad types are not restricted by size this field is not required, but it’s highly recommended that this information be included when possible.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 879,
+            "end_line": 885
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "scope: recommended; type: integer",
+          "description": "Height of the impression in pixels. Since some ad types are not restricted by size this field is not required, but it’s highly recommended that this information be included when possible.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 886,
+            "end_line": 892
+          }
+        },
+        {
+          "name": "wmax",
+          "type_spec": "scope: optional; type: integer; default: Maximum width of the impression",
+          "description": "in pixels. If included, it indicates that a range of sizes is allowed with this maximum width and \"w\" is taken as recommended. If not included, then \"w\" should be considered an exact requirement",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 893,
+            "end_line": 899
+          }
+        },
+        {
+          "name": "hmax",
+          "type_spec": "scope: optional; type: integer; default: Maximum height of the impression",
+          "description": "in pixels. If included, it indicates that a range of sizes is allowed with this maximum height and \"h\" is taken as recommended. If not included, then \"h\" should be considered an exact requirement.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 900,
+            "end_line": 906
+          }
+        },
+        {
+          "name": "wmin",
+          "type_spec": "scope: optional; type: integer",
+          "description": "Minimum width of the impression in pixels. If included, it indicates that a range of sizes is allowed with this minimum width and \"w\" is taken as recommended. If not included, then \"w\" should be considered an exact requirement.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 907,
+            "end_line": 913
+          }
+        },
+        {
+          "name": "hmin",
+          "type_spec": "scope: optional; type: integer; default: Minimum height of the impression",
+          "description": "in pixels. If included, it indicates that a range of sizes is allowed with this minimum height and \"h\" is taken as recommended. If not included, then \"h\" should be considered an exact requirement.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 914,
+            "end_line": 920
+          }
+        },
+        {
+          "name": "id",
+          "type_spec": "scope: recommended when subordinate to a video object; type: string",
+          "description": "Unique identifier for this banner object. Useful for tracking multiple banner objects (e.g., in companion banner array). Usually starts with 1, increasing with each object. Combination of impression id banner object should be unique.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 926,
+            "end_line": 932
+          }
+        },
+        {
+          "name": "pos",
+          "type_spec": "scope: optional; type: integer",
+          "description": "Ad Position. Use Table 6.5",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 933,
+            "end_line": 933
+          }
+        },
+        {
+          "name": "btype",
+          "type_spec": "scope: optional; type: array of integers; default: All types are allowed",
+          "description": "Blocked creative types. See Table 6.2 Banner Ad Types. If blank, assume all types are allowed.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 934,
+            "end_line": 936
+          }
+        },
+        {
+          "name": "battr",
+          "type_spec": "scope: optional; type: array of integers; default: All types are allowed",
+          "description": "Blocked creative attributes. See Table 6.3 Creative Attributes. If blank assume all types are allowed.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 937,
+            "end_line": 939
+          }
+        },
+        {
+          "name": "mimes",
+          "type_spec": "scope: optional; type: array of strings; default: All types are allowed",
+          "description": "Whitelist of content MIME types supported. Popular MIME types include, but are not limited to “image/jpg”, “image/gif” and “application/x-shockwave-flash”.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 940,
+            "end_line": 944
+          }
+        },
+        {
+          "name": "topframe",
+          "type_spec": "scope: optional; type: integer; default: 0",
+          "description": "Specify if the banner is delivered in the top frame or in an iframe. “0” means it is not in the top frame, and “1” means that it is.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 945,
+            "end_line": 948
+          }
+        },
+        {
+          "name": "expdir",
+          "type_spec": "scope: optional; type: array of integers; default: Not expandabl",
+          "description": "Specify properties for an e expandable ad. See Table 6.11 Expandable Direction for possible values.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 949,
+            "end_line": 952
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "scope: optional; type: array of integers; default: None",
+          "description": "List of supported API frameworks for this banner. (See Table 6.4 API Frameworks). If an API is not explicitly listed it is assumed not to be supported.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 953,
+            "end_line": 957
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "description": "This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 958,
+            "end_line": 963
+          }
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "section": "3.3.4",
+      "description": "The “video” object must be included directly in the impression object if the impression offered for auction is an in-stream video ad opportunity. The Default column indicates how optional parameters should be interpreted if explicit values are not provided. Note that for the video object, many of the fields are non-essential for a minimally viable exchange interfaces. These parameters do not necessarily need to be specified to the bidder, if they are always the same for all impression, of if the exchange chooses not to supply the additional information to the bidder.",
+      "citation": {
+        "section": "3.3.4",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 971,
+        "end_line": 1118
+      },
+      "fields": [
+        {
+          "name": "mimes",
+          "type_spec": "scope: required; type: array of strings",
+          "description": "Content MIME types supported. Popular MIME types include, but are not limited to “video/x-ms- wmv” for Windows Media, and “video/x-flv” for Flash Video.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 988,
+            "end_line": 992
+          }
+        },
+        {
+          "name": "minduration",
+          "type_spec": "scope: required; type: integer",
+          "description": "Minimum video ad duration in seconds",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 993,
+            "end_line": 994
+          }
+        },
+        {
+          "name": "maxduration",
+          "type_spec": "scope: required; type: integer",
+          "description": "Maximum video ad duration in seconds",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 995,
+            "end_line": 996
+          }
+        },
+        {
+          "name": "protocol",
+          "type_spec": "scope: optional; type: integer",
+          "description": "Video bid response protocols. See Table 6.7 Video Bid Response Protocols for a list of possible values. NOTE: Use “protocols” when multiple protocols are supported. Its use is also highly recommended even for one since this “protocol” attribute is likely to be deprecated in a future version. At least one supported protocol must be specified in either the “protocol” or “protocols” attribute.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 997,
+            "end_line": 1010
+          }
+        },
+        {
+          "name": "protocols",
+          "type_spec": "scope: recommended; type: array of integers; default: Video bid response protocols.",
+          "description": "See Table 6.7 Video Bid Response Protocols for a list of possible values. At least one supported protocol must be specified in either the “protocol” or “protocols” attribute.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1011,
+            "end_line": 1018
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "scope: recommended; type: integer",
+          "description": "Width of the player in pixels. This field is not required, but it’s highly recommended that this information be included.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1019,
+            "end_line": 1022
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "scope: recommended; type: integer",
+          "description": "Height of the player in pixels. This field is not required, but it’s highly recommended that this information be included.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1023,
+            "end_line": 1026
+          }
+        },
+        {
+          "name": "startdelay",
+          "type_spec": "scope: recommended; type: integer",
+          "description": "Indicates the start delay in seconds for preroll, midroll, or postroll ad placement. See Table 6.9 Video Start Delay for generic placement values.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1027,
+            "end_line": 1036
+          }
+        },
+        {
+          "name": "linearity",
+          "type_spec": "scope: optional; type: integer",
+          "description": "Indicates whether the ad impression must be linear, non- linear or can be of any type (field not set). See Table 6.6 Video Linearity for a list of the possible values and recommended bidder interpretation.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1037,
+            "end_line": 1043
+          }
+        },
+        {
+          "name": "sequence",
+          "type_spec": "scope: optional; type: integer; default: 1",
+          "description": "If multiple ad impressions are offered in the same bid request, the sequence number will allow for the coordinated delivery of multiple creatives.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1044,
+            "end_line": 1048
+          }
+        },
+        {
+          "name": "battr",
+          "type_spec": "scope: optional; type: array of integers; default: Assume all types are allowed",
+          "description": "Blocked creative attributes. See Table 6.3 Creative Attributes. If blank assume all types are allowed.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1049,
+            "end_line": 1052
+          }
+        },
+        {
+          "name": "maxextended",
+          "type_spec": "scope: optional; type: integer; default: Extension not allowed",
+          "description": "Maximum extended video ad duration, if extension is allowed. If blank or 0, extension is not allowed. If -1, extension is allowed, and there is no time limit imposed. If greater than 0, then the value represents the number of seconds of extended play supported beyond the maxduration value.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1053,
+            "end_line": 1062
+          }
+        },
+        {
+          "name": "minbitrate",
+          "type_spec": "scope: optional; type: integer; default: Any bitrate accepted",
+          "description": "Minimum bit rate in Kbps. Exchange may set this dynamically, or universally across their set of publishers.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1063,
+            "end_line": 1066
+          }
+        },
+        {
+          "name": "maxbitrate",
+          "type_spec": "scope: optional; type: integer; default: Any bitrate accepted",
+          "description": "Maximum bit rate in Kbps. Exchange may set this dynamically, or universally across their set of publishers.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1067,
+            "end_line": 1070
+          }
+        },
+        {
+          "name": "boxingallowed",
+          "type_spec": "scope: optional; type: integer; default: 1",
+          "description": "If exchange publisher has rules preventing letter boxing of 4x3 content to play in a 16x9 window, then this should be set to false. Default setting is true, which assumes that boxing of content to fit into a window is allowed. “1” indicates boxing is allowed. “0” indicates it is not allowed.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1071,
+            "end_line": 1085
+          }
+        },
+        {
+          "name": "playbackmethod",
+          "type_spec": "scope: optional; type: array of integers; default: All",
+          "description": "List of allowed playback methods. If blank, assume that all are allowed. See Table 6.8 Video Playback Methods for a list of possible values.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1086,
+            "end_line": 1090
+          }
+        },
+        {
+          "name": "delivery",
+          "type_spec": "scope: optional; type: array of integers; default: All",
+          "description": "List of supported delivery methods (streaming, progressive). If blank, assume all are supported. See Table 6.12 Content Delivery Methods for a list of possible values.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1091,
+            "end_line": 1096
+          }
+        },
+        {
+          "name": "pos",
+          "type_spec": "scope: optional; type: integer; default: Unknown",
+          "description": "Ad Position (see table 6.5)",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1097,
+            "end_line": 1097
+          }
+        },
+        {
+          "name": "companionad",
+          "type_spec": "scope: optional; type: array of objects; default: Not availa",
+          "description": "If companion ads are available, ble they can be listed as an array of banner objects. See Banner Object.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1098,
+            "end_line": 1101
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "scope: optional; type: array of integers; default: Assume None",
+          "description": "List of supported API frameworks for this impression. (See Table 6.4 API Frameworks). If an API is not explicitly listed it is assumed not to be supported.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1102,
+            "end_line": 1106
+          }
+        },
+        {
+          "name": "companiontype",
+          "type_spec": "scope: optional; type: array of integers",
+          "description": "Recommended if companion objects are included. See Table 6.17 VAST Companion Types for a list of possible values.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1107,
+            "end_line": 1110
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "description": "This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1111,
+            "end_line": 1116
+          }
+        }
+      ]
+    },
+    {
+      "name": "Site",
+      "section": "3.3.5",
+      "description": "A site object should be included if the ad supported content is part of a website (as opposed to an application). A bid request must not contain both a site object and an app object. The site object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. At a minimum, it’s useful to provide a page URL or a site ID, but this is not strictly required. Field Scope Type Description id recommended string Site ID on the exchange. name optional string Site name (may be masked at publisher’s request). domain optional string Domain of the site, used for advertiser side blocking. For example, “foo.com”. cat optional array of Array of IAB content categories for the strings overall site. See Table 6.1 Content Categories. sectioncat optional array of Array of IAB content categories for the strings current subsection of the site. See Table 6.1 Content Categories. pagecat optional array of Array of IAB content categories for the strings current page. See Table 6.1 Content Categories. page recommended string URL of the page where the impression will be shown. privacypolicy optional integer Specifies whether the site has a privacy policy. “1” means there is a policy. “0” means there is not. ref optional string Referrer URL that caused navigation to the current page. search optional string Search string that caused navigation to the current page. publisher optional object See Publisher Object content optional object See Content Object keywords optional string List of keywords describing this site in a comma separated string. ALTERNATE Representation: Array of strings. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined",
+      "citation": {
+        "section": "3.3.5",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1119,
+        "end_line": 1173
+      },
+      "fields": []
+    },
+    {
+      "name": "App",
+      "section": "3.3.6",
+      "description": "An “app” object should be included if the ad supported content is part of a mobile application (as opposed to a mobile website). A bid request must not contain both an “app” object and a “site” object. The app object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. At a minimum, it’s useful to provide an App ID or bundle, but this is not strictly required. Field Scope Type Description id recommend string Application ID on the exchange. ed name optional string Application name (may be masked at publisher’s request). domain optional string Domain of the application (e.g., “mygame.foo.com”). cat optional array of Array of IAB content categories for the strings overall application. See Table 6.1 Content Categories. sectioncat optional array of Array of IAB content categories for the strings current subsection of the app. See Table 6.1 Content Categories. pagecat optional array of Array of IAB content categories for the strings current page/view of the app. See Table 6.1 Content Categories. ver optional string Application version. bundle recommend string Application bundle or package name (e.g., ed com.foo.mygame). This is intended to be a unique ID across multiple exchanges. privacypolicy optional integer Specifies whether the app has a privacy policy. “1” means there is a policy and “0” means there is not. paid optional integer “1” if the application is a paid version; else “0” (i.e., free). publisher optional object See Publisher Object content optional object See Content Object keywords optional string List of keywords describing this app in a comma separated string. ALTERNATE Representation: Array of strings. storeurl optional string For QAG 1.5 compliance, an app store URL for an installed app should be passed in the bid request. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in the specification.",
+      "citation": {
+        "section": "3.3.6",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1174,
+        "end_line": 1229
+      },
+      "fields": []
+    },
+    {
+      "name": "Content",
+      "section": "3.3.7",
+      "description": "The content object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. This object describes the content in which the impression will appear (may be syndicated or non- syndicated content). This object may be useful in the situation where syndicated content contains impressions and does not necessarily match the publisher’s general content. The exchange might or might not have knowledge of the page where the content is running, as a result of the syndication method. (For example, video impressions embedded in an iframe on an unknown web property or device.) Field Scope Type Description id optional string ID uniquely identifying the content episode optional integer Content episode number (typically applies to video content). title optional string Content title. Video examples: “Search Committee” (television) or “A New Hope” (movie) or “Endgame” (made for web) Non-video example: “Why an Antarctic Glacier Is Melting So Quickly” (Time magazine article) series optional string Content series. Video examples: “The Office” (television) or “Star Wars” (movie) or “Arby ‘N’ The Chief” (made for web) Non-video example: “Ecocentric” (Time magazine blog) season optional string Content season. E.g., “Season 3” (typically applies to video content). url optional string Original URL of the content, for buy-side contextualization or review cat optional array of Array of IAB content categories for the content. strings See Table 6.1 Content Categories. videoquality optional integer Video quality per the IAB’s classification. See Table 6.14 Video Quality. keywords optional string Comma separated list of keywords describing the content. ALTERNATE Representation: Array of strings. contentrating optional string Content rating (e.g., MPAA) userrating optional string User rating of the content (e.g., number of stars, likes, etc.). context optional string Specifies the type of content (game, video, text, etc.). See Table 6.13 Content Context. livestream optional integer Is content live? E.g., live video stream, live blog. “1” means content is live. “0” means it is not live. sourcerelationship optional integer 1 for “direct”; 0 for “indirect” producer optional object See Producer Object len optional integer Length of content (appropriate for video or audio) in seconds. qagmediarating optional integer Media rating of the content, per QAG guidelines. See Table 0 QAG Media Ratings for list of possible values embeddable optional integer From QAG Video Addendum. If content can be embedded (such as an embeddable video player) this value should be set to “1”. If content cannot be embedded, then this should be set to “0”. language optional string Language of the content. Use alpha-2/ISO 639-1 codes. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.7",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1230,
+        "end_line": 1310
+      },
+      "fields": []
+    },
+    {
+      "name": "Publisher",
+      "section": "3.3.8",
+      "description": "The publisher object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. Field Scope Type Description id recommended string Publisher ID on the exchange. name optional string Publisher name (may be masked at publisher’s request). cat optional array of Array of IAB content categories for the strings publisher. See Table 6.1 Content Categories. domain optional string Publisher’s highest level domain name, for example “foopub.com”. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.8",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1311,
+        "end_line": 1332
+      },
+      "fields": []
+    },
+    {
+      "name": "Producer",
+      "section": "3.3.9",
+      "description": "The producer is useful when content where the ad is shown is syndicated, and may appear on a completely different publisher. The producer object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. This object is optional, but useful if the content producer is different from the site publisher. Field Scope Type Description id optional string Content producer or originator ID. Useful if content is syndicated, and may be posted on a site using embed tags. name optional string Content producer or originator name (e.g., “Warner Bros”). cat optional array of Array of IAB content categories for the content strings producer. See Table 6.1 Content Categories. domain optional string URL of the content producer. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.9",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1333,
+        "end_line": 1363
+      },
+      "fields": []
+    },
+    {
+      "name": "Device",
+      "section": "3.3.10",
+      "description": "The “device” object provides information pertaining to the device including its hardware, platform, location, and carrier. This device can refer to a mobile handset, a desktop computer, set top box or other digital device. The device object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. In general, the most essential fields are either the IP address (to enable geo-lookup for the bidder), or providing geo information directly in the geo object. Field Scope Type Description dnt recommended Integer If “0”, then do not track Is set to false, if “1”, then do no track is set to true in browser. ua recommended string Browser user agent string. ip recommended string IPv4 address closest to device. if geo object is not supplied geo recommended object Geography as derived from the device’s if IP is not location services (e.g., cell tower triangulation, supplied GPS) or IP address. See Geo ObjectError! Reference source not found.. didsha1 optional string SHA1 hashed device ID; IMEI when available, else MEID or ESN. OpenRTB’s preferred method for device ID hashing is SHA1. didmd5 optional string MD5 hashed device ID; IMEI when available, else MEID or ESN. Should be interpreted as case insensitive. dpidsha1 optional string SHA1 hashed platform-specific ID (e.g., Android ID or UDID for iOS). OpenRTB’s preferred method for device ID hash is SHA1. dpidmd5 optional string MD5 hashed platform-specific ID (e.g., Android ID or UDID for iOS). Should be interpreted as case insensitive. macsha1 optional string SHA1 hashed MAC address of the device. macmd5 optional string MD5 hashed MAC address of the device. ipv6 optional string IP address in IPv6. carrier optional string Carrier or ISP derived from the IP address. Should be specified using Mobile Network Code (MNC) http://en.wikipedia.org/wiki/Mobile_Network_ Code language optional string Browser language; use alpha-2/ISO 639-1 codes. make optional string Device make (e.g., “Apple”). model optional string Device model (e.g., “iPhone”). os optional string Device operating system (e.g., “iOS”). osv optional string Device operating system version (e.g., “3.1.2”). js optional integer “1” if the device supports JavaScript; else “0”. connectiontype optional integer Return the detected data connection type for the device. See Table 6.10 Connection Type. devicetype optional integer Return the device type being used. See Table 6.16 Device Type. flashver optional string Return the Flash version detected. ifa optional string Native identifier for advertisers; an opaque ID assigned by the device or browser for use as an advertising identifier. (e.g. Apple's IFA, Android's Advertising ID, etc) ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification. BEST PRACTICE: There are currently no prominent open source lists for device makes, models, operating systems, or carriers. Exchanges typically use commercial products or other proprietary lists for these attributes. Until suitable open standards are available, exchanges are highly encouraged to publish lists of their device make, model, operating system, and carrier values to bidders. BEST PRACTICE: Proper device IP detection in mobile is not straightforward. Typically it involves starting at the left of the x-forwarded-for header, skipping private carrier networks (e.g., 10.x.x.x or 192.x.x.x), and possibly scanning for known carrier IP ranges. Exchanges are urged to research and implement this feature carefully when presenting device IP values to bidders.",
+      "citation": {
+        "section": "3.3.10",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1364,
+        "end_line": 1449
+      },
+      "fields": []
+    },
+    {
+      "name": "Geo",
+      "section": "3.3.11",
+      "description": "The geo object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. Note that the Geo Object may appear in one or both the Device Object and the User Object. This is intentional, since the information may be derived from either a device-oriented source (such as IP geo lookup), or by user registration information (for example provided to a publisher through a user registration). If the information is in conflict, it’s up to the bidder to determine which information to use. Field Scope Type Description lat optional float Latitude from -90 to 90. South is negative. This should only be passed if known to be accurate (For example, not the centroid of a postal code). lon optional float Longitude from -180 to 180. West is negative. This should only be passed if known to be accurate. country optional string Country using ISO-3166-1 Alpha-3. region optional string Region using ISO 3166-2. regionfips104 optional string Region of a country using FIPS 10-4 notation (alternative to ISO 3166-2). metro optional string Pass the metro code (see http://code.google.com/apis/adwords/do cs/appendix/metrocodes.html). Metro codes are similar to but not exactly the same as Nielsen DMAs. city optional string City using United Nations Code for Trade and Transport Locations (http://www.unece.org/cefact/locode/ser vice/location.htm). zip optional string Zip/postal code. type recommended integer Indicate the source of the geo data (GPS, IP address, user provided). See Table 6.15 Location Type for a list of potential values. Type should be provided when lat/lon is provided. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.11",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1450,
+        "end_line": 1498
+      },
+      "fields": []
+    },
+    {
+      "name": "User",
+      "section": "3.3.12",
+      "description": "The “user” object contains information known or derived about the human user of the device. Note that the user ID is an exchange artifact (refer to the “device” object for hardware or platform derived IDs) and may be subject to rotation policies. However, this user ID must be stable long enough to serve reasonably as the basis for frequency capping. The user object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. If device ID is used as a proxy for unique user ID, use the device object. Field Scope Type Description id recommended string Unique consumer ID of this user on the (or buyeruid) exchange. buyeruid recommended string Buyer’s user ID for this user as mapped by (or id) exchange for the buyer. yob optional integer Year of birth as a 4-digit integer. gender optional string Gender as “M” male, “F” female, “O” Other. (Null indicates unknown). keywords optional string Comma separated list of keywords of consumer interests or intent. ALTERNATE Representation: Array of strings. customdata optional string If supported by the exchange, this is custom data that the bidder had stored in the exchange’s cookie. The string may be in base85 cookie safe characters, and be in any format. This may useful for storing user features. Note: Proper JSON encoding must be used to include “escaped” quotation marks. geo optional object Home geo for the user (e.g., based off of registration data); this is different from the current location of the access device (that is defined by the geo object embedded in the Device Object); see Geo Object.Error! Reference source not found. data optional array of See Data Object. objects ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.12",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1499,
+        "end_line": 1550
+      },
+      "fields": []
+    },
+    {
+      "name": "Data",
+      "section": "3.3.13",
+      "description": "The data and segment objects together allow data about the user to be passed to bidders in the bid request. This data may be from multiple sources (e.g., the exchange itself, third party providers) as specified by the data object ID field. A bid request can mix data objects from multiple providers. The data object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. Field Scope Type Description id optional string Exchange specific ID for the data provider. name optional string Data provider name. segment optional array of Array of segment objects. objects ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.13",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1551,
+        "end_line": 1576
+      },
+      "fields": []
+    },
+    {
+      "name": "Segment",
+      "section": "3.3.14",
+      "description": "The data and segment objects together allow data about the user to be passed to bidders in the bid request. Segment objects convey specific units of information from the provider identified in the parent data object. The segment object itself and all of its parameters are optional, so default values are not provided; if an optional parameter is not specified, it should be considered unknown. Field Scope Type Description id optional string ID of a data provider’s segment applicable to the user name optional string Name of a data provider’s segment applicable to the user value optional string String representing the value of the segment. The method for transmitting this data should be negotiated offline with the data provider. For example for gender, “male”, or “female”, for age, “30-40”) ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.14",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1577,
+        "end_line": 1599
+      },
+      "fields": []
+    },
+    {
+      "name": "Regulations",
+      "section": "3.3.15",
+      "description": "The “regs” object contains any legal, governmental, or industry regulations that apply to the request. The first regulation added signal whether or not the request falls under the United States Federal Trade Commission’s regulations for the United States Children’s Online Privacy Protection Act (“COPPA”). See the COPPA appendix for details. The regs object itself and all of its parameters are optional, so default values are not provided. If an optional parameter is not specified, it should be considered unknown. Field Scope Type Description coppa optional integer Flag indicating whether or not this request falls under the COPPA regulations established by the USA FTC, where 0 = no, 1 = yes. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "3.3.15",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1600,
+        "end_line": 1626
+      },
+      "fields": []
+    },
+    {
+      "name": "Pmp",
+      "section": "3.3.16",
+      "description": "The “pmp” object contains a parent object for usage within the context of private marketplaces and the use of the RTB protocol to execute Direct Deals. Field Scope Type Description private_auction optional integer An integer flag indicating that this impression is a private auction eligible only to seats named in the Direct Deals object. (e.g., 1 = bids for this impression are restricted to the deals specified and the terms thereof; 0 = all bids are accepted) deals optional array of A collection of “deal” objects encapsulating a list objects of direct deals eligible for this impression. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification. BEST PRACTICE: See Section 7.2 PMP and Direct Deals for implementation guidelines.",
+      "citation": {
+        "section": "3.3.16",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1627,
+        "end_line": 1644
+      },
+      "fields": []
+    },
+    {
+      "name": "DirectDeals",
+      "section": "3.3.17",
+      "description": "A “deal” object constitutes a deal struck a priori between a buyer and a seller and indicates that this impression is available under the terms of that deal.",
+      "citation": {
+        "section": "3.3.17",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1645,
+        "end_line": 1749
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: required; type: String; default: A unique identifier for the direct deal.",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1657,
+            "end_line": 1657
+          }
+        },
+        {
+          "name": "bidfloor",
+          "type_spec": "scope: optional; type: Float; default: 0",
+          "description": "Bid floor for this impression (in CPM of bidfloorcur).",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1658,
+            "end_line": 1659
+          }
+        },
+        {
+          "name": "bidfloorcur",
+          "type_spec": "scope: optional; type: String; default: USD",
+          "description": "If bid floor is specified and multiple currencies supported per bid request, then currency should be specified here using ISO- 4217 alphabetic codes. Note, this may be different from bid currency returned by bidder, if this is allowed on an exchange.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1660,
+            "end_line": 1665
+          }
+        },
+        {
+          "name": "wseat",
+          "type_spec": "scope: optional; type: array of strings",
+          "description": "Array of buyer seats allowed to bid on this Direct Deal. Seats are an optional feature of an exchange. For example, [“4”,”34”,”82”,”45”] indicates that only advertisers using these exchange seats are allowed to bid on this direct deal.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1666,
+            "end_line": 1671
+          }
+        },
+        {
+          "name": "wadomain",
+          "type_spec": "scope: optional; type: array of strings",
+          "description": "Array of advertiser domains allowed to bid on this Direct Deal. For example, [“advertiser1.com”,”advertiser2.com”] indicates that only the listed advertisers are allowed to bid on this direct deal.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1672,
+            "end_line": 1676
+          }
+        },
+        {
+          "name": "at",
+          "type_spec": "scope: Optional; type: Integer; default: Auction type. If “1”, then first price auction.",
+          "description": "If “2”, then second price auction. If “3”, the passed bidfloor indicates the apriori agreed upon deal price. Additional auction types can be defined as per the exchange’s business rules.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1677,
+            "end_line": 1682
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: Object",
+          "description": "This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1683,
+            "end_line": 1687
+          }
+        },
+        {
+          "name": "BEST PRACTICE: See Section 7.2 PMP and Direct Deals for implementation guidelines.",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1689,
+            "end_line": 1689
+          }
+        },
+        {
+          "name": "4 Bid Response Details",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1692,
+            "end_line": 1692
+          }
+        },
+        {
+          "name": "4.1 Object List",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1700,
+            "end_line": 1700
+          }
+        },
+        {
+          "name": "Following is the object list for the bid response:",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1701,
+            "end_line": 1701
+          }
+        },
+        {
+          "name": "Object Name",
+          "type_spec": "scope: Scope; type: Notes",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1704,
+            "end_line": 1704
+          }
+        },
+        {
+          "name": "Bid Response",
+          "type_spec": "scope: required; type: Top-level object",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1705,
+            "end_line": 1705
+          }
+        },
+        {
+          "name": "seatbid",
+          "type_spec": "scope: required; type: At least one seatbid object is required in a",
+          "description": "bid response object.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1706,
+            "end_line": 1707
+          }
+        },
+        {
+          "name": "bid",
+          "type_spec": "scope: required; type: At least one bid object is required in a bid",
+          "description": "set object.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1708,
+            "end_line": 1709
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: This object is a placeholder that may",
+          "description": "contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification. Any object may contain extensions. In order to keep extension fields consistent across platforms, they should consistently be named ‘ext’.",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1710,
+            "end_line": 1718
+          }
+        },
+        {
+          "name": "4.2 Object Hierarchy",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1722,
+            "end_line": 1722
+          }
+        },
+        {
+          "name": "Following is the object hierarchy for a bid response:",
+          "type_spec": "type: B; default: id Respons Seat Bid Bid Object",
+          "description": "e Object Object",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1723,
+            "end_line": 1735
+          }
+        },
+        {
+          "name": "Note: Any object in the hierarchy may include an extensions object assigned to the",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1741,
+            "end_line": 1741
+          }
+        },
+        {
+          "name": "parameter ext",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1742,
+            "end_line": 1742
+          }
+        },
+        {
+          "name": "4.3 Object Definitions",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1747,
+            "end_line": 1747
+          }
+        },
+        {
+          "name": "Following are definitions for the bid response objects.",
+          "type_spec": "",
+          "description": "",
+          "citation": {
+            "section": "3.3.17",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1748,
+            "end_line": 1748
+          }
+        }
+      ]
+    },
+    {
+      "name": "BidResponse",
+      "section": "4.3.1",
+      "description": "The top-level bid response object is defined below. The “id” attribute is a reflection of the bid request ID for logging purposes. Similarly, “bidid” is an optional response tracking ID for bidders. If specified, it can be included in the subsequent win notice call if the bidder wins. At least one “seatbid” object is required, which contains a bid on at least one impression. Other attributes are optional since an exchange may establish default values. No-Bids on all impressions should be indicated as a HTTP 204 response. For no-bids on specific impressions, the bidder should omit these from the bid response. Field Scope Type Description Id required string ID of the bid request. seatbid required array of Array of seatbid objects. objects bidid optional string Bid response ID to assist tracking for bidders. This value is chosen by the bidder for cross-reference. cur optional string Bid currency using ISO-4217 alphabetic codes; default is “USD”. customdata optional string This is an optional feature, which allows a bidder to set data in the exchange’s cookie. The string may be in base85 cookie safe characters, and be in any format. This may be useful for storing user features. Note: Proper JSON encoding must be used to include “escaped” quotation marks. nbr optional integer Reason for not bidding. See Table 6.19 No-Bid Reason Codes. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "4.3.1",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1750,
+        "end_line": 1796
+      },
+      "fields": []
+    },
+    {
+      "name": "SeatBid",
+      "section": "4.3.2",
+      "description": "A bid response can contain multiple “seatbid” objects, each on behalf of a different bidder seat. Since a bid request can include multiple impressions, each “seatbid” object can contain multiple bids each pertaining to a different impression on behalf of a seat. Thus, each “bid” object must include the impression ID to which it pertains as well as the bid price. The “group” attribute can be used to specify if a seat is willing to accept any impressions that it can win (default) or if it is only interested in winning any if it can win them all (i.e., all or nothing). Field Scope Type Description bid required array of Array of bid objects; each bid object objects relates to an imp object in the bid request. Note that, if supported by an exchange, one imp object can have many bid objects. seat optional string ID of the bidder seat on whose behalf this bid is made. group optional integer “1” means impressions must be won- lost as a group; default is “0”. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification.",
+      "citation": {
+        "section": "4.3.2",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1797,
+        "end_line": 1822
+      },
+      "fields": []
+    },
+    {
+      "name": "Bid",
+      "section": "4.3.3",
+      "description": "For each bid, the “nurl” attribute contains the win notice URL. If the bidder wins the impression, the exchange calls this notice URL a) to inform the bidder of the win and b) to convey certain information using substitution macros (see Section 4.6 Substitution Macros). The “adomain” attribute can be used to check advertiser block list compliance. The “iurl” attribute can provide a link to an image that is representative of the campaign’s content (irrespective of whether the campaign may have multiple creatives). This enables human review for spotting inappropriate content. The “cid” attribute can be used to block ads that were previously identified as inappropriate; essentially a safety net beyond the block lists. The “crid” attribute can be helpful in reporting creative issues back to bidders. Finally, the “attr” array indicates the creative attributes that describe the ad to be served. BEST PRACTICE: Substitution macros may allow a bidder to use a static notice URL for all of its bids. Thus, exchanges should offer the option of a default notice URL that can be pre- configured per bidder to reduce redundant data transfer. Field Scope Type Description id required string ID for the bid object chosen by the bidder for tracking and debugging purposes. Useful when multiple bids are submitted for a single impression for a given seat. impid required string ID of the impression object to which this bid applies. price required float Bid price in CPM. WARNING/Best Practice Note: Although this value is a float, OpenRTB strongly suggests using integer math for accounting to avoid rounding errors. adid optional string ID that references the ad to be served if the bid wins. nurl optional string Win notice URL. Note that ad markup is also typically, but not necessarily, returned via this URL. adm optional string Actual ad markup. XHTML if a response to a banner object, or VAST XML if a response to a video object. adomain optional array of Advertiser’s primary or top-level strings domain for advertiser checking. This can be a list of domains if there is a rotating creative. However, exchanges may mandate that only one landing domain is allowed. Iurl optional string Sample image URL (without cache busting) for content checking cid optional string Campaign ID or similar that appears within the ad markup crid optional string Creative ID for reporting content issues or defects. This could also be used as a reference to a creative ID that is posted with an exchange. attr optional array of Array of creative attributes. See Table integers 6.3 Creative Attributes. dealid optional string A unique identifier for the direct deal associated with the bid. If the bid is associated and in response to a dealid in the request object it is required in the response object. h optional integer Width of the ad in pixels. If the bid request contained the wmax/hmax and wmin/hmin optional fields it is recommended that the response bid contains this field to signal the size of ad chosen. w optional integer Height of the ad in pixels. If the bid request contained the wmax/hmax and wmin/hmin optional fields it is recommended that the response bid contains this field to signal the size of ad chosen. ext optional object This object is a placeholder that may contain custom JSON agreed to by the parties in an OpenRTB transaction to support flexibility beyond the standard defined in this specification. 4.4 Loss Notification Exchanges are encouraged to supply lost bid data via an offline or separate process outside of the bid request / response protocol. 4.5 Ad Serving Options There are two methods by which the winning bidder can return ad markup to the exchange. In either case, the ad markup is either XHTML if the bidder is responding with a banner or VAST XML if responding with a VAST video. 4.5.1 Ad Served on the Win Notice In this method, ad markup is returned to the exchange is via the win notice. In this case, the response body of the win notice call (e.g., invoking the “nurl” attribute) contains the ad markup and only the ad markup; there must be no other structured data in the response body. Using this method, the “adm” attribute in the “bid” object must be omitted. 4.5.2 Ad Served in the Bid In this method, ad markup is returned directly in the bid itself. This is accomplished via the “adm” attribute in the “bid” object. If both the “adm” attribute and win notice return data, the “adm” contents will take precedence. 4.5.3 Comparison of Ad Serving Approaches Each of the ad serving methods has its own advantages that may be of varying importance to either the exchange or the bidder.  Ad Served in the Bid o Potential Concurrency: The exchange can choose to return that ad markup and call the win notice concurrently, thereby improving user experience. o Reduced Risk of Forfeiture: A forfeit is the scenario in which a bidder wins, but forfeits due to technical failure serving the ad. This can occur when serving on the win notice (e.g., win notice call failure), but is mitigated by including the ad in the bid.  Ad Served on the Win Notice o Reduced Bandwidth Costs: Serving ad markup only upon winning can save large amounts of bandwidth usage, the costs for which can mount up over high volumes. o Additional Bidder Flexibility: Bidders may typically know the ad they will serve at the time of bid, but this provides an additional optional decision point after the settlement price has been established. 4.6 Substitution Macros The win notice URL and its format are defined by the bidder. In order for the exchange to convey certain information to the winning bidder (e.g., the settlement price), a number of substitution macros can be inserted into the win notice URL definition. Prior to calling a win notice URL, the exchange will search the specified URL for any of the defined macros and replace them with the appropriate data. Note that the substitution is simple in the sense that wherever a legal macro is found, it will be replaced without regard for syntax correctness. Furthermore, if the source value is an optional parameter that was not specified, the macro will simply be removed (i.e., replaced with a zero-length string). These same substitution macros can also be placed in the ad markup. The exchange will perform the same data substitutions as in the win notice URL. This occurs irrespective of whether the markup is returned on the win notice or passed in the “adm” attribute of the bid response. A use case for macros in the ad markup might be when a bidder prefers to receive its win notice from the device itself. To accomplish this, the bidder would include a tracking pixel in the ad markup the URL for which would include any of the available macros. Macro Description ${AUCTION_ID} ID of the bid request; from “id” attribute. ${AUCTION_BID_ID} ID of the bid; from “bidid” attribute. ${AUCTION_IMP_ID} ID of the impression just won; from “impid” attribute. ${AUCTION_SEAT_ID} ID of the bidder’s seat for whom the bid was made. ${AUCTION_AD_ID} ID of the ad markup the bidder wishes to serve; from “adid” attribute. ${AUCTION_PRICE} Settlement price using the same currency and units as the bid. ${AUCTION_CURRENCY} The currency used in the bid (explicit or implied); for confirmation only. Prior to substitution, macro data values can be encoded for security purposes using various obfuscation or encryption algorithms. This may be of particular interest for use cases such as the foregoing where price information is carried beyond the exchange, through the publisher, and into the device browser via a tracking pixel in the markup. To specify that a particular macro is to be encoded, the suffix “:X” should be appended to the macro name, where X is a string that indicates the algorithm to be used. Algorithms choices are not defined by this specification, but must be mutually agreed upon between exchange and bidder. As an example, suppose that the price macro is to be encoded using Base64 and that its code is “B64”. The macro would then be written as follows: ${AUCTION_PRICE:B64} BEST PRACTICE: Encoding of macro data should be used sparingly due to the additional processing overhead. For communications strictly between exchange and bidder (e.g., a win notice called from the exchange), encoding is generally unnecessary. 5 Bid Request/Response Samples 5.1 GitHub Repository The official OpenRTB GitHub repository now contains a set of validated example requests. This repo should be considered the canonical examples for implementers. https://github.com/openrtb/examples 5.2 Validator A public validator of request and response objects is available at the link below. The validator is a developer utility for ensuring the validity of bid request and response payloads expressed in JSON. The validator can be used with all final versions of OpenRTB specification. To use the validator, select the version of OpenRTB that is relevant to your data sample, select whether that data sample is a Bid Request or a Bid Response, then paste the JSON data sample into the field indicated, and press the Validate button. http://www.nexage.com/resources/technical-resources/openrtb-validator The underlying code for the actual validator is also available. It is distributed freely under a BSD- 3 open source license at the below URL. http://github.com/openrtb/openrtb2x/tree/2.0/openrtb-validator 5.3 Bid Requests 5.3.1 Example 1 – Simple Banner Following is a basic example of a bid request for a banner ad. Some optional parameters are included in this example. { \"id\": \"80ce30c53c16e6ede735f123ef6e32361bfc7b22\", \"imp\": [ { \"id\": \"1\", \"banner\": { \"h\": 250, \"w\": 300, \"pos\": 0 }, \"bidfloor\": 0.03 } ], \"site\": { \"id\": \"102855\", \"domain\": \"http://www.foobar.com\", \"cat\": \"IAB3-1\", \"page\": \"http://www.foobar.com/1234.html \", \"publisher\": { \"id\": \"8953\", \"name\": \"foobar.com\", \"cat\": \"IAB3-1\", \"domain\": \"foobar.com\" } }, \"device\": { \"ua\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2\", \"ip\": \"123.145.167.*\" }, \"user\": { \"id\": \"55816b39711f9b5acf3b90e313ed29e51665623f\" }, \"at\": 1, \"cur\": [ \"USD\" ], } 5.3.2 Example 2 – Expandable Creative This example builds the first and adds parameters to describe support for an expandable creative, and passes data about the user from “Data Provider 1”. { \"id\": \"123456789316e6ede735f123ef6e32361bfc7b22\", \"imp\": [ { \"id\": \"1\", \"banner\": { \"h\": 250, \"w\": 300, \"pos\": 0, \"battr\":[ 13 ], \"expandable\":[ 2, 4 ], \"iframebuster\":[ \"vendor1.com\", \"vendor2.com\" ] }, \"bidfloor\": 0.03 } ], \"site\": { \"id\": \"102855\", \"domain\": \"http://www.foobar.com\", \"cat\": \"IAB3-1\", \"page\": \"http://www.foobar.com/1234.html \", \"publisher\": { \"id\": \"8953\", \"name\": \"foobar.com\", \"cat\": \"IAB3-1\", \"domain\": \"foobar.com\" } }, \"device\": { \"ua\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2\", \"ip\": \"123.145.167.*\" }, \"user\": { \"id\": \"55816b39711f9b5acf3b90e313ed29e51665623f\" \"buyeruid\":\"545678765467876567898765678987654\", \"data\":[ { \"id\":\"6\", \"name\":\"Data Provider 1\", \"segment\":[ { \"id\":\"12341318394918\", \"name\":\"auto intenders\" }, { \"id\":\"1234131839491234\", \"name\":\"auto enthusiasts\" }, { \"id\":\"23423424\", \"name\":\"data-provider1-age\", \"value\":\"30-40\" } ] } }, \"at\": 1, \"cur\": [ \"USD\" ], } 5.3.3 Example 3 – Mobile Example 3 uses a device object to reflect a mobile device, and an app object to reflect a request from a mobile application. { \"id\": \"IxexyLDIIk\", \"imp\": [ { \"id\": \"1\", \"banner\": { \"w\": 728, \"h\": 90, \"pos\": 1, \"btype\": [ 4 ], \"battr\": [ 14 ], \"api\": [ 3 ] }, \"instl\": 0, \"tagid\": \"agltb3B1Yi1pbmNyDQsSBFNpdGUY7fD0FAw\", \"bidfloor\": 0.5 } ], \"app\": { \"id\": \"agltb3B1Yi1pbmNyDAsSA0FwcBiJkfIUDA\", \"name\": \"Yahoo Weather\", \"cat\": [ \"weather\", \"IAB15\", \"IAB15-10\" ], \"ver\": \"1.0.2\", \"bundle\": \"628677149\", \"publisher\": { \"id\": \"agltb3B1Yi1pbmNyDAsSA0FwcBiJkfTUCV\", \"name\": \"yahoo\", \"domain\": \"www.yahoo.com\" }, \"storeurl\": \"https://itunes.apple.com/id628677149\" }, \"device\": { \"dnt\": 0, \"ua\": \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3\", \"ip\": \"123.145.167.189\", \"geo\": { \"country\": \"USA\", \"lat\": 35.012345, \"lon\": -115.12345, \"city\": \"Los Angeles\", \"metro\": \"803\", \"region\": \"CA\", \"zip\": \"90049\" }, \"dpidsha1\": \"AA000DFE74168477C70D291f574D344790E0BB11\", \"dpidmd5\": \"AA003EABFB29E6F759F3BDAB34E50BB11\", \"carrier\": \"310-410\", \"language\": \"en\", \"make\": \"Apple\", \"model\": \"iPhone\", \"os\": \"iOS\", \"osv\": \"6.1\", \"js\": 1, \"connectiontype\": 3, \"devicetype\": 1 }, \"user\": { \"id\": \"ffffffd5135596709273b3a1a07e466ea2bf4fff\", \"yob\": \"1984\", \"gender\": \"M\" }, \"at\": 2, \"bcat\": [ \"IAB25\", \"IAB7-39\", \"IAB8-18\", \"IAB8-5\", \"IAB9-9\" ], \"badv\": [ \"apple.com\", \"go-text.me\", \"heywire.com\" ] } 5.3.4 Example 4 – Video The following example illustrates a bid request for a video impression with two companion ad slots (1 expandable). Additionally, the video content itself is described in the \"content\" object. A few notes about specific fields in the example:  protocol: Only VAST 2.0 and 3.0 are allowed. Note that a wrapper response is not allowed in this example.  sequence: it is not explicitly included so the default of '1' should be assumed.  battr: User interactive and alert stype ads (value '13' and '14', respectively) are explicitly being blocked for both the video and its companions.  pos: Indicates this opportunity is \"above the fold\".  api: Indicates that VPAID 1.0 containers are explicitly supported. As such, the mime types supported for VPAID are only \"application/x-shockwave-flash\" and \"application/javascript\". Note that there is an implicit resitrction as to which protocol is allowed in which mimetype. JavaScript support was not specificed until VPAID 2.0, while Flash supports both VPAID 1.0 and 2.0.  companiontype: Indicates only static or HTML resources are allowed.  ext: an exchange-specific deals extension is passed to inform the bidder of the priority assigned deals. { \"id\": \"1234567893\", \"at\": 2, \"tmax\": 120, \"imp\": [ { \"id\": \"1\", \"bidfloor\": 0.03, \"video\": { \"mimes\": [ \"video/x-flv\", \"video/mp4\", \"application/x-shockwave-flash\", \"application/javascript\" ], \"linearity\": 1, \"minduration\": 5, \"maxduration\": 30, \"protocol\": [2,3], \"w\": 640, \"h\": 480, \"startdelay\": 0, \"battr\": [13,14], \"maxextended\": 30, \"minbitrate\": 300, \"maxbitrate\": 1500, \"boxingallowed\": true, \"playbackmethod\": [1,3], \"delivery\": [2], \"pos\": 1, \"companionad\": [ { \"id\": \"1234567893-1\", \"w\": 300, \"h\": 250, \"pos\": 1, \"battr\": [13,14], \"expandable\": [2,4] }, { \"id\": \"1234567893-2\", \"w\": 728, \"h\": 90, \"pos\": 1, \"battr\": [13,14] } ], \"companiontype\": [1,2], \"api\": [1,2] } } ], \"site\": { \"id\": \"1345135123\", \"name\": \"Site ABCD\", \"domain\": \"siteabcd.com\", \"sitecat\": [ \"IAB2-1\", \"IAB2-2\" ], \"page\": \"http://siteabcd.com/page.htm\", \"ref\": \"http://referringsite.com/referringpage.htm\", \"privacypolicy\": true, \"publisher\": { \"id\": \"pub12345\", \"name\": \"Publisher A\" }, \"content\": { \"id\": \"1234567\", \"episode\": 23, \"title\": \"Car Show\", \"series\": \"All About Cars\", \"season\": 2, \"cat\": [\"IAB2-2\"], \"keyword\": [\"keyword a\", \"keyword b\", \"keyword c\"] } }, \"device\": { \"ip\": \"64.124.253.1\", \"ua\": \"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16\", \"os\": \"OS X\", \"flashversion\": \"10.1\", \"js\": 1 }, \"user\": { \"uid\": \"456789876567897654678987656789\", \"buyeruid\": \"545678765467876567898765678987654\", \"data\": [ { \"id\": \"6\", \"name\": \"Data Provider 1\", \"segment\": [ { \"id\": \"12341318394918\", \"name\": \"auto intenders\" }, { \"id\": \"1234131839491234\", \"name\": \"auto enthusiasts\" } ] } ] } } 5.3.5 Example 5 – PMP w/ Direct Deal Following is a basic example of a bid request for a banner ad with a direct deal. Some optional parameters are included in this example. { \"id\": \"80ce30c53c16e6ede735f123ef6e32361bfc7b22\", \"imp\": [ { \"id\": \"1\", \"banner\": { \"h\": 250, \"w\": 300, \"pos\": 0 }, \"bidfloor\": 0.03, \"pmp\":{ \"private_auction\":1, \"deals\":[ { \"id\":\"AB-Agency1-0001\", \"bidfloor\":2.5, \"wseat\":[ \"Agency1\" ], \"at\":1, \"ext\":{ } }, { \"id\":\"XY-Agency2-0001\", \"bidfloor\":2, \"wseat\":[ \"Agency2\" ], \"at\":2 } ] } } ], \"site\": { \"id\": \"102855\", \"domain\": \"http://www.foobar.com\", \"cat\": \"IAB3-1\", \"page\": \"http://www.foobar.com/1234.html \", \"publisher\": { \"id\": \"8953\", \"name\": \"foobar.com\", \"cat\": \"IAB3-1\", \"domain\": \"foobar.com\" } }, \"device\": { \"ua\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2\", \"ip\": \"123.145.167.*\" }, \"user\": { \"id\": \"55816b39711f9b5acf3b90e313ed29e51665623f\" }, \"at\": 1, \"cur\": [ \"USD\" ], } 5.4 Bid Responses 5.4.1 Example 1 – Ad Served on Win Notice Following is an example of a bid response with the ad served on win notice. The bid for this impression is a $9.43 CPM. { \"id\":\"1234567890\", \"seatbid\":[ { \"bid\":[ { \"id\":\"1\", \"impid\":\"102\", \"price\":9.43, \"adid\":\"314\", \"nurl\":\"http://adserver.com/winnotice?impid=102\", \"adm\":\"%3C!DOCTYPE%20html%20PUBLIC%20%5C%22- %2F%2FW3C%2F%2FDTD%20XHTML%201.0%20Transitional%2F%2FEN%5C%22%20%5C%22htt p%3A%2F%2Fwww.w3.org%2FTR%2Fxhtml1%2FDTD%2Fxhtml1- transitional.dtd%5C%22%3E%3Chtml%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F1 999%2Fxhtml%5C%22%20xml%3Alang%3D%5C%22en%5C%22%20lang%3D%5C%22en%5C%22 %3E...%3C%2Fhtml%3E\", \"adomain\":[ \"advertiserdomain.com\" ], \"iurl\":\"http://adserver.com/pathtosampleimage\", \"cid\":\"campaign111\", \"crid\":\"creative112\", \"attr\":[ 1, 2, 3, 4, 5, 6, 7, 12 ] } ], \"seat\":\"512\" } ], \"bidid\":\"abc1123\", \"cur\":\"USD\" } 5.4.2 Example 2 – VAST URL Returned Following is an example of a bid response that returns a VAST URL to be served. The bid for this impression is a $9.43 CPM. { \"id\":\"1234567890\", \"seatbid\":[ { \"bid\":[ { \"id\":\"kljaf9\", \"impid\":\"1\", \"price\":9.43, \"nurl\":\"http://adserver.com/WinNoticeUrlThatReturnsVAST\" } ] } ] } 5.4.3 Example 3 – VAST XML Document Returned Inline Following is an example of a bid response that returns the VAST document inline to be served. A few notes about specific fields in the example:  The bid for this impression is a $3.00 CPM.  Note that since there both a win notice URL and an inline VAST document, the adm attribute is used for the VAST ad markeup. { \"id\": \"123\", \"seatbid\": [ { \"bid\": [ { \"id\": 12345, \"impid\": 2, \"price\": 3.00, \"nurl\": \"http://example.com/winnoticeurl\", \"adm\": \"%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf- 8%22%3F%3E%0A%3CVAST%20version%3D%222.0%22%3E%0A%20%20%20%20%3CAd%20id% 3D%2212345%22%3E%0A%20%20%20%20%20%20%20%20%3CInLine%3E%0A%20%20%20%20 %20%20%20%20%20%20%20%20%3CAdSystem%20version%3D%221.0%22%3ESpotXchange%3 C%2FAdSystem%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C AdTitle%3E%3C!%5BCDATA%5BSample%20VAST%5D%5D%3E%3C%2FAdTitle%3E%0A%20%20% 20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CImpression%3Ehttp%3A%2F%2Fsa mple.com%3C%2FImpression%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%3CDescription%3E%3C!%5BCDATA%5BA%20sample%20VAST%20feed%5D%5D%3E% 3C%2FDescription%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20% 3CCreatives%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%3CCreative%20sequence%3D%221%22%20id%3D%221%22%3E%0A%20%20%20%20 %20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CLinear %3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20% 20%20%20%20%20%20%20%20%3CDuration%3E00%3A00%3A30%3C%2FDuration%3E%0A%20 %20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%20%20%3CTrackingEvents%3E%0A%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FTrackingEvents%3 E%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 %20%20%20%20%20%20%20%20%20%20%3CVideoClicks%3E%0A%20%20%20%20%20%20%20 %20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%3CClickThrough%3E%3C!%5BCDATA%5Bhttp%3A%2F%2Fsample.com%2Fopenrtbtes t%5D%5D%3E%3C%2FClickThrough%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20 %20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2FVideoClicks%3E%0A %20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%20%20%20%3CMediaFiles%3E%0A%20%20%20%20%20%20%20%20%20%20%20%2 0%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3CMedi aFile%20delivery%3D%22progressive%22%20bitrate%3D%22256%22%20width%3D%22640%22 %20height%3D%22480%22%20type%3D%22video%2Fmp4%22%3E%3C!%5BCDATA%5Bhttp%3 A%2F%2Fsample.com%2Fvideo.mp4%5D%5D%3E%3C%2FMediaFile%3E%0A%20%20%20%20% 20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 %20%3C%2FMediaFiles%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 %20%20%20%20%20%20%20%20%20%3C%2FLinear%3E%0A%20%20%20%20%20%20%20%20 %20%20%20%20%20%20%20%20%20%20%20%20%3C%2FCreative%3E%0A%20%20%20%20%2 0%20%20%20%20%20%20%20%20%20%20%20%3C%2FCreatives%3E%0A%20%20%20%20%20 %20%20%20%3C%2FInLine%3E%0A%20%20%20%20%3C%2FAd%3E%0A%3C%2FVAST%3E\", \"ext\": null } ] } ] } 5.4.4 Example 4 – Direct Deal Ad Served on Win Notice Following is an example of a bid response with the ad served on win notice. The bid for this impression is a $5.00 CPM against a direct deal. { \"id\":\"1234567890\", \"seatbid\":[ { \"bid\":[ { \"id\":\"1\", \"impid\":\"102\", \"price\":5.00, \"dealid\":\"ABC-1234-6789\", \"adid\":\"314\", \"nurl\":\"http: //adserver.com/winnotice?impid=102\", \"adm\":\"%3C!DOCTYPE%20html%20PUBLIC%20%5C%22- %2F%2FW3C%2F%2FDTD%20XHTML%201.0%20Transitional%2F%2FEN%5C%22%20%5C%22htt p%3A%2F%2Fwww.w3.org%2FTR%2Fxhtml1%2FDTD%2Fxhtml1- transitional.dtd%5C%22%3E%3Chtml%20xmlns%3D%5C%22http%3A%2F%2Fwww.w3.org%2F1 999%2Fxhtml%5C%22%20xml%3Alang%3D%5C%22en%5C%22%20lang%3D%5C%22en%5C%22 %3E...%3C%2Fhtml%3E\", \"adomain\":[ \"advertiserdomain.com\" ], \"iurl\":\"http: //adserver.com/pathtosampleimage\", \"cid\":\"campaign111\", \"crid\":\"creative112\", \"attr\":[ 1, 2, 3, 4 ] } ], \"seat\":\"512\" } ], \"bidid\":\"abc1123\", \"cur\":\"USD\" } 6 Reference Lists/Enumerations BEST PRACTICE: All reference lists are actively maintained by the IAB on the OpenRTB web site. As such, implementers should ensure they are working from the latest lists and enumerations 6.1 Content Categories The following list represents the IAB’s contextual taxonomy for categorization. Standard IDs have been adopted to easily support the communication of primary and secondary categories for various objects. Note to the reader: This OpenRTB table has values derived from the IAB Quality Assurance Guidelines (QAG). Users of OpenRTB should keep in synch with updates to the QAG values as published on IAB.net. Value Description IAB1 Arts & Entertainment IAB1-1 Books & Literature IAB1-2 Celebrity Fan/Gossip IAB1-3 Fine Art IAB1-4 Humor IAB1-5 Movies IAB1-6 Music IAB1-7 Television IAB2 Automotive IAB2-1 Auto Parts IAB2-2 Auto Repair IAB2-3 Buying/Selling Cars IAB2-4 Car Culture IAB2-5 Certified Pre-Owned IAB2-6 Convertible IAB2-7 Coupe IAB2-8 Crossover IAB2-9 Diesel IAB2-10 Electric Vehicle IAB2-11 Hatchback IAB2-12 Hybrid IAB2-13 Luxury IAB2-14 MiniVan IAB2-15 Mororcycles IAB2-16 Off-Road Vehicles IAB2-17 Performance Vehicles IAB2-18 Pickup IAB2-19 Road-Side Assistance IAB2-20 Sedan IAB2-21 Trucks & Accessories IAB2-22 Vintage Cars IAB2-23 Wagon IAB3 Business IAB3-1 Advertising IAB3-2 Agriculture IAB3-3 Biotech/Biomedical IAB3-4 Business Software IAB3-5 Construction IAB3-6 Forestry IAB3-7 Government IAB3-8 Green Solutions IAB3-9 Human Resources IAB3-10 Logistics IAB3-11 Marketing IAB3-12 Metals IAB4 Careers IAB4-1 Career Planning IAB4-2 College IAB4-3 Financial Aid IAB4-4 Job Fairs IAB4-5 Job Search IAB4-6 Resume Writing/Advice IAB4-7 Nursing IAB4-8 Scholarships IAB4-9 Telecommuting IAB4-10 U.S. Military IAB4-11 Career Advice IAB5 Education IAB5-1 7-12 Education IAB5-2 Adult Education IAB5-3 Art History IAB5-4 Colledge Administration IAB5-5 College Life IAB5-6 Distance Learning IAB5-7 English as a 2nd Language IAB5-8 Language Learning IAB5-9 Graduate School IAB5-10 Homeschooling IAB5-11 Homework/Study Tips IAB5-12 K-6 Educators IAB5-13 Private School IAB5-14 Special Education IAB5-15 Studying Business IAB6 Family & Parenting IAB6-1 Adoption IAB6-2 Babies & Toddlers IAB6-3 Daycare/Pre School IAB6-4 Family Internet IAB6-5 Parenting - K-6 Kids IAB6-6 Parenting teens IAB6-7 Pregnancy IAB6-8 Special Needs Kids IAB6-9 Eldercare IAB7 Health & Fitness IAB7-1 Exercise IAB7-2 A.D.D. IAB7-3 AIDS/HIV IAB7-4 Allergies IAB7-5 Alternative Medicine IAB7-6 Arthritis IAB7-7 Asthma IAB7-8 Autism/PDD IAB7-9 Bipolar Disorder IAB7-10 Brain Tumor IAB7-11 Cancer IAB7-12 Cholesterol IAB7-13 Chronic Fatigue Syndrome IAB7-14 Chronic Pain IAB7-15 Cold & Flu IAB7-16 Deafness IAB7-17 Dental Care IAB7-18 Depression IAB7-19 Dermatology IAB7-20 Diabetes IAB7-21 Epilepsy IAB7-22 GERD/Acid Reflux IAB7-23 Headaches/Migraines IAB7-24 Heart Disease IAB7-25 Herbs for Health IAB7-26 Holistic Healing IAB7-27 IBS/Crohn's Disease IAB7-28 Incest/Abuse Support IAB7-29 Incontinence IAB7-30 Infertility IAB7-31 Men's Health IAB7-32 Nutrition IAB7-33 Orthopedics IAB7-34 Panic/Anxiety Disorders IAB7-35 Pediatrics IAB7-36 Physical Therapy IAB7-37 Psychology/Psychiatry IAB7-38 Senor Health IAB7-39 Sexuality IAB7-40 Sleep Disorders IAB7-41 Smoking Cessation IAB7-42 Substance Abuse IAB7-43 Thyroid Disease IAB7-44 Weight Loss IAB7-45 Women's Health IAB8 Food & Drink IAB8-1 American Cuisine IAB8-2 Barbecues & Grilling IAB8-3 Cajun/Creole IAB8-4 Chinese Cuisine IAB8-5 Cocktails/Beer IAB8-6 Coffee/Tea IAB8-7 Cuisine-Specific IAB8-8 Desserts & Baking IAB8-9 Dining Out IAB8-10 Food Allergies IAB8-11 French Cuisine IAB8-12 Health/Lowfat Cooking IAB8-13 Italian Cuisine IAB8-14 Japanese Cuisine IAB8-15 Mexican Cuisine IAB8-16 Vegan IAB8-17 Vegetarian IAB8-18 Wine IAB9 Hobbies & Interests IAB9-1 Art/Technology IAB9-2 Arts & Crafts IAB9-3 Beadwork IAB9-4 Birdwatching IAB9-5 Board Games/Puzzles IAB9-6 Candle & Soap Making IAB9-7 Card Games IAB9-8 Chess IAB9-9 Cigars IAB9-10 Collecting IAB9-11 Comic Books IAB9-12 Drawing/Sketching IAB9-13 Freelance Writing IAB9-14 Genealogy IAB9-15 Getting Published IAB9-16 Guitar IAB9-17 Home Recording IAB9-18 Investors & Patents IAB9-19 Jewelry Making IAB9-20 Magic & Illusion IAB9-21 Needlework IAB9-22 Painting IAB9-23 Photography IAB9-24 Radio IAB9-25 Roleplaying Games IAB9-26 Sci-Fi & Fantasy IAB9-27 Scrapbooking IAB9-28 Screenwriting IAB9-29 Stamps & Coins IAB9-30 Video & Computer Games IAB9-31 Woodworking IAB10 Home & Garden IAB10-1 Appliances IAB10-2 Entertaining IAB10-3 Environmental Safety IAB10-4 Gardening IAB10-5 Home Repair IAB10-6 Home Theater IAB10-7 Interior Decorating IAB10-8 Landscaping IAB10-9 Remodeling & Construction IAB11 Law, Gov't & Politics IAB11-1 Immigration IAB11-2 Legal Issues IAB11-3 U.S. Government Resources IAB11-4 Politics IAB11-5 Commentary IAB12 News IAB12-1 International News IAB12-2 National News IAB12-3 Local News IAB13 Personal Finance IAB13-1 Beginning Investing IAB13-2 Credit/Debt & Loans IAB13-3 Financial News IAB13-4 Financial Planning IAB13-5 Hedge Fund IAB13-6 Insurance IAB13-7 Investing IAB13-8 Mutual Funds IAB13-9 Options IAB13-10 Retirement Planning IAB13-11 Stocks IAB13-12 Tax Planning IAB14 Society IAB14-1 Dating IAB14-2 Divorce Support IAB14-3 Gay Life IAB14-4 Marriage IAB14-5 Senior Living IAB14-6 Teens IAB14-7 Weddings IAB14-8 Ethnic Specific IAB15 Science IAB15-1 Astrology IAB15-2 Biology IAB15-3 Chemistry IAB15-4 Geology IAB15-5 Paranormal Phenomena IAB15-6 Physics IAB15-7 Space/Astronomy IAB15-8 Geography IAB15-9 Botany IAB15-10 Weather IAB16 Pets IAB16-1 Aquariums IAB16-2 Birds IAB16-3 Cats IAB16-4 Dogs IAB16-5 Large Animals IAB16-6 Reptiles IAB16-7 Veterinary Medicine IAB17 Sports IAB17-1 Auto Racing IAB17-2 Baseball IAB17-3 Bicycling IAB17-4 Bodybuilding IAB17-5 Boxing IAB17-6 Canoeing/Kayaking IAB17-7 Cheerleading IAB17-8 Climbing IAB17-9 Cricket IAB17-10 Figure Skating IAB17-11 Fly Fishing IAB17-12 Football IAB17-13 Freshwater Fishing IAB17-14 Game & Fish IAB17-15 Golf IAB17-16 Horse Racing IAB17-17 Horses IAB17-18 Hunting/Shooting IAB17-19 Inline Skating IAB17-20 Martial Arts IAB17-21 Mountain Biking IAB17-22 NASCAR Racing IAB17-23 Olympics IAB17-24 Paintball IAB17-25 Power & Motorcycles IAB17-26 Pro Basketball IAB17-27 Pro Ice Hockey IAB17-28 Rodeo IAB17-29 Rugby IAB17-30 Running/Jogging IAB17-31 Sailing IAB17-32 Saltwater Fishing IAB17-33 Scuba Diving IAB17-34 Skateboarding IAB17-35 Skiing IAB17-36 Snowboarding IAB17-37 Surfing/Bodyboarding IAB17-38 Swimming IAB17-39 Table Tennis/Ping-Pong IAB17-40 Tennis IAB17-41 Volleyball IAB17-42 Walking IAB17-43 Waterski/Wakeboard IAB17-44 World Soccer IAB18 Style & Fashion IAB18-1 Beauty IAB18-2 Body Art IAB18-3 Fashion IAB18-4 Jewelry IAB18-5 Clothing IAB18-6 Accessories IAB19 Technology & Computing IAB19-1 3-D Graphics IAB19-2 Animation IAB19-3 Antivirus Software IAB19-4 C/C++ IAB19-5 Cameras & Camcorders IAB19-6 Cell Phones IAB19-7 Computer Certification IAB19-8 Computer Networking IAB19-9 Computer Peripherals IAB19-10 Computer Reviews IAB19-11 Data Centers IAB19-12 Databases IAB19-13 Desktop Publishing IAB19-14 Desktop Video IAB19-15 Email IAB19-16 Graphics Software IAB19-17 Home Video/DVD IAB19-18 Internet Technology IAB19-19 Java IAB19-20 JavaScript IAB19-21 Mac Support IAB19-22 MP3/MIDI IAB19-23 Net Conferencing IAB19-24 Net for Beginners IAB19-25 Network Security IAB19-26 Palmtops/PDAs IAB19-27 PC Support IAB19-28 Portable IAB19-29 Entertainment IAB19-30 Shareware/Freeware IAB19-31 Unix IAB19-32 Visual Basic IAB19-33 Web Clip Art IAB19-34 Web Design/HTML IAB19-35 Web Search IAB19-36 Windows IAB20 Travel IAB20-1 Adventure Travel IAB20-2 Africa IAB20-3 Air Travel IAB20-4 Australia & New Zealand IAB20-5 Bed & Breakfasts IAB20-6 Budget Travel IAB20-7 Business Travel IAB20-8 By US Locale IAB20-9 Camping IAB20-10 Canada IAB20-11 Caribbean IAB20-12 Cruises IAB20-13 Eastern Europe IAB20-14 Europe IAB20-15 France IAB20-16 Greece IAB20-17 Honeymoons/Getaways IAB20-18 Hotels IAB20-19 Italy IAB20-20 Japan IAB20-21 Mexico & Central America IAB20-22 National Parks IAB20-23 South America IAB20-24 Spas IAB20-25 Theme Parks IAB20-26 Traveling with Kids IAB20-27 United Kingdom IAB21 Real Estate IAB21-1 Apartments IAB21-2 Architects IAB21-3 Buying/Selling Homes IAB22 Shopping IAB22-1 Contests & Freebies IAB22-2 Couponing IAB22-3 Comparison IAB22-4 Engines IAB23 Religion & Spirituality IAB23-1 Alternative Religions IAB23-2 Atheism/Agnosticism IAB23-3 Buddhism IAB23-4 Catholicism IAB23-5 Christianity IAB23-6 Hinduism IAB23-7 Islam IAB23-8 Judaism IAB23-9 Latter-Day Saints IAB23-10 Pagan/Wiccan IAB24 Uncategorized IAB25 Non-Standard Content IAB25-1 Unmoderated UGC IAB25-2 Extreme Graphic/Explicit Violence IAB25-3 Pornography IAB25-4 Profane Content IAB25-5 Hate Content IAB25-6 Under Construction IAB25-7 Incentivized IAB26 Illegal Content IAB26-1 Illegal Content IAB26-2 Warez IAB26-3 Spyware/Malware IAB26-4 Copyright Infringement 6.2 Banner Ad Types The following table indicates the types of ads that can be accepted by the exchange unless restricted by publisher site settings. Value Description 1 XHTML text ad. (usually mobile) 2 XHTML banner ad. (usually mobile) 3 JavaScript ad; must be valid XHTML (i.e., script tags included). 4 Iframe 6.3 Creative Attributes The following table specifies a standard list of creative attributes that can describe an ad being served or serve as restrictions of thereof. Value Description 1 Audio Ad (Auto Play) 2 Audio Ad (User Initiated) 3 Expandable (Automatic) 4 Expandable (User Initiated - Click) 5 Expandable (User Initiated - Rollover) 6 In-Banner Video Ad (Auto Play) 7 In-Banner Video Ad (User Initiated) 8 Pop (e.g., Over, Under, or upon Exit) 9 Provocative or Suggestive Imagery 10 Shaky, Flashing, Flickering, Extreme Animation, Smileys 11 Surveys 12 Text Only 13 User Interactive (e.g., Embedded Games) 14 Windows Dialog or Alert Style 15 Has audio on/off button 16 Ad can be skipped (e.g., skip button on preroll video) 6.4 API Frameworks This is a list of API frameworks. Value Description 1 VPAID 1.0 2 VPAID 2.0 3 MRAID-1 4 ORMMA 5 MRAID-2 BEST PRACTICE: Note that MRAID-1 is a subset of MRAID-2. In OpenRTB 2.1 and prior, value #3 was “MRAID”. However, not all MRAID capable APIs understand MRAID-2 features and as such the only safe interpretation of value #3 is MRAID-1. In OpenRTB 2.2, this has been made explicit and MRAID-2 has been added as value #5. 6.5 Ad Position The following table specifies the position of the ad as a relative measure of visibility or prominence. Note to the reader: This OpenRTB table has values derived from the IAB Quality Assurance Guidelines (QAG). Users of OpenRTB should keep in sync with updates to the QAG values as published on IAB.net. Values 3-6 apply to native apps per the mobile addendum to the version 1.5 of the QAG. Value Description 0 Unknown 1 Above the fold 2 DEPRECATED - May or may not be immediately visible depending on screen size and resolution. 3 Below the fold 4 Header 5 Footer 6 Sidebar 7 Fullscreen 6.6 Video Linearity The following table indicates the options for video linearity. \"In-stream\" or \"linear\" video refers to pre-roll, post-roll, or mid-roll video ads where the user is forced to watch ad in order to see the video content. “Overlay” or “non-linear” refer to ads that are shown on top of the video content. Note to the reader: This OpenRTB table has values derived from the IAB Quality Assurance Guidelines (QAG). Users of OpenRTB should keep in synch with updates to the QAG values as published on IAB.net. This field is optional. The following is the interpretation of the bidder based upon the presence or absence of the field in the bid request:  If no value is set, any ad (linear or not) can be present in the response.  If a value is set, only ads of the corresponding type can be present in the response. Value Description 1 Linear/In-stream 2 Non-Linear/Overlay 6.7 Video Bid Response Protocols The following table lists the options for video bid response protocols that could be supported by an exchange. Value Description 1 VAST 1.0 2 VAST 2.0 3 VAST 3.0 4 VAST 1.0 Wrapper 5 VAST 2.0 Wrapper 6 VAST 3.0 Wrapper 6.8 Video Playback Methods The following table lists the various video playback methods. Value Description 1 Auto-play sound on 2 Auto-play sound off 3 Click-to-play 4 Mouse-over 6.9 Video Start Delay The following table lists the various options for the video start delay. If the start delay value is greater than 0 then the position is mid-roll, and the value represents the number of seconds into the content that the ad will be displayed. If the start delay time is not available, the exchange can report the position of the ad in general terms using this table of negative numbers. Value Description 0 Pre-roll -1 Generic mid-roll -2 Generic Post-roll 6.10 Connection Type The following table lists the various options for the connection type. Value Description 0 Unknown 1 Ethernet 2 Wifi 3 Cellular data – Unknown Generation 4 Cellular data – 2G 5 Cellular data – 3G 6 Cellular data – 4G 6.11 Expandable Direction The following table lists the directions in which an expandable ad may expand, given the positioning of the ad unit on the page and constraints imposed by the content. Value Description 1 Left 2 Right 3 Up 4 Down 5 Fullscreen 6.12 Content Delivery Methods The following table lists the various options for the delivery of video content. Value Description 1 Streaming 2 Progressive 6.13 Content Context The following table lists the various options for the content context; what type of content is it. Note to the reader: This OpenRTB table has values derived from the IAB Quality Assurance Guidelines (QAG). Users of OpenRTB should keep in synch with updates to the QAG values as published on IAB.net. Value Description 1 Video (a video file or stream that is being watched by the user, including (Internet) television broadcasts) 2 Game (an interactive software game that is being played by the user) 3 Music (an audio file or stream that is being listened to by the user, including (Internet) radio broadcasts) 4 Application (an interactive software application that is being used by the user) 5 Text (a document that is primarily textual in nature that is being read or viewed by the user, including web page, ebook, or news article) 6 Other (content type unknown or the user is consuming content which does not fit into one of the categories above) 7 Unknown 6.14 Video Quality The following table lists the options for the video quality (as defined by the IAB – http://www.iab.net/media/file/long-form-video-final.pdf). Value Description 0 Unknown 1 Professionally Produced 2 Prosumer 3 User Generated (UGC) 6.15 Location Type The following table lists the options to indicate how the geographic information was determined. Value Description 1 GPS/Location Services 2 IP Address 3 User provided (e.g., registration data) 6.16 Device Type The following table lists the options to indicate how the geographic information was determined. Notes to the reader:  This OpenRTB table has values derived from the IAB Quality Assurance Guidelines (QAG). Users of OpenRTB should keep in synch with updates to the QAG values as published on IAB.net.  Version 2.2 of the spec added distinct values for Mobile and Tablet. Any implementing exchange and bidder should co-ordinate dependencies on transmitting or receiving the new values. It is recommended that any bidder adding support for 2.2 treat a value of 1 as an acceptable alias of 4 & 5. Value Description Note 1 Mobile/Tablet Version 2.0. 2 Personal Computer Version 2.0 3 Connected TV Version 2.0 4 Phone New for Version 2.2. 5 Tablet New for Version 2.2 6 Connected Device New for Version 2.2 7 Set Top Box New for Version 2.2 6.17 VAST Companion Types The following table lists the options to indicate markup types allowed for video companion ads. This table is derived from IAB VAST 2.0+. See www.iab.net/vast/ for more information. Value Description 1 Static Resource 2 HTML Resource 3 iframe Resource 6.18 QAG Media Ratings The following table lists the media ratings using the QAG categorization. See http://www.iab.net/ne_guidelines for more information Value Description 1 All Audiences 2 Everyone over 12 3 Mature Audiences 6.19 No-Bid Reason Codes The following table lists the options to signal the exchange why the impression was not bid on. Value Description 0 Unknown Error 1 Technical Error 2 Invalid Request 3 Known Web spider 4 Suspected Non-Human Traffic 5 Cloud, Data center, or Proxy IP 6 Unsupported Device 7 Blocked Publisher or Site 8 Unmatched user 7 Implementation Notes The following section will provide brief notes on how certain objects and fields are to be interpreted and implemented. 7.1 COPPA Regulation Flag The United States Federal Trade Commission has changed the compliance rules for the Children’s Online Privacy Protection Act (“COPPA”), effective July 1, 2013. The proposal effects websites, and associated services), that have been identified as: (1) directed to users under 13 years of age; or (2) collecting information from users actually known to be under 13 (collectively “Children’s Sites”). The FTC has written a comprehensive FAQ on the change here: http://business.ftc.gov/documents/Complying-with-COPPA-Frequently-Asked-Questions Steve Bellovin, CTO of the FTC, argued for a standardized signaling protocol in a blog posted dated January 2013: http://techatftc.wordpress.com/2013/01/02/coppa-and-signaling/ Impacts The FAQ specifically calls out these areas relevant for OpenRTB as 'Personal Information' that is not to be collected. • Geolocation information sufficient to identify street name and name of a city or town; • Persistent identifiers when they can be used to recognize a user over time and across different Web sites or online services. Recommendations to Implementers OpenRTB Exchanges and Bidders should 1. Provide a facility for sites to be declared as 'child directed' 2. Implement the regulations object extension 3. Provide facilities within campaigns to target for and against this signal 4. Degrade the Geographic information to be less exact prior to logging or transmission 5. Suppress the assignment and synchronization of identifiers (depending on usage) It is recommended that when regs.coppa = 1, the exchange should additionally manipulate the OpenRTB bid request object as follows: Device Object • Suppress didmd5 and didsha1 device ID fields. • Truncate ip field - remove lowest 8 bits. • Truncate ipv6 field - remove lowest 32 bits. Geo Object • Suppress lat/long fields. • Suppress metro, city and zip fields. User Object • Suppress id, buyeruid, yob, gender fields. 7.2 PMP and Direct Deals Best Practice Bidding Logic 1 Receive request and parse 2 Create empty bid list for response 3 If request contains the impression[].pmp object 4 match bids against each pmp.deals[] 5 enforce targeting for dealID and seatID 6 append best M matching bids to response 7 If pmp.private_auction = False 8 match open auction bids against the request 9 append top N bids by price to response 10 Return response list to exchange Recommendations • M >= 1, preferably one per matching DealID • N >= 2 to assist with blocking rate issues • Minimum viable is “1+1” bidding  Ideal is “M+N” bidding Warning Returning only one bid when both DealID and open auction bids are valid creates problems. The exchange side may be configured by a publisher to prioritize all DealID bids above open auction bids, or to force a price auction between them with different floors by class of bid. There are multiple common practices that depend on how the publisher prefers to sell inventory with DealID. Policy Recommendations • A DealID should be utilized for any situation where the auction may be awarded to a bid not on the basis of price alone. Any prioritization of bids other than by price should have a DealID. • A DealID is recommended for all situations where a preferential floor may be assigned to a seat entity. Anti Patterns The below is a set of anti-patterns that OpenRTB supporting platforms have observed in various attempts to implement DealID bidding logic. Subjecting DealID Bids to an internal auction on price The ideal bidding logic describes a process of being liberal about sending bids. DealID bids may not be subject to a classic price auction. There may be an expectation that the buyer and seller want prioritization to achieve a larger objective: complete delivery of the Deal represented by the DealID. Thus any bidding logic that sorts DealID bids by price and (with or without open marketplace bids) and truncates the list too aggressively can endanger the fulfillment of the Deal. Associating DealID to the wrong Object A DealID should be treated as a 'targeting token' associated to orders, line-items or campaigns. If the DealID is associated to a Seat/Buyer it may create an undesired application of the DealID to many active campaigns. Alternatively if it is associated to the Advertiser it may limit that entity to only a single DealID. Improper Handling of the Private vs Open Market Flag The pmp.private_auction boolean flag indicates that the seller is willing or not willing to accept open market bids, ie \"all bidders are welcome\". If this flag is not read and interpreted correctly bid responses may be invalid. Open market bids sent to a private impression auction may be rejected and should not have been exposed to all bidders. Improper handling of SeatIDs If SeatIDs are treated as a filter of eligible demand partners on an open market impression, this defeats the 'all bidders are welcome' intention. Silently Applying Margin Discounts to DealID Bids With DealID buyers are sellers are communicating directly. The Exchange and Bidder become third-party automation platforms. If there are any automatic or silent discounts of bid prices (based upon margins or fees) set by either the exchange or the bidder, then the Deal may fail to function correctly. Use cases #1 Open Trading Agreement with Buyer • Between publisher and buying entity • Publisher sets an access rule defining the price floor for a specific buyer. • Locked to the buyer • Broadcast price floor • public/open inventory • No DealID needed (dealID is optional) • no named advertiser(s) • no prioritization of bids • daily, total or freq caps optional on publisher/exchange side • all placements, or limited to specific placements • targeting is up to the buyer/bidder #2 Open Trading Agreement with Buyer with Named Advertisers • as #1 with a list of named advertisers #3 Open Bidding with DealID as Value-added Markers • Between publisher and buying entity • Publisher sets a price floor for URL masked inventory. • public/open inventory (all buyers welcome) • DealID represents 'Package Tokens' • Each DealID signals that the impression falls into various content and placement categories • Floor is associated to each DealID to signal cost for usage of that Token • Winner is decided by bid price • execution of targeting is up to the buyer/bidder #4 First Look Trading Agreement • Between publisher and buying entity • Publisher sets an access rule defining the price floor for the buyer • locked to the buyer • known price floor • DealID needed • Optional named advertiser list • Prioritization of bids expected • daily, total or freq caps optional on publisher/exchange side • all placements, or limited to specific placements • targeting is up to the buyer/bidder #5 Direct Option Deal with Advertiser via RTB • Between Publisher and Advertiser or their representative. • Publisher sets a rule defining a price floor and prioritization for specific advertiser(s) • Fill rate is expected to be greater than or equal to X% • locked to the buyer • private/exclusive inventory • limited to a set list of advertiser names (generally variants of one name) • known price floor • DealID needed • Prioritization of bids expected • daily, total or freq caps freq caps will apply on bidder side. Optional on Exchange side • limited to specific placements • targeting is mostly enforced by buyer/bidder #6 Direct Option Deal with Advertiser via RTB with private data • Same as #4 • DealID represents some combination of private first-party data from the Publisher #7 Full Fill Direct Deal with Advertiser via RTB • Same as #4 • Fill rate is expected to be 100% or nearly so. #8 Full Fill Direct Deal with Advertiser via RTB with private data • Same as #6 • DealID represents some combination of private first-party data from the Publisher 7.3 No-Bid Signaling This section covers best practices for using the optional no-bid signaling. See the table 6.19 No- Bid Reason Codes for the enumerated list. Many exchanges support multiple response types as a no-bid:  HTTP 204 No Content from the bidder  An empty JSON object: “{}”  A well formed no bid response: {\"id\":\"1234567890\", \"seatbid\":[]}  A well formed no bid response with a reason code: {\"id\":\"1234567890\", \"seatbid\":[], \"nbr \":2} An important issue in RTB is when impressions are triggered by software robots mimicking web browsers. Such robots maybe implicitly or explicitly driving these false transactions. The following represents a set of symmetric best practices for exchanges and bidders to help recognize and reject these events. Responsibility of the exchange Make best effort to classify and reject \"non-human traffic\" requests for ads to the exchange via the following best practices: • (Recommended) filter impressions from known spiders via user-agent classification • (Recommended) filter impressions from suspected NHT via a 'detector' Responsibility of the bidder • (Recommended) no-bid impressions from known spiders via user-agent classification • (Recommended) no-bid impressions from suspected NHT via a 'detector' • Specify a no-bid reason code in either case. Where  (Exchange) Filtering the impression means that the exchange should respond to the 'ad call' with either a blank HTTP 204 response or an unpaid ad (PSA) and not offered to any bidders.  (Bidder) Filtering the impression means that the bidder should respond with a no-bid code.  (Both) The impression transaction records should be clearly marked in any logging systems and be removed from contributing to any event counts associated with planning, forecasting, and reporting systems. Appendix: Additional Information  Creative Commons / Attribution License http://creativecommons.org/licenses/by/3.0  IAB (Interactive Advertising Bureau) http://www.iab.net  IAB / Networks & Exchanges QA Guidelines / Content Categories http://www.iab.net/media/file/NE-QA-Guidelines-Final-Release-0610.pdf  JavaScript Object Notation (JSON) http://www.json.org  MMA (Mobile Marketing Association) http://mmaglobal.com http://github.com/openrtb/OpenRTB/  Apache Avro http://avro.apache.org  Protocol Buffers (Protobuf) http://code.google.com/p/protobuf",
+      "citation": {
+        "section": "4.3.3",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1823,
+        "end_line": 3876
+      },
+      "fields": []
+    }
+  ]
+}

@@ -1,0 +1,1070 @@
+{
+  "kind": "openrtb_versioned_schema_manifest",
+  "version": "2.6-202505",
+  "family": "2.x",
+  "release_date": "2025-05",
+  "archive_path": ".openrtb-specs/2.x/openrtb-2.6-202505.md",
+  "source_of_truth": "Canonical IAB source is the archived spec referenced by archive_path; this manifest is a structured derivative for validator use.",
+  "coverage": "bootstrap_versioned_delta_paths",
+  "paths": [
+    {
+      "path": "app.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "app.ext.inventorypartnerdomain",
+      "state": "moved",
+      "since": "2.6-202211",
+      "replacement_paths": [
+        "site.inventorypartnerdomain",
+        "app.inventorypartnerdomain"
+      ],
+      "matched_rules": [
+        "openrtb.2.6-202211.inventorypartnerdomain"
+      ]
+    },
+    {
+      "path": "app.inventorypartnerdomain",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.inventorypartnerdomain"
+      ]
+    },
+    {
+      "path": "appendix.cookie_sync",
+      "state": "available",
+      "since": "2.6-202409",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202409.cookie_sync_guidance"
+      ]
+    },
+    {
+      "path": "banner.hmax",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    },
+    {
+      "path": "banner.hmin",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    },
+    {
+      "path": "banner.wmax",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    },
+    {
+      "path": "banner.wmin",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    },
+    {
+      "path": "bid.api",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "bid.apis",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.bid.apis"
+      ]
+    },
+    {
+      "path": "bid.burl",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "bid.hratio",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.language",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.lurl",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.mtype",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.bid.mtype"
+      ]
+    },
+    {
+      "path": "bid.tactic",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bid.wratio",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bid.response_urls"
+      ]
+    },
+    {
+      "path": "bidrequest.acat",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.bidrequest.acat"
+      ]
+    },
+    {
+      "path": "bidrequest.bseat",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.bseat_wlang"
+      ]
+    },
+    {
+      "path": "bidrequest.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "bidrequest.dooh",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.imp_qty_bidrequest_dooh"
+      ]
+    },
+    {
+      "path": "bidrequest.source",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.source"
+      ]
+    },
+    {
+      "path": "bidrequest.wlang",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.bidrequest.bseat_wlang"
+      ]
+    },
+    {
+      "path": "brandversion",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.user_agent_brandversion"
+      ]
+    },
+    {
+      "path": "channel",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "content.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "content.genres",
+      "state": "available",
+      "since": "2.6-202501",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202501.content.gtax_genres"
+      ]
+    },
+    {
+      "path": "content.gtax",
+      "state": "available",
+      "since": "2.6-202501",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202501.content.gtax_genres"
+      ]
+    },
+    {
+      "path": "content.videoquality",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    },
+    {
+      "path": "data.cids",
+      "state": "available",
+      "since": "2.6-202505",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202505.data.cids"
+      ]
+    },
+    {
+      "path": "deal.durfloors",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.durfloors"
+      ]
+    },
+    {
+      "path": "deal.guaranteed",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.deal.floor_fields"
+      ]
+    },
+    {
+      "path": "deal.mincpmpersec",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.deal.floor_fields"
+      ]
+    },
+    {
+      "path": "device.didmd5",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.didsha1",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.dpidmd5",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.dpidsha1",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.geo",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.device.geo"
+      ]
+    },
+    {
+      "path": "device.ifa",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.device.ifa"
+      ]
+    },
+    {
+      "path": "device.macmd5",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.macsha1",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "device.sua",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.user_agent_brandversion"
+      ]
+    },
+    {
+      "path": "eid.inserter",
+      "state": "available",
+      "since": "2.6-202409",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202409.eid.matching"
+      ]
+    },
+    {
+      "path": "eid.matcher",
+      "state": "available",
+      "since": "2.6-202409",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202409.eid.matching"
+      ]
+    },
+    {
+      "path": "eid.mm",
+      "state": "available",
+      "since": "2.6-202409",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202409.eid.matching"
+      ]
+    },
+    {
+      "path": "eid.uids",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "enum.content_category.tier2",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.1.enum.content_category.tier2"
+      ]
+    },
+    {
+      "path": "geo",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.geo.location"
+      ]
+    },
+    {
+      "path": "geo.type",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.1.geo.type"
+      ]
+    },
+    {
+      "path": "imp.audio",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.imp.audio"
+      ]
+    },
+    {
+      "path": "imp.audio.durfloors",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.durfloors"
+      ]
+    },
+    {
+      "path": "imp.audio.maxseq",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.audio.mincpmpersec",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.audio.poddur",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.audio.podid",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.audio.podseq",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.audio.rqddurs",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.rqddurs"
+      ]
+    },
+    {
+      "path": "imp.audio.sequence",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "imp.audio.slotinpod",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.metric",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.metric"
+      ]
+    },
+    {
+      "path": "imp.native",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.imp.native"
+      ]
+    },
+    {
+      "path": "imp.native.request",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.imp.native.request"
+      ]
+    },
+    {
+      "path": "imp.pmp.deals",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.pmp.deals"
+      ]
+    },
+    {
+      "path": "imp.qty",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.imp_qty_bidrequest_dooh"
+      ]
+    },
+    {
+      "path": "imp.refresh",
+      "state": "available",
+      "since": "2.6-202303",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202303.imp.refresh"
+      ]
+    },
+    {
+      "path": "imp.rwdd",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.rwdd_ssai"
+      ]
+    },
+    {
+      "path": "imp.secure",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.imp.secure",
+        "openrtb.2.4.imp.secure.ssl"
+      ]
+    },
+    {
+      "path": "imp.ssai",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.rwdd_ssai"
+      ]
+    },
+    {
+      "path": "imp.video",
+      "state": "available",
+      "since": "2.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.imp.video",
+        "openrtb.2.1.imp.video.behavior"
+      ]
+    },
+    {
+      "path": "imp.video.durfloors",
+      "state": "available",
+      "since": "2.6-202309",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202309.durfloors"
+      ]
+    },
+    {
+      "path": "imp.video.maxseq",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.video.mincpmpersec",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.video.placement",
+      "state": "deprecated",
+      "since": "2.6-202303",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.video.placement",
+        "openrtb.2.6-202303.imp.video.placement"
+      ]
+    },
+    {
+      "path": "imp.video.playbackend",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.video.placement"
+      ]
+    },
+    {
+      "path": "imp.video.plcmt",
+      "state": "available",
+      "since": "2.6-202303",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202303.imp.video.plcmt"
+      ]
+    },
+    {
+      "path": "imp.video.poddedupe",
+      "state": "available",
+      "since": "2.6-202402",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202402.imp.video.poddedupe"
+      ]
+    },
+    {
+      "path": "imp.video.poddur",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.video.podid",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.video.podseq",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "imp.video.rqddurs",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.rqddurs"
+      ]
+    },
+    {
+      "path": "imp.video.sequence",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "imp.video.skip",
+      "state": "available",
+      "since": "2.4",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.4.imp.video.skip"
+      ]
+    },
+    {
+      "path": "imp.video.slotinpod",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.imp.video_audio.pod_bidding"
+      ]
+    },
+    {
+      "path": "language.bcp47",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.language.bcp47"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_BID_ID}",
+      "state": "available",
+      "since": "2.3.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.1.macro.auction_bid_id"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_IMP_TS}",
+      "state": "available",
+      "since": "2.6-202303",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202303.macro.auction_imp_ts"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_LOSS}",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.macro.loss"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_MBR}",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.macro.loss"
+      ]
+    },
+    {
+      "path": "macro.${AUCTION_MIN_TO_WIN}",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.macro.min_to_win"
+      ]
+    },
+    {
+      "path": "metric",
+      "state": "available",
+      "since": "2.5",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.5.imp.metric"
+      ]
+    },
+    {
+      "path": "native.assets",
+      "state": "available",
+      "since": "2.3",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.native.assets"
+      ]
+    },
+    {
+      "path": "network",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "producer.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "publisher.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "refresh.refsettings",
+      "state": "available",
+      "since": "2.6-202303",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202303.imp.refresh"
+      ]
+    },
+    {
+      "path": "regs.coppa",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.regs.coppa"
+      ]
+    },
+    {
+      "path": "regs.ext.gdpr",
+      "state": "moved",
+      "since": "2.6-202204",
+      "replacement_paths": [
+        "regs.gdpr"
+      ],
+      "matched_rules": [
+        "openrtb.2.6.regs.gdpr"
+      ]
+    },
+    {
+      "path": "regs.gdpr",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.regs.gdpr"
+      ]
+    },
+    {
+      "path": "regs.gpp",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.regs.gpp"
+      ]
+    },
+    {
+      "path": "regs.gpp_sid",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.regs.gpp"
+      ]
+    },
+    {
+      "path": "site.cattax",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.cattax"
+      ]
+    },
+    {
+      "path": "site.ext.inventorypartnerdomain",
+      "state": "moved",
+      "since": "2.6-202211",
+      "replacement_paths": [
+        "site.inventorypartnerdomain",
+        "app.inventorypartnerdomain"
+      ],
+      "matched_rules": [
+        "openrtb.2.6-202211.inventorypartnerdomain"
+      ]
+    },
+    {
+      "path": "site.inventorypartnerdomain",
+      "state": "available",
+      "since": "2.6-202211",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6-202211.inventorypartnerdomain"
+      ]
+    },
+    {
+      "path": "source.schain",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "source.schain.nodes",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "traffic.feedback.bot",
+      "state": "available",
+      "since": "2.2",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.2.traffic.feedback.bot"
+      ]
+    },
+    {
+      "path": "user.buyeruid",
+      "state": "available",
+      "since": "2.3.1",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.3.1.user.buyeruid"
+      ]
+    },
+    {
+      "path": "user.buyuid",
+      "state": "moved",
+      "since": "2.3.1",
+      "replacement_paths": [
+        "user.buyeruid"
+      ],
+      "matched_rules": [
+        "openrtb.2.3.1.user.buyeruid"
+      ]
+    },
+    {
+      "path": "user.consent",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.user.consent"
+      ]
+    },
+    {
+      "path": "user.data",
+      "state": "available",
+      "since": "2.0",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.0.user.data"
+      ]
+    },
+    {
+      "path": "user.eids",
+      "state": "available",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.network_channel_supplychain_eids"
+      ]
+    },
+    {
+      "path": "user.ext.consent",
+      "state": "moved",
+      "since": "2.6-202204",
+      "replacement_paths": [
+        "user.consent"
+      ],
+      "matched_rules": [
+        "openrtb.2.6.user.consent"
+      ]
+    },
+    {
+      "path": "user.gender",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "user.yob",
+      "state": "deprecated",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.deprecated_fields"
+      ]
+    },
+    {
+      "path": "video.protocol",
+      "state": "removed",
+      "since": "2.6-202204",
+      "replacement_paths": [],
+      "matched_rules": [
+        "openrtb.2.6.removed_deprecated_fields"
+      ]
+    }
+  ]
+}

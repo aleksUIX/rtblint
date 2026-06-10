@@ -1,0 +1,25 @@
+{
+  "id": "req-2-6-202303-warning-placement-001",
+  "at": 1,
+  "tmax": 190,
+  "site": {
+    "id": "site-2-6-202303-warning",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/video/archive"
+  },
+  "imp": [
+    {
+      "id": "imp-warning-preroll",
+      "bidfloor": 9.0,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "placement": 1
+      }
+    }
+  ]
+}

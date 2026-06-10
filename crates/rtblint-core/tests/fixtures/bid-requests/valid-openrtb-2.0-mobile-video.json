@@ -1,0 +1,45 @@
+{
+  "id": "req-2-0-mobile-video-001",
+  "at": 2,
+  "tmax": 120,
+  "site": {
+    "id": "site-2-0-homepage",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/video/highlights",
+    "cat": ["IAB1-1"]
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)",
+    "ip": "203.0.113.10",
+    "ifa": "ifa-2-0-0001"
+  },
+  "user": {
+    "id": "user-2-0-42",
+    "data": [
+      {
+        "id": "publisher-audiences",
+        "name": "publisher-audiences",
+        "segment": [
+          {
+            "id": "sports-fan",
+            "name": "Sports Fan"
+          }
+        ]
+      }
+    ]
+  },
+  "imp": [
+    {
+      "id": "imp-preroll-1",
+      "tagid": "video-preroll-homepage",
+      "bidfloor": 5.25,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "playbackmethod": [1, 2]
+      }
+    }
+  ]
+}

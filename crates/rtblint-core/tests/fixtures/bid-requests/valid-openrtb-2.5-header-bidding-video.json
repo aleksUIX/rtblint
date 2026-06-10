@@ -1,0 +1,39 @@
+{
+  "id": "req-2-5-header-bidding-001",
+  "at": 1,
+  "tmax": 200,
+  "bseat": ["seat-a"],
+  "wlang": ["en"],
+  "site": {
+    "id": "site-2-5-live-sports",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/sports/live"
+  },
+  "source": {
+    "fd": 1,
+    "tid": "txn-2-5-001",
+    "pchain": "1!publisher.example"
+  },
+  "imp": [
+    {
+      "id": "imp-live-preroll",
+      "bidfloor": 18.0,
+      "metric": [
+        {
+          "type": "viewability",
+          "value": 0.82,
+          "vendor": "EXCHANGE"
+        }
+      ],
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "placement": 1
+      }
+    }
+  ]
+}

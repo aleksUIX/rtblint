@@ -1,0 +1,32 @@
+{
+  "id": "req-2-6-202204-invalid-gdpr-001",
+  "at": 1,
+  "tmax": 220,
+  "app": {
+    "id": "app-invalid-gdpr-202204",
+    "bundle": "com.publisher.ctv",
+    "name": "Publisher CTV"
+  },
+  "user": {
+    "id": "user-invalid-gdpr",
+    "consent": "COwK9wAOwK9wAABABBENAPCgAAAAAAAAAAAYgAAAAAAAA"
+  },
+  "regs": {
+    "ext": {
+      "gdpr": 1
+    }
+  },
+  "imp": [
+    {
+      "id": "imp-invalid-gdpr",
+      "video": {
+        "mimes": ["video/mp4"],
+        "rqddurs": [15, 30],
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "placement": 1
+      }
+    }
+  ]
+}

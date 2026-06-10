@@ -1,0 +1,47 @@
+{
+  "id": "req-2-6-202409-app-eids-001",
+  "at": 1,
+  "tmax": 215,
+  "app": {
+    "id": "app-2-6-202409-news",
+    "bundle": "com.publisher.news",
+    "name": "Publisher News",
+    "inventorypartnerdomain": "supply.publisher.example"
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (Linux; Android TV 14)",
+    "ip": "203.0.113.91"
+  },
+  "user": {
+    "id": "user-2-6-202409-1",
+    "eids": [
+      {
+        "inserter": "publisher.example",
+        "source": "id5-sync.example",
+        "matcher": "id5-sync.example",
+        "mm": 1,
+        "uids": [
+          {
+            "id": "id5-uid-123456",
+            "atype": 1
+          }
+        ]
+      }
+    ]
+  },
+  "imp": [
+    {
+      "id": "imp-app-preroll-202409",
+      "bidfloor": 17.5,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "plcmt": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "req-2-6-202211-dooh-001",
+  "at": 1,
+  "tmax": 250,
+  "dooh": {},
+  "regs": {
+    "gpp": "DBABBg~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA",
+    "gpp_sid": [7]
+  },
+  "imp": [
+    {
+      "id": "imp-dooh-loop-1",
+      "bidfloor": 32.0,
+      "bidfloorcur": "USD",
+      "qty": {
+        "multiplier": 14.2,
+        "sourcetype": 1,
+        "vendor": "measurement.example"
+      },
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 10,
+        "maxduration": 15,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [3],
+        "placement": 1
+      }
+    }
+  ]
+}

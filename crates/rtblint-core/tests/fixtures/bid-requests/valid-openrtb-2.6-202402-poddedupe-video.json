@@ -1,0 +1,29 @@
+{
+  "id": "req-2-6-202402-poddedupe-001",
+  "at": 1,
+  "tmax": 210,
+  "app": {
+    "id": "app-2-6-202402-streaming",
+    "bundle": "com.publisher.sports",
+    "name": "Publisher Sports"
+  },
+  "imp": [
+    {
+      "id": "imp-pod-midroll",
+      "bidfloor": 16.0,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "plcmt": 1,
+        "maxseq": 3,
+        "poddur": 90,
+        "slotinpod": 2,
+        "poddedupe": [1]
+      }
+    }
+  ]
+}

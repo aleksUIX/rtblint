@@ -1,0 +1,28 @@
+{
+  "id": "req-2-6-202204-ctv-001",
+  "bidid": "bidresp-2-6-202204-001",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-ctv-seat",
+      "bid": [
+        {
+          "id": "bid-2-6-202204-1",
+          "impid": "imp-ctv-preroll-1",
+          "price": 24.5,
+          "mtype": 2,
+          "apis": [7],
+          "adid": "ad-ctv-15s",
+          "cid": "cmp-ctv-2026",
+          "crid": "cr-ctv-15s",
+          "adomain": ["brand.example"],
+          "cat": ["IAB1-7"],
+          "w": 1920,
+          "h": 1080,
+          "dur": 15,
+          "adm": "VAST bid markup placeholder for 2.6-202204 fixture"
+        }
+      ]
+    }
+  ]
+}

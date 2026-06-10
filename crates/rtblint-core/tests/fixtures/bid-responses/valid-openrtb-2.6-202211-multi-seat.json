@@ -1,0 +1,40 @@
+{
+  "id": "req-2-6-202211-dooh-001",
+  "bidid": "bidresp-2-6-202211-001",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dooh-buyer-primary",
+      "package": 1,
+      "bid": [
+        {
+          "id": "bid-2-6-202211-a",
+          "impid": "imp-dooh-loop-1",
+          "price": 33.2,
+          "adid": "ad-dooh-10s",
+          "cid": "cmp-dooh-2026",
+          "crid": "cr-dooh-10s",
+          "adomain": ["brand.example"],
+          "cat": ["IAB3-1"],
+          "adm": "DOOH bid markup placeholder for 2.6-202211 fixture"
+        }
+      ]
+    },
+    {
+      "seat": "dooh-buyer-backup",
+      "bid": [
+        {
+          "id": "bid-2-6-202211-b",
+          "impid": "imp-dooh-loop-1",
+          "price": 31.9,
+          "adid": "ad-dooh-10s-backup",
+          "cid": "cmp-dooh-2026-backup",
+          "crid": "cr-dooh-10s-backup",
+          "adomain": ["backup-brand.example"],
+          "cat": ["IAB3-1"],
+          "adm": "Backup DOOH bid markup placeholder for 2.6-202211 fixture"
+        }
+      ]
+    }
+  ]
+}

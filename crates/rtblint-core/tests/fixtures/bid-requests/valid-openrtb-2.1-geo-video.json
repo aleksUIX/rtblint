@@ -1,0 +1,39 @@
+{
+  "id": "req-2-1-geo-video-001",
+  "at": 2,
+  "tmax": 140,
+  "site": {
+    "id": "site-2-1-local-news",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/local/video",
+    "cat": ["IAB12-1"]
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (Linux; Android 14; Pixel 8)",
+    "ip": "203.0.113.21",
+    "ifa": "ifa-2-1-0001",
+    "geo": {
+      "country": "USA",
+      "region": "CA",
+      "city": "Los Angeles",
+      "zip": "90028",
+      "type": 1
+    }
+  },
+  "user": {
+    "id": "user-2-1-007"
+  },
+  "imp": [
+    {
+      "id": "imp-local-news-video",
+      "bidfloor": 6.1,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "playbackmethod": [2]
+      }
+    }
+  ]
+}

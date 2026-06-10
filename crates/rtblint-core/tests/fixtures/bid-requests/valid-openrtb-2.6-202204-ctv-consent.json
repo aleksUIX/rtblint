@@ -1,0 +1,46 @@
+{
+  "id": "req-2-6-202204-ctv-001",
+  "at": 1,
+  "tmax": 220,
+  "cattax": 1,
+  "app": {
+    "id": "app-ctv-202204",
+    "bundle": "com.publisher.ctv",
+    "name": "Publisher CTV"
+  },
+  "device": {
+    "ua": "Roku/DVP-12.5 (519.5E04154A)",
+    "ip": "203.0.113.51",
+    "osv": "12.5",
+    "h": 1080,
+    "w": 1920
+  },
+  "user": {
+    "id": "user-ctv-204",
+    "consent": "COwK9wAOwK9wAABABBENAPCgAAAAAAAAAAAYgAAAAAAAA"
+  },
+  "regs": {
+    "coppa": 0,
+    "gdpr": 1
+  },
+  "imp": [
+    {
+      "id": "imp-ctv-preroll-1",
+      "bidfloor": 20.0,
+      "bidfloorcur": "USD",
+      "rwdd": 0,
+      "ssai": 1,
+      "video": {
+        "mimes": ["video/mp4"],
+        "rqddurs": [15, 30],
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "maxseq": 1,
+        "poddur": 30,
+        "slotinpod": 1,
+        "placement": 1
+      }
+    }
+  ]
+}

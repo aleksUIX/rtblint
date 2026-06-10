@@ -1,0 +1,25 @@
+{
+  "id": "req-2-3-native-feed-001",
+  "tmax": 180,
+  "site": {
+    "id": "site-2-3-feed",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/feed"
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5)",
+    "ip": "203.0.113.31"
+  },
+  "user": {
+    "id": "user-2-3-19"
+  },
+  "imp": [
+    {
+      "id": "imp-native-feed-card",
+      "native": {
+        "request": "{\"ver\":\"1.0\",\"layout\":1,\"assets\":[{\"id\":1,\"required\":1,\"title\":{\"len\":90}},{\"id\":2,\"required\":1,\"img\":{\"type\":3,\"wmin\":1200,\"hmin\":627}},{\"id\":3,\"required\":0,\"data\":{\"type\":2,\"len\":30}}]}",
+        "ver": "1.0"
+      }
+    }
+  ]
+}

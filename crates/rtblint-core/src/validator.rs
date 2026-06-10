@@ -3,8 +3,8 @@ use std::collections::BTreeSet;
 use serde_json::{Map, Value};
 
 use crate::{
-    canonical_object, canonical_object_catalog, path_status, Issue, OpenRtbVersion, PathStateKind,
-    ValidationResult,
+    adcom_lists::adcom_list_value_set, canonical_object, canonical_object_catalog, path_status,
+    Issue, OpenRtbVersion, PathStateKind, ValidationResult,
 };
 
 pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> ValidationResult {
@@ -110,7 +110,7 @@ fn validate_known_object(
         push_path_status_issues(version, logical_segments, &field_instance_path, field_definition.type_spec.as_str(), issues);
         validate_field_value_shape(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
         validate_required_array_contents(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
-        validate_inline_integer_value_set(
+        validate_documented_integer_value_set(
             field_definition.description.as_str(),
             value,
             &field_instance_path,
@@ -209,13 +209,13 @@ fn validate_required_array_contents(
     }
 }
 
-fn validate_inline_integer_value_set(
+fn validate_documented_integer_value_set(
     description: &str,
     value: &Value,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    let Some(value_set) = parse_inline_integer_value_set(description) else {
+    let Some(value_set) = parse_documented_integer_value_set(description) else {
         return;
     };
 
@@ -242,7 +242,7 @@ fn validate_inline_integer_value_set(
 }
 
 fn validate_integer_against_value_set(
-    value_set: &InlineIntegerValueSet,
+    value_set: &IntegerValueSet,
     integer: i64,
     instance_path: &str,
     issues: &mut Vec<Issue>,
@@ -251,15 +251,27 @@ fn validate_integer_against_value_set(
         return;
     }
 
-    issues.push(Issue {
-        id: String::from("openrtb.value.invalid"),
-        severity: String::from("error"),
-        message: format!(
+    let message = if let Some(source) = value_set.source {
+        format!(
+            "{} has unsupported value {}. Allowed values from {} are {}.",
+            instance_path,
+            integer,
+            source,
+            value_set.render()
+        )
+    } else {
+        format!(
             "{} has unsupported value {}. Allowed values from the extracted spec are {}.",
             instance_path,
             integer,
             value_set.render()
-        ),
+        )
+    };
+
+    issues.push(Issue {
+        id: String::from("openrtb.value.invalid"),
+        severity: String::from("error"),
+        message,
         path: Some(String::from(instance_path)),
     });
 }
@@ -401,7 +413,21 @@ fn push_mutually_exclusive_issue(
     });
 }
 
-fn parse_inline_integer_value_set(description: &str) -> Option<InlineIntegerValueSet> {
+fn parse_documented_integer_value_set(description: &str) -> Option<IntegerValueSet> {
+    parse_adcom_integer_value_set(description).or_else(|| parse_inline_integer_value_set(description))
+}
+
+fn parse_adcom_integer_value_set(description: &str) -> Option<IntegerValueSet> {
+    let list = adcom_list_value_set(description)?;
+
+    Some(IntegerValueSet {
+        source: Some(list.name),
+        allowed_values: list.allowed_values.iter().copied().collect(),
+        minimum_inclusive: list.minimum_inclusive,
+    })
+}
+
+fn parse_inline_integer_value_set(description: &str) -> Option<IntegerValueSet> {
     let mut allowed_values = BTreeSet::new();
     let bytes = description.as_bytes();
     let mut index = 0usize;
@@ -447,7 +473,8 @@ fn parse_inline_integer_value_set(description: &str) -> Option<InlineIntegerValu
         return None;
     }
 
-    Some(InlineIntegerValueSet {
+    Some(IntegerValueSet {
+        source: None,
         allowed_values,
         minimum_inclusive,
     })
@@ -497,12 +524,13 @@ fn integer_value(value: &Value) -> Option<i64> {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-struct InlineIntegerValueSet {
+struct IntegerValueSet {
+    source: Option<&'static str>,
     allowed_values: BTreeSet<i64>,
     minimum_inclusive: Option<i64>,
 }
 
-impl InlineIntegerValueSet {
+impl IntegerValueSet {
     fn contains(&self, value: i64) -> bool {
         self.allowed_values.contains(&value)
             || self

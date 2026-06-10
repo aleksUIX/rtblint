@@ -1,0 +1,26 @@
+{
+  "id": "req-2-6-202309-adpod-001",
+  "bidid": "bidresp-2-6-202309-001",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "video-buyer-seat",
+      "package": 1,
+      "bid": [
+        {
+          "id": "bid-2-6-202309-1",
+          "impid": "imp-adpod-preroll",
+          "price": 15.25,
+          "dealid": "deal-pod-202309",
+          "adid": "ad-pod-15s",
+          "cid": "cmp-pod-2026",
+          "crid": "cr-pod-15s",
+          "adomain": ["brand.example"],
+          "cat": ["IAB1-7"],
+          "dur": 15,
+          "adm": "VAST pod bid markup placeholder for 2.6-202309 fixture"
+        }
+      ]
+    }
+  ]
+}

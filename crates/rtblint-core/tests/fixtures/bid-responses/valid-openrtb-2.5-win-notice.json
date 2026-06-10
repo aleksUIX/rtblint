@@ -1,0 +1,30 @@
+{
+  "id": "req-2-5-header-bidding-001",
+  "bidid": "bidresp-2-5-001",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "agency-seat-7",
+      "bid": [
+        {
+          "id": "bid-2-5-1",
+          "impid": "imp-live-preroll",
+          "price": 18.42,
+          "dealid": "deal-premium-22",
+          "adid": "ad-2-5-15s",
+          "cid": "cmp-spring-2026",
+          "crid": "cr-15s-hd",
+          "adomain": ["brand.example"],
+          "cat": ["IAB1-7"],
+          "w": 1920,
+          "h": 1080,
+          "language": "en",
+          "burl": "https://billing.example.com/win?bid=bid-2-5-1",
+          "lurl": "https://billing.example.com/loss?bid=bid-2-5-1",
+          "nurl": "https://billing.example.com/notice?bid=bid-2-5-1",
+          "adm": "VAST bid markup placeholder for 2.5 fixture"
+        }
+      ]
+    }
+  ]
+}

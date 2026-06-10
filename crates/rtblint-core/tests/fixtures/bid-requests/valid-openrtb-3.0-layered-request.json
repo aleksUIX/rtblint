@@ -1,0 +1,23 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "request": {
+      "id": "req-3-0-layered-001",
+      "tmax": 250,
+      "cur": ["USD"],
+      "item": [
+        {
+          "id": "item-1",
+          "qty": 1,
+          "spec": {
+            "placement": {
+              "tagid": "video-preroll-3-0"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

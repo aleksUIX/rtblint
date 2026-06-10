@@ -1,0 +1,44 @@
+{
+  "id": "req-2-6-202505-web-cids-001",
+  "at": 1,
+  "tmax": 220,
+  "site": {
+    "id": "site-2-6-202505-homepage",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/news/evening-briefing",
+    "content": {
+      "id": "content-202505-briefing",
+      "title": "Evening Briefing",
+      "cat": ["IAB12-1"],
+      "gtax": 1,
+      "data": [
+        {
+          "id": "gracenote",
+          "name": "gracenote",
+          "cids": ["gracenote:EP-202505-briefing"],
+          "segment": [
+            {
+              "id": "segment-news",
+              "name": "News"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "imp-web-preroll-202505",
+      "bidfloor": 14.0,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "plcmt": 1
+      }
+    }
+  ]
+}

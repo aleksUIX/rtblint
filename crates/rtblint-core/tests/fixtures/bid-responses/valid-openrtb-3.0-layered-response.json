@@ -1,0 +1,27 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "response": {
+      "id": "req-3-0-layered-001",
+      "bidid": "bidresp-3-0-001",
+      "cur": "USD",
+      "seatbid": [
+        {
+          "seat": "buyer-seat-3",
+          "bid": [
+            {
+              "id": "bid-3-0-1",
+              "item": "item-1",
+              "price": 19.75,
+              "cid": "cmp-3-0",
+              "tactic": "ctv-retargeting",
+              "purl": "https://events.example.com/pending?bid=bid-3-0-1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

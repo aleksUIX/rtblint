@@ -1,0 +1,26 @@
+{
+  "id": "response-1",
+  "bidid": "bidresp-202505-001",
+  "seatbid": [
+    {
+      "seat": "buyer-seat-202505",
+      "bid": [
+        {
+          "id": "bid-1",
+          "impid": "imp-1",
+          "price": 3.25,
+          "adomain": ["brand.example"],
+          "cat": ["IAB1-7"],
+          "cid": "campaign-202505",
+          "adm": "VAST fixture payload placeholder for future bid response validation",
+          "crid": "creative-1",
+          "w": 1920,
+          "h": 1080,
+          "dur": 15,
+          "adid": "ad-202505-15s"
+        }
+      ]
+    }
+  ],
+  "cur": "USD"
+}

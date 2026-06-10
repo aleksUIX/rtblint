@@ -1,0 +1,29 @@
+{
+  "id": "req-latest-invalid-site-app-conflict-001",
+  "at": 1,
+  "tmax": 210,
+  "site": {
+    "id": "site-conflict",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/news/conflict"
+  },
+  "app": {
+    "id": "app-conflict",
+    "bundle": "com.publisher.conflict",
+    "name": "Publisher Conflict App"
+  },
+  "imp": [
+    {
+      "id": "imp-conflict-preroll",
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "plcmt": 1
+      }
+    }
+  ]
+}

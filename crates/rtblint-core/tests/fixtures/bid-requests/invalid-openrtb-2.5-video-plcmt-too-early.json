@@ -1,0 +1,29 @@
+{
+  "id": "req-2-5-invalid-plcmt-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-2-5-invalid-plcmt",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/sports/live"
+  },
+  "source": {
+    "fd": 1,
+    "tid": "txn-2-5-invalid-001",
+    "pchain": "1!publisher.example"
+  },
+  "imp": [
+    {
+      "id": "imp-invalid-plcmt",
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "plcmt": 1
+      }
+    }
+  ]
+}

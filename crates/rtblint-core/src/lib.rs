@@ -1,7 +1,10 @@
+mod adcom_lists;
 mod canonical_catalog;
 mod schema_manifest;
 mod validator;
 mod version_rules;
+
+use serde::Serialize;
 
 pub use canonical_catalog::{
     canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
@@ -23,7 +26,15 @@ pub use version_rules::{
 /// JSON parsing, required fields, unknown fields, basic type mismatches,
 /// and versioned path status such as deprecated or moved fields.
 pub fn validate(_input: &str) -> ValidationResult {
-    validator::validate_bid_request(OpenRtbVersion::V2_6_202505, _input)
+    validate_bid_request_for_version(OpenRtbVersion::V2_6_202505, _input)
+}
+
+/// Validates an OpenRTB bid request payload for a specific tracked version.
+pub fn validate_bid_request_for_version(
+    version: OpenRtbVersion,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_request(version, input)
 }
 
 /// Validates whether an object field exists in the canonical catalog for a specific OpenRTB version.
@@ -67,14 +78,14 @@ pub fn validate_object_field(
 }
 
 /// Result of a validation run.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct ValidationResult {
     pub valid: bool,
     pub issues: Vec<Issue>,
 }
 
 /// A single validation issue.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct Issue {
     pub id: String,
     pub severity: String,
@@ -403,6 +414,216 @@ mod tests {
             "openrtb.field.requires_skippable_video",
             "imp[0].video.skipmin"
         ));
+    }
+
+    #[test]
+    fn validate_reports_invalid_adcom_api_framework_value() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "api": [10]
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.value.invalid",
+            "imp[0].video.api[0]"
+        ));
+    }
+
+    #[test]
+    fn validate_accepts_vendor_specific_adcom_api_framework_value() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "api": [500]
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid);
+        assert!(result.issues.is_empty());
+    }
+
+    #[test]
+    fn validate_reports_invalid_adcom_plcmt_value() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "plcmt": 5
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(&result, "openrtb.value.invalid", "imp[0].video.plcmt"));
+    }
+
+    #[test]
+    fn validate_accepts_positive_startdelay_seconds() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "startdelay": 30
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid);
+        assert!(result.issues.is_empty());
+    }
+
+    #[test]
+    fn validate_reports_invalid_delivery_method() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "delivery": [4]
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.value.invalid",
+            "imp[0].video.delivery[0]"
+        ));
+    }
+
+    #[test]
+    fn validate_reports_invalid_qty_source_type() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"]
+                        },
+                        "qty": {
+                            "multiplier": 14.2,
+                            "sourcetype": 9
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.value.invalid",
+            "imp[0].qty.sourcetype"
+        ));
+    }
+
+    #[test]
+    fn validate_reports_invalid_category_taxonomy() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "cattax": 10,
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"]
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(&result, "openrtb.value.invalid", "cattax"));
+    }
+
+    #[test]
+    fn validate_2_5_rejects_video_plcmt() {
+        let result = validate_bid_request_for_version(
+            OpenRtbVersion::V2_5,
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "plcmt": 1
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.field.undefined",
+            "imp[0].video.plcmt"
+        ));
+    }
+
+    #[test]
+    fn validate_latest_2_6_accepts_video_plcmt() {
+        let result = validate_bid_request_for_version(
+            OpenRtbVersion::V2_6_202505,
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "plcmt": 1
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid);
+        assert!(result.issues.is_empty());
     }
 
     #[test]

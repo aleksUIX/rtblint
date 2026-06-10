@@ -1,0 +1,24 @@
+{
+  "id": "req-2-4-invalid-skipmin-001",
+  "at": 2,
+  "tmax": 180,
+  "app": {
+    "id": "app-2-4-streaming-invalid",
+    "bundle": "com.publisher.player",
+    "name": "Publisher Player"
+  },
+  "imp": [
+    {
+      "id": "imp-invalid-midroll",
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "skipmin": 5
+      }
+    }
+  ]
+}

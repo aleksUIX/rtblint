@@ -50,6 +50,10 @@ impl OpenRtbVersion {
         &Self::ALL
     }
 
+    pub fn from_id(id: &str) -> Option<Self> {
+        Self::ALL.iter().copied().find(|version| version.id() == id)
+    }
+
     pub const fn id(self) -> &'static str {
         match self {
             Self::V2_0 => "2.0",

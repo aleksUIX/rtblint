@@ -1,5 +1,3 @@
-use std::fs;
-use std::path::PathBuf;
 use std::sync::OnceLock;
 
 use serde::{Deserialize, Serialize};
@@ -73,17 +71,33 @@ pub fn canonical_field(
         .and_then(|object| object.fields.iter().find(|field| field.name == field_name))
 }
 
-fn load_catalog(file_name: &str) -> CanonicalObjectCatalog {
-    let path = catalog_dir().join(file_name);
-    let raw = fs::read_to_string(&path)
-        .unwrap_or_else(|error| panic!("failed to read canonical catalog {}: {error}", path.display()));
-
-    serde_json::from_str(&raw)
-        .unwrap_or_else(|error| panic!("failed to parse canonical catalog {}: {error}", path.display()))
+fn parse_catalog(version: OpenRtbVersion, raw: &str) -> CanonicalObjectCatalog {
+    serde_json::from_str(raw)
+        .unwrap_or_else(|error| panic!("failed to parse canonical catalog for {}: {error}", version.id()))
 }
 
-fn catalog_dir() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("specs")
+/// Catalogs are embedded at compile time so the validator carries no runtime
+/// filesystem dependency and runs unchanged in WASM and other no-fs targets.
+fn embedded_catalog(version: OpenRtbVersion) -> &'static str {
+    match version {
+        OpenRtbVersion::V2_0 => include_str!("../specs/openrtb-2.0-object-catalog.json"),
+        OpenRtbVersion::V2_1 => include_str!("../specs/openrtb-2.1-object-catalog.json"),
+        OpenRtbVersion::V2_2 => include_str!("../specs/openrtb-2.2-object-catalog.json"),
+        OpenRtbVersion::V2_3 => include_str!("../specs/openrtb-2.3-object-catalog.json"),
+        OpenRtbVersion::V2_3_1 => include_str!("../specs/openrtb-2.3.1-object-catalog.json"),
+        OpenRtbVersion::V2_4 => include_str!("../specs/openrtb-2.4-object-catalog.json"),
+        OpenRtbVersion::V2_5 => include_str!("../specs/openrtb-2.5-object-catalog.json"),
+        OpenRtbVersion::V2_6_202204 => include_str!("../specs/openrtb-2.6-202204-object-catalog.json"),
+        OpenRtbVersion::V2_6_202210 => include_str!("../specs/openrtb-2.6-202210-object-catalog.json"),
+        OpenRtbVersion::V2_6_202211 => include_str!("../specs/openrtb-2.6-202211-object-catalog.json"),
+        OpenRtbVersion::V2_6_202303 => include_str!("../specs/openrtb-2.6-202303-object-catalog.json"),
+        OpenRtbVersion::V2_6_202309 => include_str!("../specs/openrtb-2.6-202309-object-catalog.json"),
+        OpenRtbVersion::V2_6_202402 => include_str!("../specs/openrtb-2.6-202402-object-catalog.json"),
+        OpenRtbVersion::V2_6_202409 => include_str!("../specs/openrtb-2.6-202409-object-catalog.json"),
+        OpenRtbVersion::V2_6_202501 => include_str!("../specs/openrtb-2.6-202501-object-catalog.json"),
+        OpenRtbVersion::V2_6_202505 => include_str!("../specs/openrtb-2.6-202505-object-catalog.json"),
+        OpenRtbVersion::V3_0 => include_str!("../specs/openrtb-3.0-object-catalog.json"),
+    }
 }
 
 fn load_all_catalogs() -> &'static Vec<(OpenRtbVersion, CanonicalObjectCatalog)> {
@@ -91,10 +105,7 @@ fn load_all_catalogs() -> &'static Vec<(OpenRtbVersion, CanonicalObjectCatalog)>
     CATALOGS.get_or_init(|| {
         OpenRtbVersion::all()
             .iter()
-            .map(|version| {
-                let file_name = format!("openrtb-{}-object-catalog.json", version.id());
-                (*version, load_catalog(&file_name))
-            })
+            .map(|version| (*version, parse_catalog(*version, embedded_catalog(*version))))
             .collect()
     })
 }

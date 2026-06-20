@@ -3,6 +3,7 @@ members = [
     "crates/rtblint-core",
     "crates/rtblint",
     "crates/rtblint-mcp",
+    "crates/rtblint-wasm",
 ]
 resolver = "2"
 

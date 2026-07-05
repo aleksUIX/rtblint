@@ -1,30 +1,19 @@
 # rtblint
 
-**OpenRTB bid request / response linter** — validates OpenRTB 2.x and 3.0 objects against the spec.
+**OpenRTB linter.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots.
 
-> **0.0.1 stub release** — name reservation across all package registries. Full implementation (Rust core, CLI, MCP server, WASM, Go bindings, Python bindings) coming in 0.1.0.
+> The Python binding is not implemented yet; `rtblint.validate()` raises `NotImplementedError`. The working surfaces today are the Rust CLI and library ([crates.io/crates/rtblint](https://crates.io/crates/rtblint)), the npm WASM package, and the MCP server ([crates.io/crates/rtblint-mcp](https://crates.io/crates/rtblint-mcp)).
 
-[![Crates.io](https://img.shields.io/crates/v/rtblint.svg)](https://crates.io/crates/rtblint)
-[![npm](https://img.shields.io/npm/v/rtblint.svg)](https://www.npmjs.com/package/rtblint)
-[![PyPI](https://img.shields.io/pypi/v/rtblint.svg)](https://pypi.org/project/rtblint/)
+Website and playground: [rtblint.org](https://rtblint.org)
 
-## Packages
+## In the meantime
 
-| Ecosystem | Package | Registry |
-|-----------|---------|----------|
-| Rust CLI  | `rtblint` | [crates.io/crates/rtblint](https://crates.io/crates/rtblint) |
-| Rust lib  | `rtblint-core` | [crates.io/crates/rtblint-core](https://crates.io/crates/rtblint-core) |
-| Rust MCP  | `rtblint-mcp` | [crates.io/crates/rtblint-mcp](https://crates.io/crates/rtblint-mcp) |
-| Node/WASM | `rtblint` | [npmjs.com/package/rtblint](https://www.npmjs.com/package/rtblint) |
-| Python    | `rtblint` | [pypi.org/project/rtblint](https://pypi.org/project/rtblint/) |
-| Go        | `github.com/aleksUIX/rtblint/go` | [pkg.go.dev](https://pkg.go.dev/github.com/aleksUIX/rtblint/go) |
-
-## Roadmap
-
-- [ ] 0.1.0 — Rust core with OpenRTB 2.6 bid request validation
-- [ ] 0.2.0 — OpenRTB 3.0 + AdCOM support
-- [ ] 0.3.0 — MCP server, WASM, Go/Python bindings
+```bash
+cargo install rtblint
+rtblint validate request.json
+rtblint validate --type response response.json
+```
 
 ## License
 
-Apache-2.0
+Apache-2.0. See LICENSE and NOTICE in the repository.

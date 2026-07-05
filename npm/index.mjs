@@ -1,10 +1,11 @@
-"use strict";
-
 /**
  * rtblint: OpenRTB bid request / bid response linter.
- * CJS entry point backed by the rtblint-core WASM build.
+ * ESM entry point backed by the rtblint-core WASM build.
  */
 
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 const wasm = require("./wasm/rtblint_wasm.js");
 
 /**
@@ -13,7 +14,7 @@ const wasm = require("./wasm/rtblint_wasm.js");
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  * @returns {{valid: boolean, issues: Array<{id: string, severity: string, message: string, path?: string}>}}
  */
-function validate(input, version) {
+export function validate(input, version) {
   return version === undefined ? wasm.validate(input) : wasm.validate_version(version, input);
 }
 
@@ -22,25 +23,23 @@ function validate(input, version) {
  * @param {string} input - Raw bid response JSON.
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  */
-function validateResponse(input, version) {
+export function validateResponse(input, version) {
   return version === undefined
     ? wasm.validate_response(input)
     : wasm.validate_response_version(version, input);
 }
 
 /** Every tracked OpenRTB version id. */
-function versions() {
+export function versions() {
   return wasm.versions();
 }
 
 /** The full versioned rule catalog, one entry per coded rule. */
-function rules() {
+export function rules() {
   return wasm.rules();
 }
 
 /** The rtblint-core version this build was compiled against. */
-function coreVersion() {
+export function coreVersion() {
   return wasm.core_version();
 }
-
-module.exports = { validate, validateResponse, versions, rules, coreVersion };

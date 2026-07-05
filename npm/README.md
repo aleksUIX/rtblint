@@ -1,30 +1,48 @@
 # rtblint
 
-**OpenRTB bid request / response linter** — validates OpenRTB 2.x and 3.0 objects against the spec.
+**OpenRTB linter for Node.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots, from 2.0 through the monthly 2.6 releases. Backed by the rtblint Rust core compiled to WASM; no native dependencies.
 
-> **0.0.1 stub release** — name reservation across all package registries. Full implementation (Rust core, CLI, MCP server, WASM, Go bindings, Python bindings) coming in 0.1.0.
+Website and playground: [rtblint.org](https://rtblint.org)
 
-[![Crates.io](https://img.shields.io/crates/v/rtblint.svg)](https://crates.io/crates/rtblint)
-[![npm](https://img.shields.io/npm/v/rtblint.svg)](https://www.npmjs.com/package/rtblint)
-[![PyPI](https://img.shields.io/pypi/v/rtblint.svg)](https://pypi.org/project/rtblint/)
+## Install
 
-## Packages
+```bash
+npm install rtblint
+```
 
-| Ecosystem | Package | Registry |
-|-----------|---------|----------|
-| Rust CLI  | `rtblint` | [crates.io/crates/rtblint](https://crates.io/crates/rtblint) |
-| Rust lib  | `rtblint-core` | [crates.io/crates/rtblint-core](https://crates.io/crates/rtblint-core) |
-| Rust MCP  | `rtblint-mcp` | [crates.io/crates/rtblint-mcp](https://crates.io/crates/rtblint-mcp) |
-| Node/WASM | `rtblint` | [npmjs.com/package/rtblint](https://www.npmjs.com/package/rtblint) |
-| Python    | `rtblint` | [pypi.org/project/rtblint](https://pypi.org/project/rtblint/) |
-| Go        | `github.com/aleksUIX/rtblint/go` | [pkg.go.dev](https://pkg.go.dev/github.com/aleksUIX/rtblint/go) |
+## Usage
 
-## Roadmap
+```js
+import { validate, validateResponse, versions, rules } from "rtblint";
+// or: const { validate } = require("rtblint");
 
-- [ ] 0.1.0 — Rust core with OpenRTB 2.6 bid request validation
-- [ ] 0.2.0 — OpenRTB 3.0 + AdCOM support
-- [ ] 0.3.0 — MCP server, WASM, Go/Python bindings
+const report = validate(JSON.stringify(bidRequest));            // latest tracked 2.6
+const legacy = validate(JSON.stringify(bidRequest), "2.5");     // version-aware
+const response = validateResponse(JSON.stringify(bidResponse));
+
+if (!report.valid) {
+  for (const issue of report.issues) {
+    console.log(`[${issue.severity}] ${issue.path}: ${issue.message} (${issue.id})`);
+  }
+}
+
+console.log(versions()); // every tracked OpenRTB version id
+```
+
+## API
+
+- `validate(input, version?)` validates a bid request JSON string
+- `validateResponse(input, version?)` validates a bid response JSON string
+- `versions()` lists every tracked OpenRTB version id
+- `rules()` returns the versioned rule catalog (codes, paths, summaries, spec sections)
+- `coreVersion()` reports the rtblint-core build version
+
+Findings carry a stable rule id, a severity (`error` or `warning`), a message, and a JSON path into the payload.
+
+## Other surfaces
+
+Rust CLI and library on [crates.io](https://crates.io/crates/rtblint), MCP server as [rtblint-mcp](https://crates.io/crates/rtblint-mcp).
 
 ## License
 
-Apache-2.0
+Apache-2.0. See LICENSE and NOTICE.

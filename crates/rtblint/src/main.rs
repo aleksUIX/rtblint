@@ -32,6 +32,11 @@ fn run() -> Result<i32, String> {
         return Ok(0);
     }
 
+    if matches!(command.as_str(), "-V" | "--version") {
+        println!("rtblint {}", env!("CARGO_PKG_VERSION"));
+        return Ok(0);
+    }
+
     if command != "validate" {
         return Err(format!(
             "Unknown command: {command}\n\n{}",
@@ -49,8 +54,15 @@ fn run() -> Result<i32, String> {
     }
 
     let command = parse_validate_command(validate_args)?;
-    let result = rtblint_core::validate_bid_request_for_version(command.version, &command.input);
-    print_result(command.version, &result, command.output_format)?;
+    let result = match command.payload_type {
+        PayloadType::Request => {
+            rtblint_core::validate_bid_request_for_version(command.version, &command.input)
+        }
+        PayloadType::Response => {
+            rtblint_core::validate_bid_response_for_version(command.version, &command.input)
+        }
+    };
+    print_result(command.version, command.payload_type, &result, command.output_format)?;
 
     Ok(if result.valid { 0 } else { 1 })
 }
@@ -60,6 +72,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut file_path: Option<String> = None;
     let mut version = DEFAULT_VERSION;
     let mut output_format = OutputFormat::Human;
+    let mut payload_type = PayloadType::Request;
     let mut args = args.into_iter();
 
     while let Some(arg) = args.next() {
@@ -98,6 +111,16 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
                 output_format = OutputFormat::from_str(&value)?;
             }
+            "--type" => {
+                let Some(value) = args.next() else {
+                    return Err(format!(
+                        "Missing value for --type.\n\n{}",
+                        validate_usage_text()
+                    ));
+                };
+
+                payload_type = PayloadType::from_str(&value)?;
+            }
             _ if arg.starts_with('-') => {
                 return Err(format!(
                     "Unknown flag: {arg}\n\n{}",
@@ -130,6 +153,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             input,
             version,
             output_format,
+            payload_type,
         })
     }
 
@@ -148,19 +172,24 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
     fn print_result(
         version: OpenRtbVersion,
+        payload_type: PayloadType,
         result: &ValidationResult,
         output_format: OutputFormat,
     ) -> Result<(), String> {
         match output_format {
             OutputFormat::Human => {
-                print_human_result(version, result);
+                print_human_result(version, payload_type, result);
                 Ok(())
             }
-            OutputFormat::Json => print_json_result(version, result),
+            OutputFormat::Json => print_json_result(version, payload_type, result),
         }
     }
 
-    fn print_human_result(version: OpenRtbVersion, result: &ValidationResult) {
+    fn print_human_result(
+        version: OpenRtbVersion,
+        payload_type: PayloadType,
+        result: &ValidationResult,
+    ) {
         let error_count = result
             .issues
             .iter()
@@ -173,19 +202,25 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             .count();
 
         if error_count == 0 && warning_count == 0 {
-            println!("OK (OpenRTB {}): no issues found.", version.id());
+            println!(
+                "OK (OpenRTB {} {}): no issues found.",
+                version.id(),
+                payload_type.label()
+            );
             return;
         }
 
         if error_count == 0 {
             println!(
-                "OK with warnings (OpenRTB {}): {warning_count} warning(s).",
-                version.id()
+                "OK with warnings (OpenRTB {} {}): {warning_count} warning(s).",
+                version.id(),
+                payload_type.label()
             );
         } else {
             println!(
-                "FAILED (OpenRTB {}): {error_count} error(s), {warning_count} warning(s).",
-                version.id()
+                "FAILED (OpenRTB {} {}): {error_count} error(s), {warning_count} warning(s).",
+                version.id(),
+                payload_type.label()
             );
         }
 
@@ -194,9 +229,14 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         }
     }
 
-    fn print_json_result(version: OpenRtbVersion, result: &ValidationResult) -> Result<(), String> {
+    fn print_json_result(
+        version: OpenRtbVersion,
+        payload_type: PayloadType,
+        result: &ValidationResult,
+    ) -> Result<(), String> {
         let report = ValidationReport {
             version: version.id(),
+            payload_type: payload_type.id(),
             valid: result.valid,
             issues: &result.issues,
         };
@@ -234,17 +274,50 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     }
 
     fn usage_text() -> &'static str {
-        "rtblint\n\nUsage:\n  rtblint validate [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint --help"
+        "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint --version\n  rtblint --help"
     }
 
     fn validate_usage_text() -> &'static str {
-        "Usage:\n  rtblint validate [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--version <openrtb-version>] [--format human|json] --stdin"
+        "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6)."
     }
 
     struct ValidateCommand {
         input: String,
         version: OpenRtbVersion,
         output_format: OutputFormat,
+        payload_type: PayloadType,
+    }
+
+    #[derive(Clone, Copy)]
+    enum PayloadType {
+        Request,
+        Response,
+    }
+
+    impl PayloadType {
+        fn from_str(value: &str) -> Result<Self, String> {
+            match value {
+                "request" => Ok(Self::Request),
+                "response" => Ok(Self::Response),
+                _ => Err(format!(
+                    "Unsupported type: {value}\n\nUse one of: request, response"
+                )),
+            }
+        }
+
+        fn id(self) -> &'static str {
+            match self {
+                Self::Request => "request",
+                Self::Response => "response",
+            }
+        }
+
+        fn label(self) -> &'static str {
+            match self {
+                Self::Request => "bid request",
+                Self::Response => "bid response",
+            }
+        }
     }
 
     #[derive(Clone, Copy)]
@@ -268,6 +341,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     #[derive(Serialize)]
     struct ValidationReport<'a> {
         version: &'a str,
+        payload_type: &'a str,
         valid: bool,
         issues: &'a [Issue],
     }

@@ -7,7 +7,7 @@ authors.workspace = true
 license.workspace = true
 repository.workspace = true
 homepage.workspace = true
-description = "OpenRTB bid request / response linter — validates OpenRTB 2.x and 3.0 objects"
+description = "OpenRTB linter: validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots"
 keywords = ["openrtb", "rtb", "adtech", "programmatic", "validator"]
 categories = ["command-line-utilities", "development-tools"]
 readme = "../../README.md"
@@ -17,6 +17,6 @@ name = "rtblint"
 path = "src/main.rs"
 
 [dependencies]
-rtblint-core = { path = "../rtblint-core", version = "0.0.2" }
+rtblint-core = { path = "../rtblint-core", version = "0.0.3" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

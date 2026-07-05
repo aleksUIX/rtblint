@@ -17,9 +17,8 @@ pub use schema_manifest::{
     SchemaPathEntry, SchemaPathState,
 };
 pub use version_rules::{
-    path_status, rules_for_path, version_profile, version_profiles, OpenRtbFamily,
-    OpenRtbVersion, PathRuleMatch, PathStateKind, PathStatus, VersionProfile, VersionRule,
-    VersionRuleKind,
+    path_status, rules_for_path, version_profile, version_profiles, OpenRtbFamily, OpenRtbVersion,
+    PathRuleMatch, PathStateKind, PathStatus, VersionProfile, VersionRule, VersionRuleKind,
 };
 
 /// Validates an OpenRTB 2.6 bid request payload.
@@ -28,22 +27,16 @@ pub use version_rules::{
 /// JSON parsing, required fields, unknown fields, basic type mismatches,
 /// and versioned path status such as deprecated or moved fields.
 pub fn validate(_input: &str) -> ValidationResult {
-    validate_bid_request_for_version(OpenRtbVersion::V2_6_202505, _input)
+    validate_bid_request_for_version(OpenRtbVersion::V2_6_202606, _input)
 }
 
 /// Validates an OpenRTB bid request payload for a specific tracked version.
-pub fn validate_bid_request_for_version(
-    version: OpenRtbVersion,
-    input: &str,
-) -> ValidationResult {
+pub fn validate_bid_request_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
     validator::validate_bid_request(version, input)
 }
 
 /// Validates an OpenRTB bid response payload for a specific tracked version.
-pub fn validate_bid_response_for_version(
-    version: OpenRtbVersion,
-    input: &str,
-) -> ValidationResult {
+pub fn validate_bid_response_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
     validator::validate_bid_response(version, input)
 }
 
@@ -230,7 +223,11 @@ mod tests {
         );
 
         assert!(!result.valid);
-        assert!(has_issue(&result, "openrtb.field.required", "imp[0].video.mimes"));
+        assert!(has_issue(
+            &result,
+            "openrtb.field.required",
+            "imp[0].video.mimes"
+        ));
     }
 
     #[test]
@@ -322,7 +319,11 @@ mod tests {
         );
 
         assert!(!result.valid);
-        assert!(has_issue(&result, "openrtb.fields.mutually_exclusive", "site"));
+        assert!(has_issue(
+            &result,
+            "openrtb.fields.mutually_exclusive",
+            "site"
+        ));
     }
 
     #[test]
@@ -490,7 +491,11 @@ mod tests {
         );
 
         assert!(!result.valid);
-        assert!(has_issue(&result, "openrtb.value.invalid", "imp[0].video.plcmt"));
+        assert!(has_issue(
+            &result,
+            "openrtb.value.invalid",
+            "imp[0].video.plcmt"
+        ));
     }
 
     #[test]
@@ -660,5 +665,103 @@ mod tests {
 
         assert!(result.valid);
         assert!(result.issues.is_empty());
+    }
+
+    #[test]
+    fn validate_accepts_dooh_request_with_catalog_fields() {
+        let result = validate(
+            r#"{
+                "id": "req-dooh-1",
+                "dooh": {
+                    "id": "screen-88",
+                    "name": "Airport Arrivals Billboard",
+                    "venuetype": "transit.airports",
+                    "venuetypetax": 1,
+                    "publisher": { "id": "pub-oh-4" },
+                    "domain": "cityscreens.example",
+                    "keywords": "billboard,airport"
+                },
+                "imp": [
+                    {
+                        "id": "1",
+                        "banner": { "w": 1080, "h": 1920 },
+                        "qty": { "multiplier": 42.0, "sourcetype": 1 }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid, "issues: {:?}", result.issues);
+        assert!(result.issues.is_empty());
+    }
+
+    #[test]
+    fn validate_2_6_202606_accepts_content_liveness_fields() {
+        let payload = r#"{
+            "id": "req-live-1",
+            "app": {
+                "bundle": "com.example.tv",
+                "content": { "id": "c1", "livestream": 1, "realtime": 1, "firstbroadcast": 1 }
+            },
+            "imp": [
+                { "id": "1", "video": { "mimes": ["video/mp4"] } }
+            ]
+        }"#;
+
+        let at_202606 = validate_bid_request_for_version(OpenRtbVersion::V2_6_202606, payload);
+        let at_202505 = validate_bid_request_for_version(OpenRtbVersion::V2_6_202505, payload);
+
+        assert!(at_202606.valid, "issues: {:?}", at_202606.issues);
+        assert!(!at_202505.valid);
+        assert!(has_issue(
+            &at_202505,
+            "openrtb.field.undefined",
+            "app.content.realtime"
+        ));
+    }
+
+    #[test]
+    fn validate_response_accepts_no_bid_reason_code() {
+        let result = validate_bid_response_for_version(
+            OpenRtbVersion::V2_6_202606,
+            r#"{ "id": "req-1", "nbr": 8 }"#,
+        );
+
+        assert!(result.valid, "issues: {:?}", result.issues);
+    }
+
+    #[test]
+    fn validate_response_reports_invalid_no_bid_reason_code() {
+        let result = validate_bid_response_for_version(
+            OpenRtbVersion::V2_6_202606,
+            r#"{ "id": "req-1", "nbr": 99 }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(&result, "openrtb.value.invalid", "nbr"));
+    }
+
+    #[test]
+    fn validate_skips_field_checks_for_legacy_objects_without_extracted_fields() {
+        let result = validate_bid_request_for_version(
+            OpenRtbVersion::V2_2,
+            r#"{
+                "id": "req-legacy-1",
+                "imp": [
+                    { "id": "1", "banner": { "w": 300, "h": 250 } }
+                ],
+                "site": { "id": "site-9", "domain": "news.example" }
+            }"#,
+        );
+
+        assert!(
+            !result
+                .issues
+                .iter()
+                .any(|issue| issue.id == "openrtb.field.undefined"
+                    && issue.path.as_deref().is_some_and(|p| p.starts_with("site."))),
+            "legacy Site fields should not be flagged undefined: {:?}",
+            result.issues
+        );
     }
 }

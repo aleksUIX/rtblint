@@ -31,9 +31,8 @@ const CONTENT_CONTEXTS: &[i64] = &[1, 2, 3, 4, 5, 6, 7];
 const CREATIVE_ATTRIBUTES: &[i64] = &[
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
 ];
-const CREATIVE_SUBTYPES_AUDIO_VIDEO: &[i64] = &[
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-];
+const CREATIVE_SUBTYPES_AUDIO_VIDEO: &[i64] =
+    &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 const CREATIVE_SUBTYPES_DISPLAY: &[i64] = &[1, 2, 3, 4];
 const DELIVERY_METHODS: &[i64] = &[1, 2, 3];
 const DEVICE_TYPES: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8];
@@ -52,9 +51,10 @@ const LOCATION_TYPES: &[i64] = &[1, 2, 3];
 const MEDIA_RATINGS: &[i64] = &[1, 2, 3];
 const NATIVE_DATA_ASSET_TYPES: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const NATIVE_IMAGE_ASSET_TYPES: &[i64] = &[1, 3];
+const NO_BID_REASON_CODES: &[i64] = &[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 const OPERATING_SYSTEMS: &[i64] = &[
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+    26, 27, 28,
 ];
 const PLACEMENT_POSITIONS: &[i64] = &[0, 1, 2, 3, 4, 5, 6, 7];
 const PLAYBACK_CESSATION_MODES: &[i64] = &[1, 2, 3];
@@ -251,6 +251,12 @@ const ADCOM_LISTS: &[AdcomListValueSet] = &[
         minimum_inclusive: Some(500),
     },
     AdcomListValueSet {
+        name: "List: No-Bid Reason Codes",
+        references: &["list: no-bid reason codes"],
+        allowed_values: NO_BID_REASON_CODES,
+        minimum_inclusive: Some(500),
+    },
+    AdcomListValueSet {
         name: "List: Operating Systems",
         references: &["list: operating systems"],
         allowed_values: OPERATING_SYSTEMS,
@@ -363,7 +369,10 @@ mod tests {
         let matched =
             adcom_list_value_set(description).expect("measurement source list should match");
 
-        assert_eq!(matched.name, "List: DOOH Multiplier Measurement Source Types");
+        assert_eq!(
+            matched.name,
+            "List: DOOH Multiplier Measurement Source Types"
+        );
         assert_eq!(matched.allowed_values, &[0, 1, 2, 3]);
     }
 

@@ -147,13 +147,19 @@ fn render_manifest(
         .unwrap_or_else(|| String::from("null"));
 
     let mut out = String::from("{\n");
-    out.push_str(&format!("  \"version\": {},\n", json_string(profile.version.id())));
+    out.push_str(&format!(
+        "  \"version\": {},\n",
+        json_string(profile.version.id())
+    ));
     out.push_str(&format!("  \"family\": {},\n", json_string(family)));
     out.push_str(&format!(
         "  \"release_date\": {},\n",
         json_string(profile.release_date)
     ));
-    out.push_str(&format!("  \"summary\": {},\n", json_string(profile.summary)));
+    out.push_str(&format!(
+        "  \"summary\": {},\n",
+        json_string(profile.summary)
+    ));
     out.push_str("  \"canonical\": {\n");
     out.push_str("    \"authoritative\": true,\n");
     out.push_str(&format!(
@@ -251,7 +257,11 @@ fn json_string(value: &str) -> String {
 }
 
 fn sha256(path: &Path) -> Result<String, Box<dyn Error>> {
-    let output = Command::new("shasum").arg("-a").arg("256").arg(path).output()?;
+    let output = Command::new("shasum")
+        .arg("-a")
+        .arg("256")
+        .arg(path)
+        .output()?;
     if !output.status.success() {
         return Err(format!(
             "shasum failed for {}: {}",

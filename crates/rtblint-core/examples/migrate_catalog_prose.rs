@@ -31,7 +31,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         let raw = fs::read_to_string(&path)?;
         let mut catalog: Value = serde_json::from_str(&raw)?;
         migrate_catalog(&mut catalog).map_err(|error| format!("{file_name}: {error}"))?;
-        fs::write(&path, format!("{}\n", serde_json::to_string_pretty(&catalog)?))?;
+        fs::write(
+            &path,
+            format!("{}\n", serde_json::to_string_pretty(&catalog)?),
+        )?;
         migrated += 1;
         println!("migrated {file_name}");
     }
@@ -74,7 +77,10 @@ fn migrate_catalog(catalog: &mut Value) -> Result<(), String> {
                 .to_string();
 
             let mut enriched = Map::new();
-            enriched.insert("name".into(), field_map.get("name").cloned().unwrap_or(Value::Null));
+            enriched.insert(
+                "name".into(),
+                field_map.get("name").cloned().unwrap_or(Value::Null),
+            );
             enriched.insert(
                 "type_spec".into(),
                 field_map.get("type_spec").cloned().unwrap_or(Value::Null),
@@ -86,7 +92,8 @@ fn migrate_catalog(catalog: &mut Value) -> Result<(), String> {
                 .unwrap_or_default()
                 .to_ascii_lowercase();
             if type_spec.contains("object") {
-                if let Some(child) = resolve_child_object(&description, &field_name, &object_names) {
+                if let Some(child) = resolve_child_object(&description, &field_name, &object_names)
+                {
                     enriched.insert("child_object".into(), Value::String(child));
                 }
             }

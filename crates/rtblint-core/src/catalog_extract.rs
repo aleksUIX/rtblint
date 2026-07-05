@@ -219,7 +219,11 @@ mod tests {
     fn resolves_child_object_from_hint_and_field_name() {
         let objects = vec![String::from("Imp"), String::from("Site")];
         assert_eq!(
-            resolve_child_object("Array of Imp objects representing impressions.", "imp", &objects),
+            resolve_child_object(
+                "Array of Imp objects representing impressions.",
+                "imp",
+                &objects
+            ),
             Some(String::from("Imp"))
         );
         assert_eq!(

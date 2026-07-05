@@ -87,7 +87,10 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         version: OpenRtbVersion::V2_4,
         input: include_str!("fixtures/bid-requests/invalid-openrtb-2.4-skipmin-without-skip.json"),
         valid: false,
-        expected_issues: &[("openrtb.field.requires_skippable_video", "imp[0].video.skipmin")],
+        expected_issues: &[(
+            "openrtb.field.requires_skippable_video",
+            "imp[0].video.skipmin",
+        )],
     },
     FixtureCase {
         name: "invalid-openrtb-2.5-video-plcmt-too-early",
@@ -241,13 +244,16 @@ fn bid_request_inventory_fixtures_are_parseable() {
                 );
             }
             OpenRtbFixtureFamily::ThreeZeroRequest => {
-                let openrtb = root.get("openrtb").and_then(Value::as_object).unwrap_or_else(|| {
-                    panic!(
-                        "inventory fixture {} for {} should include an openrtb object",
-                        fixture.name,
-                        fixture.version.id()
-                    )
-                });
+                let openrtb = root
+                    .get("openrtb")
+                    .and_then(Value::as_object)
+                    .unwrap_or_else(|| {
+                        panic!(
+                            "inventory fixture {} for {} should include an openrtb object",
+                            fixture.name,
+                            fixture.version.id()
+                        )
+                    });
 
                 assert!(
                     openrtb.contains_key("request"),

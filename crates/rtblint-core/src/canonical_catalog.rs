@@ -62,7 +62,9 @@ pub fn canonical_object_catalog_versions() -> &'static [OpenRtbVersion] {
     OpenRtbVersion::all()
 }
 
-pub fn canonical_object_catalog(version: OpenRtbVersion) -> Option<&'static CanonicalObjectCatalog> {
+pub fn canonical_object_catalog(
+    version: OpenRtbVersion,
+) -> Option<&'static CanonicalObjectCatalog> {
     load_all_catalogs()
         .iter()
         .find(|(candidate_version, _)| *candidate_version == version)
@@ -73,8 +75,12 @@ pub fn canonical_object(
     version: OpenRtbVersion,
     object_name: &str,
 ) -> Option<&'static CanonicalObject> {
-    canonical_object_catalog(version)
-        .and_then(|catalog| catalog.objects.iter().find(|object| object.name == object_name))
+    canonical_object_catalog(version).and_then(|catalog| {
+        catalog
+            .objects
+            .iter()
+            .find(|object| object.name == object_name)
+    })
 }
 
 pub fn canonical_field(
@@ -87,8 +93,12 @@ pub fn canonical_field(
 }
 
 fn parse_catalog(version: OpenRtbVersion, raw: &str) -> CanonicalObjectCatalog {
-    serde_json::from_str(raw)
-        .unwrap_or_else(|error| panic!("failed to parse canonical catalog for {}: {error}", version.id()))
+    serde_json::from_str(raw).unwrap_or_else(|error| {
+        panic!(
+            "failed to parse canonical catalog for {}: {error}",
+            version.id()
+        )
+    })
 }
 
 /// Catalogs are embedded at compile time so the validator carries no runtime
@@ -102,16 +112,36 @@ fn embedded_catalog(version: OpenRtbVersion) -> &'static str {
         OpenRtbVersion::V2_3_1 => include_str!("../specs/openrtb-2.3.1-object-catalog.json"),
         OpenRtbVersion::V2_4 => include_str!("../specs/openrtb-2.4-object-catalog.json"),
         OpenRtbVersion::V2_5 => include_str!("../specs/openrtb-2.5-object-catalog.json"),
-        OpenRtbVersion::V2_6_202204 => include_str!("../specs/openrtb-2.6-202204-object-catalog.json"),
-        OpenRtbVersion::V2_6_202210 => include_str!("../specs/openrtb-2.6-202210-object-catalog.json"),
-        OpenRtbVersion::V2_6_202211 => include_str!("../specs/openrtb-2.6-202211-object-catalog.json"),
-        OpenRtbVersion::V2_6_202303 => include_str!("../specs/openrtb-2.6-202303-object-catalog.json"),
-        OpenRtbVersion::V2_6_202309 => include_str!("../specs/openrtb-2.6-202309-object-catalog.json"),
-        OpenRtbVersion::V2_6_202402 => include_str!("../specs/openrtb-2.6-202402-object-catalog.json"),
-        OpenRtbVersion::V2_6_202409 => include_str!("../specs/openrtb-2.6-202409-object-catalog.json"),
-        OpenRtbVersion::V2_6_202501 => include_str!("../specs/openrtb-2.6-202501-object-catalog.json"),
-        OpenRtbVersion::V2_6_202505 => include_str!("../specs/openrtb-2.6-202505-object-catalog.json"),
-        OpenRtbVersion::V2_6_202606 => include_str!("../specs/openrtb-2.6-202606-object-catalog.json"),
+        OpenRtbVersion::V2_6_202204 => {
+            include_str!("../specs/openrtb-2.6-202204-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202210 => {
+            include_str!("../specs/openrtb-2.6-202210-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202211 => {
+            include_str!("../specs/openrtb-2.6-202211-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202303 => {
+            include_str!("../specs/openrtb-2.6-202303-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202309 => {
+            include_str!("../specs/openrtb-2.6-202309-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202402 => {
+            include_str!("../specs/openrtb-2.6-202402-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202409 => {
+            include_str!("../specs/openrtb-2.6-202409-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202501 => {
+            include_str!("../specs/openrtb-2.6-202501-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202505 => {
+            include_str!("../specs/openrtb-2.6-202505-object-catalog.json")
+        }
+        OpenRtbVersion::V2_6_202606 => {
+            include_str!("../specs/openrtb-2.6-202606-object-catalog.json")
+        }
         OpenRtbVersion::V3_0 => include_str!("../specs/openrtb-3.0-object-catalog.json"),
     }
 }
@@ -121,7 +151,12 @@ fn load_all_catalogs() -> &'static Vec<(OpenRtbVersion, CanonicalObjectCatalog)>
     CATALOGS.get_or_init(|| {
         OpenRtbVersion::all()
             .iter()
-            .map(|version| (*version, parse_catalog(*version, embedded_catalog(*version))))
+            .map(|version| {
+                (
+                    *version,
+                    parse_catalog(*version, embedded_catalog(*version)),
+                )
+            })
             .collect()
     })
 }

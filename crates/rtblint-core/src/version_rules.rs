@@ -184,7 +184,9 @@ pub fn version_profiles() -> &'static [VersionProfile] {
 }
 
 pub fn version_profile(version: OpenRtbVersion) -> Option<&'static VersionProfile> {
-    VERSION_PROFILES.iter().find(|profile| profile.version == version)
+    VERSION_PROFILES
+        .iter()
+        .find(|profile| profile.version == version)
 }
 
 pub fn rules_for_path(version: OpenRtbVersion, path: &str) -> Vec<PathRuleMatch> {
@@ -229,7 +231,10 @@ pub fn path_status(version: OpenRtbVersion, path: &str) -> PathStatus {
     }
 
     let mut status = PathStatus::unknown();
-    for matched in all_matches.into_iter().filter(|matched| matched.version <= version) {
+    for matched in all_matches
+        .into_iter()
+        .filter(|matched| matched.version <= version)
+    {
         apply_match(&mut status, matched);
     }
 
@@ -241,9 +246,9 @@ fn pre_change_status(first_match: &PathRuleMatch) -> PathStatus {
         (
             RulePathRole::Primary,
             VersionRuleKind::DeprecatedField
-                | VersionRuleKind::RemovedField
-                | VersionRuleKind::MovedField
-                | VersionRuleKind::CorrectedField,
+            | VersionRuleKind::RemovedField
+            | VersionRuleKind::MovedField
+            | VersionRuleKind::CorrectedField,
         ) => PathStateKind::Available,
         _ => PathStateKind::NotYetAvailable,
     };
@@ -805,9 +810,14 @@ const V2_6_202309_RULES: &[VersionRule] = &[
     VersionRule {
         code: "openrtb.2.6-202309.durfloors",
         kind: VersionRuleKind::AddedObject,
-        paths: &["imp.video.durfloors", "imp.audio.durfloors", "deal.durfloors"],
+        paths: &[
+            "imp.video.durfloors",
+            "imp.audio.durfloors",
+            "deal.durfloors",
+        ],
         replacement_paths: &[],
-        summary: "OpenRTB 2.6-202309 added duration-aware floor objects for video, audio, and deals.",
+        summary:
+            "OpenRTB 2.6-202309 added duration-aware floor objects for video, audio, and deals.",
         section: "Sections 3.2.7, 3.2.8, 3.2.12",
         source: "GitHub release notes: 2.6-202309",
     },
@@ -822,17 +832,15 @@ const V2_6_202309_RULES: &[VersionRule] = &[
     },
 ];
 
-const V2_6_202402_RULES: &[VersionRule] = &[
-    VersionRule {
-        code: "openrtb.2.6-202402.imp.video.poddedupe",
-        kind: VersionRuleKind::AddedField,
-        paths: &["imp.video.poddedupe"],
-        replacement_paths: &[],
-        summary: "OpenRTB 2.6-202402 added pod deduplication signaling for video pods.",
-        section: "Section 3.2.7",
-        source: "GitHub release notes: 2.6-202402",
-    },
-];
+const V2_6_202402_RULES: &[VersionRule] = &[VersionRule {
+    code: "openrtb.2.6-202402.imp.video.poddedupe",
+    kind: VersionRuleKind::AddedField,
+    paths: &["imp.video.poddedupe"],
+    replacement_paths: &[],
+    summary: "OpenRTB 2.6-202402 added pod deduplication signaling for video pods.",
+    section: "Section 3.2.7",
+    source: "GitHub release notes: 2.6-202402",
+}];
 
 const V2_6_202409_RULES: &[VersionRule] = &[
     VersionRule {
@@ -855,29 +863,25 @@ const V2_6_202409_RULES: &[VersionRule] = &[
     },
 ];
 
-const V2_6_202501_RULES: &[VersionRule] = &[
-    VersionRule {
-        code: "openrtb.2.6-202501.content.gtax_genres",
-        kind: VersionRuleKind::AddedField,
-        paths: &["content.gtax", "content.genres"],
-        replacement_paths: &[],
-        summary: "OpenRTB 2.6-202501 added genre taxonomy and genres fields on content.",
-        section: "Section 3.2.16",
-        source: "GitHub release notes: 2.6-202501",
-    },
-];
+const V2_6_202501_RULES: &[VersionRule] = &[VersionRule {
+    code: "openrtb.2.6-202501.content.gtax_genres",
+    kind: VersionRuleKind::AddedField,
+    paths: &["content.gtax", "content.genres"],
+    replacement_paths: &[],
+    summary: "OpenRTB 2.6-202501 added genre taxonomy and genres fields on content.",
+    section: "Section 3.2.16",
+    source: "GitHub release notes: 2.6-202501",
+}];
 
-const V2_6_202505_RULES: &[VersionRule] = &[
-    VersionRule {
-        code: "openrtb.2.6-202505.data.cids",
-        kind: VersionRuleKind::AddedField,
-        paths: &["data.cids"],
-        replacement_paths: &[],
-        summary: "OpenRTB 2.6-202505 added extended content identifiers on Data objects.",
-        section: "Section 3.2.21",
-        source: "GitHub release notes: 2.6-202505",
-    },
-];
+const V2_6_202505_RULES: &[VersionRule] = &[VersionRule {
+    code: "openrtb.2.6-202505.data.cids",
+    kind: VersionRuleKind::AddedField,
+    paths: &["data.cids"],
+    replacement_paths: &[],
+    summary: "OpenRTB 2.6-202505 added extended content identifiers on Data objects.",
+    section: "Section 3.2.21",
+    source: "GitHub release notes: 2.6-202505",
+}];
 
 const V2_6_202606_RULES: &[VersionRule] = &[
     VersionRule {

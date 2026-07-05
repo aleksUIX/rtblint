@@ -62,7 +62,8 @@ pub fn schema_manifest(version: OpenRtbVersion) -> Option<&'static SchemaManifes
 }
 
 pub fn schema_path_entry(version: OpenRtbVersion, path: &str) -> Option<&'static SchemaPathEntry> {
-    schema_manifest(version).and_then(|manifest| manifest.paths.iter().find(|entry| entry.path == path))
+    schema_manifest(version)
+        .and_then(|manifest| manifest.paths.iter().find(|entry| entry.path == path))
 }
 
 /// Manifests are embedded at compile time, like the canonical object

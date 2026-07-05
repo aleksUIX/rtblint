@@ -1,108 +1,106 @@
 {
+  "kind": "openrtb_canonical_object_catalog",
+  "version": "3.0",
+  "family": "3.0",
+  "release_date": "2022-03",
   "archive_path": ".openrtb-specs/3.0/openrtb-3.0-final.md",
   "canonical_source_file": "source.md",
-  "family": "3.0",
   "helper_source_file": "source.md",
-  "kind": "openrtb_canonical_object_catalog",
+  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
   "objects": [
     {
+      "name": "Openrtb",
+      "section": "Object: Openrtb",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 339,
-        "helper_source_file": "source.md",
         "section": "Object: Openrtb",
-        "start_line": 290
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 290,
+        "end_line": 339
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 306,
-            "helper_source_file": "source.md",
-            "section": "Object: Openrtb",
-            "start_line": 302
-          },
           "name": "ver",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Openrtb",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 302,
+            "end_line": 306
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 311,
-            "helper_source_file": "source.md",
-            "section": "Object: Openrtb",
-            "start_line": 307
-          },
           "name": "domainspec",
-          "type_spec": "string; default “adcom”"
-        },
-        {
+          "type_spec": "string; default “adcom”",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 316,
-            "helper_source_file": "source.md",
             "section": "Object: Openrtb",
-            "start_line": 312
-          },
-          "name": "domainver",
-          "type_spec": "string; required"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 307,
+            "end_line": 311
+          }
         },
         {
+          "name": "domainver",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Openrtb",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 312,
+            "end_line": 316
+          }
+        },
+        {
+          "name": "request",
+          "type_spec": "object; required *",
           "child_object": "Request",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 321,
-            "helper_source_file": "source.md",
             "section": "Object: Openrtb",
-            "start_line": 317
-          },
-          "name": "request",
-          "type_spec": "object; required *"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 317,
+            "end_line": 321
+          }
         },
         {
+          "name": "response",
+          "type_spec": "object; required *",
           "child_object": "Response",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 326,
-            "helper_source_file": "source.md",
             "section": "Object: Openrtb",
-            "start_line": 322
-          },
-          "name": "response",
-          "type_spec": "object; required *"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 322,
+            "end_line": 326
+          }
         }
-      ],
-      "name": "Openrtb",
-      "section": "Object: Openrtb"
+      ]
     },
     {
+      "name": "Request",
+      "section": "Object: Request",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 418,
-        "helper_source_file": "source.md",
         "section": "Object: Request",
-        "start_line": 340
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 340,
+        "end_line": 418
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 354,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 350
-          },
           "name": "id",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 350,
+            "end_line": 354
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 359,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 355
-          },
           "name": "test",
           "type_spec": "integer; default 0",
           "value_set": {
@@ -110,27 +108,27 @@
               0,
               1
             ]
+          },
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 355,
+            "end_line": 359
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 364,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 360
-          },
           "name": "tmax",
-          "type_spec": "integer"
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 360,
+            "end_line": 364
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 369,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 365
-          },
           "name": "at",
           "type_spec": "integer; default 2",
           "value_set": {
@@ -138,38 +136,38 @@
               1,
               2
             ]
+          },
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 365,
+            "end_line": 369
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 374,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 370
-          },
           "name": "cur",
-          "type_spec": "string array; default [“USD”]"
+          "type_spec": "string array; default [“USD”]",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 370,
+            "end_line": 374
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 379,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 375
-          },
           "name": "seat",
-          "type_spec": "string array"
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 375,
+            "end_line": 379
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 384,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 380
-          },
           "name": "wseat",
           "type_spec": "integer; default 1",
           "value_set": {
@@ -177,51 +175,51 @@
               0,
               1
             ]
+          },
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 380,
+            "end_line": 384
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 389,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 385
-          },
           "name": "cdata",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 385,
+            "end_line": 389
+          }
         },
         {
+          "name": "source",
+          "type_spec": "object",
           "child_object": "Source",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 394,
-            "helper_source_file": "source.md",
             "section": "Object: Request",
-            "start_line": 390
-          },
-          "name": "source",
-          "type_spec": "object"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 390,
+            "end_line": 394
+          }
         },
         {
+          "name": "item",
+          "type_spec": "object array; required",
           "child_object": "Item",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 399,
-            "helper_source_file": "source.md",
             "section": "Object: Request",
-            "start_line": 395
-          },
-          "name": "item",
-          "type_spec": "object array; required"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 395,
+            "end_line": 399
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 404,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 400
-          },
           "name": "package",
           "type_spec": "integer",
           "value_set": {
@@ -229,251 +227,251 @@
               0,
               1
             ]
+          },
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 400,
+            "end_line": 404
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 410,
-            "helper_source_file": "source.md",
-            "section": "Object: Request",
-            "start_line": 405
-          },
           "name": "context",
-          "type_spec": "object; recommended"
-        },
-        {
+          "type_spec": "object; recommended",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 415,
-            "helper_source_file": "source.md",
             "section": "Object: Request",
-            "start_line": 411
-          },
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 405,
+            "end_line": 410
+          }
+        },
+        {
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Request",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 411,
+            "end_line": 415
+          }
         }
-      ],
-      "name": "Request",
-      "section": "Object: Request"
+      ]
     },
     {
-      "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 480,
-        "helper_source_file": "source.md",
-        "section": "Object: Source",
-        "start_line": 419
-      },
-      "fields": [
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 435,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 431
-          },
-          "name": "tid",
-          "type_spec": "string; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 440,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 436
-          },
-          "name": "ts",
-          "type_spec": "integer; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 445,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 441
-          },
-          "name": "ds",
-          "type_spec": "string; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 450,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 446
-          },
-          "name": "dsmap",
-          "type_spec": "string"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 455,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 451
-          },
-          "name": "cert",
-          "type_spec": "string; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 461,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 456
-          },
-          "name": "digest",
-          "type_spec": "string"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 466,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 462
-          },
-          "name": "schain",
-          "type_spec": "object; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 472,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 467
-          },
-          "name": "pchain",
-          "type_spec": "string"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 477,
-            "helper_source_file": "source.md",
-            "section": "Object: Source",
-            "start_line": 473
-          },
-          "name": "ext",
-          "type_spec": "object"
-        }
-      ],
       "name": "Source",
-      "section": "Object: Source"
-    },
-    {
+      "section": "Object: Source",
       "citation": {
+        "section": "Object: Source",
         "canonical_source_file": "source.md",
-        "end_line": 564,
         "helper_source_file": "source.md",
-        "section": "Object: Item",
-        "start_line": 481
+        "start_line": 419,
+        "end_line": 480
       },
       "fields": [
         {
+          "name": "tid",
+          "type_spec": "string; recommended",
           "citation": {
+            "section": "Object: Source",
             "canonical_source_file": "source.md",
-            "end_line": 495,
             "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 491
-          },
+            "start_line": 431,
+            "end_line": 435
+          }
+        },
+        {
+          "name": "ts",
+          "type_spec": "integer; recommended",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 436,
+            "end_line": 440
+          }
+        },
+        {
+          "name": "ds",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 441,
+            "end_line": 445
+          }
+        },
+        {
+          "name": "dsmap",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 446,
+            "end_line": 450
+          }
+        },
+        {
+          "name": "cert",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 451,
+            "end_line": 455
+          }
+        },
+        {
+          "name": "digest",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 456,
+            "end_line": 461
+          }
+        },
+        {
+          "name": "schain",
+          "type_spec": "object; recommended",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 462,
+            "end_line": 466
+          }
+        },
+        {
+          "name": "pchain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 467,
+            "end_line": 472
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Source",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 473,
+            "end_line": 477
+          }
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "section": "Object: Item",
+      "citation": {
+        "section": "Object: Item",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 481,
+        "end_line": 564
+      },
+      "fields": [
+        {
           "name": "id",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 491,
+            "end_line": 495
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 500,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 496
-          },
           "name": "qty",
-          "type_spec": "integer; default 1"
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 496,
+            "end_line": 500
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 505,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 501
-          },
           "name": "qtyflt",
-          "type_spec": "float"
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 501,
+            "end_line": 505
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 510,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 506
-          },
           "name": "seq",
-          "type_spec": "integer"
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 506,
+            "end_line": 510
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 515,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 511
-          },
           "name": "flr",
-          "type_spec": "float"
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 511,
+            "end_line": 515
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 520,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 516
-          },
           "name": "flrcur",
-          "type_spec": "string; default “USD”"
+          "type_spec": "string; default “USD”",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 516,
+            "end_line": 520
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 525,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 521
-          },
           "name": "exp",
-          "type_spec": "integer"
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 521,
+            "end_line": 525
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 530,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 526
-          },
           "name": "dt",
-          "type_spec": "integer"
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 526,
+            "end_line": 530
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 535,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 531
-          },
           "name": "dlvy",
           "type_spec": "integer; default 0",
           "value_set": {
@@ -482,40 +480,40 @@
               1,
               2
             ]
+          },
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 531,
+            "end_line": 535
           }
         },
         {
+          "name": "metric",
+          "type_spec": "object array",
           "child_object": "Metric",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 540,
-            "helper_source_file": "source.md",
             "section": "Object: Item",
-            "start_line": 536
-          },
-          "name": "metric",
-          "type_spec": "object array"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 536,
+            "end_line": 540
+          }
         },
         {
+          "name": "deal",
+          "type_spec": "object array",
           "child_object": "Deal",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 545,
-            "helper_source_file": "source.md",
             "section": "Object: Item",
-            "start_line": 541
-          },
-          "name": "deal",
-          "type_spec": "object array"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 541,
+            "end_line": 545
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 550,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 546
-          },
           "name": "private",
           "type_spec": "integer; default 0",
           "value_set": {
@@ -523,84 +521,84 @@
               0,
               1
             ]
+          },
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 546,
+            "end_line": 550
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 556,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 551
-          },
           "name": "spec",
-          "type_spec": "object; required"
+          "type_spec": "object; required",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 551,
+            "end_line": 556
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 561,
-            "helper_source_file": "source.md",
-            "section": "Object: Item",
-            "start_line": 557
-          },
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Item",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 557,
+            "end_line": 561
+          }
         }
-      ],
-      "name": "Item",
-      "section": "Object: Item"
+      ]
     },
     {
+      "name": "Deal",
+      "section": "Object: Deal",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 612,
-        "helper_source_file": "source.md",
         "section": "Object: Deal",
-        "start_line": 565
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 565,
+        "end_line": 612
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 579,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 575
-          },
           "name": "id",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 575,
+            "end_line": 579
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 584,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 580
-          },
           "name": "flr",
-          "type_spec": "float"
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 580,
+            "end_line": 584
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 589,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 585
-          },
           "name": "flrcur",
-          "type_spec": "string; default \"USD\""
+          "type_spec": "string; default \"USD\"",
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 585,
+            "end_line": 589
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 594,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 590
-          },
           "name": "at",
           "type_spec": "integer",
           "value_set": {
@@ -609,221 +607,222 @@
               2,
               3
             ]
+          },
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 590,
+            "end_line": 594
           }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 599,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 595
-          },
           "name": "wseat",
-          "type_spec": "string array"
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 595,
+            "end_line": 599
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 604,
-            "helper_source_file": "source.md",
-            "section": "Object: Deal",
-            "start_line": 600
-          },
           "name": "wadomain",
-          "type_spec": "string array"
-        },
-        {
+          "type_spec": "string array",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 609,
-            "helper_source_file": "source.md",
             "section": "Object: Deal",
-            "start_line": 605
-          },
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 600,
+            "end_line": 604
+          }
+        },
+        {
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Deal",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 605,
+            "end_line": 609
+          }
         }
-      ],
-      "name": "Deal",
-      "section": "Object: Deal"
+      ]
     },
     {
-      "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 651,
-        "helper_source_file": "source.md",
-        "section": "Object: Metric",
-        "start_line": 613
-      },
-      "fields": [
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 627,
-            "helper_source_file": "source.md",
-            "section": "Object: Metric",
-            "start_line": 623
-          },
-          "name": "type",
-          "type_spec": "string; required"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 632,
-            "helper_source_file": "source.md",
-            "section": "Object: Metric",
-            "start_line": 628
-          },
-          "name": "value",
-          "type_spec": "float; required"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 637,
-            "helper_source_file": "source.md",
-            "section": "Object: Metric",
-            "start_line": 633
-          },
-          "name": "vendor",
-          "type_spec": "string; recommended"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 642,
-            "helper_source_file": "source.md",
-            "section": "Object: Metric",
-            "start_line": 638
-          },
-          "name": "ext",
-          "type_spec": "object"
-        }
-      ],
       "name": "Metric",
-      "section": "Object: Metric"
-    },
-    {
+      "section": "Object: Metric",
       "citation": {
+        "section": "Object: Metric",
         "canonical_source_file": "source.md",
-        "end_line": 701,
         "helper_source_file": "source.md",
-        "section": "Object: Response",
-        "start_line": 652
+        "start_line": 613,
+        "end_line": 651
       },
       "fields": [
         {
+          "name": "type",
+          "type_spec": "string; required",
           "citation": {
+            "section": "Object: Metric",
             "canonical_source_file": "source.md",
-            "end_line": 668,
             "helper_source_file": "source.md",
-            "section": "Object: Response",
-            "start_line": 664
-          },
+            "start_line": 623,
+            "end_line": 627
+          }
+        },
+        {
+          "name": "value",
+          "type_spec": "float; required",
+          "citation": {
+            "section": "Object: Metric",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 628,
+            "end_line": 632
+          }
+        },
+        {
+          "name": "vendor",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: Metric",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 633,
+            "end_line": 637
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Metric",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 638,
+            "end_line": 642
+          }
+        }
+      ]
+    },
+    {
+      "name": "Response",
+      "section": "Object: Response",
+      "citation": {
+        "section": "Object: Response",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 652,
+        "end_line": 701
+      },
+      "fields": [
+        {
           "name": "id",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Response",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 664,
+            "end_line": 668
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 673,
-            "helper_source_file": "source.md",
-            "section": "Object: Response",
-            "start_line": 669
-          },
           "name": "bidid",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Response",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 669,
+            "end_line": 673
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 678,
-            "helper_source_file": "source.md",
-            "section": "Object: Response",
-            "start_line": 674
-          },
           "name": "nbr",
-          "type_spec": "integer"
+          "type_spec": "integer",
+          "adcom_list": "List: No-Bid Reason Codes",
+          "citation": {
+            "section": "Object: Response",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 674,
+            "end_line": 678
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 683,
-            "helper_source_file": "source.md",
-            "section": "Object: Response",
-            "start_line": 679
-          },
           "name": "cur",
-          "type_spec": "string; default “USD”"
-        },
-        {
+          "type_spec": "string; default “USD”",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 688,
-            "helper_source_file": "source.md",
             "section": "Object: Response",
-            "start_line": 684
-          },
-          "name": "cdata",
-          "type_spec": "string"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 679,
+            "end_line": 683
+          }
         },
         {
+          "name": "cdata",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Response",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 684,
+            "end_line": 688
+          }
+        },
+        {
+          "name": "seatbid",
+          "type_spec": "object array",
           "child_object": "Seatbid",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 693,
-            "helper_source_file": "source.md",
             "section": "Object: Response",
-            "start_line": 689
-          },
-          "name": "seatbid",
-          "type_spec": "object array"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 689,
+            "end_line": 693
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 698,
-            "helper_source_file": "source.md",
-            "section": "Object: Response",
-            "start_line": 694
-          },
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Response",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 694,
+            "end_line": 698
+          }
         }
-      ],
-      "name": "Response",
-      "section": "Object: Response"
+      ]
     },
     {
+      "name": "Seatbid",
+      "section": "Object: Seatbid",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 734,
-        "helper_source_file": "source.md",
         "section": "Object: Seatbid",
-        "start_line": 702
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 702,
+        "end_line": 734
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 716,
-            "helper_source_file": "source.md",
-            "section": "Object: Seatbid",
-            "start_line": 712
-          },
           "name": "seat",
-          "type_spec": "string, recommended"
+          "type_spec": "string, recommended",
+          "citation": {
+            "section": "Object: Seatbid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 712,
+            "end_line": 716
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 721,
-            "helper_source_file": "source.md",
-            "section": "Object: Seatbid",
-            "start_line": 717
-          },
           "name": "package",
           "type_spec": "integer; default 0",
           "value_set": {
@@ -831,251 +830,253 @@
               0,
               1
             ]
+          },
+          "citation": {
+            "section": "Object: Seatbid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 717,
+            "end_line": 721
           }
         },
         {
+          "name": "bid",
+          "type_spec": "object array; required",
           "child_object": "Bid",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 726,
-            "helper_source_file": "source.md",
             "section": "Object: Seatbid",
-            "start_line": 722
-          },
-          "name": "bid",
-          "type_spec": "object array; required"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 722,
+            "end_line": 726
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 731,
-            "helper_source_file": "source.md",
-            "section": "Object: Seatbid",
-            "start_line": 727
-          },
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Seatbid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 727,
+            "end_line": 731
+          }
         }
-      ],
-      "name": "Seatbid",
-      "section": "Object: Seatbid"
+      ]
     },
     {
+      "name": "Bid",
+      "section": "Object: Bid",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 818,
-        "helper_source_file": "source.md",
         "section": "Object: Bid",
-        "start_line": 735
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 735,
+        "end_line": 818
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 749,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 745
-          },
           "name": "id",
-          "type_spec": "string; recommended"
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 745,
+            "end_line": 749
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 754,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 750
-          },
           "name": "item",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 750,
+            "end_line": 754
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 759,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 755
-          },
           "name": "price",
-          "type_spec": "float; required"
+          "type_spec": "float; required",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 755,
+            "end_line": 759
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 764,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 760
-          },
           "name": "deal",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 760,
+            "end_line": 764
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 769,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 765
-          },
           "name": "cid",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 765,
+            "end_line": 769
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 774,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 770
-          },
           "name": "tactic",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 770,
+            "end_line": 774
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 779,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 775
-          },
           "name": "purl",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 775,
+            "end_line": 779
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 784,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 780
-          },
           "name": "burl",
-          "type_spec": "string; recommended"
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 780,
+            "end_line": 784
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 789,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 785
-          },
           "name": "lurl",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 785,
+            "end_line": 789
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 794,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 790
-          },
           "name": "exp",
-          "type_spec": "integer"
-        },
-        {
+          "type_spec": "integer",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 799,
-            "helper_source_file": "source.md",
             "section": "Object: Bid",
-            "start_line": 795
-          },
-          "name": "mid",
-          "type_spec": "string"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 790,
+            "end_line": 794
+          }
         },
         {
+          "name": "mid",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 795,
+            "end_line": 799
+          }
+        },
+        {
+          "name": "macro",
+          "type_spec": "object array",
           "child_object": "Macro",
           "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 804,
-            "helper_source_file": "source.md",
             "section": "Object: Bid",
-            "start_line": 800
-          },
-          "name": "macro",
-          "type_spec": "object array"
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 800,
+            "end_line": 804
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 810,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 805
-          },
           "name": "media",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 805,
+            "end_line": 810
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 815,
-            "helper_source_file": "source.md",
-            "section": "Object: Bid",
-            "start_line": 811
-          },
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Bid",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 811,
+            "end_line": 815
+          }
         }
-      ],
-      "name": "Bid",
-      "section": "Object: Bid"
+      ]
     },
     {
+      "name": "Macro",
+      "section": "Object: Macro",
       "citation": {
-        "canonical_source_file": "source.md",
-        "end_line": 1461,
-        "helper_source_file": "source.md",
         "section": "Object: Macro",
-        "start_line": 819
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 819,
+        "end_line": 1461
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 833,
-            "helper_source_file": "source.md",
-            "section": "Object: Macro",
-            "start_line": 829
-          },
           "name": "key",
-          "type_spec": "string; required"
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Macro",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 829,
+            "end_line": 833
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 838,
-            "helper_source_file": "source.md",
-            "section": "Object: Macro",
-            "start_line": 834
-          },
           "name": "value",
-          "type_spec": "string"
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Macro",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 834,
+            "end_line": 838
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.md",
-            "end_line": 843,
-            "helper_source_file": "source.md",
-            "section": "Object: Macro",
-            "start_line": 839
-          },
           "name": "ext",
-          "type_spec": "object"
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Macro",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 839,
+            "end_line": 843
+          }
         }
-      ],
-      "name": "Macro",
-      "section": "Object: Macro"
+      ]
     }
-  ],
-  "release_date": "2022-03",
-  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
-  "version": "3.0"
+  ]
 }

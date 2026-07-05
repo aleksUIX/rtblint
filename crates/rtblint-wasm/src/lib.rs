@@ -84,13 +84,13 @@ pub fn validate(input: &str) -> Result<JsValue, JsValue> {
 }
 
 /// Validate an OpenRTB bid request payload against a specific tracked version id
-/// (for example "2.6-202505"). Unknown ids fall back to the latest 2.6 snapshot.
+/// (for example "2.6-202606"). Unknown ids fall back to the latest 2.6 snapshot.
 #[wasm_bindgen]
 pub fn validate_version(version_id: &str, input: &str) -> Result<JsValue, JsValue> {
     let version = OpenRtbVersion::ALL
         .into_iter()
         .find(|candidate| candidate.id() == version_id)
-        .unwrap_or(OpenRtbVersion::V2_6_202505);
+        .unwrap_or(OpenRtbVersion::V2_6_202606);
     to_js(&validate_bid_request_for_version(version, input))
 }
 
@@ -100,19 +100,19 @@ pub fn validate_version(version_id: &str, input: &str) -> Result<JsValue, JsValu
 #[wasm_bindgen]
 pub fn validate_response(input: &str) -> Result<JsValue, JsValue> {
     to_js(&validate_bid_response_for_version(
-        OpenRtbVersion::V2_6_202505,
+        OpenRtbVersion::V2_6_202606,
         input,
     ))
 }
 
 /// Validate an OpenRTB bid response payload against a specific tracked version id
-/// (for example "2.6-202505"). Unknown ids fall back to the latest 2.6 snapshot.
+/// (for example "2.6-202606"). Unknown ids fall back to the latest 2.6 snapshot.
 #[wasm_bindgen]
 pub fn validate_response_version(version_id: &str, input: &str) -> Result<JsValue, JsValue> {
     let version = OpenRtbVersion::ALL
         .into_iter()
         .find(|candidate| candidate.id() == version_id)
-        .unwrap_or(OpenRtbVersion::V2_6_202505);
+        .unwrap_or(OpenRtbVersion::V2_6_202606);
     to_js(&validate_bid_response_for_version(version, input))
 }
 

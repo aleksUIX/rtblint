@@ -13,7 +13,7 @@ use rtblint_core::{
     validate_bid_request_for_version, validate_bid_response_for_version, OpenRtbVersion,
 };
 
-const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202505;
+const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
 const PROTOCOL_VERSION: &str = "2024-11-05";
 
 fn main() {
@@ -197,7 +197,10 @@ fn tool_result_text(text: &str, is_error: bool) -> Value {
 }
 
 fn version_ids() -> Vec<&'static str> {
-    OpenRtbVersion::all().iter().map(|version| version.id()).collect()
+    OpenRtbVersion::all()
+        .iter()
+        .map(|version| version.id())
+        .collect()
 }
 
 fn success_response(id: Value, result: Value) -> Value {

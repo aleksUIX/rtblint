@@ -124,7 +124,20 @@ fn validate_known_object(
         return;
     };
 
-    for field in definition.fields.iter().filter(|field| is_required(field.type_spec.as_str())) {
+    // Objects whose field tables could not be extracted from the archived
+    // spec (some legacy PDF snapshots) carry no field list; flagging every
+    // payload field as undefined would be a false positive, so field-level
+    // checks are skipped and only object semantics run.
+    if definition.fields.is_empty() {
+        validate_object_semantics(object_name, object, &instance_path, issues);
+        return;
+    }
+
+    for field in definition
+        .fields
+        .iter()
+        .filter(|field| is_required(field.type_spec.as_str()))
+    {
         if !object.contains_key(&field.name) {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
@@ -145,12 +158,23 @@ fn validate_known_object(
         let field_instance_path = join_instance_path(&instance_path, field_name);
 
         if field_name == "ext" {
-            validate_extension_value(version, kind, value, logical_segments, field_instance_path, issues);
+            validate_extension_value(
+                version,
+                kind,
+                value,
+                logical_segments,
+                field_instance_path,
+                issues,
+            );
             logical_segments.pop();
             continue;
         }
 
-        let Some(field_definition) = definition.fields.iter().find(|field| field.name == *field_name) else {
+        let Some(field_definition) = definition
+            .fields
+            .iter()
+            .find(|field| field.name == *field_name)
+        else {
             issues.push(Issue {
                 id: String::from("openrtb.field.undefined"),
                 severity: String::from("error"),
@@ -166,13 +190,32 @@ fn validate_known_object(
             continue;
         };
 
-        push_path_status_issues(version, kind, logical_segments, &field_instance_path, field_definition.type_spec.as_str(), issues);
-        validate_field_value_shape(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
-        validate_required_array_contents(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
+        push_path_status_issues(
+            version,
+            kind,
+            logical_segments,
+            &field_instance_path,
+            field_definition.type_spec.as_str(),
+            issues,
+        );
+        validate_field_value_shape(
+            field_definition.type_spec.as_str(),
+            value,
+            &field_instance_path,
+            issues,
+        );
+        validate_required_array_contents(
+            field_definition.type_spec.as_str(),
+            value,
+            &field_instance_path,
+            issues,
+        );
         validate_catalog_value_set(field_definition, value, &field_instance_path, issues);
 
-        if matches!(expected_shape(field_definition.type_spec.as_str()), ExpectedShape::Object)
-            && value.is_object()
+        if matches!(
+            expected_shape(field_definition.type_spec.as_str()),
+            ExpectedShape::Object
+        ) && value.is_object()
         {
             if let Some(child_object_name) = field_definition.child_object.as_deref() {
                 validate_known_object(
@@ -187,11 +230,18 @@ fn validate_known_object(
             }
         }
 
-        if matches!(expected_shape(field_definition.type_spec.as_str()), ExpectedShape::ObjectArray)
-            && value.is_array()
+        if matches!(
+            expected_shape(field_definition.type_spec.as_str()),
+            ExpectedShape::ObjectArray
+        ) && value.is_array()
         {
             if let Some(child_object_name) = field_definition.child_object.as_deref() {
-                for (index, item) in value.as_array().expect("checked array shape").iter().enumerate() {
+                for (index, item) in value
+                    .as_array()
+                    .expect("checked array shape")
+                    .iter()
+                    .enumerate()
+                {
                     if let Some(item_object) = item.as_object() {
                         validate_known_object(
                             version,
@@ -226,8 +276,22 @@ fn validate_extension_value(
             for (field_name, child) in map {
                 logical_segments.push(field_name.clone());
                 let child_instance_path = join_instance_path(&instance_path, field_name);
-                push_path_status_issues(version, kind, logical_segments, &child_instance_path, "", issues);
-                validate_extension_value(version, kind, child, logical_segments, child_instance_path, issues);
+                push_path_status_issues(
+                    version,
+                    kind,
+                    logical_segments,
+                    &child_instance_path,
+                    "",
+                    issues,
+                );
+                validate_extension_value(
+                    version,
+                    kind,
+                    child,
+                    logical_segments,
+                    child_instance_path,
+                    issues,
+                );
                 logical_segments.pop();
             }
         }
@@ -253,7 +317,16 @@ fn validate_required_array_contents(
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    if is_required(type_spec) && matches!(expected_shape(type_spec), ExpectedShape::ObjectArray | ExpectedShape::StringArray | ExpectedShape::IntegerArray | ExpectedShape::FloatArray | ExpectedShape::AnyArray) {
+    if is_required(type_spec)
+        && matches!(
+            expected_shape(type_spec),
+            ExpectedShape::ObjectArray
+                | ExpectedShape::StringArray
+                | ExpectedShape::IntegerArray
+                | ExpectedShape::FloatArray
+                | ExpectedShape::AnyArray
+        )
+    {
         if let Some(values) = value.as_array() {
             if values.is_empty() {
                 issues.push(Issue {
@@ -435,7 +508,11 @@ fn validate_bid_response_semantics(
     }
 }
 
-fn validate_imp_semantics(object: &Map<String, Value>, instance_path: &str, issues: &mut Vec<Issue>) {
+fn validate_imp_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
     let has_media_type = ["banner", "video", "audio", "native"]
         .into_iter()
         .any(|field| object.contains_key(field));
@@ -516,9 +593,11 @@ fn push_mutually_exclusive_issue(
 }
 
 fn integer_value(value: &Value) -> Option<i64> {
-    value
-        .as_i64()
-        .or_else(|| value.as_u64().and_then(|integer| i64::try_from(integer).ok()))
+    value.as_i64().or_else(|| {
+        value
+            .as_u64()
+            .and_then(|integer| i64::try_from(integer).ok())
+    })
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -558,19 +637,34 @@ impl IntegerValueSet {
     }
 }
 
-fn validate_field_value_shape(type_spec: &str, value: &Value, instance_path: &str, issues: &mut Vec<Issue>) {
+fn validate_field_value_shape(
+    type_spec: &str,
+    value: &Value,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
     let valid = match expected_shape(type_spec) {
         ExpectedShape::Unknown => true,
         ExpectedShape::Object => value.is_object(),
-        ExpectedShape::ObjectArray => value.as_array().is_some_and(|items| items.iter().all(Value::is_object)),
+        ExpectedShape::ObjectArray => value
+            .as_array()
+            .is_some_and(|items| items.iter().all(Value::is_object)),
         ExpectedShape::String => value.is_string(),
-        ExpectedShape::StringArray => value.as_array().is_some_and(|items| items.iter().all(Value::is_string)),
+        ExpectedShape::StringArray => value
+            .as_array()
+            .is_some_and(|items| items.iter().all(Value::is_string)),
         ExpectedShape::Integer => value.is_i64() || value.is_u64(),
-        ExpectedShape::IntegerArray => value.as_array().is_some_and(|items| items.iter().all(|item| item.is_i64() || item.is_u64())),
+        ExpectedShape::IntegerArray => value
+            .as_array()
+            .is_some_and(|items| items.iter().all(|item| item.is_i64() || item.is_u64())),
         ExpectedShape::Float => value.is_number(),
-        ExpectedShape::FloatArray => value.as_array().is_some_and(|items| items.iter().all(Value::is_number)),
+        ExpectedShape::FloatArray => value
+            .as_array()
+            .is_some_and(|items| items.iter().all(Value::is_number)),
         ExpectedShape::Boolean => value.is_boolean(),
-        ExpectedShape::BooleanArray => value.as_array().is_some_and(|items| items.iter().all(Value::is_boolean)),
+        ExpectedShape::BooleanArray => value
+            .as_array()
+            .is_some_and(|items| items.iter().all(Value::is_boolean)),
         ExpectedShape::AnyArray => value.is_array(),
     };
 
@@ -606,17 +700,17 @@ fn push_path_status_issues(
         PathStateKind::Deprecated => issues.push(Issue {
             id: String::from("openrtb.field.deprecated"),
             severity: String::from("warning"),
-            message: format!(
-                "{} is deprecated in OpenRTB {}.",
-                schema_path,
-                version.id()
-            ),
+            message: format!("{} is deprecated in OpenRTB {}.", schema_path, version.id()),
             path: Some(String::from(instance_path)),
         }),
         PathStateKind::Removed => issues.push(Issue {
             id: String::from("openrtb.field.removed"),
             severity: String::from("error"),
-            message: format!("{} was removed before OpenRTB {}.", schema_path, version.id()),
+            message: format!(
+                "{} was removed before OpenRTB {}.",
+                schema_path,
+                version.id()
+            ),
             path: Some(String::from(instance_path)),
         }),
         PathStateKind::Moved => {
@@ -652,7 +746,10 @@ fn push_path_status_issues(
                 issues.push(Issue {
                     id: String::from("openrtb.field.deprecated"),
                     severity: String::from("warning"),
-                    message: format!("{} is marked deprecated in the canonical catalog.", schema_path),
+                    message: format!(
+                        "{} is marked deprecated in the canonical catalog.",
+                        schema_path
+                    ),
                     path: Some(String::from(instance_path)),
                 });
             }
@@ -666,7 +763,11 @@ fn schema_path(kind: PayloadKind, logical_segments: &[String]) -> Option<String>
     }
 
     if logical_segments.len() == 1 {
-        return Some(format!("{}.{}", kind.root_path_prefix(), logical_segments[0]));
+        return Some(format!(
+            "{}.{}",
+            kind.root_path_prefix(),
+            logical_segments[0]
+        ));
     }
 
     Some(logical_segments.join("."))

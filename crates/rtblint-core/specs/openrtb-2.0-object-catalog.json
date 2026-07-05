@@ -1,821 +1,821 @@
 {
+  "kind": "openrtb_canonical_object_catalog",
+  "version": "2.0",
+  "family": "2.x",
+  "release_date": "2012-01",
   "archive_path": ".openrtb-specs/2.x/openrtb-2.0-final.pdf",
   "canonical_source_file": "source.pdf",
-  "family": "2.x",
   "helper_source_file": "source-layout.txt",
-  "kind": "openrtb_canonical_object_catalog",
+  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
   "objects": [
     {
+      "name": "BidRequest",
+      "section": "3.3.1",
       "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 689,
-        "helper_source_file": "source-layout.txt",
         "section": "3.3.1",
-        "start_line": 587
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 587,
+        "end_line": 689
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 597,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 596
-          },
           "name": "id",
-          "type_spec": "scope: required; type: string"
+          "type_spec": "scope: required; type: string",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 596,
+            "end_line": 597
+          }
         },
         {
+          "name": "imp",
+          "type_spec": "scope: required; type: array of objects",
           "child_object": "Imp",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 602,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.1",
-            "start_line": 598
-          },
-          "name": "imp",
-          "type_spec": "scope: required; type: array of objects"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 598,
+            "end_line": 602
+          }
         },
         {
+          "name": "site",
+          "type_spec": "scope: recommended for websites; type: object",
           "child_object": "Site",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 604,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.1",
-            "start_line": 603
-          },
-          "name": "site",
-          "type_spec": "scope: recommended for websites; type: object"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 603,
+            "end_line": 604
+          }
         },
         {
+          "name": "app",
+          "type_spec": "scope: recommended for native apps; type: object",
           "child_object": "App",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 606,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.1",
-            "start_line": 605
-          },
-          "name": "app",
-          "type_spec": "scope: recommended for native apps; type: object"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 605,
+            "end_line": 606
+          }
         },
         {
+          "name": "device",
+          "type_spec": "scope: recommended; type: object",
           "child_object": "Device",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 607,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.1",
-            "start_line": 607
-          },
-          "name": "device",
-          "type_spec": "scope: recommended; type: object"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 607,
+            "end_line": 607
+          }
         },
         {
+          "name": "user",
+          "type_spec": "scope: recommended; type: object",
           "child_object": "User",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 609,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.1",
-            "start_line": 609
-          },
-          "name": "user",
-          "type_spec": "scope: recommended; type: object"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 609,
+            "end_line": 609
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 622,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 611
-          },
           "name": "at",
-          "type_spec": "scope: optional; type: int n; default: 2 umbered over"
+          "type_spec": "scope: optional; type: int n; default: 2 umbered over",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 611,
+            "end_line": 622
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 632,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 625
-          },
           "name": "tmax",
-          "type_spec": "scope: optional; type: integer m 1 t a n e s; default: - illiseconds 20 means the o submit a b uction is co ever changes xchange, the upply this i"
+          "type_spec": "scope: optional; type: integer m 1 t a n e s; default: - illiseconds 20 means the o submit a b uction is co ever changes xchange, the upply this i",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 625,
+            "end_line": 632
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 641,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 633
-          },
           "name": "wseat",
-          "type_spec": "scope: optional str; type: array of ing b o F * t e b a; default: - id on this a ptional feat or example, “4”,”34”,”82 hat only adv xchange seat id on the im uction."
+          "type_spec": "scope: optional str; type: array of ing b o F * t e b a; default: - id on this a ptional feat or example, “4”,”34”,”82 hat only adv xchange seat id on the im uction.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 633,
+            "end_line": 641
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 658,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 642
-          },
           "name": "allimps",
-          "type_spec": "scope: optional; type: integer E i o c a i [ t v e i p e m r a; default: 0 xchange can mpressions o f the impres ontext (e.g. vailable on mpressions a pre,mid and o support ro alue should xchange is a mpressions i ublisher. “0 xchange cann eans that al epresent all vailable."
+          "type_spec": "scope: optional; type: integer E i o c a i [ t v e i p e m r a; default: 0 xchange can mpressions o f the impres ontext (e.g. vailable on mpressions a pre,mid and o support ro alue should xchange is a mpressions i ublisher. “0 xchange cann eans that al epresent all vailable.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 642,
+            "end_line": 658
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 664,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 659
-          },
           "name": "cur",
-          "type_spec": "scope: optional str; type: Array of ing b I o e r; default: Array of allowed currencies for ids on this SO-4217 alph nly one curr xchange, thi equired."
+          "type_spec": "scope: optional str; type: Array of ing b I o e r; default: Array of allowed currencies for ids on this SO-4217 alph nly one curr xchange, thi equired.",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 659,
+            "end_line": 664
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 677,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 665
-          },
           "name": "bcat",
-          "type_spec": "scope: optional; type: Array of N String; default: - ote that the"
+          "type_spec": "scope: optional; type: Array of N String; default: - ote that the",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 665,
+            "end_line": 677
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 681,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 678
-          },
           "name": "badv",
-          "type_spec": "scope: optional; type: Array of String"
+          "type_spec": "scope: optional; type: Array of String",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 678,
+            "end_line": 681
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 687,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.1",
-            "start_line": 682
-          },
           "name": "ext",
-          "type_spec": "scope: optional; type: object"
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 682,
+            "end_line": 687
+          }
         }
-      ],
-      "name": "BidRequest",
-      "section": "3.3.1"
+      ]
     },
     {
+      "name": "Imp",
+      "section": "3.3.2",
       "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 777,
-        "helper_source_file": "source-layout.txt",
         "section": "3.3.2",
-        "start_line": 690
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 690,
+        "end_line": 777
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 706,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 701
-          },
           "name": "id",
-          "type_spec": "scope: required; type: string"
+          "type_spec": "scope: required; type: string",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 701,
+            "end_line": 706
+          }
         },
         {
+          "name": "banner",
+          "type_spec": "scope: required for banner impressions; type: object",
           "child_object": "Banner",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 713,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.2",
-            "start_line": 707
-          },
-          "name": "banner",
-          "type_spec": "scope: required for banner impressions; type: object"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 707,
+            "end_line": 713
+          }
         },
         {
+          "name": "video",
+          "type_spec": "scope: required for ideo mpressions; type: object; default: - Either a (or both be either an impres objects m See Video",
           "child_object": "Video",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 727,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.2",
-            "start_line": 721
-          },
-          "name": "video",
-          "type_spec": "scope: required for ideo mpressions; type: object; default: - Either a (or both be either an impres objects m See Video"
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 721,
+            "end_line": 727
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 734,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 728
-          },
           "name": "displaymanager",
-          "type_spec": "scope: recommended or video and ative apps; type: string; default: - SDK techn player re rendering mobile). servers t by partne"
+          "type_spec": "scope: recommended or video and ative apps; type: string; default: - SDK techn player re rendering mobile). servers t by partne",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 728,
+            "end_line": 734
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 741,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 735
-          },
           "name": "displaymanagerver",
-          "type_spec": "scope: recommended or video and ative apps; type: string; default: - partner, native pl rendering mobile). servers t by partne"
+          "type_spec": "scope: recommended or video and ative apps; type: string; default: - partner, native pl rendering mobile). servers t by partne",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 735,
+            "end_line": 741
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 743,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 742
-          },
           "name": "instl",
-          "type_spec": "scope: optional; type: integer; default: 0 screen; e"
+          "type_spec": "scope: optional; type: integer; default: 0 screen; e",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 742,
+            "end_line": 743
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 749,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 744
-          },
           "name": "tagid",
-          "type_spec": "scope: optional; type: string; default: Identifier for specific ad placement used to i This can debugging optimizat"
+          "type_spec": "scope: optional; type: string; default: Identifier for specific ad placement used to i This can debugging optimizat",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 744,
+            "end_line": 749
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 751,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 750
-          },
           "name": "bidfloor",
-          "type_spec": "scope: optional; type: float; default: 0 CPM of bi"
+          "type_spec": "scope: optional; type: float; default: 0 CPM of bi",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 750,
+            "end_line": 751
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 760,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 752
-          },
           "name": "bidfloorcur",
-          "type_spec": "scope: optional; type: string; default: USD multiple per bid r should be ISO-4217 Note, thi from bid bidder, i exchange."
+          "type_spec": "scope: optional; type: string; default: USD multiple per bid r should be ISO-4217 Note, thi from bid bidder, i exchange.",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 752,
+            "end_line": 760
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 763,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.2",
-            "start_line": 761
-          },
           "name": "iframebuster",
-          "type_spec": "scope: optional of strin; type: array g; default: None iframe bu specific."
-        },
-        {
+          "type_spec": "scope: optional of strin; type: array g; default: None iframe bu specific.",
           "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 775,
-            "helper_source_file": "source-layout.txt",
             "section": "3.3.2",
-            "start_line": 769
-          },
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 761,
+            "end_line": 763
+          }
+        },
+        {
           "name": "ext",
-          "type_spec": "scope: optional; type: object"
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 769,
+            "end_line": 775
+          }
         }
-      ],
-      "name": "Imp",
-      "section": "3.3.2"
+      ]
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 844,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.3",
-        "start_line": 778
-      },
-      "fields": [
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 798,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 792
-          },
-          "name": "w",
-          "type_spec": "scope: recommended; type: integer"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 805,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 799
-          },
-          "name": "h",
-          "type_spec": "scope: recommended; type: integer"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 812,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 806
-          },
-          "name": "id",
-          "type_spec": "scope: recommended when subordinate to a video object; type: string"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 818,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 818
-          },
-          "name": "pos",
-          "type_spec": "scope: optional; type: integer"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 821,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 819
-          },
-          "name": "btype",
-          "type_spec": "scope: optional i; type: array of nteger; default: All types are 6 allowed a"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 824,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 822
-          },
-          "name": "battr",
-          "type_spec": "scope: optional i; type: array of nteger; default: All types are T allowed b"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 829,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 825
-          },
-          "name": "mimes",
-          "type_spec": "scope: optional s; type: array of tring; default: All types are s allowed i “ “"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 833,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 830
-          },
-          "name": "topframe",
-          "type_spec": "scope: optional; type: integer; default: 0 t m a"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 837,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 834
-          },
-          "name": "expdir",
-          "type_spec": "scope: optional i; type: array of nteger; default: Not expandable exp Exp val"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 842,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.3",
-            "start_line": 838
-          },
-          "name": "api",
-          "type_spec": "scope: optional i; type: Array of nteger; default: None f F e b"
-        }
-      ],
       "name": "Banner",
-      "section": "3.3.3"
-    },
-    {
+      "section": "3.3.3",
       "citation": {
+        "section": "3.3.3",
         "canonical_source_file": "source.pdf",
-        "end_line": 961,
         "helper_source_file": "source-layout.txt",
-        "section": "3.3.4",
-        "start_line": 845
+        "start_line": 778,
+        "end_line": 844
       },
       "fields": [
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 865,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 857
-          },
-          "name": "mimes",
-          "type_spec": "scope: required; type: array of string; default: - wmv” “vide"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 869,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 866
-          },
-          "name": "linearity",
-          "type_spec": "scope: required; type: integer; default: - impre See T a lis"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 871,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 870
-          },
-          "name": "minduration",
-          "type_spec": "scope: required; type: integer; default: - secon"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 873,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 872
-          },
-          "name": "maxduration",
-          "type_spec": "scope: required; type: integer; default: - secon"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 877,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 874
-          },
-          "name": "protocol",
-          "type_spec": "scope: required; type: integer; default: - See T Proto value"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 881,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 878
-          },
           "name": "w",
-          "type_spec": "scope: recommended; type: integer; default: - field highl infor"
+          "type_spec": "scope: recommended; type: integer",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 792,
+            "end_line": 798
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 885,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 882
-          },
           "name": "h",
-          "type_spec": "scope: recommended; type: integer; default: - field highl infor"
+          "type_spec": "scope: recommended; type: integer",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 799,
+            "end_line": 805
+          }
         },
         {
+          "name": "id",
+          "type_spec": "scope: recommended when subordinate to a video object; type: string",
           "citation": {
+            "section": "3.3.3",
             "canonical_source_file": "source.pdf",
-            "end_line": 890,
             "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 886
-          },
-          "name": "startdelay",
-          "type_spec": "scope: recommended; type: integer; default: - secon postr 6.9 V place"
+            "start_line": 806,
+            "end_line": 812
+          }
         },
         {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 895,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 891
-          },
-          "name": "sequence",
-          "type_spec": "scope: optional; type: integer; default: 1 offer the s for t multi"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 899,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 896
-          },
-          "name": "battr",
-          "type_spec": "scope: optional in; type: array of teger all a allo; default: Assume types Table re blank wed allow"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 914,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 900
-          },
-          "name": "maxextended",
-          "type_spec": "scope: optional; type: integer all; default: Extension not durat owed If bl allow allow limit then numbe play maxdu"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 918,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 915
-          },
-          "name": "minbitrate",
-          "type_spec": "scope: optional; type: integer bit acce; default: Any rate Excha pted dynam their"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 922,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 919
-          },
-          "name": "maxbitrate",
-          "type_spec": "scope: optional; type: integer bit acce; default: Any rate Excha pted dynam their"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 932,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 923
-          },
-          "name": "boxingallowed",
-          "type_spec": "scope: optional; type: integer; default: 1 preve conte windo to fa which conte allow allow allow"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 937,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 933
-          },
-          "name": "playbackmethod",
-          "type_spec": "scope: optional in; type: array of teger; default: All If bl allow Playb possi"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 943,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 938
-          },
-          "name": "delivery",
-          "type_spec": "scope: optional in; type: array of teger; default: All metho progr are s Conte list"
-        },
-        {
-          "citation": {
-            "canonical_source_file": "source.pdf",
-            "end_line": 944,
-            "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 944
-          },
           "name": "pos",
-          "type_spec": "scope: optional; type: integer; default: Unknown"
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 818,
+            "end_line": 818
+          }
         },
         {
+          "name": "btype",
+          "type_spec": "scope: optional i; type: array of nteger; default: All types are 6 allowed a",
           "citation": {
+            "section": "3.3.3",
             "canonical_source_file": "source.pdf",
-            "end_line": 948,
             "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 945
-          },
-          "name": "companionad",
-          "type_spec": "scope: optional ob; type: array of jects avai; default: Not lable they banne Objec"
+            "start_line": 819,
+            "end_line": 821
+          }
         },
         {
+          "name": "battr",
+          "type_spec": "scope: optional i; type: array of nteger; default: All types are T allowed b",
           "citation": {
+            "section": "3.3.3",
             "canonical_source_file": "source.pdf",
-            "end_line": 959,
             "helper_source_file": "source-layout.txt",
-            "section": "3.3.4",
-            "start_line": 949
-          },
+            "start_line": 822,
+            "end_line": 824
+          }
+        },
+        {
+          "name": "mimes",
+          "type_spec": "scope: optional s; type: array of tring; default: All types are s allowed i “ “",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 825,
+            "end_line": 829
+          }
+        },
+        {
+          "name": "topframe",
+          "type_spec": "scope: optional; type: integer; default: 0 t m a",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 830,
+            "end_line": 833
+          }
+        },
+        {
+          "name": "expdir",
+          "type_spec": "scope: optional i; type: array of nteger; default: Not expandable exp Exp val",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 834,
+            "end_line": 837
+          }
+        },
+        {
           "name": "api",
-          "type_spec": "scope: optional in; type: Array of teger Non; default: Assume e for t API F expli"
+          "type_spec": "scope: optional i; type: Array of nteger; default: None f F e b",
+          "citation": {
+            "section": "3.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 838,
+            "end_line": 842
+          }
         }
-      ],
+      ]
+    },
+    {
       "name": "Video",
-      "section": "3.3.4"
+      "section": "3.3.4",
+      "citation": {
+        "section": "3.3.4",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 845,
+        "end_line": 961
+      },
+      "fields": [
+        {
+          "name": "mimes",
+          "type_spec": "scope: required; type: array of string; default: - wmv” “vide",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 857,
+            "end_line": 865
+          }
+        },
+        {
+          "name": "linearity",
+          "type_spec": "scope: required; type: integer; default: - impre See T a lis",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 866,
+            "end_line": 869
+          }
+        },
+        {
+          "name": "minduration",
+          "type_spec": "scope: required; type: integer; default: - secon",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 870,
+            "end_line": 871
+          }
+        },
+        {
+          "name": "maxduration",
+          "type_spec": "scope: required; type: integer; default: - secon",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 872,
+            "end_line": 873
+          }
+        },
+        {
+          "name": "protocol",
+          "type_spec": "scope: required; type: integer; default: - See T Proto value",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 874,
+            "end_line": 877
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "scope: recommended; type: integer; default: - field highl infor",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 878,
+            "end_line": 881
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "scope: recommended; type: integer; default: - field highl infor",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 882,
+            "end_line": 885
+          }
+        },
+        {
+          "name": "startdelay",
+          "type_spec": "scope: recommended; type: integer; default: - secon postr 6.9 V place",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 886,
+            "end_line": 890
+          }
+        },
+        {
+          "name": "sequence",
+          "type_spec": "scope: optional; type: integer; default: 1 offer the s for t multi",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 891,
+            "end_line": 895
+          }
+        },
+        {
+          "name": "battr",
+          "type_spec": "scope: optional in; type: array of teger all a allo; default: Assume types Table re blank wed allow",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 896,
+            "end_line": 899
+          }
+        },
+        {
+          "name": "maxextended",
+          "type_spec": "scope: optional; type: integer all; default: Extension not durat owed If bl allow allow limit then numbe play maxdu",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 900,
+            "end_line": 914
+          }
+        },
+        {
+          "name": "minbitrate",
+          "type_spec": "scope: optional; type: integer bit acce; default: Any rate Excha pted dynam their",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 915,
+            "end_line": 918
+          }
+        },
+        {
+          "name": "maxbitrate",
+          "type_spec": "scope: optional; type: integer bit acce; default: Any rate Excha pted dynam their",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 919,
+            "end_line": 922
+          }
+        },
+        {
+          "name": "boxingallowed",
+          "type_spec": "scope: optional; type: integer; default: 1 preve conte windo to fa which conte allow allow allow",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 923,
+            "end_line": 932
+          }
+        },
+        {
+          "name": "playbackmethod",
+          "type_spec": "scope: optional in; type: array of teger; default: All If bl allow Playb possi",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 933,
+            "end_line": 937
+          }
+        },
+        {
+          "name": "delivery",
+          "type_spec": "scope: optional in; type: array of teger; default: All metho progr are s Conte list",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 938,
+            "end_line": 943
+          }
+        },
+        {
+          "name": "pos",
+          "type_spec": "scope: optional; type: integer; default: Unknown",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 944,
+            "end_line": 944
+          }
+        },
+        {
+          "name": "companionad",
+          "type_spec": "scope: optional ob; type: array of jects avai; default: Not lable they banne Objec",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 945,
+            "end_line": 948
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "scope: optional in; type: Array of teger Non; default: Assume e for t API F expli",
+          "citation": {
+            "section": "3.3.4",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 949,
+            "end_line": 959
+          }
+        }
+      ]
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1004,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.5",
-        "start_line": 962
-      },
-      "fields": [],
       "name": "Site",
-      "section": "3.3.5"
+      "section": "3.3.5",
+      "citation": {
+        "section": "3.3.5",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 962,
+        "end_line": 1004
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1049,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.6",
-        "start_line": 1005
-      },
-      "fields": [],
       "name": "App",
-      "section": "3.3.6"
+      "section": "3.3.6",
+      "citation": {
+        "section": "3.3.6",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1005,
+        "end_line": 1049
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1109,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.7",
-        "start_line": 1050
-      },
-      "fields": [],
       "name": "Content",
-      "section": "3.3.7"
+      "section": "3.3.7",
+      "citation": {
+        "section": "3.3.7",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1050,
+        "end_line": 1109
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1126,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.8",
-        "start_line": 1110
-      },
-      "fields": [],
       "name": "Publisher",
-      "section": "3.3.8"
+      "section": "3.3.8",
+      "citation": {
+        "section": "3.3.8",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1110,
+        "end_line": 1126
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1152,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.9",
-        "start_line": 1127
-      },
-      "fields": [],
       "name": "Producer",
-      "section": "3.3.9"
+      "section": "3.3.9",
+      "citation": {
+        "section": "3.3.9",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1127,
+        "end_line": 1152
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1229,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.10",
-        "start_line": 1153
-      },
-      "fields": [],
       "name": "Device",
-      "section": "3.3.10"
+      "section": "3.3.10",
+      "citation": {
+        "section": "3.3.10",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1153,
+        "end_line": 1229
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1265,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.11",
-        "start_line": 1230
-      },
-      "fields": [],
       "name": "Geo",
-      "section": "3.3.11"
+      "section": "3.3.11",
+      "citation": {
+        "section": "3.3.11",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1230,
+        "end_line": 1265
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1310,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.12",
-        "start_line": 1266
-      },
-      "fields": [],
       "name": "User",
-      "section": "3.3.12"
+      "section": "3.3.12",
+      "citation": {
+        "section": "3.3.12",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1266,
+        "end_line": 1310
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1330,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.13",
-        "start_line": 1311
-      },
-      "fields": [],
       "name": "Data",
-      "section": "3.3.13"
+      "section": "3.3.13",
+      "citation": {
+        "section": "3.3.13",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1311,
+        "end_line": 1330
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1390,
-        "helper_source_file": "source-layout.txt",
-        "section": "3.3.14",
-        "start_line": 1331
-      },
-      "fields": [],
       "name": "Segment",
-      "section": "3.3.14"
+      "section": "3.3.14",
+      "citation": {
+        "section": "3.3.14",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1331,
+        "end_line": 1390
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1426,
-        "helper_source_file": "source-layout.txt",
-        "section": "4.3.1",
-        "start_line": 1391
-      },
-      "fields": [],
       "name": "BidResponse",
-      "section": "4.3.1"
+      "section": "4.3.1",
+      "citation": {
+        "section": "4.3.1",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1391,
+        "end_line": 1426
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 1447,
-        "helper_source_file": "source-layout.txt",
-        "section": "4.3.2",
-        "start_line": 1427
-      },
-      "fields": [],
       "name": "SeatBid",
-      "section": "4.3.2"
+      "section": "4.3.2",
+      "citation": {
+        "section": "4.3.2",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1427,
+        "end_line": 1447
+      },
+      "fields": []
     },
     {
-      "citation": {
-        "canonical_source_file": "source.pdf",
-        "end_line": 2893,
-        "helper_source_file": "source-layout.txt",
-        "section": "4.3.3",
-        "start_line": 1448
-      },
-      "fields": [],
       "name": "Bid",
-      "section": "4.3.3"
+      "section": "4.3.3",
+      "citation": {
+        "section": "4.3.3",
+        "canonical_source_file": "source.pdf",
+        "helper_source_file": "source-layout.txt",
+        "start_line": 1448,
+        "end_line": 2893
+      },
+      "fields": []
     }
-  ],
-  "release_date": "2012-01",
-  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
-  "version": "2.0"
+  ]
 }

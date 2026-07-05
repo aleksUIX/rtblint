@@ -22,11 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let output_path = output_dir.join(&file_name);
         fs::write(&output_path, render_profile(profile))?;
 
-        index.push_str(&format!(
-            "- {} -> {}\n",
-            profile.version.id(),
-            file_name
-        ));
+        index.push_str(&format!("- {} -> {}\n", profile.version.id(), file_name));
     }
 
     index.push_str(

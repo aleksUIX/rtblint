@@ -28,7 +28,10 @@ struct RawField {
 /// structured validation fields from the description prose, then drops the
 /// prose so no verbatim spec text leaves the generation pipeline.
 fn enrich_and_strip(raw_objects: Vec<RawObject>) -> Vec<CanonicalObject> {
-    let object_names: Vec<String> = raw_objects.iter().map(|object| object.name.clone()).collect();
+    let object_names: Vec<String> = raw_objects
+        .iter()
+        .map(|object| object.name.clone())
+        .collect();
 
     raw_objects
         .into_iter()
@@ -129,7 +132,8 @@ fn parse_markdown_catalog(
 
     while index < lines.len() {
         if let Some((section, name)) = parse_markdown_object_heading(lines[index]) {
-            let end_index = find_next_markdown_object_heading(&lines, index + 1).unwrap_or(lines.len());
+            let end_index =
+                find_next_markdown_object_heading(&lines, index + 1).unwrap_or(lines.len());
             let table_start =
                 ((index + 1)..end_index).find(|candidate| lines[*candidate].contains("<table>"));
             let table_end = table_start.and_then(|start| {
@@ -188,8 +192,8 @@ fn parse_pdf_layout_catalog(
     while index < lines.len() {
         if let Some((section, name)) = parse_pdf_object_heading(lines[index]) {
             let end_index = find_next_pdf_object_heading(&lines, index + 1).unwrap_or(lines.len());
-            let header_index =
-                ((index + 1)..end_index).find(|candidate| is_pdf_attribute_header(lines[*candidate]));
+            let header_index = ((index + 1)..end_index)
+                .find(|candidate| is_pdf_attribute_header(lines[*candidate]));
             let fields = match header_index {
                 Some(header_line) => parse_pdf_table(
                     &lines,
@@ -221,7 +225,12 @@ fn parse_pdf_layout_catalog(
         index += 1;
     }
 
-    Ok(build_catalog(profile, "source.pdf", "source-layout.txt", objects))
+    Ok(build_catalog(
+        profile,
+        "source.pdf",
+        "source-layout.txt",
+        objects,
+    ))
 }
 
 fn parse_legacy_pdf_catalog(
@@ -273,7 +282,12 @@ fn parse_legacy_pdf_catalog(
         index += 1;
     }
 
-    Ok(build_catalog(profile, "source.pdf", "source-layout.txt", objects))
+    Ok(build_catalog(
+        profile,
+        "source.pdf",
+        "source-layout.txt",
+        objects,
+    ))
 }
 
 fn build_catalog(
@@ -316,7 +330,8 @@ fn parse_markdown_object_heading(line: &str) -> Option<(String, String)> {
 }
 
 fn find_next_markdown_object_heading(lines: &[&str], start: usize) -> Option<usize> {
-    (start..lines.len()).find(|candidate| parse_markdown_object_heading(lines[*candidate]).is_some())
+    (start..lines.len())
+        .find(|candidate| parse_markdown_object_heading(lines[*candidate]).is_some())
 }
 
 /// Finds the header row of a GitHub-style pipe table: a `|`-prefixed line
@@ -533,7 +548,10 @@ fn parse_pdf_object_heading(line: &str) -> Option<(String, String)> {
     }
 
     let (section, name) = normalized.split_once(" Object: ")?;
-    if !section.chars().all(|character| character.is_ascii_digit() || character == '.') {
+    if !section
+        .chars()
+        .all(|character| character.is_ascii_digit() || character == '.')
+    {
         return None;
     }
 
@@ -549,7 +567,10 @@ fn parse_legacy_pdf_object_heading(line: &str) -> Option<(String, String)> {
     let trimmed = normalized.trim();
     let mut parts = trimmed.split_whitespace();
     let section = parts.next()?;
-    if !section.chars().all(|character| character.is_ascii_digit() || character == '.') {
+    if !section
+        .chars()
+        .all(|character| character.is_ascii_digit() || character == '.')
+    {
         return None;
     }
 
@@ -566,7 +587,8 @@ fn find_next_pdf_object_heading(lines: &[&str], start: usize) -> Option<usize> {
 }
 
 fn find_next_legacy_pdf_object_heading(lines: &[&str], start: usize) -> Option<usize> {
-    (start..lines.len()).find(|candidate| parse_legacy_pdf_object_heading(lines[*candidate]).is_some())
+    (start..lines.len())
+        .find(|candidate| parse_legacy_pdf_object_heading(lines[*candidate]).is_some())
 }
 
 fn is_pdf_attribute_header(line: &str) -> bool {
@@ -716,9 +738,12 @@ fn parse_legacy_pdf_table(
 
         if let Some(field) = current.as_mut() {
             let characters = normalized.chars().collect::<Vec<_>>();
-            let scope = squash_whitespace(&collect_char_range(&characters, scope_start, type_start));
-            let value_type = squash_whitespace(&collect_char_range(&characters, type_start, default_start));
-            let default_value = squash_whitespace(&collect_char_range(&characters, default_start, desc_start));
+            let scope =
+                squash_whitespace(&collect_char_range(&characters, scope_start, type_start));
+            let value_type =
+                squash_whitespace(&collect_char_range(&characters, type_start, default_start));
+            let default_value =
+                squash_whitespace(&collect_char_range(&characters, default_start, desc_start));
             let description = squash_whitespace(&collect_char_range(
                 &characters,
                 desc_start,
@@ -890,7 +915,9 @@ fn capitalize_token(token: &str) -> String {
 fn collect_char_range(characters: &[char], start: usize, end: usize) -> String {
     let actual_start = start.min(characters.len());
     let actual_end = end.min(characters.len());
-    characters[actual_start..actual_end].iter().collect::<String>()
+    characters[actual_start..actual_end]
+        .iter()
+        .collect::<String>()
 }
 
 fn is_pdf_noise_line(line: &str) -> bool {

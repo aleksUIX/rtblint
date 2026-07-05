@@ -9,8 +9,11 @@ use rtblint_core::{
     SchemaCoverage, SchemaManifest, SchemaPathEntry, SchemaPathState,
 };
 
-const TARGET_VERSIONS: [OpenRtbVersion; 2] =
-    [OpenRtbVersion::V2_5, OpenRtbVersion::V2_6_202505];
+const TARGET_VERSIONS: [OpenRtbVersion; 3] = [
+    OpenRtbVersion::V2_5,
+    OpenRtbVersion::V2_6_202505,
+    OpenRtbVersion::V2_6_202606,
+];
 
 fn main() -> Result<(), Box<dyn Error>> {
     let output_dir = env::args()

@@ -3,10 +3,77 @@ use std::error::Error;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+use rtblint_core::catalog_extract::{extract_value_set, resolve_child_object};
 use rtblint_core::{
     version_profile, CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation,
-    OpenRtbFamily, OpenRtbVersion,
+    CatalogValueSet, OpenRtbFamily, OpenRtbVersion,
 };
+
+/// Parsed object carrying raw spec prose, before enrichment strips it.
+struct RawObject {
+    name: String,
+    section: String,
+    citation: CatalogCitation,
+    fields: Vec<RawField>,
+}
+
+struct RawField {
+    name: String,
+    type_spec: String,
+    description: String,
+    citation: CatalogCitation,
+}
+
+/// Converts raw parsed objects into the shipped catalog schema: computes the
+/// structured validation fields from the description prose, then drops the
+/// prose so no verbatim spec text leaves the generation pipeline.
+fn enrich_and_strip(raw_objects: Vec<RawObject>) -> Vec<CanonicalObject> {
+    let object_names: Vec<String> = raw_objects.iter().map(|object| object.name.clone()).collect();
+
+    raw_objects
+        .into_iter()
+        .map(|raw_object| CanonicalObject {
+            name: raw_object.name,
+            section: raw_object.section,
+            citation: raw_object.citation,
+            fields: raw_object
+                .fields
+                .into_iter()
+                .map(|raw_field| enrich_field(raw_field, &object_names))
+                .collect(),
+        })
+        .collect()
+}
+
+fn enrich_field(raw_field: RawField, object_names: &[String]) -> CanonicalField {
+    let child_object = if raw_field.type_spec.to_ascii_lowercase().contains("object") {
+        resolve_child_object(&raw_field.description, &raw_field.name, object_names)
+    } else {
+        None
+    };
+
+    let mut adcom_list = None;
+    let mut value_set = None;
+    if let Some(extracted) = extract_value_set(&raw_field.description) {
+        if let Some(list_name) = extracted.adcom_list {
+            adcom_list = Some(String::from(list_name));
+        } else {
+            value_set = Some(CatalogValueSet {
+                values: extracted.values,
+                minimum_inclusive: extracted.minimum_inclusive,
+            });
+        }
+    }
+
+    CanonicalField {
+        name: raw_field.name,
+        type_spec: raw_field.type_spec,
+        child_object,
+        adcom_list,
+        value_set,
+        citation: raw_field.citation,
+    }
+}
 
 fn main() -> Result<(), Box<dyn Error>> {
     let canonical_root = env::args()
@@ -68,13 +135,15 @@ fn parse_markdown_catalog(
             let table_end = table_start.and_then(|start| {
                 (start..end_index).find(|candidate| lines[*candidate].contains("</table>"))
             });
-            let description_end = table_start.unwrap_or(end_index);
-            let description = join_markdown_text(&lines[(index + 1)..description_end]);
-            let fields = match (table_start, table_end) {
-                (Some(start), Some(end)) => parse_markdown_table(
+            let pipe_table_start = find_pipe_table_header(&lines, index + 1, end_index);
+            let fields = match (table_start, table_end, pipe_table_start) {
+                (Some(start), Some(end), pipe) if pipe.is_none() || pipe > Some(start) => {
+                    parse_markdown_table(&lines, start, end, &section, "source.md", "source.md")
+                }
+                (_, _, Some(pipe)) => parse_markdown_pipe_table(
                     &lines,
-                    start,
-                    end,
+                    pipe,
+                    end_index,
                     &section,
                     "source.md",
                     "source.md",
@@ -82,10 +151,9 @@ fn parse_markdown_catalog(
                 _ => Vec::new(),
             };
 
-            objects.push(CanonicalObject {
+            objects.push(RawObject {
                 name,
                 section: section.clone(),
-                description,
                 citation: CatalogCitation {
                     section,
                     canonical_source_file: String::from("source.md"),
@@ -122,8 +190,6 @@ fn parse_pdf_layout_catalog(
             let end_index = find_next_pdf_object_heading(&lines, index + 1).unwrap_or(lines.len());
             let header_index =
                 ((index + 1)..end_index).find(|candidate| is_pdf_attribute_header(lines[*candidate]));
-            let description_end = header_index.unwrap_or(end_index);
-            let description = join_pdf_text(&lines[(index + 1)..description_end]);
             let fields = match header_index {
                 Some(header_line) => parse_pdf_table(
                     &lines,
@@ -136,10 +202,9 @@ fn parse_pdf_layout_catalog(
                 None => Vec::new(),
             };
 
-            objects.push(CanonicalObject {
+            objects.push(RawObject {
                 name,
                 section: section.clone(),
-                description,
                 citation: CatalogCitation {
                     section,
                     canonical_source_file: String::from("source.pdf"),
@@ -177,8 +242,6 @@ fn parse_legacy_pdf_catalog(
                 find_next_legacy_pdf_object_heading(&lines, index + 1).unwrap_or(lines.len());
             let header_index = ((index + 1)..end_index)
                 .find(|candidate| is_legacy_pdf_field_header(lines[*candidate]));
-            let description_end = header_index.unwrap_or(end_index);
-            let description = join_pdf_text(&lines[(index + 1)..description_end]);
             let fields = match header_index {
                 Some(header_line) => parse_legacy_pdf_table(
                     &lines,
@@ -191,10 +254,9 @@ fn parse_legacy_pdf_catalog(
                 None => Vec::new(),
             };
 
-            objects.push(CanonicalObject {
+            objects.push(RawObject {
                 name,
                 section: section.clone(),
-                description,
                 citation: CatalogCitation {
                     section,
                     canonical_source_file: String::from("source.pdf"),
@@ -218,7 +280,7 @@ fn build_catalog(
     profile: &rtblint_core::VersionProfile,
     canonical_source_file: &str,
     helper_source_file: &str,
-    objects: Vec<CanonicalObject>,
+    objects: Vec<RawObject>,
 ) -> CanonicalObjectCatalog {
     let family = match profile.version.family() {
         OpenRtbFamily::TwoX => "2.x",
@@ -236,7 +298,7 @@ fn build_catalog(
         source_of_truth: String::from(
             "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
         ),
-        objects,
+        objects: enrich_and_strip(objects),
     }
 }
 
@@ -257,6 +319,88 @@ fn find_next_markdown_object_heading(lines: &[&str], start: usize) -> Option<usi
     (start..lines.len()).find(|candidate| parse_markdown_object_heading(lines[*candidate]).is_some())
 }
 
+/// Finds the header row of a GitHub-style pipe table: a `|`-prefixed line
+/// immediately followed by a `|---|---|` separator row.
+fn find_pipe_table_header(lines: &[&str], start: usize, end: usize) -> Option<usize> {
+    (start..end.min(lines.len().saturating_sub(1))).find(|candidate| {
+        lines[*candidate].trim_start().starts_with('|')
+            && is_pipe_separator_row(lines[candidate + 1])
+    })
+}
+
+fn is_pipe_separator_row(line: &str) -> bool {
+    let trimmed = line.trim();
+    trimmed.starts_with('|')
+        && trimmed.contains('-')
+        && trimmed
+            .chars()
+            .all(|character| matches!(character, '|' | '-' | ':' | ' '))
+}
+
+fn parse_markdown_pipe_table(
+    lines: &[&str],
+    header_index: usize,
+    section_end: usize,
+    section: &str,
+    canonical_source_file: &str,
+    helper_source_file: &str,
+) -> Vec<RawField> {
+    let mut fields = Vec::new();
+
+    for (line_index, line) in lines
+        .iter()
+        .enumerate()
+        .take(section_end)
+        .skip(header_index + 2)
+    {
+        let trimmed = line.trim();
+        if !trimmed.starts_with('|') {
+            break;
+        }
+
+        if is_pipe_separator_row(trimmed) {
+            continue;
+        }
+
+        let Some((name, type_spec, description)) = split_pipe_row(trimmed) else {
+            continue;
+        };
+
+        let name = clean_html_text(&name);
+        let name = name.trim_matches('`').trim();
+        if name.is_empty() || name.eq_ignore_ascii_case("attribute") {
+            continue;
+        }
+
+        fields.push(RawField {
+            name: String::from(name),
+            type_spec: clean_html_text(&type_spec),
+            description: clean_html_text(&description),
+            citation: CatalogCitation {
+                section: String::from(section),
+                canonical_source_file: String::from(canonical_source_file),
+                helper_source_file: String::from(helper_source_file),
+                start_line: line_index + 1,
+                end_line: line_index + 1,
+            },
+        });
+    }
+
+    fields
+}
+
+/// Splits a `|name|type|description|` row into its three cells, keeping any
+/// extra `|` characters inside the description cell.
+fn split_pipe_row(row: &str) -> Option<(String, String, String)> {
+    let inner = row.strip_prefix('|')?;
+    let inner = inner.strip_suffix('|').unwrap_or(inner);
+    let mut cells = inner.splitn(3, '|');
+    let name = cells.next()?.trim().to_string();
+    let type_spec = cells.next()?.trim().to_string();
+    let description = cells.next()?.trim().to_string();
+    Some((name, type_spec, description))
+}
+
 fn parse_markdown_table(
     lines: &[&str],
     table_start: usize,
@@ -264,7 +408,7 @@ fn parse_markdown_table(
     section: &str,
     canonical_source_file: &str,
     helper_source_file: &str,
-) -> Vec<CanonicalField> {
+) -> Vec<RawField> {
     let mut fields = Vec::new();
     let mut row_start = None;
     let mut row_buffer = String::new();
@@ -313,7 +457,7 @@ fn build_markdown_field(
     section: &str,
     canonical_source_file: &str,
     helper_source_file: &str,
-) -> Option<CanonicalField> {
+) -> Option<RawField> {
     let cells = extract_td_cells(row);
     if cells.len() < 3 {
         return None;
@@ -324,7 +468,7 @@ fn build_markdown_field(
         return None;
     }
 
-    Some(CanonicalField {
+    Some(RawField {
         name: String::from(name),
         type_spec: String::from(cells[1].trim()),
         description: String::from(cells[2].trim()),
@@ -380,16 +524,6 @@ fn clean_html_text(value: &str) -> String {
     }
 
     squash_whitespace(&out)
-}
-
-fn join_markdown_text(lines: &[&str]) -> String {
-    let parts = lines
-        .iter()
-        .map(|line| clean_html_text(line))
-        .filter(|line| !line.is_empty())
-        .collect::<Vec<_>>();
-
-    parts.join(" ")
 }
 
 fn parse_pdf_object_heading(line: &str) -> Option<(String, String)> {
@@ -458,7 +592,7 @@ fn parse_pdf_table(
     section: &str,
     canonical_source_file: &str,
     helper_source_file: &str,
-) -> Vec<CanonicalField> {
+) -> Vec<RawField> {
     let header = normalize_pdf_line(lines[header_index]);
     let type_start = header.find("Type").unwrap_or(29);
     let desc_start = header.find("Description").unwrap_or(type_start + 16);
@@ -532,7 +666,7 @@ fn parse_legacy_pdf_table(
     section: &str,
     canonical_source_file: &str,
     helper_source_file: &str,
-) -> Vec<CanonicalField> {
+) -> Vec<RawField> {
     let header = normalize_pdf_line(lines[header_index]);
     let scope_start = header.find("Scope").unwrap_or(20);
     let type_start = header.find("Type").unwrap_or(scope_start + 16);
@@ -620,8 +754,8 @@ impl PendingPdfField {
         section: &str,
         canonical_source_file: &str,
         helper_source_file: &str,
-    ) -> CanonicalField {
-        CanonicalField {
+    ) -> RawField {
+        RawField {
             name: self.name,
             type_spec: self.type_spec,
             description: self.description,
@@ -652,7 +786,7 @@ impl PendingLegacyPdfField {
         section: &str,
         canonical_source_file: &str,
         helper_source_file: &str,
-    ) -> CanonicalField {
+    ) -> RawField {
         let mut type_parts = Vec::new();
         if !self.scope.is_empty() {
             type_parts.push(format!("scope: {}", self.scope));
@@ -664,7 +798,7 @@ impl PendingLegacyPdfField {
             type_parts.push(format!("default: {}", self.default_value));
         }
 
-        CanonicalField {
+        RawField {
             name: self.name,
             type_spec: type_parts.join("; "),
             description: self.description,
@@ -768,18 +902,6 @@ fn is_pdf_noise_line(line: &str) -> bool {
         || trimmed.ends_with("IAB Technology Lab")
         || trimmed.ends_with("RTB Project")
         || trimmed.starts_with("RTB Project")
-}
-
-fn join_pdf_text(lines: &[&str]) -> String {
-    let parts = lines
-        .iter()
-        .map(|line| normalize_pdf_line(line))
-        .filter(|line| !line.is_empty())
-        .filter(|line| !is_pdf_noise_line(line))
-        .map(|line| squash_whitespace(&line))
-        .collect::<Vec<_>>();
-
-    parts.join(" ")
 }
 
 fn push_with_space(target: &mut String, value: &str) {

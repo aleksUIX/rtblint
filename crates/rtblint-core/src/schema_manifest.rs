@@ -1,13 +1,14 @@
-use std::fs;
-use std::path::PathBuf;
 use std::sync::OnceLock;
 
 use serde::{Deserialize, Serialize};
 
 use crate::OpenRtbVersion;
 
-const SUPPORTED_SCHEMA_MANIFESTS: [OpenRtbVersion; 2] =
-    [OpenRtbVersion::V2_5, OpenRtbVersion::V2_6_202505];
+const SUPPORTED_SCHEMA_MANIFESTS: [OpenRtbVersion; 3] = [
+    OpenRtbVersion::V2_5,
+    OpenRtbVersion::V2_6_202505,
+    OpenRtbVersion::V2_6_202606,
+];
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -54,7 +55,8 @@ pub fn schema_manifest_versions() -> &'static [OpenRtbVersion] {
 pub fn schema_manifest(version: OpenRtbVersion) -> Option<&'static SchemaManifest> {
     match version {
         OpenRtbVersion::V2_5 => Some(load_2_5_manifest()),
-        OpenRtbVersion::V2_6_202505 => Some(load_2_6_latest_manifest()),
+        OpenRtbVersion::V2_6_202505 => Some(load_2_6_202505_manifest()),
+        OpenRtbVersion::V2_6_202606 => Some(load_2_6_latest_manifest()),
         _ => None,
     }
 }
@@ -63,27 +65,42 @@ pub fn schema_path_entry(version: OpenRtbVersion, path: &str) -> Option<&'static
     schema_manifest(version).and_then(|manifest| manifest.paths.iter().find(|entry| entry.path == path))
 }
 
+/// Manifests are embedded at compile time, like the canonical object
+/// catalogs, so the crate carries no runtime filesystem dependency and runs
+/// unchanged in WASM and other no-fs targets.
 fn load_2_5_manifest() -> &'static SchemaManifest {
     static MANIFEST: OnceLock<SchemaManifest> = OnceLock::new();
-    MANIFEST.get_or_init(|| load_manifest("openrtb-2.5-versioned-paths.json"))
+    MANIFEST.get_or_init(|| {
+        parse_manifest(
+            "openrtb-2.5-versioned-paths.json",
+            include_str!("../specs/openrtb-2.5-versioned-paths.json"),
+        )
+    })
+}
+
+fn load_2_6_202505_manifest() -> &'static SchemaManifest {
+    static MANIFEST: OnceLock<SchemaManifest> = OnceLock::new();
+    MANIFEST.get_or_init(|| {
+        parse_manifest(
+            "openrtb-2.6-202505-versioned-paths.json",
+            include_str!("../specs/openrtb-2.6-202505-versioned-paths.json"),
+        )
+    })
 }
 
 fn load_2_6_latest_manifest() -> &'static SchemaManifest {
     static MANIFEST: OnceLock<SchemaManifest> = OnceLock::new();
-    MANIFEST.get_or_init(|| load_manifest("openrtb-2.6-202505-versioned-paths.json"))
+    MANIFEST.get_or_init(|| {
+        parse_manifest(
+            "openrtb-2.6-202606-versioned-paths.json",
+            include_str!("../specs/openrtb-2.6-202606-versioned-paths.json"),
+        )
+    })
 }
 
-fn load_manifest(file_name: &str) -> SchemaManifest {
-    let path = manifest_dir().join(file_name);
-    let raw = fs::read_to_string(&path)
-        .unwrap_or_else(|error| panic!("failed to read schema manifest {}: {error}", path.display()));
-
-    serde_json::from_str(&raw)
-        .unwrap_or_else(|error| panic!("failed to parse schema manifest {}: {error}", path.display()))
-}
-
-fn manifest_dir() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("specs")
+fn parse_manifest(file_name: &str, raw: &str) -> SchemaManifest {
+    serde_json::from_str(raw)
+        .unwrap_or_else(|error| panic!("failed to parse schema manifest {file_name}: {error}"))
 }
 
 #[cfg(test)]
@@ -91,12 +108,25 @@ mod tests {
     use super::*;
 
     #[test]
-    fn schema_manifests_start_with_2_5_and_latest_2_6() {
+    fn schema_manifests_cover_2_5_and_tracked_2_6_snapshots() {
         assert_eq!(
             schema_manifest_versions(),
-            &[OpenRtbVersion::V2_5, OpenRtbVersion::V2_6_202505]
+            &[
+                OpenRtbVersion::V2_5,
+                OpenRtbVersion::V2_6_202505,
+                OpenRtbVersion::V2_6_202606
+            ]
         );
         assert!(schema_manifest(OpenRtbVersion::V2_4).is_none());
+    }
+
+    #[test]
+    fn latest_2_6_manifest_includes_content_liveness_fields() {
+        let realtime = schema_path_entry(OpenRtbVersion::V2_6_202606, "content.realtime")
+            .expect("2.6-202606 schema manifest should include content.realtime");
+
+        assert_eq!(realtime.state, SchemaPathState::Available);
+        assert_eq!(realtime.since, "2.6-202606");
     }
 
     #[test]

@@ -21,7 +21,6 @@ pub struct CanonicalObjectCatalog {
 pub struct CanonicalObject {
     pub name: String,
     pub section: String,
-    pub description: String,
     pub citation: CatalogCitation,
     pub fields: Vec<CanonicalField>,
 }
@@ -30,8 +29,24 @@ pub struct CanonicalObject {
 pub struct CanonicalField {
     pub name: String,
     pub type_spec: String,
-    pub description: String,
+    /// Catalog object this field nests into, resolved at generation time.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub child_object: Option<String>,
+    /// Name of the AdCOM list constraining this field's values, when one
+    /// applies. Values are resolved from the validator's list registry.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub adcom_list: Option<String>,
+    /// Inline documented value set, when the spec enumerates values directly.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub value_set: Option<CatalogValueSet>,
     pub citation: CatalogCitation,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct CatalogValueSet {
+    pub values: Vec<i64>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub minimum_inclusive: Option<i64>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -96,6 +111,7 @@ fn embedded_catalog(version: OpenRtbVersion) -> &'static str {
         OpenRtbVersion::V2_6_202409 => include_str!("../specs/openrtb-2.6-202409-object-catalog.json"),
         OpenRtbVersion::V2_6_202501 => include_str!("../specs/openrtb-2.6-202501-object-catalog.json"),
         OpenRtbVersion::V2_6_202505 => include_str!("../specs/openrtb-2.6-202505-object-catalog.json"),
+        OpenRtbVersion::V2_6_202606 => include_str!("../specs/openrtb-2.6-202606-object-catalog.json"),
         OpenRtbVersion::V3_0 => include_str!("../specs/openrtb-3.0-object-catalog.json"),
     }
 }

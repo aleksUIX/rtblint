@@ -3,11 +3,66 @@ use std::collections::BTreeSet;
 use serde_json::{Map, Value};
 
 use crate::{
-    adcom_lists::adcom_list_value_set, canonical_object, canonical_object_catalog, path_status,
-    Issue, OpenRtbVersion, PathStateKind, ValidationResult,
+    adcom_lists::adcom_list_by_name, canonical_object, path_status, CanonicalField, Issue,
+    OpenRtbVersion, PathStateKind, ValidationResult,
 };
 
+/// The two OpenRTB 2.x payload types the validator understands.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum PayloadKind {
+    BidRequest,
+    BidResponse,
+}
+
+impl PayloadKind {
+    fn root_object(self) -> &'static str {
+        match self {
+            Self::BidRequest => "BidRequest",
+            Self::BidResponse => "BidResponse",
+        }
+    }
+
+    fn root_path_prefix(self) -> &'static str {
+        match self {
+            Self::BidRequest => "bidrequest",
+            Self::BidResponse => "bidresponse",
+        }
+    }
+
+    fn label(self) -> &'static str {
+        match self {
+            Self::BidRequest => "bid request",
+            Self::BidResponse => "bid response",
+        }
+    }
+}
+
 pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> ValidationResult {
+    validate_payload(version, input, PayloadKind::BidRequest)
+}
+
+pub(crate) fn validate_bid_response(version: OpenRtbVersion, input: &str) -> ValidationResult {
+    validate_payload(version, input, PayloadKind::BidResponse)
+}
+
+fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> ValidationResult {
+    if canonical_object(version, kind.root_object()).is_none() {
+        return ValidationResult {
+            valid: false,
+            issues: vec![Issue {
+                id: String::from("openrtb.version.unsupported"),
+                severity: String::from("error"),
+                message: format!(
+                    "OpenRTB {} has no canonical {} catalog in this build; {} validation is not supported for this version.",
+                    version.id(),
+                    kind.root_object(),
+                    kind.label()
+                ),
+                path: None,
+            }],
+        };
+    }
+
     let value = match serde_json::from_str::<Value>(input) {
         Ok(value) => value,
         Err(error) => {
@@ -29,8 +84,9 @@ pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> Vali
             issues: vec![Issue {
                 id: String::from("openrtb.payload.root_not_object"),
                 severity: String::from("error"),
-                message: String::from(
-                    "OpenRTB bid requests must be JSON objects at the top level.",
+                message: format!(
+                    "OpenRTB {}s must be JSON objects at the top level.",
+                    kind.label()
                 ),
                 path: None,
             }],
@@ -40,7 +96,8 @@ pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> Vali
     let mut issues = Vec::new();
     validate_known_object(
         version,
-        "BidRequest",
+        kind,
+        kind.root_object(),
         root,
         &mut Vec::new(),
         String::new(),
@@ -53,8 +110,10 @@ pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> Vali
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn validate_known_object(
     version: OpenRtbVersion,
+    kind: PayloadKind,
     object_name: &str,
     object: &Map<String, Value>,
     logical_segments: &mut Vec<String>,
@@ -86,7 +145,7 @@ fn validate_known_object(
         let field_instance_path = join_instance_path(&instance_path, field_name);
 
         if field_name == "ext" {
-            validate_extension_value(version, value, logical_segments, field_instance_path, issues);
+            validate_extension_value(version, kind, value, logical_segments, field_instance_path, issues);
             logical_segments.pop();
             continue;
         }
@@ -107,23 +166,19 @@ fn validate_known_object(
             continue;
         };
 
-        push_path_status_issues(version, logical_segments, &field_instance_path, field_definition.type_spec.as_str(), issues);
+        push_path_status_issues(version, kind, logical_segments, &field_instance_path, field_definition.type_spec.as_str(), issues);
         validate_field_value_shape(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
         validate_required_array_contents(field_definition.type_spec.as_str(), value, &field_instance_path, issues);
-        validate_documented_integer_value_set(
-            field_definition.description.as_str(),
-            value,
-            &field_instance_path,
-            issues,
-        );
+        validate_catalog_value_set(field_definition, value, &field_instance_path, issues);
 
         if matches!(expected_shape(field_definition.type_spec.as_str()), ExpectedShape::Object)
             && value.is_object()
         {
-            if let Some(child_object_name) = infer_child_object_name(version, field_name, field_definition.description.as_str()) {
+            if let Some(child_object_name) = field_definition.child_object.as_deref() {
                 validate_known_object(
                     version,
-                    &child_object_name,
+                    kind,
+                    child_object_name,
                     value.as_object().expect("checked object shape"),
                     logical_segments,
                     field_instance_path.clone(),
@@ -135,12 +190,13 @@ fn validate_known_object(
         if matches!(expected_shape(field_definition.type_spec.as_str()), ExpectedShape::ObjectArray)
             && value.is_array()
         {
-            if let Some(child_object_name) = infer_child_object_name(version, field_name, field_definition.description.as_str()) {
+            if let Some(child_object_name) = field_definition.child_object.as_deref() {
                 for (index, item) in value.as_array().expect("checked array shape").iter().enumerate() {
                     if let Some(item_object) = item.as_object() {
                         validate_known_object(
                             version,
-                            &child_object_name,
+                            kind,
+                            child_object_name,
                             item_object,
                             logical_segments,
                             format!("{}[{}]", field_instance_path, index),
@@ -159,6 +215,7 @@ fn validate_known_object(
 
 fn validate_extension_value(
     version: OpenRtbVersion,
+    kind: PayloadKind,
     value: &Value,
     logical_segments: &mut Vec<String>,
     instance_path: String,
@@ -169,8 +226,8 @@ fn validate_extension_value(
             for (field_name, child) in map {
                 logical_segments.push(field_name.clone());
                 let child_instance_path = join_instance_path(&instance_path, field_name);
-                push_path_status_issues(version, logical_segments, &child_instance_path, "", issues);
-                validate_extension_value(version, child, logical_segments, child_instance_path, issues);
+                push_path_status_issues(version, kind, logical_segments, &child_instance_path, "", issues);
+                validate_extension_value(version, kind, child, logical_segments, child_instance_path, issues);
                 logical_segments.pop();
             }
         }
@@ -178,6 +235,7 @@ fn validate_extension_value(
             for (index, item) in items.iter().enumerate() {
                 validate_extension_value(
                     version,
+                    kind,
                     item,
                     logical_segments,
                     format!("{}[{}]", instance_path, index),
@@ -209,13 +267,13 @@ fn validate_required_array_contents(
     }
 }
 
-fn validate_documented_integer_value_set(
-    description: &str,
+fn validate_catalog_value_set(
+    field: &CanonicalField,
     value: &Value,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    let Some(value_set) = parse_documented_integer_value_set(description) else {
+    let Some(value_set) = field_value_set(field) else {
         return;
     };
 
@@ -239,6 +297,23 @@ fn validate_documented_integer_value_set(
         }
         _ => {}
     }
+}
+
+fn field_value_set(field: &CanonicalField) -> Option<IntegerValueSet> {
+    if let Some(list_name) = field.adcom_list.as_deref() {
+        let list = adcom_list_by_name(list_name)?;
+        return Some(IntegerValueSet {
+            source: Some(list.name),
+            allowed_values: list.allowed_values.iter().copied().collect(),
+            minimum_inclusive: list.minimum_inclusive,
+        });
+    }
+
+    field.value_set.as_ref().map(|value_set| IntegerValueSet {
+        source: None,
+        allowed_values: value_set.values.iter().copied().collect(),
+        minimum_inclusive: value_set.minimum_inclusive,
+    })
 }
 
 fn validate_integer_against_value_set(
@@ -286,6 +361,7 @@ fn validate_object_semantics(
 
     match object_name {
         "BidRequest" => validate_bid_request_semantics(object, instance_path, issues),
+        "BidResponse" => validate_bid_response_semantics(object, instance_path, issues),
         "Imp" => validate_imp_semantics(object, instance_path, issues),
         "Video" => validate_video_semantics(object, instance_path, issues),
         "Audio" => validate_audio_semantics(object, instance_path, issues),
@@ -329,6 +405,32 @@ fn validate_bid_request_semantics(
                 "Only one of site, app, or dooh may be present on the same bid request.",
             ),
             path: Some(join_instance_path(instance_path, media_contexts[0])),
+        });
+    }
+}
+
+fn validate_bid_response_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let has_seatbid = object
+        .get("seatbid")
+        .and_then(Value::as_array)
+        .is_some_and(|items| !items.is_empty());
+
+    if !has_seatbid && !object.contains_key("nbr") {
+        issues.push(Issue {
+            id: String::from("openrtb.response.seatbid_or_nbr.required"),
+            severity: String::from("error"),
+            message: String::from(
+                "A bid response must contain at least one seatbid, or a no-bid reason code (nbr).",
+            ),
+            path: Some(if instance_path.is_empty() {
+                String::from("seatbid")
+            } else {
+                join_instance_path(instance_path, "seatbid")
+            }),
         });
     }
 }
@@ -413,110 +515,6 @@ fn push_mutually_exclusive_issue(
     });
 }
 
-fn parse_documented_integer_value_set(description: &str) -> Option<IntegerValueSet> {
-    parse_adcom_integer_value_set(description).or_else(|| parse_inline_integer_value_set(description))
-}
-
-fn parse_adcom_integer_value_set(description: &str) -> Option<IntegerValueSet> {
-    let list = adcom_list_value_set(description)?;
-
-    Some(IntegerValueSet {
-        source: Some(list.name),
-        allowed_values: list.allowed_values.iter().copied().collect(),
-        minimum_inclusive: list.minimum_inclusive,
-    })
-}
-
-fn parse_inline_integer_value_set(description: &str) -> Option<IntegerValueSet> {
-    let mut allowed_values = BTreeSet::new();
-    let bytes = description.as_bytes();
-    let mut index = 0usize;
-
-    while index < bytes.len() {
-        if !(bytes[index].is_ascii_digit() || bytes[index] == b'-') {
-            index += 1;
-            continue;
-        }
-
-        let start = index;
-        let mut end = index;
-        if bytes[end] == b'-' {
-            end += 1;
-            if end >= bytes.len() || !bytes[end].is_ascii_digit() {
-                index += 1;
-                continue;
-            }
-        }
-
-        while end < bytes.len() && bytes[end].is_ascii_digit() {
-            end += 1;
-        }
-
-        let mut after = end;
-        while after < bytes.len() && bytes[after].is_ascii_whitespace() {
-            after += 1;
-        }
-
-        if after < bytes.len() && bytes[after] == b'=' {
-            if let Ok(value) = description[start..end].parse::<i64>() {
-                allowed_values.insert(value);
-            }
-            index = after + 1;
-            continue;
-        }
-
-        index = end;
-    }
-
-    let minimum_inclusive = parse_minimum_inclusive_value(description);
-    if allowed_values.len() < 2 && minimum_inclusive.is_none() {
-        return None;
-    }
-
-    Some(IntegerValueSet {
-        source: None,
-        allowed_values,
-        minimum_inclusive,
-    })
-}
-
-fn parse_minimum_inclusive_value(description: &str) -> Option<i64> {
-    let normalized = description.to_ascii_lowercase();
-    for marker in ["using values ", "values "] {
-        let mut search_start = 0usize;
-        while let Some(relative_index) = normalized[search_start..].find(marker) {
-            let marker_start = search_start + relative_index + marker.len();
-            let remainder = normalized[marker_start..].trim_start();
-            let consumed_whitespace = normalized[marker_start..].len() - remainder.len();
-            let bytes = remainder.as_bytes();
-            if bytes.is_empty() {
-                break;
-            }
-
-            let mut end = 0usize;
-            if bytes[end] == b'-' {
-                end += 1;
-            }
-            while end < bytes.len() && bytes[end].is_ascii_digit() {
-                end += 1;
-            }
-
-            if end > 0 && !(end == 1 && bytes[0] == b'-') {
-                let suffix = remainder[end..].trim_start();
-                if suffix.starts_with("and greater") || suffix.starts_with("or greater") {
-                    if let Ok(value) = remainder[..end].parse::<i64>() {
-                        return Some(value);
-                    }
-                }
-            }
-
-            search_start = marker_start + consumed_whitespace + end.max(1);
-        }
-    }
-
-    None
-}
-
 fn integer_value(value: &Value) -> Option<i64> {
     value
         .as_i64()
@@ -593,12 +591,13 @@ fn validate_field_value_shape(type_spec: &str, value: &Value, instance_path: &st
 
 fn push_path_status_issues(
     version: OpenRtbVersion,
+    kind: PayloadKind,
     logical_segments: &[String],
     instance_path: &str,
     type_spec: &str,
     issues: &mut Vec<Issue>,
 ) {
-    let Some(schema_path) = schema_path(logical_segments) else {
+    let Some(schema_path) = schema_path(kind, logical_segments) else {
         return;
     };
 
@@ -661,68 +660,13 @@ fn push_path_status_issues(
     }
 }
 
-fn infer_child_object_name(
-    version: OpenRtbVersion,
-    field_name: &str,
-    description: &str,
-) -> Option<String> {
-    if let Some(candidate) = extract_object_name_from_description(description) {
-        if let Some(object_name) = find_catalog_object_name(version, &candidate) {
-            return Some(object_name);
-        }
-    }
-
-    find_catalog_object_name(version, field_name)
-        .or_else(|| field_name.strip_suffix('s').and_then(|singular| find_catalog_object_name(version, singular)))
-}
-
-fn extract_object_name_from_description(description: &str) -> Option<String> {
-    let normalized = description.replace('`', "");
-
-    for marker in [
-        "Array of ",
-        "An array of ",
-        "Details via a ",
-        "Details via an ",
-        "A ",
-        "An ",
-    ] {
-        if let Some(start) = normalized.find(marker) {
-            let rest = &normalized[start + marker.len()..];
-            if let Some(end) = rest.find(" object") {
-                let candidate = rest[..end].trim();
-                if !candidate.is_empty() {
-                    return Some(candidate.to_string());
-                }
-            }
-            if let Some(end) = rest.find(" objects") {
-                let candidate = rest[..end].trim();
-                if !candidate.is_empty() {
-                    return Some(candidate.to_string());
-                }
-            }
-        }
-    }
-
-    None
-}
-
-fn find_catalog_object_name(version: OpenRtbVersion, hint: &str) -> Option<String> {
-    let catalog = canonical_object_catalog(version)?;
-    catalog
-        .objects
-        .iter()
-        .find(|object| object.name.eq_ignore_ascii_case(hint))
-        .map(|object| object.name.clone())
-}
-
-fn schema_path(logical_segments: &[String]) -> Option<String> {
+fn schema_path(kind: PayloadKind, logical_segments: &[String]) -> Option<String> {
     if logical_segments.is_empty() {
         return None;
     }
 
     if logical_segments.len() == 1 {
-        return Some(format!("bidrequest.{}", logical_segments[0]));
+        return Some(format!("{}.{}", kind.root_path_prefix(), logical_segments[0]));
     }
 
     Some(logical_segments.join("."))
@@ -736,8 +680,18 @@ fn join_instance_path(base: &str, segment: &str) -> String {
     format!("{base}.{segment}")
 }
 
+/// A field is unconditionally required only when the type column says so as
+/// its own segment ("string; required", "scope: required; type: ...").
+/// Conditional phrasings bleeding in from the spec's prose ("required for
+/// Flex Ads", "required if sourcetype is present") must not count.
 fn is_required(type_spec: &str) -> bool {
-    type_spec.to_ascii_lowercase().contains("required")
+    type_spec
+        .to_ascii_lowercase()
+        .split(';')
+        .map(str::trim)
+        .any(|segment| {
+            segment == "required" || segment == "required *" || segment == "scope: required"
+        })
 }
 
 fn json_type_label(value: &Value) -> &'static str {

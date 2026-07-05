@@ -1,5 +1,7 @@
 mod adcom_lists;
 mod canonical_catalog;
+#[doc(hidden)]
+pub mod catalog_extract;
 mod schema_manifest;
 mod validator;
 mod version_rules;
@@ -8,7 +10,7 @@ use serde::Serialize;
 
 pub use canonical_catalog::{
     canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
-    CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation,
+    CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation, CatalogValueSet,
 };
 pub use schema_manifest::{
     schema_manifest, schema_manifest_versions, schema_path_entry, SchemaCoverage, SchemaManifest,
@@ -35,6 +37,14 @@ pub fn validate_bid_request_for_version(
     input: &str,
 ) -> ValidationResult {
     validator::validate_bid_request(version, input)
+}
+
+/// Validates an OpenRTB bid response payload for a specific tracked version.
+pub fn validate_bid_response_for_version(
+    version: OpenRtbVersion,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_response(version, input)
 }
 
 /// Validates whether an object field exists in the canonical catalog for a specific OpenRTB version.

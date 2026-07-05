@@ -22,11 +22,12 @@ pub enum OpenRtbVersion {
     V2_6_202409,
     V2_6_202501,
     V2_6_202505,
+    V2_6_202606,
     V3_0,
 }
 
 impl OpenRtbVersion {
-    pub const ALL: [Self; 17] = [
+    pub const ALL: [Self; 18] = [
         Self::V2_0,
         Self::V2_1,
         Self::V2_2,
@@ -43,6 +44,7 @@ impl OpenRtbVersion {
         Self::V2_6_202409,
         Self::V2_6_202501,
         Self::V2_6_202505,
+        Self::V2_6_202606,
         Self::V3_0,
     ];
 
@@ -72,6 +74,7 @@ impl OpenRtbVersion {
             Self::V2_6_202409 => "2.6-202409",
             Self::V2_6_202501 => "2.6-202501",
             Self::V2_6_202505 => "2.6-202505",
+            Self::V2_6_202606 => "2.6-202606",
             Self::V3_0 => "3.0",
         }
     }
@@ -876,6 +879,27 @@ const V2_6_202505_RULES: &[VersionRule] = &[
     },
 ];
 
+const V2_6_202606_RULES: &[VersionRule] = &[
+    VersionRule {
+        code: "openrtb.2.6-202606.content.liveness",
+        kind: VersionRuleKind::AddedField,
+        paths: &["content.realtime", "content.firstbroadcast"],
+        replacement_paths: &[],
+        summary: "OpenRTB 2.6-202606 added realtime and firstbroadcast attributes for signaling the liveness of programming on the Content object.",
+        section: "Section 3.2.16",
+        source: "GitHub release notes: 2.6-202606",
+    },
+    VersionRule {
+        code: "openrtb.2.6-202606.macro.auction_discount",
+        kind: VersionRuleKind::AddedMacro,
+        paths: &["macro.${AUCTION_DISCOUNT_PCT}", "macro.${AUCTION_DISCOUNT_CPM}"],
+        replacement_paths: &[],
+        summary: "OpenRTB 2.6-202606 added seller discount substitution macros and revised the ${AUCTION_PRICE} definition.",
+        section: "Section 4.4",
+        source: "GitHub release notes: 2.6-202606",
+    },
+];
+
 const V3_0_RULES: &[VersionRule] = &[
     VersionRule {
         code: "openrtb.3.0.openrtb_root",
@@ -942,7 +966,7 @@ const V3_0_RULES: &[VersionRule] = &[
     },
 ];
 
-const VERSION_PROFILES: [VersionProfile; 17] = [
+const VERSION_PROFILES: [VersionProfile; 18] = [
     VersionProfile {
         version: OpenRtbVersion::V2_0,
         release_date: "2012-01",
@@ -1054,6 +1078,13 @@ const VERSION_PROFILES: [VersionProfile; 17] = [
         archive_path: ".openrtb-specs/2.x/openrtb-2.6-202505.md",
         summary: "Extended content IDs on Data objects.",
         rules: V2_6_202505_RULES,
+    },
+    VersionProfile {
+        version: OpenRtbVersion::V2_6_202606,
+        release_date: "2026-06",
+        archive_path: ".openrtb-specs/2.x/openrtb-2.6-202606.md",
+        summary: "Programming liveness signaling and seller discount macros.",
+        rules: V2_6_202606_RULES,
     },
     VersionProfile {
         version: OpenRtbVersion::V3_0,

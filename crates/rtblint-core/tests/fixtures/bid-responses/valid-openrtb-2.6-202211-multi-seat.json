@@ -5,7 +5,7 @@
   "seatbid": [
     {
       "seat": "dooh-buyer-primary",
-      "package": 1,
+      "group": 1,
       "bid": [
         {
           "id": "bid-2-6-202211-a",

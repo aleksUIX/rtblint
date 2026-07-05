@@ -15,6 +15,10 @@ pub(crate) fn adcom_list_value_set(description: &str) -> Option<&'static AdcomLi
     })
 }
 
+pub(crate) fn adcom_list_by_name(name: &str) -> Option<&'static AdcomListValueSet> {
+    ADCOM_LISTS.iter().find(|candidate| candidate.name == name)
+}
+
 const AGENT_TYPES: &[i64] = &[1, 2, 3];
 const API_FRAMEWORKS: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9];
 const AUDIT_STATUS_CODES: &[i64] = &[1, 2, 3, 4, 5, 6];

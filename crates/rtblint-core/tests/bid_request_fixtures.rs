@@ -31,12 +31,14 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: true,
         expected_issues: &[],
     },
+    // The 2.6-202204 catalog is an empty stub, so validation must refuse
+    // loudly instead of passing everything silently.
     FixtureCase {
         name: "valid-openrtb-2.6-202204-ctv-consent",
         version: OpenRtbVersion::V2_6_202204,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202204-ctv-consent.json"),
-        valid: true,
-        expected_issues: &[],
+        valid: false,
+        expected_issues: &[("openrtb.version.unsupported", "")],
     },
     FixtureCase {
         name: "valid-openrtb-2.6-202210-ctv-baseline",
@@ -259,8 +261,12 @@ fn bid_request_inventory_fixtures_are_parseable() {
 }
 
 fn has_issue(result: &ValidationResult, id: &str, path: &str) -> bool {
-    result
-        .issues
-        .iter()
-        .any(|issue| issue.id == id && issue.path.as_deref() == Some(path))
+    result.issues.iter().any(|issue| {
+        issue.id == id
+            && if path.is_empty() {
+                issue.path.is_none()
+            } else {
+                issue.path.as_deref() == Some(path)
+            }
+    })
 }

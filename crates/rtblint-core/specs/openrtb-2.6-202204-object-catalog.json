@@ -1,11 +1,11 @@
 {
-  "kind": "openrtb_canonical_object_catalog",
-  "version": "2.6-202204",
-  "family": "2.x",
-  "release_date": "2022-04",
   "archive_path": ".openrtb-specs/2.x/openrtb-2.6-202204-final.pdf",
   "canonical_source_file": "source.pdf",
+  "family": "2.x",
   "helper_source_file": "source-layout.txt",
+  "kind": "openrtb_canonical_object_catalog",
+  "objects": [],
+  "release_date": "2022-04",
   "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
-  "objects": []
+  "version": "2.6-202204"
 }

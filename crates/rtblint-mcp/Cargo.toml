@@ -17,4 +17,4 @@ name = "rtblint-mcp"
 path = "src/main.rs"
 
 [dependencies]
-rtblint-core = { path = "../rtblint-core", version = "0.0.1" }
+rtblint-core = { path = "../rtblint-core", version = "0.0.2" }

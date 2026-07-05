@@ -93,7 +93,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "rtblint-core",
  "serde",
@@ -102,7 +102,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-core"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "serde",
  "serde_json",
@@ -110,14 +110,14 @@ dependencies = [
 
 [[package]]
 name = "rtblint-mcp"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "rtblint-core",
 ]
 
 [[package]]
 name = "rtblint-wasm"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "rtblint-core",
  "serde",

@@ -7,14 +7,14 @@ Website and playground: [rtblint.org](https://rtblint.org)
 ## Install
 
 ```bash
-npm install rtblint
+npm install rtblint-core
 ```
 
 ## Usage
 
 ```js
-import { validate, validateResponse, versions, rules } from "rtblint";
-// or: const { validate } = require("rtblint");
+import { validate, validateResponse, versions, rules } from "rtblint-core";
+// or: const { validate } = require("rtblint-core");
 
 const report = validate(JSON.stringify(bidRequest));            // latest tracked 2.6
 const legacy = validate(JSON.stringify(bidRequest), "2.5");     // version-aware

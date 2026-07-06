@@ -31,9 +31,14 @@ jobs:
             echo "CARGO_REGISTRY_TOKEN secret not set; skipping crates.io publish."
             exit 0
           fi
-          cargo publish -p rtblint-core --token "$CARGO_REGISTRY_TOKEN"
-          cargo publish -p rtblint --token "$CARGO_REGISTRY_TOKEN"
-          cargo publish -p rtblint-mcp --token "$CARGO_REGISTRY_TOKEN"
+          for crate in rtblint-core rtblint rtblint-mcp; do
+            version=$(cargo metadata --no-deps --format-version 1 | jq -r ".packages[] | select(.name==\"$crate\") | .version")
+            if curl -sf "https://crates.io/api/v1/crates/$crate/$version" -H "User-Agent: rtblint-release" > /dev/null; then
+              echo "$crate $version already on crates.io; skipping."
+            else
+              cargo publish -p "$crate" --token "$CARGO_REGISTRY_TOKEN"
+            fi
+          done
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
@@ -52,7 +57,13 @@ jobs:
             echo "NPM_TOKEN secret not set; skipping npm publish."
             exit 0
           fi
-          npm publish --access public
+          name=$(node -p "require('./package.json').name")
+          version=$(node -p "require('./package.json').version")
+          if npm view "$name@$version" version > /dev/null 2>&1; then
+            echo "$name@$version already on npm; skipping."
+          else
+            npm publish --access public
+          fi
         working-directory: npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

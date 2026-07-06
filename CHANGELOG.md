@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.0 (2026-07-05)
+
+### Added
+
+- CLI `--batch` mode: one JSON payload per stdin line, one result per stdout
+  line, spec catalogs loaded once per process
+- Spec catalogs compile to static Rust data instead of parsing embedded JSON
+  at first use
+
+### Changed
+
+- npm package published as `rtblint-core` (npm's similarity filter blocks the
+  bare `rtblint` name); API unchanged
+- First versions actually on registries: crates.io rtblint / rtblint-core /
+  rtblint-mcp 0.2.0, npm rtblint-core 0.2.0
+
 ## 0.1.0 (2026-07-05)
 
 First real release. Everything before this was a name reservation.

@@ -26,7 +26,7 @@ Every finding carries a stable rule id, a severity, a message, and a JSON path.
 | Rust CLI | [`rtblint`](https://crates.io/crates/rtblint) | Working |
 | Rust library | [`rtblint-core`](https://crates.io/crates/rtblint-core) | Working |
 | MCP server | [`rtblint-mcp`](https://crates.io/crates/rtblint-mcp) | Working |
-| Node (WASM) | `rtblint` on npm | Built, publish pending |
+| Node (WASM) | `rtblint-core` on npm | Working |
 | Python | `rtblint` on PyPI | Not implemented yet |
 | Go | `github.com/aleksUIX/rtblint/go` | Not implemented yet |
 
@@ -48,7 +48,7 @@ Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
 ## Node
 
 ```js
-import { validate, validateResponse, versions } from "rtblint";
+import { validate, validateResponse, versions } from "rtblint-core";
 
 const report = validate(JSON.stringify(bidRequest), "2.6-202505");
 if (!report.valid) {

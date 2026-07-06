@@ -6,7 +6,7 @@ use std::{
 
 use serde::Serialize;
 
-use rtblint_core::{Issue, OpenRtbVersion, ValidationResult};
+use rtblint_core::{Issue, OpenRtbVersion, Severity, ValidationResult};
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
 
@@ -192,12 +192,12 @@ fn print_human_result(
     let error_count = result
         .issues
         .iter()
-        .filter(|issue| issue.severity == "error")
+        .filter(|issue| issue.severity == Severity::Error)
         .count();
     let warning_count = result
         .issues
         .iter()
-        .filter(|issue| issue.severity == "warning")
+        .filter(|issue| issue.severity == Severity::Warning)
         .count();
 
     if error_count == 0 && warning_count == 0 {
@@ -247,12 +247,21 @@ fn print_json_result(
 }
 
 fn print_issue(issue: &Issue) {
+    let section_suffix = issue
+        .section
+        .as_deref()
+        .map(|section| format!(" · spec {section}"))
+        .unwrap_or_default();
+
     match issue.path.as_deref() {
         Some(path) => println!(
-            "- [{}] {}: {} ({})",
-            issue.severity, path, issue.message, issue.id
+            "- [{}] {}: {} ({}){}",
+            issue.severity, path, issue.message, issue.id, section_suffix
         ),
-        None => println!("- [{}] {} ({})", issue.severity, issue.message, issue.id),
+        None => println!(
+            "- [{}] {} ({}){}",
+            issue.severity, issue.message, issue.id, section_suffix
+        ),
     }
 }
 

@@ -4,7 +4,7 @@ use serde_json::{Map, Value};
 
 use crate::{
     adcom_lists::adcom_list_by_name, canonical_object, path_status, CanonicalField, Issue,
-    OpenRtbVersion, PathStateKind, ValidationResult,
+    OpenRtbVersion, PathStateKind, Severity, ValidationResult,
 };
 
 /// The two OpenRTB 2.x payload types the validator understands.
@@ -51,7 +51,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
             valid: false,
             issues: vec![Issue {
                 id: String::from("openrtb.version.unsupported"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "OpenRTB {} has no canonical {} catalog in this build; {} validation is not supported for this version.",
                     version.id(),
@@ -59,6 +59,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
                     kind.label()
                 ),
                 path: None,
+                section: None,
             }],
         };
     }
@@ -70,9 +71,10 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
                 valid: false,
                 issues: vec![Issue {
                     id: String::from("openrtb.payload.invalid_json"),
-                    severity: String::from("error"),
+                    severity: Severity::Error,
                     message: format!("Invalid JSON payload: {error}"),
                     path: None,
+                    section: None,
                 }],
             };
         }
@@ -83,12 +85,13 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
             valid: false,
             issues: vec![Issue {
                 id: String::from("openrtb.payload.root_not_object"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "OpenRTB {}s must be JSON objects at the top level.",
                     kind.label()
                 ),
                 path: None,
+                section: None,
             }],
         };
     };
@@ -105,7 +108,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
     );
 
     ValidationResult {
-        valid: !issues.iter().any(|issue| issue.severity == "error"),
+        valid: !issues.iter().any(|issue| issue.severity == Severity::Error),
         issues,
     }
 }
@@ -129,7 +132,13 @@ fn validate_known_object(
     // payload field as undefined would be a false positive, so field-level
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
-        validate_object_semantics(object_name, object, &instance_path, issues);
+        validate_object_semantics(
+            object_name,
+            &definition.section,
+            object,
+            &instance_path,
+            issues,
+        );
         return;
     }
 
@@ -141,7 +150,7 @@ fn validate_known_object(
         if !object.contains_key(&field.name) {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "{} is required on OpenRTB {} {}.",
                     field.name,
@@ -149,6 +158,7 @@ fn validate_known_object(
                     object_name
                 ),
                 path: Some(join_instance_path(&instance_path, &field.name)),
+                section: Some(field.citation.section.clone()),
             });
         }
     }
@@ -177,7 +187,7 @@ fn validate_known_object(
         else {
             issues.push(Issue {
                 id: String::from("openrtb.field.undefined"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "{}.{} is not defined in the canonical OpenRTB {} catalog.",
                     object_name,
@@ -185,29 +195,34 @@ fn validate_known_object(
                     version.id()
                 ),
                 path: Some(field_instance_path),
+                section: Some(definition.section.clone()),
             });
             logical_segments.pop();
             continue;
         };
 
+        let field_section = field_definition.citation.section.as_str();
         push_path_status_issues(
             version,
             kind,
             logical_segments,
             &field_instance_path,
             field_definition.type_spec.as_str(),
+            Some(field_section),
             issues,
         );
         validate_field_value_shape(
             field_definition.type_spec.as_str(),
             value,
             &field_instance_path,
+            field_section,
             issues,
         );
         validate_required_array_contents(
             field_definition.type_spec.as_str(),
             value,
             &field_instance_path,
+            field_section,
             issues,
         );
         validate_catalog_value_set(field_definition, value, &field_instance_path, issues);
@@ -260,7 +275,13 @@ fn validate_known_object(
         logical_segments.pop();
     }
 
-    validate_object_semantics(object_name, object, &instance_path, issues);
+    validate_object_semantics(
+        object_name,
+        &definition.section,
+        object,
+        &instance_path,
+        issues,
+    );
 }
 
 fn validate_extension_value(
@@ -282,6 +303,7 @@ fn validate_extension_value(
                     logical_segments,
                     &child_instance_path,
                     "",
+                    None,
                     issues,
                 );
                 validate_extension_value(
@@ -315,6 +337,7 @@ fn validate_required_array_contents(
     type_spec: &str,
     value: &Value,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     if is_required(type_spec)
@@ -331,9 +354,10 @@ fn validate_required_array_contents(
             if values.is_empty() {
                 issues.push(Issue {
                     id: String::from("openrtb.field.required"),
-                    severity: String::from("error"),
+                    severity: Severity::Error,
                     message: format!("{} must not be an empty array.", instance_path),
                     path: Some(String::from(instance_path)),
+                    section: Some(String::from(section)),
                 });
             }
         }
@@ -349,11 +373,18 @@ fn validate_catalog_value_set(
     let Some(value_set) = field_value_set(field) else {
         return;
     };
+    let section = field.citation.section.as_str();
 
     match value {
         Value::Number(_) => {
             if let Some(integer) = integer_value(value) {
-                validate_integer_against_value_set(&value_set, integer, instance_path, issues);
+                validate_integer_against_value_set(
+                    &value_set,
+                    integer,
+                    instance_path,
+                    section,
+                    issues,
+                );
             }
         }
         Value::Array(values) => {
@@ -363,6 +394,7 @@ fn validate_catalog_value_set(
                         &value_set,
                         integer,
                         &format!("{}[{}]", instance_path, index),
+                        section,
                         issues,
                     );
                 }
@@ -393,6 +425,7 @@ fn validate_integer_against_value_set(
     value_set: &IntegerValueSet,
     integer: i64,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     if value_set.contains(integer) {
@@ -418,26 +451,32 @@ fn validate_integer_against_value_set(
 
     issues.push(Issue {
         id: String::from("openrtb.value.invalid"),
-        severity: String::from("error"),
+        severity: Severity::Error,
         message,
         path: Some(String::from(instance_path)),
+        section: Some(String::from(section)),
     });
 }
 
 fn validate_object_semantics(
     object_name: &str,
+    object_section: &str,
     object: &Map<String, Value>,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    validate_generic_exclusive_pairs(object, instance_path, issues);
+    validate_generic_exclusive_pairs(object, instance_path, object_section, issues);
 
     match object_name {
-        "BidRequest" => validate_bid_request_semantics(object, instance_path, issues),
-        "BidResponse" => validate_bid_response_semantics(object, instance_path, issues),
-        "Imp" => validate_imp_semantics(object, instance_path, issues),
-        "Video" => validate_video_semantics(object, instance_path, issues),
-        "Audio" => validate_audio_semantics(object, instance_path, issues),
+        "BidRequest" => {
+            validate_bid_request_semantics(object, instance_path, object_section, issues)
+        }
+        "BidResponse" => {
+            validate_bid_response_semantics(object, instance_path, object_section, issues)
+        }
+        "Imp" => validate_imp_semantics(object, instance_path, object_section, issues),
+        "Video" => validate_video_semantics(object, instance_path, object_section, issues),
+        "Audio" => validate_audio_semantics(object, instance_path, object_section, issues),
         _ => {}
     }
 }
@@ -445,6 +484,7 @@ fn validate_object_semantics(
 fn validate_generic_exclusive_pairs(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     for (left, right) in [
@@ -455,7 +495,7 @@ fn validate_generic_exclusive_pairs(
         ("language", "langb"),
     ] {
         if object.contains_key(left) && object.contains_key(right) {
-            push_mutually_exclusive_issue(left, right, instance_path, issues);
+            push_mutually_exclusive_issue(left, right, instance_path, section, issues);
         }
     }
 }
@@ -463,6 +503,7 @@ fn validate_generic_exclusive_pairs(
 fn validate_bid_request_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     let media_contexts = ["site", "app", "dooh"]
@@ -473,11 +514,12 @@ fn validate_bid_request_semantics(
     if media_contexts.len() > 1 {
         issues.push(Issue {
             id: String::from("openrtb.fields.mutually_exclusive"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: String::from(
                 "Only one of site, app, or dooh may be present on the same bid request.",
             ),
             path: Some(join_instance_path(instance_path, media_contexts[0])),
+            section: Some(String::from(section)),
         });
     }
 }
@@ -485,6 +527,7 @@ fn validate_bid_request_semantics(
 fn validate_bid_response_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     let has_seatbid = object
@@ -495,7 +538,7 @@ fn validate_bid_response_semantics(
     if !has_seatbid && !object.contains_key("nbr") {
         issues.push(Issue {
             id: String::from("openrtb.response.seatbid_or_nbr.required"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: String::from(
                 "A bid response must contain at least one seatbid, or a no-bid reason code (nbr).",
             ),
@@ -504,6 +547,7 @@ fn validate_bid_response_semantics(
             } else {
                 join_instance_path(instance_path, "seatbid")
             }),
+            section: Some(String::from(section)),
         });
     }
 }
@@ -511,6 +555,7 @@ fn validate_bid_response_semantics(
 fn validate_imp_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     let has_media_type = ["banner", "video", "audio", "native"]
@@ -520,11 +565,12 @@ fn validate_imp_semantics(
     if !has_media_type {
         issues.push(Issue {
             id: String::from("openrtb.imp.media_type.required"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: String::from(
                 "Each Imp object must offer at least one media subtype such as banner, video, audio, or native.",
             ),
             path: Some(String::from(instance_path)),
+            section: Some(String::from(section)),
         });
     }
 }
@@ -532,21 +578,23 @@ fn validate_imp_semantics(
 fn validate_video_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
-    validate_duration_semantics(object, instance_path, issues);
+    validate_duration_semantics(object, instance_path, section, issues);
 
     let skippable = object.get("skip").and_then(integer_value) == Some(1);
     for dependent_field in ["skipmin", "skipafter"] {
         if object.contains_key(dependent_field) && !skippable {
             issues.push(Issue {
                 id: String::from("openrtb.field.requires_skippable_video"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "{} may only be present when video.skip is set to 1.",
                     join_instance_path(instance_path, dependent_field)
                 ),
                 path: Some(join_instance_path(instance_path, dependent_field)),
+                section: Some(String::from(section)),
             });
         }
     }
@@ -555,22 +603,24 @@ fn validate_video_semantics(
 fn validate_audio_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
-    validate_duration_semantics(object, instance_path, issues);
+    validate_duration_semantics(object, instance_path, section, issues);
 }
 
 fn validate_duration_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     if object.contains_key("rqddurs") && object.contains_key("minduration") {
-        push_mutually_exclusive_issue("minduration", "rqddurs", instance_path, issues);
+        push_mutually_exclusive_issue("minduration", "rqddurs", instance_path, section, issues);
     }
 
     if object.contains_key("rqddurs") && object.contains_key("maxduration") {
-        push_mutually_exclusive_issue("maxduration", "rqddurs", instance_path, issues);
+        push_mutually_exclusive_issue("maxduration", "rqddurs", instance_path, section, issues);
     }
 }
 
@@ -578,17 +628,19 @@ fn push_mutually_exclusive_issue(
     left: &str,
     right: &str,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     issues.push(Issue {
         id: String::from("openrtb.fields.mutually_exclusive"),
-        severity: String::from("error"),
+        severity: Severity::Error,
         message: format!(
             "{} and {} are mutually exclusive and must not both be present.",
             join_instance_path(instance_path, left),
             join_instance_path(instance_path, right)
         ),
         path: Some(join_instance_path(instance_path, left)),
+        section: Some(String::from(section)),
     });
 }
 
@@ -641,6 +693,7 @@ fn validate_field_value_shape(
     type_spec: &str,
     value: &Value,
     instance_path: &str,
+    section: &str,
     issues: &mut Vec<Issue>,
 ) {
     let valid = match expected_shape(type_spec) {
@@ -671,7 +724,7 @@ fn validate_field_value_shape(
     if !valid {
         issues.push(Issue {
             id: String::from("openrtb.type.mismatch"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: format!(
                 "{} expects {} but received {}.",
                 instance_path,
@@ -679,16 +732,19 @@ fn validate_field_value_shape(
                 json_type_label(value)
             ),
             path: Some(String::from(instance_path)),
+            section: Some(String::from(section)),
         });
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn push_path_status_issues(
     version: OpenRtbVersion,
     kind: PayloadKind,
     logical_segments: &[String],
     instance_path: &str,
     type_spec: &str,
+    catalog_section: Option<&str>,
     issues: &mut Vec<Issue>,
 ) {
     let Some(schema_path) = schema_path(kind, logical_segments) else {
@@ -696,22 +752,32 @@ fn push_path_status_issues(
     };
 
     let status = path_status(version, &schema_path);
+    // Prefer the section recorded on the matching version rule; fall back to
+    // the catalog citation of the field itself.
+    let rule_section = status
+        .matched_rules
+        .first()
+        .map(|matched| String::from(matched.rule.section))
+        .or_else(|| catalog_section.map(String::from));
+
     match status.kind {
         PathStateKind::Deprecated => issues.push(Issue {
             id: String::from("openrtb.field.deprecated"),
-            severity: String::from("warning"),
+            severity: Severity::Warning,
             message: format!("{} is deprecated in OpenRTB {}.", schema_path, version.id()),
             path: Some(String::from(instance_path)),
+            section: rule_section,
         }),
         PathStateKind::Removed => issues.push(Issue {
             id: String::from("openrtb.field.removed"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: format!(
                 "{} was removed before OpenRTB {}.",
                 schema_path,
                 version.id()
             ),
             path: Some(String::from(instance_path)),
+            section: rule_section,
         }),
         PathStateKind::Moved => {
             let replacements = if status.replacement_paths.is_empty() {
@@ -721,7 +787,7 @@ fn push_path_status_issues(
             };
             issues.push(Issue {
                 id: String::from("openrtb.field.moved"),
-                severity: String::from("error"),
+                severity: Severity::Error,
                 message: format!(
                     "{} moved in OpenRTB {}; use {}.",
                     schema_path,
@@ -729,28 +795,31 @@ fn push_path_status_issues(
                     replacements
                 ),
                 path: Some(String::from(instance_path)),
+                section: rule_section,
             });
         }
         PathStateKind::NotYetAvailable => issues.push(Issue {
             id: String::from("openrtb.field.not_yet_available"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: format!(
                 "{} is not available in OpenRTB {}.",
                 schema_path,
                 version.id()
             ),
             path: Some(String::from(instance_path)),
+            section: rule_section,
         }),
         PathStateKind::Available | PathStateKind::Unknown => {
             if type_spec.to_ascii_lowercase().contains("deprecated") {
                 issues.push(Issue {
                     id: String::from("openrtb.field.deprecated"),
-                    severity: String::from("warning"),
+                    severity: Severity::Warning,
                     message: format!(
                         "{} is marked deprecated in the canonical catalog.",
                         schema_path
                     ),
                     path: Some(String::from(instance_path)),
+                    section: catalog_section.map(String::from),
                 });
             }
         }

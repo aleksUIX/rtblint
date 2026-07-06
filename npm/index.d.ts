@@ -3,6 +3,8 @@ export interface Issue {
   severity: "error" | "warning";
   message: string;
   path?: string;
+  /** OpenRTB spec section the finding derives from, e.g. "3.2.7". */
+  section?: string;
 }
 
 export interface ValidationResult {

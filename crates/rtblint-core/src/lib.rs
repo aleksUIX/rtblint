@@ -73,27 +73,60 @@ pub fn validate_object_field(
         valid: false,
         issues: vec![Issue {
             id: String::from("openrtb.field.undefined"),
-            severity: String::from("error"),
+            severity: Severity::Error,
             message: catalog_message,
             path: Some(format!("{}.{}", object_name, field_name)),
+            section: canonical_object(version, object_name).map(|object| object.section.clone()),
         }],
     }
 }
 
 /// Result of a validation run.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[non_exhaustive]
 pub struct ValidationResult {
     pub valid: bool,
     pub issues: Vec<Issue>,
 }
 
+/// Severity of a validation issue. Serializes as a lowercase string
+/// ("error", "warning").
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "lowercase")]
+#[non_exhaustive]
+pub enum Severity {
+    Error,
+    Warning,
+}
+
+impl Severity {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Error => "error",
+            Self::Warning => "warning",
+        }
+    }
+}
+
+impl std::fmt::Display for Severity {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str(self.as_str())
+    }
+}
+
 /// A single validation issue.
+///
+/// `section` cites the OpenRTB spec section the finding derives from (for
+/// example "3.2.7"), when the underlying catalog or version rule records one.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[non_exhaustive]
 pub struct Issue {
     pub id: String,
-    pub severity: String,
+    pub severity: Severity,
     pub message: String,
     pub path: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub section: Option<String>,
 }
 
 #[cfg(test)]
@@ -134,7 +167,7 @@ mod tests {
         assert!(!result.valid);
         assert_eq!(result.issues.len(), 1);
         assert_eq!(result.issues[0].id, "openrtb.payload.invalid_json");
-        assert_eq!(result.issues[0].severity, "error");
+        assert_eq!(result.issues[0].severity, Severity::Error);
     }
 
     #[test]
@@ -228,6 +261,14 @@ mod tests {
             "openrtb.field.required",
             "imp[0].video.mimes"
         ));
+
+        let issue = result
+            .issues
+            .iter()
+            .find(|issue| issue.id == "openrtb.field.required")
+            .expect("required issue should be present");
+        assert_eq!(issue.severity, Severity::Error);
+        assert_eq!(issue.section.as_deref(), Some("3.2.7"));
     }
 
     #[test]
@@ -759,7 +800,10 @@ mod tests {
                 .issues
                 .iter()
                 .any(|issue| issue.id == "openrtb.field.undefined"
-                    && issue.path.as_deref().is_some_and(|p| p.starts_with("site."))),
+                    && issue
+                        .path
+                        .as_deref()
+                        .is_some_and(|p| p.starts_with("site."))),
             "legacy Site fields should not be flagged undefined: {:?}",
             result.issues
         );

@@ -1,0 +1,19 @@
+{
+  "id": "req-native-legacy-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-native-3",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-native-3",
+      "native": {
+        "ver": "1.0",
+        "request": "{\"native\":{\"ver\":\"1.2\",\"assets\":[{\"id\":1,\"required\":1,\"title\":{\"len\":90}}]}}"
+      }
+    }
+  ]
+}

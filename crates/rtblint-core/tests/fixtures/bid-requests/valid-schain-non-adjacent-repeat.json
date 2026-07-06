@@ -1,0 +1,44 @@
+{
+  "id": "req-schain-nonadj-001",
+  "at": 1,
+  "tmax": 200,
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        {
+          "asi": "exchange1.example",
+          "sid": "seller-abc",
+          "hp": 1
+        },
+        {
+          "asi": "exchange2.example",
+          "sid": "seller-xyz",
+          "hp": 1
+        },
+        {
+          "asi": "exchange1.example",
+          "sid": "seller-abc",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "site": {
+    "id": "site-schain-3",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-schain-3",
+      "bidfloor": 2.5,
+      "bidfloorcur": "USD",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

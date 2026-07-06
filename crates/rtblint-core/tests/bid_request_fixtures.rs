@@ -120,6 +120,186 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: false,
         expected_issues: &[("openrtb.fields.mutually_exclusive", "site")],
     },
+    // -- Semantic rule pack --
+    FixtureCase {
+        name: "valid-schain-baseline",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/valid-schain-baseline.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "warning-schain-duplicate-node",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-duplicate-node.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.duplicate_node", "source.schain.nodes[1]")],
+    },
+    FixtureCase {
+        name: "valid-schain-non-adjacent-repeat",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/valid-schain-non-adjacent-repeat.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "warning-schain-node-hp-missing",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-node-hp-missing.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.node.hp_missing", "source.schain.nodes[0]")],
+    },
+    FixtureCase {
+        name: "invalid-schain-node-empty-asi",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/invalid-schain-node-empty-asi.json"),
+        valid: false,
+        expected_issues: &[(
+            "openrtb.schain.node.identifier_empty",
+            "source.schain.nodes[0].asi",
+        )],
+    },
+    FixtureCase {
+        name: "warning-regs-gpp-sid-without-gpp",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-regs-gpp-sid-without-gpp.json"),
+        valid: true,
+        expected_issues: &[("openrtb.regs.gpp_sid_without_gpp", "regs.gpp_sid")],
+    },
+    FixtureCase {
+        name: "warning-regs-gpp-without-gpp-sid",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-regs-gpp-without-gpp-sid.json"),
+        valid: true,
+        expected_issues: &[("openrtb.regs.gpp_without_gpp_sid", "regs.gpp")],
+    },
+    FixtureCase {
+        name: "warning-regs-us-privacy-malformed",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-regs-us-privacy-malformed.json"),
+        valid: true,
+        expected_issues: &[("openrtb.regs.us_privacy_malformed", "regs.us_privacy")],
+    },
+    FixtureCase {
+        name: "valid-regs-us-privacy-not-applicable",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/valid-regs-us-privacy-not-applicable.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "warning-video-pod-rqddurs-empty",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-video-pod-rqddurs-empty.json"),
+        valid: true,
+        expected_issues: &[("openrtb.video.pod.rqddurs_empty", "imp[0].video.rqddurs")],
+    },
+    FixtureCase {
+        name: "warning-video-pod-mincpmpersec-without-context",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!(
+            "fixtures/bid-requests/warning-video-pod-mincpmpersec-without-context.json"
+        ),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.video.pod.mincpmpersec_without_pod_context",
+            "imp[0].video.mincpmpersec",
+        )],
+    },
+    FixtureCase {
+        name: "valid-video-pod-mincpmpersec-with-poddur",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/valid-video-pod-mincpmpersec-with-poddur.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "invalid-native-request-double-encoded",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/invalid-native-request-double-encoded.json"),
+        valid: false,
+        expected_issues: &[(
+            "openrtb.native.request.double_encoded",
+            "imp[0].native.request",
+        )],
+    },
+    FixtureCase {
+        name: "warning-native-request-unparseable",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-native-request-unparseable.json"),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.native.request.unparseable",
+            "imp[0].native.request",
+        )],
+    },
+    FixtureCase {
+        name: "warning-native-request-legacy-wrapper",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-native-request-legacy-wrapper.json"),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.native.request.legacy_wrapper",
+            "imp[0].native.request",
+        )],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.3-native-feed-semantic-check",
+        version: OpenRtbVersion::V2_3,
+        input: include_str!("fixtures/bid-requests/valid-openrtb-2.3-native-feed.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "invalid-tmax-non-positive",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/invalid-tmax-non-positive.json"),
+        valid: false,
+        expected_issues: &[("openrtb.request.tmax_non_positive", "tmax")],
+    },
+    FixtureCase {
+        name: "warning-tmax-implausible",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-tmax-implausible.json"),
+        valid: true,
+        expected_issues: &[("openrtb.request.tmax_implausible", "tmax")],
+    },
+    FixtureCase {
+        name: "warning-cur-format-invalid",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-cur-format-invalid.json"),
+        valid: true,
+        expected_issues: &[("openrtb.request.cur_format_invalid", "cur[0]")],
+    },
+    FixtureCase {
+        name: "invalid-bidfloor-negative",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/invalid-bidfloor-negative.json"),
+        valid: false,
+        expected_issues: &[
+            ("openrtb.imp.bidfloor_negative", "imp[0].bidfloor"),
+            (
+                "openrtb.imp.bidfloor_negative",
+                "imp[0].pmp.deals[0].bidfloor",
+            ),
+        ],
+    },
+    FixtureCase {
+        name: "warning-bidfloorcur-format-invalid",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-bidfloorcur-format-invalid.json"),
+        valid: true,
+        expected_issues: &[
+            (
+                "openrtb.imp.bidfloorcur_format_invalid",
+                "imp[0].bidfloorcur",
+            ),
+            (
+                "openrtb.imp.bidfloorcur_format_invalid",
+                "imp[0].pmp.deals[0].bidfloorcur",
+            ),
+        ],
+    },
 ];
 
 const INVENTORY_FIXTURES: &[InventoryFixtureCase] = &[

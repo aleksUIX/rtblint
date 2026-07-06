@@ -372,7 +372,8 @@
             "helper_source_file": "source.md",
             "start_line": 854,
             "end_line": 858
-          }
+          },
+          "child_object": "SupplyChain"
         },
         {
           "name": "ext",

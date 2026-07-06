@@ -1,0 +1,27 @@
+{
+  "id": "req-pod-rqddurs-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-pod-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-pod-1",
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "protocols": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "rqddurs": []
+      }
+    }
+  ]
+}

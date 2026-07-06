@@ -1,0 +1,19 @@
+{
+  "id": "req-native-unparse-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-native-2",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-native-2",
+      "native": {
+        "ver": "1.2",
+        "request": "this is not json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "req-native-double-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-native-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-native-1",
+      "native": {
+        "ver": "1.2",
+        "request": "\"{\\\"ver\\\":\\\"1.2\\\",\\\"assets\\\":[{\\\"id\\\":1,\\\"required\\\":1,\\\"title\\\":{\\\"len\\\":90}}]}\""
+      }
+    }
+  ]
+}

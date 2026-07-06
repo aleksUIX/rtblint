@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.4.0 (unreleased)
+
+### Added
+
+Semantic rule pack: cross-field checks the object catalogs alone cannot
+express.
+
+- SupplyChain node hygiene: duplicate adjacent nodes, missing `hp`, empty
+  `asi`/`sid` identifiers (`source.schain` is now wired into the recursive
+  validator; it was previously opaque to field-level checks)
+- GPP/GPP-SID and US Privacy string coherence on `Regs`
+- CTV pod duration sanity on `Video`: empty `rqddurs`, `mincpmpersec` used
+  outside a dynamic pod context
+- Native request encoding: double-encoded JSON, unparseable content, and the
+  deprecated pre-1.1 `{"native": {...}}` wrapper, all on `imp.native.request`
+- Plausibility checks: non-positive or implausible `tmax`, malformed
+  currency codes on `cur`/`bidfloorcur`, negative `bidfloor` (`Imp` and
+  `Deal`)
+
+### Known limits
+
+- Native markup encoding checks cover `imp.native.request` only; a
+  `bid.adm` cross-check against its Imp's media type would need a two-pass
+  validator architecture and is not implemented
+
+## 0.3.0 (2026-07-05)
+
+### Changed
+
+- Cut validator cost on structure-heavy payloads 4-6x
+
 ## 0.2.0 (2026-07-05)
 
 ### Added

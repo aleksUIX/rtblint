@@ -1,0 +1,19 @@
+{
+  "id": "req-tmax-high-001",
+  "at": 1,
+  "tmax": 15000,
+  "site": {
+    "id": "site-tmax-2",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-tmax-2",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

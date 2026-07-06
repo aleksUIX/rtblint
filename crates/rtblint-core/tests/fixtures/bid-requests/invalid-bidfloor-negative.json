@@ -1,0 +1,29 @@
+{
+  "id": "req-bidfloor-neg-001",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-bf-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-bf-1",
+      "bidfloor": -1.5,
+      "banner": {
+        "w": 300,
+        "h": 250
+      },
+      "pmp": {
+        "private_auction": 1,
+        "deals": [
+          {
+            "id": "deal-bf-1",
+            "bidfloor": -3.0
+          }
+        ]
+      }
+    }
+  ]
+}

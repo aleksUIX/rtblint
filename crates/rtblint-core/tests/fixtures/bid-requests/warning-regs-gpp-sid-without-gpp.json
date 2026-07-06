@@ -1,0 +1,24 @@
+{
+  "id": "req-regs-sidonly-001",
+  "at": 1,
+  "tmax": 200,
+  "regs": {
+    "gpp_sid": [
+      7
+    ]
+  },
+  "site": {
+    "id": "site-regs-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-regs-1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

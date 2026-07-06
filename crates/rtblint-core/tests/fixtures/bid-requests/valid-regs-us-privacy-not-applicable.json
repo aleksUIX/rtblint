@@ -1,0 +1,22 @@
+{
+  "id": "req-regs-usp-na-001",
+  "at": 1,
+  "tmax": 200,
+  "regs": {
+    "us_privacy": "1---"
+  },
+  "site": {
+    "id": "site-regs-4",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-regs-4",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

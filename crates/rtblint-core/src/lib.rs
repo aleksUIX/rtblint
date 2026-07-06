@@ -810,4 +810,81 @@ mod tests {
             result.issues
         );
     }
+
+    #[test]
+    fn validate_reports_double_encoded_native_request() {
+        // native.request has been JSON.stringify'd twice: parsing it once
+        // yields another JSON string, not the Native Markup Request object.
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "native": {
+                            "request": "\"{\\\"ver\\\":\\\"1.2\\\"}\""
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.native.request.double_encoded",
+            "imp[0].native.request"
+        ));
+    }
+
+    #[test]
+    fn validate_reports_native_request_legacy_wrapper() {
+        // Pre-Native-1.1 convention: the request is wrapped in a root
+        // object with a single "native" key instead of being the root
+        // Native Markup Request object itself.
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "native": {
+                            "request": "{\"native\":{\"ver\":\"1.2\"}}"
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.native.request.legacy_wrapper",
+            "imp[0].native.request"
+        ));
+    }
+
+    #[test]
+    fn validate_reports_unparseable_native_request() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "native": {
+                            "request": "not json"
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.native.request.unparseable",
+            "imp[0].native.request"
+        ));
+    }
 }

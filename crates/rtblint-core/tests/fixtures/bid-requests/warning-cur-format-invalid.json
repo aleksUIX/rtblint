@@ -1,0 +1,22 @@
+{
+  "id": "req-cur-bad-001",
+  "at": 1,
+  "tmax": 200,
+  "cur": [
+    "usd"
+  ],
+  "site": {
+    "id": "site-cur-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-cur-1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

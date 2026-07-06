@@ -2,30 +2,34 @@
 
 What rtblint does today and where it's heading. Not a promise of dates.
 
-## Shipped (0.1.0)
+## Shipped
 
 - OpenRTB 2.x bid request and bid response validation, versions 2.0 through
   every monthly 2.6 snapshot (currently 2.6-202606)
 - Stable rule ids, typed severities, JSON paths, and spec section citations
   on every finding
+- Semantic rule pack for the failure modes catalogs alone can't catch:
+  SupplyChain node hygiene, GPP/US Privacy string coherence, CTV pod
+  duration sanity, native request encoding, tmax/currency/bidfloor
+  plausibility
+- CLI batch mode; spec catalogs compiled to static Rust data
 - Rust library and CLI, MCP server over stdio, WASM-backed npm package
 - Web playground at [rtblint.org](https://rtblint.org)
 
-## Next (0.2.x)
+## Next
 
-- Semantic rule pack for the failure modes JSON Schemas can't catch:
-  - SupplyChain (schain) integrity: node completeness, asi/sid sanity,
-    complete-flag consistency
-  - Privacy signal coherence: GPP presence vs legacy regs.gdpr /
-    us_privacy, contradictory signals
-  - CTV pod coherence: podid / slotinpod / poddur / rqddurs interplay
-  - Native adm encoding: double-encoded JSON, wrapper presence
-  - Plausibility checks: tmax realism, price/currency sanity
 - Validated fixture coverage for every tracked version, not just 2.6
 - Published JSON Schemas per version, generated from the catalogs
+- SupplyChain schema-extraction pipeline: the `source.schain` catalog wiring
+  was hand-patched directly in the exported JSON; the upstream
+  spec-extraction tooling needs the same fix or a future regeneration will
+  silently drop it
 
 ## Later
 
+- Native markup encoding checks against `bid.adm` (response side), cross-
+  referenced to its Imp's media type; needs a two-pass validator
+  architecture the current single-pass walk doesn't have
 - OpenRTB 3.0 / AdCOM layered payload validation and 2.x-to-3.0 migration
   diagnostics
 - NDJSON stream mode: lint captured bid streams, aggregate rule frequencies

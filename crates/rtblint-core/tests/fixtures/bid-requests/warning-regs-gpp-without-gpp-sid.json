@@ -1,0 +1,22 @@
+{
+  "id": "req-regs-gpponly-001",
+  "at": 1,
+  "tmax": 200,
+  "regs": {
+    "gpp": "DBABBg~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA"
+  },
+  "site": {
+    "id": "site-regs-2",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-regs-2",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

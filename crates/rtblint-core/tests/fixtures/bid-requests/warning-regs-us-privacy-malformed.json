@@ -1,0 +1,22 @@
+{
+  "id": "req-regs-usp-bad-001",
+  "at": 1,
+  "tmax": 200,
+  "regs": {
+    "us_privacy": "1YNn"
+  },
+  "site": {
+    "id": "site-regs-3",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-regs-3",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

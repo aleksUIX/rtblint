@@ -1,0 +1,33 @@
+{
+  "id": "req-schain-hp-001",
+  "at": 1,
+  "tmax": 200,
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        {
+          "asi": "exchange1.example",
+          "sid": "seller-abc"
+        }
+      ]
+    }
+  },
+  "site": {
+    "id": "site-schain-4",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-schain-4",
+      "bidfloor": 2.5,
+      "bidfloorcur": "USD",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

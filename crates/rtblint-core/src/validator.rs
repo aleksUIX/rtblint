@@ -489,6 +489,15 @@ fn validate_object_semantics(
         "Imp" => validate_imp_semantics(object, instance_path, object_section, issues),
         "Video" => validate_video_semantics(object, instance_path, object_section, issues),
         "Audio" => validate_audio_semantics(object, instance_path, object_section, issues),
+        "Deal" => validate_deal_semantics(object, instance_path, object_section, issues),
+        "Regs" => validate_regs_semantics(object, instance_path, object_section, issues),
+        "Native" => validate_native_semantics(object, instance_path, object_section, issues),
+        "SupplyChain" => {
+            validate_supply_chain_semantics(object, instance_path, object_section, issues)
+        }
+        "SupplyChainNode" => {
+            validate_supply_chain_node_semantics(object, instance_path, object_section, issues)
+        }
         _ => {}
     }
 }
@@ -533,6 +542,53 @@ fn validate_bid_request_semantics(
             path: Some(join_instance_path(instance_path, media_contexts[0])),
             section: Some(String::from(section)),
         });
+    }
+
+    if let Some(tmax) = object.get("tmax").and_then(integer_value) {
+        let tmax_path = join_instance_path(instance_path, "tmax");
+        if tmax <= 0 {
+            issues.push(Issue {
+                id: String::from("openrtb.request.tmax_non_positive"),
+                severity: Severity::Error,
+                message: String::from(
+                    "tmax must be a positive number of milliseconds; a zero or negative value \
+                     leaves no time for bids to be received.",
+                ),
+                path: Some(tmax_path),
+                section: Some(String::from(section)),
+            });
+        } else if tmax > 10_000 {
+            issues.push(Issue {
+                id: String::from("openrtb.request.tmax_implausible"),
+                severity: Severity::Warning,
+                message: format!(
+                    "tmax of {tmax} is unusually high for an RTB auction; confirm tmax is \
+                     expressed in milliseconds, not seconds."
+                ),
+                path: Some(tmax_path),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+
+    if let Some(currencies) = object.get("cur").and_then(Value::as_array) {
+        let cur_instance_path = join_instance_path(instance_path, "cur");
+        for (index, currency) in currencies.iter().enumerate() {
+            if let Some(code) = currency.as_str() {
+                if !is_alpha3_currency_code(code) {
+                    issues.push(Issue {
+                        id: String::from("openrtb.request.cur_format_invalid"),
+                        severity: Severity::Warning,
+                        message: format!(
+                            "\"{code}\" does not look like an ISO-4217 currency code (three \
+                             uppercase letters, e.g. \"USD\")."
+                        ),
+                        path: Some(format!("{cur_instance_path}[{index}]")),
+                        section: Some(String::from(section)),
+                    });
+                }
+            }
+        }
     }
 }
 
@@ -585,6 +641,58 @@ fn validate_imp_semantics(
             section: Some(String::from(section)),
         });
     }
+
+    validate_bidfloor_semantics(object, instance_path, section, issues);
+}
+
+fn validate_deal_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    validate_bidfloor_semantics(object, instance_path, section, issues);
+}
+
+/// Shared by `Imp` and `Deal`, which both carry a `bidfloor`/`bidfloorcur`
+/// pair with identical semantics. Deliberately fires the same
+/// `openrtb.imp.*` ids regardless of which object called it, matching the
+/// existing pattern of one shared id firing from multiple call sites (see
+/// `openrtb.fields.mutually_exclusive`).
+fn validate_bidfloor_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if let Some(bidfloor) = object.get("bidfloor").and_then(Value::as_f64) {
+        if bidfloor < 0.0 {
+            issues.push(Issue {
+                id: String::from("openrtb.imp.bidfloor_negative"),
+                severity: Severity::Error,
+                message: format!(
+                    "bidfloor of {bidfloor} is negative; a CPM price cannot be negative."
+                ),
+                path: Some(join_instance_path(instance_path, "bidfloor")),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+
+    if let Some(currency) = object.get("bidfloorcur").and_then(Value::as_str) {
+        if !is_alpha3_currency_code(currency) {
+            issues.push(Issue {
+                id: String::from("openrtb.imp.bidfloorcur_format_invalid"),
+                severity: Severity::Warning,
+                message: format!(
+                    "\"{currency}\" does not look like an ISO-4217 currency code (three \
+                     uppercase letters, e.g. \"USD\")."
+                ),
+                path: Some(join_instance_path(instance_path, "bidfloorcur")),
+                section: Some(String::from(section)),
+            });
+        }
+    }
 }
 
 fn validate_video_semantics(
@@ -594,6 +702,7 @@ fn validate_video_semantics(
     issues: &mut Vec<Issue>,
 ) {
     validate_duration_semantics(object, instance_path, section, issues);
+    validate_pod_semantics(object, instance_path, section, issues);
 
     let skippable = object.get("skip").and_then(integer_value) == Some(1);
     for dependent_field in ["skipmin", "skipafter"] {
@@ -609,6 +718,49 @@ fn validate_video_semantics(
                 section: Some(String::from(section)),
             });
         }
+    }
+}
+
+/// CTV ad-pod duration coherence. Deliberately does not require `podid` on
+/// `slotinpod`/`podseq`/`maxseq`/`poddur`: a single Imp can represent an
+/// entire dynamic pod with no sibling Imps to correlate against, and an
+/// existing fixture (valid-openrtb-2.6-202402-poddedupe-video) documents
+/// exactly that shape.
+fn validate_pod_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if object
+        .get("rqddurs")
+        .and_then(Value::as_array)
+        .is_some_and(Vec::is_empty)
+    {
+        issues.push(Issue {
+            id: String::from("openrtb.video.pod.rqddurs_empty"),
+            severity: Severity::Warning,
+            message: String::from(
+                "rqddurs is an empty array; it should list the exact durations acceptable for \
+                 this ad pod slot, or be omitted entirely.",
+            ),
+            path: Some(join_instance_path(instance_path, "rqddurs")),
+            section: Some(String::from(section)),
+        });
+    }
+
+    let has_dynamic_pod_context = object.contains_key("poddur") || object.contains_key("maxseq");
+    if object.contains_key("mincpmpersec") && !has_dynamic_pod_context {
+        issues.push(Issue {
+            id: String::from("openrtb.video.pod.mincpmpersec_without_pod_context"),
+            severity: Severity::Warning,
+            message: String::from(
+                "mincpmpersec is meant for the dynamic portion of a video ad pod; it is present \
+                 without poddur or maxseq, which normally accompany a dynamic pod.",
+            ),
+            path: Some(join_instance_path(instance_path, "mincpmpersec")),
+            section: Some(String::from(section)),
+        });
     }
 }
 
@@ -656,12 +808,215 @@ fn push_mutually_exclusive_issue(
     });
 }
 
+fn validate_regs_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let gpp_present = object
+        .get("gpp")
+        .and_then(Value::as_str)
+        .is_some_and(|value| !value.is_empty());
+    let gpp_sid_present = object
+        .get("gpp_sid")
+        .and_then(Value::as_array)
+        .is_some_and(|values| !values.is_empty());
+
+    if gpp_sid_present && !gpp_present {
+        issues.push(Issue {
+            id: String::from("openrtb.regs.gpp_sid_without_gpp"),
+            severity: Severity::Warning,
+            message: String::from(
+                "gpp_sid is present but gpp is absent or empty; section ids with no GPP string \
+                 to scope them are incoherent.",
+            ),
+            path: Some(join_instance_path(instance_path, "gpp_sid")),
+            section: Some(String::from(section)),
+        });
+    }
+
+    if gpp_present && !gpp_sid_present {
+        issues.push(Issue {
+            id: String::from("openrtb.regs.gpp_without_gpp_sid"),
+            severity: Severity::Warning,
+            message: String::from(
+                "gpp is present but gpp_sid is absent or empty; without section ids a consumer \
+                 cannot tell which GPP sections apply.",
+            ),
+            path: Some(join_instance_path(instance_path, "gpp")),
+            section: Some(String::from(section)),
+        });
+    }
+
+    if let Some(us_privacy) = object.get("us_privacy").and_then(Value::as_str) {
+        if !us_privacy.is_empty() && !is_us_privacy_string_shape(us_privacy) {
+            issues.push(Issue {
+                id: String::from("openrtb.regs.us_privacy_malformed"),
+                severity: Severity::Warning,
+                message: format!(
+                    "\"{us_privacy}\" does not look like a US Privacy string: expected \"1\" \
+                     followed by three characters each Y, N, or \"-\"."
+                ),
+                path: Some(join_instance_path(instance_path, "us_privacy")),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+}
+
+fn validate_native_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let Some(request_raw) = object.get("request").and_then(Value::as_str) else {
+        return;
+    };
+    let request_path = join_instance_path(instance_path, "request");
+
+    match serde_json::from_str::<Value>(request_raw) {
+        Ok(Value::String(_)) => {
+            issues.push(Issue {
+                id: String::from("openrtb.native.request.double_encoded"),
+                severity: Severity::Error,
+                message: String::from(
+                    "native.request parses to another JSON string rather than an object; it \
+                     looks like the Native Markup Request was JSON-encoded twice.",
+                ),
+                path: Some(request_path),
+                section: Some(String::from(section)),
+            });
+        }
+        Ok(Value::Object(fields)) => {
+            if fields.len() == 1 && fields.contains_key("native") {
+                issues.push(Issue {
+                    id: String::from("openrtb.native.request.legacy_wrapper"),
+                    severity: Severity::Warning,
+                    message: String::from(
+                        "native.request is wrapped in a top-level \"native\" key; that \
+                         convention predates Native Ads 1.1, which made the Native Markup \
+                         Request the root object.",
+                    ),
+                    path: Some(request_path),
+                    section: Some(String::from(section)),
+                });
+            }
+        }
+        Ok(_) => {}
+        Err(_) => {
+            issues.push(Issue {
+                id: String::from("openrtb.native.request.unparseable"),
+                severity: Severity::Warning,
+                message: String::from(
+                    "native.request does not parse as JSON; it should be a JSON-encoded Native \
+                     Markup Request object.",
+                ),
+                path: Some(request_path),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+}
+
+fn validate_supply_chain_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let Some(nodes) = object.get("nodes").and_then(Value::as_array) else {
+        return;
+    };
+    let nodes_path = join_instance_path(instance_path, "nodes");
+
+    for index in 1..nodes.len() {
+        let previous = nodes[index - 1].as_object();
+        let current = nodes[index].as_object();
+        let (Some(previous), Some(current)) = (previous, current) else {
+            continue;
+        };
+
+        let same_asi = previous.get("asi").and_then(Value::as_str)
+            == current.get("asi").and_then(Value::as_str);
+        let same_sid = previous.get("sid").and_then(Value::as_str)
+            == current.get("sid").and_then(Value::as_str);
+
+        if same_asi && same_sid && previous.get("asi").and_then(Value::as_str).is_some() {
+            issues.push(Issue {
+                id: String::from("openrtb.schain.duplicate_node"),
+                severity: Severity::Warning,
+                message: String::from(
+                    "Two adjacent SupplyChain nodes share the same asi and sid; verify this \
+                     node was not appended twice by mistake.",
+                ),
+                path: Some(format!("{nodes_path}[{index}]")),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+}
+
+fn validate_supply_chain_node_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if !object.contains_key("hp") {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.node.hp_missing"),
+            severity: Severity::Warning,
+            message: String::from(
+                "This SupplyChain node has no hp field; the spec expects it to be propagated \
+                 on every node once a payment-flow signal is available.",
+            ),
+            path: Some(String::from(instance_path)),
+            section: Some(String::from(section)),
+        });
+    }
+
+    for field in ["asi", "sid"] {
+        if object.get(field).and_then(Value::as_str) == Some("") {
+            issues.push(Issue {
+                id: String::from("openrtb.schain.node.identifier_empty"),
+                severity: Severity::Error,
+                message: format!(
+                    "{} is an empty string; it must identify the advertising system or seller.",
+                    join_instance_path(instance_path, field)
+                ),
+                path: Some(join_instance_path(instance_path, field)),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+}
+
 fn integer_value(value: &Value) -> Option<i64> {
     value.as_i64().or_else(|| {
         value
             .as_u64()
             .and_then(|integer| i64::try_from(integer).ok())
     })
+}
+
+/// Uppercase ISO-4217 alpha style: exactly three ASCII uppercase letters.
+fn is_alpha3_currency_code(code: &str) -> bool {
+    code.len() == 3 && code.bytes().all(|byte| byte.is_ascii_uppercase())
+}
+
+/// IAB US Privacy String v1 shape: "1" followed by three chars each one of
+/// Y, N, or "-". Uppercase only; no other version is currently defined, and
+/// "-" in any of the three flag positions (including "1---") is the spec's
+/// own documented "not applicable" signal, not an error.
+fn is_us_privacy_string_shape(value: &str) -> bool {
+    let bytes = value.as_bytes();
+    bytes.len() == 4
+        && bytes[0] == b'1'
+        && bytes[1..]
+            .iter()
+            .all(|byte| matches!(byte, b'Y' | b'N' | b'-'))
 }
 
 /// Borrows the static sorted value slices directly; `contains` is a binary

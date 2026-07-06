@@ -17,5 +17,5 @@ name = "rtblint-mcp"
 path = "src/main.rs"
 
 [dependencies]
-rtblint-core = { path = "../rtblint-core", version = "0.2.0" }
+rtblint-core = { path = "../rtblint-core", version = "0.3.0" }
 serde_json = "1"

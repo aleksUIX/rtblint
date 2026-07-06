@@ -6,7 +6,7 @@ the npm WASM package (npm: rtblint), and the MCP server (crates.io:
 rtblint-mcp) are the working surfaces today.
 """
 
-__version__ = "0.0.3"
+__version__ = "0.1.0"
 
 
 def validate(input: str) -> dict:

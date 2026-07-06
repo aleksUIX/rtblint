@@ -8,3 +8,5 @@ __pycache__
 .DS_Store
 /.openrtb-specs
 /next-steps.md
+/bench/fixtures
+/bench/results

@@ -70,7 +70,7 @@ exports.validate_response = validate_response;
 
 /**
  * Validate an OpenRTB bid response payload against a specific tracked version id
- * (for example "2.6-202505"). Unknown ids fall back to the latest 2.6 snapshot.
+ * (for example "2.6-202606"). Unknown ids fall back to the latest 2.6 snapshot.
  * @param {string} version_id
  * @param {string} input
  * @returns {any}
@@ -90,7 +90,7 @@ exports.validate_response_version = validate_response_version;
 
 /**
  * Validate an OpenRTB bid request payload against a specific tracked version id
- * (for example "2.6-202505"). Unknown ids fall back to the latest 2.6 snapshot.
+ * (for example "2.6-202606"). Unknown ids fall back to the latest 2.6 snapshot.
  * @param {string} version_id
  * @param {string} input
  * @returns {any}

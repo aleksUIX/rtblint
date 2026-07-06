@@ -4,8 +4,8 @@ use serde_json::{Map, Value};
 
 use crate::{
     adcom_lists::adcom_list_by_name, canonical_object, path_status,
-    version_rules::rule_path_leaves, ExpectedShape, Issue, OpenRtbVersion, PathStateKind,
-    Severity, StaticField, ValidationResult,
+    version_rules::rule_path_leaves, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Severity,
+    StaticField, ValidationResult,
 };
 
 /// The two OpenRTB 2.x payload types the validator understands.
@@ -137,7 +137,13 @@ fn validate_known_object<'a>(
     // payload field as undefined would be a false positive, so field-level
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
-        validate_object_semantics(object_name, definition.section, object, instance_path, issues);
+        validate_object_semantics(
+            object_name,
+            definition.section,
+            object,
+            instance_path,
+            issues,
+        );
         return;
     }
 
@@ -163,7 +169,14 @@ fn validate_known_object<'a>(
         let parent_path_length = push_path_segment(instance_path, field_name);
 
         if field_name == "ext" {
-            validate_extension_value(version, kind, value, logical_segments, instance_path, issues);
+            validate_extension_value(
+                version,
+                kind,
+                value,
+                logical_segments,
+                instance_path,
+                issues,
+            );
             instance_path.truncate(parent_path_length);
             logical_segments.pop();
             continue;
@@ -251,7 +264,13 @@ fn validate_known_object<'a>(
         logical_segments.pop();
     }
 
-    validate_object_semantics(object_name, definition.section, object, instance_path, issues);
+    validate_object_semantics(
+        object_name,
+        definition.section,
+        object,
+        instance_path,
+        issues,
+    );
 }
 
 /// Appends `.segment` (or just `segment` at the root) to the path cursor
@@ -312,7 +331,14 @@ fn validate_extension_value<'a>(
         Value::Array(items) => {
             for (index, item) in items.iter().enumerate() {
                 let parent_path_length = push_index_segment(instance_path, index);
-                validate_extension_value(version, kind, item, logical_segments, instance_path, issues);
+                validate_extension_value(
+                    version,
+                    kind,
+                    item,
+                    logical_segments,
+                    instance_path,
+                    issues,
+                );
                 instance_path.truncate(parent_path_length);
             }
         }
@@ -848,4 +874,3 @@ fn json_type_label(value: &Value) -> &'static str {
         Value::Object(_) => "object",
     }
 }
-

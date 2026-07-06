@@ -30,7 +30,7 @@ Every finding carries a stable rule id, a severity, a message, and a JSON path.
 | Python | `rtblint` on PyPI | Not implemented yet |
 | Go | `github.com/aleksUIX/rtblint/go` | Not implemented yet |
 
-OpenRTB 3.0 payload validation is not implemented yet (the 3.0 catalog ships for introspection only). The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently.
+OpenRTB 3.0 payload validation is not implemented yet (the 3.0 catalog ships for introspection only). The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently. See [ROADMAP.md](ROADMAP.md) for what's next and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## CLI
 

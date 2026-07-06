@@ -15,13 +15,45 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy
+          components: clippy, rustfmt
 
       - name: Cache Rust artifacts
         uses: Swatinem/rust-cache@v2
 
+      - name: Check formatting
+        run: cargo fmt --all --check
+
       - name: Run tests
-        run: cargo test
+        run: cargo test --workspace
 
       - name: Run clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
+
+  wasm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Rust artifacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build WASM crate
+        run: cargo build -p rtblint-wasm --target wasm32-unknown-unknown
+
+      - name: Smoke-test committed npm package
+        run: |
+          node <<'EOF'
+          const r = require("./npm/index.cjs");
+          const out = r.validate(JSON.stringify({ id: "ci", imp: [{ id: "i", banner: {} }] }));
+          if (!out.valid) {
+            throw new Error("committed wasm artifact failed smoke test: " + JSON.stringify(out));
+          }
+          console.log("npm wasm ok, core", r.coreVersion());
+          EOF

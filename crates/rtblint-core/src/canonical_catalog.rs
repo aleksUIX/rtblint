@@ -1,8 +1,63 @@
-use std::sync::OnceLock;
-
 use serde::{Deserialize, Serialize};
 
 use crate::OpenRtbVersion;
+
+// ── static catalog data (code-generated, zero runtime parsing) ──────────
+//
+// The validator reads these `&'static` structures, transcribed from the
+// JSON catalogs in `specs/` by build.rs at compile time. The serde types
+// further down remain the canonical JSON interchange format used by the
+// export pipeline.
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct StaticCatalog {
+    pub version: &'static str,
+    pub family: &'static str,
+    pub release_date: &'static str,
+    pub archive_path: &'static str,
+    pub objects: &'static [StaticObject],
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct StaticObject {
+    pub name: &'static str,
+    pub section: &'static str,
+    pub citation: StaticCitation,
+    pub fields: &'static [StaticField],
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct StaticField {
+    pub name: &'static str,
+    pub type_spec: &'static str,
+    /// Catalog object this field nests into, resolved at generation time.
+    pub child_object: Option<&'static str>,
+    /// Name of the AdCOM list constraining this field's values, when one
+    /// applies. Values are resolved from the validator's list registry.
+    pub adcom_list: Option<&'static str>,
+    /// Inline documented value set, when the spec enumerates values directly.
+    pub value_set: Option<StaticValueSet>,
+    pub citation: StaticCitation,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct StaticValueSet {
+    pub values: &'static [i64],
+    pub minimum_inclusive: Option<i64>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct StaticCitation {
+    pub section: &'static str,
+    pub canonical_source_file: &'static str,
+    pub helper_source_file: &'static str,
+    pub start_line: usize,
+    pub end_line: usize,
+}
+
+include!(concat!(env!("OUT_DIR"), "/static_catalogs.rs"));
+
+// ── serde types for the JSON catalog interchange format ─────────────────
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct CanonicalObjectCatalog {
@@ -62,19 +117,18 @@ pub fn canonical_object_catalog_versions() -> &'static [OpenRtbVersion] {
     OpenRtbVersion::all()
 }
 
-pub fn canonical_object_catalog(
-    version: OpenRtbVersion,
-) -> Option<&'static CanonicalObjectCatalog> {
-    load_all_catalogs()
+pub fn canonical_object_catalog(version: OpenRtbVersion) -> Option<&'static StaticCatalog> {
+    let id = version.id();
+    GENERATED_CATALOGS
         .iter()
-        .find(|(candidate_version, _)| *candidate_version == version)
-        .map(|(_, catalog)| catalog)
+        .find(|(candidate, _)| *candidate == id)
+        .map(|(_, catalog)| *catalog)
 }
 
 pub fn canonical_object(
     version: OpenRtbVersion,
     object_name: &str,
-) -> Option<&'static CanonicalObject> {
+) -> Option<&'static StaticObject> {
     canonical_object_catalog(version).and_then(|catalog| {
         catalog
             .objects
@@ -87,78 +141,9 @@ pub fn canonical_field(
     version: OpenRtbVersion,
     object_name: &str,
     field_name: &str,
-) -> Option<&'static CanonicalField> {
+) -> Option<&'static StaticField> {
     canonical_object(version, object_name)
         .and_then(|object| object.fields.iter().find(|field| field.name == field_name))
-}
-
-fn parse_catalog(version: OpenRtbVersion, raw: &str) -> CanonicalObjectCatalog {
-    serde_json::from_str(raw).unwrap_or_else(|error| {
-        panic!(
-            "failed to parse canonical catalog for {}: {error}",
-            version.id()
-        )
-    })
-}
-
-/// Catalogs are embedded at compile time so the validator carries no runtime
-/// filesystem dependency and runs unchanged in WASM and other no-fs targets.
-fn embedded_catalog(version: OpenRtbVersion) -> &'static str {
-    match version {
-        OpenRtbVersion::V2_0 => include_str!("../specs/openrtb-2.0-object-catalog.json"),
-        OpenRtbVersion::V2_1 => include_str!("../specs/openrtb-2.1-object-catalog.json"),
-        OpenRtbVersion::V2_2 => include_str!("../specs/openrtb-2.2-object-catalog.json"),
-        OpenRtbVersion::V2_3 => include_str!("../specs/openrtb-2.3-object-catalog.json"),
-        OpenRtbVersion::V2_3_1 => include_str!("../specs/openrtb-2.3.1-object-catalog.json"),
-        OpenRtbVersion::V2_4 => include_str!("../specs/openrtb-2.4-object-catalog.json"),
-        OpenRtbVersion::V2_5 => include_str!("../specs/openrtb-2.5-object-catalog.json"),
-        OpenRtbVersion::V2_6_202204 => {
-            include_str!("../specs/openrtb-2.6-202204-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202210 => {
-            include_str!("../specs/openrtb-2.6-202210-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202211 => {
-            include_str!("../specs/openrtb-2.6-202211-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202303 => {
-            include_str!("../specs/openrtb-2.6-202303-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202309 => {
-            include_str!("../specs/openrtb-2.6-202309-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202402 => {
-            include_str!("../specs/openrtb-2.6-202402-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202409 => {
-            include_str!("../specs/openrtb-2.6-202409-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202501 => {
-            include_str!("../specs/openrtb-2.6-202501-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202505 => {
-            include_str!("../specs/openrtb-2.6-202505-object-catalog.json")
-        }
-        OpenRtbVersion::V2_6_202606 => {
-            include_str!("../specs/openrtb-2.6-202606-object-catalog.json")
-        }
-        OpenRtbVersion::V3_0 => include_str!("../specs/openrtb-3.0-object-catalog.json"),
-    }
-}
-
-fn load_all_catalogs() -> &'static Vec<(OpenRtbVersion, CanonicalObjectCatalog)> {
-    static CATALOGS: OnceLock<Vec<(OpenRtbVersion, CanonicalObjectCatalog)>> = OnceLock::new();
-    CATALOGS.get_or_init(|| {
-        OpenRtbVersion::all()
-            .iter()
-            .map(|version| {
-                (
-                    *version,
-                    parse_catalog(*version, embedded_catalog(*version)),
-                )
-            })
-            .collect()
-    })
 }
 
 #[cfg(test)]
@@ -168,6 +153,17 @@ mod tests {
     #[test]
     fn catalogs_cover_all_known_versions() {
         assert_eq!(canonical_object_catalog_versions(), OpenRtbVersion::all());
+    }
+
+    #[test]
+    fn every_version_has_generated_static_data() {
+        for version in OpenRtbVersion::all() {
+            assert!(
+                canonical_object_catalog(*version).is_some(),
+                "missing generated static catalog for {}",
+                version.id()
+            );
+        }
     }
 
     #[test]

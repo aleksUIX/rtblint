@@ -11,6 +11,7 @@ use serde::Serialize;
 pub use canonical_catalog::{
     canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
     CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation, CatalogValueSet,
+    StaticCatalog, StaticCitation, StaticField, StaticObject, StaticValueSet,
 };
 pub use schema_manifest::{
     schema_manifest, schema_manifest_versions, schema_path_entry, SchemaCoverage, SchemaManifest,
@@ -76,7 +77,8 @@ pub fn validate_object_field(
             severity: Severity::Error,
             message: catalog_message,
             path: Some(format!("{}.{}", object_name, field_name)),
-            section: canonical_object(version, object_name).map(|object| object.section.clone()),
+            section: canonical_object(version, object_name)
+                .map(|object| String::from(object.section)),
         }],
     }
 }

@@ -10,6 +10,7 @@ Typical runs:
     python3 bench/run_bench.py --quick                 # smoke run: 50 per fixture
     python3 bench/run_bench.py --iterations 10000      # custom total
     python3 bench/run_bench.py --jobs 8                # parallel (throughput mode)
+    python3 bench/run_bench.py --batch                 # one process per fixture (--batch CLI mode)
     python3 bench/run_bench.py --filter xlarge         # only matching fixtures
 
 Fixtures are generated on first run (deterministic; see generate_fixtures.py).
@@ -132,6 +133,66 @@ def measure_baseline(cli: Path, runs: int = 100) -> float:
     return statistics.mean(samples)
 
 
+def bench_fixture_batch(cli: Path, fixture: dict, fixtures_dir: Path, iterations: int) -> dict:
+    """One CLI process, `iterations` payloads on stdin. Measures amortized
+    per-validation cost with spawn and startup paid once."""
+    payload = (fixtures_dir / fixture["file"]).read_text().strip() + "\n"
+    cmd = [str(cli), "validate", "--batch", "--type", fixture["kind"], "--format", "json"]
+
+    wall_start = time.perf_counter()
+    proc = subprocess.Popen(
+        cmd, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, text=True
+    )
+    for _ in range(iterations):
+        proc.stdin.write(payload)
+    proc.stdin.close()
+    proc.wait()
+    wall = time.perf_counter() - wall_start
+
+    per_ms = wall / iterations * 1000
+    return {
+        "name": fixture["name"],
+        "kind": fixture["kind"],
+        "tier": tier_of(fixture["bytes"]),
+        "bytes": fixture["bytes"],
+        "expected_valid": fixture["expected_valid"],
+        "mode": "batch",
+        "iterations": iterations,
+        "wall_seconds": wall,
+        "mean_ms": per_ms,
+        "ops_per_sec": iterations / wall,
+    }
+
+
+def print_batch_table(rows: list) -> None:
+    header = f"{'fixture':<38} {'kind':<8} {'size':>9} {'n':>6} {'per-item':>10} {'ops/s':>10}"
+    print()
+    print(header)
+    print("-" * len(header))
+    for row in rows:
+        print(
+            f"{row['name']:<38} {row['kind']:<8} {human_bytes(row['bytes']):>9} "
+            f"{row['iterations']:>6} {row['mean_ms']:>8.3f}ms {row['ops_per_sec']:>10,.0f}"
+        )
+    print("-" * len(header))
+    tiers = {}
+    for row in rows:
+        tiers.setdefault(row["tier"], []).append(row)
+    for tier in ("tiny", "small", "medium", "large", "xlarge"):
+        if tier not in tiers:
+            continue
+        tier_rows = tiers[tier]
+        total_n = sum(r["iterations"] for r in tier_rows)
+        total_wall = sum(r["wall_seconds"] for r in tier_rows)
+        print(f"{'tier ' + tier:<38} {'':<8} {'':>9} {total_n:>6} "
+              f"{total_wall / total_n * 1000:>8.3f}ms {total_n / total_wall:>10,.0f}")
+    total_n = sum(r["iterations"] for r in rows)
+    total_wall = sum(r["wall_seconds"] for r in rows)
+    print()
+    print(f"total: {total_n:,} validations in {total_wall:,.1f}s "
+          f"({total_n / total_wall:,.1f} validations/s, batch mode, single process per fixture)")
+
+
 def bench_fixture(cli: Path, fixture: dict, fixtures_dir: Path,
                   iterations: int, warmup: int, jobs: int) -> dict:
     cmd = cli_command(cli, fixture, fixtures_dir)
@@ -222,6 +283,9 @@ def main() -> None:
                         help="validations per fixture (overrides --iterations)")
     parser.add_argument("--quick", action="store_true",
                         help="shorthand for --per-fixture 50")
+    parser.add_argument("--batch", action="store_true",
+                        help="use the CLI's --batch mode: one process per fixture, all "
+                             "iterations through stdin; measures amortized per-payload cost")
     parser.add_argument("--jobs", type=int, default=1,
                         help="parallel CLI processes (default 1; >1 measures throughput, "
                              "latency percentiles will include contention)")
@@ -260,7 +324,8 @@ def main() -> None:
         [str(cli), "-V"], capture_output=True, text=True
     ).stdout.strip()
 
-    print(f"rtblint benchmark · {version or cli}")
+    mode = "batch" if args.batch else "per-process"
+    print(f"rtblint benchmark · {version or cli} · mode: {mode}")
     print(f"fixtures: {len(manifest)} · per fixture: {per_fixture} "
           f"· total: {per_fixture * len(manifest):,} validations · jobs: {args.jobs}")
 
@@ -272,13 +337,19 @@ def main() -> None:
 
     rows = []
     for index, fixture in enumerate(manifest, 1):
-        row = bench_fixture(cli, fixture, fixtures_dir, per_fixture, args.warmup, args.jobs)
+        if args.batch:
+            row = bench_fixture_batch(cli, fixture, fixtures_dir, per_fixture)
+        else:
+            row = bench_fixture(cli, fixture, fixtures_dir, per_fixture, args.warmup, args.jobs)
         rows.append(row)
         print(f"[{index:>2}/{len(manifest)}] {row['name']:<38} "
-              f"{human_bytes(row['bytes']):>9}  mean {row['mean_ms']:.2f} ms  "
-              f"({row['ops_per_sec']:.1f}/s)")
+              f"{human_bytes(row['bytes']):>9}  mean {row['mean_ms']:.3f} ms  "
+              f"({row['ops_per_sec']:,.0f}/s)", flush=True)
 
-    print_table(rows, baseline_ms, args.jobs)
+    if args.batch:
+        print_batch_table(rows)
+    else:
+        print_table(rows, baseline_ms, args.jobs)
 
     if not args.no_save:
         results_dir = BENCH_DIR / "results"
@@ -292,6 +363,7 @@ def main() -> None:
                 "platform": platform.platform(),
                 "machine": platform.machine(),
                 "python": platform.python_version(),
+                "mode": "batch" if args.batch else "per-process",
                 "jobs": args.jobs,
                 "per_fixture": per_fixture,
                 "warmup": args.warmup,

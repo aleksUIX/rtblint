@@ -3,8 +3,8 @@ use std::collections::BTreeSet;
 use serde_json::{Map, Value};
 
 use crate::{
-    adcom_lists::adcom_list_by_name, canonical_object, path_status, CanonicalField, Issue,
-    OpenRtbVersion, PathStateKind, Severity, ValidationResult,
+    adcom_lists::adcom_list_by_name, canonical_object, path_status, Issue, OpenRtbVersion,
+    PathStateKind, Severity, StaticField, ValidationResult,
 };
 
 /// The two OpenRTB 2.x payload types the validator understands.
@@ -134,7 +134,7 @@ fn validate_known_object(
     if definition.fields.is_empty() {
         validate_object_semantics(
             object_name,
-            &definition.section,
+            definition.section,
             object,
             &instance_path,
             issues,
@@ -145,9 +145,9 @@ fn validate_known_object(
     for field in definition
         .fields
         .iter()
-        .filter(|field| is_required(field.type_spec.as_str()))
+        .filter(|field| is_required(field.type_spec))
     {
-        if !object.contains_key(&field.name) {
+        if !object.contains_key(field.name) {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
                 severity: Severity::Error,
@@ -157,8 +157,8 @@ fn validate_known_object(
                     version.id(),
                     object_name
                 ),
-                path: Some(join_instance_path(&instance_path, &field.name)),
-                section: Some(field.citation.section.clone()),
+                path: Some(join_instance_path(&instance_path, field.name)),
+                section: Some(String::from(field.citation.section)),
             });
         }
     }
@@ -183,7 +183,7 @@ fn validate_known_object(
         let Some(field_definition) = definition
             .fields
             .iter()
-            .find(|field| field.name == *field_name)
+            .find(|field| field.name == field_name.as_str())
         else {
             issues.push(Issue {
                 id: String::from("openrtb.field.undefined"),
@@ -195,31 +195,31 @@ fn validate_known_object(
                     version.id()
                 ),
                 path: Some(field_instance_path),
-                section: Some(definition.section.clone()),
+                section: Some(String::from(definition.section)),
             });
             logical_segments.pop();
             continue;
         };
 
-        let field_section = field_definition.citation.section.as_str();
+        let field_section = field_definition.citation.section;
         push_path_status_issues(
             version,
             kind,
             logical_segments,
             &field_instance_path,
-            field_definition.type_spec.as_str(),
+            field_definition.type_spec,
             Some(field_section),
             issues,
         );
         validate_field_value_shape(
-            field_definition.type_spec.as_str(),
+            field_definition.type_spec,
             value,
             &field_instance_path,
             field_section,
             issues,
         );
         validate_required_array_contents(
-            field_definition.type_spec.as_str(),
+            field_definition.type_spec,
             value,
             &field_instance_path,
             field_section,
@@ -228,11 +228,11 @@ fn validate_known_object(
         validate_catalog_value_set(field_definition, value, &field_instance_path, issues);
 
         if matches!(
-            expected_shape(field_definition.type_spec.as_str()),
+            expected_shape(field_definition.type_spec),
             ExpectedShape::Object
         ) && value.is_object()
         {
-            if let Some(child_object_name) = field_definition.child_object.as_deref() {
+            if let Some(child_object_name) = field_definition.child_object {
                 validate_known_object(
                     version,
                     kind,
@@ -246,11 +246,11 @@ fn validate_known_object(
         }
 
         if matches!(
-            expected_shape(field_definition.type_spec.as_str()),
+            expected_shape(field_definition.type_spec),
             ExpectedShape::ObjectArray
         ) && value.is_array()
         {
-            if let Some(child_object_name) = field_definition.child_object.as_deref() {
+            if let Some(child_object_name) = field_definition.child_object {
                 for (index, item) in value
                     .as_array()
                     .expect("checked array shape")
@@ -277,7 +277,7 @@ fn validate_known_object(
 
     validate_object_semantics(
         object_name,
-        &definition.section,
+        definition.section,
         object,
         &instance_path,
         issues,
@@ -365,7 +365,7 @@ fn validate_required_array_contents(
 }
 
 fn validate_catalog_value_set(
-    field: &CanonicalField,
+    field: &StaticField,
     value: &Value,
     instance_path: &str,
     issues: &mut Vec<Issue>,
@@ -373,7 +373,7 @@ fn validate_catalog_value_set(
     let Some(value_set) = field_value_set(field) else {
         return;
     };
-    let section = field.citation.section.as_str();
+    let section = field.citation.section;
 
     match value {
         Value::Number(_) => {
@@ -404,8 +404,8 @@ fn validate_catalog_value_set(
     }
 }
 
-fn field_value_set(field: &CanonicalField) -> Option<IntegerValueSet> {
-    if let Some(list_name) = field.adcom_list.as_deref() {
+fn field_value_set(field: &StaticField) -> Option<IntegerValueSet> {
+    if let Some(list_name) = field.adcom_list {
         let list = adcom_list_by_name(list_name)?;
         return Some(IntegerValueSet {
             source: Some(list.name),
@@ -414,7 +414,7 @@ fn field_value_set(field: &CanonicalField) -> Option<IntegerValueSet> {
         });
     }
 
-    field.value_set.as_ref().map(|value_set| IntegerValueSet {
+    field.value_set.map(|value_set| IntegerValueSet {
         source: None,
         allowed_values: value_set.values.iter().copied().collect(),
         minimum_inclusive: value_set.minimum_inclusive,

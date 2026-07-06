@@ -1,6 +1,6 @@
 use std::{
     env, fs,
-    io::{self, Read},
+    io::{self, BufRead, Read, Write},
     process,
 };
 
@@ -51,6 +51,10 @@ fn run() -> Result<i32, String> {
     }
 
     let command = parse_validate_command(validate_args)?;
+    if command.batch {
+        return run_batch(command.version, command.payload_type, command.output_format);
+    }
+
     let result = match command.payload_type {
         PayloadType::Request => {
             rtblint_core::validate_bid_request_for_version(command.version, &command.input)
@@ -75,6 +79,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut version = DEFAULT_VERSION;
     let mut output_format = OutputFormat::Human;
     let mut payload_type = PayloadType::Request;
+    let mut batch = false;
     let mut args = args.into_iter();
 
     while let Some(arg) = args.next() {
@@ -113,6 +118,9 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
                 output_format = OutputFormat::from_str(&value)?;
             }
+            "--batch" => {
+                batch = true;
+            }
             "--type" => {
                 let Some(value) = args.next() else {
                     return Err(format!(
@@ -137,7 +145,15 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             }
         }
     }
-    let input = if read_stdin {
+    let input = if batch {
+        if file_path.is_some() {
+            return Err(format!(
+                "--batch reads newline-delimited payloads from stdin; do not pass a file.\n\n{}",
+                validate_usage_text()
+            ));
+        }
+        String::new()
+    } else if read_stdin {
         read_from_stdin()?
     } else if let Some(path) = file_path {
         fs::read_to_string(&path).map_err(|error| format!("Failed to read {path}: {error}"))?
@@ -153,7 +169,81 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         version,
         output_format,
         payload_type,
+        batch,
     })
+}
+
+/// Batch mode: one JSON payload per stdin line, one result per stdout line.
+/// The process, spec catalogs, and allocator warm-up are paid once, so
+/// per-payload cost approaches pure parse+validate time.
+fn run_batch(
+    version: OpenRtbVersion,
+    payload_type: PayloadType,
+    output_format: OutputFormat,
+) -> Result<i32, String> {
+    let stdin = io::stdin();
+    let stdout = io::stdout();
+    let mut out = io::BufWriter::new(stdout.lock());
+    let mut all_valid = true;
+    let mut count = 0usize;
+
+    for (line_number, line) in stdin.lock().lines().enumerate() {
+        let line = line.map_err(|error| format!("Failed to read stdin: {error}"))?;
+        if line.trim().is_empty() {
+            continue;
+        }
+        count += 1;
+
+        let result = match payload_type {
+            PayloadType::Request => rtblint_core::validate_bid_request_for_version(version, &line),
+            PayloadType::Response => {
+                rtblint_core::validate_bid_response_for_version(version, &line)
+            }
+        };
+        all_valid &= result.valid;
+
+        match output_format {
+            OutputFormat::Json => {
+                let report = BatchReport {
+                    index: line_number + 1,
+                    valid: result.valid,
+                    issues: &result.issues,
+                };
+                let encoded = serde_json::to_string(&report)
+                    .map_err(|error| format!("Failed to serialize JSON output: {error}"))?;
+                writeln!(out, "{encoded}")
+                    .map_err(|error| format!("Failed to write stdout: {error}"))?;
+            }
+            OutputFormat::Human => {
+                let error_count = result
+                    .issues
+                    .iter()
+                    .filter(|issue| issue.severity == Severity::Error)
+                    .count();
+                let warning_count = result
+                    .issues
+                    .iter()
+                    .filter(|issue| issue.severity == Severity::Warning)
+                    .count();
+                let verdict = if result.valid { "OK" } else { "FAILED" };
+                writeln!(
+                    out,
+                    "#{} {verdict}: {error_count} error(s), {warning_count} warning(s)",
+                    line_number + 1
+                )
+                .map_err(|error| format!("Failed to write stdout: {error}"))?;
+            }
+        }
+    }
+
+    out.flush()
+        .map_err(|error| format!("Failed to flush stdout: {error}"))?;
+
+    if count == 0 {
+        return Err(String::from("Stdin was empty."));
+    }
+
+    Ok(if all_valid { 0 } else { 1 })
 }
 
 fn read_from_stdin() -> Result<String, String> {
@@ -282,11 +372,11 @@ fn print_validate_usage() {
 }
 
 fn usage_text() -> &'static str {
-    "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint --version\n  rtblint --help"
+    "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json]\n  rtblint --version\n  rtblint --help"
 }
 
 fn validate_usage_text() -> &'static str {
-    "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6)."
+    "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json]\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6). --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 means every payload was valid."
 }
 
 struct ValidateCommand {
@@ -294,6 +384,7 @@ struct ValidateCommand {
     version: OpenRtbVersion,
     output_format: OutputFormat,
     payload_type: PayloadType,
+    batch: bool,
 }
 
 #[derive(Clone, Copy)]
@@ -344,6 +435,13 @@ impl OutputFormat {
             )),
         }
     }
+}
+
+#[derive(Serialize)]
+struct BatchReport<'a> {
+    index: usize,
+    valid: bool,
+    issues: &'a [Issue],
 }
 
 #[derive(Serialize)]

@@ -111,10 +111,24 @@ fn write_field(out: &mut String, field: &serde_json::Value) {
         field["name"].as_str().unwrap()
     )
     .unwrap();
+    let type_spec = field["type_spec"].as_str().unwrap_or("");
+    writeln!(out, "                    type_spec: {type_spec:?},").unwrap();
     writeln!(
         out,
-        "                    type_spec: {:?},",
-        field["type_spec"].as_str().unwrap_or("")
+        "                    shape: ExpectedShape::{},",
+        expected_shape_variant(type_spec)
+    )
+    .unwrap();
+    writeln!(
+        out,
+        "                    required: {},",
+        is_required(type_spec)
+    )
+    .unwrap();
+    writeln!(
+        out,
+        "                    deprecated: {},",
+        type_spec.to_ascii_lowercase().contains("deprecated")
     )
     .unwrap();
     writeln!(
@@ -131,10 +145,15 @@ fn write_field(out: &mut String, field: &serde_json::Value) {
     .unwrap();
     match field.get("value_set").filter(|v| !v.is_null()) {
         Some(value_set) => {
-            let values: Vec<String> = value_set["values"]
+            // Sorted and deduplicated so the validator can binary-search
+            // the emitted slice directly.
+            let mut numeric_values: Vec<i64> = value_set["values"]
                 .as_array()
-                .map(|a| a.iter().map(|v| v.as_i64().unwrap().to_string()).collect())
+                .map(|a| a.iter().map(|v| v.as_i64().unwrap()).collect())
                 .unwrap_or_default();
+            numeric_values.sort_unstable();
+            numeric_values.dedup();
+            let values: Vec<String> = numeric_values.iter().map(ToString::to_string).collect();
             let minimum = value_set
                 .get("minimum_inclusive")
                 .and_then(|v| v.as_i64())
@@ -200,4 +219,59 @@ fn opt_str(value: Option<&serde_json::Value>) -> String {
         Some(s) => format!("Some({s:?})"),
         None => String::from("None"),
     }
+}
+
+/// Mirrors the shape mapping the validator used to compute at runtime; the
+/// check order matters (compound array specs before their scalar prefixes).
+fn expected_shape_variant(type_spec: &str) -> &'static str {
+    let normalized = type_spec.to_ascii_lowercase();
+
+    if normalized.contains("object array") {
+        return "ObjectArray";
+    }
+    if normalized.contains("string array") {
+        return "StringArray";
+    }
+    if normalized.contains("integer array") {
+        return "IntegerArray";
+    }
+    if normalized.contains("float array") {
+        return "FloatArray";
+    }
+    if normalized.contains("boolean array") {
+        return "BooleanArray";
+    }
+    if normalized.contains("enum array") {
+        return "AnyArray";
+    }
+    if normalized.contains("object") {
+        return "Object";
+    }
+    if normalized.contains("string") {
+        return "String";
+    }
+    if normalized.contains("integer") {
+        return "Integer";
+    }
+    if normalized.contains("float") {
+        return "Float";
+    }
+    if normalized.contains("boolean") {
+        return "Boolean";
+    }
+    "Unknown"
+}
+
+/// A field is unconditionally required only when the type column says so as
+/// its own segment ("string; required", "scope: required; type: ...").
+/// Conditional phrasings from the spec's prose ("required for Flex Ads",
+/// "required if sourcetype is present") must not count.
+fn is_required(type_spec: &str) -> bool {
+    type_spec
+        .to_ascii_lowercase()
+        .split(';')
+        .map(str::trim)
+        .any(|segment| {
+            segment == "required" || segment == "required *" || segment == "scope: required"
+        })
 }

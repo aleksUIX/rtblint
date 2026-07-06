@@ -1,3 +1,6 @@
+use std::collections::HashSet;
+use std::sync::OnceLock;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum OpenRtbFamily {
     TwoX,
@@ -204,6 +207,23 @@ pub fn rules_for_path(version: OpenRtbVersion, path: &str) -> Vec<PathRuleMatch>
             })
         })
         .collect()
+}
+
+static RULE_PATH_LEAVES: OnceLock<HashSet<&'static str>> = OnceLock::new();
+
+/// Final path segments of every rule path (primary and replacement) across
+/// all version profiles. The validator consults this before building a
+/// schema path: a field whose name is absent here cannot match any rule, so
+/// rule matching (and its allocations) is skipped for nearly every field.
+pub(crate) fn rule_path_leaves() -> &'static HashSet<&'static str> {
+    RULE_PATH_LEAVES.get_or_init(|| {
+        VERSION_PROFILES
+            .iter()
+            .flat_map(|profile| profile.rules.iter())
+            .flat_map(|rule| rule.paths.iter().chain(rule.replacement_paths.iter()))
+            .map(|path| path.rsplit('.').next().unwrap_or(path))
+            .collect()
+    })
 }
 
 pub fn path_status(version: OpenRtbVersion, path: &str) -> PathStatus {

@@ -1,10 +1,11 @@
-use std::collections::BTreeSet;
+use std::fmt::Write as _;
 
 use serde_json::{Map, Value};
 
 use crate::{
-    adcom_lists::adcom_list_by_name, canonical_object, path_status, Issue, OpenRtbVersion,
-    PathStateKind, Severity, StaticField, ValidationResult,
+    adcom_lists::adcom_list_by_name, canonical_object, path_status,
+    version_rules::rule_path_leaves, ExpectedShape, Issue, OpenRtbVersion, PathStateKind,
+    Severity, StaticField, ValidationResult,
 };
 
 /// The two OpenRTB 2.x payload types the validator understands.
@@ -103,7 +104,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
         kind.root_object(),
         root,
         &mut Vec::new(),
-        String::new(),
+        &mut String::new(),
         &mut issues,
     );
 
@@ -113,14 +114,18 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
     }
 }
 
+/// Walks a known catalog object. `instance_path` is a cursor mutated in
+/// place (push a segment, recurse, truncate back); path strings are only
+/// materialized when an issue is actually pushed, so a clean payload
+/// allocates almost nothing here.
 #[allow(clippy::too_many_arguments)]
-fn validate_known_object(
+fn validate_known_object<'a>(
     version: OpenRtbVersion,
     kind: PayloadKind,
     object_name: &str,
-    object: &Map<String, Value>,
-    logical_segments: &mut Vec<String>,
-    instance_path: String,
+    object: &'a Map<String, Value>,
+    logical_segments: &mut Vec<&'a str>,
+    instance_path: &mut String,
     issues: &mut Vec<Issue>,
 ) {
     let Some(definition) = canonical_object(version, object_name) else {
@@ -132,21 +137,11 @@ fn validate_known_object(
     // payload field as undefined would be a false positive, so field-level
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
-        validate_object_semantics(
-            object_name,
-            definition.section,
-            object,
-            &instance_path,
-            issues,
-        );
+        validate_object_semantics(object_name, definition.section, object, instance_path, issues);
         return;
     }
 
-    for field in definition
-        .fields
-        .iter()
-        .filter(|field| is_required(field.type_spec))
-    {
+    for field in definition.fields.iter().filter(|field| field.required) {
         if !object.contains_key(field.name) {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
@@ -157,25 +152,19 @@ fn validate_known_object(
                     version.id(),
                     object_name
                 ),
-                path: Some(join_instance_path(&instance_path, field.name)),
+                path: Some(join_instance_path(instance_path, field.name)),
                 section: Some(String::from(field.citation.section)),
             });
         }
     }
 
     for (field_name, value) in object {
-        logical_segments.push(field_name.clone());
-        let field_instance_path = join_instance_path(&instance_path, field_name);
+        logical_segments.push(field_name.as_str());
+        let parent_path_length = push_path_segment(instance_path, field_name);
 
         if field_name == "ext" {
-            validate_extension_value(
-                version,
-                kind,
-                value,
-                logical_segments,
-                field_instance_path,
-                issues,
-            );
+            validate_extension_value(version, kind, value, logical_segments, instance_path, issues);
+            instance_path.truncate(parent_path_length);
             logical_segments.pop();
             continue;
         }
@@ -194,44 +183,32 @@ fn validate_known_object(
                     field_name,
                     version.id()
                 ),
-                path: Some(field_instance_path),
+                path: Some(instance_path.clone()),
                 section: Some(String::from(definition.section)),
             });
+            instance_path.truncate(parent_path_length);
             logical_segments.pop();
             continue;
         };
 
-        let field_section = field_definition.citation.section;
-        push_path_status_issues(
-            version,
-            kind,
-            logical_segments,
-            &field_instance_path,
-            field_definition.type_spec,
-            Some(field_section),
-            issues,
-        );
-        validate_field_value_shape(
-            field_definition.type_spec,
-            value,
-            &field_instance_path,
-            field_section,
-            issues,
-        );
-        validate_required_array_contents(
-            field_definition.type_spec,
-            value,
-            &field_instance_path,
-            field_section,
-            issues,
-        );
-        validate_catalog_value_set(field_definition, value, &field_instance_path, issues);
+        // Rule matching is only worth running when this field name can match
+        // a rule path at all, or the catalog itself marks it deprecated.
+        if field_definition.deprecated || rule_path_leaves().contains(field_name.as_str()) {
+            push_path_status_issues(
+                version,
+                kind,
+                logical_segments,
+                instance_path,
+                field_definition.deprecated,
+                Some(field_definition.citation.section),
+                issues,
+            );
+        }
+        validate_field_value_shape(field_definition, value, instance_path, issues);
+        validate_required_array_contents(field_definition, value, instance_path, issues);
+        validate_catalog_value_set(field_definition, value, instance_path, issues);
 
-        if matches!(
-            expected_shape(field_definition.type_spec),
-            ExpectedShape::Object
-        ) && value.is_object()
-        {
+        if matches!(field_definition.shape, ExpectedShape::Object) && value.is_object() {
             if let Some(child_object_name) = field_definition.child_object {
                 validate_known_object(
                     version,
@@ -239,17 +216,13 @@ fn validate_known_object(
                     child_object_name,
                     value.as_object().expect("checked object shape"),
                     logical_segments,
-                    field_instance_path.clone(),
+                    instance_path,
                     issues,
                 );
             }
         }
 
-        if matches!(
-            expected_shape(field_definition.type_spec),
-            ExpectedShape::ObjectArray
-        ) && value.is_array()
-        {
+        if matches!(field_definition.shape, ExpectedShape::ObjectArray) && value.is_array() {
             if let Some(child_object_name) = field_definition.child_object {
                 for (index, item) in value
                     .as_array()
@@ -258,75 +231,89 @@ fn validate_known_object(
                     .enumerate()
                 {
                     if let Some(item_object) = item.as_object() {
+                        let item_path_length = push_index_segment(instance_path, index);
                         validate_known_object(
                             version,
                             kind,
                             child_object_name,
                             item_object,
                             logical_segments,
-                            format!("{}[{}]", field_instance_path, index),
+                            instance_path,
                             issues,
                         );
+                        instance_path.truncate(item_path_length);
                     }
                 }
             }
         }
 
+        instance_path.truncate(parent_path_length);
         logical_segments.pop();
     }
 
-    validate_object_semantics(
-        object_name,
-        definition.section,
-        object,
-        &instance_path,
-        issues,
-    );
+    validate_object_semantics(object_name, definition.section, object, instance_path, issues);
 }
 
-fn validate_extension_value(
+/// Appends `.segment` (or just `segment` at the root) to the path cursor
+/// and returns the length to truncate back to afterwards.
+fn push_path_segment(path: &mut String, segment: &str) -> usize {
+    let previous_length = path.len();
+    if !path.is_empty() {
+        path.push('.');
+    }
+    path.push_str(segment);
+    previous_length
+}
+
+/// Appends `[index]` to the path cursor and returns the length to truncate
+/// back to afterwards.
+fn push_index_segment(path: &mut String, index: usize) -> usize {
+    let previous_length = path.len();
+    write!(path, "[{index}]").expect("writing to a String cannot fail");
+    previous_length
+}
+
+fn validate_extension_value<'a>(
     version: OpenRtbVersion,
     kind: PayloadKind,
-    value: &Value,
-    logical_segments: &mut Vec<String>,
-    instance_path: String,
+    value: &'a Value,
+    logical_segments: &mut Vec<&'a str>,
+    instance_path: &mut String,
     issues: &mut Vec<Issue>,
 ) {
     match value {
         Value::Object(map) => {
             for (field_name, child) in map {
-                logical_segments.push(field_name.clone());
-                let child_instance_path = join_instance_path(&instance_path, field_name);
-                push_path_status_issues(
-                    version,
-                    kind,
-                    logical_segments,
-                    &child_instance_path,
-                    "",
-                    None,
-                    issues,
-                );
+                logical_segments.push(field_name.as_str());
+                let parent_path_length = push_path_segment(instance_path, field_name);
+                if rule_path_leaves().contains(field_name.as_str()) {
+                    push_path_status_issues(
+                        version,
+                        kind,
+                        logical_segments,
+                        instance_path,
+                        false,
+                        None,
+                        issues,
+                    );
+                }
                 validate_extension_value(
                     version,
                     kind,
                     child,
                     logical_segments,
-                    child_instance_path,
+                    instance_path,
                     issues,
                 );
+                instance_path.truncate(parent_path_length);
                 logical_segments.pop();
             }
         }
         Value::Array(items) => {
             for (index, item) in items.iter().enumerate() {
-                validate_extension_value(
-                    version,
-                    kind,
-                    item,
-                    logical_segments,
-                    format!("{}[{}]", instance_path, index),
-                    issues,
-                );
+                let parent_path_length = push_index_segment(instance_path, index);
+                validate_extension_value(version, kind, item, logical_segments, instance_path, issues);
+                instance_path.truncate(parent_path_length);
             }
         }
         _ => {}
@@ -334,15 +321,14 @@ fn validate_extension_value(
 }
 
 fn validate_required_array_contents(
-    type_spec: &str,
+    field: &StaticField,
     value: &Value,
     instance_path: &str,
-    section: &str,
     issues: &mut Vec<Issue>,
 ) {
-    if is_required(type_spec)
+    if field.required
         && matches!(
-            expected_shape(type_spec),
+            field.shape,
             ExpectedShape::ObjectArray
                 | ExpectedShape::StringArray
                 | ExpectedShape::IntegerArray
@@ -357,7 +343,7 @@ fn validate_required_array_contents(
                     severity: Severity::Error,
                     message: format!("{} must not be an empty array.", instance_path),
                     path: Some(String::from(instance_path)),
-                    section: Some(String::from(section)),
+                    section: Some(String::from(field.citation.section)),
                 });
             }
         }
@@ -409,14 +395,14 @@ fn field_value_set(field: &StaticField) -> Option<IntegerValueSet> {
         let list = adcom_list_by_name(list_name)?;
         return Some(IntegerValueSet {
             source: Some(list.name),
-            allowed_values: list.allowed_values.iter().copied().collect(),
+            allowed_values: list.allowed_values,
             minimum_inclusive: list.minimum_inclusive,
         });
     }
 
     field.value_set.map(|value_set| IntegerValueSet {
         source: None,
-        allowed_values: value_set.values.iter().copied().collect(),
+        allowed_values: value_set.values,
         minimum_inclusive: value_set.minimum_inclusive,
     })
 }
@@ -652,16 +638,18 @@ fn integer_value(value: &Value) -> Option<i64> {
     })
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+/// Borrows the static sorted value slices directly; `contains` is a binary
+/// search, so no per-check set construction happens.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct IntegerValueSet {
     source: Option<&'static str>,
-    allowed_values: BTreeSet<i64>,
+    allowed_values: &'static [i64],
     minimum_inclusive: Option<i64>,
 }
 
 impl IntegerValueSet {
     fn contains(&self, value: i64) -> bool {
-        self.allowed_values.contains(&value)
+        self.allowed_values.binary_search(&value).is_ok()
             || self
                 .minimum_inclusive
                 .is_some_and(|minimum_inclusive| value >= minimum_inclusive)
@@ -690,13 +678,12 @@ impl IntegerValueSet {
 }
 
 fn validate_field_value_shape(
-    type_spec: &str,
+    field: &StaticField,
     value: &Value,
     instance_path: &str,
-    section: &str,
     issues: &mut Vec<Issue>,
 ) {
-    let valid = match expected_shape(type_spec) {
+    let valid = match field.shape {
         ExpectedShape::Unknown => true,
         ExpectedShape::Object => value.is_object(),
         ExpectedShape::ObjectArray => value
@@ -728,11 +715,11 @@ fn validate_field_value_shape(
             message: format!(
                 "{} expects {} but received {}.",
                 instance_path,
-                expected_shape(type_spec).label(),
+                field.shape.label(),
                 json_type_label(value)
             ),
             path: Some(String::from(instance_path)),
-            section: Some(String::from(section)),
+            section: Some(String::from(field.citation.section)),
         });
     }
 }
@@ -741,9 +728,9 @@ fn validate_field_value_shape(
 fn push_path_status_issues(
     version: OpenRtbVersion,
     kind: PayloadKind,
-    logical_segments: &[String],
+    logical_segments: &[&str],
     instance_path: &str,
-    type_spec: &str,
+    deprecated_in_catalog: bool,
     catalog_section: Option<&str>,
     issues: &mut Vec<Issue>,
 ) {
@@ -810,7 +797,7 @@ fn push_path_status_issues(
             section: rule_section,
         }),
         PathStateKind::Available | PathStateKind::Unknown => {
-            if type_spec.to_ascii_lowercase().contains("deprecated") {
+            if deprecated_in_catalog {
                 issues.push(Issue {
                     id: String::from("openrtb.field.deprecated"),
                     severity: Severity::Warning,
@@ -826,7 +813,7 @@ fn push_path_status_issues(
     }
 }
 
-fn schema_path(kind: PayloadKind, logical_segments: &[String]) -> Option<String> {
+fn schema_path(kind: PayloadKind, logical_segments: &[&str]) -> Option<String> {
     if logical_segments.is_empty() {
         return None;
     }
@@ -850,20 +837,6 @@ fn join_instance_path(base: &str, segment: &str) -> String {
     format!("{base}.{segment}")
 }
 
-/// A field is unconditionally required only when the type column says so as
-/// its own segment ("string; required", "scope: required; type: ...").
-/// Conditional phrasings bleeding in from the spec's prose ("required for
-/// Flex Ads", "required if sourcetype is present") must not count.
-fn is_required(type_spec: &str) -> bool {
-    type_spec
-        .to_ascii_lowercase()
-        .split(';')
-        .map(str::trim)
-        .any(|segment| {
-            segment == "required" || segment == "required *" || segment == "scope: required"
-        })
-}
-
 fn json_type_label(value: &Value) -> &'static str {
     match value {
         Value::Null => "null",
@@ -876,87 +849,3 @@ fn json_type_label(value: &Value) -> &'static str {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum ExpectedShape {
-    Unknown,
-    Object,
-    ObjectArray,
-    String,
-    StringArray,
-    Integer,
-    IntegerArray,
-    Float,
-    FloatArray,
-    Boolean,
-    BooleanArray,
-    AnyArray,
-}
-
-impl ExpectedShape {
-    fn label(self) -> &'static str {
-        match self {
-            Self::Unknown => "a supported type",
-            Self::Object => "object",
-            Self::ObjectArray => "array of objects",
-            Self::String => "string",
-            Self::StringArray => "array of strings",
-            Self::Integer => "integer",
-            Self::IntegerArray => "array of integers",
-            Self::Float => "number",
-            Self::FloatArray => "array of numbers",
-            Self::Boolean => "boolean",
-            Self::BooleanArray => "array of booleans",
-            Self::AnyArray => "array",
-        }
-    }
-}
-
-fn expected_shape(type_spec: &str) -> ExpectedShape {
-    let normalized = type_spec.to_ascii_lowercase();
-
-    if normalized.contains("object array") {
-        return ExpectedShape::ObjectArray;
-    }
-
-    if normalized.contains("string array") {
-        return ExpectedShape::StringArray;
-    }
-
-    if normalized.contains("integer array") {
-        return ExpectedShape::IntegerArray;
-    }
-
-    if normalized.contains("float array") {
-        return ExpectedShape::FloatArray;
-    }
-
-    if normalized.contains("boolean array") {
-        return ExpectedShape::BooleanArray;
-    }
-
-    if normalized.contains("enum array") {
-        return ExpectedShape::AnyArray;
-    }
-
-    if normalized.contains("object") {
-        return ExpectedShape::Object;
-    }
-
-    if normalized.contains("string") {
-        return ExpectedShape::String;
-    }
-
-    if normalized.contains("integer") {
-        return ExpectedShape::Integer;
-    }
-
-    if normalized.contains("float") {
-        return ExpectedShape::Float;
-    }
-
-    if normalized.contains("boolean") {
-        return ExpectedShape::Boolean;
-    }
-
-    ExpectedShape::Unknown
-}

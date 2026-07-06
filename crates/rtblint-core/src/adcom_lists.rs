@@ -65,7 +65,7 @@ const POD_SEQUENCE: &[i64] = &[-1, 0, 1];
 const PRODUCTION_QUALITIES: &[i64] = &[0, 1, 2, 3];
 const SIZE_UNITS: &[i64] = &[1, 2, 3];
 const SLOT_POSITION_IN_POD: &[i64] = &[-1, 0, 1, 2];
-const START_DELAY_MODES: &[i64] = &[0, -1, -2];
+const START_DELAY_MODES: &[i64] = &[-2, -1, 0];
 const USER_AGENT_SOURCE: &[i64] = &[0, 1, 2, 3];
 const VOLUME_NORMALIZATION_MODES: &[i64] = &[0, 1, 2, 3, 4];
 
@@ -341,6 +341,17 @@ mod tests {
     use super::*;
 
     #[test]
+    fn allowed_values_are_strictly_ascending_for_binary_search() {
+        for list in ADCOM_LISTS {
+            assert!(
+                list.allowed_values.windows(2).all(|pair| pair[0] < pair[1]),
+                "{} allowed_values must be strictly ascending",
+                list.name
+            );
+        }
+    }
+
+    #[test]
     fn matches_api_framework_reference_with_catalog_typo() {
         let description =
             "List of supported API frameworks. Refer to List: API Framworks in AdCOM 1.0.";
@@ -358,7 +369,7 @@ mod tests {
         )
         .expect("start delay modes list should match");
 
-        assert_eq!(matched.allowed_values, &[0, -1, -2]);
+        assert_eq!(matched.allowed_values, &[-2, -1, 0]);
         assert_eq!(matched.minimum_inclusive, Some(1));
     }
 

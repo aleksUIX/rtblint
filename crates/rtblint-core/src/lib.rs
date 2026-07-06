@@ -11,7 +11,7 @@ use serde::Serialize;
 pub use canonical_catalog::{
     canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
     CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation, CatalogValueSet,
-    StaticCatalog, StaticCitation, StaticField, StaticObject, StaticValueSet,
+    ExpectedShape, StaticCatalog, StaticCitation, StaticField, StaticObject, StaticValueSet,
 };
 pub use schema_manifest::{
     schema_manifest, schema_manifest_versions, schema_path_entry, SchemaCoverage, SchemaManifest,

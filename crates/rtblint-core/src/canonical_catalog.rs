@@ -30,6 +30,13 @@ pub struct StaticObject {
 pub struct StaticField {
     pub name: &'static str,
     pub type_spec: &'static str,
+    /// JSON shape implied by `type_spec`, resolved at build time so the
+    /// validator never re-parses the type string at runtime.
+    pub shape: ExpectedShape,
+    /// Whether `type_spec` marks the field unconditionally required.
+    pub required: bool,
+    /// Whether `type_spec` marks the field deprecated.
+    pub deprecated: bool,
     /// Catalog object this field nests into, resolved at generation time.
     pub child_object: Option<&'static str>,
     /// Name of the AdCOM list constraining this field's values, when one
@@ -53,6 +60,43 @@ pub struct StaticCitation {
     pub helper_source_file: &'static str,
     pub start_line: usize,
     pub end_line: usize,
+}
+
+/// JSON shape a catalog `type_spec` maps to. Derived once at build time by
+/// build.rs; the mapping logic lives there.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ExpectedShape {
+    Unknown,
+    Object,
+    ObjectArray,
+    String,
+    StringArray,
+    Integer,
+    IntegerArray,
+    Float,
+    FloatArray,
+    Boolean,
+    BooleanArray,
+    AnyArray,
+}
+
+impl ExpectedShape {
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::Unknown => "a supported type",
+            Self::Object => "object",
+            Self::ObjectArray => "array of objects",
+            Self::String => "string",
+            Self::StringArray => "array of strings",
+            Self::Integer => "integer",
+            Self::IntegerArray => "array of integers",
+            Self::Float => "number",
+            Self::FloatArray => "array of numbers",
+            Self::Boolean => "boolean",
+            Self::BooleanArray => "array of booleans",
+            Self::AnyArray => "array",
+        }
+    }
 }
 
 include!(concat!(env!("OUT_DIR"), "/static_catalogs.rs"));
@@ -201,6 +245,24 @@ mod tests {
         assert_eq!(field.citation.helper_source_file, "source.md");
         assert_eq!(object.citation.canonical_source_file, "source.md");
         assert!(!object.section.is_empty());
+    }
+
+    #[test]
+    fn generated_value_sets_are_strictly_ascending_for_binary_search() {
+        for (version, catalog) in GENERATED_CATALOGS {
+            for object in catalog.objects {
+                for field in object.fields {
+                    if let Some(value_set) = field.value_set {
+                        assert!(
+                            value_set.values.windows(2).all(|pair| pair[0] < pair[1]),
+                            "{version} {}.{} value_set must be strictly ascending",
+                            object.name,
+                            field.name
+                        );
+                    }
+                }
+            }
+        }
     }
 
     #[test]

@@ -1,0 +1,12 @@
+# Smithery deployment config for the rtblint MCP server.
+# Container build (Dockerfile at repo root) wrapping the stdio JSON-RPC server.
+# rtblint-mcp takes no configuration: no API keys, env, or args.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+    required: []
+  commandFunction: |
+    (config) => ({ command: "/usr/local/bin/rtblint-mcp", args: [] })
+  exampleConfig: {}

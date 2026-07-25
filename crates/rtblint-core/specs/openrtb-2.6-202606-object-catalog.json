@@ -366,14 +366,14 @@
         {
           "name": "schain",
           "type_spec": "object; recommended",
+          "child_object": "SupplyChain",
           "citation": {
             "section": "3.2.2",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
             "start_line": 580,
             "end_line": 580
-          },
-          "child_object": "SupplyChain"
+          }
         },
         {
           "name": "ext",

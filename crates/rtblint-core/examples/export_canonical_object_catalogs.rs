@@ -290,6 +290,116 @@ fn parse_legacy_pdf_catalog(
     ))
 }
 
+/// True when a line opens a new numbered section ("5.1 Content Categories"),
+/// which ends whatever field table was being read. Headings sit at the left
+/// margin; a wrapped description that happens to start with a cross-reference
+/// ("6.9 Video Start Delay for generic placement values") is indented under the
+/// description column and must not end the table.
+fn is_numbered_section_heading(raw_line: &str, normalized: &str) -> bool {
+    if count_leading_spaces(raw_line) > 1 {
+        return false;
+    }
+
+    let trimmed = normalized.trim();
+    let mut parts = trimmed.split_whitespace();
+    let Some(number) = parts.next() else {
+        return false;
+    };
+
+    if !number
+        .chars()
+        .next()
+        .is_some_and(|character| character.is_ascii_digit())
+        || !number
+            .chars()
+            .all(|character| character.is_ascii_digit() || character == '.')
+    {
+        return false;
+    }
+
+    parts
+        .next()
+        .is_some_and(|word| word.chars().next().is_some_and(char::is_uppercase))
+}
+
+/// True when a lone token in the name column is the tail of a field name the
+/// PDF wrapped, rather than a word of prose.
+fn is_wrapped_name_fragment(candidate: &str) -> bool {
+    !candidate.is_empty()
+        && candidate.len() <= 12
+        && candidate
+            .chars()
+            .all(|character| character.is_ascii_lowercase() || character.is_ascii_digit())
+}
+
+/// True when an object name looks like a spec identifier rather than prose. The
+/// PDF parsers occasionally pick up a sentence, heading, or note as if it were
+/// an object; those entries are junk and must never reach a catalog, because
+/// build.rs derives shape and required-ness from whatever ships.
+fn is_object_identifier(name: &str) -> bool {
+    name.chars()
+        .next()
+        .is_some_and(|first| first.is_ascii_alphabetic())
+        && name
+            .chars()
+            .all(|character| character.is_ascii_alphanumeric() || character == '_')
+}
+
+/// Field names in every OpenRTB version are lowercase identifiers. PDF rows
+/// sometimes capitalize the first letter at a line break ("Id", "Osv"), which
+/// is worth repairing; anything else that is not a lowercase identifier is a
+/// mis-extraction and gets dropped.
+fn normalize_field_identifier(name: &str) -> Option<String> {
+    let mut characters = name.chars();
+    let first = characters.next()?;
+    if !first.is_ascii_alphabetic() {
+        return None;
+    }
+
+    if !characters.clone().all(|character| {
+        character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
+    }) {
+        return None;
+    }
+
+    Some(format!(
+        "{}{}",
+        first.to_ascii_lowercase(),
+        characters.collect::<String>()
+    ))
+}
+
+/// Drops mis-extracted objects and fields before enrichment, so a regeneration
+/// reproduces the shipped catalogs instead of reintroducing prose entries.
+fn discard_mis_extracted(objects: Vec<RawObject>) -> Vec<RawObject> {
+    objects
+        .into_iter()
+        .filter(|object| is_object_identifier(&object.name))
+        .map(|mut object| {
+            object
+                .fields
+                .retain_mut(|field| match normalize_field_identifier(&field.name) {
+                    Some(normalized) => {
+                        field.name = normalized;
+                        true
+                    }
+                    None => false,
+                });
+            // A capitalized duplicate ("Id" alongside "id") collapses onto the
+            // same name once repaired; keep the first definition.
+            let mut seen = Vec::new();
+            object.fields.retain(|field| {
+                if seen.iter().any(|name| name == &field.name) {
+                    return false;
+                }
+                seen.push(field.name.clone());
+                true
+            });
+            object
+        })
+        .collect()
+}
+
 fn build_catalog(
     profile: &rtblint_core::VersionProfile,
     canonical_source_file: &str,
@@ -312,7 +422,7 @@ fn build_catalog(
         source_of_truth: String::from(
             "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
         ),
-        objects: enrich_and_strip(objects),
+        objects: enrich_and_strip(discard_mis_extracted(objects)),
     }
 }
 
@@ -424,9 +534,15 @@ fn parse_markdown_table(
     canonical_source_file: &str,
     helper_source_file: &str,
 ) -> Vec<RawField> {
+    // The IAB HTML tables are not well formed: several of them misnest or swap
+    // <tr> and </tr>, so grouping cells by row silently loses every field after
+    // the break (the 2.6-202409 Site table lost 6 of 18). Read the cells as a
+    // stream instead and start a new field whenever a cell is nothing but a
+    // <code>identifier</code>, which is exactly how the attribute column is
+    // written.
     let mut fields = Vec::new();
-    let mut row_start = None;
-    let mut row_buffer = String::new();
+    let mut pending: Option<PendingMarkdownField> = None;
+    let mut buffer = String::new();
 
     for (line_index, line) in lines
         .iter()
@@ -434,87 +550,138 @@ fn parse_markdown_table(
         .take(table_end + 1)
         .skip(table_start)
     {
-        let line = *line;
-        if row_start.is_none() && line.contains("<tr>") {
-            row_start = Some(line_index);
-            row_buffer.clear();
-        }
+        // Cells can span lines, so complete ones are drained from a buffer
+        // rather than read line by line.
+        buffer.push_str(line);
+        buffer.push('\n');
+        let (cells, remainder) = drain_complete_td_cells(&buffer);
+        buffer = remainder;
 
-        if row_start.is_some() {
-            row_buffer.push_str(line);
-            row_buffer.push('\n');
-        }
+        for cell in cells {
+            let text = clean_html_text(&cell);
+            let text = text.trim();
 
-        if let Some(start_index) = row_start {
-            if line.contains("</tr>") {
-                if let Some(field) = build_markdown_field(
-                    &row_buffer,
-                    start_index + 1,
-                    line_index + 1,
-                    section,
-                    canonical_source_file,
-                    helper_source_file,
-                ) {
-                    fields.push(field);
+            if let Some(name) = attribute_cell_name(&cell) {
+                if let Some(previous) = pending.take() {
+                    fields.push(previous.finish(
+                        section,
+                        canonical_source_file,
+                        helper_source_file,
+                    ));
                 }
-                row_start = None;
+                pending = Some(PendingMarkdownField {
+                    name,
+                    type_spec: String::new(),
+                    description: String::new(),
+                    start_line: line_index + 1,
+                    end_line: line_index + 1,
+                });
+                continue;
             }
+
+            let Some(field) = pending.as_mut() else {
+                continue;
+            };
+
+            if field.type_spec.is_empty() {
+                field.type_spec = String::from(text);
+            } else {
+                push_with_space(&mut field.description, text);
+            }
+            field.end_line = line_index + 1;
         }
+    }
+
+    if let Some(previous) = pending {
+        fields.push(previous.finish(section, canonical_source_file, helper_source_file));
     }
 
     fields
 }
 
-fn build_markdown_field(
-    row: &str,
+struct PendingMarkdownField {
+    name: String,
+    type_spec: String,
+    description: String,
     start_line: usize,
     end_line: usize,
-    section: &str,
-    canonical_source_file: &str,
-    helper_source_file: &str,
-) -> Option<RawField> {
-    let cells = extract_td_cells(row);
-    if cells.len() < 3 {
-        return None;
-    }
-
-    let name = cells[0].trim();
-    if name.is_empty() || name == "Attribute" {
-        return None;
-    }
-
-    Some(RawField {
-        name: String::from(name),
-        type_spec: String::from(cells[1].trim()),
-        description: String::from(cells[2].trim()),
-        citation: CatalogCitation {
-            section: String::from(section),
-            canonical_source_file: String::from(canonical_source_file),
-            helper_source_file: String::from(helper_source_file),
-            start_line,
-            end_line,
-        },
-    })
 }
 
-fn extract_td_cells(row: &str) -> Vec<String> {
-    let mut cells = Vec::new();
-    let mut remainder = row;
+impl PendingMarkdownField {
+    fn finish(
+        self,
+        section: &str,
+        canonical_source_file: &str,
+        helper_source_file: &str,
+    ) -> RawField {
+        RawField {
+            name: self.name,
+            type_spec: self.type_spec,
+            description: self.description,
+            citation: CatalogCitation {
+                section: String::from(section),
+                canonical_source_file: String::from(canonical_source_file),
+                helper_source_file: String::from(helper_source_file),
+                start_line: self.start_line,
+                end_line: self.end_line,
+            },
+        }
+    }
+}
 
-    while let Some(td_index) = remainder.find("<td") {
-        remainder = &remainder[td_index..];
-        let Some(tag_end) = remainder.find('>') else {
-            break;
-        };
-        remainder = &remainder[(tag_end + 1)..];
-        let Some(cell_end) = remainder.find("</td>") else {
-            break;
-        };
-        cells.push(clean_html_text(&remainder[..cell_end]));
-        remainder = &remainder[(cell_end + 5)..];
+/// The attribute column is always a bare `<code>name</code>`; type and
+/// description cells are prose, so anything else is not a field start.
+fn attribute_cell_name(cell: &str) -> Option<String> {
+    let trimmed = cell.trim();
+    let inner = trimmed.strip_prefix("<code>")?.strip_suffix("</code>")?;
+    let name = inner.trim();
+    if name.is_empty() {
+        return None;
     }
 
-    cells
+    name.chars()
+        .all(|character| {
+            character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
+        })
+        .then(|| String::from(name))
+}
+
+/// Pulls every complete `<td>…</td>` out of the buffer, keeping inner markup so
+/// the attribute column can be told apart from a description that merely
+/// mentions a `<code>` field name. Returns the cells and whatever tail is still
+/// waiting for its closing tag.
+fn drain_complete_td_cells(buffer: &str) -> (Vec<String>, String) {
+    let mut cells = Vec::new();
+    let mut remainder = buffer;
+
+    while let Some(td_index) = remainder.find("<td") {
+        let candidate = &remainder[td_index..];
+        let Some(tag_end) = candidate.find('>') else {
+            break;
+        };
+        let body = &candidate[(tag_end + 1)..];
+        // Some cells in the IAB sources are never closed (the 2.6-202505
+        // Content.genres description). The next <td> implicitly closes them;
+        // without this the following field gets swallowed as description text.
+        let closing = body.find("</td>");
+        let next_cell = body.find("<td");
+        match (closing, next_cell) {
+            (Some(cell_end), next) if next.map_or(true, |start| cell_end < start) => {
+                cells.push(String::from(&body[..cell_end]));
+                remainder = &body[(cell_end + 5)..];
+            }
+            (_, Some(start)) => {
+                cells.push(String::from(&body[..start]));
+                remainder = &body[start..];
+            }
+            _ => {
+                // Still waiting for a close: hold it for the next line.
+                return (cells, String::from(candidate));
+            }
+        }
+    }
+
+    (cells, String::from(remainder))
 }
 
 fn clean_html_text(value: &str) -> String {
@@ -598,12 +765,16 @@ fn is_pdf_attribute_header(line: &str) -> bool {
         && normalized.contains("Description")
 }
 
+/// Field tables in the 2.0-2.2 PDFs come in two shapes: the bid-request
+/// objects carry a Default column, the bid-response objects (Bid Response,
+/// Seat Bid, Bid) do not. Requiring Default left every response object with an
+/// empty field list, which made response validation on those versions pass
+/// anything.
 fn is_legacy_pdf_field_header(line: &str) -> bool {
     let normalized = normalize_pdf_line(line);
     normalized.contains("Field")
         && normalized.contains("Scope")
         && normalized.contains("Type")
-        && normalized.contains("Default")
         && normalized.contains("Description")
 }
 
@@ -631,6 +802,13 @@ fn parse_pdf_table(
         let normalized = normalize_pdf_line(line);
         if normalized.is_empty() || is_pdf_noise_line(&normalized) {
             continue;
+        }
+
+        // The last object in a section runs to the end of the document, so
+        // without this the enumerated-list tables in later sections get read
+        // as if they were fields of that object.
+        if is_numbered_section_heading(line, &normalized) {
+            break;
         }
 
         let indentation = count_leading_spaces(line);
@@ -692,8 +870,15 @@ fn parse_legacy_pdf_table(
     let header = normalize_pdf_line(lines[header_index]);
     let scope_start = header.find("Scope").unwrap_or(20);
     let type_start = header.find("Type").unwrap_or(scope_start + 16);
-    let default_start = header.find("Default").unwrap_or(type_start + 10);
-    let desc_start = header.find("Description").unwrap_or(default_start + 10);
+    // Response tables have no Default column: collapse it onto the description
+    // boundary so continuation lines read an empty range instead of eating the
+    // first characters of the description.
+    let desc_start = header
+        .find("Description")
+        .unwrap_or_else(|| header.find("Default").map_or(type_start + 20, |at| at + 10));
+    let default_start = header.find("Default").unwrap_or(desc_start);
+    let has_default_column = header.contains("Default");
+    let column_count = if has_default_column { 5 } else { 4 };
     let mut fields = Vec::new();
     let mut current: Option<PendingLegacyPdfField> = None;
 
@@ -709,18 +894,43 @@ fn parse_legacy_pdf_table(
             continue;
         }
 
+        if is_numbered_section_heading(line, &normalized) {
+            break;
+        }
+
         let indentation = count_leading_spaces(line);
         if indentation < scope_start.saturating_sub(1) {
-            let columns = split_multispace_parts(normalized.trim_start(), 5);
+            let columns = split_multispace_parts(normalized.trim_start(), column_count);
             if columns.is_empty() {
                 continue;
+            }
+
+            // A long field name wraps in the PDF's name column, leaving a row
+            // with a bare name fragment and description text but no scope or
+            // type ("connectiontyp" then "e"). Stitch it back onto the open
+            // field instead of inventing one. Prose lines that happen to sit in
+            // the name column (best-practice notes) are not fragments and must
+            // not be stitched, hence the identifier shape check.
+            if columns.len() == 2 && is_wrapped_name_fragment(&columns[0]) {
+                if let Some(field) = current.as_mut() {
+                    field.name.push_str(&columns[0]);
+                    push_with_space(&mut field.description, &columns[1]);
+                    field.end_line = line_index + 1;
+                    continue;
+                }
             }
 
             let name = columns.first().cloned().unwrap_or_default();
             let scope = columns.get(1).cloned().unwrap_or_default();
             let value_type = columns.get(2).cloned().unwrap_or_default();
-            let default_value = columns.get(3).cloned().unwrap_or_default();
-            let description = columns.get(4).cloned().unwrap_or_default();
+            let (default_value, description) = if has_default_column {
+                (
+                    columns.get(3).cloned().unwrap_or_default(),
+                    columns.get(4).cloned().unwrap_or_default(),
+                )
+            } else {
+                (String::new(), columns.get(3).cloned().unwrap_or_default())
+            };
             if let Some(previous) = current.take() {
                 fields.push(previous.finish(section, canonical_source_file, helper_source_file));
             }

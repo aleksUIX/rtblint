@@ -1,5 +1,39 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+Catalog extraction: a regeneration now reproduces the shipped catalogs
+instead of quietly changing them, and several extraction gaps that made
+older versions validate less than they claimed are closed.
+
+- `Source.schain` keeps its `SupplyChain` wiring through a regeneration.
+  The hint parser only understood "Details via a/an X object", so the
+  spec's "Details via the `SupplyChain` object" resolved to nothing and
+  every 2.6 catalog would have lost SupplyChain validation on the next
+  export
+- Mis-extracted prose entries (sentences, headings, notes read as objects
+  or fields) are dropped in the exporter rather than by a manual pass, and
+  field names are normalized to the lowercase identifiers every OpenRTB
+  version uses. This removes 40-70 junk fields per catalog on 2.3-2.5
+- Bid response objects are extracted for 2.0-2.2. Their tables have no
+  Default column, which the parser required, so `BidResponse`, `SeatBid`,
+  and `Bid` shipped with zero fields and **any** bid response validated
+  clean on those three versions
+- Field tables that continue past a page break are no longer truncated at
+  the first cross-reference in a wrapped description ("6.9 Video Start
+  Delay ..."), and a field name split across two lines is stitched back
+  together. 2.0-2.2 gain 113, 128, and 137 fields respectively
+- HTML tables in the 2.6 snapshots are read as a cell stream rather than
+  by `<tr>` grouping. The IAB sources misnest those tags, which silently
+  dropped 25-51 fields per snapshot (2.6-202409's `Site` lost 6 of 18,
+  including `inventorypartnerdomain`; `User` lost `eids`)
+- `ExpectedShape` understands the legacy "array of objects" phrasing and
+  reads the type column only, so arrays are no longer typed as scalars and
+  scope prose mentioning "object" no longer types a string field as an
+  object
+
 ## 0.5.0 (2026-07-25)
 
 ### Added
@@ -90,7 +124,7 @@ First real release. Everything before this was a name reservation.
 - Every finding carries a stable rule id, typed severity, JSON path, and the
   OpenRTB spec section it derives from
 - CLI: `rtblint validate [--type request|response] [--version <id>]
-  [--format human|json]`, exit codes 0/1/2, `rtblint --version`
+  [--format human|json]`, exit codes 0/1/2, `RTBlint --version`
 - MCP server (`rtblint-mcp`) over stdio with `validate_bid_request`,
   `validate_bid_response`, and `list_openrtb_versions` tools
 - npm package backed by the Rust core compiled to WASM (CJS + ESM), with

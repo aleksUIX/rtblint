@@ -72,24 +72,17 @@ fn match_object_name(hint: &str, object_names: &[String]) -> Option<String> {
 fn child_object_hint(description: &str) -> Option<String> {
     let normalized = description.replace('`', "");
 
-    for marker in [
-        "Array of ",
-        "An array of ",
-        "Details via a ",
-        "Details via an ",
-        "A ",
-        "An ",
-    ] {
+    for marker in ["Array of ", "An array of ", "Details via ", "A ", "An "] {
         if let Some(start) = normalized.find(marker) {
             let rest = &normalized[start + marker.len()..];
             if let Some(end) = rest.find(" object") {
-                let candidate = rest[..end].trim();
+                let candidate = strip_leading_article(rest[..end].trim());
                 if !candidate.is_empty() {
                     return Some(candidate.to_string());
                 }
             }
             if let Some(end) = rest.find(" objects") {
-                let candidate = rest[..end].trim();
+                let candidate = strip_leading_article(rest[..end].trim());
                 if !candidate.is_empty() {
                     return Some(candidate.to_string());
                 }
@@ -98,6 +91,20 @@ fn child_object_hint(description: &str) -> Option<String> {
     }
 
     None
+}
+
+/// Drops an article the marker did not consume, so "Details via the
+/// SupplyChain object" resolves the same as "Details via a Site object".
+fn strip_leading_article(candidate: &str) -> &str {
+    for article in ["the ", "a ", "an "] {
+        if candidate.len() > article.len()
+            && candidate[..article.len()].eq_ignore_ascii_case(article)
+        {
+            return candidate[article.len()..].trim_start();
+        }
+    }
+
+    candidate
 }
 
 fn parse_inline_integer_value_set(description: &str) -> Option<(Vec<i64>, Option<i64>)> {
@@ -231,5 +238,28 @@ mod tests {
             Some(String::from("Site"))
         );
         assert_eq!(resolve_child_object("no hint", "unknown", &objects), None);
+    }
+
+    // Source.schain is described as "Details via the `SupplyChain` object" and
+    // its field name does not match the object name, so the article-stripping
+    // path is the only thing that wires it up. Losing it silently drops
+    // SupplyChain validation on every 2.6 catalog.
+    #[test]
+    fn resolves_child_object_behind_a_definite_article() {
+        let objects = vec![String::from("SupplyChain"), String::from("Site")];
+        assert_eq!(
+            resolve_child_object(
+                "This object represents both the links in the supply chain as well as an \
+                 indicator whether or not the supply chain is complete. Details via the \
+                 SupplyChain object (section 3.2.25).",
+                "schain",
+                &objects
+            ),
+            Some(String::from("SupplyChain"))
+        );
+        assert_eq!(
+            resolve_child_object("Details via an Site object.", "unknown", &objects),
+            Some(String::from("Site"))
+        );
     }
 }

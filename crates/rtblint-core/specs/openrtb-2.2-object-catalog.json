@@ -793,7 +793,164 @@
         "start_line": 1119,
         "end_line": 1173
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: recommended; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1135,
+            "end_line": 1135
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1136,
+            "end_line": 1137
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1138,
+            "end_line": 1139
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1140,
+            "end_line": 1142
+          }
+        },
+        {
+          "name": "sectioncat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1143,
+            "end_line": 1145
+          }
+        },
+        {
+          "name": "pagecat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1146,
+            "end_line": 1148
+          }
+        },
+        {
+          "name": "page",
+          "type_spec": "scope: recommended; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1149,
+            "end_line": 1150
+          }
+        },
+        {
+          "name": "privacypolicy",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1151,
+            "end_line": 1153
+          }
+        },
+        {
+          "name": "ref",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1154,
+            "end_line": 1155
+          }
+        },
+        {
+          "name": "search",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1156,
+            "end_line": 1157
+          }
+        },
+        {
+          "name": "publisher",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Publisher",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1158,
+            "end_line": 1158
+          }
+        },
+        {
+          "name": "content",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Content",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1159,
+            "end_line": 1159
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1160,
+            "end_line": 1162
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.5",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1163,
+            "end_line": 1166
+          }
+        }
+      ]
     },
     {
       "name": "App",
@@ -805,7 +962,175 @@
         "start_line": 1174,
         "end_line": 1229
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: recommend ed; type: string",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1186,
+            "end_line": 1187
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1188,
+            "end_line": 1189
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1190,
+            "end_line": 1191
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1192,
+            "end_line": 1194
+          }
+        },
+        {
+          "name": "sectioncat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1195,
+            "end_line": 1197
+          }
+        },
+        {
+          "name": "pagecat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1198,
+            "end_line": 1200
+          }
+        },
+        {
+          "name": "ver",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1201,
+            "end_line": 1201
+          }
+        },
+        {
+          "name": "bundle",
+          "type_spec": "scope: recommend ed; type: string",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1202,
+            "end_line": 1204
+          }
+        },
+        {
+          "name": "privacypolicy",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1205,
+            "end_line": 1207
+          }
+        },
+        {
+          "name": "paid",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1208,
+            "end_line": 1209
+          }
+        },
+        {
+          "name": "publisher",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Publisher",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1210,
+            "end_line": 1210
+          }
+        },
+        {
+          "name": "content",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Content",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1211,
+            "end_line": 1211
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "scope: optional; type: string Re",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1212,
+            "end_line": 1219
+          }
+        },
+        {
+          "name": "storeurl",
+          "type_spec": "scope: optional; type: string fo bi",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1220,
+            "end_line": 1222
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object co pa su de",
+          "citation": {
+            "section": "3.3.6",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1223,
+            "end_line": 1227
+          }
+        }
+      ]
     },
     {
       "name": "Content",
@@ -817,7 +1142,229 @@
         "start_line": 1230,
         "end_line": 1310
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1243,
+            "end_line": 1243
+          }
+        },
+        {
+          "name": "episode",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1244,
+            "end_line": 1245
+          }
+        },
+        {
+          "name": "title",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1246,
+            "end_line": 1251
+          }
+        },
+        {
+          "name": "series",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1252,
+            "end_line": 1257
+          }
+        },
+        {
+          "name": "season",
+          "type_spec": "scope: optional; type: string ap",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1265,
+            "end_line": 1266
+          }
+        },
+        {
+          "name": "url",
+          "type_spec": "scope: optional; type: string co",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1267,
+            "end_line": 1268
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "scope: optional str; type: array of ings Se",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1269,
+            "end_line": 1270
+          }
+        },
+        {
+          "name": "videoquality",
+          "type_spec": "scope: optional; type: integer Ta",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1271,
+            "end_line": 1272
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "scope: optional; type: string co st",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1273,
+            "end_line": 1275
+          }
+        },
+        {
+          "name": "contentrating",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1276,
+            "end_line": 1276
+          }
+        },
+        {
+          "name": "userrating",
+          "type_spec": "scope: optional; type: string li",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1277,
+            "end_line": 1278
+          }
+        },
+        {
+          "name": "context",
+          "type_spec": "scope: optional; type: string et",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1279,
+            "end_line": 1280
+          }
+        },
+        {
+          "name": "livestream",
+          "type_spec": "scope: optional; type: integer “1",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1281,
+            "end_line": 1282
+          }
+        },
+        {
+          "name": "sourcerelationship",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1283,
+            "end_line": 1283
+          }
+        },
+        {
+          "name": "producer",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Producer",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1284,
+            "end_line": 1284
+          }
+        },
+        {
+          "name": "len",
+          "type_spec": "scope: optional; type: integer au",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1287,
+            "end_line": 1288
+          }
+        },
+        {
+          "name": "qagmediarating",
+          "type_spec": "scope: optional; type: integer Se va",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1290,
+            "end_line": 1292
+          }
+        },
+        {
+          "name": "embeddable",
+          "type_spec": "scope: optional; type: integer em th be",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1293,
+            "end_line": 1296
+          }
+        },
+        {
+          "name": "language",
+          "type_spec": "scope: optional; type: string co",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1297,
+            "end_line": 1298
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object cu Op be",
+          "citation": {
+            "section": "3.3.7",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1300,
+            "end_line": 1303
+          }
+        }
+      ]
     },
     {
       "name": "Publisher",
@@ -829,7 +1376,63 @@
         "start_line": 1311,
         "end_line": 1332
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: recommended; type: string",
+          "citation": {
+            "section": "3.3.8",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1317,
+            "end_line": 1317
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.8",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1318,
+            "end_line": 1319
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.8",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1320,
+            "end_line": 1321
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.8",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1322,
+            "end_line": 1323
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.8",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1326,
+            "end_line": 1330
+          }
+        }
+      ]
     },
     {
       "name": "Producer",
@@ -841,7 +1444,63 @@
         "start_line": 1333,
         "end_line": 1363
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.9",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1342,
+            "end_line": 1344
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.9",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1345,
+            "end_line": 1346
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "3.3.9",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1347,
+            "end_line": 1348
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.9",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1349,
+            "end_line": 1349
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.9",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1357,
+            "end_line": 1361
+          }
+        }
+      ]
     },
     {
       "name": "Device",
@@ -853,7 +1512,262 @@
         "start_line": 1364,
         "end_line": 1449
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "dnt",
+          "type_spec": "scope: recommended; type: Integer",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1380,
+            "end_line": 1381
+          }
+        },
+        {
+          "name": "ua",
+          "type_spec": "scope: recommended; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1382,
+            "end_line": 1382
+          }
+        },
+        {
+          "name": "ip",
+          "type_spec": "scope: recommended if geo object is not supplied; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1383,
+            "end_line": 1385
+          }
+        },
+        {
+          "name": "geo",
+          "type_spec": "scope: recommended if IP is not supplied; type: object",
+          "child_object": "Geo",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1386,
+            "end_line": 1389
+          }
+        },
+        {
+          "name": "didsha1",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1390,
+            "end_line": 1392
+          }
+        },
+        {
+          "name": "didmd5",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1393,
+            "end_line": 1395
+          }
+        },
+        {
+          "name": "dpidsha1",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1396,
+            "end_line": 1398
+          }
+        },
+        {
+          "name": "dpidmd5",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1399,
+            "end_line": 1401
+          }
+        },
+        {
+          "name": "macsha1",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1402,
+            "end_line": 1402
+          }
+        },
+        {
+          "name": "macmd5",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1403,
+            "end_line": 1403
+          }
+        },
+        {
+          "name": "ipv6",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1404,
+            "end_line": 1404
+          }
+        },
+        {
+          "name": "carrier",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1405,
+            "end_line": 1409
+          }
+        },
+        {
+          "name": "language",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1410,
+            "end_line": 1411
+          }
+        },
+        {
+          "name": "make",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1412,
+            "end_line": 1412
+          }
+        },
+        {
+          "name": "model",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1413,
+            "end_line": 1413
+          }
+        },
+        {
+          "name": "os",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1414,
+            "end_line": 1414
+          }
+        },
+        {
+          "name": "osv",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1415,
+            "end_line": 1415
+          }
+        },
+        {
+          "name": "js",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1416,
+            "end_line": 1416
+          }
+        },
+        {
+          "name": "connectiontype",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1422,
+            "end_line": 1423
+          }
+        },
+        {
+          "name": "devicetype",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1424,
+            "end_line": 1425
+          }
+        },
+        {
+          "name": "flashver",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1427,
+            "end_line": 1427
+          }
+        },
+        {
+          "name": "ifa",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1428,
+            "end_line": 1431
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.10",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1432,
+            "end_line": 1436
+          }
+        }
+      ]
     },
     {
       "name": "Geo",
@@ -865,7 +1779,118 @@
         "start_line": 1450,
         "end_line": 1498
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "lat",
+          "type_spec": "scope: optional; type: float a",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1461,
+            "end_line": 1469
+          }
+        },
+        {
+          "name": "lon",
+          "type_spec": "scope: optional; type: float ne kn",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1470,
+            "end_line": 1472
+          }
+        },
+        {
+          "name": "country",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1473,
+            "end_line": 1473
+          }
+        },
+        {
+          "name": "region",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1474,
+            "end_line": 1474
+          }
+        },
+        {
+          "name": "regionfips104",
+          "type_spec": "scope: optional; type: string no",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1475,
+            "end_line": 1476
+          }
+        },
+        {
+          "name": "metro",
+          "type_spec": "scope: optional; type: string ht cs co sa",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1477,
+            "end_line": 1481
+          }
+        },
+        {
+          "name": "city",
+          "type_spec": "scope: optional; type: string an (h vi",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1482,
+            "end_line": 1485
+          }
+        },
+        {
+          "name": "zip",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1486,
+            "end_line": 1486
+          }
+        },
+        {
+          "name": "type",
+          "type_spec": "scope: recommended; type: integer IP Lo Ty pr",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1487,
+            "end_line": 1491
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object co pa su de",
+          "citation": {
+            "section": "3.3.11",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1492,
+            "end_line": 1496
+          }
+        }
+      ]
     },
     {
       "name": "User",
@@ -877,7 +1902,109 @@
         "start_line": 1499,
         "end_line": 1550
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: recommended (or buyeruid); type: string",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1515,
+            "end_line": 1516
+          }
+        },
+        {
+          "name": "buyeruid",
+          "type_spec": "scope: recommended (or id); type: string",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1517,
+            "end_line": 1518
+          }
+        },
+        {
+          "name": "yob",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1520,
+            "end_line": 1520
+          }
+        },
+        {
+          "name": "gender",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1521,
+            "end_line": 1522
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1523,
+            "end_line": 1525
+          }
+        },
+        {
+          "name": "customdata",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1526,
+            "end_line": 1533
+          }
+        },
+        {
+          "name": "geo",
+          "type_spec": "scope: optional; type: object",
+          "child_object": "Geo",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1534,
+            "end_line": 1539
+          }
+        },
+        {
+          "name": "data",
+          "type_spec": "scope: optional; type: array of objects",
+          "child_object": "Data",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1540,
+            "end_line": 1541
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.12",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1542,
+            "end_line": 1546
+          }
+        }
+      ]
     },
     {
       "name": "Data",
@@ -889,7 +2016,53 @@
         "start_line": 1551,
         "end_line": 1576
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.13",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1567,
+            "end_line": 1567
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.13",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1568,
+            "end_line": 1568
+          }
+        },
+        {
+          "name": "segment",
+          "type_spec": "scope: optional; type: array of objects",
+          "child_object": "Segment",
+          "citation": {
+            "section": "3.3.13",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1569,
+            "end_line": 1570
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.13",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1571,
+            "end_line": 1574
+          }
+        }
+      ]
     },
     {
       "name": "Segment",
@@ -901,7 +2074,52 @@
         "start_line": 1577,
         "end_line": 1599
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.14",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1586,
+            "end_line": 1587
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.14",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1588,
+            "end_line": 1589
+          }
+        },
+        {
+          "name": "value",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "3.3.14",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1590,
+            "end_line": 1594
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.14",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1595,
+            "end_line": 1598
+          }
+        }
+      ]
     },
     {
       "name": "Regulations",
@@ -913,7 +2131,36 @@
         "start_line": 1600,
         "end_line": 1626
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "coppa",
+          "type_spec": "scope: optional; type: integer",
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          },
+          "citation": {
+            "section": "3.3.15",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1618,
+            "end_line": 1620
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.15",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1621,
+            "end_line": 1624
+          }
+        }
+      ]
     },
     {
       "name": "Pmp",
@@ -925,7 +2172,47 @@
         "start_line": 1627,
         "end_line": 1644
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "private_auction",
+          "type_spec": "scope: optional; type: integer",
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          },
+          "citation": {
+            "section": "3.3.16",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1631,
+            "end_line": 1635
+          }
+        },
+        {
+          "name": "deals",
+          "type_spec": "scope: optional; type: array of objects",
+          "citation": {
+            "section": "3.3.16",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1636,
+            "end_line": 1637
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "3.3.16",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1638,
+            "end_line": 1641
+          }
+        }
+      ]
     },
     {
       "name": "DirectDeals",
@@ -1014,41 +2301,6 @@
             "start_line": 1683,
             "end_line": 1687
           }
-        },
-        {
-          "name": "seatbid",
-          "type_spec": "scope: required; type: At least one seatbid object is required in a",
-          "child_object": "SeatBid",
-          "citation": {
-            "section": "3.3.17",
-            "canonical_source_file": "source.pdf",
-            "helper_source_file": "source-layout.txt",
-            "start_line": 1706,
-            "end_line": 1707
-          }
-        },
-        {
-          "name": "bid",
-          "type_spec": "scope: required; type: At least one bid object is required in a bid",
-          "child_object": "Bid",
-          "citation": {
-            "section": "3.3.17",
-            "canonical_source_file": "source.pdf",
-            "helper_source_file": "source-layout.txt",
-            "start_line": 1708,
-            "end_line": 1709
-          }
-        },
-        {
-          "name": "ext",
-          "type_spec": "scope: optional; type: This object is a placeholder that may",
-          "citation": {
-            "section": "3.3.17",
-            "canonical_source_file": "source.pdf",
-            "helper_source_file": "source-layout.txt",
-            "start_line": 1710,
-            "end_line": 1718
-          }
         }
       ]
     },
@@ -1062,7 +2314,86 @@
         "start_line": 1750,
         "end_line": 1796
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: required; type: string",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1761,
+            "end_line": 1761
+          }
+        },
+        {
+          "name": "seatbid",
+          "type_spec": "scope: required; type: array of objects",
+          "child_object": "SeatBid",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1762,
+            "end_line": 1763
+          }
+        },
+        {
+          "name": "bidid",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1764,
+            "end_line": 1766
+          }
+        },
+        {
+          "name": "cur",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1767,
+            "end_line": 1768
+          }
+        },
+        {
+          "name": "customdata",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1769,
+            "end_line": 1776
+          }
+        },
+        {
+          "name": "nbr",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1777,
+            "end_line": 1778
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "4.3.1",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1779,
+            "end_line": 1783
+          }
+        }
+      ]
     },
     {
       "name": "SeatBid",
@@ -1074,7 +2405,53 @@
         "start_line": 1797,
         "end_line": 1822
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "bid",
+          "type_spec": "scope: required; type: array of objects",
+          "child_object": "Bid",
+          "citation": {
+            "section": "4.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1807,
+            "end_line": 1811
+          }
+        },
+        {
+          "name": "seat",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1812,
+            "end_line": 1813
+          }
+        },
+        {
+          "name": "group",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "4.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1814,
+            "end_line": 1815
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "4.3.2",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1816,
+            "end_line": 1820
+          }
+        }
+      ]
     },
     {
       "name": "Bid",
@@ -1086,7 +2463,173 @@
         "start_line": 1823,
         "end_line": 3876
       },
-      "fields": []
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "scope: required; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1845,
+            "end_line": 1849
+          }
+        },
+        {
+          "name": "impid",
+          "type_spec": "scope: required; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1850,
+            "end_line": 1851
+          }
+        },
+        {
+          "name": "price",
+          "type_spec": "scope: required; type: float",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1852,
+            "end_line": 1856
+          }
+        },
+        {
+          "name": "adid",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1858,
+            "end_line": 1859
+          }
+        },
+        {
+          "name": "nurl",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1860,
+            "end_line": 1862
+          }
+        },
+        {
+          "name": "adm",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1863,
+            "end_line": 1865
+          }
+        },
+        {
+          "name": "adomain",
+          "type_spec": "scope: optional; type: array of strings",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1866,
+            "end_line": 1871
+          }
+        },
+        {
+          "name": "iurl",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1872,
+            "end_line": 1873
+          }
+        },
+        {
+          "name": "cid",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1874,
+            "end_line": 1875
+          }
+        },
+        {
+          "name": "crid",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1876,
+            "end_line": 1879
+          }
+        },
+        {
+          "name": "attr",
+          "type_spec": "scope: optional; type: array of integers",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1880,
+            "end_line": 1881
+          }
+        },
+        {
+          "name": "dealid",
+          "type_spec": "scope: optional; type: string",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1882,
+            "end_line": 1891
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1892,
+            "end_line": 1897
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "scope: optional; type: integer",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1898,
+            "end_line": 1903
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "scope: optional; type: object",
+          "citation": {
+            "section": "4.3.3",
+            "canonical_source_file": "source.pdf",
+            "helper_source_file": "source-layout.txt",
+            "start_line": 1904,
+            "end_line": 1908
+          }
+        }
+      ]
     }
   ]
 }

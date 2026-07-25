@@ -26,8 +26,8 @@
             "section": "Object: Openrtb",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 302,
-            "end_line": 306
+            "start_line": 303,
+            "end_line": 305
           }
         },
         {
@@ -37,8 +37,8 @@
             "section": "Object: Openrtb",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 307,
-            "end_line": 311
+            "start_line": 308,
+            "end_line": 310
           }
         },
         {
@@ -48,8 +48,8 @@
             "section": "Object: Openrtb",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 312,
-            "end_line": 316
+            "start_line": 313,
+            "end_line": 315
           }
         },
         {
@@ -60,8 +60,8 @@
             "section": "Object: Openrtb",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 317,
-            "end_line": 321
+            "start_line": 318,
+            "end_line": 320
           }
         },
         {
@@ -72,8 +72,8 @@
             "section": "Object: Openrtb",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 322,
-            "end_line": 326
+            "start_line": 323,
+            "end_line": 325
           }
         }
       ]
@@ -96,8 +96,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 350,
-            "end_line": 354
+            "start_line": 351,
+            "end_line": 353
           }
         },
         {
@@ -113,8 +113,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 355,
-            "end_line": 359
+            "start_line": 356,
+            "end_line": 358
           }
         },
         {
@@ -124,8 +124,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 360,
-            "end_line": 364
+            "start_line": 361,
+            "end_line": 363
           }
         },
         {
@@ -141,8 +141,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 365,
-            "end_line": 369
+            "start_line": 366,
+            "end_line": 368
           }
         },
         {
@@ -152,8 +152,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 370,
-            "end_line": 374
+            "start_line": 371,
+            "end_line": 373
           }
         },
         {
@@ -163,8 +163,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 375,
-            "end_line": 379
+            "start_line": 376,
+            "end_line": 378
           }
         },
         {
@@ -180,8 +180,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 380,
-            "end_line": 384
+            "start_line": 381,
+            "end_line": 383
           }
         },
         {
@@ -191,8 +191,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 385,
-            "end_line": 389
+            "start_line": 386,
+            "end_line": 388
           }
         },
         {
@@ -203,8 +203,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 390,
-            "end_line": 394
+            "start_line": 391,
+            "end_line": 393
           }
         },
         {
@@ -215,8 +215,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 395,
-            "end_line": 399
+            "start_line": 396,
+            "end_line": 398
           }
         },
         {
@@ -232,8 +232,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 400,
-            "end_line": 404
+            "start_line": 401,
+            "end_line": 403
           }
         },
         {
@@ -243,8 +243,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 405,
-            "end_line": 410
+            "start_line": 406,
+            "end_line": 409
           }
         },
         {
@@ -254,8 +254,8 @@
             "section": "Object: Request",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 411,
-            "end_line": 415
+            "start_line": 412,
+            "end_line": 414
           }
         }
       ]
@@ -278,8 +278,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 431,
-            "end_line": 435
+            "start_line": 432,
+            "end_line": 434
           }
         },
         {
@@ -289,8 +289,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 436,
-            "end_line": 440
+            "start_line": 437,
+            "end_line": 439
           }
         },
         {
@@ -300,8 +300,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 441,
-            "end_line": 445
+            "start_line": 442,
+            "end_line": 444
           }
         },
         {
@@ -311,8 +311,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 446,
-            "end_line": 450
+            "start_line": 447,
+            "end_line": 449
           }
         },
         {
@@ -322,8 +322,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 451,
-            "end_line": 455
+            "start_line": 452,
+            "end_line": 454
           }
         },
         {
@@ -333,8 +333,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 456,
-            "end_line": 461
+            "start_line": 457,
+            "end_line": 460
           }
         },
         {
@@ -344,8 +344,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 462,
-            "end_line": 466
+            "start_line": 463,
+            "end_line": 465
           }
         },
         {
@@ -355,8 +355,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 467,
-            "end_line": 472
+            "start_line": 468,
+            "end_line": 471
           }
         },
         {
@@ -366,8 +366,8 @@
             "section": "Object: Source",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 473,
-            "end_line": 477
+            "start_line": 474,
+            "end_line": 476
           }
         }
       ]
@@ -390,8 +390,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 491,
-            "end_line": 495
+            "start_line": 492,
+            "end_line": 494
           }
         },
         {
@@ -401,8 +401,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 496,
-            "end_line": 500
+            "start_line": 497,
+            "end_line": 499
           }
         },
         {
@@ -412,8 +412,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 501,
-            "end_line": 505
+            "start_line": 502,
+            "end_line": 504
           }
         },
         {
@@ -423,8 +423,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 506,
-            "end_line": 510
+            "start_line": 507,
+            "end_line": 509
           }
         },
         {
@@ -434,8 +434,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 511,
-            "end_line": 515
+            "start_line": 512,
+            "end_line": 514
           }
         },
         {
@@ -445,8 +445,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 516,
-            "end_line": 520
+            "start_line": 517,
+            "end_line": 519
           }
         },
         {
@@ -456,8 +456,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 521,
-            "end_line": 525
+            "start_line": 522,
+            "end_line": 524
           }
         },
         {
@@ -467,8 +467,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 526,
-            "end_line": 530
+            "start_line": 527,
+            "end_line": 529
           }
         },
         {
@@ -485,8 +485,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 531,
-            "end_line": 535
+            "start_line": 532,
+            "end_line": 534
           }
         },
         {
@@ -497,8 +497,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 536,
-            "end_line": 540
+            "start_line": 537,
+            "end_line": 539
           }
         },
         {
@@ -509,8 +509,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 541,
-            "end_line": 545
+            "start_line": 542,
+            "end_line": 544
           }
         },
         {
@@ -526,8 +526,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 546,
-            "end_line": 550
+            "start_line": 547,
+            "end_line": 549
           }
         },
         {
@@ -537,8 +537,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 551,
-            "end_line": 556
+            "start_line": 552,
+            "end_line": 555
           }
         },
         {
@@ -548,8 +548,8 @@
             "section": "Object: Item",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 557,
-            "end_line": 561
+            "start_line": 558,
+            "end_line": 560
           }
         }
       ]
@@ -572,8 +572,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 575,
-            "end_line": 579
+            "start_line": 576,
+            "end_line": 578
           }
         },
         {
@@ -583,8 +583,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 580,
-            "end_line": 584
+            "start_line": 581,
+            "end_line": 583
           }
         },
         {
@@ -594,8 +594,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 585,
-            "end_line": 589
+            "start_line": 586,
+            "end_line": 588
           }
         },
         {
@@ -612,8 +612,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 590,
-            "end_line": 594
+            "start_line": 591,
+            "end_line": 593
           }
         },
         {
@@ -623,8 +623,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 595,
-            "end_line": 599
+            "start_line": 596,
+            "end_line": 598
           }
         },
         {
@@ -634,8 +634,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 600,
-            "end_line": 604
+            "start_line": 601,
+            "end_line": 603
           }
         },
         {
@@ -645,8 +645,8 @@
             "section": "Object: Deal",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 605,
-            "end_line": 609
+            "start_line": 606,
+            "end_line": 608
           }
         }
       ]
@@ -669,8 +669,8 @@
             "section": "Object: Metric",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 623,
-            "end_line": 627
+            "start_line": 624,
+            "end_line": 626
           }
         },
         {
@@ -680,8 +680,8 @@
             "section": "Object: Metric",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 628,
-            "end_line": 632
+            "start_line": 629,
+            "end_line": 631
           }
         },
         {
@@ -691,8 +691,8 @@
             "section": "Object: Metric",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 633,
-            "end_line": 637
+            "start_line": 634,
+            "end_line": 636
           }
         },
         {
@@ -702,8 +702,8 @@
             "section": "Object: Metric",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 638,
-            "end_line": 642
+            "start_line": 639,
+            "end_line": 641
           }
         }
       ]
@@ -726,8 +726,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 664,
-            "end_line": 668
+            "start_line": 665,
+            "end_line": 667
           }
         },
         {
@@ -737,8 +737,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 669,
-            "end_line": 673
+            "start_line": 670,
+            "end_line": 672
           }
         },
         {
@@ -749,8 +749,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 674,
-            "end_line": 678
+            "start_line": 675,
+            "end_line": 677
           }
         },
         {
@@ -760,8 +760,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 679,
-            "end_line": 683
+            "start_line": 680,
+            "end_line": 682
           }
         },
         {
@@ -771,8 +771,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 684,
-            "end_line": 688
+            "start_line": 685,
+            "end_line": 687
           }
         },
         {
@@ -783,8 +783,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 689,
-            "end_line": 693
+            "start_line": 690,
+            "end_line": 692
           }
         },
         {
@@ -794,8 +794,8 @@
             "section": "Object: Response",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 694,
-            "end_line": 698
+            "start_line": 695,
+            "end_line": 697
           }
         }
       ]
@@ -818,8 +818,8 @@
             "section": "Object: Seatbid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 712,
-            "end_line": 716
+            "start_line": 713,
+            "end_line": 715
           }
         },
         {
@@ -835,8 +835,8 @@
             "section": "Object: Seatbid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 717,
-            "end_line": 721
+            "start_line": 718,
+            "end_line": 720
           }
         },
         {
@@ -847,8 +847,8 @@
             "section": "Object: Seatbid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 722,
-            "end_line": 726
+            "start_line": 723,
+            "end_line": 725
           }
         },
         {
@@ -858,8 +858,8 @@
             "section": "Object: Seatbid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 727,
-            "end_line": 731
+            "start_line": 728,
+            "end_line": 730
           }
         }
       ]
@@ -882,8 +882,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 745,
-            "end_line": 749
+            "start_line": 746,
+            "end_line": 748
           }
         },
         {
@@ -893,8 +893,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 750,
-            "end_line": 754
+            "start_line": 751,
+            "end_line": 753
           }
         },
         {
@@ -904,8 +904,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 755,
-            "end_line": 759
+            "start_line": 756,
+            "end_line": 758
           }
         },
         {
@@ -915,8 +915,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 760,
-            "end_line": 764
+            "start_line": 761,
+            "end_line": 763
           }
         },
         {
@@ -926,8 +926,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 765,
-            "end_line": 769
+            "start_line": 766,
+            "end_line": 768
           }
         },
         {
@@ -937,8 +937,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 770,
-            "end_line": 774
+            "start_line": 771,
+            "end_line": 773
           }
         },
         {
@@ -948,8 +948,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 775,
-            "end_line": 779
+            "start_line": 776,
+            "end_line": 778
           }
         },
         {
@@ -959,8 +959,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 780,
-            "end_line": 784
+            "start_line": 781,
+            "end_line": 783
           }
         },
         {
@@ -970,8 +970,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 785,
-            "end_line": 789
+            "start_line": 786,
+            "end_line": 788
           }
         },
         {
@@ -981,8 +981,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 790,
-            "end_line": 794
+            "start_line": 791,
+            "end_line": 793
           }
         },
         {
@@ -992,8 +992,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 795,
-            "end_line": 799
+            "start_line": 796,
+            "end_line": 798
           }
         },
         {
@@ -1004,8 +1004,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 800,
-            "end_line": 804
+            "start_line": 801,
+            "end_line": 803
           }
         },
         {
@@ -1015,8 +1015,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 805,
-            "end_line": 810
+            "start_line": 806,
+            "end_line": 809
           }
         },
         {
@@ -1026,8 +1026,8 @@
             "section": "Object: Bid",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 811,
-            "end_line": 815
+            "start_line": 812,
+            "end_line": 814
           }
         }
       ]
@@ -1050,8 +1050,8 @@
             "section": "Object: Macro",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 829,
-            "end_line": 833
+            "start_line": 830,
+            "end_line": 832
           }
         },
         {
@@ -1061,8 +1061,8 @@
             "section": "Object: Macro",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 834,
-            "end_line": 838
+            "start_line": 835,
+            "end_line": 837
           }
         },
         {
@@ -1072,8 +1072,8 @@
             "section": "Object: Macro",
             "canonical_source_file": "source.md",
             "helper_source_file": "source.md",
-            "start_line": 839,
-            "end_line": 843
+            "start_line": 840,
+            "end_line": 842
           }
         }
       ]

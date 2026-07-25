@@ -1,6 +1,6 @@
 # Roadmap
 
-What rtblint does today and where it's heading. Not a promise of dates.
+What RTBlint does today and where it's heading. Not a promise of dates.
 
 ## Shipped
 
@@ -24,10 +24,6 @@ What rtblint does today and where it's heading. Not a promise of dates.
 
 - Validated fixture coverage for every tracked version, not just 2.6
 - Published JSON Schemas per version, generated from the catalogs
-- SupplyChain schema-extraction pipeline: the `source.schain` catalog wiring
-  was hand-patched directly in the exported JSON; the upstream
-  spec-extraction tooling needs the same fix or a future regeneration will
-  silently drop it
 
 ## Later
 

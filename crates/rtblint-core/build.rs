@@ -224,7 +224,40 @@ fn opt_str(value: Option<&serde_json::Value>) -> String {
 /// Mirrors the shape mapping the validator used to compute at runtime; the
 /// check order matters (compound array specs before their scalar prefixes).
 fn expected_shape_variant(type_spec: &str) -> &'static str {
-    let normalized = type_spec.to_ascii_lowercase();
+    let lowercased = type_spec.to_ascii_lowercase();
+
+    // The 2.0-2.5 PDFs put scope and type in separate columns, which the
+    // exporter joins as "scope: <scope>; type: <type>". Only the type segment
+    // describes the shape: scope prose like "recommended if geo object is not
+    // supplied" would otherwise read as an object.
+    let normalized = lowercased
+        .split(';')
+        .map(str::trim)
+        .find_map(|segment| segment.strip_prefix("type:"))
+        .map(|segment| segment.trim().to_string())
+        .unwrap_or(lowercased);
+
+    // Legacy phrasing spells arrays as "array of objects" / "array of strings"
+    // rather than 2.6's "object array" / "string array".
+    if let Some(element) = normalized.split("array of").nth(1) {
+        let element = element.trim();
+        if element.starts_with("object") {
+            return "ObjectArray";
+        }
+        if element.starts_with("string") {
+            return "StringArray";
+        }
+        if element.starts_with("integer") {
+            return "IntegerArray";
+        }
+        if element.starts_with("float") {
+            return "FloatArray";
+        }
+        if element.starts_with("boolean") {
+            return "BooleanArray";
+        }
+        return "AnyArray";
+    }
 
     if normalized.contains("object array") {
         return "ObjectArray";

@@ -69,6 +69,32 @@ function validate_response(input) {
 exports.validate_response = validate_response;
 
 /**
+ * Validate an OpenRTB bid response against the bid request it answers, for
+ * a specific tracked version id. Runs the full response validation plus
+ * cross-checks: impid resolution, mtype and adm markup coherence against
+ * the referenced Imp's media subtypes, dealid, seat, and currency
+ * constraints. Unknown version ids fall back to the latest 2.6 snapshot.
+ * @param {string} version_id
+ * @param {string} request
+ * @param {string} response
+ * @returns {any}
+ */
+function validate_response_against_request(version_id, request, response) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(response, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_response_against_request(ptr0, len0, ptr1, len1, ptr2, len2);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_response_against_request = validate_response_against_request;
+
+/**
  * Validate an OpenRTB bid response payload against a specific tracked version id
  * (for example "2.6-202606"). Unknown ids fall back to the latest 2.6 snapshot.
  * @param {string} version_id

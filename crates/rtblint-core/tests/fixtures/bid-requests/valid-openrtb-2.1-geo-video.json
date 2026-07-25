@@ -11,7 +11,6 @@
   "device": {
     "ua": "Mozilla/5.0 (Linux; Android 14; Pixel 8)",
     "ip": "203.0.113.21",
-    "ifa": "ifa-2-1-0001",
     "geo": {
       "country": "USA",
       "region": "CA",
@@ -31,6 +30,7 @@
         "mimes": ["video/mp4"],
         "minduration": 15,
         "maxduration": 30,
+        "protocol": 2,
         "linearity": 1,
         "playbackmethod": [2]
       }

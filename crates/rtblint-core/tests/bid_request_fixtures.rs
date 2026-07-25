@@ -10,19 +10,6 @@ struct FixtureCase {
     expected_issues: &'static [(&'static str, &'static str)],
 }
 
-struct InventoryFixtureCase {
-    name: &'static str,
-    version: OpenRtbVersion,
-    input: &'static str,
-    family: OpenRtbFixtureFamily,
-}
-
-#[derive(Clone, Copy)]
-enum OpenRtbFixtureFamily {
-    TwoXRequest,
-    ThreeZeroRequest,
-}
-
 const VALIDATED_FIXTURES: &[FixtureCase] = &[
     FixtureCase {
         name: "valid-openrtb-2.5-header-bidding-video",
@@ -300,68 +287,88 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
             ),
         ],
     },
-];
-
-const INVENTORY_FIXTURES: &[InventoryFixtureCase] = &[
-    InventoryFixtureCase {
+    // One request per tracked version, each exercising something that version
+    // actually defines. Verdicts are verified against the CLI.
+    FixtureCase {
         name: "valid-openrtb-2.0-mobile-video",
         version: OpenRtbVersion::V2_0,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.0-mobile-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-openrtb-2.1-geo-video",
         version: OpenRtbVersion::V2_1,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.1-geo-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-openrtb-2.2-secure-pmp-video",
         version: OpenRtbVersion::V2_2,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.2-secure-pmp-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-openrtb-2.3-native-feed",
         version: OpenRtbVersion::V2_3,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.3-native-feed.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-openrtb-2.3.1-buyeruid-video",
         version: OpenRtbVersion::V2_3_1,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.3.1-buyeruid-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-openrtb-2.4-skippable-video",
         version: OpenRtbVersion::V2_4,
         input: include_str!("fixtures/bid-requests/valid-openrtb-2.4-skippable-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
-        name: "valid-openrtb-2.6-202303-refresh-video",
+    FixtureCase {
+        name: "valid-openrtb-2.6-202303-dooh-qty",
         version: OpenRtbVersion::V2_6_202303,
-        input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202303-refresh-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202303-dooh-qty.json"),
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    FixtureCase {
         name: "valid-app-video",
         version: OpenRtbVersion::V2_6_202409,
         input: include_str!("fixtures/bid-requests/valid-app-video.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
-        name: "valid-openrtb-2.6-202501-content-taxonomy",
+    FixtureCase {
+        name: "valid-openrtb-2.6-202501-eid-provenance",
         version: OpenRtbVersion::V2_6_202501,
-        input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202501-content-taxonomy.json"),
-        family: OpenRtbFixtureFamily::TwoXRequest,
+        input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202501-eid-provenance.json"),
+        valid: true,
+        expected_issues: &[],
     },
-    InventoryFixtureCase {
+    // 202505 types Content.genres as a plain string; 202606 corrects it to a
+    // string array. The fixture follows the snapshot as published.
+    FixtureCase {
+        name: "valid-openrtb-2.6-202505-content-taxonomy",
+        version: OpenRtbVersion::V2_6_202505,
+        input: include_str!("fixtures/bid-requests/valid-openrtb-2.6-202505-content-taxonomy.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    // 3.0 has no 2.x-style BidRequest object; layered validation is not
+    // implemented, so it must refuse rather than pass the payload.
+    FixtureCase {
         name: "valid-openrtb-3.0-layered-request",
         version: OpenRtbVersion::V3_0,
         input: include_str!("fixtures/bid-requests/valid-openrtb-3.0-layered-request.json"),
-        family: OpenRtbFixtureFamily::ThreeZeroRequest,
+        valid: false,
+        expected_issues: &[("openrtb.version.unsupported", "")],
     },
 ];
 
@@ -388,62 +395,39 @@ fn bid_request_fixtures_match_expected_outcomes() {
     }
 }
 
+/// Every tracked version needs a fixture whose verdict is asserted, including
+/// the ones that must refuse (the 2.6-202204 stub catalog and 3.0). Without
+/// this a new snapshot can ship with no coverage at all.
 #[test]
-fn bid_request_inventory_fixtures_are_parseable() {
-    for fixture in INVENTORY_FIXTURES {
-        let value: Value = serde_json::from_str(fixture.input).unwrap_or_else(|error| {
-            panic!(
-                "inventory fixture {} for {} is not valid JSON: {}",
-                fixture.name,
-                fixture.version.id(),
-                error
-            )
-        });
-
-        let root = value.as_object().unwrap_or_else(|| {
-            panic!(
-                "inventory fixture {} for {} must be a JSON object",
-                fixture.name,
-                fixture.version.id()
-            )
-        });
-
-        match fixture.family {
-            OpenRtbFixtureFamily::TwoXRequest => {
-                assert!(
-                    root.contains_key("id"),
-                    "inventory fixture {} for {} should include a top-level id",
-                    fixture.name,
-                    fixture.version.id()
-                );
-                assert!(
-                    root.contains_key("imp"),
-                    "inventory fixture {} for {} should include a top-level imp",
-                    fixture.name,
-                    fixture.version.id()
-                );
-            }
-            OpenRtbFixtureFamily::ThreeZeroRequest => {
-                let openrtb = root
-                    .get("openrtb")
-                    .and_then(Value::as_object)
-                    .unwrap_or_else(|| {
-                        panic!(
-                            "inventory fixture {} for {} should include an openrtb object",
-                            fixture.name,
-                            fixture.version.id()
-                        )
-                    });
-
-                assert!(
-                    openrtb.contains_key("request"),
-                    "inventory fixture {} for {} should include a request payload",
-                    fixture.name,
-                    fixture.version.id()
-                );
-            }
-        }
+fn every_tracked_version_has_a_validated_request_fixture() {
+    for version in OpenRtbVersion::all() {
+        assert!(
+            VALIDATED_FIXTURES
+                .iter()
+                .any(|fixture| fixture.version == *version),
+            "no validated bid request fixture for {}",
+            version.id()
+        );
     }
+}
+
+/// The 3.0 fixture is the layered envelope, not a 2.x request. Keep its shape
+/// asserted so the refusal above stays meaningful.
+#[test]
+fn three_zero_layered_request_fixture_keeps_its_shape() {
+    let value: Value = serde_json::from_str(include_str!(
+        "fixtures/bid-requests/valid-openrtb-3.0-layered-request.json"
+    ))
+    .expect("3.0 request fixture should be valid JSON");
+
+    let request = value
+        .get("openrtb")
+        .and_then(Value::as_object)
+        .and_then(|openrtb| openrtb.get("request"))
+        .and_then(Value::as_object)
+        .expect("3.0 request fixture should include openrtb.request");
+
+    assert!(request.contains_key("id"));
 }
 
 fn has_issue(result: &ValidationResult, id: &str, path: &str) -> bool {

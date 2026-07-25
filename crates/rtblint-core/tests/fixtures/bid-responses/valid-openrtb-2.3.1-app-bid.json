@@ -1,0 +1,25 @@
+{
+  "id": "req-2-3-1-app-001",
+  "bidid": "resp-2-3-1-77124",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-mobile",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-2-3-1-1",
+          "impid": "imp-app-banner-1",
+          "price": 1.95,
+          "adm": "<div class=\"acme-app-banner\"><img src=\"https://cdn.example.com/cr-233.png\"></div>",
+          "adomain": ["advertiser.example"],
+          "bundle": "com.advertiser.games",
+          "cat": ["IAB9-30"],
+          "crid": "cr-2-3-1-233",
+          "w": 320,
+          "h": 50
+        }
+      ]
+    }
+  ]
+}

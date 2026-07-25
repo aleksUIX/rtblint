@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+### Added
+
+- Validated fixture coverage for every tracked version, on both payload
+  types. Bid responses were covered on 6 of 18 versions and bid requests
+  had a parse-only tier that asserted nothing about validation; every
+  fixture now asserts a verdict, and a test fails if a new version ships
+  without one. Twelve bid response fixtures and one bid request fixture
+  were added, and fixtures that used fields postdating their own version
+  (2.0/2.1 `device.ifa`, 202303 `imp.refresh`, 202409 `EID.inserter`)
+  were corrected
+
 ### Fixed
 
 Catalog extraction: a regeneration now reproduces the shipped catalogs
@@ -30,9 +41,10 @@ older versions validate less than they claimed are closed.
   dropped 25-51 fields per snapshot (2.6-202409's `Site` lost 6 of 18,
   including `inventorypartnerdomain`; `User` lost `eids`)
 - `ExpectedShape` understands the legacy "array of objects" phrasing and
-  reads the type column only, so arrays are no longer typed as scalars and
-  scope prose mentioning "object" no longer types a string field as an
-  object
+  the 2.6 "string, array" phrasing, and reads the type column only, so
+  arrays are no longer typed as scalars and scope prose mentioning
+  "object" no longer types a string field as an object. `dooh.venuetype`
+  is an array on every 2.6 snapshot and used to report a type mismatch
 
 ## 0.5.0 (2026-07-25)
 

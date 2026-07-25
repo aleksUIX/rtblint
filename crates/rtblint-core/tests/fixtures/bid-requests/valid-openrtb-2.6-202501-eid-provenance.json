@@ -1,5 +1,5 @@
 {
-  "id": "req-2-6-202501-content-taxonomy-001",
+  "id": "req-2-6-202501-eid-provenance-001",
   "at": 1,
   "tmax": 215,
   "site": {
@@ -9,10 +9,25 @@
     "content": {
       "id": "content-episode-501",
       "title": "Late Night Recap",
-      "cat": ["IAB1-7"],
-      "gtax": 1,
-      "genres": ["Talk", "Entertainment"]
+      "cat": ["IAB1-7"]
     }
+  },
+  "user": {
+    "id": "user-2-6-202501-1",
+    "eids": [
+      {
+        "inserter": "publisher.example",
+        "source": "id5-sync.example",
+        "matcher": "id5-sync.example",
+        "mm": 1,
+        "uids": [
+          {
+            "id": "id5-uid-8891",
+            "atype": 1
+          }
+        ]
+      }
+    ]
   },
   "imp": [
     {

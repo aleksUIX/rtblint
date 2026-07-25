@@ -10,8 +10,7 @@
   },
   "device": {
     "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)",
-    "ip": "203.0.113.10",
-    "ifa": "ifa-2-0-0001"
+    "ip": "203.0.113.10"
   },
   "user": {
     "id": "user-2-0-42",
@@ -37,6 +36,7 @@
         "mimes": ["video/mp4"],
         "minduration": 15,
         "maxduration": 30,
+        "protocol": 2,
         "linearity": 1,
         "playbackmethod": [1, 2]
       }

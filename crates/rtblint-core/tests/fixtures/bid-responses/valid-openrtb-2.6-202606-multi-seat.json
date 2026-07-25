@@ -1,0 +1,46 @@
+{
+  "id": "req-2-6-202606-multi-seat-001",
+  "bidid": "resp-2-6-202606-88006",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-ctv",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202606-1",
+          "impid": "imp-preroll-1",
+          "price": 26.5,
+          "burl": "https://dsp.example.com/bill?p=${AUCTION_PRICE}",
+          "lurl": "https://dsp.example.com/loss?r=${AUCTION_LOSS}",
+          "adm": "<VAST version=\"4.3\"><Ad id=\"cr-202606\"><InLine><AdSystem>acme-dsp</AdSystem><AdTitle>Preroll</AdTitle><Impression><![CDATA[https://dsp.example.com/imp]]></Impression></InLine></Ad></VAST>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-202606-1",
+          "dealid": "deal-202606-4",
+          "dur": 30,
+          "mtype": 2,
+          "slotinpod": 0,
+          "w": 1920,
+          "h": 1080
+        }
+      ]
+    },
+    {
+      "seat": "dsp-display",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202606-2",
+          "impid": "imp-companion-1",
+          "price": 4.1,
+          "adm": "<div class=\"acme-companion\"><img src=\"https://cdn.example.com/cr-202606-companion.png\"></div>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-202606-2",
+          "mtype": 1,
+          "w": 300,
+          "h": 250
+        }
+      ]
+    }
+  ]
+}

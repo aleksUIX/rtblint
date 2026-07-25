@@ -1,0 +1,26 @@
+{
+  "id": "req-2-0-banner-001",
+  "bidid": "resp-2-0-77120",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-acme",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-2-0-1",
+          "impid": "imp-banner-1",
+          "price": 2.45,
+          "adid": "cr-2-0-441",
+          "nurl": "https://dsp.example.com/win?p=${AUCTION_PRICE}",
+          "adm": "<a href=\"https://advertiser.example\"><img src=\"https://cdn.example.com/cr-441.png\"></a>",
+          "adomain": ["advertiser.example"],
+          "iurl": "https://cdn.example.com/preview/cr-441.png",
+          "cid": "camp-2-0-88",
+          "crid": "cr-2-0-441",
+          "attr": [1, 6]
+        }
+      ]
+    }
+  ]
+}

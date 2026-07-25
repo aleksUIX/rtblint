@@ -1,0 +1,24 @@
+{
+  "id": "req-2-3-native-001",
+  "bidid": "resp-2-3-77123",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-native",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-2-3-1",
+          "impid": "imp-native-feed-1",
+          "price": 4.6,
+          "adm": "{\"native\":{\"link\":{\"url\":\"https://advertiser.example/offer\"},\"assets\":[{\"id\":1,\"title\":{\"text\":\"Weekend sale\"}}]}}",
+          "adomain": ["advertiser.example"],
+          "bundle": "com.advertiser.shop",
+          "cat": ["IAB22"],
+          "cid": "camp-2-3-31",
+          "crid": "cr-2-3-118"
+        }
+      ]
+    }
+  ]
+}

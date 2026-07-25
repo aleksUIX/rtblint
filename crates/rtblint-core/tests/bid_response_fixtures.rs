@@ -27,26 +27,31 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: false,
         expected_issues: &[("openrtb.version.unsupported", "")],
     },
+    // These three carry adm without mtype, which 2.6 warns about but does not
+    // reject: the buyer is leaving the markup type to be sniffed.
     FixtureCase {
         name: "valid-openrtb-2.6-202211-multi-seat",
         version: OpenRtbVersion::V2_6_202211,
         input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202211-multi-seat.json"),
         valid: true,
-        expected_issues: &[],
+        expected_issues: &[
+            ("openrtb.bid.mtype_missing", "seatbid[0].bid[0].mtype"),
+            ("openrtb.bid.mtype_missing", "seatbid[1].bid[0].mtype"),
+        ],
     },
     FixtureCase {
         name: "valid-openrtb-2.6-202309-pod-package",
         version: OpenRtbVersion::V2_6_202309,
         input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202309-pod-package.json"),
         valid: true,
-        expected_issues: &[],
+        expected_issues: &[("openrtb.bid.mtype_missing", "seatbid[0].bid[0].mtype")],
     },
     FixtureCase {
         name: "valid-minimal-2.6-202505",
         version: OpenRtbVersion::V2_6_202505,
         input: include_str!("fixtures/bid-responses/2.6-202505/valid-minimal.json"),
         valid: true,
-        expected_issues: &[],
+        expected_issues: &[("openrtb.bid.mtype_missing", "seatbid[0].bid[0].mtype")],
     },
     FixtureCase {
         name: "invalid-empty-seatbid-2.6-202505",
@@ -59,6 +64,92 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         name: "valid-openrtb-2.6-202505-no-bid",
         version: OpenRtbVersion::V2_6_202505,
         input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202505-no-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    // One response per tracked version, each exercising markup and fields that
+    // version actually defines. Verdicts are verified against the CLI.
+    FixtureCase {
+        name: "valid-openrtb-2.0-banner-win",
+        version: OpenRtbVersion::V2_0,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.0-banner-win.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.1-video-win",
+        version: OpenRtbVersion::V2_1,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.1-video-win.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.2-deal-bid",
+        version: OpenRtbVersion::V2_2,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.2-deal-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.3-native-bid",
+        version: OpenRtbVersion::V2_3,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.3-native-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.3.1-app-bid",
+        version: OpenRtbVersion::V2_3_1,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.3.1-app-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.4-api-protocol-bid",
+        version: OpenRtbVersion::V2_4,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.4-api-protocol-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202210-mtype-video",
+        version: OpenRtbVersion::V2_6_202210,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202210-mtype-video.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202303-pod-slot",
+        version: OpenRtbVersion::V2_6_202303,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202303-pod-slot.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202402-flex-banner",
+        version: OpenRtbVersion::V2_6_202402,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202402-flex-banner.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202409-native-bid",
+        version: OpenRtbVersion::V2_6_202409,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202409-native-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202501-audio-bid",
+        version: OpenRtbVersion::V2_6_202501,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202501-audio-bid.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-2.6-202606-multi-seat",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-2.6-202606-multi-seat.json"),
         valid: true,
         expected_issues: &[],
     },
@@ -93,6 +184,22 @@ fn bid_response_fixtures_match_expected_outcomes() {
                 result
             );
         }
+    }
+}
+
+/// Bid responses used to be covered on six versions only, which is how the
+/// 2.0-2.2 catalogs shipped with empty BidResponse objects (every response
+/// validated clean) without a test noticing.
+#[test]
+fn every_tracked_version_has_a_validated_response_fixture() {
+    for version in OpenRtbVersion::all() {
+        assert!(
+            VALIDATED_FIXTURES
+                .iter()
+                .any(|fixture| fixture.version == *version),
+            "no validated bid response fixture for {}",
+            version.id()
+        );
     }
 }
 

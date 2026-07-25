@@ -259,6 +259,27 @@ fn expected_shape_variant(type_spec: &str) -> &'static str {
         return "AnyArray";
     }
 
+    // "string, array" is how the 2.6 snapshots spell DOOH.venuetype.
+    if let Some(element) = normalized
+        .split(", array")
+        .next()
+        .filter(|element| element.len() < normalized.len() && !element.trim().is_empty())
+    {
+        let element = element.trim();
+        if element.ends_with("object") {
+            return "ObjectArray";
+        }
+        if element.ends_with("string") {
+            return "StringArray";
+        }
+        if element.ends_with("integer") {
+            return "IntegerArray";
+        }
+        if element.ends_with("float") {
+            return "FloatArray";
+        }
+    }
+
     if normalized.contains("object array") {
         return "ObjectArray";
     }

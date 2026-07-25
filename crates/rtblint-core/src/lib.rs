@@ -740,7 +740,7 @@ mod tests {
                 "dooh": {
                     "id": "screen-88",
                     "name": "Airport Arrivals Billboard",
-                    "venuetype": "transit.airports",
+                    "venuetype": ["transit.airports"],
                     "venuetypetax": 1,
                     "publisher": { "id": "pub-oh-4" },
                     "domain": "cityscreens.example",

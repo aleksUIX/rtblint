@@ -1,0 +1,28 @@
+{
+  "id": "req-2-6-202303-pod-001",
+  "bidid": "resp-2-6-202303-88002",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-ctv",
+      "group": 1,
+      "bid": [
+        {
+          "id": "bid-202303-1",
+          "impid": "imp-pod-slot-1",
+          "price": 24.0,
+          "burl": "https://dsp.example.com/bill?p=${AUCTION_PRICE}",
+          "adm": "<VAST version=\"4.2\"><Ad id=\"cr-202303\"><Wrapper><AdSystem>acme-dsp</AdSystem><VASTAdTagURI><![CDATA[https://dsp.example.com/vast/cr-202303]]></VASTAdTagURI><Impression><![CDATA[https://dsp.example.com/imp]]></Impression></Wrapper></Ad></VAST>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-202303-14",
+          "dur": 15,
+          "mtype": 2,
+          "slotinpod": 1,
+          "tactic": "guaranteed-pod",
+          "w": 1920,
+          "h": 1080
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "req-2-6-202409-native-001",
+  "bidid": "resp-2-6-202409-88004",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-native",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202409-1",
+          "impid": "imp-native-1",
+          "price": 6.2,
+          "burl": "https://dsp.example.com/bill?p=${AUCTION_PRICE}",
+          "adm": "{\"link\":{\"url\":\"https://advertiser.example/offer\"},\"assets\":[{\"id\":1,\"required\":1,\"title\":{\"text\":\"Weekend sale\"}},{\"id\":2,\"img\":{\"url\":\"https://cdn.example.com/native-1200x627.png\",\"w\":1200,\"h\":627}}]}",
+          "adomain": ["advertiser.example"],
+          "bundle": "com.advertiser.shop",
+          "cattax": 7,
+          "cat": ["52"],
+          "crid": "cr-202409-9",
+          "mtype": 4,
+          "language": "en"
+        }
+      ]
+    }
+  ]
+}

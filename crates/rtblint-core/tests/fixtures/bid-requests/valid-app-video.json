@@ -16,10 +16,7 @@
     "id": "user-2-6-202409-1",
     "eids": [
       {
-        "inserter": "publisher.example",
         "source": "id5-sync.example",
-        "matcher": "id5-sync.example",
-        "mm": 1,
         "uids": [
           {
             "id": "id5-uid-123456",

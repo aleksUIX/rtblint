@@ -20,9 +20,11 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   resolution, markup vs the referenced Imp's media subtypes, dealid, seat
   and currency constraints) via the library, CLI `--request`, MCP, and npm
 
+- Validated fixture coverage on both payload types for every tracked
+  version, with a test that fails when a new snapshot ships without one
+
 ## Next
 
-- Validated fixture coverage for every tracked version, not just 2.6
 - Published JSON Schemas per version, generated from the catalogs
 
 ## Later

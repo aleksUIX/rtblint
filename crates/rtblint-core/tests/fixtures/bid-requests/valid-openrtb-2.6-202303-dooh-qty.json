@@ -1,0 +1,47 @@
+{
+  "id": "req-2-6-202303-dooh-001",
+  "at": 1,
+  "tmax": 190,
+  "dooh": {
+    "id": "dooh-2-6-202303-mall",
+    "name": "Riverside Mall Network",
+    "venuetype": ["Retail/Mall"],
+    "venuetypetax": 1,
+    "publisher": {
+      "id": "pub-dooh-11",
+      "name": "Riverside Media"
+    }
+  },
+  "device": {
+    "ua": "DOOH-Player/3.1",
+    "ip": "203.0.113.44",
+    "devicetype": 8
+  },
+  "regs": {
+    "gpp": "DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA",
+    "gpp_sid": [2]
+  },
+  "imp": [
+    {
+      "id": "imp-dooh-loop-1",
+      "bidfloor": 22.0,
+      "bidfloorcur": "USD",
+      "dt": 1782739200,
+      "qty": {
+        "multiplier": 48.5,
+        "sourcetype": 1,
+        "vendor": "geopath"
+      },
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 10,
+        "maxduration": 15,
+        "linearity": 1,
+        "protocols": [2, 3, 5, 6],
+        "playbackmethod": [2],
+        "w": 1920,
+        "h": 1080
+      }
+    }
+  ]
+}

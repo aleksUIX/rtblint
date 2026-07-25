@@ -1,0 +1,26 @@
+{
+  "id": "req-2-6-202501-audio-001",
+  "bidid": "resp-2-6-202501-88005",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-audio",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202501-1",
+          "impid": "imp-audio-midroll-1",
+          "price": 11.4,
+          "burl": "https://dsp.example.com/bill?p=${AUCTION_PRICE}",
+          "adm": "<DAAST version=\"1.0\"><Ad id=\"cr-202501\"><InLine><AdSystem>acme-dsp</AdSystem><AdTitle>Midroll</AdTitle><Impression><![CDATA[https://dsp.example.com/imp]]></Impression></InLine></Ad></DAAST>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-202501-63",
+          "dur": 30,
+          "mtype": 3,
+          "apis": [7],
+          "langb": "en"
+        }
+      ]
+    }
+  ]
+}

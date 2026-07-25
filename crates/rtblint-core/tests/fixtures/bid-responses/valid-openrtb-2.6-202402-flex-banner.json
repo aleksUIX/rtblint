@@ -1,0 +1,25 @@
+{
+  "id": "req-2-6-202402-flex-001",
+  "bidid": "resp-2-6-202402-88003",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-display",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202402-1",
+          "impid": "imp-flex-banner-1",
+          "price": 5.75,
+          "adm": "<div class=\"acme-flex\"><img src=\"https://cdn.example.com/cr-202402.png\"></div>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-202402-31",
+          "mtype": 1,
+          "wratio": 16,
+          "hratio": 9,
+          "exp": 600
+        }
+      ]
+    }
+  ]
+}

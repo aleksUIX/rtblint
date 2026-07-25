@@ -1,0 +1,32 @@
+{
+  "id": "req-2-6-202210-video-001",
+  "bidid": "resp-2-6-202210-88001",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-ctv",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-202210-1",
+          "impid": "imp-preroll-1",
+          "price": 18.25,
+          "nurl": "https://dsp.example.com/win?p=${AUCTION_PRICE}",
+          "burl": "https://dsp.example.com/bill?p=${AUCTION_PRICE}",
+          "lurl": "https://dsp.example.com/loss?r=${AUCTION_LOSS}",
+          "adm": "<VAST version=\"4.2\"><Ad id=\"cr-202210\"><InLine><AdSystem>acme-dsp</AdSystem><AdTitle>Preroll</AdTitle><Impression><![CDATA[https://dsp.example.com/imp]]></Impression></InLine></Ad></VAST>",
+          "adomain": ["advertiser.example"],
+          "cattax": 1,
+          "cat": ["IAB1"],
+          "crid": "cr-202210-77",
+          "apis": [7],
+          "langb": "en",
+          "dur": 30,
+          "mtype": 2,
+          "w": 1920,
+          "h": 1080
+        }
+      ]
+    }
+  ]
+}

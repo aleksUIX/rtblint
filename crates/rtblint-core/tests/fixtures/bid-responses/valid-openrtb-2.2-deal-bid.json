@@ -1,0 +1,24 @@
+{
+  "id": "req-2-2-deal-001",
+  "bidid": "resp-2-2-77122",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-acme",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-2-2-1",
+          "impid": "imp-mrec-1",
+          "price": 3.15,
+          "dealid": "deal-2-2-55",
+          "adm": "<div id=\"acme-mrec\"><img src=\"https://cdn.example.com/cr-771.png\"></div>",
+          "adomain": ["advertiser.example"],
+          "crid": "cr-2-2-771",
+          "w": 300,
+          "h": 250
+        }
+      ]
+    }
+  ]
+}

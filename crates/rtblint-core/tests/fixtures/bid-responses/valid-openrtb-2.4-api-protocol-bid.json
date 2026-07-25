@@ -1,0 +1,28 @@
+{
+  "id": "req-2-4-mraid-001",
+  "bidid": "resp-2-4-77125",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "dsp-mobile",
+      "group": 0,
+      "bid": [
+        {
+          "id": "bid-2-4-1",
+          "impid": "imp-interstitial-1",
+          "price": 9.4,
+          "adm": "<script src=\"https://cdn.example.com/mraid.js\"></script><div id=\"acme-interstitial\"></div>",
+          "adomain": ["advertiser.example"],
+          "cat": ["IAB1-6"],
+          "crid": "cr-2-4-556",
+          "api": 3,
+          "protocol": 5,
+          "qagmediarating": 1,
+          "exp": 300,
+          "w": 320,
+          "h": 480
+        }
+      ]
+    }
+  ]
+}

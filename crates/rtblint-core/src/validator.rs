@@ -3,7 +3,7 @@ use std::fmt::Write as _;
 use serde_json::{Map, Value};
 
 use crate::{
-    adcom_lists::adcom_list_by_name, canonical_object, path_status,
+    adcom_lists::adcom_list_by_name, canonical_field, canonical_object, path_status,
     version_rules::rule_path_leaves, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Severity,
     StaticField, ValidationResult,
 };
@@ -114,6 +114,14 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
     }
 }
 
+/// Recomputes `valid` after cross-payload checks have appended issues.
+pub(crate) fn finalize_result(issues: Vec<Issue>) -> ValidationResult {
+    ValidationResult {
+        valid: !issues.iter().any(|issue| issue.severity == Severity::Error),
+        issues,
+    }
+}
+
 /// Walks a known catalog object. `instance_path` is a cursor mutated in
 /// place (push a segment, recurse, truncate back); path strings are only
 /// materialized when an issue is actually pushed, so a clean payload
@@ -138,6 +146,7 @@ fn validate_known_object<'a>(
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
         validate_object_semantics(
+            version,
             object_name,
             definition.section,
             object,
@@ -265,6 +274,7 @@ fn validate_known_object<'a>(
     }
 
     validate_object_semantics(
+        version,
         object_name,
         definition.section,
         object,
@@ -471,6 +481,7 @@ fn validate_integer_against_value_set(
 }
 
 fn validate_object_semantics(
+    version: OpenRtbVersion,
     object_name: &str,
     object_section: &str,
     object: &Map<String, Value>,
@@ -486,6 +497,7 @@ fn validate_object_semantics(
         "BidResponse" => {
             validate_bid_response_semantics(object, instance_path, object_section, issues)
         }
+        "Bid" => validate_bid_semantics(version, object, instance_path, object_section, issues),
         "Imp" => validate_imp_semantics(object, instance_path, object_section, issues),
         "Video" => validate_video_semantics(object, instance_path, object_section, issues),
         "Audio" => validate_audio_semantics(object, instance_path, object_section, issues),
@@ -617,6 +629,158 @@ fn validate_bid_response_semantics(
             }),
             section: Some(String::from(section)),
         });
+    }
+}
+
+/// How `bid.adm` markup classifies after content sniffing. Parsing is cheap
+/// for non-JSON markup: serde fails on the first byte of XML or HTML, so
+/// only genuine JSON payloads (native responses) are parsed in full.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum AdmMarkup {
+    /// Parses to a JSON string: the markup was JSON-encoded twice.
+    DoubleEncodedJson,
+    /// Parses to a JSON object: a native response payload (bare Native
+    /// Markup Response or the documented `{"native": {...}}` root).
+    NativeJson,
+    /// Parses as JSON but to neither a string nor an object.
+    OtherJson,
+    /// XML with a VAST or DAAST document root.
+    Vast,
+    /// Starts with `<` but is not recognizably VAST/DAAST (HTML, other XML).
+    OtherMarkup,
+    /// Anything else: JavaScript, a bare URL, free text.
+    Other,
+}
+
+pub(crate) fn classify_adm(adm: &str) -> AdmMarkup {
+    match serde_json::from_str::<Value>(adm) {
+        Ok(Value::String(_)) => return AdmMarkup::DoubleEncodedJson,
+        Ok(Value::Object(_)) => return AdmMarkup::NativeJson,
+        Ok(_) => return AdmMarkup::OtherJson,
+        Err(_) => {}
+    }
+
+    if adm.trim_start().starts_with('<') {
+        if adm.contains("<VAST") || adm.contains("<DAAST") {
+            AdmMarkup::Vast
+        } else {
+            AdmMarkup::OtherMarkup
+        }
+    } else {
+        AdmMarkup::Other
+    }
+}
+
+/// Markup-type coherence between `bid.mtype` and the `bid.adm` payload.
+/// This is the response-side counterpart of the `imp.native.request`
+/// encoding checks; without the originating request, `mtype` is the only
+/// in-payload declaration of what the markup should be.
+fn validate_bid_semantics(
+    version: OpenRtbVersion,
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let Some(adm) = object.get("adm").and_then(Value::as_str) else {
+        return;
+    };
+    let adm_path = join_instance_path(instance_path, "adm");
+    let markup = classify_adm(adm);
+
+    if markup == AdmMarkup::DoubleEncodedJson {
+        issues.push(Issue {
+            id: String::from("openrtb.bid.adm.double_encoded"),
+            severity: Severity::Error,
+            message: String::from(
+                "adm parses to another JSON string rather than markup; it looks like the \
+                 creative payload was JSON-encoded twice.",
+            ),
+            path: Some(adm_path.clone()),
+            section: Some(String::from(section)),
+        });
+    }
+
+    let mtype = object.get("mtype").and_then(integer_value);
+    match mtype {
+        Some(1) => {
+            if markup == AdmMarkup::NativeJson {
+                issues.push(Issue {
+                    id: String::from("openrtb.bid.adm.markup_type_mismatch"),
+                    severity: Severity::Error,
+                    message: String::from(
+                        "mtype 1 declares banner markup, but adm is a JSON object; a JSON \
+                         payload in adm is native markup (mtype 4).",
+                    ),
+                    path: Some(adm_path.clone()),
+                    section: Some(String::from(section)),
+                });
+            }
+        }
+        Some(2) | Some(3) => {
+            let declared = if mtype == Some(2) {
+                "mtype 2 declares video markup (VAST XML)"
+            } else {
+                "mtype 3 declares audio markup (VAST or DAAST XML)"
+            };
+            match markup {
+                AdmMarkup::NativeJson | AdmMarkup::OtherJson => issues.push(Issue {
+                    id: String::from("openrtb.bid.adm.markup_type_mismatch"),
+                    severity: Severity::Error,
+                    message: format!("{declared}, but adm is a JSON payload."),
+                    path: Some(adm_path.clone()),
+                    section: Some(String::from(section)),
+                }),
+                AdmMarkup::Other => issues.push(Issue {
+                    id: String::from("openrtb.bid.adm.not_markup"),
+                    severity: Severity::Warning,
+                    message: format!("{declared}, but adm does not start with an XML tag."),
+                    path: Some(adm_path.clone()),
+                    section: Some(String::from(section)),
+                }),
+                AdmMarkup::OtherMarkup => issues.push(Issue {
+                    id: String::from("openrtb.bid.adm.vast_root_missing"),
+                    severity: Severity::Warning,
+                    message: format!("{declared}, but adm has no VAST or DAAST document root."),
+                    path: Some(adm_path.clone()),
+                    section: Some(String::from(section)),
+                }),
+                AdmMarkup::Vast | AdmMarkup::DoubleEncodedJson => {}
+            }
+        }
+        Some(4) => match markup {
+            AdmMarkup::NativeJson | AdmMarkup::DoubleEncodedJson => {}
+            _ => issues.push(Issue {
+                id: String::from("openrtb.bid.adm.native_not_json"),
+                severity: Severity::Error,
+                message: String::from(
+                    "mtype 4 declares native markup, but adm does not parse as a JSON object; \
+                     a native response must be the JSON Native Markup Response.",
+                ),
+                path: Some(adm_path.clone()),
+                section: Some(String::from(section)),
+            }),
+        },
+        _ => {
+            // No usable mtype. On versions whose Bid object defines mtype,
+            // an adm without one leaves exchanges guessing at the markup
+            // type; several majors reject such bids outright.
+            if mtype.is_none()
+                && !object.contains_key("mtype")
+                && canonical_field(version, "Bid", "mtype").is_some()
+            {
+                issues.push(Issue {
+                    id: String::from("openrtb.bid.mtype_missing"),
+                    severity: Severity::Warning,
+                    message: String::from(
+                        "adm is present but mtype is not set; declare the markup type so the \
+                         exchange can associate the creative with the right Imp subtype.",
+                    ),
+                    path: Some(join_instance_path(instance_path, "mtype")),
+                    section: Some(String::from(section)),
+                });
+            }
+        }
     }
 }
 
@@ -993,7 +1157,7 @@ fn validate_supply_chain_node_semantics(
     }
 }
 
-fn integer_value(value: &Value) -> Option<i64> {
+pub(crate) fn integer_value(value: &Value) -> Option<i64> {
     value.as_i64().or_else(|| {
         value
             .as_u64()

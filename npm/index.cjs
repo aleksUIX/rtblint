@@ -28,6 +28,19 @@ function validateResponse(input, version) {
     : wasm.validate_response_version(version, input);
 }
 
+/**
+ * Validate an OpenRTB bid response against the bid request it answers.
+ * Runs the full response validation plus cross-checks: impid resolution,
+ * mtype and adm markup coherence against the referenced Imp's media
+ * subtypes, dealid, seat, and currency constraints.
+ * @param {string} response - Raw bid response JSON.
+ * @param {string} request - Raw bid request JSON (the originating request).
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateResponseAgainstRequest(response, request, version) {
+  return wasm.validate_response_against_request(version ?? "", request, response);
+}
+
 /** Every tracked OpenRTB version id. */
 function versions() {
   return wasm.versions();
@@ -43,4 +56,11 @@ function coreVersion() {
   return wasm.core_version();
 }
 
-module.exports = { validate, validateResponse, versions, rules, coreVersion };
+module.exports = {
+  validate,
+  validateResponse,
+  validateResponseAgainstRequest,
+  versions,
+  rules,
+  coreVersion,
+};

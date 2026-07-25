@@ -15,6 +15,10 @@ What rtblint does today and where it's heading. Not a promise of dates.
 - CLI batch mode; spec catalogs compiled to static Rust data
 - Rust library and CLI, MCP server over stdio, WASM-backed npm package
 - Web playground at [rtblint.org](https://rtblint.org)
+- Response-side markup validation: `bid.mtype`/`bid.adm` coherence on any
+  bid response, plus two-pass request/response cross-validation (impid
+  resolution, markup vs the referenced Imp's media subtypes, dealid, seat
+  and currency constraints) via the library, CLI `--request`, MCP, and npm
 
 ## Next
 
@@ -27,9 +31,6 @@ What rtblint does today and where it's heading. Not a promise of dates.
 
 ## Later
 
-- Native markup encoding checks against `bid.adm` (response side), cross-
-  referenced to its Imp's media type; needs a two-pass validator
-  architecture the current single-pass walk doesn't have
 - OpenRTB 3.0 / AdCOM layered payload validation and 2.x-to-3.0 migration
   diagnostics
 - NDJSON stream mode: lint captured bid streams, aggregate rule frequencies

@@ -12,8 +12,9 @@
 //! converted straight to JS objects via `serde-wasm-bindgen`.
 
 use rtblint_core::{
-    validate as core_validate, validate_bid_request_for_version, validate_bid_response_for_version,
-    version_profiles, OpenRtbVersion, VersionRuleKind,
+    validate as core_validate, validate_bid_request_for_version,
+    validate_bid_response_against_request, validate_bid_response_for_version, version_profiles,
+    OpenRtbVersion, VersionRuleKind,
 };
 use serde::Serialize;
 use wasm_bindgen::prelude::*;
@@ -114,6 +115,26 @@ pub fn validate_response_version(version_id: &str, input: &str) -> Result<JsValu
         .find(|candidate| candidate.id() == version_id)
         .unwrap_or(OpenRtbVersion::V2_6_202606);
     to_js(&validate_bid_response_for_version(version, input))
+}
+
+/// Validate an OpenRTB bid response against the bid request it answers, for
+/// a specific tracked version id. Runs the full response validation plus
+/// cross-checks: impid resolution, mtype and adm markup coherence against
+/// the referenced Imp's media subtypes, dealid, seat, and currency
+/// constraints. Unknown version ids fall back to the latest 2.6 snapshot.
+#[wasm_bindgen]
+pub fn validate_response_against_request(
+    version_id: &str,
+    request: &str,
+    response: &str,
+) -> Result<JsValue, JsValue> {
+    let version = OpenRtbVersion::ALL
+        .into_iter()
+        .find(|candidate| candidate.id() == version_id)
+        .unwrap_or(OpenRtbVersion::V2_6_202606);
+    to_js(&validate_bid_response_against_request(
+        version, request, response,
+    ))
 }
 
 /// List every tracked OpenRTB version id, newest snapshots last.

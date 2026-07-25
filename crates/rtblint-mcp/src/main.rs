@@ -10,7 +10,8 @@ use std::io::{self, BufRead, Write};
 use serde_json::{json, Value};
 
 use rtblint_core::{
-    validate_bid_request_for_version, validate_bid_response_for_version, OpenRtbVersion,
+    validate_bid_request_for_version, validate_bid_response_against_request,
+    validate_bid_response_for_version, OpenRtbVersion,
 };
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
@@ -110,8 +111,29 @@ fn tool_definitions() -> Value {
         },
         {
             "name": "validate_bid_response",
-            "description": "Validate an OpenRTB 2.x bid response JSON payload against a tracked spec version. Returns structured issues with rule ids, severities, and JSON paths.",
-            "inputSchema": payload_schema("The OpenRTB bid response as a raw JSON string."),
+            "description": "Validate an OpenRTB 2.x bid response JSON payload against a tracked spec version. Optionally cross-validate it against the originating bid request (impid, mtype, adm markup, dealid, seat, and currency coherence). Returns structured issues with rule ids, severities, and JSON paths.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "type": "string",
+                        "description": "The OpenRTB bid response as a raw JSON string.",
+                    },
+                    "bid_request": {
+                        "type": "string",
+                        "description": "Optional: the originating OpenRTB bid request as a raw JSON string. When supplied, every bid is also cross-checked against the Imp it references.",
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": format!(
+                            "OpenRTB version id to validate against (default {}). One of: {}",
+                            DEFAULT_VERSION.id(),
+                            version_ids().join(", ")
+                        ),
+                    },
+                },
+                "required": ["payload"],
+            },
         },
         {
             "name": "list_openrtb_versions",
@@ -167,8 +189,12 @@ fn run_validation(id: Value, arguments: &Value, payload_type: &str) -> Value {
         },
     };
 
+    let bid_request = arguments.get("bid_request").and_then(Value::as_str);
     let result = if payload_type == "response" {
-        validate_bid_response_for_version(version, payload)
+        match bid_request {
+            Some(request) => validate_bid_response_against_request(version, request, payload),
+            None => validate_bid_response_for_version(version, payload),
+        }
     } else {
         validate_bid_request_for_version(version, payload)
     };

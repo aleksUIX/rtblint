@@ -16,6 +16,8 @@ Website and playground: [rtblint.org](https://rtblint.org)
 - Documented enum values, including AdCOM lists and vendor ranges (500+)
 - Deprecated, moved, removed, and not-yet-available fields across versions
 - Semantic rules: site/app/dooh exclusivity, imp media type presence, skippable video dependencies, duration exclusivity, seatbid/nbr presence on responses, and more
+- Response markup coherence: `bid.adm` content vs the declared `bid.mtype` (native JSON encoding, VAST/DAAST roots, double-encoded payloads)
+- Request/response cross-validation: with the originating request supplied, every bid's `impid`, `mtype`, `adm` markup, `dealid`, seat, and currency are checked against what the request actually offered
 
 Every finding carries a stable rule id, a severity, a message, and a JSON path.
 
@@ -39,16 +41,19 @@ cargo install rtblint
 
 rtblint validate request.json
 rtblint validate --type response response.json
+rtblint validate --type response --request request.json response.json
 rtblint validate --version 2.5 --format json request.json
 cat request.json | rtblint validate --stdin
 ```
+
+`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines).
 
 Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
 
 ## Node
 
 ```js
-import { validate, validateResponse, versions } from "rtblint-core";
+import { validate, validateResponse, validateResponseAgainstRequest } from "rtblint-core";
 
 const report = validate(JSON.stringify(bidRequest), "2.6-202505");
 if (!report.valid) {
@@ -56,11 +61,17 @@ if (!report.valid) {
     console.log(`[${issue.severity}] ${issue.path}: ${issue.message} (${issue.id})`);
   }
 }
+
+// Cross-validate a response against the request it answers.
+const paired = validateResponseAgainstRequest(
+  JSON.stringify(bidResponse),
+  JSON.stringify(bidRequest)
+);
 ```
 
 ## MCP server
 
-`rtblint-mcp` speaks MCP over stdio and exposes `validate_bid_request`, `validate_bid_response`, and `list_openrtb_versions`.
+`rtblint-mcp` speaks MCP over stdio and exposes `validate_bid_request`, `validate_bid_response` (with an optional `bid_request` argument for cross-validation), and `list_openrtb_versions`.
 
 ```json
 {

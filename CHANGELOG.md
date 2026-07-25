@@ -1,6 +1,31 @@
 # Changelog
 
-## 0.4.0 (unreleased)
+## 0.5.0 (2026-07-25)
+
+### Added
+
+Response-side markup validation: `bid.adm` is now checked, both standalone
+and cross-referenced against the originating bid request.
+
+- Standalone `mtype`/`adm` coherence on every bid response: native bids
+  (mtype 4) must carry a JSON Native Markup Response in `adm`
+  (double-encoded and non-JSON payloads are flagged), video and audio bids
+  (mtype 2/3) must carry markup with a VAST or DAAST document root, banner
+  bids (mtype 1) must not carry a JSON payload, and an `adm` without any
+  `mtype` warns on versions that define it
+- Two-pass request/response cross-validation:
+  `validate_bid_response_against_request` indexes the request's Imps in
+  pass one, then checks every bid in pass two: `impid` must resolve to a
+  request Imp, `mtype` and sniffed `adm` markup must match a media subtype
+  that Imp offers, `dealid` is checked against the Imp's pmp deals
+  (warning; out-of-band deals exist), the response id must echo the
+  request id, and `wseat`/`bseat`/`cur` constraints are enforced
+- CLI: `--request <request.json>` cross-validates a response (single and
+  `--batch` modes) against its originating request
+- MCP: `validate_bid_response` accepts an optional `bid_request` argument
+- npm: `validateResponseAgainstRequest(response, request, version?)`
+
+## 0.4.0 (2026-07-05)
 
 ### Added
 

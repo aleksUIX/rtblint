@@ -52,14 +52,26 @@ fn run() -> Result<i32, String> {
 
     let command = parse_validate_command(validate_args)?;
     if command.batch {
-        return run_batch(command.version, command.payload_type, command.output_format);
+        return run_batch(
+            command.version,
+            command.payload_type,
+            command.output_format,
+            command.request_context.as_deref(),
+        );
     }
 
-    let result = match command.payload_type {
-        PayloadType::Request => {
+    let result = match (command.payload_type, command.request_context.as_deref()) {
+        (PayloadType::Request, _) => {
             rtblint_core::validate_bid_request_for_version(command.version, &command.input)
         }
-        PayloadType::Response => {
+        (PayloadType::Response, Some(request)) => {
+            rtblint_core::validate_bid_response_against_request(
+                command.version,
+                request,
+                &command.input,
+            )
+        }
+        (PayloadType::Response, None) => {
             rtblint_core::validate_bid_response_for_version(command.version, &command.input)
         }
     };
@@ -80,6 +92,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut output_format = OutputFormat::Human;
     let mut payload_type = PayloadType::Request;
     let mut batch = false;
+    let mut request_path: Option<String> = None;
     let mut args = args.into_iter();
 
     while let Some(arg) = args.next() {
@@ -131,6 +144,16 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
                 payload_type = PayloadType::from_str(&value)?;
             }
+            "--request" => {
+                let Some(value) = args.next() else {
+                    return Err(format!(
+                        "Missing value for --request.\n\n{}",
+                        validate_usage_text()
+                    ));
+                };
+
+                request_path = Some(value);
+            }
             _ if arg.starts_with('-') => {
                 return Err(format!("Unknown flag: {arg}\n\n{}", validate_usage_text()));
             }
@@ -164,12 +187,30 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         ));
     };
 
+    let request_context = match request_path {
+        Some(path) => {
+            if !matches!(payload_type, PayloadType::Response) {
+                return Err(format!(
+                    "--request cross-validates a response against its bid request; it requires \
+                     --type response.\n\n{}",
+                    validate_usage_text()
+                ));
+            }
+            Some(
+                fs::read_to_string(&path)
+                    .map_err(|error| format!("Failed to read {path}: {error}"))?,
+            )
+        }
+        None => None,
+    };
+
     Ok(ValidateCommand {
         input,
         version,
         output_format,
         payload_type,
         batch,
+        request_context,
     })
 }
 
@@ -180,6 +221,7 @@ fn run_batch(
     version: OpenRtbVersion,
     payload_type: PayloadType,
     output_format: OutputFormat,
+    request_context: Option<&str>,
 ) -> Result<i32, String> {
     let stdin = io::stdin();
     let stdout = io::stdout();
@@ -194,9 +236,14 @@ fn run_batch(
         }
         count += 1;
 
-        let result = match payload_type {
-            PayloadType::Request => rtblint_core::validate_bid_request_for_version(version, &line),
-            PayloadType::Response => {
+        let result = match (payload_type, request_context) {
+            (PayloadType::Request, _) => {
+                rtblint_core::validate_bid_request_for_version(version, &line)
+            }
+            (PayloadType::Response, Some(request)) => {
+                rtblint_core::validate_bid_response_against_request(version, request, &line)
+            }
+            (PayloadType::Response, None) => {
                 rtblint_core::validate_bid_response_for_version(version, &line)
             }
         };
@@ -372,11 +419,11 @@ fn print_validate_usage() {
 }
 
 fn usage_text() -> &'static str {
-    "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json]\n  rtblint --version\n  rtblint --help"
+    "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>]\n  rtblint --version\n  rtblint --help"
 }
 
 fn validate_usage_text() -> &'static str {
-    "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json]\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6). --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 means every payload was valid."
+    "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>]\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6). --request supplies the originating bid request so a response is also cross-validated against it (impid, mtype, adm markup, dealid, seat, and currency coherence); requires --type response. --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 means every payload was valid."
 }
 
 struct ValidateCommand {
@@ -385,6 +432,8 @@ struct ValidateCommand {
     output_format: OutputFormat,
     payload_type: PayloadType,
     batch: bool,
+    /// Bid request JSON to cross-validate a response against.
+    request_context: Option<String>,
 }
 
 #[derive(Clone, Copy)]

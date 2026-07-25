@@ -2,6 +2,7 @@ mod adcom_lists;
 mod canonical_catalog;
 #[doc(hidden)]
 pub mod catalog_extract;
+mod pair;
 mod schema_manifest;
 mod validator;
 mod version_rules;
@@ -39,6 +40,27 @@ pub fn validate_bid_request_for_version(version: OpenRtbVersion, input: &str) ->
 /// Validates an OpenRTB bid response payload for a specific tracked version.
 pub fn validate_bid_response_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
     validator::validate_bid_response(version, input)
+}
+
+/// Validates an OpenRTB bid response payload against the bid request it
+/// answers.
+///
+/// Runs the full single-payload response validation, then cross-checks the
+/// response against the request: every `bid.impid` must reference a request
+/// Imp, `bid.mtype` and sniffed `bid.adm` markup must match a media subtype
+/// that Imp offers, `dealid` is checked against the Imp's pmp deals, the
+/// response id must echo the request id, and seat and currency constraints
+/// (`wseat`/`bseat`/`cur`) are enforced.
+///
+/// The request itself is not validated here; run
+/// [`validate_bid_request_for_version`] on it separately. An unparseable
+/// request is reported as `openrtb.pair.request_unusable`.
+pub fn validate_bid_response_against_request(
+    version: OpenRtbVersion,
+    request_input: &str,
+    response_input: &str,
+) -> ValidationResult {
+    pair::validate_bid_response_against_request(version, request_input, response_input)
 }
 
 /// Validates whether an object field exists in the canonical catalog for a specific OpenRTB version.

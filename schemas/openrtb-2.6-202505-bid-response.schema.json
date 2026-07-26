@@ -1,0 +1,317 @@
+{
+  "$defs": {
+    "Bid": {
+      "additionalProperties": true,
+      "description": "Section 4.2.3",
+      "properties": {
+        "adid": {
+          "type": "string"
+        },
+        "adm": {
+          "type": "string"
+        },
+        "adomain": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "api": {
+          "deprecated": true,
+          "type": "integer"
+        },
+        "apis": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "attr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "bundle": {
+          "type": "string"
+        },
+        "burl": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "crid": {
+          "type": "string"
+        },
+        "dealid": {
+          "type": "string"
+        },
+        "dur": {
+          "type": "integer"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hratio": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "impid": {
+          "type": "string"
+        },
+        "iurl": {
+          "type": "string"
+        },
+        "langb": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "lurl": {
+          "type": "string"
+        },
+        "mtype": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "nurl": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "protocol": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "type": "integer"
+        },
+        "qagmediarating": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "slotinpod": {
+          "enum": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "tactic": {
+          "type": "string"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "wratio": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "impid",
+        "price"
+      ],
+      "type": "object"
+    },
+    "SeatBid": {
+      "additionalProperties": true,
+      "description": "Section 4.2.2",
+      "properties": {
+        "bid": {
+          "items": {
+            "$ref": "#/$defs/Bid"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "group": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "seat": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "bid"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://rtblint.org/schemas/openrtb-2.6-202505-bid-response.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Generated by rtblint from the OpenRTB 2.6-202505 object catalog (released 2025-05). Structure, types, required fields, and documented value sets only: deprecations, moved paths, and semantic rules are what the linter adds.",
+  "properties": {
+    "bidid": {
+      "type": "string"
+    },
+    "cur": {
+      "type": "string"
+    },
+    "customdata": {
+      "type": "string"
+    },
+    "ext": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string"
+    },
+    "nbr": {
+      "anyOf": [
+        {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "minimum": 500
+        }
+      ],
+      "type": "integer"
+    },
+    "seatbid": {
+      "items": {
+        "$ref": "#/$defs/SeatBid"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "title": "OpenRTB bid response (2.6-202505)",
+  "type": "object"
+}

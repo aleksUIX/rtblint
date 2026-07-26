@@ -22,15 +22,17 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 
 - Validated fixture coverage on both payload types for every tracked
   version, with a test that fails when a new snapshot ships without one
+- JSON Schemas (draft 2020-12) per version and payload type, generated from
+  the catalogs and published at
+  [rtblint.org/schemas](https://rtblint.org/docs/json-schemas/)
 
 ## Next
 
-- Published JSON Schemas per version, generated from the catalogs
+- OpenRTB 3.0 / AdCOM layered payload validation and 2.x-to-3.0 migration
+  diagnostics
 
 ## Later
 
-- OpenRTB 3.0 / AdCOM layered payload validation and 2.x-to-3.0 migration
-  diagnostics
 - NDJSON stream mode: lint captured bid streams, aggregate rule frequencies
 - Exchange dialect profiles (validate against a specific platform's
   documented requirements on top of the spec)

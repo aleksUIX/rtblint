@@ -29,6 +29,17 @@ jobs:
       - name: Run clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
 
+      # The published schemas are generated from the catalogs; a catalog change
+      # that does not regenerate them would ship a stale contract.
+      - name: Check generated JSON Schemas are current
+        run: |
+          cargo run -p rtblint-core --example export_json_schemas
+          if ! git diff --quiet -- schemas; then
+            echo "schemas/ is out of date. Run: cargo run -p rtblint-core --example export_json_schemas"
+            git --no-pager diff --stat -- schemas
+            exit 1
+          fi
+
   wasm:
     runs-on: ubuntu-latest
 

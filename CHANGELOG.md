@@ -4,6 +4,16 @@
 
 ### Added
 
+- Published JSON Schemas: `schemas/` holds a draft 2020-12 schema per
+  tracked version for both payload types, generated from the same catalogs
+  the validator uses and served at
+  `https://rtblint.org/schemas/openrtb-<version>-<payload>.schema.json`.
+  They carry structure, types, required fields, documented value sets, and
+  AdCOM enum lists; deprecations, moved paths, and the semantic rules stay
+  with the linter. Regenerate with
+  `cargo run -p rtblint-core --example export_json_schemas`; CI fails if the
+  committed files drift from the catalogs. `adcom_list_values` is public so
+  callers can resolve a field's `adcom_list` reference to concrete values
 - Validated fixture coverage for every tracked version, on both payload
   types. Bid responses were covered on 6 of 18 versions and bid requests
   had a parse-only tier that asserted nothing about validation; every

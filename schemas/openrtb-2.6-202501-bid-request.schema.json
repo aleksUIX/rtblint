@@ -1,0 +1,2251 @@
+{
+  "$defs": {
+    "App": {
+      "additionalProperties": true,
+      "description": "Section 3.2.14",
+      "properties": {
+        "bundle": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "inventorypartnerdomain": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "paid": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "privacypolicy": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "sectioncat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "storeurl": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Audio": {
+      "additionalProperties": true,
+      "description": "Section 3.2.8",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "companionad": {
+          "items": {
+            "$ref": "#/$defs/Banner"
+          },
+          "type": "array"
+        },
+        "companiontype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "delivery": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "durfloors": {
+          "items": {
+            "$ref": "#/$defs/DurFloors"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "feed": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "maxbitrate": {
+          "type": "integer"
+        },
+        "maxduration": {
+          "type": "integer"
+        },
+        "maxextended": {
+          "type": "integer"
+        },
+        "maxseq": {
+          "type": "integer"
+        },
+        "mimes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "minbitrate": {
+          "type": "integer"
+        },
+        "mincpmpersec": {
+          "type": "number"
+        },
+        "minduration": {
+          "type": "integer"
+        },
+        "nvol": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "poddur": {
+          "type": "integer"
+        },
+        "podid": {
+          "type": "string"
+        },
+        "podseq": {
+          "enum": [
+            -1,
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "protocols": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "rqddurs": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "deprecated": true,
+          "type": "integer"
+        },
+        "slotinpod": {
+          "enum": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "startdelay": {
+          "anyOf": [
+            {
+              "enum": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "minimum": 1
+            }
+          ],
+          "type": "integer"
+        },
+        "stitched": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mimes"
+      ],
+      "type": "object"
+    },
+    "Banner": {
+      "additionalProperties": true,
+      "description": "Section 3.2.6",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "btype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "expdir": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "format": {
+          "items": {
+            "$ref": "#/$defs/Format"
+          },
+          "type": "array"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mimes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pos": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "topframe": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "vcm": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Channel": {
+      "additionalProperties": true,
+      "description": "Section 3.2.24",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Content": {
+      "additionalProperties": true,
+      "description": "Section 3.2.16",
+      "properties": {
+        "album": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "channel": {
+          "$ref": "#/$defs/Channel"
+        },
+        "contentrating": {
+          "type": "string"
+        },
+        "context": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        "embeddable": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "episode": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isrc": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "langb": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "len": {
+          "type": "integer"
+        },
+        "livestream": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "network": {
+          "$ref": "#/$defs/Network"
+        },
+        "prodq": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "producer": {
+          "$ref": "#/$defs/Producer"
+        },
+        "qagmediarating": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        },
+        "sourcerelationship": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "userrating": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "DOOH": {
+      "additionalProperties": true,
+      "description": "Section 3.2.32",
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "venuetype": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "venuetypetax": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Data": {
+      "additionalProperties": true,
+      "description": "Section 3.2.21",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "segment": {
+          "items": {
+            "$ref": "#/$defs/Segment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Deal": {
+      "additionalProperties": true,
+      "description": "Section 3.2.12",
+      "properties": {
+        "at": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "bidfloor": {
+          "type": "number"
+        },
+        "bidfloorcur": {
+          "type": "string"
+        },
+        "durfloors": {
+          "items": {
+            "$ref": "#/$defs/DurFloors"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "guar": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mincpmpersec": {
+          "type": "number"
+        },
+        "wadomain": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "wseat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Device": {
+      "additionalProperties": true,
+      "description": "Section 3.2.18",
+      "properties": {
+        "carrier": {
+          "type": "string"
+        },
+        "connectiontype": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "devicetype": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "type": "integer"
+        },
+        "didmd5": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "didsha1": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "dnt": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "dpidmd5": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "dpidsha1": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "flashver": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "geofetch": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hwv": {
+          "type": "string"
+        },
+        "ifa": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "ipv6": {
+          "type": "string"
+        },
+        "js": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "langb": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "lmt": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "macmd5": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "macsha1": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "mccmnc": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "osv": {
+          "type": "string"
+        },
+        "ppi": {
+          "type": "integer"
+        },
+        "pxratio": {
+          "type": "number"
+        },
+        "sua": {
+          "type": "object"
+        },
+        "ua": {
+          "type": "string"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "DurFloors": {
+      "additionalProperties": true,
+      "description": "Section 3.2.35",
+      "properties": {
+        "bidfloor": {
+          "type": "number"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "maxdur": {
+          "type": "integer"
+        },
+        "mindur": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "EID": {
+      "additionalProperties": true,
+      "description": "Section 3.2.27",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "inserter": {
+          "type": "string"
+        },
+        "matcher": {
+          "type": "string"
+        },
+        "mm": {},
+        "source": {
+          "type": "string"
+        },
+        "uids": {
+          "items": {
+            "$ref": "#/$defs/UID"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Format": {
+      "additionalProperties": true,
+      "description": "Section 3.2.10",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hratio": {
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "wmin": {
+          "type": "integer"
+        },
+        "wratio": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Geo": {
+      "additionalProperties": true,
+      "description": "Section 3.2.19",
+      "properties": {
+        "accuracy": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "ipservice": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            511,
+            512
+          ],
+          "type": "integer"
+        },
+        "lastfix": {
+          "type": "integer"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "metro": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "regionfips104": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "utcoffset": {
+          "type": "integer"
+        },
+        "zip": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Imp": {
+      "additionalProperties": true,
+      "description": "Section 3.2.4",
+      "properties": {
+        "audio": {
+          "$ref": "#/$defs/Audio"
+        },
+        "banner": {
+          "$ref": "#/$defs/Banner"
+        },
+        "bidfloor": {
+          "type": "number"
+        },
+        "bidfloorcur": {
+          "type": "string"
+        },
+        "clickbrowser": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "displaymanager": {
+          "type": "string"
+        },
+        "displaymanagerver": {
+          "type": "string"
+        },
+        "dt": {
+          "type": "number"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "iframebuster": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "instl": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "metric": {
+          "items": {
+            "$ref": "#/$defs/Metric"
+          },
+          "type": "array"
+        },
+        "native": {
+          "$ref": "#/$defs/Native"
+        },
+        "pmp": {
+          "$ref": "#/$defs/Pmp"
+        },
+        "qty": {
+          "$ref": "#/$defs/Qty"
+        },
+        "refresh": {
+          "$ref": "#/$defs/Refresh"
+        },
+        "rwdd": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "secure": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ssai": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "tagid": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/$defs/Video"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Metric": {
+      "additionalProperties": true,
+      "description": "Section 3.2.5",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "vendor": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
+    "Native": {
+      "additionalProperties": true,
+      "description": "Section 3.2.9",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "request": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "request"
+      ],
+      "type": "object"
+    },
+    "Network": {
+      "additionalProperties": true,
+      "description": "Section 3.2.23",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Pmp": {
+      "additionalProperties": true,
+      "description": "Section 3.2.11",
+      "properties": {
+        "deals": {
+          "items": {
+            "$ref": "#/$defs/Deal"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "private_auction": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Producer": {
+      "additionalProperties": true,
+      "description": "Section 3.2.17",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Publisher": {
+      "additionalProperties": true,
+      "description": "Section 3.2.15",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Qty": {
+      "additionalProperties": true,
+      "description": "Section 3.2.31",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "multiplier": {
+          "type": "number"
+        },
+        "sourcetype": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "vendor": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "multiplier"
+      ],
+      "type": "object"
+    },
+    "RefSettings": {
+      "additionalProperties": true,
+      "description": "Section 3.2.34",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "minint": {
+          "type": "integer"
+        },
+        "reftype": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Refresh": {
+      "additionalProperties": true,
+      "description": "Section 3.2.33",
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "refsettings": {
+          "items": {
+            "$ref": "#/$defs/RefSettings"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Regs": {
+      "additionalProperties": true,
+      "description": "Section 3.2.3",
+      "properties": {
+        "coppa": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "gdpr": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "gpp": {
+          "type": "string"
+        },
+        "gpp_sid": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "us_privacy": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Segment": {
+      "additionalProperties": true,
+      "description": "Section 3.2.22",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Site": {
+      "additionalProperties": true,
+      "description": "Section 3.2.13",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "inventorypartnerdomain": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "mobile": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "page": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "privacypolicy": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "search": {
+          "type": "string"
+        },
+        "sectioncat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": true,
+      "description": "Section 3.2.2",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "fd": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "pchain": {
+          "type": "string"
+        },
+        "schain": {
+          "$ref": "#/$defs/SupplyChain"
+        },
+        "tid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SupplyChain": {
+      "additionalProperties": true,
+      "description": "Section 3.2.25",
+      "properties": {
+        "complete": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/SupplyChainNode"
+          },
+          "type": "array"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "complete",
+        "nodes",
+        "ver"
+      ],
+      "type": "object"
+    },
+    "SupplyChainNode": {
+      "additionalProperties": true,
+      "description": "Section 3.2.26",
+      "properties": {
+        "asi": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "hp": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rid": {
+          "type": "string"
+        },
+        "sid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "asi",
+        "sid"
+      ],
+      "type": "object"
+    },
+    "UID": {
+      "additionalProperties": true,
+      "description": "Section 3.2.28",
+      "properties": {
+        "atype": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "User": {
+      "additionalProperties": true,
+      "description": "Section 3.2.20",
+      "properties": {
+        "buyeruid": {
+          "type": "string"
+        },
+        "consent": {
+          "type": "string"
+        },
+        "customdata": {
+          "type": "string"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        "eids": {
+          "items": {
+            "$ref": "#/$defs/EID"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "gender": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "yob": {
+          "deprecated": true,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Video": {
+      "additionalProperties": true,
+      "description": "Section 3.2.7",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "boxingallowed": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "companionad": {
+          "items": {
+            "$ref": "#/$defs/Banner"
+          },
+          "type": "array"
+        },
+        "companiontype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "delivery": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "durfloors": {
+          "items": {
+            "$ref": "#/$defs/DurFloors"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "linearity": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "maxbitrate": {
+          "type": "integer"
+        },
+        "maxduration": {
+          "type": "integer"
+        },
+        "maxextended": {
+          "type": "integer"
+        },
+        "maxseq": {
+          "type": "integer"
+        },
+        "mimes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "minbitrate": {},
+        "mincpmpersec": {
+          "type": "number"
+        },
+        "minduration": {
+          "type": "integer"
+        },
+        "placement": {
+          "deprecated": true,
+          "type": "integer"
+        },
+        "playbackend": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "playbackmethod": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "plcmt": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "poddedupe": {
+          "type": "array"
+        },
+        "poddur": {
+          "type": "integer"
+        },
+        "podid": {
+          "type": "string"
+        },
+        "podseq": {
+          "type": "integer"
+        },
+        "pos": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "protocols": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "rqddurs": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "deprecated": true,
+          "type": "integer"
+        },
+        "skip": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "skipafter": {
+          "type": "integer"
+        },
+        "skipmin": {
+          "type": "integer"
+        },
+        "slotinpod": {
+          "enum": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "startdelay": {
+          "anyOf": [
+            {
+              "enum": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "minimum": 1
+            }
+          ],
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mimes"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://rtblint.org/schemas/openrtb-2.6-202501-bid-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Generated by rtblint from the OpenRTB 2.6-202501 object catalog (released 2025-01). Structure, types, required fields, and documented value sets only: deprecations, moved paths, and semantic rules are what the linter adds.",
+  "properties": {
+    "acat": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "allimps": {
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
+    },
+    "app": {
+      "$ref": "#/$defs/App"
+    },
+    "at": {
+      "anyOf": [
+        {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        {
+          "minimum": 500
+        }
+      ],
+      "type": "integer"
+    },
+    "badv": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bapp": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bcat": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bseat": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "cattax": {
+      "anyOf": [
+        {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "minimum": 500
+        }
+      ],
+      "type": "integer"
+    },
+    "cur": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "device": {
+      "$ref": "#/$defs/Device"
+    },
+    "dooh": {
+      "$ref": "#/$defs/DOOH"
+    },
+    "ext": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string"
+    },
+    "imp": {
+      "items": {
+        "$ref": "#/$defs/Imp"
+      },
+      "type": "array"
+    },
+    "regs": {
+      "$ref": "#/$defs/Regs"
+    },
+    "site": {
+      "$ref": "#/$defs/Site"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "test": {
+      "enum": [
+        0,
+        1
+      ],
+      "type": "integer"
+    },
+    "tmax": {
+      "type": "integer"
+    },
+    "user": {
+      "$ref": "#/$defs/User"
+    },
+    "wlang": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "wlangb": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "wseat": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "imp"
+  ],
+  "title": "OpenRTB bid request (2.6-202501)",
+  "type": "object"
+}

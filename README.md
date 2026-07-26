@@ -1,4 +1,4 @@
-# rtblint
+# RTBlint
 
 **OpenRTB linter.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB Tech Lab spec snapshots, from 2.0 through the monthly 2.6 releases (currently up to 2.6-202606).
 
@@ -92,9 +92,26 @@ for issue in &result.issues {
 }
 ```
 
+## JSON Schemas
+
+`schemas/` holds a JSON Schema (draft 2020-12) per tracked version, for both payload types, generated from the same catalogs the validator uses. IAB Tech Lab publishes no JSON Schema for 2.6 or 3.0, so these are the machine-readable contract for each monthly snapshot:
+
+```
+https://rtblint.org/schemas/openrtb-2.6-202606-bid-request.schema.json
+https://rtblint.org/schemas/openrtb-2.6-202606-bid-response.schema.json
+```
+
+They cover structure, types, required fields, documented value sets, and AdCOM enum lists. What they cannot express is what the linter adds: deprecated and moved paths, version-specific removals, and the semantic rules. Validating against a schema is not the same as linting.
+
+Regenerate after any catalog change (CI fails if they drift):
+
+```bash
+cargo run -p rtblint-core --example export_json_schemas
+```
+
 ## Spec data and provenance
 
-The validator runs on structured catalogs extracted from the IAB Tech Lab OpenRTB specifications: object names, field names, type notations, enumerated value sets, and section citations. The catalogs carry no spec prose. rtblint is not affiliated with or endorsed by IAB Tech Lab. See NOTICE for attribution.
+The validator runs on structured catalogs extracted from the IAB Tech Lab OpenRTB specifications: object names, field names, type notations, enumerated value sets, and section citations. The catalogs carry no spec prose. RTBlint is not affiliated with or endorsed by IAB Tech Lab. See NOTICE for attribution.
 
 ## License
 

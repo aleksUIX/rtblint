@@ -1,0 +1,732 @@
+{
+  "$defs": {
+    "App": {
+      "additionalProperties": true,
+      "description": "Section 3.3.6",
+      "properties": {
+        "bundle": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "paid": {
+          "type": "integer"
+        },
+        "privacypolicy": {
+          "type": "integer"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "sectioncat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "storeurl": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Banner": {
+      "additionalProperties": true,
+      "description": "Section 3.3.3",
+      "properties": {
+        "api": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "btype": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "expdir": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hmax": {
+          "type": "integer"
+        },
+        "hmin": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mimes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pos": {
+          "type": "integer"
+        },
+        "topframe": {
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "wmax": {
+          "type": "integer"
+        },
+        "wmin": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Content": {
+      "additionalProperties": true,
+      "description": "Section 3.3.7",
+      "properties": {
+        "cat": {
+          "type": "array"
+        },
+        "contentrating": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string"
+        },
+        "embeddable": {
+          "type": "integer"
+        },
+        "episode": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "len": {
+          "type": "integer"
+        },
+        "livestream": {
+          "type": "integer"
+        },
+        "producer": {
+          "$ref": "#/$defs/Producer"
+        },
+        "qagmediarating": {
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        },
+        "sourcerelationship": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "userrating": {
+          "type": "string"
+        },
+        "videoquality": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Data": {
+      "additionalProperties": true,
+      "description": "Section 3.3.13",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "segment": {
+          "items": {
+            "$ref": "#/$defs/Segment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Device": {
+      "additionalProperties": true,
+      "description": "Section 3.3.10",
+      "properties": {
+        "carrier": {
+          "type": "string"
+        },
+        "connectiontype": {
+          "type": "integer"
+        },
+        "devicetype": {
+          "type": "integer"
+        },
+        "didmd5": {
+          "type": "string"
+        },
+        "didsha1": {
+          "type": "string"
+        },
+        "dnt": {
+          "type": "integer"
+        },
+        "dpidmd5": {
+          "type": "string"
+        },
+        "dpidsha1": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "flashver": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "ifa": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "ipv6": {
+          "type": "string"
+        },
+        "js": {
+          "type": "integer"
+        },
+        "language": {
+          "type": "string"
+        },
+        "macmd5": {
+          "type": "string"
+        },
+        "macsha1": {
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "osv": {
+          "type": "string"
+        },
+        "ua": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Geo": {
+      "additionalProperties": true,
+      "description": "Section 3.3.11",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "metro": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "regionfips104": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "zip": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Imp": {
+      "additionalProperties": true,
+      "description": "Section 3.3.2",
+      "properties": {
+        "banner": {
+          "$ref": "#/$defs/Banner"
+        },
+        "bidfloor": {
+          "type": "number"
+        },
+        "bidfloorcur": {
+          "type": "string"
+        },
+        "displaymanager": {
+          "type": "string"
+        },
+        "displaymanagerver": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "iframebuster": {},
+        "instl": {
+          "type": "integer"
+        },
+        "pmp": {
+          "$ref": "#/$defs/Pmp"
+        },
+        "secure": {},
+        "tagid": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/$defs/Video"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Pmp": {
+      "additionalProperties": true,
+      "description": "Section 3.3.16",
+      "properties": {
+        "deals": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "private_auction": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Producer": {
+      "additionalProperties": true,
+      "description": "Section 3.3.9",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Publisher": {
+      "additionalProperties": true,
+      "description": "Section 3.3.8",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Segment": {
+      "additionalProperties": true,
+      "description": "Section 3.3.14",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Site": {
+      "additionalProperties": true,
+      "description": "Section 3.3.5",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "page": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "privacypolicy": {
+          "type": "integer"
+        },
+        "publisher": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "search": {
+          "type": "string"
+        },
+        "sectioncat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "User": {
+      "additionalProperties": true,
+      "description": "Section 3.3.12",
+      "properties": {
+        "buyeruid": {
+          "type": "string"
+        },
+        "customdata": {
+          "type": "string"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "yob": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Video": {
+      "additionalProperties": true,
+      "description": "Section 3.3.4",
+      "properties": {
+        "api": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "boxingallowed": {
+          "type": "integer"
+        },
+        "companionad": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "companiontype": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "delivery": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "linearity": {
+          "type": "integer"
+        },
+        "maxbitrate": {
+          "type": "integer"
+        },
+        "maxduration": {
+          "type": "integer"
+        },
+        "maxextended": {
+          "type": "integer"
+        },
+        "mimes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "minbitrate": {
+          "type": "integer"
+        },
+        "minduration": {
+          "type": "integer"
+        },
+        "playbackmethod": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "pos": {
+          "type": "integer"
+        },
+        "protocol": {
+          "type": "integer"
+        },
+        "protocols": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "type": "integer"
+        },
+        "startdelay": {
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mimes",
+        "minduration",
+        "maxduration"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://rtblint.org/schemas/openrtb-2.2-bid-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "description": "Generated by rtblint from the OpenRTB 2.2 object catalog (released 2014-04). Structure, types, required fields, and documented value sets only: deprecations, moved paths, and semantic rules are what the linter adds.",
+  "properties": {
+    "allimps": {
+      "type": "integer"
+    },
+    "app": {
+      "$ref": "#/$defs/App"
+    },
+    "at": {},
+    "badv": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bcat": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "cur": {
+      "type": "array"
+    },
+    "device": {
+      "$ref": "#/$defs/Device"
+    },
+    "ext": {
+      "type": "object"
+    },
+    "id": {
+      "type": "string"
+    },
+    "imp": {
+      "items": {
+        "$ref": "#/$defs/Imp"
+      },
+      "type": "array"
+    },
+    "regs": {
+      "type": "object"
+    },
+    "site": {
+      "$ref": "#/$defs/Site"
+    },
+    "tmax": {
+      "type": "integer"
+    },
+    "user": {
+      "$ref": "#/$defs/User"
+    },
+    "wseat": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "imp"
+  ],
+  "title": "OpenRTB bid request (2.2)",
+  "type": "object"
+}

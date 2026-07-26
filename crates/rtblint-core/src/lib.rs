@@ -23,6 +23,27 @@ pub use version_rules::{
     PathRuleMatch, PathStateKind, PathStatus, VersionProfile, VersionRule, VersionRuleKind,
 };
 
+/// The values an AdCOM list allows, as the validator sees them.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[non_exhaustive]
+pub struct AdcomListValues {
+    /// Documented values, ascending.
+    pub allowed_values: &'static [i64],
+    /// Floor above which exchange-specific values are permitted, when the
+    /// list defines one.
+    pub minimum_inclusive: Option<i64>,
+}
+
+/// Looks up an AdCOM list by the name catalogs cite (for example
+/// "List: Device Types"), so callers can resolve a field's `adcom_list`
+/// reference to concrete values.
+pub fn adcom_list_values(name: &str) -> Option<AdcomListValues> {
+    adcom_lists::adcom_list_by_name(name).map(|list| AdcomListValues {
+        allowed_values: list.allowed_values,
+        minimum_inclusive: list.minimum_inclusive,
+    })
+}
+
 /// Validates an OpenRTB 2.6 bid request payload.
 ///
 /// This first implementation focuses on deterministic structural issues:

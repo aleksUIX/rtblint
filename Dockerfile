@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# Build the rtblint MCP server (stdio, JSON-RPC 2.0 over stdin/stdout).
+# Build the RTBlint MCP server (stdio, JSON-RPC 2.0 over stdin/stdout).
 # Smithery builds this image from smithery.yaml and bridges the stdio server
 # to a remote endpoint. rtblint-core is pure Rust (serde only), so the build
 # needs no C toolchain, and the server does no network I/O, so the runtime

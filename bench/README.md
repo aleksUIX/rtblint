@@ -1,4 +1,4 @@
-# rtblint benchmark
+# RTBlint benchmark
 
 Measures end-to-end validation speed of the `rtblint` CLI: one process spawn
 per validation, exactly the way the CLI is used in scripts and CI. Every

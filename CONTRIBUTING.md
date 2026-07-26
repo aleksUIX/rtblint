@@ -1,4 +1,4 @@
-# Contributing to rtblint
+# Contributing to RTBlint
 
 Thanks for helping make OpenRTB integrations less painful.
 

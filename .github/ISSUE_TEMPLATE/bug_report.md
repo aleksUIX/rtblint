@@ -15,6 +15,6 @@ labels: bug
 ```
 
 **Environment**
-- rtblint version (`rtblint --version` or `coreVersion()`):
+- RTBlint version (`rtblint --version` or `coreVersion()`):
 - Surface: CLI / npm / Rust crate / MCP
 - OS:

@@ -1,4 +1,4 @@
-//! MCP server for rtblint.
+//! MCP server for RTBlint.
 //!
 //! Speaks the Model Context Protocol over stdio (newline-delimited JSON-RPC
 //! 2.0) and exposes the rtblint-core OpenRTB validator as callable tools:

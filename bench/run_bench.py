@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""rtblint CLI validation speed benchmark.
+"""RTBlint CLI validation speed benchmark.
 
-Spawns the rtblint CLI once per validation (so numbers reflect real CLI
+Spawns the RTBlint CLI once per validation (so numbers reflect real CLI
 usage: process start + file read + parse + validate) and reports latency
 percentiles and throughput per fixture, per size tier, and overall.
 
@@ -325,7 +325,7 @@ def main() -> None:
     ).stdout.strip()
 
     mode = "batch" if args.batch else "per-process"
-    print(f"rtblint benchmark · {version or cli} · mode: {mode}")
+    print(f"RTBlint benchmark · {version or cli} · mode: {mode}")
     print(f"fixtures: {len(manifest)} · per fixture: {per_fixture} "
           f"· total: {per_fixture * len(manifest):,} validations · jobs: {args.jobs}")
 

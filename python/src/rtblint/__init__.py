@@ -1,5 +1,5 @@
 """
-rtblint: OpenRTB bid request / bid response linter.
+RTBlint: OpenRTB bid request / bid response linter.
 
 The Python binding is not implemented yet. The Rust CLI (crates.io: rtblint),
 the npm WASM package (npm: rtblint-core), and the MCP server (crates.io:
@@ -23,6 +23,6 @@ def validate(input: str) -> dict:
             the Rust CLI or the npm package in the meantime.
     """
     raise NotImplementedError(
-        "The rtblint Python binding is not implemented yet. "
+        "The RTBlint Python binding is not implemented yet. "
         "Use the Rust CLI (cargo install rtblint) or the npm package (npm i rtblint-core)."
     )

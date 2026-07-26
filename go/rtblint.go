@@ -1,6 +1,6 @@
-// Package rtblint provides Go bindings for the rtblint OpenRTB linter.
+// Package rtblint provides Go bindings for the RTBlint OpenRTB linter.
 //
-// rtblint validates OpenRTB 2.x bid requests and bid responses against
+// RTBlint validates OpenRTB 2.x bid requests and bid responses against
 // versioned IAB spec snapshots.
 //
 // The Go binding is not implemented yet. The Rust CLI (crates.io: rtblint),
@@ -32,4 +32,4 @@ func Validate(input string) (Result, error) {
 }
 
 // ErrNotImplemented is returned by stub functions.
-var ErrNotImplemented = errors.New("the rtblint Go binding is not implemented yet; use the Rust CLI or the npm package")
+var ErrNotImplemented = errors.New("the RTBlint Go binding is not implemented yet; use the Rust CLI or the npm package")

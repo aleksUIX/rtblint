@@ -5,7 +5,7 @@ run of `bench/run_bench.py` (see bench/README.md). All runs below: Apple M4,
 macOS 26.5, 100,000 validations (50 fixtures x 2,000), sequential (jobs=1).
 Newest first.
 
-## 2026-07-06 · rtblint 0.3.0
+## 2026-07-06 · RTBlint 0.3.0
 
 Validator walk optimizations: field shape/required/deprecated flags
 precomputed at build time, version-rule matching gated on a static set of
@@ -56,7 +56,7 @@ Key observations:
   churn from per-field path strings, ~13% re-parsing type_spec strings.
   All three are gone from the 0.3.0 profile.
 
-## 2026-07-06 · rtblint 0.2.0
+## 2026-07-06 · RTBlint 0.2.0
 
 Static catalog codegen (no runtime JSON parsing of spec catalogs) plus new
 CLI `--batch` mode. Per-process (spawn baseline 2.25 ms), raw data
@@ -78,7 +78,7 @@ Batch mode, raw data `2026-07-06-v0.2.0-m4-batch.json`: tiny 0.042 ms
 essentially pure process spawn; large payloads remained walk-bound (fixed
 in 0.3.0).
 
-## 2026-07-06 · rtblint 0.0.3
+## 2026-07-06 · RTBlint 0.0.3
 
 One CLI process per validation, process-spawn baseline 1.69 ms. Raw data:
 `bench/baselines/2026-07-06-v0.0.3-m4.json`.

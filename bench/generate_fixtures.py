@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic OpenRTB fixture generator for the rtblint benchmark.
+"""Deterministic OpenRTB fixture generator for the RTBlint benchmark.
 
 Writes 50 fixtures into bench/fixtures/, ranging from a few hundred bytes to
 several megabytes, plus a manifest.json describing each one (payload kind,

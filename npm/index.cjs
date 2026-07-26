@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * rtblint: OpenRTB bid request / bid response linter.
+ * RTBlint: OpenRTB bid request / bid response linter.
  * CJS entry point backed by the rtblint-core WASM build.
  */
 

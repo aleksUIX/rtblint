@@ -14,6 +14,6 @@ labels: rule-misfire
 
 ```
 
-**What rtblint reported**
+**What RTBlint reported**
 
 **What the spec says** (section reference if you have it)

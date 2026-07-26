@@ -1,4 +1,4 @@
-# rtblint
+# RTBlint
 
 **OpenRTB linter.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots.
 

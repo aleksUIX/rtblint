@@ -1,6 +1,6 @@
-# rtblint
+# RTBlint
 
-**OpenRTB linter for Node.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots, from 2.0 through the monthly 2.6 releases. Backed by the rtblint Rust core compiled to WASM; no native dependencies.
+**OpenRTB linter for Node.** Validates OpenRTB 2.x bid requests and bid responses against versioned IAB spec snapshots, from 2.0 through the monthly 2.6 releases. Backed by the RTBlint Rust core compiled to WASM; no native dependencies.
 
 Website and playground: [rtblint.org](https://rtblint.org)
 

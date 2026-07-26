@@ -1,6 +1,6 @@
 # Security Policy
 
-rtblint parses untrusted JSON payloads, so parser robustness matters.
+RTBlint parses untrusted JSON payloads, so parser robustness matters.
 
 ## Reporting a vulnerability
 

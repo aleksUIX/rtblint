@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use rtblint or the OpenRTB machine-checkability dataset, please cite it as below."
-title: "rtblint: an OpenRTB validator"
+message: "If you use RTBlint or the OpenRTB machine-checkability dataset, please cite it as below."
+title: "RTBlint: an OpenRTB validator"
 type: software
 authors:
   - family-names: Sekowski

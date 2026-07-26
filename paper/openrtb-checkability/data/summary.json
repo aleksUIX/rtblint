@@ -1,0 +1,52 @@
+{
+  "2.6-202606": {
+    "normative_sentences": 280,
+    "by_stratum": {
+      "prose": 121,
+      "field-desc": 159
+    },
+    "by_obligation": {
+      "obligation": 74,
+      "recommendation": 109,
+      "permission": 97
+    },
+    "auto_class": {
+      "A": 5,
+      "B": 48,
+      "C": 20,
+      "D": 84,
+      "": 123
+    },
+    "field_rows": 468,
+    "fields_required": 22,
+    "fields_recommended": 38,
+    "fields_with_default": 38,
+    "fields_enum_inline": 34,
+    "fields_registry_ref": 35
+  },
+  "3.0": {
+    "normative_sentences": 137,
+    "by_stratum": {
+      "prose": 96,
+      "field-desc": 41
+    },
+    "by_obligation": {
+      "obligation": 43,
+      "recommendation": 36,
+      "permission": 58
+    },
+    "auto_class": {
+      "A": 2,
+      "B": 6,
+      "C": 13,
+      "D": 53,
+      "": 63
+    },
+    "field_rows": 90,
+    "fields_required": 14,
+    "fields_recommended": 10,
+    "fields_with_default": 12,
+    "fields_enum_inline": 8,
+    "fields_registry_ref": 4
+  }
+}

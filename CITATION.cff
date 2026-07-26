@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use rtblint or the OpenRTB machine-checkability dataset, please cite it as below."
+title: "rtblint: an OpenRTB validator"
+type: software
+authors:
+  - family-names: Sekowski
+    given-names: Aleksander
+repository-code: "https://github.com/aleksUIX/rtblint"
+url: "https://rtblint.org"
+license: Apache-2.0
+preferred-citation:
+  type: report
+  title: "How Machine-Checkable Is OpenRTB? Classifying the Normative Content of the Protocol That Clears Real-Time Advertising"
+  authors:
+    - family-names: Sekowski
+      given-names: Aleksander
+  year: 2026
+  month: 7
+  notes: "Preprint. Dataset and scripts in paper/openrtb-checkability/ of this repository."

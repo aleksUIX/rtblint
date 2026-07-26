@@ -1,0 +1,146 @@
+{
+  "2.6-202606": {
+    "keyword_sentences": 280,
+    "excluded_non_conformance": 80,
+    "conformance_statements": 200,
+    "by_class": {
+      "A": 29,
+      "B": 78,
+      "C": 41,
+      "D": 52
+    },
+    "by_class_pct": {
+      "A": 14.5,
+      "B": 39.0,
+      "C": 20.5,
+      "D": 26.0
+    },
+    "static_checkable_pct": 53.5,
+    "by_obligation": {
+      "obligation": 51,
+      "recommendation": 102,
+      "permission": 47
+    },
+    "class_by_obligation": {
+      "obligation": {
+        "A": 11,
+        "B": 20,
+        "C": 12,
+        "D": 8
+      },
+      "recommendation": {
+        "A": 3,
+        "B": 45,
+        "C": 20,
+        "D": 34
+      },
+      "permission": {
+        "A": 15,
+        "B": 13,
+        "C": 9,
+        "D": 10
+      }
+    }
+  },
+  "3.0": {
+    "keyword_sentences": 137,
+    "excluded_non_conformance": 49,
+    "conformance_statements": 88,
+    "by_class": {
+      "A": 15,
+      "B": 9,
+      "C": 44,
+      "D": 20
+    },
+    "by_class_pct": {
+      "A": 17.0,
+      "B": 10.2,
+      "C": 50.0,
+      "D": 22.7
+    },
+    "static_checkable_pct": 27.3,
+    "by_obligation": {
+      "obligation": 33,
+      "recommendation": 33,
+      "permission": 22
+    },
+    "class_by_obligation": {
+      "obligation": {
+        "A": 6,
+        "B": 5,
+        "C": 17,
+        "D": 5
+      },
+      "recommendation": {
+        "A": 3,
+        "B": 2,
+        "C": 19,
+        "D": 9
+      },
+      "permission": {
+        "A": 6,
+        "B": 2,
+        "C": 8,
+        "D": 6
+      }
+    }
+  },
+  "2.6-202606_deduplicated": {
+    "conformance_statements": 151,
+    "by_class": {
+      "A": 23,
+      "B": 46,
+      "C": 34,
+      "D": 48
+    },
+    "by_class_pct": {
+      "A": 15.2,
+      "B": 30.5,
+      "C": 22.5,
+      "D": 31.8
+    },
+    "static_checkable_pct": 45.7
+  },
+  "3.0_deduplicated": {
+    "conformance_statements": 83,
+    "by_class": {
+      "A": 12,
+      "B": 8,
+      "C": 43,
+      "D": 20
+    },
+    "by_class_pct": {
+      "A": 14.5,
+      "B": 9.6,
+      "C": 51.8,
+      "D": 24.1
+    },
+    "static_checkable_pct": 24.1
+  },
+  "combined": {
+    "keyword_sentences": 417,
+    "conformance_statements": 288,
+    "by_class": {
+      "A": 44,
+      "B": 87,
+      "C": 85,
+      "D": 72
+    }
+  },
+  "fields_2.6-202606": {
+    "object_table_rows": 415,
+    "required": 21,
+    "recommended": 37,
+    "default": 38,
+    "enum_inline": 34,
+    "registry_ref": 35
+  },
+  "fields_3.0": {
+    "object_table_rows": 78,
+    "required": 14,
+    "recommended": 10,
+    "default": 12,
+    "enum_inline": 8,
+    "registry_ref": 4
+  }
+}

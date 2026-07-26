@@ -1,0 +1,61 @@
+id,spec,stratum,location,text
+3,2.6-202606,prose,Getting Started,"This does not, however, mean that including only required attributes will be satisfactory to implementers for business reasons."
+12,2.6-202606,prose,Getting Started,"IMPORTANT: Since recommended attributes are not required, they may not be available from all supply sources."
+13,2.6-202606,prose,2. OpenRTB Basics,"The win notice informs the bidder’s pricing algorithms of a success, whereas the billing notice indicates that spend should actually be applied."
+15,2.6-202606,prose,2.1 - Transport,Win notices may be either POST or GET at the discretion of the exchange.
+16,2.6-202606,prose,2.1 - Transport,"Calls returning content (e.g., any bid response, a win notice that returns markup) should return HTTP code 200."
+22,2.6-202606,prose,2.3 - Data Format,The IAB Tech Lab may offer reference implementations for these or other formats.
+40,2.6-202606,prose,3.1 - Object Model,"Of its direct subordinates, only `Imp` is technically required since it is fundamental to describing the impression being sold and it requires at least one of `Banner` (which may allow multiple formats), `Video`, `Audio`, and `Native` to define the type of impression (i.e., whichever one or more the publisher is willing to accept; although a bid will be for exactly one of those specified)."
+44,2.6-202606,field-desc,BidRequest.imp,At least 1 `Imp` object is required.
+47,2.6-202606,field-desc,BidRequest.dooh,This object should be included if the ad supported content is a Digital Out-Of-Home screen.
+49,2.6-202606,field-desc,BidRequest.wseat,IDs of seats and knowledge of the buyer’s customers to which they refer must be coordinated between bidders and the exchange a priori.
+52,2.6-202606,field-desc,BidRequest.bseat,"At most, only one of `wseat` and `bseat` should be used in the same request."
+57,2.6-202606,field-desc,BidRequest.bcat,Only one of `acat` or `bcat` should be present.
+63,2.6-202606,prose,Imp,Each `Imp` object has a required ID so that bids can reference them individually.
+71,2.6-202606,field-desc,Imp.bidfloorcur,This may be different from bid currency returned by bidder if this is allowed by the exchange.
+79,2.6-202606,prose,Banner,"However, any given bid for the impression must conform to one of the offered types."
+81,2.6-202606,field-desc,Banner.w,Exact width in device-independent pixels (DIPS); recommended if no `Format` objects are specified.
+101,2.6-202606,field-desc,Video.playbackmethod,"If none are specified, any method may be used."
+110,2.6-202606,field-desc,Audio.poddur,This field is required only for the dynamic portion(s) of audio ad pods.
+111,2.6-202606,field-desc,Audio.rqddurs,"This field is mutually exclusive with `minduraiton` and `maxduration`; if `rqddurs` is specified, `minduraiton` and `maxduration` must not be specified and vice versa."
+112,2.6-202606,field-desc,Audio.mincpmpersec,"This is a price floor for the “dynamic” portion of an audio ad pod, relative to the duration of bids an advertiser may submit."
+114,2.6-202606,field-desc,Audio.companiontype,Recommended if companion `Banner` objects are included via the `companionad` array.
+119,2.6-202606,field-desc,Native.ver,Version of the Dynamic Native Ads API to which `request` complies; highly recommended for efficient parsing.
+125,2.6-202606,field-desc,Deal.guar,"Indicates that the deal is of type `guaranteed` and the bidder must bid on the deal, where 0 = not a guaranteed deal, 1 = guaranteed deal."
+135,2.6-202606,prose,App,This object should be included if the ad supported content is a non-browser application (typically in mobile) as opposed to a website.
+140,2.6-202606,field-desc,App.bundle,"For apps in Apple App Store, these should be a numeric ID."
+142,2.6-202606,field-desc,App.kwarray,Only one of `keywords` or `kwarray` may be present.
+150,2.6-202606,field-desc,Content.keywords,Only one of `keywords` or `kwarray` may be present.
+172,2.6-202606,field-desc,Geo.lastfix,"Ideally, this value should be from the time the actual fix was taken."
+174,2.6-202606,prose,User,"However, when present, this user ID should be stable long enough to serve reasonably as the basis for frequency capping and retargeting."
+176,2.6-202606,field-desc,User.kwarray,Only one of `keywords` or `kwarray` may be present.
+183,2.6-202606,field-desc,Network.id,This may not be a unique identifier across all supply sources.
+193,2.6-202606,field-desc,SupplyChainNode.hp,"For version 1.0 of `SupplyChain`, this property should always be 1."
+194,2.6-202606,field-desc,SupplyChainNode.hp,Implementers should ensure that they propagate this field onwards when constructing `SupplyChain` objects in bid requests sent to a downstream advertising system.
+214,2.6-202606,prose,DOOH,A bid request with a DOOH object must not contain a site or app object.
+216,2.6-202606,prose,DurFloors,"In cases where multiple ranges may apply, it is up to the buyer and seller to coordinate on which floor is applicable."
+229,2.6-202606,field-desc,BidResponse.customdata,The string must be in base85 cookie safe characters and be in any format.
+235,2.6-202606,field-desc,Bid.burl,Substitution macros (Section 4.4) may be included.
+258,2.6-202606,prose,4.4 - Substitution Macros,This may be used by platforms that cannot fire a notification as soon as the impression takes place.
+274,2.6-202606,prose,6.2.5 - Example 5 – PMP with Direct Deal,Some optional parameters are included in this example.
+279,2.6-202606,prose,Appendix C. Cookie Based ID Syncing,The exchange may also elect to directly drop the DSP’s sync pixel in the browser at opportunities it has.
+282,3.0,prose,OpenRTB Principles,"For example, a demand source with an ""OpenRTB 3.0"" implementation but must tolerate new fields or enumerated list values it is not expecting, such as from a newer release of OpenRTB 3.0."
+287,3.0,prose,OpenRTB Principles,Extension fields for OpenRTB object must always be placed within a subordinate “ext” object.
+301,3.0,prose,Transport Security,"As of OpenRTB v3.0, HTTPS and Transport Layer Security (TLS) version 1.2+ are required for compliance and thus all connections over which the OpenRTB protocol operates must be HTTPS."
+302,3.0,prose,Representation,"Optionally, an exchange may also offer binary representations (e.g., compressed JSON, ProtoBuf, Avro, etc.), which can be more efficient in terms of transmission time and bandwidth."
+308,3.0,prose,Encoding,"To realize this savings fully, compression should be enabled for both the bid request sent by the exchange and the bid response returned by the demand source."
+309,3.0,prose,Encoding,"For an exchange to signal they would like the response to be compressed, it should set the standard HTTP 1.1 Accept-Encoding header."
+327,3.0,prose,Request,"This `id` attribute is required as is an `Item` array with at least one object (i.e., at least one item for sale)."
+332,3.0,field-desc,Request.context,"For AdCOM v1.x, the objects allowed here all of which are optional are one of the DistributionChannel subtypes (i.e., Site , App , or Dooh ), User , Device , Regs , Restrictions , and any objects subordinate to these as specified by AdCOM."
+346,3.0,field-desc,Item.ext,Optional exchange-specific extensions.
+357,3.0,field-desc,Response.id,ID of the bid request to which this is a response; must match the request.id attribute.
+359,3.0,field-desc,Response.seatbid,Array of Seatbid objects; 1+ required if a bid is to be made.
+366,3.0,field-desc,Bid.burl,Substitution macros may be included.
+373,3.0,prose,Substitution Macros,"Note that an exchange may also elect whether or not to support custom macros, but it is expected that any exchange that offers the ability to serve pre-uploaded ads will do so."
+377,3.0,prose,Substitution Macros,"To specify that a particular macro is to be encoded, the suffix `:X` should be appended to the macro name, where X is a string that indicates the algorithm to be used."
+379,3.0,prose,Event Notification,Additional events may be defined in Layer-4 specific to domain objects.
+388,3.0,prose,Event:  Billing,"Conversely, an entity receiving billing notices should endeavor to make their endpoint idempotent to avoid double counting."
+390,3.0,prose,Event:  Billing,"However, subtle technical issues may lead to additional discrepancies and bidders are cautioned to avoid this scenario."
+412,3.0,prose,Bid Response,"The “media"" object should have one `ad` object that carries the details of the ad to be served if the bid wins."
+413,3.0,prose,Bid Response,"In practice, media would be pass either by value (i.e., details included as domain objects) or pass by reference (i.e., using the media ID and optional macros)."
+414,3.0,field-desc,.3.0,"DOOH improvements: A field has been added to represent quantity of impressions as a float, since DOOH impressions may not be a whole number."

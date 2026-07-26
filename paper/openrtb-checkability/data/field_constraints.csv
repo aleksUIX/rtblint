@@ -1,0 +1,559 @@
+spec,section,object,field,type_spec,required,recommended,has_default,enum_inline,registry_ref
+2.6-202606,Getting Started,,Example Type,Attribute,0,0,0,0,0
+2.6-202606,Getting Started,,Examples of required attributes. Grouped at the tops of tables for convenience,id,0,0,0,0,0
+2.6-202606,Getting Started,,imp,object array; required,1,0,0,0,0
+2.6-202606,Getting Started,,Examples of recommended attributes. Grouped after required attributes.,site,0,0,0,0,0
+2.6-202606,Getting Started,,app,object; recommended,0,1,0,0,0
+2.6-202606,Getting Started,,Examples of optional attributes with and without defaults. Attributes are assumed optional unless explicitly qualified as required or recommended.,test,0,0,0,0,0
+2.6-202606,Getting Started,,tmax,integer;,0,0,0,0,0
+2.6-202606,Getting Started,,wseat,string array,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,BidRequest,3.2.1,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Source,3.2.2,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Regs,3.2.3,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Imp,3.2.4,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Metric,3.2.5,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Banner,3.2.6,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Video,3.2.7,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Audio,3.2.8,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Native,3.2.9,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Format,3.2.10,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Pmp,3.2.11,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Deal,3.2.12,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Site,3.2.13,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,App,3.2.14,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Publisher,3.2.15,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Content,3.2.16,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Producer,3.2.17,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Device,3.2.18,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Geo,3.2.19,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,User,3.2.20,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Data,3.2.21,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Segment,3.2.22,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Network,3.2.23,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Channel,3.2.24,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,SupplyChain,3.2.25,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,SupplyChainNode,3.2.26,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,EIDs,3.2.27,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,UIDs,3.2.28,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,UserAgent,3.2.29,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,BrandVersion,3.2.30,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,Qty,3.2.31,0,0,0,0,0
+2.6-202606,3.1 - Object Model,,DOOH,3.2.32,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,id,string; required,1,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,imp,object array; required,1,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,site,object; recommended,0,1,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,app,object; recommended,0,1,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,dooh,object,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,device,object; recommended,0,1,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,user,object; recommended,0,1,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,test,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,at,integer; default 2,0,0,1,1,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,tmax,integer,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,wseat,string array,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,bseat,string array,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,allimps,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,cur,string array,0,0,0,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,wlang,string array,0,0,0,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,wlangb,string array,0,0,0,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,acat,string array,0,0,0,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,bcat,string array,0,0,0,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,badv,string array,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,bapp,string array,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,source,object,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,regs,object,0,0,0,0,0
+2.6-202606,3.2.1 - Object: BidRequest,BidRequest,ext,object,0,0,0,0,0
+2.6-202606,3.2.2 - Object: Source,Source,fd,"integer, recommended",0,1,0,1,0
+2.6-202606,3.2.2 - Object: Source,Source,tid,string; recommended,0,1,0,0,0
+2.6-202606,3.2.2 - Object: Source,Source,pchain,string; recommended,0,1,0,0,0
+2.6-202606,3.2.2 - Object: Source,Source,schain,object; recommended,0,1,0,0,0
+2.6-202606,3.2.2 - Object: Source,Source,ext,object,0,0,0,0,0
+2.6-202606,3.2.3 - Object: Regs,Regs,coppa,integer,0,0,0,1,0
+2.6-202606,3.2.3 - Object: Regs,Regs,gdpr,integer,0,0,0,1,0
+2.6-202606,3.2.3 - Object: Regs,Regs,us_privacy,string,0,0,0,0,0
+2.6-202606,3.2.3 - Object: Regs,Regs,gpp,string,0,0,0,0,0
+2.6-202606,3.2.3 - Object: Regs,Regs,gpp_sid,integer array,0,0,0,0,0
+2.6-202606,3.2.3 - Object: Regs,Regs,ext,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,id,string; required,1,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,metric,object array,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,banner,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,video,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,audio,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,native,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,pmp,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,displaymanager,string,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,displaymanagerver,string,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,instl,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.4 - Object: Imp,Imp,tagid,string,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,bidfloor,float; default 0,0,0,1,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,bidfloorcur,"string; default ""USD""",0,0,1,0,1
+2.6-202606,3.2.4 - Object: Imp,Imp,clickbrowser,integer,0,0,0,1,0
+2.6-202606,3.2.4 - Object: Imp,Imp,secure,integer,0,0,0,1,0
+2.6-202606,3.2.4 - Object: Imp,Imp,iframebuster,string array,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,rwdd,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.4 - Object: Imp,Imp,ssai,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.4 - Object: Imp,Imp,exp,integer,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,qty,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,dt,float,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,refresh,object,0,0,0,0,0
+2.6-202606,3.2.4 - Object: Imp,Imp,ext,object,0,0,0,0,0
+2.6-202606,3.2.5 - Object: Metric,Metric,type,string; required,1,0,0,0,0
+2.6-202606,3.2.5 - Object: Metric,Metric,vendor,string; recommended,0,1,0,0,0
+2.6-202606,3.2.5 - Object: Metric,Metric,ext,object,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,format,object array; recommended,0,1,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,w,integer,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,h,integer,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,btype,integer array,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,battr,integer array,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,pos,integer,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,mimes,string array,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,topframe,integer,0,0,0,1,0
+2.6-202606,3.2.6 - Object: Banner,Banner,expdir,integer array,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,api,integer array,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,id,string,0,0,0,0,0
+2.6-202606,3.2.6 - Object: Banner,Banner,vcm,integer,0,0,0,1,0
+2.6-202606,3.2.6 - Object: Banner,Banner,ext,object,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,mimes,string array; required,1,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,minduration,integer; default 0 recommended,0,1,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,maxduration,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,startdelay,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,maxseq,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,poddur,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,protocols,integer array; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,w,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,h,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,podid,string,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,podseq,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,rqddurs,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,placement,integer; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,plcmt,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,linearity,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,skip,integer,0,0,0,1,0
+2.6-202606,3.2.7 - Object: Video,Video,skipmin,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,skipafter,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,sequence,integer; default 0 DEPRECATED,0,0,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,slotinpod,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.7 - Object: Video,Video,mincpmpersec,float,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,battr,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,maxextended,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,minbitrate,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,maxbitrate,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,boxingallowed,integer; default 1,0,0,1,1,0
+2.6-202606,3.2.7 - Object: Video,Video,playbackmethod,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,playbackend,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,delivery,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,pos,integer,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,companionad,object array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,api,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,companiontype,integer array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,poddedupe,enum array PROVISIONAL,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,durfloors,object array,0,0,0,0,0
+2.6-202606,3.2.7 - Object: Video,Video,ext,object,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,mimes,string array; required,1,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,minduration,integer; default 0 recommended,0,1,1,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,maxduration,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,poddur,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,protocols,integer array; recommended,0,1,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,startdelay,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,rqddurs,integer array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,podid,string,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,podseq,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,sequence,integer; default 0 DEPRECATED,0,0,1,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,slotinpod,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,mincpmpersec,float,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,battr,integer array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,maxextended,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,minbitrate,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,maxbitrate,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,delivery,integer array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,companionad,object array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,api,integer array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,companiontype,integer array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,maxseq,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,feed,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,stitched,integer,0,0,0,1,0
+2.6-202606,3.2.8 - Object: Audio,Audio,nvol,integer,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,durfloors,object array,0,0,0,0,0
+2.6-202606,3.2.8 - Object: Audio,Audio,ext,object,0,0,0,0,0
+2.6-202606,3.2.9 - Object: Native,Native,request,string; required,1,0,0,0,0
+2.6-202606,3.2.9 - Object: Native,Native,ver,string; recommended,0,1,0,0,0
+2.6-202606,3.2.9 - Object: Native,Native,api,integer array,0,0,0,0,0
+2.6-202606,3.2.9 - Object: Native,Native,battr,integer array,0,0,0,0,0
+2.6-202606,3.2.9 - Object: Native,Native,ext,object,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,w,integer,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,h,integer,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,wratio,integer,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,hratio,integer,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,wmin,integer,0,0,0,0,0
+2.6-202606,3.2.10 - Object: Format,Format,ext,object,0,0,0,0,0
+2.6-202606,3.2.11 - Object: Pmp,Pmp,private_auction,integer; default 0,0,0,1,1,0
+2.6-202606,3.2.11 - Object: Pmp,Pmp,deals,object array,0,0,0,0,0
+2.6-202606,3.2.11 - Object: Pmp,Pmp,ext,object,0,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,id,string; required,1,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,bidfloor,float; default 0,0,0,1,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,bidfloorcur,"string; default ""USD""",0,0,1,0,1
+2.6-202606,3.2.12 - Object: Deal,Deal,at,integer,0,0,0,1,0
+2.6-202606,3.2.12 - Object: Deal,Deal,wseat,string array,0,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,wadomain,string array,0,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,guar,"integer, default 0",0,0,1,1,0
+2.6-202606,3.2.12 - Object: Deal,Deal,mincpmpersec,float,0,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,durfloors,object array,0,0,0,0,0
+2.6-202606,3.2.12 - Object: Deal,Deal,ext,object,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,id,string; recommended,0,1,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,name,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,domain,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.13 - Object: Site,Site,cat,string array,0,0,0,0,1
+2.6-202606,3.2.13 - Object: Site,Site,sectioncat,string array,0,0,0,0,1
+2.6-202606,3.2.13 - Object: Site,Site,pagecat,string array,0,0,0,0,1
+2.6-202606,3.2.13 - Object: Site,Site,page,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,ref,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,search,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,mobile,integer,0,0,0,1,0
+2.6-202606,3.2.13 - Object: Site,Site,privacypolicy,integer,0,0,0,1,0
+2.6-202606,3.2.13 - Object: Site,Site,publisher,object,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,content,object,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,keywords,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,kwarray,string array,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,inventorypartnerdomain,string,0,0,0,0,0
+2.6-202606,3.2.13 - Object: Site,Site,ext,object,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,id,string; recommended,0,1,0,0,0
+2.6-202606,3.2.14 - Object: App,App,name,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,bundle,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,domain,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,storeurl,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.14 - Object: App,App,cat,string array,0,0,0,0,1
+2.6-202606,3.2.14 - Object: App,App,sectioncat,string array,0,0,0,0,1
+2.6-202606,3.2.14 - Object: App,App,pagecat,string array,0,0,0,0,1
+2.6-202606,3.2.14 - Object: App,App,ver,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,privacypolicy,integer,0,0,0,1,0
+2.6-202606,3.2.14 - Object: App,App,paid,integer,0,0,0,1,0
+2.6-202606,3.2.14 - Object: App,App,publisher,object,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,content,object,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,keywords,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,kwarray,string array,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,inventorypartnerdomain,string,0,0,0,0,0
+2.6-202606,3.2.14 - Object: App,App,ext,object,0,0,0,0,0
+2.6-202606,3.2.15 - Object: Publisher,Publisher,id,string,0,0,0,0,0
+2.6-202606,3.2.15 - Object: Publisher,Publisher,name,string,0,0,0,0,0
+2.6-202606,3.2.15 - Object: Publisher,Publisher,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.15 - Object: Publisher,Publisher,cat,string array,0,0,0,0,1
+2.6-202606,3.2.15 - Object: Publisher,Publisher,domain,string,0,0,0,0,0
+2.6-202606,3.2.15 - Object: Publisher,Publisher,ext,object,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,id,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,episode,integer,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,title,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,series,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,season,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,artist,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,genre,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,gtax,int; default 9,0,0,1,0,1
+2.6-202606,3.2.16 - Object: Content,Content,genres,string array,0,0,0,0,1
+2.6-202606,3.2.16 - Object: Content,Content,album,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,isrc,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,producer,object,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,url,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.16 - Object: Content,Content,cat,string array,0,0,0,0,1
+2.6-202606,3.2.16 - Object: Content,Content,prodq,integer,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,context,integer,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,contentrating,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,userrating,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,qagmediarating,integer,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,keywords,string,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,kwarray,string array,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,livestream,int,0,0,0,1,0
+2.6-202606,3.2.16 - Object: Content,Content,sourcerelationship,integer,0,0,0,1,0
+2.6-202606,3.2.16 - Object: Content,Content,len,integer,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,language,string,0,0,0,0,1
+2.6-202606,3.2.16 - Object: Content,Content,langb,string,0,0,0,0,1
+2.6-202606,3.2.16 - Object: Content,Content,embeddable,integer,0,0,0,1,0
+2.6-202606,3.2.16 - Object: Content,Content,data,object array,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,network,object,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,channel,object,0,0,0,0,0
+2.6-202606,3.2.16 - Object: Content,Content,realtime,int,0,0,0,1,0
+2.6-202606,3.2.16 - Object: Content,Content,firstbroadcast,int,0,0,0,1,0
+2.6-202606,3.2.16 - Object: Content,Content,ext,object,0,0,0,0,0
+2.6-202606,3.2.17 - Object: Producer,Producer,id,string,0,0,0,0,0
+2.6-202606,3.2.17 - Object: Producer,Producer,name,string,0,0,0,0,0
+2.6-202606,3.2.17 - Object: Producer,Producer,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.17 - Object: Producer,Producer,cat,string array,0,0,0,0,1
+2.6-202606,3.2.17 - Object: Producer,Producer,domain,string,0,0,0,0,0
+2.6-202606,3.2.17 - Object: Producer,Producer,ext,object,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,geo,object; recommended,0,1,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,dnt,integer; recommended,0,1,0,1,0
+2.6-202606,3.2.18 - Object: Device,Device,lmt,integer; recommended,0,1,0,1,0
+2.6-202606,3.2.18 - Object: Device,Device,ua,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,sua,object,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,ip,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,ipv6,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,devicetype,integer,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,make,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,model,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,os,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,osv,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,hwv,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,h,integer,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,w,integer,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,ppi,integer,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,pxratio,float,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,js,integer,0,0,0,1,0
+2.6-202606,3.2.18 - Object: Device,Device,geofetch,integer,0,0,0,1,0
+2.6-202606,3.2.18 - Object: Device,Device,flashver,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,language,string,0,0,0,0,1
+2.6-202606,3.2.18 - Object: Device,Device,langb,string,0,0,0,0,1
+2.6-202606,3.2.18 - Object: Device,Device,carrier,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,mccmnc,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,connectiontype,integer,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,ifa,string,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,didsha1,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,didmd5,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,dpidsha1,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,dpidmd5,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,macsha1,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,macmd5,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.18 - Object: Device,Device,ext,object,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,lat,float,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,lon,float,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,type,integer,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,accuracy,integer,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,lastfix,integer,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,ipservice,integer,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,country,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,region,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,regionfips104,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,metro,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,city,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,zip,string,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,utcoffset,integer,0,0,0,0,0
+2.6-202606,3.2.19 - Object: Geo,Geo,ext,object,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,id,string,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,buyeruid,string,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,yob,integer; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,gender,string; DEPRECATED,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,keywords,string,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,kwarray,string array,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,customdata,string,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,geo,object,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,data,object array,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,consent,string,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,eids,object array,0,0,0,0,0
+2.6-202606,3.2.20 - Object: User,User,ext,object,0,0,0,0,0
+2.6-202606,3.2.21 - Object: Data,Data,id,string,0,0,0,0,0
+2.6-202606,3.2.21 - Object: Data,Data,name,string,0,0,0,0,0
+2.6-202606,3.2.21 - Object: Data,Data,cids,string array,0,0,0,0,0
+2.6-202606,3.2.21 - Object: Data,Data,segment,object array,0,0,0,0,0
+2.6-202606,3.2.21 - Object: Data,Data,ext,object,0,0,0,0,0
+2.6-202606,3.2.22 - Object: Segment,Segment,id,string,0,0,0,0,0
+2.6-202606,3.2.22 - Object: Segment,Segment,name,string,0,0,0,0,0
+2.6-202606,3.2.22 - Object: Segment,Segment,ext,object,0,0,0,0,0
+2.6-202606,3.2.23 - Object: Network,Network,id,string,0,0,0,0,0
+2.6-202606,3.2.23 - Object: Network,Network,name,string,0,0,0,0,0
+2.6-202606,3.2.23 - Object: Network,Network,domain,string,0,0,0,0,0
+2.6-202606,3.2.23 - Object: Network,Network,ext,object,0,0,0,0,0
+2.6-202606,3.2.24 - Object: Channel,Channel,id,string,0,0,0,0,0
+2.6-202606,3.2.24 - Object: Channel,Channel,name,string,0,0,0,0,0
+2.6-202606,3.2.24 - Object: Channel,Channel,domain,string,0,0,0,0,0
+2.6-202606,3.2.24 - Object: Channel,Channel,ext,object,0,0,0,0,0
+2.6-202606,3.2.25 - Object: SupplyChain,SupplyChain,complete,integer; required,1,0,0,1,0
+2.6-202606,3.2.25 - Object: SupplyChain,SupplyChain,nodes,object array; required,1,0,0,0,0
+2.6-202606,3.2.25 - Object: SupplyChain,SupplyChain,ver,string; required,1,0,0,0,0
+2.6-202606,3.2.25 - Object: SupplyChain,SupplyChain,ext,object,0,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,asi,string; required,1,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,sid,string; required,1,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,rid,string,0,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,name,string,0,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,domain,string,0,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,hp,integer,0,0,0,0,0
+2.6-202606,3.2.26 - Object: SupplyChainNode,SupplyChainNode,ext,object,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,inserter,string,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,source,string,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,matcher,string,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,mm,int,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,uids,object array,0,0,0,0,0
+2.6-202606,3.2.27 - Object: EID,EID,ext,object,0,0,0,0,0
+2.6-202606,3.2.28 - Object: UID,UID,id,string,0,0,0,0,0
+2.6-202606,3.2.28 - Object: UID,UID,atype,integer,0,0,0,0,0
+2.6-202606,3.2.28 - Object: UID,UID,ext,object,0,0,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,browsers,array of `BrandVersion` objects; recommended,0,1,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,platform,BrandVersion object; recommended,0,1,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,mobile,integer,0,0,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,architecture,string,0,0,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,bitness,string,0,0,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,model,string,0,0,0,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,source,integer; default 0,0,0,1,0,0
+2.6-202606,3.2.29 - Object: UserAgent,UserAgent,ext,object,0,0,0,0,0
+2.6-202606,3.2.30 - Object: BrandVersion,BrandVersion,brand,string; required,1,0,0,0,0
+2.6-202606,3.2.30 - Object: BrandVersion,BrandVersion,version,array of string,0,0,0,0,0
+2.6-202606,3.2.30 - Object: BrandVersion,BrandVersion,ext,object,0,0,0,0,0
+2.6-202606,3.2.31 - Object: Qty,Qty,multiplier,float; required,1,0,0,0,0
+2.6-202606,3.2.31 - Object: Qty,Qty,sourcetype,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.31 - Object: Qty,Qty,vendor,string; required if sourcetype is present and type = 1,1,0,0,0,0
+2.6-202606,3.2.31 - Object: Qty,Qty,ext,object,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,id,string; recommended,0,1,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,name,string,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,venuetype,"string, array",0,0,0,0,1
+2.6-202606,3.2.32 - Object: DOOH,DOOH,venuetypetax,integer; default 1,0,0,1,0,1
+2.6-202606,3.2.32 - Object: DOOH,DOOH,publisher,object,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,domain,string,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,keywords,string,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,content,object,0,0,0,0,0
+2.6-202606,3.2.32 - Object: DOOH,DOOH,ext,object,0,0,0,0,0
+2.6-202606,3.2.33 - Object: Refresh,Refresh,refsettings,object array; recommended,0,1,0,0,0
+2.6-202606,3.2.33 - Object: Refresh,Refresh,count,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.33 - Object: Refresh,Refresh,ext,object,0,0,0,0,0
+2.6-202606,3.2.34 - Object: RefSettings,RefSettings,reftype,integer; default 0; recommended,0,1,1,0,0
+2.6-202606,3.2.34 - Object: RefSettings,RefSettings,minint,integer; recommended,0,1,0,0,0
+2.6-202606,3.2.34 - Object: RefSettings,RefSettings,ext,object,0,0,0,0,0
+2.6-202606,3.2.35 - Object: DurFloors,DurFloors,mindur,integer,0,0,0,0,0
+2.6-202606,3.2.35 - Object: DurFloors,DurFloors,maxdur,integer,0,0,0,0,0
+2.6-202606,3.2.35 - Object: DurFloors,DurFloors,bidfloor,float; default 0,0,0,1,0,0
+2.6-202606,3.2.35 - Object: DurFloors,DurFloors,ext,object,0,0,0,0,0
+2.6-202606,4.1 - Object Model,,BidResponse,4.2.1,0,0,0,0,0
+2.6-202606,4.1 - Object Model,,SeatBid,4.2.2,0,0,0,0,0
+2.6-202606,4.1 - Object Model,,Bid,4.2.3,0,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,id,string; required,1,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,seatbid,object array,0,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,bidid,string,0,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,cur,"string; default ""USD""",0,0,1,0,1
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,customdata,string,0,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,nbr,integer,0,0,0,0,0
+2.6-202606,4.2.1 - Object: BidResponse,BidResponse,ext,object,0,0,0,0,0
+2.6-202606,4.2.2 - Object: SeatBid,SeatBid,bid,object array; required,1,0,0,0,0
+2.6-202606,4.2.2 - Object: SeatBid,SeatBid,seat,string,0,0,0,0,0
+2.6-202606,4.2.2 - Object: SeatBid,SeatBid,group,integer; default 0,0,0,1,1,0
+2.6-202606,4.2.2 - Object: SeatBid,SeatBid,ext,object,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,id,string; required,1,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,impid,string; required,1,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,price,float; required,1,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,nurl,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,burl,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,lurl,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,adm,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,adid,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,adomain,string array,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,bundle,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,iurl,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,cid,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,crid,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,tactic,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,cattax,integer; default 1,0,0,1,0,1
+2.6-202606,4.2.3 - Object: Bid,Bid,cat,string array,0,0,0,0,1
+2.6-202606,4.2.3 - Object: Bid,Bid,attr,integer array,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,apis,integer array,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,api,integer; DEPRECATED,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,protocol,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,qagmediarating,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,language,string,0,0,0,0,1
+2.6-202606,4.2.3 - Object: Bid,Bid,langb,string,0,0,0,0,1
+2.6-202606,4.2.3 - Object: Bid,Bid,dealid,string,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,w,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,h,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,wratio,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,hratio,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,exp,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,dur,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,mtype,integer,0,0,0,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,slotinpod,integer; default 0,0,0,1,0,0
+2.6-202606,4.2.3 - Object: Bid,Bid,ext,object,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,Bid Price,${AUCTION_PRICE},0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$1.00,$1.00,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$0.90,Empty string,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$0.80,Empty string,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,Invalid,n/a,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,Bid Price,${AUCTION_PRICE},0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$1.00,$0.91,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$0.90,Empty string,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,$0.80,Empty string,0,0,0,0,0
+2.6-202606,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,Invalid,n/a,0,0,0,0,0
+3.0,Object:  Openrtb,Openrtb,ver,string,0,0,0,0,0
+3.0,Object:  Openrtb,Openrtb,domainspec,string; default “adcom”,0,0,1,0,0
+3.0,Object:  Openrtb,Openrtb,domainver,string; required,1,0,0,0,0
+3.0,Object:  Openrtb,Openrtb,request,object; required,1,0,0,0,0
+3.0,Object:  Openrtb,Openrtb,response,object; required,1,0,0,0,0
+3.0,Object:  Request,Request,id,string; required,1,0,0,0,0
+3.0,Object:  Request,Request,test,integer; default 0,0,0,1,1,0
+3.0,Object:  Request,Request,tmax,integer,0,0,0,0,0
+3.0,Object:  Request,Request,at,integer; default 2,0,0,1,1,0
+3.0,Object:  Request,Request,cur,string array; default [“USD”],0,0,1,0,1
+3.0,Object:  Request,Request,seat,string array,0,0,0,0,0
+3.0,Object:  Request,Request,wseat,integer; default 1,0,0,1,1,0
+3.0,Object:  Request,Request,cdata,string,0,0,0,0,0
+3.0,Object:  Request,Request,source,object,0,0,0,0,0
+3.0,Object:  Request,Request,item,object array; required,1,0,0,0,0
+3.0,Object:  Request,Request,package,integer,0,0,0,1,0
+3.0,Object:  Request,Request,context,object; recommended,0,1,0,0,0
+3.0,Object:  Request,Request,ext,object,0,0,0,0,0
+3.0,Object:  Source,Source,tid,string; recommended,0,1,0,0,0
+3.0,Object:  Source,Source,ts,integer; recommended,0,1,0,0,0
+3.0,Object:  Source,Source,ds,string; recommended,0,1,0,0,0
+3.0,Object:  Source,Source,dsmap,string,0,0,0,0,0
+3.0,Object:  Source,Source,cert,string; recommended,0,1,0,0,0
+3.0,Object:  Source,Source,digest,string,0,0,0,0,0
+3.0,Object:  Source,Source,schain,object; recommended,0,1,0,0,0
+3.0,Object:  Source,Source,pchain,string,0,0,0,0,0
+3.0,Object:  Source,Source,ext,object,0,0,0,0,0
+3.0,Object:  Item,Item,id,string; required,1,0,0,0,0
+3.0,Object:  Item,Item,qty,integer; default 1,0,0,1,0,0
+3.0,Object:  Item,Item,qtyflt,float,0,0,0,0,0
+3.0,Object:  Item,Item,seq,integer,0,0,0,0,0
+3.0,Object:  Item,Item,flr,float,0,0,0,0,0
+3.0,Object:  Item,Item,flrcur,string; default “USD”,0,0,1,0,1
+3.0,Object:  Item,Item,exp,integer,0,0,0,0,0
+3.0,Object:  Item,Item,dt,integer,0,0,0,0,0
+3.0,Object:  Item,Item,dlvy,integer; default 0,0,0,1,1,0
+3.0,Object:  Item,Item,metric,object array,0,0,0,0,0
+3.0,Object:  Item,Item,deal,object array,0,0,0,0,0
+3.0,Object:  Item,Item,private,integer; default 0,0,0,1,1,0
+3.0,Object:  Item,Item,spec,object; required,1,0,0,0,0
+3.0,Object:  Item,Item,ext,object,0,0,0,0,0
+3.0,Object:  Deal,Deal,id,string; required,1,0,0,0,0
+3.0,Object:  Deal,Deal,flr,float,0,0,0,0,0
+3.0,Object:  Deal,Deal,flrcur,"string; default ""USD""",0,0,1,0,1
+3.0,Object:  Deal,Deal,at,integer,0,0,0,1,0
+3.0,Object:  Deal,Deal,wseat,string array,0,0,0,0,0
+3.0,Object:  Deal,Deal,wadomain,string array,0,0,0,0,0
+3.0,Object:  Deal,Deal,ext,object,0,0,0,0,0
+3.0,Object:  Metric,Metric,type,string; required,1,0,0,0,0
+3.0,Object:  Metric,Metric,vendor,string; recommended,0,1,0,0,0
+3.0,Object:  Metric,Metric,ext,object,0,0,0,0,0
+3.0,Object:  Response,Response,id,string; required,1,0,0,0,0
+3.0,Object:  Response,Response,bidid,string,0,0,0,0,0
+3.0,Object:  Response,Response,nbr,integer,0,0,0,0,0
+3.0,Object:  Response,Response,cur,string; default “USD”,0,0,1,0,1
+3.0,Object:  Response,Response,cdata,string,0,0,0,0,0
+3.0,Object:  Response,Response,seatbid,object array,0,0,0,0,0
+3.0,Object:  Response,Response,ext,object,0,0,0,0,0
+3.0,Object:  Seatbid,Seatbid,seat,"string, recommended",0,1,0,0,0
+3.0,Object:  Seatbid,Seatbid,package,integer; default 0,0,0,1,1,0
+3.0,Object:  Seatbid,Seatbid,bid,object array; required,1,0,0,0,0
+3.0,Object:  Seatbid,Seatbid,ext,object,0,0,0,0,0
+3.0,Object:  Bid,Bid,id,string; recommended,0,1,0,0,0
+3.0,Object:  Bid,Bid,item,string; required,1,0,0,0,0
+3.0,Object:  Bid,Bid,price,float; required,1,0,0,0,0
+3.0,Object:  Bid,Bid,deal,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,cid,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,tactic,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,purl,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,burl,string; recommended,0,1,0,0,0
+3.0,Object:  Bid,Bid,lurl,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,exp,integer,0,0,0,0,0
+3.0,Object:  Bid,Bid,mid,string,0,0,0,0,0
+3.0,Object:  Bid,Bid,macro,object array,0,0,0,0,0
+3.0,Object:  Bid,Bid,media,object,0,0,0,0,0
+3.0,Object:  Bid,Bid,ext,object,0,0,0,0,0
+3.0,Object:  Macro,Macro,key,string; required,1,0,0,0,0
+3.0,Object:  Macro,Macro,ext,object,0,0,0,0,0
+3.0,Appendix B:  Change Log,,Version,Release,0,0,0,0,0
+3.0,Appendix B:  Change Log,,3.0,June 2020,0,0,0,0,0
+3.0,Appendix B:  Change Log,,3.0,February 2020,0,0,0,0,0
+3.0,Appendix B:  Change Log,,3.0,November 2019,0,0,0,0,0
+3.0,Appendix B:  Change Log,,3.0,November 2018,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.5,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.4,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.3,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.2,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.1,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,2.0,N/A,0,0,0,0,0
+3.0,Appendix B:  Change Log,,1.0,N/A,0,0,0,0,0

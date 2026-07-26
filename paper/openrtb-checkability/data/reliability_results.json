@@ -1,0 +1,82 @@
+{
+ "author_vs_run1": {
+  "percent_agreement": 81.7,
+  "kappa": 0.77
+ },
+ "author_vs_run2": {
+  "percent_agreement": 83.3,
+  "kappa": 0.791
+ },
+ "run1_vs_run2": {
+  "percent_agreement": 98.3,
+  "kappa": 0.979
+ },
+ "disagreements": [
+  {
+   "id": 47,
+   "author": "B",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 101,
+   "author": "X",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 135,
+   "author": "B",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 140,
+   "author": "B",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 193,
+   "author": "A",
+   "run1": "B",
+   "run2": "B"
+  },
+  {
+   "id": 279,
+   "author": "C",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 302,
+   "author": "D",
+   "run1": "C",
+   "run2": "C"
+  },
+  {
+   "id": 332,
+   "author": "A",
+   "run1": "B",
+   "run2": "A"
+  },
+  {
+   "id": 346,
+   "author": "X",
+   "run1": "A",
+   "run2": "A"
+  },
+  {
+   "id": 390,
+   "author": "X",
+   "run1": "D",
+   "run2": "D"
+  },
+  {
+   "id": 412,
+   "author": "A",
+   "run1": "B",
+   "run2": "B"
+  }
+ ]
+}

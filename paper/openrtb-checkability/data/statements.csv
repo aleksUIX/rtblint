@@ -1,0 +1,418 @@
+spec,stratum,section,object,field,text,obligation,auto_class,auto_rationale
+2.6-202606,prose,Getting Started,,,"Not all objects are “required,” and each object may contain several optional parameters.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"As that term is used herein, “required” attributes are designated as such if their omission would technically break the protocol.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"This means that it is technically possible for two implementers to conduct a minimally viable transaction if all required attributes are included, and impossible without them.",obligation,B,cross-field/registry language
+2.6-202606,prose,Getting Started,,,"This does not, however, mean that including only required attributes will be satisfactory to implementers for business reasons.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"For example, a request with only required attributes does not supply any context about what is being bid on, such as whether it is for a site or app, or which site/app it is for.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"Some optional attributes are denoted ""recommended."" As that term is used herein “recommended” means that their inclusion is customary and, thus, likely to be expected by most implementers.",recommendation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"While they are not required for a minimally viable transaction to occur, the market norm is to include such attributes; implementers may be unwilling to transact unless these attributes are included.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"The designation as ""recommended"" is based on awareness of these market norms and should not be interpreted as a suggestion by IAB Tech Lab that an implementer propagate any specific attribute.",recommendation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"Implementers should determine which attributes they will make available based on discussion with their business partners, and in a manner consistent with applicable law.",recommendation,,needs manual coding
+2.6-202606,field-desc,Getting Started,,Examples of required attributes. Grouped at the tops of tables for convenience,string; required ...,obligation,A,type/enum wording
+2.6-202606,field-desc,Getting Started,,Examples of recommended attributes. Grouped after required attributes.,object; recommended ...,recommendation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"Example of how Required, Recommended and Optional attributes are presented.",obligation,,needs manual coding
+2.6-202606,prose,Getting Started,,,"IMPORTANT: Since recommended attributes are not required, they may not be available from all supply sources.",obligation,,needs manual coding
+2.6-202606,prose,2. OpenRTB Basics,,,"The win notice informs the bidder’s pricing algorithms of a success, whereas the billing notice indicates that spend should actually be applied.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,2.1 - Transport,,,"Specifically, HTTP POST is required for bid requests to accommodate greater payloads than HTTP GET and facilitate the use of binary representations.",obligation,,needs manual coding
+2.6-202606,prose,2.1 - Transport,,,Win notices may be either POST or GET at the discretion of the exchange.,permission,D,bilateral/policy language
+2.6-202606,prose,2.1 - Transport,,,"Calls returning content (e.g., any bid response, a win notice that returns markup) should return HTTP code 200.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,2.1 - Transport,,,"Calls returning no content in response to valid requests (e.g., an empty bid response which is one option for indicating no-bid, a win notice that does not return markup) should return HTTP 204.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,2.1 - Transport,,,"Invalid calls (e.g., a bid request containing a malformed or corrupt payload) should return HTTP 400 with no content.",recommendation,,needs manual coding
+2.6-202606,prose,2.2 - Security,,,HTTPS is not technically required for a functioning OpenRTB implementation.,obligation,,needs manual coding
+2.6-202606,prose,2.2 - Security,,,It is strongly recommended that exchanges and bidders use only HTTPS.,recommendation,,needs manual coding
+2.6-202606,prose,2.3 - Data Format,,,"Optionally, an exchange may also offer binary representations (e.g., compressed JSON, ProtoBuf, Avro, etc.), which can be more efficient in terms of transmission time and bandwidth.",permission,D,"permission, no conformance test"
+2.6-202606,prose,2.3 - Data Format,,,The IAB Tech Lab may offer reference implementations for these or other formats.,permission,D,"permission, no conformance test"
+2.6-202606,prose,2.3 - Data Format,,,"When available, the use of these reference implementations is highly recommended to reduce exchange-specific variations.",recommendation,D,bilateral/policy language
+2.6-202606,prose,2.3 - Data Format,,,The format of the bid response must be the same as the bid request.,obligation,,needs manual coding
+2.6-202606,prose,2.5 - OpenRTB Version HTTP Header,,,The OpenRTB Version should be passed in the header of a bid request with a custom header parameter.,recommendation,,needs manual coding
+2.6-202606,prose,2.5 - OpenRTB Version HTTP Header,,,"Additionally, it is recommended albeit optional that bidders place an identically formatted message in the HTTP header of the response with the protocol version the bidder has implemented.",recommendation,,needs manual coding
+2.6-202606,prose,2.5 - OpenRTB Version HTTP Header,,,The message may contain a different version number than the request header.,permission,D,"permission, no conformance test"
+2.6-202606,prose,2.5 - OpenRTB Version HTTP Header,,,This version should be specified as ` .,recommendation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,"In other words, OpenRTB 2.7 should be considered a distinct version from OpenRTB 2.6 when there is a need for distinguishing versions.",recommendation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,"- Bidders and exchanges must tolerate receiving new or unexpected fields and enumerated list values gracefully, treating them as unknown or ignoring them",obligation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,- Bidders and exchanges should freely transmit new fields or enumerated list values,recommendation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,"For example, if a new field or object is introduced in a future version of OpenRTB 2.6, exchanges should immediately start transmitting it to bidders, if the exchange chooses to implement support for that field.",recommendation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,"Bidders should start consuming it at their discretion, if it is relevant to them.",recommendation,D,bilateral/policy language
+2.6-202606,prose,2.6 - Versioning Behavior,,,"Neither party needs to explicitly negotiate an ""upgrade"" to the latest release, but rather should discuss specific fields of interest as they become available.",recommendation,,needs manual coding
+2.6-202606,prose,2.6 - Versioning Behavior,,,New minor versions of OpenRTB 2.6 may introduce additional optional ways of handling things.,permission,D,"permission, no conformance test"
+2.6-202606,prose,2.6 - Versioning Behavior,,,Partners should discuss such situations before making breaking changes to their integrations.,recommendation,,needs manual coding
+2.6-202606,prose,2.9 - Customization and Extensions,,,Any object may contain extensions.,permission,D,"permission, no conformance test"
+2.6-202606,prose,2.9 - Customization and Extensions,,,"To keep extension fields consistent across platforms, they should consistently be named `ext`.",recommendation,,needs manual coding
+2.6-202606,prose,3. Bid Request Specification,,,"The bid request consists of the top-level bid request object, at least one impression object, and may optionally include additional objects providing impression context.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.1 - Object Model,,,"Of its direct subordinates, only `Imp` is technically required since it is fundamental to describing the impression being sold and it requires at least one of `Banner` (which may allow multiple formats), `Video`, `Audio`, and `Native` to define the type of impression (i.e., whichever one or more the publisher is willing to accept; although a bid will be for exactly one of those specified).",obligation,,needs manual coding
+2.6-202606,prose,3.2.1 - Object: BidRequest,BidRequest,,This `id` attribute is required as is at least one impression object (Section 3.2.4).,obligation,,needs manual coding
+2.6-202606,prose,3.2.1 - Object: BidRequest,BidRequest,,"These objects are highly recommended, but only one applies to a given bid request depending on whether the media is browser-based web content, a non-browser application, or Digital Out of Home inventory respectively.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,id,The exchange may use different values for different recipients.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,imp,At least 1 `Imp` object is required.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,site,Only applicable and recommended for websites.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,app,Only applicable and recommended for apps.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,dooh,This object should be included if the ad supported content is a Digital Out-Of-Home screen.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,dooh,A bid request with a DOOH object must not contain a site or app object.,obligation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,wseat,IDs of seats and knowledge of the buyer’s customers to which they refer must be coordinated between bidders and the exchange a priori.,obligation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,wseat,"At most, only one of `wseat` and `bseat` should be used in the same request.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,bseat,IDs of seats and knowledge of the buyer’s customers to which they refer must be coordinated between bidders and the exchange a priori.,obligation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,bseat,"At most, only one of `wseat` and `bseat` should be used in the same request.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,cur,Recommended only if the exchange accepts multiple currencies.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,wlang,Only one of `wlang` or `wlangb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,wlangb,Only one of `wlang` or `wlangb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,acat,Only one of `acat` or `bcat` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,bcat,Only one of `acat` or `bcat` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,bapp,"For mobile apps in Google Play Store, these should be bundle or package names (e.g. com.foo.mygame).",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.1 - Object: BidRequest,BidRequest,bapp,"For apps in Apple App Store, these should be a numeric ID.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.2 - Object: Source,Source,tid,"Transaction ID that must be common across all participants in this bid request (e.g., potentially multiple exchanges).",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.3 - Object: Regs,Regs,gpp_sid,Array of the section(s) of the string which should be applied for this transaction.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.3 - Object: Regs,Regs,gpp_sid,"Generally will contain one and only one value, but there are edge cases where more than one may apply.",permission,D,bilateral/policy language
+2.6-202606,prose,3.2.4 - Object: Imp,Imp,,Each `Imp` object has a required ID so that bids can reference them individually.,obligation,,needs manual coding
+2.6-202606,prose,3.2.4 - Object: Imp,Imp,,"However, any given bid for the impression must conform to one of the offered type.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,banner,A `Banner` object (section 3.2.6); required if this impression is offered as a banner ad opportunity.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,video,A `Video` object (Section 3.2.7); required if this impression is offered as a video ad opportunity.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,audio,An `Audio` object (Section 3.2.8); required if this impression is offered as an audio ad opportunity.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,native,A `Native` object (Section 3.2.9); required if this impression is offered as a native ad opportunity.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,displaymanager,Recommended for video and/or apps.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,displaymanagerver,Recommended for video and/or apps.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,bidfloorcur,This may be different from bid currency returned by bidder if this is allowed by the exchange.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.4 - Object: Imp,Imp,exp,Advisory as to the number of seconds that may elapse between the auction and the actual impression.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.5 - Object: Metric,Metric,type,Type of metric being presented using exchange curated string names which should be published to bidders a priori.,recommendation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.5 - Object: Metric,Metric,vendor,Source of the value using exchange curated string names which should be published to bidders a priori.,recommendation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.5 - Object: Metric,Metric,vendor,"If the exchange itself is the source versus a third party, “EXCHANGE” is recommended.",recommendation,,needs manual coding
+2.6-202606,prose,3.2.6 - Object: Banner,Banner,,"Although the term “banner” may have very specific meaning in other contexts, here it can be many things including a simple static image, an expandable ad unit, or even in-banner video (refer to the `Video` object in Section 3.2.7 for the more generalized and full featured video ad units).",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.6 - Object: Banner,Banner,,An array of `Banner` objects can also appear within the `Video` to describe optional companion ads defined in the VAST specification.,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.6 - Object: Banner,Banner,,"At the publisher’s discretion, that same impression may also be offered as video, audio, and/or native by also including as `Imp` subordinates objects of those types.",permission,D,bilateral/policy language
+2.6-202606,prose,3.2.6 - Object: Banner,Banner,,"However, any given bid for the impression must conform to one of the offered types.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,format,"If none are specified, then use of the `h` and `w` attributes is highly recommended.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,w,Exact width in device-independent pixels (DIPS); recommended if no `Format` objects are specified.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,h,Exact height in device-independent pixels (DIPS); recommended if no `Format` objects are specified.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,mimes,Popular MIME types may include `“image/jpeg”` and `“image/gif”`.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,expdir,Directions in which the banner may expand.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,id,Recommended when `Banner` objects are used with a `Video` object (Section 3.2.7) to represent an array of companion ads.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.6 - Object: Banner,Banner,id,Values usually start at 1 and increase with each object; should be unique within an impression.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.7 - Object: Video,Video,,"At the publisher’s discretion, that same impression may also be offered as `Banner`, `Audio`, and/or `Native` by also including as `Imp` subordinates objects of those types.",permission,D,bilateral/policy language
+2.6-202606,prose,3.2.7 - Object: Video,Video,,"However, any given bid for the impression must conform to one of the offered types.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,minduration,This field is mutually exclusive with `rqddurs`; only one of `minduration` and `rqddurs` may be in a bid request.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,maxduration,This field is mutually exclusive with `rqddurs`; only one of `maxduration` and `rqddurs` may be in a bid request.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,maxseq,Indicates the maximum number of ads that may be served into a “dynamic” video ad pod (where the precise number of ads is not predetermined by the seller).,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,poddur,"Indicates the total amount of time in seconds that advertisers may fill for a “dynamic” video ad pod (See Section 7.6 for more details), or the dynamic portion of a “hybrid” ad pod.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,poddur,This field is required only for the dynamic portion(s) of video ad pods.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,rqddurs,"This field is mutually exclusive with `minduration` and `maxduration`; if rqddurs is specified, `minduration` and `maxduration` must not be specified and vice versa.",obligation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,linearity,"Indicates if the impression must be linear, nonlinear, etc.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,skip,"If a bidder sends markup/creative that is itself skippable, the `Bid` object should include the `attr` array with an element of 16 indicating skippable video.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,skipafter,Number of seconds a video must play before skipping is enabled; only applicable if the ad is skippable.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,mincpmpersec,"This is a price floor for the ""dynamic"" portion of a video ad pod, relative to the duration of bids an advertiser may submit.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,maxextended,"If blank or 0, extension is not allowed.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,playbackmethod,Playback methods that may be in use.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,playbackmethod,"If none are specified, any method may be used.",permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,playbackmethod,"As a result, this array may be converted to an integer in a future version of the specification.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,companiontype,Recommended if companion `Banner` objects are included via the `companionad` array.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.7 - Object: Video,Video,durfloors,An array of `DurFloors` objects (Section 3.2.35) indicating the floor prices for video creatives of various durations that the buyer may bid with.,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.8 - Object: Audio,Audio,,"At the publisher’s discretion, that same impression may also be offered as `Banner`, `Video`, and/or `Native` by also including as `Imp` subordinates objects of those types.",permission,D,bilateral/policy language
+2.6-202606,prose,3.2.8 - Object: Audio,Audio,,"However, any given bid for the impression must conform to one of the offered types.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,minduration,This field is mutually exclusive with `rqddurs`; only one of `minduration` and `rqddurs` may be in a bid request.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,maxduration,This field is mutually exclusive with `rqddurs`; only one of `maxduration` and `rqddurs` may be in a bid request.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,poddur,"Indicates the total amount of time that advertisers may fill for a ""dynamic"" audio ad pod, or the dynamic portion of a ""hybrid"" ad pod.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,poddur,This field is required only for the dynamic portion(s) of audio ad pods.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,rqddurs,"This field is mutually exclusive with `minduraiton` and `maxduration`; if `rqddurs` is specified, `minduraiton` and `maxduration` must not be specified and vice versa.",obligation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,mincpmpersec,"This is a price floor for the “dynamic” portion of an audio ad pod, relative to the duration of bids an advertiser may submit.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,maxextended,"If blank or 0, extension is not allowed.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,companiontype,Recommended if companion `Banner` objects are included via the `companionad` array.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.8 - Object: Audio,Audio,durfloors,An array of `DurFloors` objects (Section 3.2.35) indicating the floor prices for audio creatives of various durations that the buyer may bid with.,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.9 - Object: Native,Native,,"As such, the response must be well-structured to afford the publisher fine-grained control over rendering.",obligation,,needs manual coding
+2.6-202606,prose,3.2.9 - Object: Native,Native,,"At the publisher’s discretion, that same impression may also be offered as `Banner`, `Video`, and/or `Audio` by also including as `Imp` subordinates objects of those types.",permission,D,bilateral/policy language
+2.6-202606,prose,3.2.9 - Object: Native,Native,,"However, any given bid for the impression must conform to one of the offered types.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.9 - Object: Native,Native,ver,Version of the Dynamic Native Ads API to which `request` complies; highly recommended for efficient parsing.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.10 - Object: Format,Format,,"It is recommended that either the `w`/`h` pair or the `wratio`/`hratio`/`wmin` set (i.e., for Flex Ads) be specified.",recommendation,B,cross-field/registry language
+2.6-202606,prose,3.2.11 - Object: Pmp,Pmp,,This object is the private marketplace container for direct deals between buyers and sellers that may pertain to this impression.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.12 - Object: Deal,Deal,bidfloorcur,This may be different from bid currency returned by bidder if this is allowed by the exchange.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.12 - Object: Deal,Deal,at,"Optional override of the overall auction type of the bid request, where 1 = First Price, 2 = Second Price Plus, 3 = the value passed in `bidfloor` is the agreed upon deal price.",permission,A,type/enum wording
+2.6-202606,field-desc,3.2.12 - Object: Deal,Deal,wseat,IDs of seats and the buyer’s customers to which they refer must be coordinated between bidders and the exchange a priori.,obligation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.12 - Object: Deal,Deal,guar,"Indicates that the deal is of type `guaranteed` and the bidder must bid on the deal, where 0 = not a guaranteed deal, 1 = guaranteed deal.",obligation,A,type/enum wording
+2.6-202606,field-desc,3.2.12 - Object: Deal,Deal,mincpmpersec,"This is a price floor for video or audio impression opportunities, relative to the duration of bids an advertiser may submit.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.13 - Object: Site,Site,,This object should be included if the ad supported content is a website as opposed to a non-browser application or Digital Out of Home (DOOH) inventory.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.13 - Object: Site,Site,,"A bid request must not contain more than one of a `Site`, `App` or `DOOH` object.",obligation,B,cross-field/registry language
+2.6-202606,prose,3.2.13 - Object: Site,Site,,"At a minimum, it is useful to provide a site ID or page URL, but this is not strictly required.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.13 - Object: Site,Site,name,Site name (may be aliased at the publisher's request).,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.13 - Object: Site,Site,keywords,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.13 - Object: Site,Site,kwarray,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.13 - Object: Site,Site,kwarray,The content owner's domain should be listed in the site owner's ads.txt file as an `inventorypartnerdomain`.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.13 - Object: Site,Site,inventorypartnerdomain,The content owner's domain should be listed in the site owner's ads.txt file as an `inventorypartnerdomain`.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.14 - Object: App,App,,This object should be included if the ad supported content is a non-browser application (typically in mobile) as opposed to a website.,recommendation,D,bilateral/policy language
+2.6-202606,prose,3.2.14 - Object: App,App,,"A bid request must not contain more than one of a `Site`, `App` or `DOOH` object.",obligation,B,cross-field/registry language
+2.6-202606,prose,3.2.14 - Object: App,App,,"At a minimum, it is useful to provide an App ID or bundle, but this is not strictly required.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.14 - Object: App,App,name,App name (may be aliased at the publisher's request).,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.14 - Object: App,App,bundle,"For mobile apps in Google Play Store, these should be bundle or package names (e.g. com.foo.mygame).",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.14 - Object: App,App,bundle,"For apps in Apple App Store, these should be a numeric ID.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.14 - Object: App,App,keywords,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.14 - Object: App,App,kwarray,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.14 - Object: App,App,kwarray,The content owner's domain should be listed in the app owner's app-ads.txt file as an `inventorypartnerdomain`.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.14 - Object: App,App,inventorypartnerdomain,The content owner's domain should be listed in the app owner's app-ads.txt file as an `inventorypartnerdomain`.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.15 - Object: Publisher,Publisher,,"This may be a publisher, intermediary exchange, ad network, etc.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.15 - Object: Publisher,Publisher,id,Every ID must map to only a single entity that is paid for inventory transacted via that ID.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.15 - Object: Publisher,Publisher,name,Seller name (may be aliased at the seller's request).,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.16 - Object: Content,Content,,"This object describes the content in which the impression will appear, which may be syndicated or non-syndicated content.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.16 - Object: Content,Content,,This object may be useful when syndicated content contains impressions and does not necessarily match the publisher’s general content.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.16 - Object: Content,Content,keywords,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.16 - Object: Content,Content,kwarray,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.16 - Object: Content,Content,language,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.16 - Object: Content,Content,langb,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,prose,3.2.17 - Object: Producer,Producer,,This is particularly useful when the content is syndicated and may be distributed through different publishers and thus when the producer and publisher are not necessarily the same entity.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.17 - Object: Producer,Producer,id,Useful if content is syndicated and may be posted on a site using embed tags.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,lmt,"“Limit Ad Tracking” signal commercially endorsed (e.g., iOS, Android), where 0 = tracking is unrestricted, 1 = tracking must be limited per commercial guidelines.",obligation,A,type/enum wording
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,ua,"For backwards compatibility, exchanges are recommended to always populate `ua` with the User-Agent string, when available from the end user’s device, even if an alternative representation, such as the User-Agent Client-Hints, is available and is used to populate `sua`.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,ua,"If a client supports User-Agent Client Hints, and `sua` field is present, bidders are recommended to rely on `sua` for detecting device type, browser type and version and other purposes that rely on the user agent information, and ignore `ua` field.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,ua,This is because the `ua` may contain a frozen or reduced user agent string.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,sua,"If both `ua` and `sua` are present in the bid request, `sua` should be considered the more accurate representation of the device attributes.",recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,sua,This is because the `ua` may contain a frozen or reduced user agent string.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,language,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,langb,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,carrier,"Carrier or ISP (e.g., “VERIZON”) using exchange curated string names which should be published to bidders a priori.",recommendation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,mccmnc,Note that the dash between the MCC and MNC parts is required to remove parsing ambiguity.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.18 - Object: Device,Device,mccmnc,"Roaming may be inferred by a combination of the MCC-MNC, geo, IP and other data signals.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.19 - Object: Geo,Geo,,The `lat`/`lon` attributes should only be passed if they conform to the accuracy depicted in the `type` attribute.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.19 - Object: Geo,Geo,,"For example, the centroid of a geographic region such as postal code should not be passed.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.19 - Object: Geo,Geo,type,Source of location data; recommended when passing `lat`/`lon`.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.19 - Object: Geo,Geo,accuracy,"Estimated location accuracy in meters; recommended when `lat`/`lon` are specified and derived from a device’s location services (i.e., type = 1).",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.19 - Object: Geo,Geo,lastfix,Note that devices may cache location data across multiple fetches.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.19 - Object: Geo,Geo,lastfix,"Ideally, this value should be from the time the actual fix was taken.",recommendation,,needs manual coding
+2.6-202606,prose,3.2.20 - Object: User,User,,The user `id` is an exchange artifact and may be subject to rotation or other privacy policies.,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.20 - Object: User,User,,"However, when present, this user ID should be stable long enough to serve reasonably as the basis for frequency capping and retargeting.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.20 - Object: User,User,keywords,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.20 - Object: User,User,kwarray,Only one of `keywords` or `kwarray` may be present.,permission,B,cross-field/registry language
+2.6-202606,field-desc,3.2.20 - Object: User,User,customdata,Optional feature to pass bidder data that was set in the exchange’s cookie.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.20 - Object: User,User,customdata,The string must be in base85 cookie safe characters and be in any format.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.20 - Object: User,User,customdata,Proper JSON encoding must be used to include “escaped” quotation marks.,obligation,,needs manual coding
+2.6-202606,prose,3.2.21 - Object: Data,Data,,This data may be from multiple sources whether from the exchange itself or third parties as specified by the `id` field.,permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.21 - Object: Data,Data,,The specific data providers in use should be published by the exchange a priori to its bidders.,recommendation,D,bilateral/policy language
+2.6-202606,prose,3.2.22 - Object: Segment,Segment,,The specific segment names and value options must be published by the exchange a priori to its bidders.,obligation,D,bilateral/policy language
+2.6-202606,field-desc,3.2.23 - Object: Network,Network,id,This may not be a unique identifier across all supply sources.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.23 - Object: Network,Network,domain,It is recommended to include the top private domain (PSL+1) for DSP targeting normalization purposes.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.24 - Object: Channel,Channel,id,This may not be a unique identifier across all supply sources.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.24 - Object: Channel,Channel,domain,It is recommended to include the top private domain (PSL+1) for DSP targeting normalization purposes.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,asi,"This may be the operational domain of the system, if that is different than the parent corporate domain, to facilitate WHOIS and reverse IP lookups to establish clear ownership of the delegate system.",permission,C,runtime/cross-message language
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,asi,This should be the same value as used to identify sellers in an ads.txt file if one exists.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,sid,This must contain the same value used in transactions (i.e.,obligation,,needs manual coding
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,sid,Should be limited to 64 characters in length.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,name,This value is optional and should NOT be included if it exists in the advertising system’s sellers.json file.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,domain,This value is optional and should NOT be included if it exists in the advertising system’s sellers.json file.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,hp,"For version 1.0 of `SupplyChain`, this property should always be 1.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.26 - Object: SupplyChainNode,SupplyChainNode,hp,Implementers should ensure that they propagate this field onwards when constructing `SupplyChain` objects in bid requests sent to a downstream advertising system.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.27 - Object: EID,EID,,The exchange should ensure that business agreements allow for the sending of this data.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.27 - Object: EID,EID,inserter,"This may be the operational domain of the system, if that is different from the parent corporate domain, to facilitate WHOIS and reverse IP lookups to establish clear ownership of the delegate system.",permission,C,runtime/cross-message language
+2.6-202606,field-desc,3.2.27 - Object: EID,EID,inserter,This should be the same value as used to identify sellers in an ads.txt file if one exists.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.27 - Object: EID,EID,matcher,"In some cases, this may be the same value as inserter.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.27 - Object: EID,EID,matcher,"When blank, it is assumed that the `matcher` is equal to the `source` May be omitted when mm=0, 1, or 2.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.28 - Object: UID,UID,,The exchange should ensure that business agreements allow for the sending of this data.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.28 - Object: UID,UID,atype,"It is highly recommended to set this, as many DSPs separate app-native IDs from browser-based IDs and require a type value for ID resolution.",recommendation,,needs manual coding
+2.6-202606,prose,3.2.29 - Object: UserAgent,UserAgent,,"If both `device.ua` and `device.sua` are present in the bid request, `device.sua` should be considered the more accurate representation of the device attributes.",recommendation,B,cross-field/registry language
+2.6-202606,prose,3.2.29 - Object: UserAgent,UserAgent,,This is because the `device.ua` may contain a frozen or reduced user agent string due to deprecation of user agent strings by browsers.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,browsers,Implementers should send brands and versions derived from the Sec-CH-UA-Full-Version-List header\.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,platform,"Implementers should send a brand derived from the Sec-CH-UA-Platform header, and version derived from the Sec-CH-UA-Platform-Version header\.",recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,mobile,Implementers should derive this value from the Sec-CH-UA-Mobile header\.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,architecture,Implementers should retrieve this value from the Sec-CH-UA-Arch header\.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,bitness,Implementers should retrieve this value from the Sec-CH-UA-Bitness header\.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.29 - Object: UserAgent,UserAgent,model,Implementers should retrieve this value from the Sec-CH-UA-Model header\.,recommendation,,needs manual coding
+2.6-202606,field-desc,3.2.30 - Object: BrandVersion,BrandVersion,brand,"The value may be sourced from the User-Agent Client Hints headers, representing either the user agent brand (from the Sec-CH-UA-Full-Version header) or the platform brand (from the Sec-CH-UA-Platform header).",permission,B,cross-field/registry language
+2.6-202606,prose,3.2.31 - Object: Qty,Qty,,"Therefore, a standard means of passing a multiplier in the bid request, representing the total quantity of impressions, is required.",obligation,,needs manual coding
+2.6-202606,field-desc,3.2.31 - Object: Qty,Qty,multiplier,"For example, a DOOH opportunity may be considered to be 14.2 impressions.",permission,D,"permission, no conformance test"
+2.6-202606,prose,3.2.32 - Object: DOOH,DOOH,,This object should be included if the ad supported content is a Digital Out-Of-Home screen.,recommendation,,needs manual coding
+2.6-202606,prose,3.2.32 - Object: DOOH,DOOH,,A bid request with a DOOH object must not contain a site or app object.,obligation,B,cross-field/registry language
+2.6-202606,prose,3.2.32 - Object: DOOH,DOOH,,"At a minimum, it is useful to provide id and/or venuetypeid, but this is not strictly required.",obligation,,needs manual coding
+2.6-202606,prose,3.2.35 - Object: DurFloors,DurFloors,,"In cases where multiple ranges may apply, it is up to the buyer and seller to coordinate on which floor is applicable.",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,3.2.35 - Object: DurFloors,DurFloors,mindur,"Either mindur or maxdur is required, but not both.",obligation,B,cross-field/registry language
+2.6-202606,field-desc,3.2.35 - Object: DurFloors,DurFloors,maxdur,"Either mindur or maxdur is required, but not both.",obligation,B,cross-field/registry language
+2.6-202606,prose,4. Bid Response Specification,,,The bid response consists of the top-level bid response object and optional objects that depict the specific bids.,permission,D,"permission, no conformance test"
+2.6-202606,prose,4.1 - Object Model,,,"A bid response may contain bids from multiple “seats” (i.e., the buying entity upstream from the actual bidder).",permission,D,"permission, no conformance test"
+2.6-202606,prose,4.1 - Object Model,,,"In fact, a response may contain multiple bids from the same seat; typically but not necessarily from different campaigns.",permission,D,bilateral/policy language
+2.6-202606,prose,4.2 - Object Specifications,,,- Attributes are “required” if their omission would technically break the protocol.,obligation,,needs manual coding
+2.6-202606,prose,4.2 - Object Specifications,,,- Some optional attributes are denoted “recommended” due to their elevated business importance.,recommendation,,needs manual coding
+2.6-202606,prose,4.2.1 - Object: BidResponse,BidResponse,,"Similarly, `bidid` is an optional response tracking ID for bidders.",permission,D,"permission, no conformance test"
+2.6-202606,prose,4.2.1 - Object: BidResponse,BidResponse,,"At least one `seatbid` object is required, which contains at least one bid for an impression.",obligation,,needs manual coding
+2.6-202606,prose,4.2.1 - Object: BidResponse,BidResponse,,Other attributes are optional.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.1 - Object: BidResponse,BidResponse,seatbid,Array of seatbid objects; 1+ required if a bid is to be made.,obligation,A,type/enum wording
+2.6-202606,field-desc,4.2.1 - Object: BidResponse,BidResponse,customdata,Optional feature to allow a bidder to set data in the exchange’s cookie.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.1 - Object: BidResponse,BidResponse,customdata,The string must be in base85 cookie safe characters and be in any format.,obligation,,needs manual coding
+2.6-202606,field-desc,4.2.1 - Object: BidResponse,BidResponse,customdata,Proper JSON encoding must be used to include “escaped” quotation marks.,obligation,,needs manual coding
+2.6-202606,field-desc,4.2.2 - Object: SeatBid,SeatBid,group,0 = impressions can be won individually; 1 = impressions must be won or lost as a group.,obligation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,price,"Note that while the type indicates float, integer math is highly recommended when handling currencies (e.g., BigDecimal in Java).",recommendation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,nurl,"Win notice URL called by the exchange if the bid wins (not necessarily indicative of a delivered, viewed, or billable ad); optional means of serving ad markup.",permission,C,runtime/cross-message language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,nurl,Substitution macros (Section 4.4) may be included in both the URL and optionally returned markup.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,burl,Substitution macros (Section 4.4) may be included.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,lurl,Substitution macros (Section 4.4) may be included.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,lurl,"Exchange-specific policy may preclude support for loss notices or the disclosure of winning clearing prices resulting in ${AUCTION_PRICE} macros being removed (i.e., replaced with a zero-length string).",permission,C,runtime/cross-message language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,adm,Optional means of conveying ad markup in case the bid wins; supersedes the win notice if markup is included in both.,permission,C,runtime/cross-message language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,adm,Substitution macros (Section 4.4) may be included.,permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,bundle,"For mobile apps in Google Play Store, these should be bundle or package names (e.g. com.foo.mygame).",recommendation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,bundle,"For apps in Apple App Store, these should be a numeric ID.",recommendation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,cid,Campaign ID to assist with ad quality checking; the collection of creatives for which `iurl` should be representative.,recommendation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,tactic,The specific usage and meaning of the tactic ID should be communicated between buyer and exchanges a priori.,recommendation,D,bilateral/policy language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,language,"The non- standard code “xx” may also be used if the creative has no linguistic content (e.g., a banner with just a company logo).",permission,D,"permission, no conformance test"
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,language,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,langb,Only one of `language` or `langb` should be present.,recommendation,B,cross-field/registry language
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,wratio,Required for Flex Ads.,obligation,,needs manual coding
+2.6-202606,field-desc,4.2.3 - Object: Bid,Bid,hratio,Required for Flex Ads.,obligation,,needs manual coding
+2.6-202606,prose,4.2.3 - Object: Bid,Bid,,BEST PRACTICE: Firing of the billing notice should be server-side and as “close” as possible to where the exchange books revenue in order to minimize discrepancies between exchange and bidder.,recommendation,C,runtime/cross-message language
+2.6-202606,prose,4.2.3 - Object: Bid,Bid,,"If the `burl` attribute is specified, it too should be fired at the same time if the exchange is adhering to this policy.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,4.2.3 - Object: Bid,Bid,,"However, subtle technical issues may lead to additional discrepancies and bidders are cautioned to avoid this scenario.",permission,D,"permission, no conformance test"
+2.6-202606,prose,4.3 - Ad Serving Options,,,Bidders and exchanges should discuss the method to be used during integration.,recommendation,,needs manual coding
+2.6-202606,prose,4.3.1 - Markup Served on the Win Notice,,,"In this case, the response body of the win notice call (i.e., invoking the `bid.nurl` attribute) contains the ad markup and only the ad markup; there must be no other structured data in the response body.",obligation,C,runtime/cross-message language
+2.6-202606,prose,4.3.1 - Markup Served on the Win Notice,,,"Using this method, the `bid.adm` attribute must be omitted.",obligation,,needs manual coding
+2.6-202606,prose,4.3.3 - Comparison of Ad Serving Approaches,,,Each of the ad serving methods has its own advantages that may be of varying importance to either the exchange or the bidder.,permission,B,cross-field/registry language
+2.6-202606,prose,4.3.3 - Comparison of Ad Serving Approaches,,,"- Additional Bidder Flexibility: Bidders may typically know the ad they will serve at the time of bid, but this provides an additional optional decision point after the clearing price has been established.",permission,D,bilateral/policy language
+2.6-202606,prose,4.4 - Substitution Macros,,,"Furthermore, if the source value is an optional parameter that was not specified, the macro will simply be removed (i.e., replaced with a zero-length string).",permission,C,runtime/cross-message language
+2.6-202606,prose,4.4 - Substitution Macros,,,This may be used by platforms that cannot fire a notification as soon as the impression takes place.,obligation,,needs manual coding
+2.6-202606,prose,4.4 - Substitution Macros,,,Note that OpenRTB compliance exchanges must support all macros for which data is available and support substitution in both markup and URLs for win and billing notification.,obligation,,needs manual coding
+2.6-202606,prose,4.4 - Substitution Macros,,,"BEST PRACTICE: When rendering markup for test or ad quality purposes, some macro values (e.g., clearing price) may not be known.",permission,C,runtime/cross-message language
+2.6-202606,prose,4.4 - Substitution Macros,,,BEST PRACTICE: Encoding of macro data should be used sparingly due to the additional processing overhead.,recommendation,C,runtime/cross-message language
+2.6-202606,prose,4.4 - Substitution Macros,,,"This may be of particular interest for use cases where price information is carried beyond the exchange, through the publisher, and into the device browser via a tracking pixel in the markup.",permission,D,"permission, no conformance test"
+2.6-202606,prose,4.4 - Substitution Macros,,,"To specify that a particular macro is to be encoded, the suffix “`:X`” should be appended to the macro name, where X is a string that indicates the algorithm to be used.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,4.4 - Substitution Macros,,,Algorithms choices are not defined by this specification and must be mutually agreed upon between parties.,obligation,,needs manual coding
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,"- The bid was not allowed into the auction, e.g., because of blocks on the seat, advertiser, etc.",obligation,,needs manual coding
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,"- The minimum price required to tie with the winning bid, when your bid lost to another in the auction.",obligation,,needs manual coding
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,"- The minimum price required to tie with the next-closest bid, or the floor if there was only one bid, when your bid won the auction.",obligation,,needs manual coding
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,"Note, the exchange in question may not be the final decision-maker.",permission,D,"permission, no conformance test"
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,It may propagate two or more bids into a second auction.,permission,D,"permission, no conformance test"
+2.6-202606,prose,4.4.1 - Notes on the macro ${AUCTION_MIN_TO_WIN},,,Note the exchange may also choose to replace the macros with the empty string for the reasons above.,permission,D,"permission, no conformance test"
+2.6-202606,prose,5. Enumerated Lists Specification,,,"In previous versions, any additional enumerations required not just a documentation update, but a version update.",obligation,,needs manual coding
+2.6-202606,prose,6.1 - GitHub Repository,,,This repository should be considered the canonical examples for implementers. https://github.com/InteractiveAdvertisingBureau/openrtb,recommendation,,needs manual coding
+2.6-202606,prose,6.2.1 - Example 1 – Simple Banner,,,Some optional parameters are included in this example.,permission,D,"permission, no conformance test"
+2.6-202606,prose,6.2.5 - Example 5 – PMP with Direct Deal,,,Some optional parameters are included in this example.,permission,D,"permission, no conformance test"
+2.6-202606,prose,Appendix C. Cookie Based ID Syncing,,,The details of cookie sync implementation will vary from integration to integration and should be discussed between the two parties.,recommendation,C,runtime/cross-message language
+2.6-202606,prose,Appendix C. Cookie Based ID Syncing,,,"The exchange provides their sync URL to the DSP, in which they will indicate where the DSP’s user ID should be placed.",recommendation,C,runtime/cross-message language
+2.6-202606,prose,Appendix C. Cookie Based ID Syncing,,,"The DSP may also elect to directly drop the exchange’s sync pixel at opportunities it has, for example with the DSP’s pixels/tags for audiences and conversions.",permission,C,runtime/cross-message language
+2.6-202606,prose,Appendix C. Cookie Based ID Syncing,,,"The DSP provides their sync URL to the exchange, in which they will indicate where the exchange’s user ID should be placed:",recommendation,C,runtime/cross-message language
+2.6-202606,prose,Appendix C. Cookie Based ID Syncing,,,The exchange may also elect to directly drop the DSP’s sync pixel in the browser at opportunities it has.,permission,C,runtime/cross-message language
+3.0,prose,History of OpenRTB,,,"However, this has also led to an increasingly complex supply chain which may increase fraud rates and other risks.",permission,D,"permission, no conformance test"
+3.0,prose,OpenRTB Principles,,,New objects and attributes may be added and enumerated lists may be extended at any time and thus implementers must accept these types of changes without breakage within a version number.,obligation,,needs manual coding
+3.0,prose,OpenRTB Principles,,,"For example, a demand source with an ""OpenRTB 3.0"" implementation but must tolerate new fields or enumerated list values it is not expecting, such as from a newer release of OpenRTB 3.0.",obligation,,needs manual coding
+3.0,prose,OpenRTB Principles,,,"Likewise, supply sources should freely transmit new fields or enumerated list values (such as from a newer release) and must tolerate bid responses with new fields and enumerated list values it is not expecting.",obligation,,needs manual coding
+3.0,prose,OpenRTB Principles,,,The reason for this is that these names may be transmitted in plain text extremely frequently.,permission,D,"permission, no conformance test"
+3.0,prose,OpenRTB Principles,,,"JSON is the default representation, but others may be used.",permission,D,"permission, no conformance test"
+3.0,prose,OpenRTB Principles,,,All OpenRTB objects may be extended as needed for vendor-specific applications.,permission,D,"permission, no conformance test"
+3.0,prose,OpenRTB Principles,,,Extension fields for OpenRTB object must always be placed within a subordinate “ext” object.,obligation,,needs manual coding
+3.0,prose,Reference Model,,,"An exchange may notify buyers that their bids have been accepted and when a bid becomes billable based on exchange business policy (e.g., rendered markup), the exchange notifies the winning buyer with critical data such as the clearing price.",permission,D,bilateral/policy language
+3.0,prose,Reference Model,,,Others may be notified that they lost the auction.,permission,D,"permission, no conformance test"
+3.0,prose,Reference Model,,,"These structures are depicted in the reference model diagram that follows, where an exchange may itself act as a demand source bidding into an upstream (to the left) intermediary and/or use other downstream (to the right) exchanges and DSPs as demand sources.",permission,D,"permission, no conformance test"
+3.0,prose,Reference Model,,,"A given entity may or may not be aware of the larger supply chain, but consider that this chain may vary for different publishers.",permission,D,"permission, no conformance test"
+3.0,prose,Protocol Layers,,,The landscape of these specifications and how they may be organized into protocol layers is illustrated as follows.,permission,D,"permission, no conformance test"
+3.0,prose,Protocol Layers,,,"Unless explicitly specified otherwise, annotated as optional, or called out as a best practice, all material aspects of these subsections are required for OpenRTB compliance.",obligation,,needs manual coding
+3.0,prose,Communications,,,"Specifically, HTTP POST is required for bid requests to accommodate greater payloads than HTTP GET and facilitate the use of binary representations.",obligation,,needs manual coding
+3.0,prose,Communications,,,Notification events may be either POST or GET at the discretion of the exchange.,permission,D,bilateral/policy language
+3.0,prose,Communications,,,"Calls returning content (e.g., a bid response) should return HTTP code 200.",recommendation,,needs manual coding
+3.0,prose,Communications,,,"Calls returning no content in response to valid requests (e.g., an empty bid response which is one option for indicating no-bid, an event notification) should return HTTP 204.",recommendation,,needs manual coding
+3.0,prose,Communications,,,"Invalid calls (e.g., a bid request containing a malformed or corrupt payload) should return HTTP 400 with no content.",recommendation,,needs manual coding
+3.0,prose,Version Headers,,,The OpenRTB version must be passed in the header of a bid request with a custom header parameter.,obligation,,needs manual coding
+3.0,prose,Version Headers,,,"Additionally, it is recommended albeit optional that responses include an identically formatted HTTP header with the protocol version implemented by the responder.",recommendation,,needs manual coding
+3.0,prose,Transport Security,,,"As of OpenRTB v3.0, HTTPS and Transport Layer Security (TLS) version 1.2+ are required for compliance and thus all connections over which the OpenRTB protocol operates must be HTTPS.",obligation,,needs manual coding
+3.0,prose,Representation,,,"Optionally, an exchange may also offer binary representations (e.g., compressed JSON, ProtoBuf, Avro, etc.), which can be more efficient in terms of transmission time and bandwidth.",permission,D,"permission, no conformance test"
+3.0,prose,Representation,,,The IAB Tech Lab may offer reference implementations for these or other formats.,permission,D,"permission, no conformance test"
+3.0,prose,Representation,,,"When available, the use of these IAB reference implementations is highly recommended to reduce integration variations.",recommendation,,needs manual coding
+3.0,prose,Representation,,,The format of the bid response must be the same as the bid request.,obligation,,needs manual coding
+3.0,prose,Representation,,,"If alternative binary representations are used, the exchange or SSP should specify the Content-Type appropriately.",recommendation,,needs manual coding
+3.0,prose,Representation,,,"If the content-type is missing, the bidder should assume the type is `application/json`, unless a different default has been selected by an exchange.",recommendation,,needs manual coding
+3.0,prose,Encoding,,,"To realize this savings fully, compression should be enabled for both the bid request sent by the exchange and the bid response returned by the demand source.",recommendation,,needs manual coding
+3.0,prose,Encoding,,,"For an exchange to signal they would like the response to be compressed, it should set the standard HTTP 1.1 Accept-Encoding header.",recommendation,,needs manual coding
+3.0,prose,Encoding,,,The encoding value used should be `gzip`.,recommendation,,needs manual coding
+3.0,prose,Encoding,,,"To enable compression on the bid request, it must first be agreed upon between the exchange and the demand source that this is supported.",obligation,,needs manual coding
+3.0,prose,Encoding,,,"If the demand source supports it, the exchange should indicate it is sending a gzip compressed bid request by setting the HTTP 1.1 Content-Encoding header.",recommendation,,needs manual coding
+3.0,prose,Encoding,,,The encoding value used should be `gzip`.,recommendation,,needs manual coding
+3.0,prose,SPECIFICATION,,,"Unless explicitly specified otherwise, annotated as optional, or called out as a best practice, all material aspects of this section are required for OpenRTB compliance.",obligation,,needs manual coding
+3.0,prose,Object Model,,,"Throughout the object model subsections, attributes may be indicated as “Required” or “Recommended”.",obligation,,needs manual coding
+3.0,prose,Object Model,,,Attributes are deemed required only if their omission would break the protocol and is not necessarily an indicator of business value otherwise.,obligation,,needs manual coding
+3.0,prose,Object Model,,,Attributes are recommended when their omission would not break the protocol but would dramatically diminish business value.,recommendation,,needs manual coding
+3.0,prose,Object Model,,,"From a specification compliance perspective, any attribute not denoted required is optional, whether recommended or not.",obligation,,needs manual coding
+3.0,prose,Object Model,,,An optional attribute may have a default value to be assumed if omitted.,permission,D,"permission, no conformance test"
+3.0,prose,Object Model,,,"If no default is indicated, then by convention its absence should be interpreted as unknown, unless otherwise specified.",recommendation,,needs manual coding
+3.0,prose,Object Model,,,"Empty strings or null values should be interpreted the same as omitted (i.e., the default if one is specified or unknown otherwise).",recommendation,B,cross-field/registry language
+3.0,prose,Object Model,,,BEST PRACTICE: Exchanges and demand sources are encouraged to publish to their partners the set of optional objects and attributes they support along with any extensions to the specification.,permission,D,bilateral/policy language
+3.0,field-desc,Object:  Openrtb,Openrtb,request,Required only for request payloads.,obligation,,needs manual coding
+3.0,field-desc,Object:  Openrtb,Openrtb,response,Required only for response payloads.,obligation,,needs manual coding
+3.0,prose,Object:  Openrtb,Openrtb,,Some of these attributes are optional.,permission,D,"permission, no conformance test"
+3.0,prose,Object:  Openrtb,Openrtb,,"The `domainver` attribute, however, does have runtime utility since the structures of Layer-4 objects may vary over time based on their specification versions.",permission,D,"permission, no conformance test"
+3.0,prose,Object:  Request,Request,,"This `id` attribute is required as is an `Item` array with at least one object (i.e., at least one item for sale).",obligation,,needs manual coding
+3.0,field-desc,Object:  Request,Request,tmax,"If an exchange acts as an intermediary, it should decrease the outbound tmax value from what it received to account for its latency and the additional internet hop.",recommendation,C,runtime/cross-message language
+3.0,field-desc,Object:  Request,Request,cur,Recommended if the exchange accepts multiple currencies.,recommendation,,needs manual coding
+3.0,field-desc,Object:  Request,Request,seat,Knowledge of buyer’s customers and their seat IDs must be coordinated between parties beforehand.,obligation,D,bilateral/policy language
+3.0,field-desc,Object:  Request,Request,cdata,The string must be in base85 cookie-safe characters.,obligation,,needs manual coding
+3.0,field-desc,Object:  Request,Request,context,"For AdCOM v1.x, the objects allowed here all of which are optional are one of the DistributionChannel subtypes (i.e., Site , App , or Dooh ), User , Device , Regs , Restrictions , and any objects subordinate to these as specified by AdCOM.",permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Request,Request,ext,Optional exchange-specific extensions.,permission,D,bilateral/policy language
+3.0,prose,Object:  Source,Source,,"As the Ads.cert specification is still in its BETA state, these attributes should be considered to be in a similar state.",recommendation,C,runtime/cross-message language
+3.0,field-desc,Object:  Source,Source,tid,Transaction ID that must be common across all participants throughout the entire supply chain of this transaction.,obligation,,needs manual coding
+3.0,field-desc,Object:  Source,Source,ts,This value must be held as immutable throughout subsequent intermediaries.,obligation,C,runtime/cross-message language
+3.0,field-desc,Object:  Source,Source,pchain,NOTE: Authentication features in this Source object combined with the “ads.txt” specification may lead to the deprecation of this attribute.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Source,Source,ext,Optional exchange-specific extensions.,permission,D,bilateral/policy language
+3.0,prose,Object:  Item,Item,,The `id` attribute is required since there may be multiple items being offered in the same bid request and bids must reference the specific item of interest.,obligation,,needs manual coding
+3.0,field-desc,Object:  Item,Item,qty,"For example, a single display of an ad on a DOOH placement may count as multiple impressions on the basis of expected viewership.",permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Item,Item,qty,Only one of 'qty' or 'qtyflt' may be present.,permission,B,cross-field/registry language
+3.0,field-desc,Object:  Item,Item,qtyflt,"For example, a DOOH opportunity may be considered to be 14.2 impressions.",permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Item,Item,qtyflt,Only one of 'qty' or 'qtyflt' may be present.,permission,B,cross-field/registry language
+3.0,field-desc,Object:  Item,Item,exp,Advisory as to the number of seconds that may elapse between auction and fulfilment.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Item,Item,dlvy,"Item (e.g., an Ad object) delivery method required, where 0 = either method, 1 = the item must be sent as part of the transaction (e.g., by value in the bid itself, fetched by URL included in the bid), and 2 = an item previously uploaded to the exchange must be referenced by its ID.",obligation,B,cross-field/registry language
+3.0,field-desc,Object:  Item,Item,ext,Optional exchange-specific extensions.,permission,D,bilateral/policy language
+3.0,field-desc,Object:  Deal,Deal,at,"Optional override of the overall auction type of the request, where 1 = First Price, 2 = Second Price Plus, 3 = the value passed in flr is the agreed upon deal price.",permission,A,type/enum wording
+3.0,field-desc,Object:  Deal,Deal,wseat,IDs of seats and the buyer’s customers to which they refer must be coordinated between bidders and the exchange beforehand.,obligation,D,bilateral/policy language
+3.0,field-desc,Object:  Deal,Deal,ext,Optional exchange-specific extensions.,permission,D,bilateral/policy language
+3.0,field-desc,Object:  Metric,Metric,type,Type of metric being presented using exchange curated string names which should be published to bidders beforehand.,recommendation,,needs manual coding
+3.0,field-desc,Object:  Metric,Metric,vendor,Source of the value using exchange curated string names which should be published to bidders beforehand.,recommendation,,needs manual coding
+3.0,field-desc,Object:  Metric,Metric,vendor,"If the exchange itself is the source versus a third party, “EXCHANGE” is recommended.",recommendation,,needs manual coding
+3.0,field-desc,Object:  Metric,Metric,ext,Optional exchange-specific extensions.,permission,D,bilateral/policy language
+3.0,prose,Object:  Response,Response,,The `bidid` attribute is an optional response tracking ID for bidders.,permission,D,"permission, no conformance test"
+3.0,prose,Object:  Response,Response,,"At least one `Seatbid` object is required, which contains at least one `Bid` for an item.",obligation,,needs manual coding
+3.0,prose,Object:  Response,Response,,Other attributes are optional.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Response,Response,id,ID of the bid request to which this is a response; must match the request.id attribute.,obligation,,needs manual coding
+3.0,field-desc,Object:  Response,Response,cdata,The string must be in base85 cookie-safe characters.,obligation,,needs manual coding
+3.0,field-desc,Object:  Response,Response,seatbid,Array of Seatbid objects; 1+ required if a bid is to be made.,obligation,A,type/enum wording
+3.0,field-desc,Object:  Response,Response,ext,Optional demand source specific extensions.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Seatbid,Seatbid,ext,Optional demand source specific extensions.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Bid,Bid,price,"Note that while the type indicates float, integer math is highly recommended when handling currencies (e.g., BigDecimal in Java).",recommendation,,needs manual coding
+3.0,field-desc,Object:  Bid,Bid,tactic,The specific usage and meaning of the tactic ID should be communicated between buyer and exchanges beforehand.,recommendation,,needs manual coding
+3.0,field-desc,Object:  Bid,Bid,purl,"Pending notice URL called by the exchange when a bid has been declared the winner within the scope of an OpenRTB compliant supply chain (i.e., there may still be non-compliant decisioning such as header bidding).",permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Bid,Bid,purl,Substitution macros may be included.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Bid,Bid,burl,Substitution macros may be included.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Bid,Bid,lurl,Substitution macros may be included.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Bid,Bid,lurl,"Exchange-specific policy may preclude support for loss notices or the disclosure of winning clearing prices resulting in ${OPENRTB_PRICE} macros being removed (i.e., replaced with a zero-length string).",permission,D,bilateral/policy language
+3.0,field-desc,Object:  Bid,Bid,ext,Optional demand source specific extensions.,permission,D,"permission, no conformance test"
+3.0,field-desc,Object:  Macro,Macro,ext,Optional demand source specific extensions.,permission,D,"permission, no conformance test"
+3.0,prose,Substitution Macros,,,"Furthermore, if the source value is an optional parameter that was not specified, the macro will simply be removed (i.e., replaced with a zero-length string).",permission,C,runtime/cross-message language
+3.0,prose,Substitution Macros,,,Custom macros may also be supported at the bidder-implementer’s discretion.,permission,D,bilateral/policy language
+3.0,prose,Substitution Macros,,,"Note that an exchange may also elect whether or not to support custom macros, but it is expected that any exchange that offers the ability to serve pre-uploaded ads will do so.",permission,D,"permission, no conformance test"
+3.0,prose,Substitution Macros,,,Note that OpenRTB compliant exchanges must support all macros for which data is available and support substitution in both markup and notification URLs.,obligation,,needs manual coding
+3.0,prose,Substitution Macros,,,"When rendering markup for test or ad quality purposes, some macro values (e.g., clearing price) may not be known.",permission,C,runtime/cross-message language
+3.0,prose,Substitution Macros,,,"This may be of particular interest for use cases where price information is carried beyond the exchange, through the publisher, and into the device browser via a tracking pixel in the markup.",permission,D,"permission, no conformance test"
+3.0,prose,Substitution Macros,,,"To specify that a particular macro is to be encoded, the suffix `:X` should be appended to the macro name, where X is a string that indicates the algorithm to be used.",recommendation,C,runtime/cross-message language
+3.0,prose,Substitution Macros,,,Algorithms choices are not defined by this specification and must be mutually agreed upon between parties.,obligation,,needs manual coding
+3.0,prose,Event Notification,,,Additional events may be defined in Layer-4 specific to domain objects.,permission,D,"permission, no conformance test"
+3.0,prose,Event Notification,,,Any entity that invokes an event URL must first ensure the resolution of all standard OpenRTB substitution macros.,obligation,,needs manual coding
+3.0,prose,Event:  Pending,,,"However, since there may still be upstream decisioning that is not OpenRTB compliant (e.g., header bidding), this event cannot always be equated to a win.",obligation,,needs manual coding
+3.0,prose,Event:  Pending,,,"NOTE: This event should be interpreted for guidance only (i.e., the bid has passed all OpenRTB compliant gates in the supply chain).",recommendation,,needs manual coding
+3.0,prose,Event:  Billing,,,This event is subject to exchange-specific business policies that should be conveyed clearly to their demand partners.,recommendation,D,bilateral/policy language
+3.0,prose,Event:  Billing,,,"NOTE: While the clearing price macro may be resolved in other events as well as DSP trackers in markup, this URL properly implemented is the ONLY official method of communicating a billing event in the OpenRTB protocol.",permission,C,runtime/cross-message language
+3.0,prose,Event:  Billing,,,"This should not be delegated to another party including a client-side pixel, although a pixel may be the initiating signal for billing to the exchange.",recommendation,,needs manual coding
+3.0,prose,Event:  Billing,,,"BEST PRACTICE: Upon determining a billable event has occurred (e.g., receipt of client-initiated render signal), an exchange should invoke the billing notice from server-side and as ""close"" as possible to where the exchange books revenue in order to minimize discrepancies between itself and its demand sources.",recommendation,C,runtime/cross-message language
+3.0,prose,Event:  Billing,,,"If an entity calling a billing notice receives a response other than HTTP 200 or 204, it should consider a retry scheme (e.g., every 10 seconds for the next minute).",recommendation,C,runtime/cross-message language
+3.0,prose,Event:  Billing,,,"Conversely, an entity receiving billing notices should endeavor to make their endpoint idempotent to avoid double counting.",recommendation,,needs manual coding
+3.0,prose,Event:  Billing,,,"If the `bid.burl` attribute is specified, it too should be fired at the same time if the exchange is adhering to this policy.",recommendation,C,runtime/cross-message language
+3.0,prose,Event:  Billing,,,"However, subtle technical issues may lead to additional discrepancies and bidders are cautioned to avoid this scenario.",permission,D,"permission, no conformance test"
+3.0,prose,Event:  Loss,,,"At this point, an exchange may invoke the URL provided by the demand source in the `bid.lurl` attribute.",permission,C,runtime/cross-message language
+3.0,prose,Event:  Loss,,,Exchange support for firing loss notifications is not required for OpenRTB compliance.,obligation,,needs manual coding
+3.0,prose,Event:  Loss,,,"Furthermore, exchange-specific policy may preclude support for loss notices or the disclosure of winning clearing prices resulting in `${OPENRTB_PRICE}` macros being removed (i.e., replaced with a zero-length string).",permission,D,bilateral/policy language
+3.0,prose,Complex Event Chains,,,"For example, an intermediary such as a bid request traffic shaper that may elect to allow events to bypass directly downstream, whereas a full exchange especially one engaging in revenue-share may need to intercept.",permission,D,"permission, no conformance test"
+3.0,prose,Complex Event Chains,,,Motivation to intercept versus bypass may also vary by event type.,permission,D,"permission, no conformance test"
+3.0,prose,Complex Event Chains,,,"For loss notices, however, some may be interested and others not.",permission,D,"permission, no conformance test"
+3.0,prose,Complex Event Chains,,,"It should call loss notices for those it drops since it’s essentially declaring these losses, but it may elect to allow the upstream entity to invoke loss notices directly downstream when it decides to drop the next bid subset.",recommendation,,needs manual coding
+3.0,prose,Inventory Authentication,,,This practice becomes particularly important in complex supply chains where a buyer may not have a trust relationship with all intermediaries.,permission,D,bilateral/policy language
+3.0,prose,Ads.cert Primer,,,"Digital signatures must be produced either by the publisher or a trusted agent thereof (e.g., a primary technology provider).",obligation,B,cross-field/registry language
+3.0,prose,Ads.cert Primer,,,"Prior to authenticating inventory, a publisher must generate a public and private key pair.",obligation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,The private key is used by the publisher for signing and must be kept secret.,obligation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,The public key must be placed in the same publicly accessible web directory as specified by the ads.txt standard.,obligation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,"The entire bid request cannot be signed since there are legitimate use cases for portions of the request to be altered by intermediaries (e.g., new data to enrich the inventory, reducing precision of IP addresses or location information based on privacy policies, etc.).",obligation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,"Instead, specific attributes in the request are chosen that are material to inventory authentication and which should be immutable by any intermediary (e.g., the publisher’s site domain or application bundle).",recommendation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,"In addition, the digest must contain an element to tie the digital signature to this and only this transaction in order to avoid replay attacks.",obligation,C,runtime/cross-message language
+3.0,prose,Ads.cert Primer,,,"Therefore, the digest must include the transaction ID (i.e., the `Source.tid` attribute) and/or at least the request origination timestamp (i.e., the `Source.ts` attribute).",obligation,,needs manual coding
+3.0,prose,Ads.cert Primer,,,"The `Source` object must also contain the name of the publisher’s public key located in their ads.txt directory (i.e., the `Source.cert` attribute) and a map of the digest structure used to create the string that was signed (i.e., the `Source.dsmap` attribute).",obligation,,needs manual coding
+3.0,prose,Detailed Implementation Guide,,,"To put these concepts into practice, publishers or their trusted agents must know how to generate their public/private key pairs, how to sign transaction digest strings, and how to communicate this and related information to their immediate exchange partners.",obligation,,needs manual coding
+3.0,prose,Detailed Implementation Guide,,,Both publishers and those vendors wishing to authenticate requests must know the precise method of creating a digest string from bid request attributes and how to validate a signature given a public key.,obligation,C,runtime/cross-message language
+3.0,prose,Bid Request,,,Some optional attributes have been omitted for brevity.,permission,D,"permission, no conformance test"
+3.0,prose,Bid Request,,,The `spec` object should have one `placement` object that carries the details of the impression being offered under this item.,recommendation,,needs manual coding
+3.0,prose,Bid Response,,,"The “media"" object should have one `ad` object that carries the details of the ad to be served if the bid wins.",recommendation,,needs manual coding
+3.0,prose,Bid Response,,,"In practice, media would be pass either by value (i.e., details included as domain objects) or pass by reference (i.e., using the media ID and optional macros).",permission,B,cross-field/registry language
+3.0,field-desc,Appendix B:  Change Log,,3.0,"DOOH improvements: A field has been added to represent quantity of impressions as a float, since DOOH impressions may not be a whole number.",permission,D,"permission, no conformance test"
+3.0,prose,Appendix C:  Errata,,,"Only minor fixes, such as clarifications or corrections to descriptions, may be treated as errata.",permission,D,"permission, no conformance test"
+3.0,prose,Appendix D:  Versioning Policy,,,"In other words, OpenRTB 3.1 should be considered a distinct version from OpenRTB 3.0 when there is a need for distinguishing versions.",recommendation,,needs manual coding

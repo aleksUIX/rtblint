@@ -36,6 +36,14 @@ impl PayloadKind {
             Self::BidResponse => "bid response",
         }
     }
+
+    /// The member this payload occupies inside a 3.0 envelope.
+    fn layered_member(self) -> &'static str {
+        match self {
+            Self::BidRequest => "request",
+            Self::BidResponse => "response",
+        }
+    }
 }
 
 pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> ValidationResult {
@@ -46,7 +54,18 @@ pub(crate) fn validate_bid_response(version: OpenRtbVersion, input: &str) -> Val
     validate_payload(version, input, PayloadKind::BidResponse)
 }
 
+/// OpenRTB 3.0 wraps everything in a single `openrtb` member.
+const ENVELOPE_MEMBER: &str = "openrtb";
+/// The catalog object describing that wrapper.
+const ENVELOPE_OBJECT: &str = "Openrtb";
+/// The only domain spec whose objects this build can reason about.
+const DEFAULT_DOMAIN_SPEC: &str = "adcom";
+
 fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> ValidationResult {
+    if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
+        return validate_layered_payload(version, input, kind);
+    }
+
     if canonical_object(version, kind.root_object()).is_none() {
         return ValidationResult {
             valid: false,
@@ -112,6 +131,192 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
         valid: !issues.iter().any(|issue| issue.severity == Severity::Error),
         issues,
     }
+}
+
+/// OpenRTB 3.0 splits the transport layer (this catalog: Openrtb, Request,
+/// Item, Response, Bid) from the domain layer, which is AdCOM and lives under
+/// `item.spec` and `bid.media`. Everything in the transport layer is checked
+/// here; the domain objects are accepted as opaque objects, since no AdCOM
+/// catalog ships yet.
+fn validate_layered_payload(
+    version: OpenRtbVersion,
+    input: &str,
+    kind: PayloadKind,
+) -> ValidationResult {
+    let value = match serde_json::from_str::<Value>(input) {
+        Ok(value) => value,
+        Err(error) => {
+            return ValidationResult {
+                valid: false,
+                issues: vec![Issue {
+                    id: String::from("openrtb.payload.invalid_json"),
+                    severity: Severity::Error,
+                    message: format!("Invalid JSON payload: {error}"),
+                    path: None,
+                    section: None,
+                }],
+            };
+        }
+    };
+
+    let Some(root) = value.as_object() else {
+        return ValidationResult {
+            valid: false,
+            issues: vec![Issue {
+                id: String::from("openrtb.payload.root_not_object"),
+                severity: Severity::Error,
+                message: format!(
+                    "OpenRTB {}s must be JSON objects at the top level.",
+                    kind.label()
+                ),
+                path: None,
+                section: None,
+            }],
+        };
+    };
+
+    let envelope_section = canonical_object(version, ENVELOPE_OBJECT).map(|object| object.section);
+    let mut issues = Vec::new();
+
+    let Some(envelope) = root.get(ENVELOPE_MEMBER).and_then(Value::as_object) else {
+        issues.push(Issue {
+            id: String::from("openrtb.envelope.missing"),
+            severity: Severity::Error,
+            message: format!(
+                "An OpenRTB {} {} is a single \"openrtb\" object wrapping ver, domainspec, \
+                 domainver, and the {} payload.{}",
+                version.id(),
+                kind.label(),
+                kind.layered_member(),
+                migration_hint(root)
+            ),
+            path: None,
+            section: envelope_section.map(String::from),
+        });
+        return finalize_result(issues);
+    };
+
+    for member in root.keys().filter(|key| key.as_str() != ENVELOPE_MEMBER) {
+        issues.push(Issue {
+            id: String::from("openrtb.field.undefined"),
+            severity: Severity::Error,
+            message: format!(
+                "{member} sits outside the envelope; an OpenRTB {} payload carries nothing at the \
+                 top level but \"openrtb\".",
+                version.id()
+            ),
+            path: Some(member.clone()),
+            section: envelope_section.map(String::from),
+        });
+    }
+
+    let mut instance_path = String::from(ENVELOPE_MEMBER);
+    validate_known_object(
+        version,
+        kind,
+        ENVELOPE_OBJECT,
+        envelope,
+        &mut vec![ENVELOPE_MEMBER],
+        &mut instance_path,
+        &mut issues,
+    );
+
+    validate_envelope_semantics(version, kind, envelope, envelope_section, &mut issues);
+
+    finalize_result(issues)
+}
+
+/// Envelope rules the catalog cannot express: the spec marks `request` and
+/// `response` "required *", meaning exactly one of them, and which one depends
+/// on the payload being validated.
+fn validate_envelope_semantics(
+    version: OpenRtbVersion,
+    kind: PayloadKind,
+    envelope: &Map<String, Value>,
+    envelope_section: Option<&'static str>,
+    issues: &mut Vec<Issue>,
+) {
+    let has_request = envelope.get("request").is_some_and(Value::is_object);
+    let has_response = envelope.get("response").is_some_and(Value::is_object);
+    let expected = kind.layered_member();
+
+    if !envelope.contains_key(expected) {
+        issues.push(Issue {
+            id: String::from("openrtb.field.required"),
+            severity: Severity::Error,
+            message: format!(
+                "openrtb.{expected} is required on an OpenRTB {} {}.",
+                version.id(),
+                kind.label()
+            ),
+            path: Some(format!("{ENVELOPE_MEMBER}.{expected}")),
+            section: envelope_section.map(String::from),
+        });
+    }
+
+    if has_request && has_response {
+        issues.push(Issue {
+            id: String::from("openrtb.fields.mutually_exclusive"),
+            severity: Severity::Error,
+            message: String::from(
+                "An OpenRTB 3.0 envelope carries either a request or a response, never both.",
+            ),
+            path: Some(format!("{ENVELOPE_MEMBER}.request")),
+            section: envelope_section.map(String::from),
+        });
+    }
+
+    if let Some(declared) = envelope.get("ver").and_then(Value::as_str) {
+        if declared != version.id() {
+            issues.push(Issue {
+                id: String::from("openrtb.envelope.ver_mismatch"),
+                severity: Severity::Warning,
+                message: format!(
+                    "Envelope declares OpenRTB {declared} but the payload is being validated \
+                     against {}.",
+                    version.id()
+                ),
+                path: Some(format!("{ENVELOPE_MEMBER}.ver")),
+                section: envelope_section.map(String::from),
+            });
+        }
+    }
+
+    if let Some(domainspec) = envelope.get("domainspec").and_then(Value::as_str) {
+        if !domainspec.eq_ignore_ascii_case(DEFAULT_DOMAIN_SPEC) {
+            issues.push(Issue {
+                id: String::from("openrtb.envelope.domainspec_unsupported"),
+                severity: Severity::Warning,
+                message: format!(
+                    "Domain spec \"{domainspec}\" is not AdCOM, so the objects under item.spec \
+                     and bid.media are left unchecked.",
+                ),
+                path: Some(format!("{ENVELOPE_MEMBER}.domainspec")),
+                section: envelope_section.map(String::from),
+            });
+        }
+    }
+}
+
+/// A 2.x payload sent to a 3.0 validator is a common migration slip, and the
+/// bare "no envelope" message does not explain what moved where.
+fn migration_hint(root: &Map<String, Value>) -> String {
+    if root.contains_key("imp") {
+        return String::from(
+            " This looks like an OpenRTB 2.x bid request: the 2.x root moves to openrtb.request, \
+             imp becomes item, and each impression's media objects (banner, video, audio, native) \
+             move into item.spec as AdCOM placements.",
+        );
+    }
+
+    if root.contains_key("seatbid") || root.contains_key("nbr") {
+        return String::from(
+            " This looks like an OpenRTB 2.x bid response: the 2.x root moves to openrtb.response, \
+             bid.impid becomes bid.item, and bid.adm moves into bid.media as an AdCOM ad.",
+        );
+    }
+
+    String::new()
 }
 
 /// Recomputes `valid` after cross-payload checks have appended issues.

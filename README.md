@@ -32,7 +32,7 @@ Every finding carries a stable rule id, a severity, a message, and a JSON path.
 | Python | `rtblint` on PyPI | Not implemented yet |
 | Go | `github.com/aleksUIX/rtblint/go` | Not implemented yet |
 
-OpenRTB 3.0 payload validation is not implemented yet (the 3.0 catalog ships for introspection only). The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently. See [ROADMAP.md](ROADMAP.md) for what's next and [CHANGELOG.md](CHANGELOG.md) for release history.
+OpenRTB 3.0 validates through its layered envelope: the transport objects (Openrtb, Request, Item, Deal, Source, Response, Seatbid, Bid) are checked in full, and the AdCOM domain objects under `item.spec` and `bid.media` are accepted as opaque until an AdCOM catalog ships. A 2.x payload sent to a 3.0 validator gets a migration diagnostic rather than a bare parse error. The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently. See [ROADMAP.md](ROADMAP.md) for what's next and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## CLI
 

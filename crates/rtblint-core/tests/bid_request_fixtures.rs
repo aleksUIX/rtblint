@@ -361,14 +361,31 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: true,
         expected_issues: &[],
     },
-    // 3.0 has no 2.x-style BidRequest object; layered validation is not
-    // implemented, so it must refuse rather than pass the payload.
+    // 3.0 validates through its layered envelope: transport objects here,
+    // AdCOM domain objects under item.spec left opaque.
     FixtureCase {
         name: "valid-openrtb-3.0-layered-request",
         version: OpenRtbVersion::V3_0,
         input: include_str!("fixtures/bid-requests/valid-openrtb-3.0-layered-request.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    // A 2.x payload sent to a 3.0 validator: the envelope is the first thing
+    // missing, and the message explains what moved where.
+    FixtureCase {
+        name: "invalid-openrtb-3.0-two-x-payload",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-requests/invalid-openrtb-3.0-two-x-payload.json"),
         valid: false,
-        expected_issues: &[("openrtb.version.unsupported", "")],
+        expected_issues: &[("openrtb.envelope.missing", "")],
+    },
+    // The spec marks request and response "required *": exactly one.
+    FixtureCase {
+        name: "invalid-openrtb-3.0-request-and-response",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-requests/invalid-openrtb-3.0-request-and-response.json"),
+        valid: false,
+        expected_issues: &[("openrtb.fields.mutually_exclusive", "openrtb.request")],
     },
 ];
 

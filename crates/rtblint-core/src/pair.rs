@@ -23,6 +23,24 @@ pub(crate) fn validate_bid_response_against_request(
 ) -> crate::ValidationResult {
     let mut result = validate_bid_response(version, response_input);
 
+    // The cross-checks are written against 2.x shapes (imp ids, media
+    // subtypes, pmp deals). A 3.0 pair validates layer by layer instead, and
+    // silently skipping would look like the checks had passed.
+    if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
+        result.issues.push(Issue {
+            id: String::from("openrtb.pair.unsupported_version"),
+            severity: Severity::Warning,
+            message: format!(
+                "Request/response cross-validation is OpenRTB 2.x only; the {} response was \
+                 validated on its own.",
+                version.id()
+            ),
+            path: None,
+            section: None,
+        });
+        return finalize_result(result.issues);
+    }
+
     let request_value = match serde_json::from_str::<Value>(request_input) {
         Ok(value) => value,
         Err(error) => {

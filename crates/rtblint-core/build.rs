@@ -319,13 +319,13 @@ fn expected_shape_variant(type_spec: &str) -> &'static str {
 /// A field is unconditionally required only when the type column says so as
 /// its own segment ("string; required", "scope: required; type: ...").
 /// Conditional phrasings from the spec's prose ("required for Flex Ads",
-/// "required if sourcetype is present") must not count.
+/// "required if sourcetype is present") must not count, and neither does
+/// "required *": the asterisk is the 3.0 spec's footnote for "exactly one of
+/// these", which the validator enforces as an envelope rule instead.
 fn is_required(type_spec: &str) -> bool {
     type_spec
         .to_ascii_lowercase()
         .split(';')
         .map(str::trim)
-        .any(|segment| {
-            segment == "required" || segment == "required *" || segment == "scope: required"
-        })
+        .any(|segment| segment == "required" || segment == "scope: required")
 }

@@ -4,6 +4,20 @@
 
 ### Added
 
+- OpenRTB 3.0 layered validation. A 3.0 payload is validated through its
+  `openrtb` envelope: `ver`, `domainspec`, `domainver`, and the whole
+  transport tree (Request, Source, Item, Deal, Metric, Response, Seatbid,
+  Bid, Macro) with the usual required-field, unknown-field, type, and value
+  set checks. The AdCOM domain objects under `item.spec` and `bid.media`
+  are accepted as opaque until an AdCOM catalog ships. New rule ids:
+  `openrtb.envelope.missing`, `openrtb.envelope.ver_mismatch`,
+  `openrtb.envelope.domainspec_unsupported`, and
+  `openrtb.pair.unsupported_version` (cross-validation stays 2.x-only and
+  now says so rather than skipping silently). The spec's "required *"
+  footnote on `request`/`response` is enforced as exactly-one-of, and a 2.x
+  payload sent to a 3.0 validator gets a migration diagnostic naming where
+  `imp`, `bid.impid`, and `bid.adm` moved. 3.0 also gains JSON Schemas,
+  rooted at the envelope and pinned to one payload member
 - Published JSON Schemas: `schemas/` holds a draft 2020-12 schema per
   tracked version for both payload types, generated from the same catalogs
   the validator uses and served at

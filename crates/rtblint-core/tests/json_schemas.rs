@@ -182,6 +182,18 @@ fn valid_fixtures_satisfy_their_version_schema() {
             "bid-responses",
             "bid-response",
         ),
+        (
+            "valid-openrtb-3.0-layered-request.json",
+            OpenRtbVersion::V3_0,
+            "bid-requests",
+            "bid-request",
+        ),
+        (
+            "valid-openrtb-3.0-layered-response.json",
+            OpenRtbVersion::V3_0,
+            "bid-responses",
+            "bid-response",
+        ),
     ];
 
     for (fixture, version, directory, slug) in cases {
@@ -239,6 +251,44 @@ fn schemas_reject_structurally_invalid_payloads() {
         !validator.is_valid(&out_of_range_enum),
         "schema accepted an undocumented devicetype"
     );
+}
+
+/// The 3.0 schemas are rooted at the envelope and pin which payload member
+/// belongs inside, which is the whole difference between the two documents.
+#[test]
+fn layered_schemas_pin_their_envelope_member() {
+    for (slug, member, excluded) in [
+        ("bid-request", "request", "response"),
+        ("bid-response", "response", "request"),
+    ] {
+        let schema = load_schema(OpenRtbVersion::V3_0, slug)
+            .unwrap_or_else(|| panic!("3.0 {slug} schema should exist"));
+
+        assert_eq!(schema["required"], serde_json::json!(["openrtb"]));
+        let envelope = &schema["properties"]["openrtb"];
+        assert!(
+            envelope["properties"].get(member).is_some(),
+            "3.0 {slug} schema does not carry openrtb.{member}"
+        );
+        assert!(
+            envelope["properties"].get(excluded).is_none(),
+            "3.0 {slug} schema still allows openrtb.{excluded}"
+        );
+        assert!(envelope["required"]
+            .as_array()
+            .expect("envelope required")
+            .contains(&Value::String(String::from(member))));
+
+        let validator = jsonschema::validator_for(&schema).expect("schema should compile");
+        assert!(
+            !validator.is_valid(&serde_json::json!({ "openrtb": { "domainver": "1.0" } })),
+            "3.0 {slug} schema accepted an envelope with no {member}"
+        );
+        assert!(
+            !validator.is_valid(&serde_json::json!({ "id": "req-1", "imp": [] })),
+            "3.0 {slug} schema accepted an unwrapped 2.x payload"
+        );
+    }
 }
 
 fn collect_refs(value: &Value, out: &mut Vec<String>) {

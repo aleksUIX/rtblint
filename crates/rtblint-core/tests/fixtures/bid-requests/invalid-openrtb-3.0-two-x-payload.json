@@ -1,0 +1,20 @@
+{
+  "id": "req-2-6-sent-to-3-0",
+  "at": 1,
+  "tmax": 200,
+  "site": {
+    "id": "site-1",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "1",
+      "bidfloor": 4.5,
+      "video": {
+        "mimes": ["video/mp4"],
+        "minduration": 15,
+        "maxduration": 30
+      }
+    }
+  ]
+}

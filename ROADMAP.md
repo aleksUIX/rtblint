@@ -19,17 +19,19 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   bid response, plus two-pass request/response cross-validation (impid
   resolution, markup vs the referenced Imp's media subtypes, dealid, seat
   and currency constraints) via the library, CLI `--request`, MCP, and npm
-
 - Validated fixture coverage on both payload types for every tracked
   version, with a test that fails when a new snapshot ships without one
 - JSON Schemas (draft 2020-12) per version and payload type, generated from
   the catalogs and published at
   [rtblint.org/schemas](https://rtblint.org/docs/json-schemas/)
+- OpenRTB 3.0 layered validation: the envelope and every transport object,
+  exactly-one-of request/response, and a migration diagnostic when a 2.x
+  payload is sent to a 3.0 validator
 
 ## Next
 
-- OpenRTB 3.0 / AdCOM layered payload validation and 2.x-to-3.0 migration
-  diagnostics
+- AdCOM 1.0 object catalog, so the 3.0 domain layer (`item.spec`,
+  `bid.media`) is validated instead of accepted as opaque
 
 ## Later
 

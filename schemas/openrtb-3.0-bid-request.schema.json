@@ -1,0 +1,279 @@
+{
+  "$defs": {
+    "Deal": {
+      "additionalProperties": true,
+      "description": "Section Object: Deal",
+      "properties": {
+        "at": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "flr": {
+          "type": "number"
+        },
+        "flrcur": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "wadomain": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "wseat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Item": {
+      "additionalProperties": true,
+      "description": "Section Object: Item",
+      "properties": {
+        "deal": {
+          "items": {
+            "$ref": "#/$defs/Deal"
+          },
+          "type": "array"
+        },
+        "dlvy": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "dt": {
+          "type": "integer"
+        },
+        "exp": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "flr": {
+          "type": "number"
+        },
+        "flrcur": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "metric": {
+          "items": {
+            "$ref": "#/$defs/Metric"
+          },
+          "type": "array"
+        },
+        "private": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "qty": {
+          "type": "integer"
+        },
+        "qtyflt": {
+          "type": "number"
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "spec": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "spec"
+      ],
+      "type": "object"
+    },
+    "Metric": {
+      "additionalProperties": true,
+      "description": "Section Object: Metric",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "vendor": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "type": "object"
+    },
+    "Request": {
+      "additionalProperties": true,
+      "description": "Section Object: Request",
+      "properties": {
+        "at": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "cdata": {
+          "type": "string"
+        },
+        "context": {
+          "type": "object"
+        },
+        "cur": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "item": {
+          "items": {
+            "$ref": "#/$defs/Item"
+          },
+          "type": "array"
+        },
+        "package": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "seat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "test": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "tmax": {
+          "type": "integer"
+        },
+        "wseat": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "item"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": true,
+      "description": "Section Object: Source",
+      "properties": {
+        "cert": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        },
+        "ds": {
+          "type": "string"
+        },
+        "dsmap": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "pchain": {
+          "type": "string"
+        },
+        "schain": {
+          "type": "object"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "$id": "https://rtblint.org/schemas/openrtb-3.0-bid-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Generated by rtblint from the OpenRTB 3.0 object catalog (released 2022-03). Structure, types, required fields, and documented value sets only: deprecations, moved paths, and semantic rules are what the linter adds.",
+  "properties": {
+    "openrtb": {
+      "additionalProperties": true,
+      "properties": {
+        "domainspec": {
+          "type": "string"
+        },
+        "domainver": {
+          "type": "string"
+        },
+        "request": {
+          "$ref": "#/$defs/Request"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "domainver",
+        "request"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "openrtb"
+  ],
+  "title": "OpenRTB bid request (3.0)",
+  "type": "object"
+}

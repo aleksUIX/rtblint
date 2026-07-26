@@ -153,14 +153,21 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: true,
         expected_issues: &[],
     },
-    // The 3.0 catalog has no 2.x-style BidResponse object; layered 3.0
-    // response validation is not implemented yet and must say so.
+    // 3.0 responses validate through the same envelope; bid.media stays
+    // opaque until an AdCOM catalog ships.
     FixtureCase {
         name: "valid-openrtb-3.0-layered-response",
         version: OpenRtbVersion::V3_0,
         input: include_str!("fixtures/bid-responses/valid-openrtb-3.0-layered-response.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "invalid-openrtb-3.0-missing-response",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-responses/invalid-openrtb-3.0-missing-response.json"),
         valid: false,
-        expected_issues: &[("openrtb.version.unsupported", "")],
+        expected_issues: &[("openrtb.field.required", "openrtb.response")],
     },
 ];
 

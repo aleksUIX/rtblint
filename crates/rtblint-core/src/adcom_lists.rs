@@ -28,8 +28,11 @@ const CLICK_TYPES: &[i64] = &[0, 1, 2, 3];
 const COMPANION_TYPES: &[i64] = &[1, 2, 3];
 const CONNECTION_TYPES: &[i64] = &[1, 2, 3, 4, 5, 6, 7];
 const CONTENT_CONTEXTS: &[i64] = &[1, 2, 3, 4, 5, 6, 7];
+// 19 through 23 added in AdCOM 1.0-202607: advertiser QR code, alpha channel
+// transparency, and the three motion attributes (static visual, cinemagraph,
+// full-motion video) behind the CTV Ad Portfolio formats.
 const CREATIVE_ATTRIBUTES: &[i64] = &[
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
 ];
 const CREATIVE_SUBTYPES_AUDIO_VIDEO: &[i64] =
     &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -56,10 +59,17 @@ const OPERATING_SYSTEMS: &[i64] = &[
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
     26, 27, 28,
 ];
-const PLACEMENT_POSITIONS: &[i64] = &[0, 1, 2, 3, 4, 5, 6, 7];
+// 8 through 17 added in AdCOM 1.0-202607 for CTV Ad Portfolio on-screen
+// treatments: partial screen, the four corners, framing, double box variants
+// and the L shapes used by squeezeback.
+const PLACEMENT_POSITIONS: &[i64] = &[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 const PLAYBACK_CESSATION_MODES: &[i64] = &[1, 2, 3];
-const PLAYBACK_METHODS: &[i64] = &[1, 2, 3, 4, 5, 6, 7];
-const PLCMT_SUBTYPES_VIDEO: &[i64] = &[1, 2, 3, 4];
+// 8 through 11 added in AdCOM 1.0-202607: playback initiated by the viewer
+// pausing content, and by idling into a screensaver, each with sound on or off.
+const PLAYBACK_METHODS: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+// 5 through 9 added in AdCOM 1.0-202607: pause, screensaver, overlay,
+// squeezeback and in-scene.
+const PLCMT_SUBTYPES_VIDEO: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9];
 const POD_DEDUPLICATION: &[i64] = &[1, 2, 3, 4, 5];
 const POD_SEQUENCE: &[i64] = &[-1, 0, 1];
 const PRODUCTION_QUALITIES: &[i64] = &[0, 1, 2, 3];

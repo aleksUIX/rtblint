@@ -569,7 +569,7 @@ mod tests {
                         "id": "imp-1",
                         "video": {
                             "mimes": ["video/mp4"],
-                            "plcmt": 5
+                            "plcmt": 10
                         }
                     }
                 ]
@@ -582,6 +582,32 @@ mod tests {
             "openrtb.value.invalid",
             "imp[0].video.plcmt"
         ));
+    }
+
+    /// AdCOM 1.0-202607 added the CTV Ad Portfolio enumerations. A pause ad
+    /// carrying all four of them has to validate clean.
+    #[test]
+    fn validate_accepts_ctv_ad_portfolio_adcom_values() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [
+                    {
+                        "id": "imp-1",
+                        "video": {
+                            "mimes": ["video/mp4"],
+                            "plcmt": 5,
+                            "pos": 14,
+                            "playbackmethod": [9],
+                            "battr": [19, 21, 23],
+                            "linearity": 2
+                        }
+                    }
+                ]
+            }"#,
+        );
+
+        assert!(result.valid, "unexpected issues: {:?}", result.issues);
     }
 
     #[test]

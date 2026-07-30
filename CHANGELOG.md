@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- AdCOM value sets now cover AdCOM 1.0-202607 (tagged 2026-07-16), which
+  added the CTV Ad Portfolio enumerations. Before this, a valid pause,
+  screensaver, overlay, squeezeback or in-scene bid request was rejected with
+  four `openrtb.value.invalid` errors. Extended: List: Plcmt Subtypes - Video
+  with 5 through 9, List: Placement Positions with 8 through 17, List:
+  Playback Methods with 8 through 11, and List: Creative Attributes with 19
+  through 23. Values outside the new ranges are still rejected.
+
 ## 0.6.0 (2026-07-25)
 
 ### Added

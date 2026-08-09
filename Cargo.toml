@@ -2,6 +2,7 @@
 members = [
     "crates/rtblint-core",
     "crates/rtblint",
+    "crates/rtblint-grpc",
     "crates/rtblint-mcp",
     "crates/rtblint-wasm",
 ]

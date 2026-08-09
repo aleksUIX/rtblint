@@ -1,0 +1,8 @@
+{
+  "name": "rtblint-tooling",
+  "private": true,
+  "description": "Build tooling for the rtblint repository. Not published; exists so buf is pinned by a lockfile rather than by whatever is on PATH.",
+  "devDependencies": {
+    "@bufbuild/buf": "^1.72.0"
+  }
+}

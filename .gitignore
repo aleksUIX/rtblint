@@ -1,5 +1,6 @@
 /target
 /npm/node_modules
+/node_modules
 /python/.venv
 /python/dist
 /python/*.egg-info

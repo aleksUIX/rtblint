@@ -1,0 +1,251 @@
+// rtblint gRPC contract, v1.
+//
+// The sibling of `openadtech.vastlint.v1`, and deliberately not a copy of it.
+// The two validators sit in the same family and share a design philosophy, but
+// mirroring the VAST contract field for field would have imported decisions
+// that are wrong here. Three places where the shapes diverge, each for a reason
+// recorded at the point of divergence below:
+//
+//   1. The payload kind is a required request field, because rtblint cannot
+//      infer it. vastlint dispatches on the XML root element.
+//   2. The spec version is a string, not an enum, which is the opposite of the
+//      call made for VAST versions and follows from the same reasoning applied
+//      to different facts.
+//   3. Severity has two values, not three. rtblint emits no advisory level, and
+//      declaring one the server never sends would be a promise to consumers
+//      that nothing keeps.
+//
+// STABILITY POSTURE
+//
+// Identical to vastlint's, and it is the part worth copying. Assume every
+// consumer of this file will never upgrade. Within `v1`:
+//
+//   - Fields are added, never renumbered and never repurposed.
+//   - Deleted field numbers go into a `reserved` range in the same commit.
+//   - Enums gain values at the end. A consumer that receives an unknown enum
+//     value must treat it as the `_UNSPECIFIED` case rather than rejecting the
+//     message.
+//   - A breaking change means publishing `openadtech.rtblint.v2` alongside this
+//     package and serving both through a deprecation window.
+//
+// Enforced by `buf breaking` in CI, not by review.
+
+syntax = "proto3";
+
+package openadtech.rtblint.v1;
+
+// Validation of OpenRTB bid requests and bid responses.
+service RtblintService {
+  // Validate a single payload.
+  rpc Validate(ValidateRequest) returns (ValidateResponse);
+
+  // Validate a bid response against the bid request it answers.
+  //
+  // Its own RPC rather than an optional field on Validate, because it asks a
+  // different question. Validate asks whether a payload is well formed; this
+  // asks whether two payloads are consistent with each other, and a response
+  // that is perfectly valid on its own can still bid on an impression the
+  // request never offered. Those are different failures with different owners.
+  rpc ValidatePair(ValidatePairRequest) returns (ValidatePairResponse);
+
+  // The OpenRTB versions this server knows, and which one it defaults to.
+  rpc ListVersions(ListVersionsRequest) returns (ListVersionsResponse);
+}
+
+// ── Requests and responses ───────────────────────────────────────────────────
+
+// Input to a single-payload validation.
+message ValidateRequest {
+  // The JSON payload.
+  string document = 1;
+
+  // Which side of the transaction this payload is. Required.
+  //
+  // vastlint infers the document type from the XML root element and never asks.
+  // OpenRTB has no such marker: a bid request and a bid response are both JSON
+  // objects with an `id`, and telling them apart by guessing at their other
+  // fields would be a heuristic that fails on exactly the malformed payloads
+  // this service exists to diagnose. So the caller states it, and a request
+  // that leaves it unspecified is rejected rather than guessed at.
+  PayloadKind kind = 2;
+
+  // Optional. Server defaults apply when absent.
+  ValidationContext context = 3;
+}
+
+// Result of a single-payload validation.
+message ValidateResponse {
+  Verdict verdict = 1;
+}
+
+// A bid response and the bid request it answers.
+message ValidatePairRequest {
+  string bid_request = 1;
+  string bid_response = 2;
+  ValidationContext context = 3;
+}
+
+// Result of a cross-payload validation.
+//
+// The findings cover the response and the relationship between the two. The
+// request is not validated here: run Validate on it separately. An unparseable
+// request is reported as a finding rather than an error, because "your request
+// is unusable" is a verdict about the pair, not a failure of the call.
+message ValidatePairResponse {
+  Verdict verdict = 1;
+}
+
+// Request for the known versions.
+message ListVersionsRequest {}
+
+// The versions this server can validate against.
+message ListVersionsResponse {
+  // In release order, oldest first.
+  repeated VersionInfo versions = 1;
+
+  Provenance provenance = 2;
+}
+
+// The outcome of validating one payload or one pair.
+message Verdict {
+  // True when the payload produced no findings at ERROR severity. Warnings do
+  // not affect it.
+  bool valid = 1;
+
+  // Ordered by document position.
+  repeated Issue issues = 2;
+
+  Summary summary = 3;
+
+  // The version validation actually ran against, resolved from the request or
+  // from the server default. Echoed because a caller that omitted it otherwise
+  // has no way to know which rules produced the verdict.
+  string effective_version = 4;
+
+  Provenance provenance = 5;
+}
+
+// ── Core types ───────────────────────────────────────────────────────────────
+
+// A single validation finding.
+message Issue {
+  // Stable rule identifier, e.g. "openrtb.pair.request_unusable".
+  //
+  // A string for the same reason as in vastlint: the catalog moves faster than
+  // the wire contract, and binding one to the other makes every new rule a
+  // contract change. The stability policy is the same and is what makes the
+  // string safe to depend on:
+  //
+  //   1. An ID, once published, is permanent and is never reused for a
+  //      different rule.
+  //   2. Rules deprecate rather than disappear.
+  //   3. The dotted-namespace format is frozen even though the set is not, so
+  //      consumers may match on a prefix such as "openrtb.pair.".
+  string rule_id = 1;
+
+  Severity severity = 2;
+
+  string message = 3;
+
+  // JSON path to the offending value, e.g. "imp[0].video.mimes". Empty when the
+  // finding applies to the payload as a whole.
+  //
+  // No line or column, unlike vastlint. rtblint validates parsed JSON, where a
+  // path identifies a value exactly and a byte offset would identify one
+  // particular serialisation of it.
+  string path = 4;
+
+  // OpenRTB specification section, e.g. "3.2.7". Empty when the rule derives
+  // from a source with no section to cite.
+  string section = 5;
+}
+
+// Finding counts by severity.
+message Summary {
+  uint32 errors = 1;
+  uint32 warnings = 2;
+}
+
+// Caller-supplied validation settings.
+message ValidationContext {
+  // OpenRTB version to validate against, e.g. "2.6-202606" or "3.0". Empty
+  // means the server default, which ListVersions reports.
+  //
+  // A string rather than an enum, which is the opposite of the call made for
+  // VAST versions in the sibling contract, and the difference is instructive.
+  // VAST published seven versions in fifteen years, so an enum costs nothing.
+  // OpenRTB 2.6 alone has had ten dated revisions since 2022, roughly one a
+  // quarter, and eighteen versions are tracked in total. Encoding that as an
+  // enum would mean cutting a wire contract release every time the IAB
+  // published a dated errata.
+  //
+  // The honest limitation: a string does not let a caller target a revision the
+  // server has not shipped support for. It only removes the need to regenerate
+  // a client in order to name one the server already has. An unknown version is
+  // rejected with INVALID_ARGUMENT listing what is available, rather than
+  // silently falling back to a default, because silently validating against the
+  // wrong specification revision is the worst outcome available here.
+  string version = 1;
+}
+
+// Everything needed to reproduce a verdict later.
+//
+// A verdict is only meaningful against the ruleset that produced it, and for
+// this validator the version axis makes that sharper than usual: the same
+// payload is legitimately valid under 2.5 and invalid under 2.6.
+message Provenance {
+  // Semantic version of the catalog.
+  string catalog_version = 1;
+
+  // Content hash of the active ruleset, as "sha256:<hex>".
+  string catalog_digest = 2;
+
+  // Version of the validation engine itself.
+  string engine_version = 3;
+}
+
+// One OpenRTB version the server knows.
+message VersionInfo {
+  // The identifier to send in ValidationContext.version, e.g. "2.6-202606".
+  string id = 1;
+
+  // Which family the version belongs to. 2.x and 3.0 are structurally different
+  // specifications, not successive revisions of one.
+  OpenrtbFamily family = 2;
+
+  // True for the version used when a request names none.
+  bool is_default = 3;
+}
+
+// ── Enums ────────────────────────────────────────────────────────────────────
+
+// Severity assigned on specification language.
+//
+// Two values, not three. The sibling VAST contract carries an advisory INFO
+// level; rtblint has no equivalent today, and declaring one the server never
+// emits would be a field consumers could reasonably branch on and never reach.
+// Proto enums are append-only, so adding it later is not a breaking change,
+// which is precisely why it does not need to be pre-declared.
+enum Severity {
+  SEVERITY_UNSPECIFIED = 0;
+  SEVERITY_ERROR = 1;
+  SEVERITY_WARNING = 2;
+}
+
+// Which side of the RTB transaction a payload is.
+enum PayloadKind {
+  PAYLOAD_KIND_UNSPECIFIED = 0;
+  PAYLOAD_KIND_BID_REQUEST = 1;
+  PAYLOAD_KIND_BID_RESPONSE = 2;
+}
+
+// OpenRTB specification family.
+//
+// 2.x and 3.0 are not successive revisions of one specification: 3.0 restructures
+// the object model and moves most of the payload into AdCOM. A caller filtering
+// by family is asking a real question about which shape it is dealing with.
+enum OpenrtbFamily {
+  OPENRTB_FAMILY_UNSPECIFIED = 0;
+  OPENRTB_FAMILY_2_X = 1;
+  OPENRTB_FAMILY_3_0 = 2;
+}

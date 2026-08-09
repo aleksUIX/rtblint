@@ -43,6 +43,38 @@ jobs:
             exit 1
           fi
 
+  proto:
+    name: Proto contract
+    runs-on: ubuntu-latest
+    steps:
+      # buf breaking compares this commit against the tip of main, so the job
+      # needs real history rather than the default shallow clone.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # buf comes from the npm devDependency, so its version is pinned by the
+      # lockfile rather than by whatever the runner happens to have.
+      - name: Install buf
+        run: npm ci
+
+      - name: buf lint
+        run: npx buf lint
+
+      - name: buf format check
+        run: npx buf format --diff --exit-code
+
+      # The backward-compatibility gate. Any change to a published field number,
+      # field type, enum value, or RPC signature fails here rather than being
+      # found by a consumer after release.
+      - name: buf breaking
+        if: github.event_name == 'pull_request'
+        run: npx buf breaking --against '.git#branch=main'
+
   wasm:
     runs-on: ubuntu-latest
 

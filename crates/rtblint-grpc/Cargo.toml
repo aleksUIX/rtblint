@@ -1,0 +1,58 @@
+[package]
+name = "rtblint-grpc"
+version.workspace = true
+edition.workspace = true
+rust-version = "1.88"  # tonic-prost-build
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "gRPC server for RTBlint: OpenRTB bid request and bid response validation over openadtech.rtblint.v1, with server reflection and health checking"
+keywords = ["openrtb", "rtb", "grpc", "adtech", "validator"]
+categories = ["development-tools", "network-programming"]
+readme = "README.md"
+
+[[bin]]
+name = "rtblint-grpc"
+path = "src/main.rs"
+
+[dependencies]
+rtblint-core = { path = "../rtblint-core", version = "0.6.0" }
+
+tonic = "0.14"
+tonic-prost = "0.14"
+prost = "0.14"
+
+# Server reflection, so grpcurl works without a local copy of the proto.
+tonic-reflection = "0.14"
+
+# grpc.health.v1, for Kubernetes readiness probes and load balancer checks.
+tonic-health = "0.14"
+
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "time"] }
+tokio-stream = "0.1"
+
+# Middleware stack for the shared ingress controls.
+tower = { version = "0.5", features = ["util"] }
+http = "1"
+
+# Catalog digest, hashed over the linked catalog at startup.
+sha2 = "0.10"
+
+# Metrics. default-features off drops the protobuf exposition format and the
+# `protobuf` crate with it.
+prometheus = { version = "0.14", default-features = false }
+
+# Fast allocator. Validation is allocation-heavy under concurrency.
+mimalloc = { version = "0.1", default-features = false }
+
+[build-dependencies]
+tonic-prost-build = "0.14"
+
+# Pure-Rust protobuf compiler, so the build needs no `protoc` on PATH.
+protox = "0.9"
+prost = "0.14"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "net"] }
+tokio-stream = { version = "0.1", features = ["net"] }

@@ -17,7 +17,7 @@ name = "rtblint-grpc"
 path = "src/main.rs"
 
 [dependencies]
-rtblint-core = { path = "../rtblint-core", version = "0.6.0" }
+rtblint-core = { path = "../rtblint-core", version = "0.7.0" }
 
 tonic = "0.14"
 tonic-prost = "0.14"

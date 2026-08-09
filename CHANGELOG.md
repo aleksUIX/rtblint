@@ -1,6 +1,83 @@
 # Changelog
 
-## Unreleased
+## 0.7.0 (2026-08-09)
+
+### Added
+
+- `rtblint-grpc`, a gRPC server for `openadtech.rtblint.v1`, the sibling of
+  vastlint-grpc. Three contract decisions inverted under OpenRTB's facts and
+  are argued in the proto where they occur: payload kind is supplied rather
+  than sniffed, because a bid request and a bid response are both JSON
+  objects with an `id` and any heuristic fails hardest on the malformed
+  payloads the service exists to diagnose; the spec version is a string
+  rather than an enum, the opposite of the VAST call, because 2.6 alone has
+  had ten dated revisions since 2022 and an enum would mean a wire release
+  per IAB erratum; severity has two levels rather than three, because
+  rtblint emits no advisory level and a field the server never sends is one
+  consumers can branch on and never reach.
+- `get_adcp_capabilities` on the MCP server, for AdCP protocol discovery.
+  Declares the AdCP releases the agent speaks (3.1 at release precision)
+  and the bid-stream conformance metrics it computes:
+  `openrtb_error_count`, `openrtb_warning_count`, and
+  `openrtb_conformance_rate`. A pin outside `supported_versions` returns a
+  typed `VERSION_UNSUPPORTED` error naming the releases that would work,
+  rather than silently serving a version the caller did not ask for.
+  `adcp_major_version` is accepted and deprecated in favour of
+  `adcp_version`.
+- Seven SupplyChain hygiene rules, all offline and all warnings. On the
+  chain: `openrtb.schain.ver_unexpected` (`ver` other than the only
+  published version, 1.0), `openrtb.schain.incomplete` (`complete` is 0, so
+  the declared path knowingly omits an upstream node), and
+  `openrtb.schain.length_implausible` (more than ten nodes, usually a
+  forwarder splicing two chains together). On each node:
+  `openrtb.schain.node.hp_unexpected` (`hp` other than 1, which SupplyChain
+  1.0 expects on every node), `openrtb.schain.node.asi_not_domain` (`asi`
+  carrying a scheme, path, port, or whitespace instead of a bare domain),
+  and `openrtb.schain.node.asi_not_lowercase`. On Source:
+  `openrtb.schain.duplicate_location`, for a chain declared at both
+  `source.schain` and `source.ext.schain`, where the two copies can
+  disagree and receivers differ on which they read.
+
+  `asi` is a lookup key, not a label: verifying a hop means fetching that
+  domain's sellers.json and matching the sid inside it. The two `asi` rules
+  exist because a value that is not a bare lowercase domain fails that
+  lookup, so the node cannot be authorised even when the chain is honest.
+
+  An empty `nodes` array is deliberately not a new rule. The required-field
+  check already errors on it, and a second finding for one defect is noise.
+
+### Changed
+
+- A field the selected version's catalog does not define now reports why,
+  when the version rules know. Previously every such field reported
+  `openrtb.field.undefined`, which is the same answer for a typo, for a
+  field deleted by a later revision, and for a field that has not shipped
+  yet. Those want different fixes.
+
+  `openrtb.field.not_yet_available` now fires for a field that arrives in a
+  later version, and names it: `regs.gpp` against 2.6-202210 reports "not
+  available in OpenRTB 2.6-202210. It arrives in 2.6-202211." That is the
+  code to look for when a partner calls a field unknown, because it usually
+  means the two of you pinned different 2.6 snapshots.
+  `openrtb.field.removed` now fires for a field deleted by a revision, such
+  as `banner.wmax` against any 2.6.
+
+  Both ids were documented and neither could fire. The catalog lookup
+  pushed `openrtb.field.undefined` and returned before the path-state check
+  ran, and both states describe fields absent from that catalog, so their
+  arms were unreachable. A second mismatch sat underneath: the walker builds
+  a path from the document root (`imp.banner.wmax`) while the version rules
+  name a field relative to its owning object (`banner.wmax`), which is how
+  the spec's change appendices are written, so full-path lookups only landed
+  when the object happened to sit at the root. Lookups now try the full path
+  and then the trailing `object.field` pair, both exact comparisons.
+
+  **Migration.** Severity stays `Error` and `valid` is unchanged, so exit
+  codes do not move. If you gate CI on rule ids, payloads that reported
+  `openrtb.field.undefined` for a version-shifted field now report
+  `openrtb.field.not_yet_available` or `openrtb.field.removed`. Fields no
+  version rule knows, ordinary typos included, still report
+  `openrtb.field.undefined`.
 
 ### Fixed
 

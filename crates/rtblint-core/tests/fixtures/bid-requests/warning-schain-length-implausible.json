@@ -1,0 +1,84 @@
+{
+  "id": "req-schain-long-001",
+  "at": 1,
+  "tmax": 200,
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        {
+          "asi": "exchange1.example",
+          "sid": "seller-1",
+          "hp": 1
+        },
+        {
+          "asi": "exchange2.example",
+          "sid": "seller-2",
+          "hp": 1
+        },
+        {
+          "asi": "exchange3.example",
+          "sid": "seller-3",
+          "hp": 1
+        },
+        {
+          "asi": "exchange4.example",
+          "sid": "seller-4",
+          "hp": 1
+        },
+        {
+          "asi": "exchange5.example",
+          "sid": "seller-5",
+          "hp": 1
+        },
+        {
+          "asi": "exchange6.example",
+          "sid": "seller-6",
+          "hp": 1
+        },
+        {
+          "asi": "exchange7.example",
+          "sid": "seller-7",
+          "hp": 1
+        },
+        {
+          "asi": "exchange8.example",
+          "sid": "seller-8",
+          "hp": 1
+        },
+        {
+          "asi": "exchange9.example",
+          "sid": "seller-9",
+          "hp": 1
+        },
+        {
+          "asi": "exchange10.example",
+          "sid": "seller-10",
+          "hp": 1
+        },
+        {
+          "asi": "exchange11.example",
+          "sid": "seller-11",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "site": {
+    "id": "site-schain-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-schain-1",
+      "bidfloor": 2.5,
+      "bidfloorcur": "USD",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

@@ -60,6 +60,12 @@ const ENVELOPE_MEMBER: &str = "openrtb";
 const ENVELOPE_OBJECT: &str = "Openrtb";
 /// The only domain spec whose objects this build can reason about.
 const DEFAULT_DOMAIN_SPEC: &str = "adcom";
+/// The only published version of the SupplyChain object.
+const SUPPLY_CHAIN_VERSION: &str = "1.0";
+/// Node count past which a declared path is worth a second look. Real chains
+/// run to a handful of hops; anything near this is usually a concatenation
+/// bug, since every hop has to be independently authorised to be buyable.
+const SUPPLY_CHAIN_LENGTH_CEILING: usize = 10;
 
 fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> ValidationResult {
     if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
@@ -709,6 +715,7 @@ fn validate_object_semantics(
         "Deal" => validate_deal_semantics(object, instance_path, object_section, issues),
         "Regs" => validate_regs_semantics(object, instance_path, object_section, issues),
         "Native" => validate_native_semantics(object, instance_path, object_section, issues),
+        "Source" => validate_source_semantics(object, instance_path, object_section, issues),
         "SupplyChain" => {
             validate_supply_chain_semantics(object, instance_path, object_section, issues)
         }
@@ -1289,16 +1296,87 @@ fn validate_native_semantics(
     }
 }
 
+fn validate_source_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let ext_declares_schain = object
+        .get("ext")
+        .and_then(Value::as_object)
+        .is_some_and(|ext| ext.contains_key("schain"));
+
+    if object.contains_key("schain") && ext_declares_schain {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.duplicate_location"),
+            severity: Severity::Warning,
+            message: String::from(
+                "A supply chain is declared at both source.schain and source.ext.schain; the two \
+                 copies can disagree, and receivers differ on which one they read.",
+            ),
+            path: Some(join_instance_path(instance_path, "ext.schain")),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
 fn validate_supply_chain_semantics(
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
     issues: &mut Vec<Issue>,
 ) {
+    if let Some(ver) = object.get("ver").and_then(Value::as_str) {
+        if ver != SUPPLY_CHAIN_VERSION {
+            issues.push(Issue {
+                id: String::from("openrtb.schain.ver_unexpected"),
+                severity: Severity::Warning,
+                message: format!(
+                    "ver is \"{ver}\"; {SUPPLY_CHAIN_VERSION} is the only published version of \
+                     the SupplyChain object, so receivers may not recognise this chain.",
+                ),
+                path: Some(join_instance_path(instance_path, "ver")),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+
+    if object.get("complete").and_then(integer_value) == Some(0) {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.incomplete"),
+            severity: Severity::Warning,
+            message: String::from(
+                "complete is 0, which declares that at least one upstream node is missing from \
+                 this path; buyers that require a verifiable chain will treat the inventory as \
+                 unauthorised.",
+            ),
+            path: Some(join_instance_path(instance_path, "complete")),
+            section: Some(String::from(section)),
+        });
+    }
+
     let Some(nodes) = object.get("nodes").and_then(Value::as_array) else {
         return;
     };
     let nodes_path = join_instance_path(instance_path, "nodes");
+
+    // An empty `nodes` array is already an error: the catalog's required-field
+    // check treats it as absent. Adding a second finding for the same defect
+    // would just be noise, so this only covers chains that do have nodes.
+    if nodes.len() > SUPPLY_CHAIN_LENGTH_CEILING {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.length_implausible"),
+            severity: Severity::Warning,
+            message: format!(
+                "This SupplyChain declares {} nodes; paths that long are rare, and each hop has \
+                 to be independently authorised, so check the chain was not appended twice.",
+                nodes.len()
+            ),
+            path: Some(nodes_path.clone()),
+            section: Some(String::from(section)),
+        });
+    }
 
     for index in 1..nodes.len() {
         let previous = nodes[index - 1].as_object();
@@ -1344,6 +1422,20 @@ fn validate_supply_chain_node_semantics(
             path: Some(String::from(instance_path)),
             section: Some(String::from(section)),
         });
+    } else if let Some(hp) = object.get("hp").and_then(integer_value) {
+        if hp != 1 {
+            issues.push(Issue {
+                id: String::from("openrtb.schain.node.hp_unexpected"),
+                severity: Severity::Warning,
+                message: format!(
+                    "hp is {hp}; version {SUPPLY_CHAIN_VERSION} of the SupplyChain object expects \
+                     every node on the declared path to be marked as part of the payment flow \
+                     with hp set to 1.",
+                ),
+                path: Some(join_instance_path(instance_path, "hp")),
+                section: Some(String::from(section)),
+            });
+        }
     }
 
     for field in ["asi", "sid"] {
@@ -1359,6 +1451,62 @@ fn validate_supply_chain_node_semantics(
                 section: Some(String::from(section)),
             });
         }
+    }
+
+    let Some(asi) = object.get("asi").and_then(Value::as_str) else {
+        return;
+    };
+    if asi.is_empty() {
+        return;
+    }
+    let asi_path = join_instance_path(instance_path, "asi");
+
+    if let Some(defect) = supply_chain_asi_defect(asi) {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.node.asi_not_domain"),
+            severity: Severity::Warning,
+            message: format!(
+                "asi is \"{asi}\", which {defect}; asi has to be the bare canonical domain of the \
+                 selling system so it can be matched against that domain's sellers.json and the \
+                 publisher's ads.txt.",
+            ),
+            path: Some(asi_path.clone()),
+            section: Some(String::from(section)),
+        });
+    }
+
+    if asi.chars().any(char::is_uppercase) {
+        issues.push(Issue {
+            id: String::from("openrtb.schain.node.asi_not_lowercase"),
+            severity: Severity::Warning,
+            message: format!(
+                "asi is \"{asi}\"; canonical domains are lowercase, and a case difference breaks \
+                 exact matching against sellers.json and ads.txt entries.",
+            ),
+            path: Some(asi_path),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
+/// Why an `asi` value is not a bare canonical domain, if it is not one.
+/// Ordered so the most specific defect wins: a full URL trips the scheme
+/// check rather than reporting a path separator and a port separately.
+fn supply_chain_asi_defect(asi: &str) -> Option<&'static str> {
+    if asi.contains("://") {
+        Some("includes a URI scheme")
+    } else if asi.contains('/') {
+        Some("includes a path separator")
+    } else if asi.chars().any(char::is_whitespace) {
+        Some("contains whitespace")
+    } else if asi.contains(':') {
+        Some("includes a port")
+    } else if asi.starts_with('.') || asi.ends_with('.') {
+        Some("has a leading or trailing dot")
+    } else if !asi.contains('.') {
+        Some("is not a domain name")
+    } else {
+        None
     }
 }
 

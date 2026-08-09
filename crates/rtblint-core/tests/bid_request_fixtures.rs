@@ -147,6 +147,74 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         )],
     },
     FixtureCase {
+        name: "warning-schain-ver-unexpected",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-ver-unexpected.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.ver_unexpected", "source.schain.ver")],
+    },
+    FixtureCase {
+        name: "warning-schain-incomplete",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-incomplete.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.incomplete", "source.schain.complete")],
+    },
+    // An empty nodes array has to stay an error. It is reported by the
+    // required-field check rather than a schain rule, so this pins the
+    // behaviour the semantic pack deliberately does not duplicate.
+    FixtureCase {
+        name: "invalid-schain-nodes-empty",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/invalid-schain-nodes-empty.json"),
+        valid: false,
+        expected_issues: &[("openrtb.field.required", "source.schain.nodes")],
+    },
+    FixtureCase {
+        name: "warning-schain-length-implausible",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-length-implausible.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.length_implausible", "source.schain.nodes")],
+    },
+    FixtureCase {
+        name: "warning-schain-node-hp-unexpected",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-node-hp-unexpected.json"),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.schain.node.hp_unexpected",
+            "source.schain.nodes[0].hp",
+        )],
+    },
+    FixtureCase {
+        name: "warning-schain-node-asi-not-domain",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-node-asi-not-domain.json"),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.schain.node.asi_not_domain",
+            "source.schain.nodes[0].asi",
+        )],
+    },
+    FixtureCase {
+        name: "warning-schain-node-asi-not-lowercase",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-node-asi-not-lowercase.json"),
+        valid: true,
+        expected_issues: &[(
+            "openrtb.schain.node.asi_not_lowercase",
+            "source.schain.nodes[0].asi",
+        )],
+    },
+    FixtureCase {
+        name: "warning-schain-duplicate-location",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-schain-duplicate-location.json"),
+        valid: true,
+        expected_issues: &[("openrtb.schain.duplicate_location", "source.ext.schain")],
+    },
+    FixtureCase {
         name: "warning-regs-gpp-sid-without-gpp",
         version: OpenRtbVersion::V2_6_202606,
         input: include_str!("fixtures/bid-requests/warning-regs-gpp-sid-without-gpp.json"),

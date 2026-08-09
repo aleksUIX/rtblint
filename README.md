@@ -109,6 +109,16 @@ Regenerate after any catalog change (CI fails if they drift):
 cargo run -p rtblint-core --example export_json_schemas
 ```
 
+## Documentation
+
+Beyond this README, [rtblint.org](https://rtblint.org) hosts the reference material:
+
+- [Diagnostic code reference](https://rtblint.org/docs/rule-reference/): every stable issue id, each with a page covering what it means, why it matters, and how to fix it
+- [Versioned rule catalog](https://rtblint.org/docs/rules/): what every OpenRTB release added, deprecated, moved, or removed
+- [OpenRTB versions](https://rtblint.org/docs/openrtb-versions/): a page per tracked version, 2.0 through 3.0
+- [Common OpenRTB mistakes](https://rtblint.org/guides/common-openrtb-mistakes/) and [validating in CI](https://rtblint.org/guides/openrtb-validation-in-ci/)
+- [Bid request anatomy](https://rtblint.org/docs/openrtb/bid-request/), [bid response anatomy](https://rtblint.org/docs/openrtb/bid-response/), and the [OpenRTB FAQ](https://rtblint.org/faq/)
+
 ## Spec data and provenance
 
 The validator runs on structured catalogs extracted from the IAB Tech Lab OpenRTB specifications: object names, field names, type notations, enumerated value sets, and section citations. The catalogs carry no spec prose. RTBlint is not affiliated with or endorsed by IAB Tech Lab. See NOTICE for attribution.

@@ -32,6 +32,12 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 
 - AdCOM 1.0 object catalog, so the 3.0 domain layer (`item.spec`,
   `bid.media`) is validated instead of accepted as opaque
+- Opt-in `--resolve` mode: extend the existing offline SupplyChain node
+  hygiene rules with external resolution, checking each `nodes[].asi`
+  against that domain's sellers.json, `sid` against the entry found there,
+  and `app.bundle` or `site.domain` against the publisher's ads.txt or
+  app-ads.txt. Backed by a locally cached reference database, shipped as a
+  separate crate so the offline core stays a pure function of the payload
 
 ## Later
 

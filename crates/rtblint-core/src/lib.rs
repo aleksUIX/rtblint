@@ -185,6 +185,17 @@ mod tests {
             .any(|issue| issue.id == id && issue.path.as_deref() == Some(path))
     }
 
+    /// The message reported at `path`, for assertions about wording that is
+    /// load-bearing (a named arrival version is the fix, not decoration).
+    fn issue_message(result: &ValidationResult, path: &str) -> String {
+        result
+            .issues
+            .iter()
+            .find(|issue| issue.path.as_deref() == Some(path))
+            .map(|issue| issue.message.clone())
+            .unwrap_or_else(|| panic!("no issue at {path}: {:?}", result.issues))
+    }
+
     #[test]
     fn validate_accepts_minimal_video_bid_request() {
         let result = validate(
@@ -724,11 +735,19 @@ mod tests {
         );
 
         assert!(!result.valid);
+        // plcmt exists, just not yet at 2.5. Saying "not available, arrives in
+        // 2.6-202303" answers the version question; "undefined" only says the
+        // catalog has never heard of it, which sends people hunting for a typo.
         assert!(has_issue(
             &result,
-            "openrtb.field.undefined",
+            "openrtb.field.not_yet_available",
             "imp[0].video.plcmt"
         ));
+        let message = issue_message(&result, "imp[0].video.plcmt");
+        assert!(
+            message.contains("2.6-202303"),
+            "the arrival version should be named: {message}"
+        );
     }
 
     #[test]
@@ -827,8 +846,63 @@ mod tests {
         assert!(!at_202505.valid);
         assert!(has_issue(
             &at_202505,
-            "openrtb.field.undefined",
+            "openrtb.field.not_yet_available",
             "app.content.realtime"
+        ));
+        let message = issue_message(&at_202505, "app.content.realtime");
+        assert!(
+            message.contains("2.6-202606"),
+            "the arrival version should be named: {message}"
+        );
+    }
+
+    /// The version-rule lookup must not swallow ordinary typos.
+    ///
+    /// `not_yet_available` and `removed` are only correct for paths a version
+    /// rule actually knows. An invented key matches nothing, stays Unknown, and
+    /// has to keep reporting as undefined, or every misspelling turns into a
+    /// misleading "arrives in a later version".
+    #[test]
+    fn unknown_field_names_still_report_as_undefined() {
+        let result = validate(
+            r#"{
+                "id": "req-1",
+                "site": { "id": "s1" },
+                "imp": [{ "id": "1", "bidflor": 2.5, "banner": { "w": 300, "h": 250 } }]
+            }"#,
+        );
+
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.field.undefined",
+            "imp[0].bidflor"
+        ));
+    }
+
+    /// A field removed by a later revision reports as removed, not undefined.
+    #[test]
+    fn removed_fields_report_as_removed() {
+        let payload = r#"{
+            "id": "req-1",
+            "site": { "id": "s1" },
+            "imp": [{ "id": "1", "banner": { "w": 300, "h": 250, "wmax": 728 } }]
+        }"#;
+
+        let at_2_6 = validate_bid_request_for_version(OpenRtbVersion::V2_6_202606, payload);
+        assert!(!at_2_6.valid);
+        assert!(has_issue(
+            &at_2_6,
+            "openrtb.field.removed",
+            "imp[0].banner.wmax"
+        ));
+
+        // Still only deprecated at 2.5, where it had not been removed yet.
+        let at_2_5 = validate_bid_request_for_version(OpenRtbVersion::V2_5, payload);
+        assert!(has_issue(
+            &at_2_5,
+            "openrtb.field.deprecated",
+            "imp[0].banner.wmax"
         ));
     }
 

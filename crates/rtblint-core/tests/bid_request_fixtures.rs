@@ -84,7 +84,7 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         version: OpenRtbVersion::V2_5,
         input: include_str!("fixtures/bid-requests/invalid-openrtb-2.5-video-plcmt-too-early.json"),
         valid: false,
-        expected_issues: &[("openrtb.field.undefined", "imp[0].video.plcmt")],
+        expected_issues: &[("openrtb.field.not_yet_available", "imp[0].video.plcmt")],
     },
     FixtureCase {
         name: "invalid-moved-gdpr",

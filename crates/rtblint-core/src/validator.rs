@@ -407,18 +407,15 @@ fn validate_known_object<'a>(
             .iter()
             .find(|field| field.name == field_name.as_str())
         else {
-            issues.push(Issue {
-                id: String::from("openrtb.field.undefined"),
-                severity: Severity::Error,
-                message: format!(
-                    "{}.{} is not defined in the canonical OpenRTB {} catalog.",
-                    object_name,
-                    field_name,
-                    version.id()
-                ),
-                path: Some(instance_path.clone()),
-                section: Some(String::from(definition.section)),
-            });
+            issues.push(uncatalogued_field_issue(
+                version,
+                kind,
+                object_name,
+                field_name,
+                logical_segments,
+                instance_path,
+                definition.section,
+            ));
             instance_path.truncate(parent_path_length);
             logical_segments.pop();
             continue;
@@ -1619,6 +1616,126 @@ fn validate_field_value_shape(
             path: Some(String::from(instance_path)),
             section: Some(String::from(field.citation.section)),
         });
+    }
+}
+
+/// Look up a walked field against the version rules, in both path vocabularies.
+///
+/// The two do not share one. The walker builds a full logical path from the
+/// document root (`imp.banner.wmax`), while the version rules name a field
+/// relative to the object that owns it (`banner.wmax`), because that is how the
+/// spec's change appendices are written. Of the 130 rule paths, most are the
+/// two-segment `object.field` form, so a full-path lookup only lands when the
+/// owning object happens to sit at the root: `regs.gpp` matches, `banner.wmax`
+/// never does.
+///
+/// So try the full path, then the trailing `object.field` pair. Both are exact
+/// comparisons against the rule table rather than substring matching, and the
+/// tail is the rules' own vocabulary, so this resolves the mismatch without
+/// loosening what counts as a match.
+fn resolve_path_status(
+    version: OpenRtbVersion,
+    kind: PayloadKind,
+    logical_segments: &[&str],
+) -> Option<(String, crate::PathStatus)> {
+    let full = schema_path(kind, logical_segments)?;
+    let status = path_status(version, &full);
+    if status.kind != PathStateKind::Unknown {
+        return Some((full, status));
+    }
+
+    if logical_segments.len() >= 2 {
+        let tail = logical_segments[logical_segments.len() - 2..].join(".");
+        if tail != full {
+            let tail_status = path_status(version, &tail);
+            if tail_status.kind != PathStateKind::Unknown {
+                return Some((tail, tail_status));
+            }
+        }
+    }
+
+    Some((full, status))
+}
+
+/// The finding for a field the target version's catalog does not define.
+///
+/// `openrtb.field.undefined` is the fallback, and on its own it is a weak
+/// answer: it says the name is absent from this version's catalog, which is
+/// true for a typo, for a field that was removed, and for a field that has not
+/// shipped yet. Those three want different fixes.
+///
+/// The version rules already distinguish them, so consult those first. A field
+/// absent because it arrives in a later snapshot gets
+/// `openrtb.field.not_yet_available` and the version it arrives in, which turns
+/// "unknown field" into a version-negotiation answer. A field absent because it
+/// was removed gets `openrtb.field.removed`.
+///
+/// Paths no version rule knows about return `PathStateKind::Unknown` and fall
+/// through to `openrtb.field.undefined`, so ordinary typos are unaffected.
+#[allow(clippy::too_many_arguments)]
+fn uncatalogued_field_issue(
+    version: OpenRtbVersion,
+    kind: PayloadKind,
+    object_name: &str,
+    field_name: &str,
+    logical_segments: &[&str],
+    instance_path: &str,
+    catalog_section: &str,
+) -> Issue {
+    if let Some((schema_path, status)) = resolve_path_status(version, kind, logical_segments) {
+        let section = status
+            .matched_rules
+            .first()
+            .map(|matched| String::from(matched.rule.section))
+            .unwrap_or_else(|| String::from(catalog_section));
+
+        match status.kind {
+            PathStateKind::Removed => {
+                return Issue {
+                    id: String::from("openrtb.field.removed"),
+                    severity: Severity::Error,
+                    message: format!(
+                        "{} was removed before OpenRTB {}.",
+                        schema_path,
+                        version.id()
+                    ),
+                    path: Some(String::from(instance_path)),
+                    section: Some(section),
+                };
+            }
+            PathStateKind::NotYetAvailable => {
+                let arrives = match status.since {
+                    Some(since) => format!(" It arrives in {}.", since.id()),
+                    None => String::new(),
+                };
+                return Issue {
+                    id: String::from("openrtb.field.not_yet_available"),
+                    severity: Severity::Error,
+                    message: format!(
+                        "{} is not available in OpenRTB {}.{}",
+                        schema_path,
+                        version.id(),
+                        arrives
+                    ),
+                    path: Some(String::from(instance_path)),
+                    section: Some(section),
+                };
+            }
+            _ => {}
+        }
+    }
+
+    Issue {
+        id: String::from("openrtb.field.undefined"),
+        severity: Severity::Error,
+        message: format!(
+            "{}.{} is not defined in the canonical OpenRTB {} catalog.",
+            object_name,
+            field_name,
+            version.id()
+        ),
+        path: Some(String::from(instance_path)),
+        section: Some(String::from(catalog_section)),
     }
 }
 

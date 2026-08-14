@@ -48,6 +48,18 @@
   `validateArtfRequest` / `validateArtfResponse` /
   `validateArtfResponseApplied` on npm.
 
+- gRPC: `ValidateArtfEnvelope` and `ValidateArtfMutations` on
+  `openadtech.rtblint.v1`, plus `ValidationContext.dialect`. ARTF mandates gRPC
+  for the extension point itself, so an orchestrator checking what an agent
+  proposed does it in band rather than shelling out. The mutation RPC is split
+  from the envelope RPC on the same reasoning that split `ValidatePair` from
+  `Validate`: well formed and coherent with the auction are different
+  questions. With `apply` set it returns the rewritten payloads and which
+  mutation indexes went in. `dialect` is refused on the ARTF RPCs even when it
+  names the correct dialect, because the framework decides that, not the
+  caller. Additive on the wire: new RPCs, new messages, one new field, one new
+  enum, all past `buf breaking`.
+
 ### Fixed
 
 - Fields the spec tables type `int` rather than `integer`, plus the source

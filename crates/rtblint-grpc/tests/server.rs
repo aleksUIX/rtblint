@@ -9,8 +9,8 @@ use std::time::Duration;
 use rtblint_grpc::proto::rtblint_service_client::RtblintServiceClient;
 use rtblint_grpc::proto::rtblint_service_server::RtblintServiceServer;
 use rtblint_grpc::proto::{
-    ListVersionsRequest, PayloadKind, Severity, ValidatePairRequest, ValidateRequest,
-    ValidationContext,
+    JsonDialect, ListVersionsRequest, PayloadKind, Severity, ValidateArtfMutationsRequest,
+    ValidatePairRequest, ValidateRequest, ValidationContext,
 };
 use rtblint_grpc::service::RtblintApi;
 use tokio::net::TcpListener;
@@ -121,6 +121,7 @@ async fn an_unknown_version_is_rejected_and_lists_what_is_available() {
             kind: PayloadKind::BidRequest as i32,
             context: Some(ValidationContext {
                 version: "2.6-209901".to_string(),
+                dialect: JsonDialect::Unspecified as i32,
             }),
         }))
         .await
@@ -152,6 +153,7 @@ async fn every_advertised_version_is_actually_usable() {
                 kind: PayloadKind::BidRequest as i32,
                 context: Some(ValidationContext {
                     version: version.id.clone(),
+                    dialect: JsonDialect::Unspecified as i32,
                 }),
             }))
             .await
@@ -188,6 +190,62 @@ async fn validate_pair_finds_what_a_single_payload_check_cannot() {
         .expect("verdict present");
 
     assert!(!paired.valid, "a bid on an impid the request never offered");
+}
+
+/// ARTF mandates gRPC for the extension point, so the payload an orchestrator
+/// checks arrives over the wire. The rewritten bid request has to survive the
+/// round trip intact, since it is what the orchestrator forwards next.
+#[tokio::test]
+async fn applying_artf_mutations_round_trips_the_rewritten_payload() {
+    let mut client = start().await;
+
+    let envelope = r#"{
+        "id": "ep-1",
+        "tmax": 120,
+        "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+        "applicable_intents": ["ACTIVATE_DEALS"],
+        "originator": { "type": "TYPE_EXCHANGE", "id": "x-1" },
+        "bid_request": {
+            "id": "auction-1",
+            "imp": [{ "id": "imp-1", "banner": { "w": 300, "h": 250 } }],
+            "site": { "id": "s-1", "domain": "news.example" }
+        }
+    }"#;
+    let mutations = r#"{
+        "id": "ep-1",
+        "mutations": [
+            {
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1",
+                "ids": { "id": ["deal-curated"] }
+            }
+        ],
+        "metadata": { "api_version": "1.0.0", "model_version": "m" }
+    }"#;
+
+    let response = client
+        .validate_artf_mutations(Request::new(ValidateArtfMutationsRequest {
+            rtb_request: envelope.to_string(),
+            rtb_response: mutations.to_string(),
+            apply: true,
+            context: None,
+        }))
+        .await
+        .expect("validate_artf_mutations succeeds")
+        .into_inner();
+
+    assert!(response.verdict.expect("verdict present").valid);
+
+    let application = response.application.expect("application present");
+    assert_eq!(application.applied, vec![0]);
+
+    let rewritten: serde_json::Value =
+        serde_json::from_str(&application.bid_request).expect("the rewritten request is JSON");
+    assert_eq!(
+        rewritten["imp"][0]["pmp"]["deals"][0]["id"], "deal-curated",
+        "the curated deal should have survived the round trip"
+    );
 }
 
 #[tokio::test]

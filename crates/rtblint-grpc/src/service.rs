@@ -11,8 +11,10 @@ use crate::deadline;
 use crate::metrics;
 use crate::proto::rtblint_service_server::RtblintService;
 use crate::proto::{
-    ListVersionsRequest, ListVersionsResponse, PayloadKind, ValidatePairRequest,
-    ValidatePairResponse, ValidateRequest, ValidateResponse, VersionInfo,
+    ListVersionsRequest, ListVersionsResponse, MutationApplication, PayloadKind,
+    ValidateArtfEnvelopeRequest, ValidateArtfEnvelopeResponse, ValidateArtfMutationsRequest,
+    ValidateArtfMutationsResponse, ValidatePairRequest, ValidatePairResponse, ValidateRequest,
+    ValidateResponse, VersionInfo,
 };
 use crate::provenance::provenance;
 
@@ -112,6 +114,7 @@ impl RtblintService for RtblintApi {
             let budget = deadline::remaining(request.metadata());
             let request = request.into_inner();
             let version = convert::version(request.context.as_ref())?;
+            let dialect = convert::dialect(request.context.as_ref());
 
             // Required, and rejected rather than guessed. A bid request and a
             // bid response are both JSON objects with an `id`, so any sniffing
@@ -124,13 +127,13 @@ impl RtblintService for RtblintApi {
             let result = match kind {
                 PayloadKind::BidRequest => {
                     run(budget, move || {
-                        core::validate_bid_request_for_version(version, &document)
+                        core::validate_bid_request_with_dialect(version, dialect, &document)
                     })
                     .await?
                 }
                 PayloadKind::BidResponse => {
                     run(budget, move || {
-                        core::validate_bid_response_for_version(version, &document)
+                        core::validate_bid_response_with_dialect(version, dialect, &document)
                     })
                     .await?
                 }
@@ -158,17 +161,98 @@ impl RtblintService for RtblintApi {
             let budget = deadline::remaining(request.metadata());
             let request = request.into_inner();
             let version = convert::version(request.context.as_ref())?;
+            let dialect = convert::dialect(request.context.as_ref());
 
             let bid_request = request.bid_request;
             let bid_response = request.bid_response;
 
             let result = run(budget, move || {
-                core::validate_bid_response_against_request(version, &bid_request, &bid_response)
+                core::validate_bid_response_against_request_with_dialect(
+                    version,
+                    dialect,
+                    &bid_request,
+                    &bid_response,
+                )
             })
             .await?;
 
             Ok(Response::new(ValidatePairResponse {
                 verdict: Some(convert::verdict(&result, version)),
+            }))
+        })
+        .await
+    }
+
+    async fn validate_artf_envelope(
+        &self,
+        request: Request<ValidateArtfEnvelopeRequest>,
+    ) -> Result<Response<ValidateArtfEnvelopeResponse>, Status> {
+        observed("ValidateArtfEnvelope", async move {
+            let budget = deadline::remaining(request.metadata());
+            let request = request.into_inner();
+            let context = request.context.as_ref();
+            let version = convert::version(context)?;
+            convert::reject_dialect_on_artf(context)?;
+
+            let rtb_request = request.rtb_request;
+            let result = run(budget, move || {
+                core::validate_artf_request(version, &rtb_request)
+            })
+            .await?;
+
+            Ok(Response::new(ValidateArtfEnvelopeResponse {
+                verdict: Some(convert::verdict(&result, version)),
+            }))
+        })
+        .await
+    }
+
+    async fn validate_artf_mutations(
+        &self,
+        request: Request<ValidateArtfMutationsRequest>,
+    ) -> Result<Response<ValidateArtfMutationsResponse>, Status> {
+        observed("ValidateArtfMutations", async move {
+            let budget = deadline::remaining(request.metadata());
+            let request = request.into_inner();
+            let context = request.context.as_ref();
+            let version = convert::version(context)?;
+            convert::reject_dialect_on_artf(context)?;
+
+            let rtb_request = request.rtb_request;
+            let rtb_response = request.rtb_response;
+
+            if !request.apply {
+                let result = run(budget, move || {
+                    core::validate_artf_response_against_request(
+                        version,
+                        &rtb_request,
+                        &rtb_response,
+                    )
+                })
+                .await?;
+
+                return Ok(Response::new(ValidateArtfMutationsResponse {
+                    verdict: Some(convert::verdict(&result, version)),
+                    application: None,
+                }));
+            }
+
+            let outcome = run(budget, move || {
+                core::validate_artf_mutations_applied(version, &rtb_request, &rtb_response)
+            })
+            .await?;
+
+            Ok(Response::new(ValidateArtfMutationsResponse {
+                verdict: Some(convert::verdict(&outcome.result, version)),
+                application: Some(MutationApplication {
+                    // Proto3 has no null: an envelope that carried no payload
+                    // of that kind produces the empty string, which is not a
+                    // JSON document and so cannot be mistaken for one.
+                    bid_request: outcome.application.bid_request.unwrap_or_default(),
+                    bid_response: outcome.application.bid_response.unwrap_or_default(),
+                    applied: convert::indexes(&outcome.application.applied),
+                    skipped: convert::indexes(&outcome.application.skipped),
+                }),
             }))
         })
         .await
@@ -270,6 +354,7 @@ mod tests {
                 kind: PayloadKind::BidRequest as i32,
                 context: Some(crate::proto::ValidationContext {
                     version: "9.9".to_string(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
                 }),
             }))
             .await
@@ -289,6 +374,7 @@ mod tests {
                 kind: PayloadKind::BidRequest as i32,
                 context: Some(crate::proto::ValidationContext {
                     version: "2.5".to_string(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
                 }),
             }))
             .await
@@ -374,6 +460,249 @@ mod tests {
                 .any(|issue| issue.rule_id == "openrtb.bid.impid_unknown"),
             "a single-payload check cannot see a cross-payload problem"
         );
+    }
+
+    /// The flag encoding is a fact the caller has and the server does not, so
+    /// the same payload has to get opposite verdicts under the two dialects.
+    #[tokio::test]
+    async fn the_dialect_decides_how_flag_fields_are_read() {
+        let proto_flavoured =
+            r#"{"id":"r1","imp":[{"id":"i1","secure":true,"banner":{"w":300,"h":250}}]}"#;
+
+        let as_spec = service()
+            .validate(validate_request(proto_flavoured, PayloadKind::BidRequest))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(!as_spec.valid);
+        assert!(as_spec
+            .issues
+            .iter()
+            .any(|issue| issue.rule_id == "openrtb.dialect.bool_for_integer"));
+
+        let as_proto = service()
+            .validate(Request::new(ValidateRequest {
+                document: proto_flavoured.to_string(),
+                kind: PayloadKind::BidRequest as i32,
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Proto as i32,
+                }),
+            }))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(as_proto.valid, "unexpected findings: {:?}", as_proto.issues);
+    }
+
+    // -- ARTF --
+
+    const ARTF_ENVELOPE: &str = r#"{
+        "id": "ep-1",
+        "tmax": 120,
+        "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+        "originator": { "type": "TYPE_EXCHANGE", "id": "x-1" },
+        "applicable_intents": ["ACTIVATE_DEALS"],
+        "bid_request": {
+            "id": "auction-1",
+            "imp": [
+                {
+                    "id": "imp-1",
+                    "secure": true,
+                    "banner": { "w": 300, "h": 250 },
+                    "pmp": { "private_auction": true, "deals": [{ "id": "deal-1" }] }
+                }
+            ],
+            "site": { "id": "s-1", "domain": "news.example" }
+        }
+    }"#;
+
+    fn mutations(body: &str) -> String {
+        format!(
+            r#"{{
+                "id": "ep-1",
+                "mutations": [{body}],
+                "metadata": {{ "api_version": "1.0.0", "model_version": "m" }}
+            }}"#
+        )
+    }
+
+    fn activate_deal(imp_id: &str, deal_id: &str) -> String {
+        format!(
+            r#"{{
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/{imp_id}",
+                "ids": {{ "id": ["{deal_id}"] }}
+            }}"#
+        )
+    }
+
+    #[tokio::test]
+    async fn an_artf_envelope_validates_its_carried_payload_as_protobuf_json() {
+        let verdict = service()
+            .validate_artf_envelope(Request::new(ValidateArtfEnvelopeRequest {
+                rtb_request: ARTF_ENVELOPE.to_string(),
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_envelope succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        // "secure": true is correct inside ARTF and wrong in spec JSON. The
+        // envelope RPC has to know that without being told.
+        assert!(verdict.valid, "unexpected findings: {:?}", verdict.issues);
+        assert_eq!(verdict.effective_version, "2.6-202606");
+    }
+
+    #[tokio::test]
+    async fn an_artf_envelope_reports_carried_payload_findings_under_a_prefixed_path() {
+        let broken = ARTF_ENVELOPE.replace(r#""secure": true"#, r#""secure": 1"#);
+
+        let verdict = service()
+            .validate_artf_envelope(Request::new(ValidateArtfEnvelopeRequest {
+                rtb_request: broken,
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_envelope succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(!verdict.valid);
+        assert!(
+            verdict.issues.iter().any(|issue| {
+                issue.rule_id == "openrtb.dialect.integer_for_bool"
+                    && issue.path == "bid_request.imp[0].secure"
+            }),
+            "expected a prefixed carried-payload path, got {:?}",
+            verdict.issues.iter().map(|i| &i.path).collect::<Vec<_>>()
+        );
+    }
+
+    #[tokio::test]
+    async fn a_declared_dialect_is_refused_on_the_artf_rpcs() {
+        let status = service()
+            .validate_artf_envelope(Request::new(ValidateArtfEnvelopeRequest {
+                rtb_request: ARTF_ENVELOPE.to_string(),
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Proto as i32,
+                }),
+            }))
+            .await
+            .expect_err("a declared dialect is refused");
+
+        assert_eq!(status.code(), tonic::Code::InvalidArgument);
+        assert!(status.message().contains("protobuf JSON by definition"));
+    }
+
+    #[tokio::test]
+    async fn a_mutation_targeting_a_missing_impression_is_reported() {
+        let response = service()
+            .validate_artf_mutations(Request::new(ValidateArtfMutationsRequest {
+                rtb_request: ARTF_ENVELOPE.to_string(),
+                rtb_response: mutations(&activate_deal("imp-404", "deal-2")),
+                apply: false,
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_mutations succeeds")
+            .into_inner();
+
+        let verdict = response.verdict.expect("verdict present");
+        assert!(!verdict.valid);
+        assert!(verdict
+            .issues
+            .iter()
+            .any(|issue| issue.rule_id == "artf.mutation.imp_unknown"));
+
+        // No application without apply: the caller did not ask for the payload
+        // to be rewritten and must not be handed one.
+        assert!(response.application.is_none());
+    }
+
+    #[tokio::test]
+    async fn applying_returns_the_rewritten_payload_and_which_mutations_went_in() {
+        let response = service()
+            .validate_artf_mutations(Request::new(ValidateArtfMutationsRequest {
+                rtb_request: ARTF_ENVELOPE.to_string(),
+                rtb_response: mutations(&activate_deal("imp-1", "deal-2")),
+                apply: true,
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_mutations succeeds")
+            .into_inner();
+
+        let verdict = response.verdict.expect("verdict present");
+        assert!(verdict.valid, "unexpected findings: {:?}", verdict.issues);
+
+        let application = response.application.expect("application present");
+        assert_eq!(application.applied, vec![0]);
+        assert!(application.skipped.is_empty());
+        assert!(application.bid_request.contains("deal-2"));
+        // The envelope carried no bid response, and proto3 has no null.
+        assert!(application.bid_response.is_empty());
+    }
+
+    /// The point of the applied pass: a mutation that is well formed on its own
+    /// and leaves the auction invalid once written in.
+    #[tokio::test]
+    async fn applying_reports_what_the_mutation_broke() {
+        let metric = r#"{
+            "intent": "ADD_METRICS",
+            "op": "OPERATION_ADD",
+            "path": "/imp/imp-1",
+            "metrics": { "metric": [{ "type": "viewability", "value": "high" }] }
+        }"#;
+        let envelope = ARTF_ENVELOPE.replace(r#"["ACTIVATE_DEALS"]"#, r#"["ADD_METRICS"]"#);
+
+        let statically_fine = service()
+            .validate_artf_mutations(Request::new(ValidateArtfMutationsRequest {
+                rtb_request: envelope.clone(),
+                rtb_response: mutations(metric),
+                apply: false,
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_mutations succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+        assert!(
+            statically_fine.valid,
+            "the mutation passes the static checks: {:?}",
+            statically_fine.issues
+        );
+
+        let applied = service()
+            .validate_artf_mutations(Request::new(ValidateArtfMutationsRequest {
+                rtb_request: envelope,
+                rtb_response: mutations(metric),
+                apply: true,
+                context: None,
+            }))
+            .await
+            .expect("validate_artf_mutations succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(!applied.valid);
+        assert!(applied.issues.iter().any(|issue| {
+            issue.rule_id == "openrtb.type.mismatch"
+                && issue.path == "bid_request.imp[0].metric[0].value"
+        }));
     }
 
     #[tokio::test]

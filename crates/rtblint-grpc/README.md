@@ -71,6 +71,8 @@ grpcurl -plaintext localhost:50061 list
 grpcurl -plaintext localhost:50061 describe openadtech.rtblint.v1.RtblintService
 grpcurl -plaintext -d '{"document":"{}","kind":"PAYLOAD_KIND_BID_REQUEST"}' \
   localhost:50061 openadtech.rtblint.v1.RtblintService/Validate
+grpcurl -plaintext -d '{"document":"{}","kind":"PAYLOAD_KIND_BID_REQUEST","context":{"dialect":"JSON_DIALECT_PROTO"}}' \
+  localhost:50061 openadtech.rtblint.v1.RtblintService/Validate
 grpcurl -plaintext -d '{}' localhost:50061 grpc.health.v1.Health/Check
 ```
 
@@ -80,6 +82,8 @@ grpcurl -plaintext -d '{}' localhost:50061 grpc.health.v1.Health/Check
 | --- | --- |
 | `Validate` | Validate one bid request or bid response. |
 | `ValidatePair` | Validate a bid response against the request it answers. |
+| `ValidateArtfEnvelope` | Validate an ARTF `RTBRequest` and the OpenRTB payloads it carries. |
+| `ValidateArtfMutations` | Validate an ARTF mutation set against the envelope it answers, optionally applying it. |
 | `ListVersions` | The OpenRTB versions this server knows, and its default. |
 
 `ValidatePair` is its own RPC rather than a flag on `Validate` because it asks a
@@ -87,6 +91,33 @@ different question. A bid response can be perfectly well formed and still bid on
 an impression the request never offered. Those are different failures with
 different owners, and the tests assert that the single-payload check genuinely
 cannot see the cross-payload one.
+
+## ARTF
+
+ARTF, the IAB Tech Lab Agentic Real Time Framework, mandates gRPC for the
+extension point itself. That is why the two ARTF RPCs live here and not only on
+the CLI: an orchestrator checking what an agent proposed does it in band, on the
+same transport the agent was called over, before forwarding anything.
+
+```sh
+grpcurl -plaintext -d @ localhost:50061 \
+  openadtech.rtblint.v1.RtblintService/ValidateArtfMutations <<'EOF'
+{"rtb_request": "...RTBRequest JSON...", "rtb_response": "...RTBResponse JSON...", "apply": true}
+EOF
+```
+
+`ValidateArtfMutations` splits from `ValidateArtfEnvelope` on the same reasoning
+as `ValidatePair`: whether a mutation is well formed and whether it targets
+something the auction actually carries are different questions. With `apply`
+set, the response also returns the rewritten payloads and the indexes of the
+mutations that went in, along with the OpenRTB findings the mutations
+introduced. A mutation the server could not apply is reported in `skipped`
+rather than folded into `applied`, because "could not apply" is not "accepted".
+
+`ValidationContext.dialect` is refused on both ARTF RPCs, including when it
+names the correct dialect. ARTF carries its OpenRTB messages as protobuf, so
+their JSON encoding is a fact about the framework rather than a choice, and
+accepting the field would teach callers otherwise.
 
 ## Provenance and versions
 

@@ -48,6 +48,22 @@ service RtblintService {
   // request never offered. Those are different failures with different owners.
   rpc ValidatePair(ValidatePairRequest) returns (ValidatePairResponse);
 
+  // Validate an ARTF RTBRequest envelope and the OpenRTB payloads it carries.
+  //
+  // ARTF (the IAB Tech Lab Agentic Real Time Framework) mandates gRPC for the
+  // extension point itself, which is why these two RPCs exist rather than
+  // living only on the CLI: an orchestrator checking an agent's work does it
+  // in band, on the same transport the agent was called over.
+  rpc ValidateArtfEnvelope(ValidateArtfEnvelopeRequest) returns (ValidateArtfEnvelopeResponse);
+
+  // Validate an ARTF RTBResponse mutation set against the envelope it answers.
+  //
+  // Separate from ValidateArtfEnvelope for the same reason ValidatePair is
+  // separate from Validate: a well-formed mutation can still target an
+  // impression the auction never carried, or declare an intent the
+  // orchestrator did not offer. Those are questions about the pair.
+  rpc ValidateArtfMutations(ValidateArtfMutationsRequest) returns (ValidateArtfMutationsResponse);
+
   // The OpenRTB versions this server knows, and which one it defaults to.
   rpc ListVersions(ListVersionsRequest) returns (ListVersionsResponse);
 }
@@ -93,6 +109,78 @@ message ValidatePairRequest {
 // is unusable" is a verdict about the pair, not a failure of the call.
 message ValidatePairResponse {
   Verdict verdict = 1;
+}
+
+// An ARTF RTBRequest envelope.
+message ValidateArtfEnvelopeRequest {
+  // The RTBRequest as JSON.
+  string rtb_request = 1;
+
+  // Optional. ValidationContext.dialect must be unset here: ARTF transports
+  // its OpenRTB payloads as protobuf messages, so their JSON dialect is a fact
+  // about the framework rather than a choice the caller gets to make.
+  ValidationContext context = 2;
+}
+
+// Result of validating an ARTF envelope.
+//
+// The findings cover the envelope and the OpenRTB payloads it carries, the
+// latter under `bid_request.` and `bid_response.` paths so a caller can tell
+// an envelope problem from a payload problem without matching on rule ids.
+message ValidateArtfEnvelopeResponse {
+  Verdict verdict = 1;
+}
+
+// An ARTF mutation set and the envelope it answers.
+message ValidateArtfMutationsRequest {
+  // The RTBRequest envelope as JSON. Required: the mutation checks resolve
+  // semantic paths against the auction it carries, and read its
+  // applicable_intents to know what the orchestrator offered.
+  string rtb_request = 1;
+
+  // The RTBResponse as JSON.
+  string rtb_response = 2;
+
+  // Apply the mutations and revalidate the result.
+  //
+  // Off by default because it is the more expensive question, and because a
+  // caller that only wants to know whether a mutation set is well formed
+  // should not pay for a rewrite of the payload.
+  bool apply = 3;
+
+  ValidationContext context = 4;
+}
+
+// Result of validating a mutation set.
+message ValidateArtfMutationsResponse {
+  // Mutation findings, plus the OpenRTB findings the mutations introduced when
+  // `apply` was set. Findings the payload already had are filtered out of the
+  // applied pass: the question is what this agent would break, not what
+  // arrived broken.
+  Verdict verdict = 1;
+
+  // Present only when `apply` was set.
+  MutationApplication application = 2;
+}
+
+// What applying a mutation set produced.
+message MutationApplication {
+  // The bid request after every applicable mutation was applied. Empty when
+  // the envelope carried none.
+  string bid_request = 1;
+
+  // The bid response after every applicable mutation was applied. Empty when
+  // the envelope carried none.
+  string bid_response = 2;
+
+  // Indexes into RTBResponse.mutations that were applied.
+  repeated uint32 applied = 3;
+
+  // Indexes that were not applied, either because the target did not resolve
+  // or because the intent has no OpenRTB field to write to. Reported rather
+  // than folded into `applied`, because a mutation the server could not apply
+  // is not a mutation it found acceptable.
+  repeated uint32 skipped = 4;
 }
 
 // Request for the known versions.
@@ -186,6 +274,19 @@ message ValidationContext {
   // silently falling back to a default, because silently validating against the
   // wrong specification revision is the worst outcome available here.
   string version = 1;
+
+  // The JSON dialect the payload is written in. Unset means spec JSON, which
+  // is what a caller reading the OpenRTB specification produces.
+  //
+  // The specification types a family of flag fields as integers with the value
+  // set {0, 1}; the IAB OpenRTB protobuf schema declares 28 of those same
+  // fields bool. Both encodings are in the wild, both are correct on their own
+  // transport, and the payload carries no marker saying which one it is. Like
+  // PayloadKind, this is a fact the caller has and the server does not, so it
+  // is asked for rather than sniffed. Unlike PayloadKind it has a safe
+  // default, because a payload arriving over JSON without further context is
+  // spec JSON by convention.
+  JsonDialect dialect = 2;
 }
 
 // Everything needed to reproduce a verdict later.
@@ -237,6 +338,26 @@ enum PayloadKind {
   PAYLOAD_KIND_UNSPECIFIED = 0;
   PAYLOAD_KIND_BID_REQUEST = 1;
   PAYLOAD_KIND_BID_RESPONSE = 2;
+}
+
+// The JSON encoding a payload is written in.
+//
+// Not a version and not a profile: the same specification revision has two
+// serialisations that disagree about the type of 28 flag fields, depending on
+// whether the payload was produced from the specification text or from the IAB
+// OpenRTB protobuf schema. A payload valid in one is invalid in the other.
+enum JsonDialect {
+  // Spec JSON, the default. Flag fields are integers.
+  JSON_DIALECT_UNSPECIFIED = 0;
+
+  // Spec JSON, stated explicitly. Identical in effect to leaving it unset;
+  // declared so a caller can be explicit rather than relying on a default.
+  JSON_DIALECT_SPEC = 1;
+
+  // The protobuf JSON mapping of the IAB OpenRTB protobuf schema. Flag fields
+  // the proto declares bool are true/false, and field names may arrive
+  // lowerCamelCased.
+  JSON_DIALECT_PROTO = 2;
 }
 
 // OpenRTB specification family.

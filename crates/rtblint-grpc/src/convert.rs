@@ -100,6 +100,50 @@ pub fn version(context: Option<&proto::ValidationContext>) -> Result<core::OpenR
     })
 }
 
+/// Resolves the JSON dialect a request asked for.
+///
+/// Unset means spec JSON. Unlike the version, an unrecognised value cannot be
+/// rejected with a list of alternatives without inventing one, because proto
+/// enums are open: a value this build does not know is a value a later build
+/// added. Treating it as the unspecified case is what the contract's stability
+/// posture tells consumers to do, so the server does it too.
+pub fn dialect(context: Option<&proto::ValidationContext>) -> core::Dialect {
+    match context.map(|context| proto::JsonDialect::try_from(context.dialect)) {
+        Some(Ok(proto::JsonDialect::Proto)) => core::Dialect::ProtoJson,
+        _ => core::Dialect::SpecJson,
+    }
+}
+
+/// Refuses a dialect on the ARTF RPCs.
+///
+/// ARTF transports its OpenRTB payloads as protobuf messages, so their JSON is
+/// protobuf JSON by construction. A caller setting the field either believes
+/// otherwise or is reusing a context object without meaning to, and both are
+/// worth saying out loud: accepting JSON_DIALECT_PROTO silently would teach
+/// the first caller that the choice was theirs to make.
+pub fn reject_dialect_on_artf(context: Option<&proto::ValidationContext>) -> Result<(), Status> {
+    let declared = context.map(|context| context.dialect).unwrap_or_default();
+    if declared == proto::JsonDialect::Unspecified as i32 {
+        return Ok(());
+    }
+
+    Err(Status::invalid_argument(
+        "ValidationContext.dialect does not apply to ARTF payloads: ARTF carries its OpenRTB \
+         messages as protobuf, so they are protobuf JSON by definition. Leave the field unset",
+    ))
+}
+
+/// Mutation indexes for the wire, which counts in u32.
+///
+/// A mutation set large enough to overflow is not a real mutation set, and
+/// saturating keeps a nonsense input from wrapping into a plausible index.
+pub fn indexes(values: &[usize]) -> Vec<u32> {
+    values
+        .iter()
+        .map(|value| u32::try_from(*value).unwrap_or(u32::MAX))
+        .collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -107,7 +151,62 @@ mod tests {
     fn context(version: &str) -> proto::ValidationContext {
         proto::ValidationContext {
             version: version.to_string(),
+            dialect: proto::JsonDialect::Unspecified as i32,
         }
+    }
+
+    fn dialect_context(dialect: proto::JsonDialect) -> proto::ValidationContext {
+        proto::ValidationContext {
+            version: String::new(),
+            dialect: dialect as i32,
+        }
+    }
+
+    #[test]
+    fn an_absent_or_unspecified_dialect_is_spec_json() {
+        assert_eq!(dialect(None), core::Dialect::SpecJson);
+        assert_eq!(dialect(Some(&context(""))), core::Dialect::SpecJson);
+        assert_eq!(
+            dialect(Some(&dialect_context(proto::JsonDialect::Spec))),
+            core::Dialect::SpecJson
+        );
+    }
+
+    #[test]
+    fn the_proto_dialect_maps_through() {
+        assert_eq!(
+            dialect(Some(&dialect_context(proto::JsonDialect::Proto))),
+            core::Dialect::ProtoJson
+        );
+    }
+
+    /// Proto enums are open by policy, so an unknown value must degrade to the
+    /// unspecified case rather than fail the call.
+    #[test]
+    fn an_unknown_dialect_value_falls_back_to_spec_json() {
+        let context = proto::ValidationContext {
+            version: String::new(),
+            dialect: 99,
+        };
+        assert_eq!(dialect(Some(&context)), core::Dialect::SpecJson);
+    }
+
+    #[test]
+    fn artf_refuses_a_declared_dialect_including_the_correct_one() {
+        assert!(reject_dialect_on_artf(None).is_ok());
+        assert!(reject_dialect_on_artf(Some(&context(""))).is_ok());
+
+        for declared in [proto::JsonDialect::Spec, proto::JsonDialect::Proto] {
+            let status = reject_dialect_on_artf(Some(&dialect_context(declared)))
+                .expect_err("a declared dialect is refused on ARTF");
+            assert_eq!(status.code(), tonic::Code::InvalidArgument);
+        }
+    }
+
+    #[test]
+    fn indexes_saturate_rather_than_wrap() {
+        assert_eq!(indexes(&[0, 3, 7]), vec![0, 3, 7]);
+        assert_eq!(indexes(&[usize::MAX]), vec![u32::MAX]);
     }
 
     #[test]

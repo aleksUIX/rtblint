@@ -27,6 +27,14 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 - OpenRTB 3.0 layered validation: the envelope and every transport object,
   exactly-one-of request/response, and a migration diagnostic when a 2.x
   payload is sent to a 3.0 validator
+- JSON dialects: spec JSON and the protobuf JSON mapping of the IAB OpenRTB
+  protobuf schema, which declares 28 of the spec's integer flag fields as
+  bool. Both encodings are validated against the dialect the caller declares,
+  in the library, the CLI (`--dialect`), the MCP tools, and npm
+- ARTF (Agentic Real Time Framework) support: the `RTBRequest` envelope, the
+  `RTBResponse` mutation set cross-validated against the auction it targets,
+  and an apply-then-revalidate pass that reports only the OpenRTB findings
+  the mutations introduced
 
 ## Next
 
@@ -43,7 +51,10 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 
 - NDJSON stream mode: lint captured bid streams, aggregate rule frequencies
 - Exchange dialect profiles (validate against a specific platform's
-  documented requirements on top of the spec)
+  documented requirements on top of the spec), on the dialect machinery the
+  protobuf JSON profile already established
+- ARTF beyond v1.0: the intent set is growing in the reference repository, and
+  each new intent brings a payload shape and a target vocabulary to check
 - GitHub Action and pre-commit hook
 - Homebrew tap, Docker image, prebuilt static binaries
 - Python and Go bindings over the Rust core (the current packages are

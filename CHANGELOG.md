@@ -1,5 +1,67 @@
 # Changelog
 
+## 0.8.0 (unreleased)
+
+### Added
+
+- JSON dialects. The OpenRTB specification types a family of flag fields as
+  integers with the value set {0, 1}; the IAB OpenRTB protobuf schema
+  (`com.iabtechlab.openrtb.v2`, what every gRPC bidstream integration compiles
+  against) declares 28 of those same fields `bool`. The encodings are
+  incompatible in both directions: protojson writes `"secure": true`, which a
+  spec-JSON reader rejects, and spec JSON writes `"secure": 1`, which a
+  protojson parser refuses to unmarshal. Neither side is wrong for its own
+  transport and the payload cannot settle it, so the caller declares the
+  dialect and the validator reports against that:
+  `openrtb.dialect.bool_for_integer` when protobuf flags arrive in spec JSON,
+  `openrtb.dialect.integer_for_bool` when spec flags arrive in protobuf JSON,
+  and `openrtb.dialect.camel_case_name` for the lowerCamelCase spellings
+  protojson emits unless the serializer sets `UseProtoNames`. Exposed as
+  `validate_bid_request_with_dialect` and siblings in the library, `--dialect`
+  on the CLI, a `dialect` argument on the MCP validation tools, and
+  `validateDialect` / `validateResponseDialect` on npm. The divergence set
+  itself is published: `proto_bool_fields()` in Rust,
+  `protoBoolDivergences()` on npm.
+- ARTF (IAB Tech Lab Agentic Real Time Framework) validation, in three passes.
+  `validate_artf_request` checks the `RTBRequest` envelope (required members,
+  `lifecycle` against the payloads actually carried, `tmax` plausibility for an
+  in-auction call, `originator` and `applicable_intents` enums) and validates
+  the OpenRTB payloads it carries as protobuf JSON.
+  `validate_artf_response_against_request` checks each mutation against the
+  auction it targets: the response id echoes the extension point request id
+  rather than the bid request id, the declared intent is in
+  `applicable_intents`, operation and payload oneof member match the intent,
+  and every semantic path (`/imp/{id}`, `/imp/{id}/pmp/deals/{id}`,
+  `/user/data/segment`, `/seatbid/{seat}/bid/{id}`, both the document's and the
+  example docs' deal spellings) resolves to something that exists.
+  `validate_artf_mutations_applied` writes the mutations in and revalidates,
+  reporting the OpenRTB findings the mutations introduced with pre-existing
+  findings filtered out, which is the question an orchestrator actually has.
+  `ADJUST_DEAL_MARGIN` reports `artf.mutation.no_openrtb_target`: margin is not
+  part of the OpenRTB Deal object, so no validator can check the result of
+  applying it. Mutations written in the vocabulary of the ARTF v1.0 document's
+  examples rather than its own `.proto` (`activateSegments`, `op: "add"`, a
+  `value: {IDsPayload: ...}` wrapper) are mapped and reported as
+  `artf.mutation.legacy_spec_encoding`. Surfaced on the CLI as `--type
+  artf-request` / `--type artf-response` with `--apply`, as the
+  `validate_artf_request` and `validate_artf_response` MCP tools, and as
+  `validateArtfRequest` / `validateArtfResponse` /
+  `validateArtfResponseApplied` on npm.
+
+### Fixed
+
+- Fields the spec tables type `int` rather than `integer`, plus the source
+  typos `inpteger` and `srting`, were mapped to no shape at all, which
+  silently disabled type checking on them: `Content.livestream`,
+  `Content.realtime`, `Content.gtax`, `EID.mm`, `Video.minbitrate`,
+  `Site.page`, and the garbled 2.0-2.2 entries for `BidRequest.at` and
+  `Imp.secure`. They are now typed, so a boolean or a string where an integer
+  belongs is reported, and the published JSON Schemas carry their types and
+  value sets instead of an empty object. Regenerated `schemas/` accordingly.
+- `openrtb.bid.dealid_unknown` read "dealid X references a deal, but imp Y is
+  not among the deals its pmp object enumerates", swapping subject and object.
+  It is the deal id that is absent, not the impression.
+
 ## 0.7.0 (2026-08-09)
 
 ### Added

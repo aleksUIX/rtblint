@@ -1517,7 +1517,9 @@
         "name": {
           "type": "string"
         },
-        "page": {},
+        "page": {
+          "type": "string"
+        },
         "pagecat": {
           "items": {
             "type": "string"
@@ -1852,7 +1854,9 @@
           },
           "type": "array"
         },
-        "minbitrate": {},
+        "minbitrate": {
+          "type": "integer"
+        },
         "mincpmpersec": {
           "type": "number"
         },

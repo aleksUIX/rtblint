@@ -13,15 +13,16 @@ use serde_json::{Map, Value};
 use crate::{
     canonical_object,
     validator::{classify_adm, finalize_result, integer_value, validate_bid_response, AdmMarkup},
-    Issue, OpenRtbVersion, Severity,
+    Dialect, Issue, OpenRtbVersion, Severity,
 };
 
 pub(crate) fn validate_bid_response_against_request(
     version: OpenRtbVersion,
+    dialect: Dialect,
     request_input: &str,
     response_input: &str,
 ) -> crate::ValidationResult {
-    let mut result = validate_bid_response(version, response_input);
+    let mut result = validate_bid_response(version, dialect, response_input);
 
     // The cross-checks are written against 2.x shapes (imp ids, media
     // subtypes, pmp deals). A 3.0 pair validates layer by layer instead, and
@@ -351,16 +352,15 @@ fn cross_validate_bid(
         };
         if !known {
             let detail = if imp.deal_ids.is_some() {
-                "is not among the deals its pmp object enumerates"
+                format!("is not among the deals imp \"{impid}\" enumerates in its pmp object")
             } else {
-                "carries no pmp object at all"
+                format!("cannot be resolved, because imp \"{impid}\" carries no pmp object at all")
             };
             issues.push(Issue {
                 id: String::from("openrtb.bid.dealid_unknown"),
                 severity: Severity::Warning,
                 message: format!(
-                    "dealid \"{dealid}\" references a deal, but imp \"{impid}\" {detail}; \
-                     verify the deal was arranged out of band."
+                    "dealid \"{dealid}\" {detail}; verify the deal was arranged out of band."
                 ),
                 path: Some(format!("{bid_path}.dealid")),
                 section: bid_section.map(String::from),

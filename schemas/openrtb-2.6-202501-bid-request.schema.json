@@ -978,7 +978,24 @@
         "matcher": {
           "type": "string"
         },
-        "mm": {},
+        "mm": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
         "source": {
           "type": "string"
         },
@@ -1955,7 +1972,9 @@
           },
           "type": "array"
         },
-        "minbitrate": {},
+        "minbitrate": {
+          "type": "integer"
+        },
         "mincpmpersec": {
           "type": "number"
         },

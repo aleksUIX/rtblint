@@ -543,7 +543,9 @@
     "app": {
       "$ref": "#/$defs/App"
     },
-    "at": {},
+    "at": {
+      "type": "integer"
+    },
     "badv": {
       "items": {
         "type": "string"

@@ -1948,7 +1948,9 @@
           },
           "type": "array"
         },
-        "minbitrate": {},
+        "minbitrate": {
+          "type": "integer"
+        },
         "mincpmpersec": {
           "type": "number"
         },

@@ -362,7 +362,9 @@
         "pmp": {
           "$ref": "#/$defs/Pmp"
         },
-        "secure": {},
+        "secure": {
+          "type": "integer"
+        },
         "tagid": {
           "type": "string"
         },
@@ -676,7 +678,9 @@
     "app": {
       "$ref": "#/$defs/App"
     },
-    "at": {},
+    "at": {
+      "type": "integer"
+    },
     "badv": {
       "items": {
         "type": "string"

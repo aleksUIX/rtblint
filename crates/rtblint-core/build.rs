@@ -313,6 +313,22 @@ fn expected_shape_variant(type_spec: &str) -> &'static str {
     if normalized.contains("boolean") {
         return "Boolean";
     }
+
+    // Short and misspelled type words the spec tables actually contain:
+    // "int" (Content.livestream, Content.realtime, EID.mm, Content.gtax),
+    // "inpteger" (Video.minbitrate across three 2.6 snapshots), "srting"
+    // (Site.page). Left unmapped these fields carry Unknown shape, which
+    // silently disables type checking on them, so a boolean or a string
+    // where the spec wants an integer passes unnoticed. Matched as whole
+    // words, since "int" is a substring of "point" and of "printed".
+    for token in normalized.split(|character: char| !character.is_ascii_alphanumeric()) {
+        match token {
+            "int" | "inpteger" => return "Integer",
+            "srting" => return "String",
+            _ => {}
+        }
+    }
+
     "Unknown"
 }
 

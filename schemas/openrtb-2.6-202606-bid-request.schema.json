@@ -592,7 +592,13 @@
         "ext": {
           "type": "object"
         },
-        "firstbroadcast": {},
+        "firstbroadcast": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
         "genre": {
           "type": "string"
         },
@@ -602,7 +608,27 @@
           },
           "type": "array"
         },
-        "gtax": {},
+        "gtax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
         "id": {
           "type": "string"
         },
@@ -627,7 +653,13 @@
         "len": {
           "type": "integer"
         },
-        "livestream": {},
+        "livestream": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
         "network": {
           "$ref": "#/$defs/Network"
         },
@@ -651,7 +683,13 @@
           ],
           "type": "integer"
         },
-        "realtime": {},
+        "realtime": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
         "season": {
           "type": "string"
         },
@@ -987,7 +1025,24 @@
         "matcher": {
           "type": "string"
         },
-        "mm": {},
+        "mm": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
         "source": {
           "type": "string"
         },

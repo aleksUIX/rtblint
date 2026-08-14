@@ -41,6 +41,68 @@ function validateResponseAgainstRequest(response, request, version) {
   return wasm.validate_response_against_request(version ?? "", request, response);
 }
 
+/**
+ * Validate an OpenRTB bid request written in a specific JSON dialect.
+ * "spec-json" (default) types flag fields such as imp.secure, regs.coppa and
+ * pmp.private_auction as integers, the way the specification does.
+ * "proto-json" follows the IAB OpenRTB protobuf schema, which declares 28 of
+ * those fields bool; see protoBoolDivergences().
+ * @param {string} input - Raw bid request JSON.
+ * @param {"spec-json"|"proto-json"} dialect - JSON dialect the payload is written in.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateDialect(input, dialect, version) {
+  return wasm.validate_dialect(version ?? "", dialect, input);
+}
+
+/**
+ * Validate an OpenRTB bid response written in a specific JSON dialect.
+ * @param {string} input - Raw bid response JSON.
+ * @param {"spec-json"|"proto-json"} dialect - JSON dialect the payload is written in.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateResponseDialect(input, dialect, version) {
+  return wasm.validate_response_dialect(version ?? "", dialect, input);
+}
+
+/** Every field the IAB OpenRTB protobuf schema types differently from the spec. */
+function protoBoolDivergences() {
+  return wasm.proto_bool_divergences();
+}
+
+/**
+ * Validate an ARTF RTBRequest envelope and the OpenRTB payloads it carries.
+ * @param {string} input - Raw RTBRequest JSON.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateArtfRequest(input, version) {
+  return wasm.validate_artf_request(version ?? "", input);
+}
+
+/**
+ * Validate an ARTF RTBResponse mutation set against the RTBRequest it answers:
+ * intent eligibility, operation and payload coherence, and semantic path
+ * resolution against the auction.
+ * @param {string} rtbResponse - Raw RTBResponse JSON.
+ * @param {string} rtbRequest - Raw RTBRequest envelope JSON.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateArtfResponse(rtbResponse, rtbRequest, version) {
+  return wasm.validate_artf_response(version ?? "", rtbRequest, rtbResponse);
+}
+
+/**
+ * Apply an ARTF mutation set and revalidate. Returns { result, application }:
+ * result carries the mutation findings plus the OpenRTB findings the mutations
+ * introduced, application carries the mutated payloads.
+ * @param {string} rtbResponse - Raw RTBResponse JSON.
+ * @param {string} rtbRequest - Raw RTBRequest envelope JSON.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateArtfResponseApplied(rtbResponse, rtbRequest, version) {
+  return wasm.validate_artf_response_applied(version ?? "", rtbRequest, rtbResponse);
+}
+
 /** Every tracked OpenRTB version id. */
 function versions() {
   return wasm.versions();
@@ -60,6 +122,12 @@ module.exports = {
   validate,
   validateResponse,
   validateResponseAgainstRequest,
+  validateDialect,
+  validateResponseDialect,
+  protoBoolDivergences,
+  validateArtfRequest,
+  validateArtfResponse,
+  validateArtfResponseApplied,
   versions,
   rules,
   coreVersion,

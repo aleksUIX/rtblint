@@ -53,6 +53,93 @@ export function validateResponseAgainstRequest(
   version?: string
 ): ValidationResult;
 
+/**
+ * JSON dialect a payload is written in. "spec-json" types flag fields such as
+ * imp.secure, regs.coppa and pmp.private_auction as integers, the way the
+ * OpenRTB specification does. "proto-json" follows the IAB OpenRTB protobuf
+ * schema, which declares 28 of those fields bool.
+ */
+export type Dialect = "spec-json" | "proto-json";
+
+/** A field the OpenRTB protobuf schema types differently from the spec. */
+export interface ProtoBoolField {
+  object: string;
+  field: string;
+}
+
+/** What applying an ARTF mutation set produced. */
+export interface ArtfApplication {
+  /** The bid request after every applicable mutation was applied. */
+  bid_request: string | null;
+  /** The bid response after every applicable mutation was applied. */
+  bid_response: string | null;
+  /** Indexes into `mutations` that were applied. */
+  applied: number[];
+  /** Indexes that were not applied: unresolved target, or no OpenRTB field to write to. */
+  skipped: number[];
+}
+
+export interface ArtfMutationOutcome {
+  result: ValidationResult;
+  application: ArtfApplication;
+}
+
+/**
+ * Validate an OpenRTB bid request written in a specific JSON dialect.
+ * @param input Raw bid request JSON.
+ * @param dialect Dialect the payload is written in.
+ * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+export function validateDialect(
+  input: string,
+  dialect: Dialect,
+  version?: string
+): ValidationResult;
+
+/** Validate an OpenRTB bid response written in a specific JSON dialect. */
+export function validateResponseDialect(
+  input: string,
+  dialect: Dialect,
+  version?: string
+): ValidationResult;
+
+/** Every field the OpenRTB protobuf schema types differently from the spec. */
+export function protoBoolDivergences(): ProtoBoolField[];
+
+/**
+ * Validate an ARTF RTBRequest envelope and the OpenRTB payloads it carries.
+ * @param input Raw RTBRequest JSON.
+ * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+export function validateArtfRequest(input: string, version?: string): ValidationResult;
+
+/**
+ * Validate an ARTF RTBResponse mutation set against the RTBRequest it answers:
+ * intent eligibility, operation and payload coherence, and semantic path
+ * resolution against the auction.
+ * @param rtbResponse Raw RTBResponse JSON.
+ * @param rtbRequest Raw RTBRequest envelope JSON.
+ * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+export function validateArtfResponse(
+  rtbResponse: string,
+  rtbRequest: string,
+  version?: string
+): ValidationResult;
+
+/**
+ * Apply an ARTF mutation set and revalidate, reporting the mutation findings
+ * plus the OpenRTB findings the mutations introduced.
+ * @param rtbResponse Raw RTBResponse JSON.
+ * @param rtbRequest Raw RTBRequest envelope JSON.
+ * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+export function validateArtfResponseApplied(
+  rtbResponse: string,
+  rtbRequest: string,
+  version?: string
+): ArtfMutationOutcome;
+
 /** Every tracked OpenRTB version id. */
 export function versions(): string[];
 

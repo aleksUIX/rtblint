@@ -6,7 +6,7 @@ use std::{
 
 use serde::Serialize;
 
-use rtblint_core::{Issue, OpenRtbVersion, Severity, ValidationResult};
+use rtblint_core::{ArtfApplication, Dialect, Issue, OpenRtbVersion, Severity, ValidationResult};
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
 
@@ -52,37 +52,58 @@ fn run() -> Result<i32, String> {
 
     let command = parse_validate_command(validate_args)?;
     if command.batch {
-        return run_batch(
-            command.version,
-            command.payload_type,
-            command.output_format,
-            command.request_context.as_deref(),
-        );
+        return run_batch(&command);
     }
 
-    let result = match (command.payload_type, command.request_context.as_deref()) {
-        (PayloadType::Request, _) => {
-            rtblint_core::validate_bid_request_for_version(command.version, &command.input)
-        }
-        (PayloadType::Response, Some(request)) => {
-            rtblint_core::validate_bid_response_against_request(
-                command.version,
-                request,
-                &command.input,
-            )
-        }
-        (PayloadType::Response, None) => {
-            rtblint_core::validate_bid_response_for_version(command.version, &command.input)
-        }
-    };
-    print_result(
-        command.version,
-        command.payload_type,
-        &result,
-        command.output_format,
-    )?;
+    let (result, application) = validate_one(&command, &command.input);
+    print_result(&command, &result, application.as_ref())?;
 
     Ok(if result.valid { 0 } else { 1 })
+}
+
+/// Validates a single payload, returning the findings and, for an applied ARTF
+/// run, what applying the mutations produced.
+fn validate_one(
+    command: &ValidateCommand,
+    input: &str,
+) -> (ValidationResult, Option<ArtfApplication>) {
+    let version = command.version;
+    let dialect = command.dialect;
+    let request = command.request_context.as_deref();
+
+    match (command.payload_type, request) {
+        (PayloadType::Request, _) => (
+            rtblint_core::validate_bid_request_with_dialect(version, dialect, input),
+            None,
+        ),
+        (PayloadType::Response, Some(request)) => (
+            rtblint_core::validate_bid_response_against_request_with_dialect(
+                version, dialect, request, input,
+            ),
+            None,
+        ),
+        (PayloadType::Response, None) => (
+            rtblint_core::validate_bid_response_with_dialect(version, dialect, input),
+            None,
+        ),
+        (PayloadType::ArtfRequest, _) => {
+            (rtblint_core::validate_artf_request(version, input), None)
+        }
+        (PayloadType::ArtfResponse, Some(request)) => {
+            if command.apply {
+                let outcome =
+                    rtblint_core::validate_artf_mutations_applied(version, request, input);
+                (outcome.result, Some(outcome.application))
+            } else {
+                (
+                    rtblint_core::validate_artf_response_against_request(version, request, input),
+                    None,
+                )
+            }
+        }
+        // parse_validate_command rejects this combination.
+        (PayloadType::ArtfResponse, None) => unreachable!("artf-response requires --request"),
+    }
 }
 
 fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> {
@@ -93,6 +114,8 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut payload_type = PayloadType::Request;
     let mut batch = false;
     let mut request_path: Option<String> = None;
+    let mut dialect = Dialect::SpecJson;
+    let mut apply = false;
     let mut args = args.into_iter();
 
     while let Some(arg) = args.next() {
@@ -154,6 +177,21 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
                 request_path = Some(value);
             }
+            "--dialect" => {
+                let Some(value) = args.next() else {
+                    return Err(format!(
+                        "Missing value for --dialect.\n\n{}",
+                        validate_usage_text()
+                    ));
+                };
+
+                dialect = Dialect::from_id(&value).ok_or_else(|| {
+                    format!("Unsupported dialect: {value}\n\nUse one of: spec-json, proto-json")
+                })?;
+            }
+            "--apply" => {
+                apply = true;
+            }
             _ if arg.starts_with('-') => {
                 return Err(format!("Unknown flag: {arg}\n\n{}", validate_usage_text()));
             }
@@ -189,10 +227,13 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
 
     let request_context = match request_path {
         Some(path) => {
-            if !matches!(payload_type, PayloadType::Response) {
+            if !matches!(
+                payload_type,
+                PayloadType::Response | PayloadType::ArtfResponse
+            ) {
                 return Err(format!(
-                    "--request cross-validates a response against its bid request; it requires \
-                     --type response.\n\n{}",
+                    "--request supplies the payload a response is cross-validated against; it \
+                     requires --type response or --type artf-response.\n\n{}",
                     validate_usage_text()
                 ));
             }
@@ -204,6 +245,37 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         None => None,
     };
 
+    if matches!(payload_type, PayloadType::ArtfResponse) && request_context.is_none() {
+        return Err(format!(
+            "--type artf-response needs the RTBRequest envelope it answers: pass --request \
+             <rtb-request.json>. Mutations only mean anything relative to the auction they \
+             target.\n\n{}",
+            validate_usage_text()
+        ));
+    }
+
+    if apply && !matches!(payload_type, PayloadType::ArtfResponse) {
+        return Err(format!(
+            "--apply writes an ARTF mutation set into the payloads it targets and revalidates \
+             them; it requires --type artf-response.\n\n{}",
+            validate_usage_text()
+        ));
+    }
+
+    // ARTF carries its OpenRTB payloads as protobuf messages, so their JSON is
+    // protojson by construction and the dialect is not the caller's choice.
+    if matches!(
+        payload_type,
+        PayloadType::ArtfRequest | PayloadType::ArtfResponse
+    ) && dialect != Dialect::SpecJson
+    {
+        return Err(format!(
+            "--dialect does not apply to ARTF payloads: they are protobuf JSON by \
+             definition.\n\n{}",
+            validate_usage_text()
+        ));
+    }
+
     Ok(ValidateCommand {
         input,
         version,
@@ -211,18 +283,16 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         payload_type,
         batch,
         request_context,
+        dialect,
+        apply,
     })
 }
 
 /// Batch mode: one JSON payload per stdin line, one result per stdout line.
 /// The process, spec catalogs, and allocator warm-up are paid once, so
 /// per-payload cost approaches pure parse+validate time.
-fn run_batch(
-    version: OpenRtbVersion,
-    payload_type: PayloadType,
-    output_format: OutputFormat,
-    request_context: Option<&str>,
-) -> Result<i32, String> {
+fn run_batch(command: &ValidateCommand) -> Result<i32, String> {
+    let output_format = command.output_format;
     let stdin = io::stdin();
     let stdout = io::stdout();
     let mut out = io::BufWriter::new(stdout.lock());
@@ -236,17 +306,7 @@ fn run_batch(
         }
         count += 1;
 
-        let result = match (payload_type, request_context) {
-            (PayloadType::Request, _) => {
-                rtblint_core::validate_bid_request_for_version(version, &line)
-            }
-            (PayloadType::Response, Some(request)) => {
-                rtblint_core::validate_bid_response_against_request(version, request, &line)
-            }
-            (PayloadType::Response, None) => {
-                rtblint_core::validate_bid_response_for_version(version, &line)
-            }
-        };
+        let (result, _) = validate_one(command, &line);
         all_valid &= result.valid;
 
         match output_format {
@@ -307,18 +367,45 @@ fn read_from_stdin() -> Result<String, String> {
 }
 
 fn print_result(
-    version: OpenRtbVersion,
-    payload_type: PayloadType,
+    command: &ValidateCommand,
     result: &ValidationResult,
-    output_format: OutputFormat,
+    application: Option<&ArtfApplication>,
 ) -> Result<(), String> {
-    match output_format {
+    match command.output_format {
         OutputFormat::Human => {
-            print_human_result(version, payload_type, result);
+            print_human_result(command.version, command.payload_type, result);
+            if let Some(application) = application {
+                print_application_summary(application);
+            }
             Ok(())
         }
-        OutputFormat::Json => print_json_result(version, payload_type, result),
+        OutputFormat::Json => {
+            print_json_result(command.version, command.payload_type, result, application)
+        }
     }
+}
+
+/// After an `--apply` run, say what was written in and what was left alone;
+/// a mutation rtblint cannot apply is not the same as one it accepted.
+fn print_application_summary(application: &ArtfApplication) {
+    let total = application.applied.len() + application.skipped.len();
+    println!(
+        "Applied {} of {total} mutation(s){}.",
+        application.applied.len(),
+        if application.skipped.is_empty() {
+            String::new()
+        } else {
+            format!(
+                "; not applied: {}",
+                application
+                    .skipped
+                    .iter()
+                    .map(|index| format!("mutations[{index}]"))
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            )
+        }
+    );
 }
 
 fn print_human_result(
@@ -369,12 +456,14 @@ fn print_json_result(
     version: OpenRtbVersion,
     payload_type: PayloadType,
     result: &ValidationResult,
+    application: Option<&ArtfApplication>,
 ) -> Result<(), String> {
     let report = ValidationReport {
         version: version.id(),
         payload_type: payload_type.id(),
         valid: result.valid,
         issues: &result.issues,
+        application,
     };
 
     let output = serde_json::to_string_pretty(&report)
@@ -418,12 +507,33 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-fn usage_text() -> &'static str {
-    "rtblint\n\nUsage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>]\n  rtblint --version\n  rtblint --help"
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--format human|json] [--request <request.json>] [--apply] <file.json>\n  rtblint validate [...] --stdin\n  rtblint validate --batch [...]";
+
+fn usage_text() -> String {
+    format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
 }
 
-fn validate_usage_text() -> &'static str {
-    "Usage:\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] <file.json>\n  rtblint validate [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>] --stdin\n  rtblint validate --batch [--type request|response] [--version <openrtb-version>] [--format human|json] [--request <request.json>]\n\n--type selects the payload type (default: request). --version selects the OpenRTB spec version (default: latest tracked 2.6). --request supplies the originating bid request so a response is also cross-validated against it (impid, mtype, adm markup, dealid, seat, and currency coherence); requires --type response. --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 means every payload was valid."
+fn validate_usage_text() -> String {
+    format!(
+        "Usage:\n{USAGE_LINES}\n\n\
+         --type selects the payload type (default: request). request and response are OpenRTB \
+         payloads; artf-request is an ARTF RTBRequest envelope and artf-response is an ARTF \
+         RTBResponse mutation set.\n\
+         --version selects the OpenRTB spec version (default: latest tracked 2.6).\n\
+         --dialect selects the JSON dialect the payload is written in: spec-json (default) types \
+         flag fields as integers, proto-json follows the IAB OpenRTB protobuf schema, where 28 of \
+         those fields are bool. ARTF payloads are always protobuf JSON, so the flag is rejected \
+         there.\n\
+         --request supplies the payload a response is cross-validated against: the originating \
+         bid request for --type response (impid, mtype, adm markup, dealid, seat, and currency \
+         coherence), or the RTBRequest envelope for --type artf-response (intent eligibility and \
+         semantic path resolution). Required for artf-response.\n\
+         --apply writes an ARTF mutation set into the payloads it targets, revalidates them, and \
+         reports only the OpenRTB findings the mutations introduced; requires --type \
+         artf-response.\n\
+         --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 \
+         means every payload was valid."
+    )
 }
 
 struct ValidateCommand {
@@ -432,14 +542,21 @@ struct ValidateCommand {
     output_format: OutputFormat,
     payload_type: PayloadType,
     batch: bool,
-    /// Bid request JSON to cross-validate a response against.
+    /// The payload a response is cross-validated against: a bid request for
+    /// `--type response`, an ARTF RTBRequest envelope for `--type
+    /// artf-response`.
     request_context: Option<String>,
+    dialect: Dialect,
+    /// Apply an ARTF mutation set and revalidate the result.
+    apply: bool,
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 enum PayloadType {
     Request,
     Response,
+    ArtfRequest,
+    ArtfResponse,
 }
 
 impl PayloadType {
@@ -447,8 +564,11 @@ impl PayloadType {
         match value {
             "request" => Ok(Self::Request),
             "response" => Ok(Self::Response),
+            "artf-request" => Ok(Self::ArtfRequest),
+            "artf-response" => Ok(Self::ArtfResponse),
             _ => Err(format!(
-                "Unsupported type: {value}\n\nUse one of: request, response"
+                "Unsupported type: {value}\n\nUse one of: request, response, artf-request, \
+                 artf-response"
             )),
         }
     }
@@ -457,6 +577,8 @@ impl PayloadType {
         match self {
             Self::Request => "request",
             Self::Response => "response",
+            Self::ArtfRequest => "artf-request",
+            Self::ArtfResponse => "artf-response",
         }
     }
 
@@ -464,6 +586,8 @@ impl PayloadType {
         match self {
             Self::Request => "bid request",
             Self::Response => "bid response",
+            Self::ArtfRequest => "ARTF RTBRequest",
+            Self::ArtfResponse => "ARTF mutation set",
         }
     }
 }
@@ -499,4 +623,7 @@ struct ValidationReport<'a> {
     payload_type: &'a str,
     valid: bool,
     issues: &'a [Issue],
+    /// The payloads an `--apply` run produced, and which mutations went in.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    application: Option<&'a ArtfApplication>,
 }

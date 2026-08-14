@@ -2,16 +2,22 @@
 //!
 //! Speaks the Model Context Protocol over stdio (newline-delimited JSON-RPC
 //! 2.0) and exposes the rtblint-core OpenRTB validator as callable tools:
-//! `validate_bid_request`, `validate_bid_response`, `list_openrtb_versions`,
-//! and `get_adcp_capabilities` for AdCP protocol discovery.
+//! `validate_bid_request`, `validate_bid_response`, `validate_artf_request`,
+//! `validate_artf_response`, `list_openrtb_versions`, and
+//! `get_adcp_capabilities` for AdCP protocol discovery.
+//!
+//! The ARTF tools are the guardrail an agent calls around its own work: check
+//! the envelope it was handed, then check the mutation set it is about to
+//! propose against the auction it targets, before the orchestrator sees it.
 
 use std::io::{self, BufRead, Write};
 
 use serde_json::{json, Value};
 
 use rtblint_core::{
-    validate_bid_request_for_version, validate_bid_response_against_request,
-    validate_bid_response_for_version, OpenRtbVersion,
+    validate_artf_mutations_applied, validate_artf_request, validate_artf_response_against_request,
+    validate_bid_request_with_dialect, validate_bid_response_against_request_with_dialect,
+    validate_bid_response_with_dialect, Dialect, OpenRtbVersion,
 };
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
@@ -88,6 +94,23 @@ fn initialize_response(id: Value, params: &Value) -> Value {
 }
 
 fn tool_definitions() -> Value {
+    let version_property = || {
+        json!({
+            "type": "string",
+            "description": format!(
+                "OpenRTB version id to validate against (default {}). One of: {}",
+                DEFAULT_VERSION.id(),
+                version_ids().join(", ")
+            ),
+        })
+    };
+    let dialect_property = || {
+        json!({
+            "type": "string",
+            "enum": ["spec-json", "proto-json"],
+            "description": "JSON dialect the payload is written in. spec-json (default) types flag fields such as imp.secure, regs.coppa and pmp.private_auction as integers, the way the OpenRTB specification does. proto-json follows the IAB OpenRTB protobuf schema, which declares 28 of those fields bool, so true/false is correct there and an integer is the error. Use proto-json for anything that came off a gRPC bidstream integration.",
+        })
+    };
     let payload_schema = |payload_description: &str| {
         json!({
             "type": "object",
@@ -96,14 +119,8 @@ fn tool_definitions() -> Value {
                     "type": "string",
                     "description": payload_description,
                 },
-                "version": {
-                    "type": "string",
-                    "description": format!(
-                        "OpenRTB version id to validate against (default {}). One of: {}",
-                        DEFAULT_VERSION.id(),
-                        version_ids().join(", ")
-                    ),
-                },
+                "version": version_property(),
+                "dialect": dialect_property(),
             },
             "required": ["payload"],
         })
@@ -129,16 +146,48 @@ fn tool_definitions() -> Value {
                         "type": "string",
                         "description": "Optional: the originating OpenRTB bid request as a raw JSON string. When supplied, every bid is also cross-checked against the Imp it references.",
                     },
-                    "version": {
-                        "type": "string",
-                        "description": format!(
-                            "OpenRTB version id to validate against (default {}). One of: {}",
-                            DEFAULT_VERSION.id(),
-                            version_ids().join(", ")
-                        ),
-                    },
+                    "version": version_property(),
+                    "dialect": dialect_property(),
                 },
                 "required": ["payload"],
+            },
+        },
+        {
+            "name": "validate_artf_request",
+            "description": "Validate an ARTF (IAB Tech Lab Agentic Real Time Framework) RTBRequest envelope: required members, lifecycle and payload coherence, tmax plausibility, originator and applicable_intents enums, plus full OpenRTB validation of the bid request and bid response it carries. The carried payloads are protobuf JSON, so they are validated in that dialect.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "type": "string",
+                        "description": "The ARTF RTBRequest envelope as a raw JSON string.",
+                    },
+                    "version": version_property(),
+                },
+                "required": ["payload"],
+            },
+        },
+        {
+            "name": "validate_artf_response",
+            "description": "Validate an ARTF RTBResponse mutation set against the RTBRequest it answers: envelope id echo, declared intent against applicable_intents, operation and payload coherence, and whether each semantic path (/imp/{id}, /imp/{id}/pmp/deals/{id}, /user/data/segment, /seatbid/{seat}/bid/{id}) resolves to something the auction actually carries. With apply=true the mutations are written into the payloads and revalidated, reporting the OpenRTB findings the mutations introduced. Call this before proposing mutations to an orchestrator.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "type": "string",
+                        "description": "The ARTF RTBResponse as a raw JSON string.",
+                    },
+                    "rtb_request": {
+                        "type": "string",
+                        "description": "The ARTF RTBRequest envelope this response answers, as a raw JSON string. Required: a mutation is only meaningful relative to the auction it targets.",
+                    },
+                    "apply": {
+                        "type": "boolean",
+                        "description": "Apply the mutations and revalidate the result (default false). Returns the mutated payloads and the findings the mutations introduced, with pre-existing findings filtered out.",
+                    },
+                    "version": version_property(),
+                },
+                "required": ["payload", "rtb_request"],
             },
         },
         {
@@ -308,6 +357,8 @@ fn handle_tool_call(id: Value, params: &Value) -> Value {
     match tool_name {
         "validate_bid_request" => run_validation(id, &arguments, "request"),
         "validate_bid_response" => run_validation(id, &arguments, "response"),
+        "validate_artf_request" => run_artf_request(id, &arguments),
+        "validate_artf_response" => run_artf_response(id, &arguments),
         "list_openrtb_versions" => success_response(
             id,
             tool_result_text(
@@ -329,17 +380,21 @@ fn run_validation(id: Value, arguments: &Value, payload_type: &str) -> Value {
         );
     };
 
-    let version = match arguments.get("version").and_then(Value::as_str) {
-        None => DEFAULT_VERSION,
-        Some(version_id) => match OpenRtbVersion::from_id(version_id) {
-            Some(version) => version,
+    let version = match resolve_version(arguments) {
+        Ok(version) => version,
+        Err(message) => return success_response(id, tool_result_text(&message, true)),
+    };
+
+    let dialect = match arguments.get("dialect").and_then(Value::as_str) {
+        None => Dialect::SpecJson,
+        Some(dialect_id) => match Dialect::from_id(dialect_id) {
+            Some(dialect) => dialect,
             None => {
                 return success_response(
                     id,
                     tool_result_text(
                         &format!(
-                            "Unsupported OpenRTB version: {version_id}. Available versions: {}",
-                            version_ids().join(", ")
+                            "Unsupported dialect: {dialect_id}. Use one of: spec-json, proto-json"
                         ),
                         true,
                     ),
@@ -351,16 +406,19 @@ fn run_validation(id: Value, arguments: &Value, payload_type: &str) -> Value {
     let bid_request = arguments.get("bid_request").and_then(Value::as_str);
     let result = if payload_type == "response" {
         match bid_request {
-            Some(request) => validate_bid_response_against_request(version, request, payload),
-            None => validate_bid_response_for_version(version, payload),
+            Some(request) => validate_bid_response_against_request_with_dialect(
+                version, dialect, request, payload,
+            ),
+            None => validate_bid_response_with_dialect(version, dialect, payload),
         }
     } else {
-        validate_bid_request_for_version(version, payload)
+        validate_bid_request_with_dialect(version, dialect, payload)
     };
 
     let report = json!({
         "version": version.id(),
         "payload_type": payload_type,
+        "dialect": dialect.as_str(),
         "valid": result.valid,
         "issues": result.issues,
     });
@@ -372,6 +430,104 @@ fn run_validation(id: Value, arguments: &Value, payload_type: &str) -> Value {
             false,
         ),
     )
+}
+
+fn run_artf_request(id: Value, arguments: &Value) -> Value {
+    let Some(payload) = arguments.get("payload").and_then(Value::as_str) else {
+        return success_response(
+            id,
+            tool_result_text("Missing required argument: payload (string).", true),
+        );
+    };
+    let version = match resolve_version(arguments) {
+        Ok(version) => version,
+        Err(message) => return success_response(id, tool_result_text(&message, true)),
+    };
+
+    let result = validate_artf_request(version, payload);
+    let report = json!({
+        "version": version.id(),
+        "payload_type": "artf-request",
+        "valid": result.valid,
+        "issues": result.issues,
+    });
+
+    success_response(
+        id,
+        tool_result_text(
+            &serde_json::to_string_pretty(&report).unwrap_or_default(),
+            false,
+        ),
+    )
+}
+
+fn run_artf_response(id: Value, arguments: &Value) -> Value {
+    let Some(payload) = arguments.get("payload").and_then(Value::as_str) else {
+        return success_response(
+            id,
+            tool_result_text("Missing required argument: payload (string).", true),
+        );
+    };
+    let Some(rtb_request) = arguments.get("rtb_request").and_then(Value::as_str) else {
+        return success_response(
+            id,
+            tool_result_text(
+                "Missing required argument: rtb_request (string). A mutation set can only be \
+                 checked against the RTBRequest envelope it answers.",
+                true,
+            ),
+        );
+    };
+    let version = match resolve_version(arguments) {
+        Ok(version) => version,
+        Err(message) => return success_response(id, tool_result_text(&message, true)),
+    };
+
+    let apply = arguments
+        .get("apply")
+        .and_then(Value::as_bool)
+        .unwrap_or(false);
+
+    let report = if apply {
+        let outcome = validate_artf_mutations_applied(version, rtb_request, payload);
+        json!({
+            "version": version.id(),
+            "payload_type": "artf-response",
+            "applied": true,
+            "valid": outcome.result.valid,
+            "issues": outcome.result.issues,
+            "application": outcome.application,
+        })
+    } else {
+        let result = validate_artf_response_against_request(version, rtb_request, payload);
+        json!({
+            "version": version.id(),
+            "payload_type": "artf-response",
+            "applied": false,
+            "valid": result.valid,
+            "issues": result.issues,
+        })
+    };
+
+    success_response(
+        id,
+        tool_result_text(
+            &serde_json::to_string_pretty(&report).unwrap_or_default(),
+            false,
+        ),
+    )
+}
+
+fn resolve_version(arguments: &Value) -> Result<OpenRtbVersion, String> {
+    match arguments.get("version").and_then(Value::as_str) {
+        None => Ok(DEFAULT_VERSION),
+        Some(version_id) => OpenRtbVersion::from_id(version_id).ok_or_else(|| {
+            format!(
+                "Unsupported OpenRTB version: {version_id}. Available versions: {}",
+                version_ids().join(", ")
+            )
+        }),
+    }
 }
 
 fn tool_result_text(text: &str, is_error: bool) -> Value {
@@ -413,10 +569,167 @@ fn write_message(stdout: &io::Stdout, message: &Value) {
 mod tests {
     use super::*;
 
+    /// The tool result inside a JSON-RPC success response.
+    fn tool_result(response: &Value) -> &Value {
+        &response["result"]
+    }
+
     /// Parse the JSON body out of a tool result envelope.
     fn payload_of(result: &Value) -> Value {
         let text = result["content"][0]["text"].as_str().expect("text content");
         serde_json::from_str(text).expect("tool payload is JSON")
+    }
+
+    const ARTF_REQUEST: &str = r#"{
+        "id": "ep-1",
+        "tmax": 120,
+        "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+        "originator": { "type": "TYPE_EXCHANGE", "id": "x-1" },
+        "applicable_intents": ["ACTIVATE_DEALS"],
+        "bid_request": {
+            "id": "auction-1",
+            "imp": [
+                {
+                    "id": "imp-1",
+                    "secure": true,
+                    "banner": { "w": 300, "h": 250 },
+                    "pmp": { "private_auction": true, "deals": [{ "id": "deal-1" }] }
+                }
+            ],
+            "site": { "id": "s-1", "domain": "news.example" }
+        }
+    }"#;
+
+    #[test]
+    fn every_declared_tool_has_a_handler() {
+        for tool in tool_definitions().as_array().expect("tool array") {
+            let name = tool["name"].as_str().expect("tool name");
+            let response = handle_tool_call(json!(1), &json!({ "name": name }));
+            assert!(
+                response.get("error").is_none(),
+                "{name} is declared but not routed: {response}"
+            );
+        }
+    }
+
+    #[test]
+    fn dialect_argument_switches_the_flag_encoding() {
+        let payload = r#"{
+            "id": "req-1",
+            "imp": [{ "id": "imp-1", "secure": true, "banner": { "w": 300, "h": 250 } }],
+            "site": { "id": "s-1" }
+        }"#;
+
+        let spec = run_validation(json!(1), &json!({ "payload": payload }), "request");
+        let spec = payload_of(tool_result(&spec));
+        assert_eq!(spec["valid"], json!(false));
+        assert_eq!(spec["dialect"], "spec-json");
+
+        let proto = run_validation(
+            json!(2),
+            &json!({ "payload": payload, "dialect": "proto-json" }),
+            "request",
+        );
+        let proto = payload_of(tool_result(&proto));
+        assert_eq!(proto["valid"], json!(true));
+        assert_eq!(proto["dialect"], "proto-json");
+    }
+
+    #[test]
+    fn unknown_dialect_is_reported_as_a_tool_error() {
+        let result = run_validation(
+            json!(1),
+            &json!({ "payload": "{}", "dialect": "yaml" }),
+            "request",
+        );
+        assert_eq!(tool_result(&result)["isError"], json!(true));
+    }
+
+    #[test]
+    fn artf_request_tool_validates_the_envelope() {
+        let result = run_artf_request(json!(1), &json!({ "payload": ARTF_REQUEST }));
+        let payload = payload_of(tool_result(&result));
+
+        assert_eq!(payload["payload_type"], "artf-request");
+        assert_eq!(
+            payload["valid"],
+            json!(true),
+            "issues: {}",
+            payload["issues"]
+        );
+    }
+
+    #[test]
+    fn artf_response_tool_requires_the_request_it_answers() {
+        let result = run_artf_response(json!(1), &json!({ "payload": "{}" }));
+        assert_eq!(tool_result(&result)["isError"], json!(true));
+    }
+
+    #[test]
+    fn artf_response_tool_resolves_mutation_paths() {
+        let mutations = r#"{
+            "id": "ep-1",
+            "mutations": [
+                {
+                    "intent": "ACTIVATE_DEALS",
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-404",
+                    "ids": { "id": ["deal-2"] }
+                }
+            ],
+            "metadata": { "api_version": "1.0.0", "model_version": "m" }
+        }"#;
+
+        let result = run_artf_response(
+            json!(1),
+            &json!({ "payload": mutations, "rtb_request": ARTF_REQUEST }),
+        );
+        let payload = payload_of(tool_result(&result));
+
+        assert_eq!(payload["valid"], json!(false));
+        assert_eq!(payload["applied"], json!(false));
+        let ids: Vec<&str> = payload["issues"]
+            .as_array()
+            .expect("issues")
+            .iter()
+            .map(|issue| issue["id"].as_str().expect("id"))
+            .collect();
+        assert!(ids.contains(&"artf.mutation.imp_unknown"), "{ids:?}");
+    }
+
+    #[test]
+    fn artf_response_tool_returns_the_mutated_payload_when_applying() {
+        let mutations = r#"{
+            "id": "ep-1",
+            "mutations": [
+                {
+                    "intent": "ACTIVATE_DEALS",
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1",
+                    "ids": { "id": ["deal-2"] }
+                }
+            ],
+            "metadata": { "api_version": "1.0.0", "model_version": "m" }
+        }"#;
+
+        let result = run_artf_response(
+            json!(1),
+            &json!({ "payload": mutations, "rtb_request": ARTF_REQUEST, "apply": true }),
+        );
+        let payload = payload_of(tool_result(&result));
+
+        assert_eq!(payload["applied"], json!(true));
+        assert_eq!(
+            payload["valid"],
+            json!(true),
+            "issues: {}",
+            payload["issues"]
+        );
+        assert_eq!(payload["application"]["applied"], json!([0]));
+        let mutated = payload["application"]["bid_request"]
+            .as_str()
+            .expect("mutated bid request");
+        assert!(mutated.contains("deal-2"), "{mutated}");
     }
 
     #[test]

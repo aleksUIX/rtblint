@@ -19,6 +19,21 @@ function core_version() {
 exports.core_version = core_version;
 
 /**
+ * Every field where the IAB OpenRTB protobuf schema and the specification
+ * disagree on the type, as `{ object, field }` pairs. Drives the dialect
+ * documentation.
+ * @returns {any}
+ */
+function proto_bool_divergences() {
+    const ret = wasm.proto_bool_divergences();
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.proto_bool_divergences = proto_bool_divergences;
+
+/**
  * The full versioned rule catalog: one entry per coded rule across every
  * tracked OpenRTB version. Drives the per-rule documentation pages.
  * @returns {any}
@@ -49,6 +64,98 @@ function validate(input) {
     return takeFromExternrefTable0(ret[0]);
 }
 exports.validate = validate;
+
+/**
+ * Validate an ARTF RTBRequest envelope and the OpenRTB payloads it carries.
+ * @param {string} version_id
+ * @param {string} input
+ * @returns {any}
+ */
+function validate_artf_request(version_id, input) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_artf_request(ptr0, len0, ptr1, len1);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_artf_request = validate_artf_request;
+
+/**
+ * Validate an ARTF RTBResponse mutation set against the RTBRequest envelope
+ * it answers: intent eligibility, operation and payload coherence, and
+ * semantic path resolution against the auction.
+ * @param {string} version_id
+ * @param {string} rtb_request
+ * @param {string} rtb_response
+ * @returns {any}
+ */
+function validate_artf_response(version_id, rtb_request, rtb_response) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(rtb_request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(rtb_response, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_artf_response(ptr0, len0, ptr1, len1, ptr2, len2);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_artf_response = validate_artf_response;
+
+/**
+ * Apply an ARTF mutation set and revalidate: returns `{ result, application }`
+ * where result carries the mutation findings plus the OpenRTB findings the
+ * mutations introduced, and application carries the mutated payloads.
+ * @param {string} version_id
+ * @param {string} rtb_request
+ * @param {string} rtb_response
+ * @returns {any}
+ */
+function validate_artf_response_applied(version_id, rtb_request, rtb_response) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(rtb_request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(rtb_response, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_artf_response_applied(ptr0, len0, ptr1, len1, ptr2, len2);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_artf_response_applied = validate_artf_response_applied;
+
+/**
+ * Validate an OpenRTB bid request written in a specific JSON dialect
+ * ("spec-json" or "proto-json"). protobuf JSON declares 28 of the spec's
+ * integer flag fields as bool, so the two encodings disagree in both
+ * directions; see `proto_bool_divergences`.
+ * @param {string} version_id
+ * @param {string} dialect_id
+ * @param {string} input
+ * @returns {any}
+ */
+function validate_dialect(version_id, dialect_id, input) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(dialect_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_dialect(ptr0, len0, ptr1, len1, ptr2, len2);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_dialect = validate_dialect;
 
 /**
  * Validate an OpenRTB bid response payload against the latest tracked 2.6 snapshot.
@@ -93,6 +200,28 @@ function validate_response_against_request(version_id, request, response) {
     return takeFromExternrefTable0(ret[0]);
 }
 exports.validate_response_against_request = validate_response_against_request;
+
+/**
+ * Validate an OpenRTB bid response written in a specific JSON dialect.
+ * @param {string} version_id
+ * @param {string} dialect_id
+ * @param {string} input
+ * @returns {any}
+ */
+function validate_response_dialect(version_id, dialect_id, input) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(dialect_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_response_dialect(ptr0, len0, ptr1, len1, ptr2, len2);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_response_dialect = validate_response_dialect;
 
 /**
  * Validate an OpenRTB bid response payload against a specific tracked version id
@@ -149,6 +278,10 @@ exports.versions = versions;
 function __wbg_get_imports() {
     const import0 = {
         __proto__: null,
+        __wbg_Error_fdd633d4bb5dd76a: function(arg0, arg1) {
+            const ret = Error(getStringFromWasm0(arg0, arg1));
+            return ret;
+        },
         __wbg_String_8564e559799eccda: function(arg0, arg1) {
             const ret = String(arg1);
             const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -173,9 +306,19 @@ function __wbg_get_imports() {
         __wbg_set_dc601f4a69da0bc2: function(arg0, arg1, arg2) {
             arg0[arg1 >>> 0] = arg2;
         },
-        __wbindgen_cast_0000000000000001: function(arg0, arg1) {
+        __wbindgen_cast_0000000000000001: function(arg0) {
+            // Cast intrinsic for `F64 -> Externref`.
+            const ret = arg0;
+            return ret;
+        },
+        __wbindgen_cast_0000000000000002: function(arg0, arg1) {
             // Cast intrinsic for `Ref(String) -> Externref`.
             const ret = getStringFromWasm0(arg0, arg1);
+            return ret;
+        },
+        __wbindgen_cast_0000000000000003: function(arg0) {
+            // Cast intrinsic for `U64 -> Externref`.
+            const ret = BigInt.asUintN(64, arg0);
             return ret;
         },
         __wbindgen_init_externref_table: function() {

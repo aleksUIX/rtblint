@@ -2,10 +2,16 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export const core_version: () => [number, number];
+export const proto_bool_divergences: () => [number, number, number];
 export const rules: () => [number, number, number];
 export const validate: (a: number, b: number) => [number, number, number];
+export const validate_artf_request: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const validate_artf_response: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
+export const validate_artf_response_applied: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
+export const validate_dialect: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
 export const validate_response: (a: number, b: number) => [number, number, number];
 export const validate_response_against_request: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
+export const validate_response_dialect: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number];
 export const validate_response_version: (a: number, b: number, c: number, d: number) => [number, number, number];
 export const validate_version: (a: number, b: number, c: number, d: number) => [number, number, number];
 export const versions: () => [number, number, number];

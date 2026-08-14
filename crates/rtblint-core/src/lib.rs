@@ -1,7 +1,9 @@
 mod adcom_lists;
+mod artf;
 mod canonical_catalog;
 #[doc(hidden)]
 pub mod catalog_extract;
+mod dialect;
 mod pair;
 mod schema_manifest;
 mod validator;
@@ -9,11 +11,16 @@ mod version_rules;
 
 use serde::Serialize;
 
+pub use artf::{
+    apply_artf_mutations, validate_artf_mutations_applied, validate_artf_request,
+    validate_artf_response_against_request, ArtfApplication, ArtfMutationOutcome,
+};
 pub use canonical_catalog::{
     canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
     CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation, CatalogValueSet,
     ExpectedShape, StaticCatalog, StaticCitation, StaticField, StaticObject, StaticValueSet,
 };
+pub use dialect::{proto_bool_fields, Dialect};
 pub use schema_manifest::{
     schema_manifest, schema_manifest_versions, schema_path_entry, SchemaCoverage, SchemaManifest,
     SchemaPathEntry, SchemaPathState,
@@ -55,12 +62,39 @@ pub fn validate(_input: &str) -> ValidationResult {
 
 /// Validates an OpenRTB bid request payload for a specific tracked version.
 pub fn validate_bid_request_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validator::validate_bid_request(version, input)
+    validator::validate_bid_request(version, Dialect::SpecJson, input)
 }
 
 /// Validates an OpenRTB bid response payload for a specific tracked version.
 pub fn validate_bid_response_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validator::validate_bid_response(version, input)
+    validator::validate_bid_response(version, Dialect::SpecJson, input)
+}
+
+/// Validates an OpenRTB bid request payload written in a specific JSON
+/// dialect.
+///
+/// [`Dialect::SpecJson`] is what [`validate_bid_request_for_version`] uses and
+/// what the spec describes. [`Dialect::ProtoJson`] is the protobuf JSON
+/// mapping of the IAB OpenRTB protobuf schema, which gRPC bidstream
+/// integrations (ARTF among them) speak: there, the flag fields the spec types
+/// as integers are `bool`, so `"secure": true` is correct and `"secure": 1` is
+/// the error.
+pub fn validate_bid_request_with_dialect(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_request(version, dialect, input)
+}
+
+/// Validates an OpenRTB bid response payload written in a specific JSON
+/// dialect. See [`validate_bid_request_with_dialect`].
+pub fn validate_bid_response_with_dialect(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_response(version, dialect, input)
 }
 
 /// Validates an OpenRTB bid response payload against the bid request it
@@ -81,7 +115,24 @@ pub fn validate_bid_response_against_request(
     request_input: &str,
     response_input: &str,
 ) -> ValidationResult {
-    pair::validate_bid_response_against_request(version, request_input, response_input)
+    pair::validate_bid_response_against_request(
+        version,
+        Dialect::SpecJson,
+        request_input,
+        response_input,
+    )
+}
+
+/// Validates a bid response against its bid request, with both payloads
+/// written in a specific JSON dialect. See
+/// [`validate_bid_response_with_dialect`].
+pub fn validate_bid_response_against_request_with_dialect(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    request_input: &str,
+    response_input: &str,
+) -> ValidationResult {
+    pair::validate_bid_response_against_request(version, dialect, request_input, response_input)
 }
 
 /// Validates whether an object field exists in the canonical catalog for a specific OpenRTB version.

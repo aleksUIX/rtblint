@@ -3,9 +3,13 @@ use std::fmt::Write as _;
 use serde_json::{Map, Value};
 
 use crate::{
-    adcom_lists::adcom_list_by_name, canonical_field, canonical_object, path_status,
-    version_rules::rule_path_leaves, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Severity,
-    StaticField, ValidationResult,
+    adcom_lists::adcom_list_by_name,
+    canonical_field, canonical_object,
+    dialect::{proto_declares_bool, snake_case_of_camel},
+    path_status,
+    version_rules::rule_path_leaves,
+    Dialect, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Severity, StaticField,
+    ValidationResult,
 };
 
 /// The two OpenRTB 2.x payload types the validator understands.
@@ -46,12 +50,20 @@ impl PayloadKind {
     }
 }
 
-pub(crate) fn validate_bid_request(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validate_payload(version, input, PayloadKind::BidRequest)
+pub(crate) fn validate_bid_request(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    input: &str,
+) -> ValidationResult {
+    validate_payload(version, dialect, input, PayloadKind::BidRequest)
 }
 
-pub(crate) fn validate_bid_response(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validate_payload(version, input, PayloadKind::BidResponse)
+pub(crate) fn validate_bid_response(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    input: &str,
+) -> ValidationResult {
+    validate_payload(version, dialect, input, PayloadKind::BidResponse)
 }
 
 /// OpenRTB 3.0 wraps everything in a single `openrtb` member.
@@ -67,9 +79,14 @@ const SUPPLY_CHAIN_VERSION: &str = "1.0";
 /// bug, since every hop has to be independently authorised to be buyable.
 const SUPPLY_CHAIN_LENGTH_CEILING: usize = 10;
 
-fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> ValidationResult {
+fn validate_payload(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    input: &str,
+    kind: PayloadKind,
+) -> ValidationResult {
     if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
-        return validate_layered_payload(version, input, kind);
+        return validate_layered_payload(version, dialect, input, kind);
     }
 
     if canonical_object(version, kind.root_object()).is_none() {
@@ -125,6 +142,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
     let mut issues = Vec::new();
     validate_known_object(
         version,
+        dialect,
         kind,
         kind.root_object(),
         root,
@@ -146,6 +164,7 @@ fn validate_payload(version: OpenRtbVersion, input: &str, kind: PayloadKind) -> 
 /// catalog ships yet.
 fn validate_layered_payload(
     version: OpenRtbVersion,
+    dialect: Dialect,
     input: &str,
     kind: PayloadKind,
 ) -> ValidationResult {
@@ -219,6 +238,7 @@ fn validate_layered_payload(
     let mut instance_path = String::from(ENVELOPE_MEMBER);
     validate_known_object(
         version,
+        dialect,
         kind,
         ENVELOPE_OBJECT,
         envelope,
@@ -340,6 +360,7 @@ pub(crate) fn finalize_result(issues: Vec<Issue>) -> ValidationResult {
 #[allow(clippy::too_many_arguments)]
 fn validate_known_object<'a>(
     version: OpenRtbVersion,
+    dialect: Dialect,
     kind: PayloadKind,
     object_name: &str,
     object: &'a Map<String, Value>,
@@ -402,11 +423,46 @@ fn validate_known_object<'a>(
             continue;
         }
 
-        let Some(field_definition) = definition
+        let field_definition = definition
             .fields
             .iter()
-            .find(|field| field.name == field_name.as_str())
-        else {
+            .find(|field| field.name == field_name.as_str());
+
+        // protojson emits lowerCamelCase names unless the serializer asks for
+        // proto names, so a protojson payload can spell a catalogued field
+        // `privateAuction`. Resolve it to the spec name and keep validating,
+        // rather than reporting the whole subtree as undefined.
+        let field_definition = match (field_definition, dialect) {
+            (Some(field_definition), _) => Some(field_definition),
+            (None, Dialect::ProtoJson) => {
+                match snake_case_of_camel(field_name).and_then(|spec_name| {
+                    definition
+                        .fields
+                        .iter()
+                        .find(|field| field.name == spec_name.as_str())
+                }) {
+                    Some(resolved) => {
+                        issues.push(Issue {
+                            id: String::from("openrtb.dialect.camel_case_name"),
+                            severity: Severity::Warning,
+                            message: format!(
+                                "{field_name} is the lowerCamelCase protobuf JSON spelling of \
+                                 {}.{}; OpenRTB JSON readers look for \"{}\". Serialize with \
+                                 proto field names to stay readable on both sides.",
+                                object_name, resolved.name, resolved.name
+                            ),
+                            path: Some(String::from(instance_path.as_str())),
+                            section: Some(String::from(resolved.citation.section)),
+                        });
+                        Some(resolved)
+                    }
+                    None => None,
+                }
+            }
+            (None, Dialect::SpecJson) => None,
+        };
+
+        let Some(field_definition) = field_definition else {
             issues.push(uncatalogued_field_issue(
                 version,
                 kind,
@@ -434,7 +490,14 @@ fn validate_known_object<'a>(
                 issues,
             );
         }
-        validate_field_value_shape(field_definition, value, instance_path, issues);
+        validate_field_value_shape(
+            dialect,
+            object_name,
+            field_definition,
+            value,
+            instance_path,
+            issues,
+        );
         validate_required_array_contents(field_definition, value, instance_path, issues);
         validate_catalog_value_set(field_definition, value, instance_path, issues);
 
@@ -442,6 +505,7 @@ fn validate_known_object<'a>(
             if let Some(child_object_name) = field_definition.child_object {
                 validate_known_object(
                     version,
+                    dialect,
                     kind,
                     child_object_name,
                     value.as_object().expect("checked object shape"),
@@ -464,6 +528,7 @@ fn validate_known_object<'a>(
                         let item_path_length = push_index_segment(instance_path, index);
                         validate_known_object(
                             version,
+                            dialect,
                             kind,
                             child_object_name,
                             item_object,
@@ -1573,11 +1638,20 @@ impl IntegerValueSet {
 }
 
 fn validate_field_value_shape(
+    dialect: Dialect,
+    object_name: &str,
     field: &StaticField,
     value: &Value,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
+    if matches!(field.shape, ExpectedShape::Integer)
+        && proto_declares_bool(object_name, field.name)
+        && validate_proto_bool_field(dialect, object_name, field, value, instance_path, issues)
+    {
+        return;
+    }
+
     let valid = match field.shape {
         ExpectedShape::Unknown => true,
         ExpectedShape::Object => value.is_object(),
@@ -1616,6 +1690,61 @@ fn validate_field_value_shape(
             path: Some(String::from(instance_path)),
             section: Some(String::from(field.citation.section)),
         });
+    }
+}
+
+/// Handles the fields the IAB protobuf schema declares `bool` while the spec
+/// types them as an integer flag.
+///
+/// Returns whether the value was settled here. A `false` return sends the
+/// value back to the ordinary shape check, which is what should happen for a
+/// spec-JSON integer (correct) and for anything that is neither a bool nor a
+/// number (a plain type mismatch, dialect notwithstanding).
+fn validate_proto_bool_field(
+    dialect: Dialect,
+    object_name: &str,
+    field: &StaticField,
+    value: &Value,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) -> bool {
+    match (value, dialect) {
+        // Correct for the transport it was written for.
+        (Value::Bool(_), Dialect::ProtoJson) => true,
+        (Value::Bool(actual), Dialect::SpecJson) => {
+            issues.push(Issue {
+                id: String::from("openrtb.dialect.bool_for_integer"),
+                severity: Severity::Error,
+                message: format!(
+                    "{instance_path} is {actual}, but OpenRTB types {}.{} as an integer flag \
+                     (0 or 1). The IAB protobuf schema declares it bool, so this is protobuf \
+                     JSON: send {} to spec-JSON readers, or validate with the proto-json \
+                     dialect.",
+                    object_name,
+                    field.name,
+                    u8::from(*actual)
+                ),
+                path: Some(String::from(instance_path)),
+                section: Some(String::from(field.citation.section)),
+            });
+            true
+        }
+        (Value::Number(number), Dialect::ProtoJson) => {
+            issues.push(Issue {
+                id: String::from("openrtb.dialect.integer_for_bool"),
+                severity: Severity::Error,
+                message: format!(
+                    "{instance_path} is {number}, but the IAB protobuf schema declares {}.{} as \
+                     bool, and protobuf JSON accepts only true or false there. A protojson \
+                     parser rejects this payload outright.",
+                    object_name, field.name
+                ),
+                path: Some(String::from(instance_path)),
+                section: Some(String::from(field.citation.section)),
+            });
+            true
+        }
+        _ => false,
     }
 }
 

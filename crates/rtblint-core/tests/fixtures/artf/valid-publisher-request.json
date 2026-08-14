@@ -1,0 +1,79 @@
+{
+  "id": "extension-point-001",
+  "tmax": 150,
+  "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+  "originator": {
+    "type": "TYPE_EXCHANGE",
+    "id": "exchange-7"
+  },
+  "applicable_intents": [
+    "ACTIVATE_SEGMENTS",
+    "ACTIVATE_DEALS",
+    "SUPPRESS_DEALS",
+    "ADJUST_DEAL_FLOOR",
+    "ADD_METRICS"
+  ],
+  "bid_request": {
+    "id": "auction-9001",
+    "at": 1,
+    "tmax": 300,
+    "cur": ["USD"],
+    "imp": [
+      {
+        "id": "imp-1",
+        "secure": true,
+        "instl": false,
+        "bidfloor": 8.0,
+        "bidfloorcur": "USD",
+        "video": {
+          "mimes": ["video/mp4"],
+          "minduration": 15,
+          "maxduration": 30,
+          "w": 1920,
+          "h": 1080,
+          "protocols": [2, 3, 5, 6],
+          "linearity": 1,
+          "plcmt": 1,
+          "skip": false
+        },
+        "pmp": {
+          "private_auction": true,
+          "deals": [
+            { "id": "deal-premium", "bidfloor": 12.0, "bidfloorcur": "USD", "at": 1 },
+            { "id": "deal-standard", "bidfloor": 6.0, "bidfloorcur": "USD", "at": 2 }
+          ]
+        }
+      }
+    ],
+    "site": {
+      "id": "site-42",
+      "domain": "streaming.example",
+      "page": "https://streaming.example/watch/12345",
+      "mobile": false,
+      "content": {
+        "id": "content-12345",
+        "livestream": false,
+        "len": 3600
+      }
+    },
+    "device": {
+      "dnt": false,
+      "lmt": false,
+      "ua": "Mozilla/5.0"
+    },
+    "user": {
+      "id": "user-77",
+      "data": [
+        {
+          "id": "dmp-1",
+          "name": "Example DMP",
+          "segment": [{ "id": "seg-sports" }]
+        }
+      ]
+    },
+    "regs": {
+      "coppa": false,
+      "gdpr": false
+    }
+  }
+}

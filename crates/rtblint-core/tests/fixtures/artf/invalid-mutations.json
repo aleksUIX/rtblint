@@ -1,0 +1,41 @@
+{
+  "id": "extension-point-999",
+  "mutations": [
+    {
+      "intent": "BID_SHADE",
+      "op": "OPERATION_REPLACE",
+      "path": "/seatbid/dsp-1/bid/bid-abc",
+      "adjust_bid": { "price": -2.5 }
+    },
+    {
+      "intent": "ADJUST_DEAL_FLOOR",
+      "op": "OPERATION_REPLACE",
+      "path": "/imp/imp-404/pmp/deals/deal-premium",
+      "adjust_deal": { "bidfloor": 3.0 }
+    },
+    {
+      "intent": "ADJUST_DEAL_FLOOR",
+      "op": "OPERATION_REPLACE",
+      "path": "/imp/imp-1/pmp/deals/deal-unlisted",
+      "adjust_deal": { "bidfloor": 3.0 }
+    },
+    {
+      "intent": "ACTIVATE_DEALS",
+      "op": "OPERATION_ADD",
+      "path": "/imp/imp-1",
+      "adjust_bid": { "price": 4.0 }
+    },
+    {
+      "intent": "adjustDeals",
+      "op": "replace",
+      "path": "/imp/imp-1/deals/deal-standard",
+      "value": { "AdjustDealPayload": { "bidfloor": 7.25 } }
+    },
+    {
+      "intent": "ADJUST_DEAL_MARGIN",
+      "op": "OPERATION_REPLACE",
+      "path": "/imp/imp-1/pmp/deals/deal-standard",
+      "adjust_deal": { "margin": { "value": 140.0, "calculation_type": "PERCENT" } }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "extension-point-002",
+  "tmax": 150,
+  "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+  "originator": {
+    "type": "TYPE_SSP",
+    "id": "ssp-3"
+  },
+  "applicable_intents": ["ACTIVATE_DEALS"],
+  "bid_request": {
+    "id": "auction-9002",
+    "imp": [
+      {
+        "id": "imp-1",
+        "secure": 1,
+        "banner": { "w": 300, "h": 250, "topframe": 1 },
+        "pmp": { "private_auction": 1 }
+      }
+    ],
+    "site": { "id": "site-42", "domain": "news.example" },
+    "regs": { "coppa": 0, "gdpr": 0 }
+  }
+}

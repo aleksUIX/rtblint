@@ -1,0 +1,42 @@
+{
+  "id": "extension-point-010",
+  "tmax": 120,
+  "lifecycle": "LIFECYCLE_DSP_BID_RESPONSE",
+  "originator": {
+    "type": "TYPE_DSP",
+    "id": "dsp-1"
+  },
+  "applicable_intents": ["BID_SHADE"],
+  "bid_request": {
+    "id": "auction-9010",
+    "cur": ["USD"],
+    "imp": [
+      {
+        "id": "imp-1",
+        "secure": true,
+        "banner": { "w": 300, "h": 250 },
+        "bidfloor": 1.0,
+        "bidfloorcur": "USD"
+      }
+    ],
+    "site": { "id": "site-42", "domain": "news.example" }
+  },
+  "bid_response": {
+    "id": "auction-9010",
+    "cur": "USD",
+    "seatbid": [
+      {
+        "seat": "dsp-1",
+        "bid": [
+          {
+            "id": "bid-abc",
+            "impid": "imp-1",
+            "price": 4.5,
+            "mtype": 1,
+            "adm": "<div>creative</div>"
+          }
+        ]
+      }
+    ]
+  }
+}

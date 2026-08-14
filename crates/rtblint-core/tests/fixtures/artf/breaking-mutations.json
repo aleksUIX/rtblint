@@ -1,0 +1,17 @@
+{
+  "id": "extension-point-001",
+  "mutations": [
+    {
+      "intent": "ADD_METRICS",
+      "op": "OPERATION_ADD",
+      "path": "/imp/imp-1",
+      "metrics": {
+        "metric": [{ "type": "viewability", "value": "high", "vendor": "example-measurement" }]
+      }
+    }
+  ],
+  "metadata": {
+    "api_version": "1.0.0",
+    "model_version": "metrics-2026.07"
+  }
+}

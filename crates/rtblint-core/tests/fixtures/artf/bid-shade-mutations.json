@@ -1,0 +1,15 @@
+{
+  "id": "extension-point-010",
+  "mutations": [
+    {
+      "intent": "BID_SHADE",
+      "op": "OPERATION_REPLACE",
+      "path": "/seatbid/dsp-1/bid/bid-abc",
+      "adjust_bid": { "price": 3.15 }
+    }
+  ],
+  "metadata": {
+    "api_version": "1.0.0",
+    "model_version": "shading-2026.07"
+  }
+}

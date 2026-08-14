@@ -1,0 +1,35 @@
+{
+  "id": "extension-point-001",
+  "mutations": [
+    {
+      "intent": "ACTIVATE_SEGMENTS",
+      "op": "OPERATION_ADD",
+      "path": "/user/data/segment",
+      "ids": { "id": ["seg-cord-cutter", "seg-premium-viewer"] }
+    },
+    {
+      "intent": "ACTIVATE_DEALS",
+      "op": "OPERATION_ADD",
+      "path": "/imp/imp-1",
+      "ids": { "id": ["deal-curated"] }
+    },
+    {
+      "intent": "ADJUST_DEAL_FLOOR",
+      "op": "OPERATION_REPLACE",
+      "path": "/imp/imp-1/pmp/deals/deal-premium",
+      "adjust_deal": { "bidfloor": 14.5 }
+    },
+    {
+      "intent": "ADD_METRICS",
+      "op": "OPERATION_ADD",
+      "path": "/imp/imp-1",
+      "metrics": {
+        "metric": [{ "type": "viewability", "value": 0.82, "vendor": "example-measurement" }]
+      }
+    }
+  ],
+  "metadata": {
+    "api_version": "1.0.0",
+    "model_version": "curation-2026.07"
+  }
+}

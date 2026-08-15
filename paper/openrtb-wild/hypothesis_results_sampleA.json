@@ -1,0 +1,41 @@
+{
+ "payloads": 4589,
+ "payloads_with_issue": 2740,
+ "issues_by_class": {
+  "A": 4488,
+  "B": 2461
+ },
+ "payloads_by_class": {
+  "A": 1755,
+  "B": 1829
+ },
+ "rules": {
+  "openrtb.field.undefined": 2635,
+  "openrtb.field.moved": 1011,
+  "openrtb.field.deprecated": 870,
+  "openrtb.value.invalid": 515,
+  "openrtb.type.mismatch": 1246,
+  "openrtb.fields.mutually_exclusive": 10,
+  "openrtb.bid.mtype_missing": 338,
+  "openrtb.response.seatbid_or_nbr.required": 219,
+  "openrtb.field.required": 92,
+  "openrtb.bid.adm.vast_root_missing": 1,
+  "openrtb.request.tmax_implausible": 6,
+  "openrtb.bid.adm.not_markup": 6
+ },
+ "rule_class_map": {
+  "openrtb.field.undefined": "A",
+  "openrtb.field.moved": "B",
+  "openrtb.field.deprecated": "B",
+  "openrtb.value.invalid": "A",
+  "openrtb.type.mismatch": "A",
+  "openrtb.fields.mutually_exclusive": "B",
+  "openrtb.bid.mtype_missing": "B",
+  "openrtb.response.seatbid_or_nbr.required": "B",
+  "openrtb.field.required": "A",
+  "openrtb.bid.adm.vast_root_missing": "B",
+  "openrtb.request.tmax_implausible": "B",
+  "openrtb.bid.adm.not_markup": "B"
+ },
+ "required_violation_payloads": 86
+}

@@ -1,0 +1,37 @@
+{
+ "payloads": 5868,
+ "payloads_with_issue": 2847,
+ "issues_by_class": {
+  "B": 2424,
+  "A": 6995
+ },
+ "payloads_by_class": {
+  "B": 1747,
+  "A": 2049
+ },
+ "rules": {
+  "openrtb.field.deprecated": 1113,
+  "openrtb.field.undefined": 4800,
+  "openrtb.value.invalid": 586,
+  "openrtb.type.mismatch": 1459,
+  "openrtb.field.moved": 337,
+  "openrtb.bid.mtype_missing": 768,
+  "openrtb.response.seatbid_or_nbr.required": 202,
+  "openrtb.bid.adm.vast_root_missing": 3,
+  "openrtb.field.required": 150,
+  "openrtb.bid.adm.not_markup": 1
+ },
+ "rule_class_map": {
+  "openrtb.field.deprecated": "B",
+  "openrtb.field.undefined": "A",
+  "openrtb.value.invalid": "A",
+  "openrtb.type.mismatch": "A",
+  "openrtb.field.moved": "B",
+  "openrtb.bid.mtype_missing": "B",
+  "openrtb.response.seatbid_or_nbr.required": "B",
+  "openrtb.bid.adm.vast_root_missing": "B",
+  "openrtb.field.required": "A",
+  "openrtb.bid.adm.not_markup": "B"
+ },
+ "required_violation_payloads": 137
+}

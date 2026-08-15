@@ -1,0 +1,321 @@
+{
+ "matched_pairs": 2124,
+ "flagged": 153,
+ "rules": {
+  "openrtb.bid.adm.media_type_mismatch": 21,
+  "openrtb.bid.dealid_unknown": 169,
+  "openrtb.bid.adm.vast_root_missing": 3,
+  "openrtb.bid.mtype_not_offered": 3,
+  "openrtb.response.request_id_mismatch": 8,
+  "openrtb.bid.impid_unknown": 5,
+  "openrtb.bid.adm.not_markup": 1,
+  "openrtb.response.cur_not_allowed": 10
+ },
+ "endpoints": {
+  "prebid-server.rubiconproject.com": {
+   "pairs": 279,
+   "flagged": 26,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 39,
+    "openrtb.bid.adm.media_type_mismatch": 11
+   }
+  },
+  "direct.adsrvr.org": {
+   "pairs": 206,
+   "flagged": 10,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 14
+   }
+  },
+  "rtb.openx.net": {
+   "pairs": 334,
+   "flagged": 29,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 47
+   }
+  },
+  "htlb.casalemedia.com": {
+   "pairs": 350,
+   "flagged": 7,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 7
+   }
+  },
+  "c2shb.pubgw.yahoo.com": {
+   "pairs": 152,
+   "flagged": 0,
+   "rules": {}
+  },
+  "ib.adnxs.com": {
+   "pairs": 26,
+   "flagged": 0,
+   "rules": {}
+  },
+  "elb.the-ozone-project.com": {
+   "pairs": 127,
+   "flagged": 6,
+   "rules": {
+    "openrtb.response.request_id_mismatch": 2,
+    "openrtb.bid.dealid_unknown": 4
+   }
+  },
+  "hbopenbid.pubmatic.com": {
+   "pairs": 43,
+   "flagged": 19,
+   "rules": {
+    "openrtb.bid.adm.media_type_mismatch": 4,
+    "openrtb.bid.dealid_unknown": 16
+   }
+  },
+  "ssp.wknd.ai": {
+   "pairs": 8,
+   "flagged": 5,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 5
+   }
+  },
+  "www.usatoday.com": {
+   "pairs": 5,
+   "flagged": 3,
+   "rules": {
+    "openrtb.bid.adm.vast_root_missing": 1,
+    "openrtb.bid.mtype_not_offered": 1,
+    "openrtb.bid.adm.media_type_mismatch": 2,
+    "openrtb.bid.dealid_unknown": 3
+   }
+  },
+  "npid.amspbs.com": {
+   "pairs": 13,
+   "flagged": 0,
+   "rules": {}
+  },
+  "display.bidder.taboola.com": {
+   "pairs": 9,
+   "flagged": 0,
+   "rules": {}
+  },
+  "ap.lijit.com": {
+   "pairs": 4,
+   "flagged": 3,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 4
+   }
+  },
+  "fastlane.rubiconproject.com": {
+   "pairs": 126,
+   "flagged": 2,
+   "rules": {
+    "openrtb.bid.adm.vast_root_missing": 2,
+    "openrtb.bid.mtype_not_offered": 2
+   }
+  },
+  "openads.adsrvr.org": {
+   "pairs": 63,
+   "flagged": 8,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 12
+   }
+  },
+  "ssc.33across.com": {
+   "pairs": 11,
+   "flagged": 0,
+   "rules": {}
+  },
+  "fast.nexx360.io": {
+   "pairs": 16,
+   "flagged": 0,
+   "rules": {}
+  },
+  "ads.trustx.org": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "webc2s.pubgw.yahoo.com": {
+   "pairs": 4,
+   "flagged": 0,
+   "rules": {}
+  },
+  "prebid-server.pbstck.com": {
+   "pairs": 2,
+   "flagged": 0,
+   "rules": {}
+  },
+  "pbs.at.cbsi.com": {
+   "pairs": 4,
+   "flagged": 0,
+   "rules": {}
+  },
+  "prebid-s2s.media.net": {
+   "pairs": 10,
+   "flagged": 0,
+   "rules": {}
+  },
+  "exchange.postrelease.com": {
+   "pairs": 5,
+   "flagged": 5,
+   "rules": {
+    "openrtb.response.request_id_mismatch": 5,
+    "openrtb.bid.impid_unknown": 5
+   }
+  },
+  "web.ads.aps.amazon-adsystem.com": {
+   "pairs": 23,
+   "flagged": 3,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 2,
+    "openrtb.bid.adm.not_markup": 1
+   }
+  },
+  "prebid.production.adthrive.com": {
+   "pairs": 82,
+   "flagged": 0,
+   "rules": {}
+  },
+  "pbs-raptive-us.ay.delivery": {
+   "pairs": 22,
+   "flagged": 2,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 2
+   }
+  },
+  "prebid2.production.adthrive.com": {
+   "pairs": 84,
+   "flagged": 4,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 4
+   }
+  },
+  "ssb-global.smartadserver.com": {
+   "pairs": 12,
+   "flagged": 3,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 3
+   }
+  },
+  "btlr.sharethrough.com": {
+   "pairs": 4,
+   "flagged": 0,
+   "rules": {}
+  },
+  "rt.marphezis.com": {
+   "pairs": 7,
+   "flagged": 0,
+   "rules": {}
+  },
+  "mweb-hb.presage.io": {
+   "pairs": 6,
+   "flagged": 0,
+   "rules": {}
+  },
+  "web.hb.ad.cpe.dotomi.com": {
+   "pairs": 6,
+   "flagged": 0,
+   "rules": {}
+  },
+  "pbs.nextmillmedia.com": {
+   "pairs": 2,
+   "flagged": 0,
+   "rules": {}
+  },
+  "pbs.intergient.com": {
+   "pairs": 3,
+   "flagged": 0,
+   "rules": {}
+  },
+  "prebid.ad.smaato.net": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "ex.ingage.tech": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "amspbs.com": {
+   "pairs": 2,
+   "flagged": 0,
+   "rules": {}
+  },
+  "grid-bidder.criteo.com": {
+   "pairs": 7,
+   "flagged": 0,
+   "rules": {}
+  },
+  "footballco-s2s.lngtd.com": {
+   "pairs": 2,
+   "flagged": 1,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 2,
+    "openrtb.bid.adm.media_type_mismatch": 1
+   }
+  },
+  "a.bids.ws": {
+   "pairs": 10,
+   "flagged": 4,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 3,
+    "openrtb.bid.adm.media_type_mismatch": 3
+   }
+  },
+  "pbs-us-east.ay.delivery": {
+   "pairs": 6,
+   "flagged": 1,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 1
+   }
+  },
+  "pbs2418030.adspsp.com": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "tv.springserve.com": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "srv.scalibur.io": {
+   "pairs": 17,
+   "flagged": 0,
+   "rules": {}
+  },
+  "api.w.inmobi.com": {
+   "pairs": 9,
+   "flagged": 0,
+   "rules": {}
+  },
+  "bid.sparteo.com": {
+   "pairs": 10,
+   "flagged": 10,
+   "rules": {
+    "openrtb.response.cur_not_allowed": 10
+   }
+  },
+  "s2s.lngtd.com": {
+   "pairs": 5,
+   "flagged": 0,
+   "rules": {}
+  },
+  "rpbs-sjc1-ngf.production.adthrive.com": {
+   "pairs": 1,
+   "flagged": 0,
+   "rules": {}
+  },
+  "rpbs-iad1-ngf.production.adthrive.com": {
+   "pairs": 1,
+   "flagged": 1,
+   "rules": {
+    "openrtb.bid.dealid_unknown": 1
+   }
+  },
+  "rtb.ex.co": {
+   "pairs": 1,
+   "flagged": 1,
+   "rules": {
+    "openrtb.response.request_id_mismatch": 1
+   }
+  }
+ }
+}

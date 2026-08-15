@@ -1,0 +1,1238 @@
+{
+ "best_fit_per_side": {
+  "pbs-us-east.ay.delivery|request": "2.6-202606",
+  "rtb.openx.net|request": "2.6-202606",
+  "web.hb.ad.cpe.dotomi.com|request": "2.6-202606",
+  "c2shb.pubgw.yahoo.com|request": "2.6-202606",
+  "htlb.casalemedia.com|request": "2.6-202606",
+  "pbs.nextmillmedia.com|request": "2.6-202606",
+  "elb.the-ozone-project.com|request": "2.5",
+  "prebid-server.rubiconproject.com|request": "2.6-202606",
+  "fastlane.rubiconproject.com|request": "2.6-202606",
+  "ssb-global.smartadserver.com|request": "2.6-202606",
+  "btlr.sharethrough.com|request": "2.6-202606",
+  "direct.adsrvr.org|request": "2.6-202606",
+  "ads.trustx.org|request": "2.6-202606",
+  "prebid.media.net|request": "2.6-202606",
+  "prebid.tpdads.com|request": "2.6-202606",
+  "ib.adnxs.com|request": "2.6-202606",
+  "a.bids.ws|request": "2.5",
+  "exchange.postrelease.com|request": "2.6-202606",
+  "mweb-hb.presage.io|request": "2.6-202606",
+  "bid.sparteo.com|request": "2.6-202606",
+  "npid.amspbs.com|request": "2.6-202606",
+  "grid-bidder.criteo.com|request": "2.6-202606",
+  "ads.yieldmo.com|request": "2.6-202606",
+  "hbopenbid.pubmatic.com|request": "2.6-202606",
+  "ssp.wknd.ai|request": "2.6-202606",
+  "adx.adform.net|request": "2.6-202606",
+  "srv.kntxy.com|request": "2.6-202606",
+  "rt.marphezis.com|request": "2.6-202606",
+  "pbs.intergient.com|request": "2.6-202606",
+  "api.w.inmobi.com|request": "2.6-202606",
+  "ap.lijit.com|request": "2.6-202606",
+  "ad.360yield.com|request": "2.6-202606",
+  "prebid.production.adthrive.com|request": "2.6-202606",
+  "prebid2.production.adthrive.com|request": "2.6-202606",
+  "pbs-raptive-us.ay.delivery|request": "2.6-202606",
+  "web.ads.aps.amazon-adsystem.com|request": "2.6-202606",
+  "ice.360yield-basic.com|request": "2.5",
+  "prebid-eu.creativecdn.com|request": "2.6-202606",
+  "ssp.wp.pl|request": "2.6-202606",
+  "ssp.seznam.cz|request": "2.6-202606",
+  "dale.performax.cz|request": "2.6-202606",
+  "ssc.33across.com|request": "2.6-202606",
+  "ib.adnxs-simple.com|request": "2.5",
+  "fast.nexx360.io|request": "2.5",
+  "adx2.adform.net|request": "2.6-202606",
+  "display.bidder.taboola.com|request": "2.6-202606",
+  "prebid-us.creativecdn.com|request": "2.6-202606",
+  "hb.emxdgt.com|request": "2.6-202606",
+  "reachms.bfmio.com|request": "2.6-202606",
+  "openads.adsrvr.org|request": "2.6-202606",
+  "ittr-us-e.eskimi.com|request": "2.6-202606",
+  "t.visx.net|request": "2.6-202606",
+  "prebid.deepintent.com|request": "2.6-202606",
+  "zz43159sni.pub.tappx.com|request": "2.6-202606",
+  "pbs.anyadx.live|request": "2.6-202606",
+  "yandex.com|request": "2.6-202606",
+  "prebid-asia.creativecdn.com|request": "2.6-202606",
+  "prebid.setupad.io|request": "2.6-202606",
+  "pb.adriver.ru|request": "2.6-202606",
+  "www.montgomeryadvertiser.com|request": "2.6-202606",
+  "bid.contextweb.com|request": "2.6-202606",
+  "ps.ex.co|request": "2.6-202606",
+  "prebid.ad.smaato.net|request": "2.6-202606",
+  "adserver.maximus.mobkoi.com|request": "2.6-202606",
+  "cpm.vuukle.net|request": "2.6-202606",
+  "rtb.prod.carbonatixaudio.com|request": "2.5",
+  "prebid.dblks.net|request": "2.6-202606",
+  "ex.ingage.tech|request": "2.6-202606",
+  "pbs-publift-us.ay.delivery|request": "2.6-202606",
+  "amspbs.com|request": "2.6-202606",
+  "server.cpmstar.com|request": "2.6-202606",
+  "o.clickiocdn.com|request": "2.6-202606",
+  "rtb.nexverse.ai|request": "2.5",
+  "rtb.aniview.com|request": "2.6-202606",
+  "prebid-server.pbstck.com|request": "2.6-202606",
+  "pbs2418030.adspsp.com|request": "2.5",
+  "s2s.lngtd.com|request": "2.6-202606",
+  "www.tennessean.com|request": "2.6-202606",
+  "rtb.ex.co|request": "2.6-202606",
+  "b1h.outbrain.com|request": "2.6-202606",
+  "goldlayer-api.prod.gbads.net|request": "2.5",
+  "20minuten-pbs.relevant-digital.com|request": "2.5",
+  "app.readpeak.com|request": "2.5",
+  "i.connectad.io|request": "2.5",
+  "s2s.t13.io|request": "2.6-202606",
+  "opentrade2.bydata.com|request": "2.6-202606",
+  "prebid.trustedstack.com|request": "2.6-202606",
+  "s2s.viralize.tv|request": "2.5",
+  "pbs.360yield.com|request": "2.6-202606",
+  "b1-euc1.outbrain.com|request": "2.6-202606",
+  "a.ads.rmbl.ws|request": "2.6-202606",
+  "rtb.openx.net|response": "2.6-202606",
+  "htlb.casalemedia.com|response": "2.6-202606",
+  "c2shb.pubgw.yahoo.com|response": "2.6-202606",
+  "elb.the-ozone-project.com|response": "2.6-202606",
+  "pbs-us-east.ay.delivery|response": "2.6-202606",
+  "fastlane.rubiconproject.com|response": "2.6-202606",
+  "prebid-server.rubiconproject.com|response": "2.6-202606",
+  "a.bids.ws|response": "2.6-202606",
+  "bid.sparteo.com|response": "2.6-202606",
+  "npid.amspbs.com|response": "2.6-202606",
+  "hbopenbid.pubmatic.com|response": "2.6-202606",
+  "srv.kntxy.com|response": "2.6-202606",
+  "adx.adform.net|response": "2.6-202606",
+  "prebid.production.adthrive.com|response": "2.6-202606",
+  "pbs-raptive-us.ay.delivery|response": "2.6-202606",
+  "prebid2.production.adthrive.com|response": "2.6-202606",
+  "grid-bidder.criteo.com|response": "2.6-202606",
+  "web.ads.aps.amazon-adsystem.com|response": "2.6-202606",
+  "ssp.seznam.cz|response": "2.6-202606",
+  "ssc.33across.com|response": "2.6-202606",
+  "pbs.intergient.com|response": "2.6-202606",
+  "fast.nexx360.io|response": "2.6-202606",
+  "display.bidder.taboola.com|response": "2.6-202606",
+  "ap.lijit.com|response": "2.6-202606",
+  "pbs.nextmillmedia.com|response": "2.6-202606",
+  "direct.adsrvr.org|response": "2.6-202606",
+  "www.montgomeryadvertiser.com|response": "2.6-202606",
+  "api.w.inmobi.com|response": "2.6-202606",
+  "cpm.vuukle.net|response": "2.6-202606",
+  "prebid.dblks.net|response": "2.6-202606",
+  "pbs-publift-us.ay.delivery|response": "2.6-202606",
+  "prebid-server.pbstck.com|response": "2.6-202606",
+  "pbs2418030.adspsp.com|response": "2.6-202606",
+  "s2s.lngtd.com|response": "2.6-202606",
+  "www.tennessean.com|response": "2.6-202606",
+  "goldlayer-api.prod.gbads.net|response": "2.6-202606",
+  "s2s.t13.io|response": "2.6-202606",
+  "pbs.360yield.com|response": "2.6-202606"
+ },
+ "overall_by_side": {
+  "request": {
+   "n": 3057,
+   "invalid": 2097,
+   "rules": {
+    "openrtb.field.moved": 1016,
+    "openrtb.type.mismatch": 1241,
+    "openrtb.field.undefined": 2504,
+    "openrtb.field.deprecated": 834,
+    "openrtb.value.invalid": 507,
+    "openrtb.field.required": 30,
+    "openrtb.request.tmax_implausible": 1,
+    "openrtb.fields.mutually_exclusive": 14
+   }
+  },
+  "response": {
+   "n": 1224,
+   "invalid": 398,
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 304,
+    "openrtb.bid.mtype_missing": 111,
+    "openrtb.field.required": 91,
+    "openrtb.field.undefined": 10,
+    "openrtb.bid.adm.not_markup": 2
+   }
+  }
+ },
+ "endpoints_by_side": {
+  "pbs-us-east.ay.delivery|request": {
+   "n": 17,
+   "invalid": 15,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 15
+   }
+  },
+  "rtb.openx.net|request": {
+   "n": 268,
+   "invalid": 131,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 67,
+    "openrtb.field.deprecated": 90,
+    "openrtb.value.invalid": 63,
+    "openrtb.type.mismatch": 10,
+    "openrtb.field.undefined": 25,
+    "openrtb.fields.mutually_exclusive": 6
+   }
+  },
+  "web.hb.ad.cpe.dotomi.com|request": {
+   "n": 19,
+   "invalid": 19,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 15,
+    "openrtb.field.undefined": 4
+   }
+  },
+  "c2shb.pubgw.yahoo.com|request": {
+   "n": 151,
+   "invalid": 151,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 166,
+    "openrtb.field.deprecated": 18,
+    "openrtb.field.undefined": 70
+   }
+  },
+  "htlb.casalemedia.com|request": {
+   "n": 298,
+   "invalid": 151,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 79,
+    "openrtb.field.undefined": 93,
+    "openrtb.field.deprecated": 72,
+    "openrtb.value.invalid": 41,
+    "openrtb.type.mismatch": 20
+   }
+  },
+  "pbs.nextmillmedia.com|request": {
+   "n": 8,
+   "invalid": 8,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 8,
+    "openrtb.field.deprecated": 2
+   }
+  },
+  "elb.the-ozone-project.com|request": {
+   "n": 37,
+   "invalid": 37,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 134
+   }
+  },
+  "prebid-server.rubiconproject.com|request": {
+   "n": 177,
+   "invalid": 140,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 60,
+    "openrtb.field.deprecated": 120,
+    "openrtb.field.moved": 48,
+    "openrtb.value.invalid": 63,
+    "openrtb.field.undefined": 37,
+    "openrtb.fields.mutually_exclusive": 2
+   }
+  },
+  "fastlane.rubiconproject.com|request": {
+   "n": 94,
+   "invalid": 35,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 43,
+    "openrtb.field.deprecated": 10,
+    "openrtb.value.invalid": 2
+   }
+  },
+  "ssb-global.smartadserver.com|request": {
+   "n": 201,
+   "invalid": 201,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 182,
+    "openrtb.field.moved": 90,
+    "openrtb.field.deprecated": 38,
+    "openrtb.value.invalid": 27,
+    "openrtb.field.undefined": 39
+   }
+  },
+  "btlr.sharethrough.com|request": {
+   "n": 160,
+   "invalid": 142,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 144,
+    "openrtb.field.deprecated": 32,
+    "openrtb.field.undefined": 32,
+    "openrtb.field.moved": 31
+   }
+  },
+  "direct.adsrvr.org|request": {
+   "n": 207,
+   "invalid": 197,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 181,
+    "openrtb.field.deprecated": 44,
+    "openrtb.field.moved": 83,
+    "openrtb.value.invalid": 34,
+    "openrtb.fields.mutually_exclusive": 6,
+    "openrtb.field.undefined": 19
+   }
+  },
+  "ads.trustx.org|request": {
+   "n": 20,
+   "invalid": 3,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 3,
+    "openrtb.field.deprecated": 3
+   }
+  },
+  "prebid.media.net|request": {
+   "n": 114,
+   "invalid": 114,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 215,
+    "openrtb.field.undefined": 1453,
+    "openrtb.field.deprecated": 62,
+    "openrtb.value.invalid": 14
+   }
+  },
+  "prebid.tpdads.com|request": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "ib.adnxs.com|request": {
+   "n": 66,
+   "invalid": 28,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 21,
+    "openrtb.field.moved": 33,
+    "openrtb.field.deprecated": 1,
+    "openrtb.value.invalid": 12
+   }
+  },
+  "a.bids.ws|request": {
+   "n": 13,
+   "invalid": 13,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 17
+   }
+  },
+  "exchange.postrelease.com|request": {
+   "n": 43,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 5,
+    "openrtb.value.invalid": 1
+   }
+  },
+  "mweb-hb.presage.io|request": {
+   "n": 25,
+   "invalid": 13,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 17,
+    "openrtb.field.undefined": 3
+   }
+  },
+  "bid.sparteo.com|request": {
+   "n": 32,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 4
+   }
+  },
+  "npid.amspbs.com|request": {
+   "n": 13,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "grid-bidder.criteo.com|request": {
+   "n": 75,
+   "invalid": 46,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 28,
+    "openrtb.field.moved": 11,
+    "openrtb.value.invalid": 26,
+    "openrtb.field.required": 15,
+    "openrtb.field.undefined": 15,
+    "openrtb.type.mismatch": 16
+   }
+  },
+  "ads.yieldmo.com|request": {
+   "n": 8,
+   "invalid": 8,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 16,
+    "openrtb.field.deprecated": 8,
+    "openrtb.field.moved": 12
+   }
+  },
+  "hbopenbid.pubmatic.com|request": {
+   "n": 125,
+   "invalid": 64,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 8,
+    "openrtb.field.deprecated": 66,
+    "openrtb.field.moved": 24,
+    "openrtb.value.invalid": 46
+   }
+  },
+  "ssp.wknd.ai|request": {
+   "n": 31,
+   "invalid": 31,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 31,
+    "openrtb.field.deprecated": 7,
+    "openrtb.field.moved": 62
+   }
+  },
+  "adx.adform.net|request": {
+   "n": 67,
+   "invalid": 67,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 158,
+    "openrtb.field.moved": 64,
+    "openrtb.field.undefined": 6,
+    "openrtb.field.deprecated": 8,
+    "openrtb.value.invalid": 2
+   }
+  },
+  "srv.kntxy.com|request": {
+   "n": 13,
+   "invalid": 7,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 7
+   }
+  },
+  "rt.marphezis.com|request": {
+   "n": 34,
+   "invalid": 28,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 21,
+    "openrtb.field.moved": 14
+   }
+  },
+  "pbs.intergient.com|request": {
+   "n": 9,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "api.w.inmobi.com|request": {
+   "n": 30,
+   "invalid": 7,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 16,
+    "openrtb.field.deprecated": 1,
+    "openrtb.value.invalid": 1
+   }
+  },
+  "ap.lijit.com|request": {
+   "n": 76,
+   "invalid": 76,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 200,
+    "openrtb.field.deprecated": 27,
+    "openrtb.field.moved": 40
+   }
+  },
+  "ad.360yield.com|request": {
+   "n": 3,
+   "invalid": 3,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 3
+   }
+  },
+  "prebid.production.adthrive.com|request": {
+   "n": 54,
+   "invalid": 26,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 28,
+    "openrtb.value.invalid": 28
+   }
+  },
+  "prebid2.production.adthrive.com|request": {
+   "n": 54,
+   "invalid": 26,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 32,
+    "openrtb.value.invalid": 32
+   }
+  },
+  "pbs-raptive-us.ay.delivery|request": {
+   "n": 54,
+   "invalid": 26,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 35,
+    "openrtb.value.invalid": 35
+   }
+  },
+  "web.ads.aps.amazon-adsystem.com|request": {
+   "n": 71,
+   "invalid": 38,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 41,
+    "openrtb.value.invalid": 39,
+    "openrtb.field.undefined": 15,
+    "openrtb.field.moved": 1
+   }
+  },
+  "ice.360yield-basic.com|request": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 2
+   }
+  },
+  "prebid-eu.creativecdn.com|request": {
+   "n": 36,
+   "invalid": 12,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 17,
+    "openrtb.type.mismatch": 8
+   }
+  },
+  "ssp.wp.pl|request": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 5,
+    "openrtb.type.mismatch": 5
+   }
+  },
+  "ssp.seznam.cz|request": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 3,
+    "openrtb.field.moved": 4
+   }
+  },
+  "dale.performax.cz|request": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 4
+   }
+  },
+  "ssc.33across.com|request": {
+   "n": 21,
+   "invalid": 21,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 18,
+    "openrtb.field.deprecated": 2,
+    "openrtb.value.invalid": 2,
+    "openrtb.type.mismatch": 3
+   }
+  },
+  "ib.adnxs-simple.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 4
+   }
+  },
+  "fast.nexx360.io|request": {
+   "n": 26,
+   "invalid": 19,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 29
+   }
+  },
+  "adx2.adform.net|request": {
+   "n": 3,
+   "invalid": 3,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 6,
+    "openrtb.field.moved": 6
+   }
+  },
+  "display.bidder.taboola.com|request": {
+   "n": 36,
+   "invalid": 28,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 86,
+    "openrtb.field.required": 8,
+    "openrtb.field.moved": 10
+   }
+  },
+  "prebid-us.creativecdn.com|request": {
+   "n": 10,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 8
+   }
+  },
+  "hb.emxdgt.com|request": {
+   "n": 11,
+   "invalid": 11,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 11,
+    "openrtb.field.undefined": 55,
+    "openrtb.field.deprecated": 11,
+    "openrtb.value.invalid": 11
+   }
+  },
+  "reachms.bfmio.com|request": {
+   "n": 7,
+   "invalid": 7,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 35,
+    "openrtb.type.mismatch": 7,
+    "openrtb.field.required": 7,
+    "openrtb.field.deprecated": 7,
+    "openrtb.value.invalid": 7
+   }
+  },
+  "openads.adsrvr.org|request": {
+   "n": 11,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "ittr-us-e.eskimi.com|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 1
+   }
+  },
+  "t.visx.net|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 1
+   }
+  },
+  "prebid.deepintent.com|request": {
+   "n": 4,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "zz43159sni.pub.tappx.com|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 1,
+    "openrtb.type.mismatch": 3
+   }
+  },
+  "pbs.anyadx.live|request": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 1,
+    "openrtb.request.tmax_implausible": 1
+   }
+  },
+  "yandex.com|request": {
+   "n": 28,
+   "invalid": 12,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 11,
+    "openrtb.field.moved": 1
+   }
+  },
+  "prebid-asia.creativecdn.com|request": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "prebid.setupad.io|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 1
+   }
+  },
+  "pb.adriver.ru|request": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 2
+   }
+  },
+  "www.montgomeryadvertiser.com|request": {
+   "n": 6,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "bid.contextweb.com|request": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 5,
+    "openrtb.value.invalid": 5
+   }
+  },
+  "ps.ex.co|request": {
+   "n": 3,
+   "invalid": 3,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.deprecated": 20,
+    "openrtb.value.invalid": 14
+   }
+  },
+  "prebid.ad.smaato.net|request": {
+   "n": 8,
+   "invalid": 8,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 10,
+    "openrtb.field.undefined": 1,
+    "openrtb.field.deprecated": 1,
+    "openrtb.value.invalid": 1
+   }
+  },
+  "adserver.maximus.mobkoi.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.type.mismatch": 4
+   }
+  },
+  "cpm.vuukle.net|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 1
+   }
+  },
+  "rtb.prod.carbonatixaudio.com|request": {
+   "n": 4,
+   "invalid": 0,
+   "best_fit": "2.5",
+   "rules": {}
+  },
+  "prebid.dblks.net|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 32,
+    "openrtb.type.mismatch": 8
+   }
+  },
+  "ex.ingage.tech|request": {
+   "n": 10,
+   "invalid": 10,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 5,
+    "openrtb.type.mismatch": 10
+   }
+  },
+  "pbs-publift-us.ay.delivery|request": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 2
+   }
+  },
+  "amspbs.com|request": {
+   "n": 3,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "server.cpmstar.com|request": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 10
+   }
+  },
+  "o.clickiocdn.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 4
+   }
+  },
+  "rtb.nexverse.ai|request": {
+   "n": 14,
+   "invalid": 14,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 14,
+    "openrtb.type.mismatch": 14
+   }
+  },
+  "rtb.aniview.com|request": {
+   "n": 30,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "prebid-server.pbstck.com|request": {
+   "n": 3,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 1
+   }
+  },
+  "pbs2418030.adspsp.com|request": {
+   "n": 7,
+   "invalid": 7,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 7
+   }
+  },
+  "s2s.lngtd.com|request": {
+   "n": 3,
+   "invalid": 3,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 12,
+    "openrtb.field.deprecated": 1,
+    "openrtb.value.invalid": 1
+   }
+  },
+  "www.tennessean.com|request": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "rtb.ex.co|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 1,
+    "openrtb.field.deprecated": 2
+   }
+  },
+  "b1h.outbrain.com|request": {
+   "n": 7,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "goldlayer-api.prod.gbads.net|request": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 6
+   }
+  },
+  "20minuten-pbs.relevant-digital.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 4
+   }
+  },
+  "app.readpeak.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 4
+   }
+  },
+  "i.connectad.io|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 4
+   }
+  },
+  "s2s.t13.io|request": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 19
+   }
+  },
+  "opentrade2.bydata.com|request": {
+   "n": 3,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "prebid.trustedstack.com|request": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 33,
+    "openrtb.type.mismatch": 6
+   }
+  },
+  "s2s.viralize.tv|request": {
+   "n": 6,
+   "invalid": 6,
+   "best_fit": "2.5",
+   "rules": {
+    "openrtb.field.undefined": 6
+   }
+  },
+  "pbs.360yield.com|request": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.moved": 1
+   }
+  },
+  "b1-euc1.outbrain.com|request": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "a.ads.rmbl.ws|request": {
+   "n": 7,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "rtb.openx.net|response": {
+   "n": 268,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "htlb.casalemedia.com|response": {
+   "n": 219,
+   "invalid": 217,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 217
+   }
+  },
+  "c2shb.pubgw.yahoo.com|response": {
+   "n": 151,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 34
+   }
+  },
+  "elb.the-ozone-project.com|response": {
+   "n": 29,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 17
+   }
+  },
+  "pbs-us-east.ay.delivery|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 2
+   }
+  },
+  "fastlane.rubiconproject.com|response": {
+   "n": 92,
+   "invalid": 91,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.required": 91
+   }
+  },
+  "prebid-server.rubiconproject.com|response": {
+   "n": 176,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 7
+   }
+  },
+  "a.bids.ws|response": {
+   "n": 13,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 2
+   }
+  },
+  "bid.sparteo.com|response": {
+   "n": 30,
+   "invalid": 29,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 29,
+    "openrtb.bid.mtype_missing": 1
+   }
+  },
+  "npid.amspbs.com|response": {
+   "n": 13,
+   "invalid": 11,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 11
+   }
+  },
+  "hbopenbid.pubmatic.com|response": {
+   "n": 7,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "srv.kntxy.com|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 2
+   }
+  },
+  "adx.adform.net|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 2
+   }
+  },
+  "prebid.production.adthrive.com|response": {
+   "n": 54,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 7
+   }
+  },
+  "pbs-raptive-us.ay.delivery|response": {
+   "n": 8,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 4
+   }
+  },
+  "prebid2.production.adthrive.com|response": {
+   "n": 54,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "grid-bidder.criteo.com|response": {
+   "n": 1,
+   "invalid": 1,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 2,
+    "openrtb.bid.mtype_missing": 1
+   }
+  },
+  "web.ads.aps.amazon-adsystem.com|response": {
+   "n": 3,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.adm.not_markup": 2
+   }
+  },
+  "ssp.seznam.cz|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 1
+   }
+  },
+  "ssc.33across.com|response": {
+   "n": 21,
+   "invalid": 17,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 17,
+    "openrtb.bid.mtype_missing": 3
+   }
+  },
+  "pbs.intergient.com|response": {
+   "n": 4,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "fast.nexx360.io|response": {
+   "n": 21,
+   "invalid": 21,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 21
+   }
+  },
+  "display.bidder.taboola.com|response": {
+   "n": 8,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 23
+   }
+  },
+  "ap.lijit.com|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "pbs.nextmillmedia.com|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "direct.adsrvr.org|response": {
+   "n": 10,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "www.montgomeryadvertiser.com|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 3
+   }
+  },
+  "api.w.inmobi.com|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "cpm.vuukle.net|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "prebid.dblks.net|response": {
+   "n": 4,
+   "invalid": 4,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 4
+   }
+  },
+  "pbs-publift-us.ay.delivery|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "prebid-server.pbstck.com|response": {
+   "n": 2,
+   "invalid": 2,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.field.undefined": 8
+   }
+  },
+  "pbs2418030.adspsp.com|response": {
+   "n": 5,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "s2s.lngtd.com|response": {
+   "n": 3,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "www.tennessean.com|response": {
+   "n": 2,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.bid.mtype_missing": 2
+   }
+  },
+  "goldlayer-api.prod.gbads.net|response": {
+   "n": 5,
+   "invalid": 5,
+   "best_fit": "2.6-202606",
+   "rules": {
+    "openrtb.response.seatbid_or_nbr.required": 5
+   }
+  },
+  "s2s.t13.io|response": {
+   "n": 5,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  },
+  "pbs.360yield.com|response": {
+   "n": 1,
+   "invalid": 0,
+   "best_fit": "2.6-202606",
+   "rules": {}
+  }
+ }
+}

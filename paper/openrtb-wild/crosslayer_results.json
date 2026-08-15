@@ -1,0 +1,35 @@
+{
+ "creatives": 131,
+ "vast_invalid": 73,
+ "vast_rules": {
+  "error:VAST-2.0-root-element": 13,
+  "warning:VAST-2.0-unknown-attribute": 72,
+  "warning:VAST-2.0-extension-misplaced-element": 51,
+  "warning:VAST-3.0-skip-event-no-skipoffset": 29,
+  "error:VAST-2.0-url-empty": 7,
+  "error:VAST-2.0-wrapper-unknown-child": 27,
+  "warning:VAST-3.0-pricing-model-case": 2,
+  "warning:VAST-4.0-tracking-event-removed": 27,
+  "error:VAST-4.1-tracking-event-value": 31,
+  "error:VAST-2.0-wrapper-impression": 16,
+  "warning:VAST-2.0-macro-unknown": 3,
+  "warning:VAST-4.1-verification-vendor-format": 11,
+  "warning:VAST-4.1-verification-parameters": 11,
+  "warning:VAST-2.0-version-mismatch": 11,
+  "error:VAST-4.1-adservingid-present": 2,
+  "error:VAST-4.0-universaladid-present": 2,
+  "warning:VAST-4.1-vpaid-apiframework": 2,
+  "warning:VAST-2.0-linear-tracking-quartiles": 2,
+  "info:VAST-4.1-mezzanine-recommended": 2,
+  "warning:VAST-2.0-flash-mediafile": 1,
+  "error:VAST-2.0-parse-error": 4,
+  "error:VAST-2.0-mediafile-dimensions": 4,
+  "info:VAST-4.0-mediafile-apiframework": 2
+ },
+ "contract_checked": 114,
+ "contract_violations": {
+  "UNVERIFIABLE_wrapper_defers_creative_facts": 98,
+  "flash_mediafile_served": 1
+ },
+ "by_endpoint": {}
+}

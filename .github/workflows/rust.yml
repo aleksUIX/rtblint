@@ -13,15 +13,18 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772  # pinned SHA
         with:
+          toolchain: stable
           components: clippy, rustfmt
 
       - name: Cache Rust artifacts
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6  # v2.9.2
 
       - name: Check formatting
         run: cargo fmt --all --check
@@ -49,11 +52,12 @@ jobs:
     steps:
       # buf breaking compares this commit against the tip of main, so the job
       # needs real history rather than the default shallow clone.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
         with:
           node-version: '20'
 
@@ -80,15 +84,18 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772  # pinned SHA
         with:
+          toolchain: stable
           targets: wasm32-unknown-unknown
 
       - name: Cache Rust artifacts
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6  # v2.9.2
 
       - name: Build WASM crate
         run: cargo build -p rtblint-wasm --target wasm32-unknown-unknown
@@ -108,3 +115,46 @@ jobs:
           }
           console.log("npm wasm ok, core", r.coreVersion());
           EOF
+
+  fuzz:
+    name: Fuzz (${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [validate, validate_response, validate_artf]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Rust nightly
+        uses: dtolnay/rust-toolchain@6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772  # pinned SHA
+        with:
+          toolchain: nightly
+
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6  # v2.9.2
+
+      - name: Install cargo-fuzz
+        run: cargo install cargo-fuzz
+
+      - name: Seed corpus from test fixtures
+        run: |
+          mkdir -p fuzz/corpus/${{ matrix.target }}
+          case "${{ matrix.target }}" in
+            validate)
+              cp crates/rtblint-core/tests/fixtures/bid-requests/*.json fuzz/corpus/${{ matrix.target }}/ 2>/dev/null || true
+              ;;
+            validate_response)
+              cp crates/rtblint-core/tests/fixtures/bid-responses/*.json fuzz/corpus/${{ matrix.target }}/ 2>/dev/null || true
+              ;;
+            validate_artf)
+              cp crates/rtblint-core/tests/fixtures/artf/*.json fuzz/corpus/${{ matrix.target }}/ 2>/dev/null || true
+              ;;
+          esac
+
+      - name: Run fuzzer (30 s)
+        run: |
+          cargo +nightly fuzz run ${{ matrix.target }} \
+            fuzz/corpus/${{ matrix.target }} \
+            -- -max_total_time=30 -timeout=10

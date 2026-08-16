@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- OpenSSF Scorecard weekly workflow, CodeQL on Rust and JavaScript, Dependabot
+  for Cargo / npm / GitHub Actions, and three cargo-fuzz targets
+  (`validate`, `validate_response`, `validate_artf`). CI Actions are pinned by
+  hash.
+
 ## 0.8.0 (2026-08-14)
 
 ### Added

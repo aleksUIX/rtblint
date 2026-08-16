@@ -6,6 +6,7 @@ members = [
     "crates/rtblint-mcp",
     "crates/rtblint-wasm",
 ]
+exclude = ["fuzz"]
 resolver = "2"
 
 [workspace.package]

@@ -1,0 +1,42 @@
+[package]
+name = "rtblint-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[workspace]
+members = ["."]
+resolver = "2"
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.rtblint-core]
+path = "../crates/rtblint-core"
+
+# validate: fuzz bid-request validation against arbitrary byte inputs
+[[bin]]
+name = "validate"
+path = "fuzz_targets/validate.rs"
+test = false
+doc = false
+bench = false
+
+# validate_response: fuzz bid-response validation
+[[bin]]
+name = "validate_response"
+path = "fuzz_targets/validate_response.rs"
+test = false
+doc = false
+bench = false
+
+# validate_artf: fuzz ARTF envelope validation
+[[bin]]
+name = "validate_artf"
+path = "fuzz_targets/validate_artf.rs"
+test = false
+doc = false
+bench = false

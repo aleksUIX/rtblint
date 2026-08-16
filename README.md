@@ -4,6 +4,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/rtblint.svg)](https://crates.io/crates/rtblint)
 [![CI](https://github.com/aleksUIX/rtblint/actions/workflows/rust.yml/badge.svg)](https://github.com/aleksUIX/rtblint/actions)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/aleksUIX/rtblint/badge)](https://scorecard.dev/viewer/?uri=github.com/aleksUIX/rtblint)
 
 Website and playground: [rtblint.org](https://rtblint.org)
 
@@ -173,6 +174,24 @@ Beyond this README, [rtblint.org](https://rtblint.org) hosts the reference mater
 
 The validator runs on structured catalogs extracted from the IAB Tech Lab OpenRTB specifications: object names, field names, type notations, enumerated value sets, and section citations. The catalogs carry no spec prose. The dialect table is derived the same way, by comparing those catalogs against the field types the IAB OpenRTB protobuf schema declares. RTBlint is not affiliated with or endorsed by IAB Tech Lab. See NOTICE for attribution.
 
+## Supply chain
+
+[OpenSSF Scorecard](https://scorecard.dev/viewer/?uri=github.com/aleksUIX/rtblint) runs weekly and publishes a public score. Dependabot covers Cargo, npm, and GitHub Actions. CodeQL scans Rust and JavaScript on every push and PR.
+
+Three [cargo-fuzz](https://github.com/rust-fuzz/cargo-fuzz) targets (`validate`, `validate_response`, `validate_artf`) run for 30 seconds each on every CI push. The validator must not panic on arbitrary input.
+
+```bash
+cargo +nightly fuzz run validate -- -max_total_time=60
+```
+
 ## License
 
 Apache-2.0. See LICENSE and NOTICE.
+
+## Research
+
+Sekowski, A. (2026). *How Machine-Checkable Is OpenRTB? Classifying the Normative Content of the Protocol That Clears Real-Time Advertising*. Preprint.
+DOI: [10.13140/RG.2.2.27937.57448](https://doi.org/10.13140/RG.2.2.27937.57448)
+
+Sekowski, A. (2026). *Measuring OpenRTB Dialects in Client-Side Header Bidding*. Preprint.
+DOI: [10.13140/RG.2.2.26572.78720](https://doi.org/10.13140/RG.2.2.26572.78720)

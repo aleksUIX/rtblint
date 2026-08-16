@@ -8,6 +8,8 @@
   for Cargo / npm / GitHub Actions, and three cargo-fuzz targets
   (`validate`, `validate_response`, `validate_artf`). CI Actions are pinned by
   hash.
+- `SECURITY.md` now has a private disclosure path, acknowledgement SLA, and
+  coordinated-disclosure timeline. Dockerfile base images are pinned by digest.
 
 ## 0.8.0 (2026-08-14)
 

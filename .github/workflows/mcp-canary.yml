@@ -1,0 +1,121 @@
+name: MCP canary
+
+# Probes the hosted rtblint.org/mcp endpoint: JSON GET, server card, initialize,
+# tools/list, and one validate_bid_request call.
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    name: rtblint.org/mcp canary
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe MCP endpoint
+        run: |
+          python3 - <<'PYEOF'
+          import json, sys, urllib.request
+
+          MCP = "https://rtblint.org/mcp"
+          CARD = "https://rtblint.org/.well-known/mcp/server-card.json"
+          EXPECTED = {
+              "validate_bid_request",
+              "validate_bid_response",
+              "validate_artf_request",
+              "validate_artf_response",
+              "list_openrtb_versions",
+              "get_adcp_capabilities",
+          }
+          FAIL = []
+
+          UA = {"User-Agent": "rtblint-canary/1.0"}
+
+          def get(url, headers=None, timeout=20):
+              h = {**UA, **(headers or {})}
+              req = urllib.request.Request(url, headers=h, method="GET")
+              with urllib.request.urlopen(req, timeout=timeout) as resp:
+                  return resp.headers.get_content_type(), json.loads(resp.read())
+
+          def post(method, params=None):
+              body = {"jsonrpc": "2.0", "id": 1, "method": method}
+              if params is not None:
+                  body["params"] = params
+              req = urllib.request.Request(
+                  MCP,
+                  data=json.dumps(body).encode(),
+                  headers={
+                      **UA,
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                  },
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=20) as resp:
+                  return json.loads(resp.read())
+
+          def check(name, fn):
+              try:
+                  fn()
+                  print(f"PASS  {name}")
+              except Exception as e:
+                  FAIL.append((name, str(e)))
+                  print(f"FAIL  {name}: {e}")
+
+          def check_get_descriptor():
+              ctype, obj = get(MCP, {"Accept": "application/json"})
+              assert ctype == "application/json", ctype
+              assert obj.get("protocol") == "mcp", obj
+              assert "streamable_http" in obj.get("transports", {}), obj
+
+          def check_server_card():
+              ctype, obj = get(CARD)
+              assert ctype == "application/json", ctype
+              names = {t["name"] for t in obj.get("tools", [])}
+              missing = EXPECTED - names
+              assert not missing, missing
+
+          def check_initialize():
+              r = post("initialize", {
+                  "protocolVersion": "2024-11-05",
+                  "capabilities": {},
+                  "clientInfo": {"name": "canary", "version": "1.0"},
+              })
+              name = r.get("result", {}).get("serverInfo", {}).get("name")
+              assert name, r
+
+          def check_tools():
+              r = post("tools/list")
+              names = {t["name"] for t in r.get("result", {}).get("tools", [])}
+              missing = EXPECTED - names
+              assert not missing, missing
+
+          def check_validate():
+              payload = json.dumps({"id": "canary", "imp": []})
+              r = post("tools/call", {
+                  "name": "validate_bid_request",
+                  "arguments": {"payload": payload, "version": "2.6-202606"},
+              })
+              text = r["result"]["content"][0]["text"]
+              obj = json.loads(text)
+              assert "issues" in obj or "valid" in obj or "summary" in obj, obj
+
+          check("GET /mcp descriptor", check_get_descriptor)
+          check("server-card", check_server_card)
+          check("initialize", check_initialize)
+          check("tools/list", check_tools)
+          check("validate_bid_request", check_validate)
+
+          if FAIL:
+              print("\nFailed:")
+              for name, msg in FAIL:
+                  print(f"  {name}: {msg}")
+              sys.exit(1)
+          print("all passed")
+          PYEOF

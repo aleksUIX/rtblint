@@ -4,6 +4,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/rtblint.svg)](https://crates.io/crates/rtblint)
 [![CI](https://github.com/aleksUIX/rtblint/actions/workflows/rust.yml/badge.svg)](https://github.com/aleksUIX/rtblint/actions)
+[![smithery badge](https://smithery.ai/badge/aleksander/rtblint)](https://smithery.ai/servers/aleksander/rtblint)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/aleksUIX/rtblint/badge)](https://scorecard.dev/viewer/?uri=github.com/aleksUIX/rtblint)
 
 Website and playground: [rtblint.org](https://rtblint.org)
@@ -120,9 +121,21 @@ protoBoolDivergences(); // the 28 fields the two schemas type differently
 
 ## MCP server
 
-`rtblint-mcp` speaks MCP over stdio and exposes `validate_bid_request`, `validate_bid_response` (with an optional `bid_request` argument for cross-validation), `validate_artf_request`, `validate_artf_response` (with `apply` to write the mutations in and revalidate), and `list_openrtb_versions`. The validation tools take an optional `dialect` argument.
+Hosted Streamable HTTP (no install): [https://rtblint.org/mcp](https://rtblint.org/mcp). Smithery listing: [aleksander/rtblint](https://smithery.ai/servers/aleksander/rtblint) (same account as vastlint).
+
+`rtblint-mcp` also speaks MCP over stdio. Tools: `validate_bid_request`, `validate_bid_response` (optional `bid_request` for cross-validation), `validate_artf_request`, `validate_artf_response` (`apply` writes the mutations and revalidates), `list_openrtb_versions`, `get_adcp_capabilities`. Validation tools take an optional `dialect` argument.
 
 The ARTF tools are the guardrail an agent calls around its own work: check the envelope it was handed, then check the mutation set it is about to propose, before the orchestrator sees it.
+
+```json
+{
+  "mcpServers": {
+    "rtblint": { "url": "https://rtblint.org/mcp" }
+  }
+}
+```
+
+Local stdio instead of the hosted endpoint:
 
 ```json
 {

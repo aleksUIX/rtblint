@@ -1,0 +1,35 @@
+name: Publish Smithery
+
+# Re-scan https://rtblint.org/mcp into smithery.ai without cutting a crate release.
+# Tag releases still publish via release.yml. One-time:
+#   repo secret SMITHERY_API_KEY
+#   repo variable ENABLE_SMITHERY_PUBLISH = true
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish-smithery:
+    name: Publish to Smithery
+    runs-on: ubuntu-latest
+    if: vars.ENABLE_SMITHERY_PUBLISH == 'true'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
+        with:
+          node-version: "20"
+      - name: Publish to Smithery
+        env:
+          SMITHERY_API_KEY: ${{ secrets.SMITHERY_API_KEY }}
+        run: |
+          out=$(npx --yes @smithery/cli@latest mcp publish \
+            "https://rtblint.org/mcp" \
+            -n "aleksander/rtblint" 2>&1) && echo "$out" && exit 0
+          echo "$out"
+          echo "$out" | grep -qiE "namespace not found|already exists|duplicate" && exit 0
+          exit 1

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.aleksUIX/rtblint",
+  "title": "RTBlint",
+  "description": "Validate OpenRTB bid requests and responses against IAB specs. ARTF, Rust core.",
+  "homepage": "https://rtblint.org",
+  "repository": {
+    "url": "https://github.com/aleksUIX/rtblint",
+    "source": "github"
+  },
+  "documentation": "https://rtblint.org/docs/mcp/",
+  "license": "Apache-2.0",
+  "version": "0.8.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://rtblint.org/mcp"
+    }
+  ]
+}

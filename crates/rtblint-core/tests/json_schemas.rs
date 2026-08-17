@@ -212,7 +212,7 @@ fn valid_fixtures_satisfy_their_version_schema() {
 
         let errors: Vec<String> = validator
             .iter_errors(&payload)
-            .map(|error| format!("{} at {}", error, error.instance_path))
+            .map(|error| format!("{} at {}", error, error.instance_path()))
             .collect();
         assert!(
             errors.is_empty(),

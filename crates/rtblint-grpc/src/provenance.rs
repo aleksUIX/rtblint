@@ -48,7 +48,9 @@ pub fn catalog_digest() -> &'static str {
             hasher.update([0x1e]);
         }
 
-        format!("sha256:{:x}", hasher.finalize())
+        let digest = hasher.finalize();
+        let hex: String = digest.iter().map(|byte| format!("{byte:02x}")).collect();
+        format!("sha256:{hex}")
     })
 }
 

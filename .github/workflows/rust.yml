@@ -75,9 +75,13 @@ jobs:
       # The backward-compatibility gate. Any change to a published field number,
       # field type, enum value, or RPC signature fails here rather than being
       # found by a consumer after release.
+      #
+      # Compare against the PR base SHA. `.git#branch=main` fails on pull_request
+      # checkouts: they have origin/main as a remote-tracking ref, not a local
+      # branch named main, so buf's clone of .git cannot find that ref.
       - name: buf breaking
         if: github.event_name == 'pull_request'
-        run: npx buf breaking --against '.git#branch=main'
+        run: npx buf breaking --against ".git#ref=${{ github.event.pull_request.base.sha }}"
 
   wasm:
     runs-on: ubuntu-latest

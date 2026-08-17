@@ -37,7 +37,7 @@ tower = { version = "0.5", features = ["util"] }
 http = "1"
 
 # Catalog digest, hashed over the linked catalog at startup.
-sha2 = "0.10"
+sha2 = "0.11"
 
 # Metrics. default-features off drops the protobuf exposition format and the
 # `protobuf` crate with it.

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.10.0 (2026-08-16)
+
 ### Added
 
 - NDJSON stream mode. `--batch` accepts a file (not only stdin). `--summary`

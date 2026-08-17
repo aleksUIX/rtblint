@@ -5,7 +5,9 @@
 //! them. These tests assert the properties a regeneration must preserve: no
 //! prose entries, and object wiring that a name-only match would miss.
 
-use rtblint_core::{canonical_object, canonical_object_catalog, OpenRtbVersion};
+use rtblint_core::{
+    canonical_field, canonical_object, canonical_object_catalog, ExpectedShape, OpenRtbVersion,
+};
 
 fn is_identifier_shaped(name: &str) -> bool {
     let mut characters = name.chars();
@@ -88,6 +90,86 @@ fn source_schain_is_wired_to_the_supply_chain_object() {
             "{}: Source.schain lost its SupplyChain wiring",
             version.id()
         );
+    }
+}
+
+/// OpenRTB 3.0's domain layer lives in the AdCOM catalog, merged into the 3.0
+/// static catalog at build time. These edges are the Appendix C wrappers;
+/// losing them silently stops all AdCOM validation.
+#[test]
+fn openrtb_3_0_domain_fields_are_wired_to_adcom() {
+    let spec =
+        canonical_field(OpenRtbVersion::V3_0, "Item", "spec").expect("3.0 Item.spec should exist");
+    assert_eq!(spec.child_object, Some("Spec"));
+    assert_eq!(
+        canonical_field(OpenRtbVersion::V3_0, "Spec", "placement")
+            .expect("Spec.placement")
+            .child_object,
+        Some("Placement")
+    );
+    assert_eq!(
+        canonical_field(OpenRtbVersion::V3_0, "Request", "context")
+            .expect("Request.context")
+            .child_object,
+        Some("Context")
+    );
+    assert_eq!(
+        canonical_field(OpenRtbVersion::V3_0, "Bid", "media")
+            .expect("Bid.media")
+            .child_object,
+        Some("Media")
+    );
+    assert!(canonical_object(OpenRtbVersion::V3_0, "Site")
+        .expect("Site")
+        .fields
+        .iter()
+        .any(|field| field.name == "id"));
+    assert_eq!(
+        canonical_field(OpenRtbVersion::V3_0, "App", "domain")
+            .expect("App.domain")
+            .type_spec,
+        "string"
+    );
+    assert_eq!(
+        canonical_field(OpenRtbVersion::V3_0, "UserAgent", "browsers")
+            .expect("UserAgent.browsers")
+            .shape,
+        ExpectedShape::ObjectArray
+    );
+}
+
+#[test]
+fn banner_id_prose_does_not_become_an_object_array() {
+    let field = canonical_field(OpenRtbVersion::V2_4, "Banner", "id").expect("Banner.id");
+    assert_ne!(
+        field.shape,
+        ExpectedShape::ObjectArray,
+        "Banner.id's type_spec mentions companion ads and 'each object'; that is not an object array"
+    );
+}
+
+/// Type cells sometimes wrap the type in `<code>` and leave the attribute
+/// bare. Those rows must not ship as a field named `string` / `integer`.
+#[test]
+fn catalog_field_names_are_not_type_words() {
+    for version in OpenRtbVersion::all() {
+        let Some(catalog) = canonical_object_catalog(*version) else {
+            continue;
+        };
+        for object in catalog.objects {
+            for field in object.fields {
+                assert!(
+                    !matches!(
+                        field.name,
+                        "string" | "integer" | "float" | "object" | "boolean" | "array" | "number"
+                    ),
+                    "{}: {}.{} is a type word, not a field",
+                    version.id(),
+                    object.name,
+                    field.name
+                );
+            }
+        }
     }
 }
 

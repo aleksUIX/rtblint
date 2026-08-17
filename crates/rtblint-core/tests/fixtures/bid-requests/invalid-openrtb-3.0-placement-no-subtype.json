@@ -1,0 +1,20 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "request": {
+      "id": "req-3-0-no-subtype",
+      "item": [
+        {
+          "id": "item-1",
+          "spec": {
+            "placement": {
+              "tagid": "banner-atf"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

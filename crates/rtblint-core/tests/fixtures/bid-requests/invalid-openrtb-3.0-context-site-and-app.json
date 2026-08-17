@@ -1,0 +1,33 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "request": {
+      "id": "req-3-0-two-channels",
+      "context": {
+        "site": {
+          "id": "site-1",
+          "domain": "example.com"
+        },
+        "app": {
+          "id": "app-1",
+          "bundle": "com.example.app"
+        }
+      },
+      "item": [
+        {
+          "id": "item-1",
+          "spec": {
+            "placement": {
+              "display": {
+                "w": 300,
+                "h": 250
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

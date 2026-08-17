@@ -429,14 +429,44 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: true,
         expected_issues: &[],
     },
-    // 3.0 validates through its layered envelope: transport objects here,
-    // AdCOM domain objects under item.spec left opaque.
+    // 3.0 validates through its layered envelope: transport objects plus the
+    // AdCOM domain objects under item.spec.
     FixtureCase {
         name: "valid-openrtb-3.0-layered-request",
         version: OpenRtbVersion::V3_0,
         input: include_str!("fixtures/bid-requests/valid-openrtb-3.0-layered-request.json"),
         valid: true,
         expected_issues: &[],
+    },
+    FixtureCase {
+        name: "invalid-openrtb-3.0-placement-no-subtype",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-requests/invalid-openrtb-3.0-placement-no-subtype.json"),
+        valid: false,
+        expected_issues: &[(
+            "adcom.placement.subtype_required",
+            "openrtb.request.item[0].spec.placement",
+        )],
+    },
+    FixtureCase {
+        name: "invalid-openrtb-3.0-unknown-adcom-field",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-requests/invalid-openrtb-3.0-unknown-adcom-field.json"),
+        valid: false,
+        expected_issues: &[(
+            "openrtb.field.undefined",
+            "openrtb.request.item[0].spec.placement.notafield",
+        )],
+    },
+    FixtureCase {
+        name: "invalid-openrtb-3.0-context-site-and-app",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-requests/invalid-openrtb-3.0-context-site-and-app.json"),
+        valid: false,
+        expected_issues: &[(
+            "openrtb.fields.mutually_exclusive",
+            "openrtb.request.context.site",
+        )],
     },
     // A 2.x payload sent to a 3.0 validator: the envelope is the first thing
     // missing, and the message explains what moved where.

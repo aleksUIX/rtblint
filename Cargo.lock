@@ -1260,6 +1260,7 @@ name = "rtblint"
 version = "0.8.0"
 dependencies = [
  "rtblint-core",
+ "rtblint-resolve",
  "serde",
  "serde_json",
 ]
@@ -1300,6 +1301,15 @@ name = "rtblint-mcp"
 version = "0.8.0"
 dependencies = [
  "rtblint-core",
+ "serde_json",
+]
+
+[[package]]
+name = "rtblint-resolve"
+version = "0.8.0"
+dependencies = [
+ "rtblint-core",
+ "serde",
  "serde_json",
 ]
 

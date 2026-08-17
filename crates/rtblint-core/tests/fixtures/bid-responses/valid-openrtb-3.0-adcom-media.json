@@ -1,0 +1,32 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "response": {
+      "id": "req-3-0-layered-001",
+      "seatbid": [
+        {
+          "seat": "buyer-seat-3",
+          "bid": [
+            {
+              "id": "bid-3-0-1",
+              "item": "item-1",
+              "price": 19.75,
+              "media": {
+                "ad": {
+                  "id": "creative-3-0-1",
+                  "adomain": ["ford.com"],
+                  "display": {
+                    "w": 320,
+                    "h": 50
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

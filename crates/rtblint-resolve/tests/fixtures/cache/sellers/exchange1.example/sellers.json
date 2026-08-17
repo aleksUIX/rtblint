@@ -1,0 +1,12 @@
+{
+  "contact_email": "ssp@exchange1.example",
+  "version": "1.0",
+  "sellers": [
+    {
+      "seller_id": "seller-abc",
+      "name": "Example Publisher",
+      "domain": "publisher.example",
+      "seller_type": "PUBLISHER"
+    }
+  ]
+}

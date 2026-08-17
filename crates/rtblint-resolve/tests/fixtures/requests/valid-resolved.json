@@ -1,0 +1,20 @@
+{
+  "id": "req-schain-baseline-001",
+  "at": 1,
+  "tmax": 200,
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        { "asi": "exchange1.example", "sid": "seller-abc", "hp": 1 },
+        { "asi": "exchange2.example", "sid": "seller-xyz", "hp": 1 }
+      ]
+    }
+  },
+  "site": {
+    "id": "site-schain-1",
+    "domain": "publisher.example"
+  },
+  "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+}

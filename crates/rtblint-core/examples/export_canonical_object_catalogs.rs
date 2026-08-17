@@ -3,13 +3,16 @@ use std::error::Error;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use rtblint_core::catalog_extract::{extract_value_set, resolve_child_object};
+use rtblint_core::catalog_extract::{
+    canonical_adcom_object_name, extract_value_set, resolve_child_object,
+};
 use rtblint_core::{
     version_profile, CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation,
     CatalogValueSet, OpenRtbFamily, OpenRtbVersion,
 };
 
 /// Parsed object carrying raw spec prose, before enrichment strips it.
+#[derive(Clone)]
 struct RawObject {
     name: String,
     section: String,
@@ -17,6 +20,7 @@ struct RawObject {
     fields: Vec<RawField>,
 }
 
+#[derive(Clone)]
 struct RawField {
     name: String,
     type_spec: String,
@@ -91,13 +95,37 @@ fn main() -> Result<(), Box<dyn Error>> {
     fs::create_dir_all(&output_dir)?;
 
     for version in OpenRtbVersion::all() {
+        if !canonical_source_exists(&canonical_root, *version) {
+            continue;
+        }
         let catalog = parse_catalog(&canonical_root, *version)?;
         let file_name = format!("openrtb-{}-object-catalog.json", version.id());
         let json = serde_json::to_string_pretty(&catalog)?;
         fs::write(output_dir.join(file_name), format!("{}\n", json))?;
     }
 
+    if canonical_root.join("adcom-1.0").join("source.md").exists() {
+        let catalog = parse_adcom_catalog(&canonical_root)?;
+        let json = serde_json::to_string_pretty(&catalog)?;
+        fs::write(
+            output_dir.join("adcom-1.0-object-catalog.json"),
+            format!("{}\n", json),
+        )?;
+    }
+
     Ok(())
+}
+
+fn canonical_source_exists(canonical_root: &Path, version: OpenRtbVersion) -> bool {
+    let Some(profile) = version_profile(version) else {
+        return false;
+    };
+    let dir = canonical_root.join(version.id());
+    if profile.archive_path.ends_with(".md") {
+        dir.join("source.md").exists()
+    } else {
+        dir.join("source-layout.txt").exists()
+    }
 }
 
 fn parse_catalog(
@@ -175,6 +203,208 @@ fn parse_markdown_catalog(
     }
 
     Ok(build_catalog(profile, "source.md", "source.md", objects))
+}
+
+fn parse_adcom_catalog(canonical_root: &Path) -> Result<CanonicalObjectCatalog, Box<dyn Error>> {
+    let source_path = canonical_root.join("adcom-1.0").join("source.md");
+    let raw = fs::read_to_string(&source_path)?;
+    let lines = raw.lines().collect::<Vec<_>>();
+    let mut objects = Vec::new();
+    let mut index = 0usize;
+
+    while index < lines.len() {
+        if let Some((section, name, abstract_class)) = parse_adcom_heading(lines[index]) {
+            let end_index = find_next_adcom_heading(&lines, index + 1).unwrap_or(lines.len());
+            let table_start =
+                ((index + 1)..end_index).find(|candidate| lines[*candidate].contains("<table>"));
+            let table_end = table_start.and_then(|start| {
+                (start..end_index).find(|candidate| lines[*candidate].contains("</table>"))
+            });
+            let pipe_table_start = find_pipe_table_header(&lines, index + 1, end_index);
+            let fields = match (table_start, table_end, pipe_table_start) {
+                (Some(start), Some(end), pipe) if pipe.is_none() || pipe > Some(start) => {
+                    parse_markdown_table(&lines, start, end, &section, "source.md", "source.md")
+                }
+                (_, _, Some(pipe)) => parse_markdown_pipe_table(
+                    &lines,
+                    pipe,
+                    end_index,
+                    &section,
+                    "source.md",
+                    "source.md",
+                ),
+                _ => Vec::new(),
+            };
+
+            let _ = abstract_class;
+            objects.push(RawObject {
+                name,
+                section: section.clone(),
+                citation: CatalogCitation {
+                    section,
+                    canonical_source_file: String::from("source.md"),
+                    helper_source_file: String::from("source.md"),
+                    start_line: index + 1,
+                    end_line: end_index,
+                },
+                fields,
+            });
+            index = end_index;
+            continue;
+        }
+
+        index += 1;
+    }
+
+    inherit_distribution_channel(&mut objects);
+    objects.retain(|object| object.name != "DistributionChannel");
+
+    let mut catalog = CanonicalObjectCatalog {
+        kind: String::from("adcom_canonical_object_catalog"),
+        version: String::from("1.0"),
+        family: String::from("1.0"),
+        release_date: String::from("2022-03"),
+        archive_path: String::from(".openrtb-specs/adcom/1.0/AdCOM v1.0 FINAL.md"),
+        canonical_source_file: String::from("source.md"),
+        helper_source_file: String::from("source.md"),
+        source_of_truth: String::from(
+            "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
+        ),
+        objects: enrich_and_strip(discard_mis_extracted(objects)),
+    };
+    catalog.objects.extend(openrtb_adcom_interface_objects());
+    Ok(catalog)
+}
+
+fn parse_adcom_heading(line: &str) -> Option<(String, String, bool)> {
+    let trimmed = line.trim();
+    let heading = trimmed.strip_prefix("### ")?;
+    if let Some(remainder) = heading.strip_prefix("Abstract Class:") {
+        let name = remainder.split('<').next()?.trim();
+        return Some((
+            format!("Abstract Class: {name}"),
+            canonical_adcom_object_name(name),
+            true,
+        ));
+    }
+
+    let remainder = heading.strip_prefix("Object:")?;
+    let name = remainder.split('<').next()?.trim();
+    Some((
+        format!("Object: {name}"),
+        canonical_adcom_object_name(name),
+        false,
+    ))
+}
+
+fn find_next_adcom_heading(lines: &[&str], start: usize) -> Option<usize> {
+    (start..lines.len()).find(|candidate| parse_adcom_heading(lines[*candidate]).is_some())
+}
+
+/// Site, App, and Dooh inherit DistributionChannel's id/name/pub/content.
+fn inherit_distribution_channel(objects: &mut [RawObject]) {
+    let Some(base_index) = objects
+        .iter()
+        .position(|object| object.name == "DistributionChannel")
+    else {
+        return;
+    };
+    let inherited = objects[base_index].fields.clone();
+
+    for object in objects.iter_mut() {
+        if !matches!(object.name.as_str(), "Site" | "App" | "Dooh") {
+            continue;
+        }
+        let existing: Vec<String> = object
+            .fields
+            .iter()
+            .map(|field| field.name.clone())
+            .collect();
+        let mut merged = inherited
+            .iter()
+            .filter(|field| !existing.iter().any(|name| name == &field.name))
+            .cloned()
+            .collect::<Vec<_>>();
+        merged.append(&mut object.fields);
+        object.fields = merged;
+    }
+}
+
+/// Appendix C wrappers: OpenRTB 3.0's item.spec, bid.media, and request.context
+/// are not AdCOM objects themselves. They hold Placement, Ad, and the
+/// top-level context objects.
+fn openrtb_adcom_interface_objects() -> Vec<CanonicalObject> {
+    let appendix = "Appendix C: OpenRTB Interfaces";
+    vec![
+        interface_object(
+            "Spec",
+            appendix,
+            vec![interface_field(
+                "placement",
+                "object; required",
+                Some("Placement"),
+                appendix,
+            )],
+        ),
+        interface_object(
+            "Media",
+            appendix,
+            vec![interface_field(
+                "ad",
+                "object; required",
+                Some("Ad"),
+                appendix,
+            )],
+        ),
+        interface_object(
+            "Context",
+            appendix,
+            vec![
+                interface_field("regs", "object", Some("Regs"), appendix),
+                interface_field("restrictions", "object", Some("Restrictions"), appendix),
+                interface_field("site", "object", Some("Site"), appendix),
+                interface_field("app", "object", Some("App"), appendix),
+                interface_field("dooh", "object", Some("Dooh"), appendix),
+                interface_field("user", "object", Some("User"), appendix),
+                interface_field("device", "object", Some("Device"), appendix),
+            ],
+        ),
+    ]
+}
+
+fn interface_object(name: &str, section: &str, fields: Vec<CanonicalField>) -> CanonicalObject {
+    CanonicalObject {
+        name: String::from(name),
+        section: String::from(section),
+        citation: interface_citation(section),
+        fields,
+    }
+}
+
+fn interface_field(
+    name: &str,
+    type_spec: &str,
+    child_object: Option<&str>,
+    section: &str,
+) -> CanonicalField {
+    CanonicalField {
+        name: String::from(name),
+        type_spec: String::from(type_spec),
+        child_object: child_object.map(String::from),
+        adcom_list: None,
+        value_set: None,
+        citation: interface_citation(section),
+    }
+}
+
+fn interface_citation(section: &str) -> CatalogCitation {
+    CatalogCitation {
+        section: String::from(section),
+        canonical_source_file: String::from("source.md"),
+        helper_source_file: String::from("source.md"),
+        start_line: 0,
+        end_line: 0,
+    }
 }
 
 fn parse_pdf_layout_catalog(
@@ -629,13 +859,19 @@ impl PendingMarkdownField {
     }
 }
 
-/// The attribute column is always a bare `<code>name</code>`; type and
-/// description cells are prose, so anything else is not a field start.
+/// Attribute cells are usually `<code>name</code>`. AdCOM sometimes omits the
+/// tags (App.domain is a bare `domain`) and wraps the type instead
+/// (`<code>string</code>`), so a type word is never a field start.
 fn attribute_cell_name(cell: &str) -> Option<String> {
     let trimmed = cell.trim();
-    let inner = trimmed.strip_prefix("<code>")?.strip_suffix("</code>")?;
-    let name = inner.trim();
-    if name.is_empty() {
+    let candidate = trimmed
+        .strip_prefix("<code>")
+        .and_then(|value| value.strip_suffix("</code>"))
+        .map(str::trim)
+        .map(String::from)
+        .unwrap_or_else(|| clean_html_text(trimmed));
+    let name = candidate.trim();
+    if name.is_empty() || is_type_word(name) {
         return None;
     }
 
@@ -644,6 +880,13 @@ fn attribute_cell_name(cell: &str) -> Option<String> {
             character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
         })
         .then(|| String::from(name))
+}
+
+fn is_type_word(name: &str) -> bool {
+    matches!(
+        name,
+        "string" | "integer" | "float" | "object" | "boolean" | "array" | "number"
+    )
 }
 
 /// Pulls every complete `<td>…</td>` out of the buffer, keeping inner markup so

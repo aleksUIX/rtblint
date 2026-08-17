@@ -11,3 +11,8 @@ __pycache__
 /next-steps.md
 /bench/fixtures
 /bench/results
+/demo/artf/stack/**/node_modules
+/demo/artf/node_modules
+/demo/artf/record-out
+/demo/artf/*.mp4
+/demo/artf/*.webm

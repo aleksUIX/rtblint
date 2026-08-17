@@ -1,0 +1,14 @@
+{
+  "id": "req-app",
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        { "asi": "exchange1.example", "sid": "seller-abc", "hp": 1 }
+      ]
+    }
+  },
+  "app": { "bundle": "com.example.app" },
+  "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+}

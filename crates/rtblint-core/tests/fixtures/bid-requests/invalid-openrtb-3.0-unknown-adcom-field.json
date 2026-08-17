@@ -4,20 +4,17 @@
     "domainspec": "adcom",
     "domainver": "1.0",
     "request": {
-      "id": "req-3-0-layered-001",
-      "tmax": 250,
-      "cur": ["USD"],
+      "id": "req-3-0-unknown-adcom",
       "item": [
         {
           "id": "item-1",
-          "qty": 1,
           "spec": {
             "placement": {
-              "tagid": "video-preroll-3-0",
-              "video": {
-                "mime": ["video/mp4"],
-                "mindur": 15,
-                "maxdur": 30
+              "tagid": "banner-atf",
+              "notafield": true,
+              "display": {
+                "w": 300,
+                "h": 250
               }
             }
           }

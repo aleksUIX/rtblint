@@ -5,6 +5,7 @@ members = [
     "crates/rtblint-grpc",
     "crates/rtblint-mcp",
     "crates/rtblint-wasm",
+    "crates/rtblint-resolve",
 ]
 exclude = ["fuzz"]
 resolver = "2"

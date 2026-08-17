@@ -1,0 +1,1 @@
+exchange1.example, seller-abc, DIRECT

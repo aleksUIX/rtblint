@@ -7,6 +7,7 @@ use std::{
 use serde::Serialize;
 
 use rtblint_core::{ArtfApplication, Dialect, Issue, OpenRtbVersion, Severity, ValidationResult};
+use rtblint_resolve::Cache;
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
 
@@ -55,7 +56,8 @@ fn run() -> Result<i32, String> {
         return run_batch(&command);
     }
 
-    let (result, application) = validate_one(&command, &command.input);
+    let (mut result, application) = validate_one(&command, &command.input);
+    apply_resolution(&command, &command.input, &mut result);
     print_result(&command, &result, application.as_ref())?;
 
     Ok(if result.valid { 0 } else { 1 })
@@ -106,6 +108,13 @@ fn validate_one(
     }
 }
 
+fn apply_resolution(command: &ValidateCommand, input: &str, result: &mut ValidationResult) {
+    let Some(cache) = command.cache.as_ref() else {
+        return;
+    };
+    rtblint_resolve::merge_into(result, rtblint_resolve::resolve_bid_request(input, cache));
+}
+
 fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> {
     let mut read_stdin = false;
     let mut file_path: Option<String> = None;
@@ -116,6 +125,8 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut request_path: Option<String> = None;
     let mut dialect = Dialect::SpecJson;
     let mut apply = false;
+    let mut resolve = false;
+    let mut cache_dir: Option<String> = None;
     let mut args = args.into_iter();
 
     while let Some(arg) = args.next() {
@@ -192,6 +203,18 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             "--apply" => {
                 apply = true;
             }
+            "--resolve" => {
+                resolve = true;
+            }
+            "--cache" => {
+                let Some(value) = args.next() else {
+                    return Err(format!(
+                        "Missing value for --cache.\n\n{}",
+                        validate_usage_text()
+                    ));
+                };
+                cache_dir = Some(value);
+            }
             _ if arg.starts_with('-') => {
                 return Err(format!("Unknown flag: {arg}\n\n{}", validate_usage_text()));
             }
@@ -262,6 +285,37 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         ));
     }
 
+    if cache_dir.is_some() && !resolve {
+        return Err(format!(
+            "--cache is the sellers.json / ads.txt directory for --resolve; pass --resolve as \
+             well.\n\n{}",
+            validate_usage_text()
+        ));
+    }
+
+    if resolve && !matches!(payload_type, PayloadType::Request) {
+        return Err(format!(
+            "--resolve checks SupplyChain hops and the publisher's ads.txt / app-ads.txt on a \
+             bid request; it does not apply to --type {}.\n\n{}",
+            payload_type.id(),
+            validate_usage_text()
+        ));
+    }
+
+    let cache = if resolve {
+        let Some(dir) = cache_dir else {
+            return Err(format!(
+                "--resolve needs a local cache directory: pass --cache <dir> containing \
+                 sellers/<asi>/sellers.json, ads/<domain>/ads.txt, and \
+                 app-ads/<bundle>/app-ads.txt.\n\n{}",
+                validate_usage_text()
+            ));
+        };
+        Some(Cache::open(dir)?)
+    } else {
+        None
+    };
+
     // ARTF carries its OpenRTB payloads as protobuf messages, so their JSON is
     // protojson by construction and the dialect is not the caller's choice.
     if matches!(
@@ -285,6 +339,7 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         request_context,
         dialect,
         apply,
+        cache,
     })
 }
 
@@ -306,7 +361,8 @@ fn run_batch(command: &ValidateCommand) -> Result<i32, String> {
         }
         count += 1;
 
-        let (result, _) = validate_one(command, &line);
+        let (mut result, _) = validate_one(command, &line);
+        apply_resolution(command, &line, &mut result);
         all_valid &= result.valid;
 
         match output_format {
@@ -507,7 +563,7 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--format human|json] [--request <request.json>] [--apply] <file.json>\n  rtblint validate [...] --stdin\n  rtblint validate --batch [...]";
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] <file.json>\n  rtblint validate [...] --stdin\n  rtblint validate --batch [...]";
 
 fn usage_text() -> String {
     format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
@@ -531,6 +587,10 @@ fn validate_usage_text() -> String {
          --apply writes an ARTF mutation set into the payloads it targets, revalidates them, and \
          reports only the OpenRTB findings the mutations introduced; requires --type \
          artf-response.\n\
+         --resolve checks each SupplyChain node against that domain's sellers.json and the \
+         publisher's ads.txt or app-ads.txt. Requires --cache <dir> laid out as \
+         sellers/<asi>/sellers.json, ads/<domain>/ads.txt, app-ads/<bundle>/app-ads.txt. The \
+         core stays offline; this pass only reads the local cache.\n\
          --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 \
          means every payload was valid."
     )
@@ -549,6 +609,8 @@ struct ValidateCommand {
     dialect: Dialect,
     /// Apply an ARTF mutation set and revalidate the result.
     apply: bool,
+    /// Local sellers.json / ads.txt cache. Present only with `--resolve`.
+    cache: Option<Cache>,
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]

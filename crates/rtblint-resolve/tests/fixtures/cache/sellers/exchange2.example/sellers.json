@@ -1,0 +1,12 @@
+{
+  "contact_email": "ssp@exchange2.example",
+  "version": "1.0",
+  "sellers": [
+    {
+      "seller_id": "seller-xyz",
+      "name": "Example Intermediary",
+      "domain": "exchange2.example",
+      "seller_type": "INTERMEDIARY"
+    }
+  ]
+}

@@ -4,6 +4,31 @@
 
 ### Added
 
+- AdCOM 1.0 object catalog for the OpenRTB 3.0 domain layer. `item.spec`,
+  `bid.media`, and `request.context` are no longer opaque: they validate as
+  AdCOM Placement, Ad, and Context (Appendix C wrappers), including nested
+  media, placement, and context objects. Site, App, and Dooh inherit
+  DistributionChannel. New rule ids: `adcom.placement.subtype_required`,
+  `adcom.ad.subtype_required`, `adcom.asset.subtype_required`,
+  `adcom.assetformat.subtype_required`. A non-AdCOM `domainspec` still
+  leaves the domain objects unchecked.
+- Opt-in `--resolve` on the CLI, implemented in the `rtblint-resolve` crate
+  so `rtblint-core` stays a pure function of the payload. `--cache <dir>`
+  holds `sellers/<asi>/sellers.json`, `ads/<domain>/ads.txt`, and
+  `app-ads/<bundle>/app-ads.txt`. Payment hops (`hp` not 0) are checked
+  against sellers.json; the first payment hop must appear as DIRECT or
+  RESELLER in the publisher's ads.txt or app-ads.txt. New rule ids:
+  `openrtb.resolve.sellers_json_unavailable`,
+  `openrtb.resolve.sellers_json_unparseable`,
+  `openrtb.resolve.sid_not_in_sellers`,
+  `openrtb.resolve.ads_txt_unavailable`,
+  `openrtb.resolve.ads_txt_unauthorized`,
+  `openrtb.resolve.app_ads_txt_unavailable`,
+  `openrtb.resolve.app_ads_txt_unauthorized`. Nothing is fetched from the
+  network.
+- `Issue::new` and `Default` for `ValidationResult`, so crates outside
+  `rtblint-core` can construct findings. Both types stay non-exhaustive.
+
 - OpenSSF Scorecard weekly workflow, CodeQL on Rust and JavaScript, Dependabot
   for Cargo / npm / GitHub Actions, and three cargo-fuzz targets
   (`validate`, `validate_response`, `validate_artf`). CI Actions are pinned by

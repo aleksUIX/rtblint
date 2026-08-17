@@ -1,5 +1,736 @@
 {
   "$defs": {
+    "App": {
+      "additionalProperties": true,
+      "description": "Section Object: App",
+      "properties": {
+        "bundle": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "paid": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "privpolicy": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "pub": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "sectcat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "storeid": {
+          "type": "string"
+        },
+        "storeurl": {
+          "type": "string"
+        },
+        "ver": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AssetFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: AssetFormat",
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/DataAssetFormat"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "img": {
+          "$ref": "#/$defs/ImageAssetFormat"
+        },
+        "req": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "title": {
+          "$ref": "#/$defs/TitleAssetFormat"
+        },
+        "video": {
+          "$ref": "#/$defs/VideoPlacement"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "AudioPlacement": {
+      "additionalProperties": true,
+      "description": "Section Object: AudioPlacement",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "comp": {
+          "items": {
+            "$ref": "#/$defs/Companion"
+          },
+          "type": "array"
+        },
+        "comptype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ctype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "delay": {
+          "anyOf": [
+            {
+              "enum": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "minimum": 1
+            }
+          ],
+          "type": "integer"
+        },
+        "delivery": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "feed": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "maxbitr": {
+          "type": "integer"
+        },
+        "maxdur": {
+          "type": "integer"
+        },
+        "maxext": {
+          "type": "integer"
+        },
+        "maxseq": {
+          "type": "integer"
+        },
+        "mime": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "minbitr": {
+          "type": "integer"
+        },
+        "mincpmpersec": {
+          "type": "number"
+        },
+        "mindur": {
+          "type": "integer"
+        },
+        "nvol": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "overlayexpdir": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "playend": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "playmethod": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "poddur": {
+          "type": "integer"
+        },
+        "podid": {
+          "type": "integer"
+        },
+        "podseq": {
+          "enum": [
+            -1,
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "rqddurs": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "skip": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "skipafter": {
+          "type": "integer"
+        },
+        "skipmin": {
+          "type": "integer"
+        },
+        "slotinpod": {
+          "enum": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mime"
+      ],
+      "type": "object"
+    },
+    "BrandVersion": {
+      "additionalProperties": true,
+      "description": "Section Object: BrandVersion",
+      "properties": {
+        "brand": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "version": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Channel": {
+      "additionalProperties": true,
+      "description": "Section Object: Channel",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Companion": {
+      "additionalProperties": true,
+      "description": "Section Object: Companion",
+      "properties": {
+        "display": {
+          "$ref": "#/$defs/DisplayPlacement"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "vcm": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Content": {
+      "additionalProperties": true,
+      "description": "Section Object: Content",
+      "properties": {
+        "album": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "channel": {
+          "$ref": "#/$defs/Channel"
+        },
+        "context": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        "embed": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "episode": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "firstbroadcast": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "genres": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gtax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isrc": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "langb": {
+          "type": "string"
+        },
+        "len": {
+          "type": "integer"
+        },
+        "live": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "mrating": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "network": {
+          "$ref": "#/$defs/Network"
+        },
+        "prodq": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "producer": {
+          "$ref": "#/$defs/Producer"
+        },
+        "rating": {
+          "type": "string"
+        },
+        "realtime": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        },
+        "srcrel": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "urating": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Context": {
+      "additionalProperties": true,
+      "description": "Section Appendix C: OpenRTB Interfaces",
+      "properties": {
+        "app": {
+          "$ref": "#/$defs/App"
+        },
+        "device": {
+          "$ref": "#/$defs/Device"
+        },
+        "dooh": {
+          "$ref": "#/$defs/Dooh"
+        },
+        "regs": {
+          "$ref": "#/$defs/Regs"
+        },
+        "restrictions": {
+          "$ref": "#/$defs/Restrictions"
+        },
+        "site": {
+          "$ref": "#/$defs/Site"
+        },
+        "user": {
+          "$ref": "#/$defs/User"
+        }
+      },
+      "type": "object"
+    },
+    "Data": {
+      "additionalProperties": true,
+      "description": "Section Object: Data",
+      "properties": {
+        "cids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "segment": {
+          "items": {
+            "$ref": "#/$defs/Segment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "DataAssetFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: DataAssetFormat",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "len": {
+          "type": "integer"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object"
+    },
     "Deal": {
       "additionalProperties": true,
       "description": "Section Object: Deal",
@@ -40,6 +771,692 @@
       "required": [
         "id"
       ],
+      "type": "object"
+    },
+    "Device": {
+      "additionalProperties": true,
+      "description": "Section Object: Device",
+      "properties": {
+        "carrier": {
+          "type": "string"
+        },
+        "contype": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer"
+        },
+        "dnt": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "geofetch": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hwv": {
+          "type": "string"
+        },
+        "ifa": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "iptr": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ipv6": {
+          "type": "string"
+        },
+        "js": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "langb": {
+          "type": "string"
+        },
+        "lmt": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "make": {
+          "type": "string"
+        },
+        "mccmnc": {
+          "type": "string"
+        },
+        "mccmncsim": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "os": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "osv": {
+          "type": "string"
+        },
+        "ppi": {
+          "type": "integer"
+        },
+        "pxratio": {
+          "type": "number"
+        },
+        "sua": {
+          "$ref": "#/$defs/UserAgent"
+        },
+        "type": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "type": "integer"
+        },
+        "ua": {
+          "type": "string"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "xff": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "DisplayFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: DisplayFormat",
+      "properties": {
+        "expdir": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hratio": {
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "wratio": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "DisplayPlacement": {
+      "additionalProperties": true,
+      "description": "Section Object: DisplayPlacement",
+      "properties": {
+        "ampren": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "clktype": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "enum": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                20,
+                21,
+                22,
+                30,
+                31,
+                32
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "ctype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "displayfmt": {
+          "items": {
+            "$ref": "#/$defs/DisplayFormat"
+          },
+          "type": "array"
+        },
+        "event": {
+          "items": {
+            "$ref": "#/$defs/EventSpec"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "ifrbust": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "instl": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "mime": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nativefmt": {
+          "$ref": "#/$defs/NativeFormat"
+        },
+        "pos": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "type": "integer"
+        },
+        "priv": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ptype": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "topframe": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Dooh": {
+      "additionalProperties": true,
+      "description": "Section Object: Dooh",
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "dpi": {
+          "type": "integer"
+        },
+        "etime": {
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "fixed": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pub": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "venue": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "EID": {
+      "additionalProperties": true,
+      "description": "Section Object: Extended Identifiers",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "inserter": {
+          "type": "string"
+        },
+        "matcher": {
+          "type": "string"
+        },
+        "mm": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "source": {
+          "type": "string"
+        },
+        "uids": {
+          "items": {
+            "$ref": "#/$defs/UID"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "EventSpec": {
+      "additionalProperties": true,
+      "description": "Section Object: EventSpec",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "jstrk": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "method": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "pxtrk": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "wjs": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "wpx": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object"
+    },
+    "Geo": {
+      "additionalProperties": true,
+      "description": "Section Object: Geo",
+      "properties": {
+        "accur": {
+          "type": "integer"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "ipserv": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            511,
+            512
+          ],
+          "type": "integer"
+        },
+        "lastfix": {
+          "type": "integer"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "metro": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "utcoffset": {
+          "type": "integer"
+        },
+        "zip": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ImageAssetFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: ImageAssetFormat",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "hmin": {
+          "type": "integer"
+        },
+        "hratio": {
+          "type": "integer"
+        },
+        "mime": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                3
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        },
+        "wmin": {
+          "type": "integer"
+        },
+        "wratio": {
+          "type": "integer"
+        }
+      },
       "type": "object"
     },
     "Item": {
@@ -101,7 +1518,7 @@
           "type": "integer"
         },
         "spec": {
-          "type": "object"
+          "$ref": "#/$defs/Spec"
         }
       },
       "required": [
@@ -133,6 +1550,222 @@
       ],
       "type": "object"
     },
+    "NativeFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: NativeFormat",
+      "properties": {
+        "asset": {
+          "items": {
+            "$ref": "#/$defs/AssetFormat"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "asset"
+      ],
+      "type": "object"
+    },
+    "Network": {
+      "additionalProperties": true,
+      "description": "Section Object: Network",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Placement": {
+      "additionalProperties": true,
+      "description": "Section Object: Placement",
+      "properties": {
+        "admx": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "audio": {
+          "$ref": "#/$defs/AudioPlacement"
+        },
+        "curlx": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "display": {
+          "$ref": "#/$defs/DisplayPlacement"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "reward": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "sdk": {
+          "type": "string"
+        },
+        "sdkver": {
+          "type": "string"
+        },
+        "secure": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ssai": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "tagid": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/$defs/VideoPlacement"
+        },
+        "wlang": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Producer": {
+      "additionalProperties": true,
+      "description": "Section Object: Producer",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Publisher": {
+      "additionalProperties": true,
+      "description": "Section Object: Publisher",
+      "properties": {
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "type": "integer"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Regs": {
+      "additionalProperties": true,
+      "description": "Section Object: Regs",
+      "properties": {
+        "coppa": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "gdpr": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "gpp": {
+          "type": "string"
+        },
+        "gpp_sid": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "Request": {
       "additionalProperties": true,
       "description": "Section Object: Request",
@@ -148,7 +1781,7 @@
           "type": "string"
         },
         "context": {
-          "type": "object"
+          "$ref": "#/$defs/Context"
         },
         "cur": {
           "items": {
@@ -208,6 +1841,221 @@
       ],
       "type": "object"
     },
+    "Restrictions": {
+      "additionalProperties": true,
+      "description": "Section Object: Restrictions",
+      "properties": {
+        "acat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "badv": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bapp": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "battr": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "bcat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "Segment": {
+      "additionalProperties": true,
+      "description": "Section Object: Segment",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Site": {
+      "additionalProperties": true,
+      "description": "Section Object: Site",
+      "properties": {
+        "amp": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "cat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cattax": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "content": {
+          "$ref": "#/$defs/Content"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "mobile": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "page": {
+          "type": "string"
+        },
+        "pagecat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "privpolicy": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "pub": {
+          "$ref": "#/$defs/Publisher"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "search": {
+          "type": "string"
+        },
+        "sectcat": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "Source": {
       "additionalProperties": true,
       "description": "Section Object: Source",
@@ -240,6 +2088,463 @@
           "type": "integer"
         }
       },
+      "type": "object"
+    },
+    "Spec": {
+      "additionalProperties": true,
+      "description": "Section Appendix C: OpenRTB Interfaces",
+      "properties": {
+        "placement": {
+          "$ref": "#/$defs/Placement"
+        }
+      },
+      "required": [
+        "placement"
+      ],
+      "type": "object"
+    },
+    "TitleAssetFormat": {
+      "additionalProperties": true,
+      "description": "Section Object: TitleAssetFormat",
+      "properties": {
+        "ext": {
+          "type": "object"
+        },
+        "len": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "len"
+      ],
+      "type": "object"
+    },
+    "UID": {
+      "additionalProperties": true,
+      "description": "Section Object: Extended Identifier UIDs",
+      "properties": {
+        "atype": {
+          "anyOf": [
+            {
+              "enum": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "User": {
+      "additionalProperties": true,
+      "description": "Section Object: User",
+      "properties": {
+        "buyeruid": {
+          "type": "string"
+        },
+        "consent": {
+          "type": "string"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        "eids": {
+          "items": {
+            "$ref": "#/$defs/EID"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "gender": {
+          "deprecated": true,
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/$defs/Geo"
+        },
+        "id": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "string"
+        },
+        "kwarray": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "yob": {
+          "deprecated": true,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "UserAgent": {
+      "additionalProperties": true,
+      "description": "Section Object: UserAgent",
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "bitness": {
+          "type": "string"
+        },
+        "browsers": {
+          "items": {
+            "$ref": "#/$defs/BrandVersion"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "mobile": {
+          "type": "integer"
+        },
+        "model": {
+          "type": "string"
+        },
+        "platform": {
+          "$ref": "#/$defs/BrandVersion"
+        },
+        "source": {
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "VideoPlacement": {
+      "additionalProperties": true,
+      "description": "Section Object: VideoPlacement",
+      "properties": {
+        "api": {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "minimum": 500
+              }
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "boxing": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "clktype": {
+          "anyOf": [
+            {
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "minimum": 500
+            }
+          ],
+          "type": "integer"
+        },
+        "comp": {
+          "items": {
+            "$ref": "#/$defs/Companion"
+          },
+          "type": "array"
+        },
+        "comptype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ctype": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "delay": {
+          "anyOf": [
+            {
+              "enum": [
+                -2,
+                -1,
+                0
+              ]
+            },
+            {
+              "minimum": 1
+            }
+          ],
+          "type": "integer"
+        },
+        "delivery": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "expdir": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "ext": {
+          "type": "object"
+        },
+        "h": {
+          "type": "integer"
+        },
+        "linear": {
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "maxbitr": {
+          "type": "integer"
+        },
+        "maxdur": {
+          "type": "integer"
+        },
+        "maxext": {
+          "type": "integer"
+        },
+        "maxseq": {
+          "type": "integer"
+        },
+        "mime": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "minbitr": {
+          "type": "integer"
+        },
+        "mincpmpersec": {
+          "type": "number"
+        },
+        "mindur": {
+          "type": "integer"
+        },
+        "overlayexpdir": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "playend": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "playmethod": {
+          "items": {
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "poddur": {
+          "type": "integer"
+        },
+        "podid": {
+          "type": "integer"
+        },
+        "podseq": {
+          "enum": [
+            -1,
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "pos": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "type": "integer"
+        },
+        "ptype": {
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "type": "integer"
+        },
+        "rqddurs": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "skip": {
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "skipafter": {
+          "type": "integer"
+        },
+        "skipmin": {
+          "type": "integer"
+        },
+        "slotinpod": {
+          "enum": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "w": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mime"
+      ],
       "type": "object"
     }
   },

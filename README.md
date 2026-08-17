@@ -59,7 +59,7 @@ The ARTF v1.0 document and its `.proto` use different vocabularies for the same 
 | Python | `rtblint` on PyPI | Not implemented yet |
 | Go | `github.com/aleksUIX/rtblint/go` | Not implemented yet |
 
-OpenRTB 3.0 validates through its layered envelope: the transport objects (Openrtb, Request, Item, Deal, Source, Response, Seatbid, Bid) are checked in full, and the AdCOM domain objects under `item.spec` and `bid.media` are accepted as opaque until an AdCOM catalog ships. A 2.x payload sent to a 3.0 validator gets a migration diagnostic rather than a bare parse error. The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently. See [ROADMAP.md](ROADMAP.md) for what's next and [CHANGELOG.md](CHANGELOG.md) for release history.
+OpenRTB 3.0 validates through its layered envelope: the transport objects (Openrtb, Request, Item, Deal, Source, Response, Seatbid, Bid) and the AdCOM 1.0 domain objects under `item.spec` (Placement), `bid.media` (Ad), and `request.context`. A 2.x payload sent to a 3.0 validator gets a migration diagnostic rather than a bare parse error. The 2.6-202204 snapshot has no extracted catalog and reports itself as unsupported instead of passing payloads silently. See [ROADMAP.md](ROADMAP.md) for what's next and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## CLI
 
@@ -71,10 +71,19 @@ rtblint validate --type response response.json
 rtblint validate --type response --request request.json response.json
 rtblint validate --version 2.5 --format json request.json
 rtblint validate --dialect proto-json grpc-bid-request.json
+rtblint validate --resolve --cache ./supply-cache request.json
 cat request.json | rtblint validate --stdin
 ```
 
-`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
+`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
+
+```text
+<dir>/sellers/<asi>/sellers.json
+<dir>/ads/<site.domain>/ads.txt
+<dir>/app-ads/<app.bundle>/app-ads.txt
+```
+
+Nothing is fetched; populate the cache yourself. See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
 
 Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
 

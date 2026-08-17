@@ -153,14 +153,31 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         valid: true,
         expected_issues: &[],
     },
-    // 3.0 responses validate through the same envelope; bid.media stays
-    // opaque until an AdCOM catalog ships.
+    // 3.0 responses validate through the same envelope; bid.media is the
+    // AdCOM Ad object behind the Appendix C wrapper.
     FixtureCase {
         name: "valid-openrtb-3.0-layered-response",
         version: OpenRtbVersion::V3_0,
         input: include_str!("fixtures/bid-responses/valid-openrtb-3.0-layered-response.json"),
         valid: true,
         expected_issues: &[],
+    },
+    FixtureCase {
+        name: "valid-openrtb-3.0-adcom-media",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-responses/valid-openrtb-3.0-adcom-media.json"),
+        valid: true,
+        expected_issues: &[],
+    },
+    FixtureCase {
+        name: "invalid-openrtb-3.0-ad-no-subtype",
+        version: OpenRtbVersion::V3_0,
+        input: include_str!("fixtures/bid-responses/invalid-openrtb-3.0-ad-no-subtype.json"),
+        valid: false,
+        expected_issues: &[(
+            "adcom.ad.subtype_required",
+            "openrtb.response.seatbid[0].bid[0].media.ad",
+        )],
     },
     FixtureCase {
         name: "invalid-openrtb-3.0-missing-response",

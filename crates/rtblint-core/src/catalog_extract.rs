@@ -69,8 +69,22 @@ fn match_object_name(hint: &str, object_names: &[String]) -> Option<String> {
         .cloned()
 }
 
+/// Names AdCOM uses in headings and "Refer to Object:" prose that are not
+/// catalog identifiers. OpenRTB 2.x already calls these EID and UID.
+pub fn canonical_adcom_object_name(name: &str) -> String {
+    match name.trim() {
+        "Extended Identifiers" => String::from("EID"),
+        "Extended Identifier UIDs" => String::from("UID"),
+        other => other.replace([' ', '-'], ""),
+    }
+}
+
 fn child_object_hint(description: &str) -> Option<String> {
     let normalized = description.replace('`', "");
+
+    if let Some(candidate) = object_mention_hint(&normalized) {
+        return Some(candidate);
+    }
 
     for marker in ["Array of ", "An array of ", "Details via ", "A ", "An "] {
         if let Some(start) = normalized.find(marker) {
@@ -105,6 +119,35 @@ fn strip_leading_article(candidate: &str) -> &str {
     }
 
     candidate
+}
+
+/// AdCOM tables point at children with "Refer to Object: DisplayPlacement"
+/// (and sometimes just "Object: UserAgent") rather than OpenRTB's
+/// "Details via a Site object".
+fn object_mention_hint(description: &str) -> Option<String> {
+    let lowercased = description.to_ascii_lowercase();
+    let marker = "object:";
+    let relative = lowercased.find(marker)?;
+    let rest = strip_leading_article(description[relative + marker.len()..].trim_start());
+    if rest.is_empty() {
+        return None;
+    }
+
+    for mapped in ["Extended Identifier UIDs", "Extended Identifiers"] {
+        if rest.len() >= mapped.len() && rest[..mapped.len()].eq_ignore_ascii_case(mapped) {
+            return Some(canonical_adcom_object_name(mapped));
+        }
+    }
+
+    let end = rest
+        .find(|character: char| !character.is_ascii_alphanumeric())
+        .unwrap_or(rest.len());
+    let candidate = rest[..end].trim();
+    if candidate.is_empty() {
+        return None;
+    }
+
+    Some(canonical_adcom_object_name(candidate))
 }
 
 fn parse_inline_integer_value_set(description: &str) -> Option<(Vec<i64>, Option<i64>)> {
@@ -238,6 +281,40 @@ mod tests {
             Some(String::from("Site"))
         );
         assert_eq!(resolve_child_object("no hint", "unknown", &objects), None);
+    }
+
+    #[test]
+    fn resolves_child_object_from_adcom_refer_to_object() {
+        let objects = vec![
+            String::from("DisplayPlacement"),
+            String::from("EID"),
+            String::from("UID"),
+            String::from("BrandVersion"),
+        ];
+        assert_eq!(
+            resolve_child_object(
+                "Placement Subtype Object. Refer to Object: DisplayPlacement.",
+                "display",
+                &objects
+            ),
+            Some(String::from("DisplayPlacement"))
+        );
+        assert_eq!(
+            resolve_child_object(
+                "Extended (third-party) identifiers. Refer to Object: Extended Identifiers.",
+                "eids",
+                &objects
+            ),
+            Some(String::from("EID"))
+        );
+        assert_eq!(
+            resolve_child_object(
+                "Refer to Object: BrandVersion that identifies the platform.",
+                "platform",
+                &objects
+            ),
+            Some(String::from("BrandVersion"))
+        );
     }
 
     // Source.schain is described as "Details via the `SupplyChain` object" and

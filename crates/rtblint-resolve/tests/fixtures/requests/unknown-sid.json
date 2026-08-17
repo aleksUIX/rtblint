@@ -1,0 +1,14 @@
+{
+  "id": "req-unknown-sid",
+  "source": {
+    "schain": {
+      "complete": 1,
+      "ver": "1.0",
+      "nodes": [
+        { "asi": "exchange1.example", "sid": "not-a-seller", "hp": 1 }
+      ]
+    }
+  },
+  "site": { "domain": "publisher.example" },
+  "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+}

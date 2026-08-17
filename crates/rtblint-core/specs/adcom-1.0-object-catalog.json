@@ -1,0 +1,5694 @@
+{
+  "kind": "adcom_canonical_object_catalog",
+  "version": "1.0",
+  "family": "1.0",
+  "release_date": "2022-03",
+  "archive_path": ".openrtb-specs/adcom/1.0/AdCOM v1.0 FINAL.md",
+  "canonical_source_file": "source.md",
+  "helper_source_file": "source.md",
+  "source_of_truth": "The canonical IAB source file is authoritative. Line citations refer to the helper source file used for structured extraction.",
+  "objects": [
+    {
+      "name": "Ad",
+      "section": "Object: Ad",
+      "citation": {
+        "section": "Object: Ad",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 223,
+        "end_line": 323
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 234,
+            "end_line": 236
+          }
+        },
+        {
+          "name": "adomain",
+          "type_spec": "string array; recommended",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 239,
+            "end_line": 241
+          }
+        },
+        {
+          "name": "bundle",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 244,
+            "end_line": 246
+          }
+        },
+        {
+          "name": "iurl",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 249,
+            "end_line": 251
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 254,
+            "end_line": 256
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer; default 2",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 259,
+            "end_line": 261
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "lang",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 264,
+            "end_line": 266
+          }
+        },
+        {
+          "name": "attr",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 269,
+            "end_line": 271
+          },
+          "adcom_list": "List: Creative Attributes"
+        },
+        {
+          "name": "secure",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 274,
+            "end_line": 276
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "mrating",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 279,
+            "end_line": 281
+          },
+          "adcom_list": "List: Media Ratings"
+        },
+        {
+          "name": "init",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 284,
+            "end_line": 286
+          }
+        },
+        {
+          "name": "lastmod",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 289,
+            "end_line": 291
+          }
+        },
+        {
+          "name": "display",
+          "type_spec": "Object; required *",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 294,
+            "end_line": 296
+          },
+          "child_object": "Display"
+        },
+        {
+          "name": "video",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 300,
+            "end_line": 302
+          },
+          "child_object": "Video"
+        },
+        {
+          "name": "audio",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 306,
+            "end_line": 308
+          },
+          "child_object": "Audio"
+        },
+        {
+          "name": "audit",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 312,
+            "end_line": 314
+          },
+          "child_object": "Audit"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Ad",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 317,
+            "end_line": 319
+          }
+        }
+      ]
+    },
+    {
+      "name": "Display",
+      "section": "Object: Display",
+      "citation": {
+        "section": "Object: Display",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 324,
+        "end_line": 412
+      },
+      "fields": [
+        {
+          "name": "mime",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 335,
+            "end_line": 337
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 340,
+            "end_line": 342
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 345,
+            "end_line": 347
+          },
+          "adcom_list": "List: Creative Subtypes - Display"
+        },
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 350,
+            "end_line": 352
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 356,
+            "end_line": 358
+          }
+        },
+        {
+          "name": "wratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 362,
+            "end_line": 364
+          }
+        },
+        {
+          "name": "hratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 368,
+            "end_line": 370
+          }
+        },
+        {
+          "name": "priv",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 374,
+            "end_line": 376
+          }
+        },
+        {
+          "name": "adm",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 379,
+            "end_line": 381
+          }
+        },
+        {
+          "name": "curl",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 385,
+            "end_line": 387
+          }
+        },
+        {
+          "name": "banner",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 391,
+            "end_line": 393
+          },
+          "child_object": "Banner"
+        },
+        {
+          "name": "native",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 396,
+            "end_line": 398
+          },
+          "child_object": "Native"
+        },
+        {
+          "name": "event",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 401,
+            "end_line": 403
+          },
+          "child_object": "Event"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Display",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 406,
+            "end_line": 408
+          }
+        }
+      ]
+    },
+    {
+      "name": "Banner",
+      "section": "Object: Banner",
+      "citation": {
+        "section": "Object: Banner",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 413,
+        "end_line": 440
+      },
+      "fields": [
+        {
+          "name": "img",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: Banner",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 424,
+            "end_line": 426
+          }
+        },
+        {
+          "name": "link",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Banner",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 429,
+            "end_line": 431
+          },
+          "child_object": "LinkAsset"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Banner",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 434,
+            "end_line": 436
+          }
+        }
+      ]
+    },
+    {
+      "name": "Native",
+      "section": "Object: Native",
+      "citation": {
+        "section": "Object: Native",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 441,
+        "end_line": 468
+      },
+      "fields": [
+        {
+          "name": "link",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Native",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 452,
+            "end_line": 454
+          },
+          "child_object": "LinkAsset"
+        },
+        {
+          "name": "asset",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: Native",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 457,
+            "end_line": 459
+          },
+          "child_object": "Asset"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Native",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 462,
+            "end_line": 464
+          }
+        }
+      ]
+    },
+    {
+      "name": "Asset",
+      "section": "Object: Asset",
+      "citation": {
+        "section": "Object: Asset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 469,
+        "end_line": 526
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 480,
+            "end_line": 482
+          }
+        },
+        {
+          "name": "req",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 485,
+            "end_line": 487
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "title",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 490,
+            "end_line": 492
+          },
+          "child_object": "TitleAsset"
+        },
+        {
+          "name": "image",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 496,
+            "end_line": 498
+          },
+          "child_object": "ImageAsset"
+        },
+        {
+          "name": "video",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 502,
+            "end_line": 504
+          },
+          "child_object": "VideoAsset"
+        },
+        {
+          "name": "data",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 508,
+            "end_line": 510
+          },
+          "child_object": "DataAsset"
+        },
+        {
+          "name": "link",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 514,
+            "end_line": 516
+          },
+          "child_object": "LinkAsset"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Asset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 520,
+            "end_line": 522
+          }
+        }
+      ]
+    },
+    {
+      "name": "LinkAsset",
+      "section": "Object: LinkAsset",
+      "citation": {
+        "section": "Object: LinkAsset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 527,
+        "end_line": 559
+      },
+      "fields": [
+        {
+          "name": "url",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: LinkAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 538,
+            "end_line": 540
+          }
+        },
+        {
+          "name": "urlfb",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: LinkAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 543,
+            "end_line": 545
+          }
+        },
+        {
+          "name": "trkr",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: LinkAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 548,
+            "end_line": 550
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: LinkAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 553,
+            "end_line": 555
+          }
+        }
+      ]
+    },
+    {
+      "name": "TitleAsset",
+      "section": "Object: TitleAsset",
+      "citation": {
+        "section": "Object: TitleAsset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 560,
+        "end_line": 587
+      },
+      "fields": [
+        {
+          "name": "text",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: TitleAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 571,
+            "end_line": 573
+          }
+        },
+        {
+          "name": "len",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: TitleAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 576,
+            "end_line": 578
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: TitleAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 581,
+            "end_line": 583
+          }
+        }
+      ]
+    },
+    {
+      "name": "ImageAsset",
+      "section": "Object: ImageAsset",
+      "citation": {
+        "section": "Object: ImageAsset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 588,
+        "end_line": 625
+      },
+      "fields": [
+        {
+          "name": "url",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: ImageAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 599,
+            "end_line": 601
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "integer; recommended",
+          "citation": {
+            "section": "Object: ImageAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 604,
+            "end_line": 606
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer; recommended",
+          "citation": {
+            "section": "Object: ImageAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 609,
+            "end_line": 611
+          }
+        },
+        {
+          "name": "type",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 614,
+            "end_line": 616
+          },
+          "adcom_list": "List: Native Image Asset Types"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: ImageAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 619,
+            "end_line": 621
+          }
+        }
+      ]
+    },
+    {
+      "name": "VideoAsset",
+      "section": "Object: VideoAsset",
+      "citation": {
+        "section": "Object: VideoAsset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 626,
+        "end_line": 655
+      },
+      "fields": [
+        {
+          "name": "adm",
+          "type_spec": "string; required *",
+          "citation": {
+            "section": "Object: VideoAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 637,
+            "end_line": 639
+          }
+        },
+        {
+          "name": "curl",
+          "type_spec": "string; required *",
+          "citation": {
+            "section": "Object: VideoAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 643,
+            "end_line": 645
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: VideoAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 649,
+            "end_line": 651
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataAsset",
+      "section": "Object: DataAsset",
+      "citation": {
+        "section": "Object: DataAsset",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 656,
+        "end_line": 688
+      },
+      "fields": [
+        {
+          "name": "value",
+          "type_spec": "string; required",
+          "citation": {
+            "section": "Object: DataAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 667,
+            "end_line": 669
+          }
+        },
+        {
+          "name": "len",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DataAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 672,
+            "end_line": 674
+          },
+          "adcom_list": "List: Native Data Asset Types"
+        },
+        {
+          "name": "type",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DataAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 677,
+            "end_line": 679
+          },
+          "adcom_list": "List: Native Data Asset Types"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: DataAsset",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 682,
+            "end_line": 684
+          }
+        }
+      ]
+    },
+    {
+      "name": "Event",
+      "section": "Object: Event",
+      "citation": {
+        "section": "Object: Event",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 689,
+        "end_line": 732
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 700,
+            "end_line": 702
+          },
+          "adcom_list": "List: Event Types"
+        },
+        {
+          "name": "method",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 705,
+            "end_line": 707
+          },
+          "adcom_list": "List: Event Tracking Methods"
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 710,
+            "end_line": 712
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "url",
+          "type_spec": "string; required *",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 715,
+            "end_line": 717
+          }
+        },
+        {
+          "name": "cdata",
+          "type_spec": "object (Map)",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 721,
+            "end_line": 723
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Event",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 726,
+            "end_line": 728
+          }
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "section": "Object: Video",
+      "citation": {
+        "section": "Object: Video",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 733,
+        "end_line": 782
+      },
+      "fields": [
+        {
+          "name": "mime",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 744,
+            "end_line": 746
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 749,
+            "end_line": 751
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 754,
+            "end_line": 756
+          },
+          "adcom_list": "List: Creative Subtypes - Audio/Video"
+        },
+        {
+          "name": "dur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 759,
+            "end_line": 761
+          }
+        },
+        {
+          "name": "adm",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 764,
+            "end_line": 766
+          }
+        },
+        {
+          "name": "curl",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 770,
+            "end_line": 772
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Video",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 776,
+            "end_line": 778
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "section": "Object: Audio",
+      "citation": {
+        "section": "Object: Audio",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 783,
+        "end_line": 832
+      },
+      "fields": [
+        {
+          "name": "mime",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 794,
+            "end_line": 796
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 799,
+            "end_line": 801
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 804,
+            "end_line": 806
+          },
+          "adcom_list": "List: Creative Subtypes - Audio/Video"
+        },
+        {
+          "name": "dur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 809,
+            "end_line": 811
+          }
+        },
+        {
+          "name": "adm",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 814,
+            "end_line": 816
+          }
+        },
+        {
+          "name": "curl",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 820,
+            "end_line": 822
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Audio",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 826,
+            "end_line": 828
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audit",
+      "section": "Object: Audit",
+      "citation": {
+        "section": "Object: Audit",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 833,
+        "end_line": 883
+      },
+      "fields": [
+        {
+          "name": "status",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 844,
+            "end_line": 846
+          },
+          "adcom_list": "List: Audit Status Codes"
+        },
+        {
+          "name": "feedback",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 849,
+            "end_line": 851
+          }
+        },
+        {
+          "name": "init",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 854,
+            "end_line": 856
+          }
+        },
+        {
+          "name": "lastmod",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 859,
+            "end_line": 861
+          }
+        },
+        {
+          "name": "corr",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 864,
+            "end_line": 866
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Audit",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 869,
+            "end_line": 871
+          }
+        }
+      ]
+    },
+    {
+      "name": "Placement",
+      "section": "Object: Placement",
+      "citation": {
+        "section": "Object: Placement",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 884,
+        "end_line": 966
+      },
+      "fields": [
+        {
+          "name": "tagid",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 897,
+            "end_line": 899
+          }
+        },
+        {
+          "name": "ssai",
+          "type_spec": "Integer; default 0",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 902,
+            "end_line": 904
+          },
+          "value_set": {
+            "values": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "name": "sdk",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 907,
+            "end_line": 909
+          }
+        },
+        {
+          "name": "sdkver",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 912,
+            "end_line": 914
+          }
+        },
+        {
+          "name": "reward",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 917,
+            "end_line": 919
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "wlang",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 922,
+            "end_line": 924
+          }
+        },
+        {
+          "name": "secure",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 927,
+            "end_line": 929
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "admx",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 932,
+            "end_line": 934
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "curlx",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 937,
+            "end_line": 939
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "display",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 942,
+            "end_line": 944
+          },
+          "child_object": "DisplayPlacement"
+        },
+        {
+          "name": "video",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 948,
+            "end_line": 950
+          },
+          "child_object": "VideoPlacement"
+        },
+        {
+          "name": "audio",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 954,
+            "end_line": 956
+          },
+          "child_object": "AudioPlacement"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Placement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 960,
+            "end_line": 962
+          }
+        }
+      ]
+    },
+    {
+      "name": "DisplayPlacement",
+      "section": "Object: DisplayPlacement",
+      "citation": {
+        "section": "Object: DisplayPlacement",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 967,
+        "end_line": 1074
+      },
+      "fields": [
+        {
+          "name": "pos",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 978,
+            "end_line": 980
+          },
+          "adcom_list": "List: Placement Positions"
+        },
+        {
+          "name": "instl",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 983,
+            "end_line": 985
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "topframe",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 988,
+            "end_line": 990
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "ifrbust",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 993,
+            "end_line": 995
+          }
+        },
+        {
+          "name": "clktype",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 998,
+            "end_line": 1000
+          },
+          "adcom_list": "List: Click Types"
+        },
+        {
+          "name": "ampren",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1003,
+            "end_line": 1005
+          },
+          "value_set": {
+            "values": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "name": "ptype",
+          "type_spec": "Integer; recommended",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1008,
+            "end_line": 1010
+          },
+          "adcom_list": "List: Display Placement Types"
+        },
+        {
+          "name": "context",
+          "type_spec": "integer; recommended",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1013,
+            "end_line": 1015
+          },
+          "adcom_list": "List: Display Context Types"
+        },
+        {
+          "name": "mime",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1018,
+            "end_line": 1020
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1023,
+            "end_line": 1025
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1028,
+            "end_line": 1030
+          },
+          "adcom_list": "List: Creative Subtypes - Display"
+        },
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1033,
+            "end_line": 1035
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1038,
+            "end_line": 1040
+          }
+        },
+        {
+          "name": "unit",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1043,
+            "end_line": 1045
+          },
+          "adcom_list": "List: Size Units"
+        },
+        {
+          "name": "priv",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1048,
+            "end_line": 1050
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "displayfmt",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1053,
+            "end_line": 1055
+          },
+          "child_object": "DisplayFormat"
+        },
+        {
+          "name": "nativefmt",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1058,
+            "end_line": 1060
+          },
+          "child_object": "NativeFormat"
+        },
+        {
+          "name": "event",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1063,
+            "end_line": 1065
+          },
+          "child_object": "EventSpec"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: DisplayPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1068,
+            "end_line": 1070
+          }
+        }
+      ]
+    },
+    {
+      "name": "DisplayFormat",
+      "section": "Object: DisplayFormat",
+      "citation": {
+        "section": "Object: DisplayFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1075,
+        "end_line": 1121
+      },
+      "fields": [
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1086,
+            "end_line": 1088
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1092,
+            "end_line": 1094
+          }
+        },
+        {
+          "name": "wratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1098,
+            "end_line": 1100
+          }
+        },
+        {
+          "name": "hratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1104,
+            "end_line": 1106
+          }
+        },
+        {
+          "name": "expdir",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1110,
+            "end_line": 1112
+          },
+          "adcom_list": "List: Expandable Directions"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: DisplayFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1115,
+            "end_line": 1117
+          }
+        }
+      ]
+    },
+    {
+      "name": "NativeFormat",
+      "section": "Object: NativeFormat",
+      "citation": {
+        "section": "Object: NativeFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1122,
+        "end_line": 1144
+      },
+      "fields": [
+        {
+          "name": "asset",
+          "type_spec": "object array; required",
+          "citation": {
+            "section": "Object: NativeFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1133,
+            "end_line": 1135
+          },
+          "child_object": "AssetFormat"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: NativeFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1138,
+            "end_line": 1140
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssetFormat",
+      "section": "Object: AssetFormat",
+      "citation": {
+        "section": "Object: AssetFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1145,
+        "end_line": 1196
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1156,
+            "end_line": 1158
+          }
+        },
+        {
+          "name": "req",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1161,
+            "end_line": 1163
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "title",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1166,
+            "end_line": 1168
+          },
+          "child_object": "TitleAssetFormat"
+        },
+        {
+          "name": "img",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1172,
+            "end_line": 1174
+          },
+          "child_object": "ImageAssetFormat"
+        },
+        {
+          "name": "video",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1178,
+            "end_line": 1180
+          },
+          "child_object": "VideoPlacement"
+        },
+        {
+          "name": "data",
+          "type_spec": "object; required *",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1184,
+            "end_line": 1186
+          },
+          "child_object": "DataAssetFormat"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: AssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1190,
+            "end_line": 1192
+          }
+        }
+      ]
+    },
+    {
+      "name": "TitleAssetFormat",
+      "section": "Object: TitleAssetFormat",
+      "citation": {
+        "section": "Object: TitleAssetFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1197,
+        "end_line": 1219
+      },
+      "fields": [
+        {
+          "name": "len",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: TitleAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1208,
+            "end_line": 1210
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: TitleAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1213,
+            "end_line": 1215
+          }
+        }
+      ]
+    },
+    {
+      "name": "ImageAssetFormat",
+      "section": "Object: ImageAssetFormat",
+      "citation": {
+        "section": "Object: ImageAssetFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1220,
+        "end_line": 1281
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1231,
+            "end_line": 1233
+          },
+          "adcom_list": "List: Native Image Asset Types"
+        },
+        {
+          "name": "mime",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1236,
+            "end_line": 1238
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1241,
+            "end_line": 1243
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1247,
+            "end_line": 1249
+          }
+        },
+        {
+          "name": "wmin",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1253,
+            "end_line": 1255
+          }
+        },
+        {
+          "name": "hmin",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1258,
+            "end_line": 1260
+          }
+        },
+        {
+          "name": "wratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1263,
+            "end_line": 1265
+          }
+        },
+        {
+          "name": "hratio",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1269,
+            "end_line": 1271
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: ImageAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1275,
+            "end_line": 1277
+          }
+        }
+      ]
+    },
+    {
+      "name": "DataAssetFormat",
+      "section": "Object: DataAssetFormat",
+      "citation": {
+        "section": "Object: DataAssetFormat",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1282,
+        "end_line": 1309
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: DataAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1293,
+            "end_line": 1295
+          },
+          "adcom_list": "List: Native Data Asset Types"
+        },
+        {
+          "name": "len",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: DataAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1298,
+            "end_line": 1300
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: DataAssetFormat",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1303,
+            "end_line": 1305
+          }
+        }
+      ]
+    },
+    {
+      "name": "EventSpec",
+      "section": "Object: EventSpec",
+      "citation": {
+        "section": "Object: EventSpec",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1310,
+        "end_line": 1362
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer; required",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1321,
+            "end_line": 1323
+          },
+          "adcom_list": "List: Event Types"
+        },
+        {
+          "name": "method",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1326,
+            "end_line": 1328
+          },
+          "adcom_list": "List: Event Tracking Methods"
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1331,
+            "end_line": 1333
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "jstrk",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1336,
+            "end_line": 1338
+          }
+        },
+        {
+          "name": "wjs",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1341,
+            "end_line": 1343
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "pxtrk",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1346,
+            "end_line": 1348
+          }
+        },
+        {
+          "name": "wpx",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1351,
+            "end_line": 1353
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: EventSpec",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1356,
+            "end_line": 1358
+          }
+        }
+      ]
+    },
+    {
+      "name": "VideoPlacement",
+      "section": "Object: VideoPlacement",
+      "citation": {
+        "section": "Object: VideoPlacement",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1363,
+        "end_line": 1549
+      },
+      "fields": [
+        {
+          "name": "ptype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1374,
+            "end_line": 1376
+          },
+          "adcom_list": "List: Plcmt Subtypes - Video"
+        },
+        {
+          "name": "pos",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1379,
+            "end_line": 1381
+          },
+          "adcom_list": "List: Placement Positions"
+        },
+        {
+          "name": "delay",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1384,
+            "end_line": 1386
+          },
+          "adcom_list": "List: Start Delay Modes"
+        },
+        {
+          "name": "skip",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1389,
+            "end_line": 1391
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "skipmin",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1394,
+            "end_line": 1396
+          }
+        },
+        {
+          "name": "skipafter",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1399,
+            "end_line": 1401
+          }
+        },
+        {
+          "name": "playmethod",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1404,
+            "end_line": 1406
+          },
+          "adcom_list": "List: Playback Methods"
+        },
+        {
+          "name": "playend",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1409,
+            "end_line": 1411
+          },
+          "adcom_list": "List: Playback Cessation Modes"
+        },
+        {
+          "name": "clktype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1414,
+            "end_line": 1416
+          },
+          "adcom_list": "List: Click Types"
+        },
+        {
+          "name": "mime",
+          "type_spec": "string array; required",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1419,
+            "end_line": 1421
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1424,
+            "end_line": 1426
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1429,
+            "end_line": 1431
+          },
+          "adcom_list": "List: Creative Subtypes - Audio/Video"
+        },
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1434,
+            "end_line": 1436
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1439,
+            "end_line": 1441
+          }
+        },
+        {
+          "name": "unit",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1444,
+            "end_line": 1446
+          },
+          "adcom_list": "List: Size Units"
+        },
+        {
+          "name": "mindur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1449,
+            "end_line": 1451
+          }
+        },
+        {
+          "name": "maxdur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1454,
+            "end_line": 1456
+          }
+        },
+        {
+          "name": "rqddurs",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1459,
+            "end_line": 1461
+          }
+        },
+        {
+          "name": "maxext",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1464,
+            "end_line": 1466
+          }
+        },
+        {
+          "name": "minbitr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1469,
+            "end_line": 1471
+          }
+        },
+        {
+          "name": "maxbitr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1474,
+            "end_line": 1476
+          }
+        },
+        {
+          "name": "delivery",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1479,
+            "end_line": 1481
+          },
+          "adcom_list": "List: Delivery Methods"
+        },
+        {
+          "name": "maxseq",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1484,
+            "end_line": 1486
+          }
+        },
+        {
+          "name": "poddur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1489,
+            "end_line": 1491
+          }
+        },
+        {
+          "name": "podid",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1494,
+            "end_line": 1496
+          }
+        },
+        {
+          "name": "podseq",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1499,
+            "end_line": 1501
+          },
+          "adcom_list": "List: Pod Sequence"
+        },
+        {
+          "name": "slotinpod",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1504,
+            "end_line": 1506
+          },
+          "adcom_list": "List: Slot Position in Pod"
+        },
+        {
+          "name": "mincpmpersec",
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1509,
+            "end_line": 1511
+          }
+        },
+        {
+          "name": "linear",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1514,
+            "end_line": 1516
+          },
+          "adcom_list": "List: Linearity Modes"
+        },
+        {
+          "name": "boxing",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1519,
+            "end_line": 1521
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "comp",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1524,
+            "end_line": 1526
+          },
+          "child_object": "Companion"
+        },
+        {
+          "name": "comptype",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1529,
+            "end_line": 1531
+          },
+          "adcom_list": "List: Companion Types"
+        },
+        {
+          "name": "expdir",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1534,
+            "end_line": 1536
+          },
+          "adcom_list": "List: Expandable Directions"
+        },
+        {
+          "name": "overlayexpdir",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1539,
+            "end_line": 1541
+          },
+          "adcom_list": "List: Expandable Directions"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: VideoPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1543,
+            "end_line": 1545
+          }
+        }
+      ]
+    },
+    {
+      "name": "AudioPlacement",
+      "section": "Object: AudioPlacement",
+      "citation": {
+        "section": "Object: AudioPlacement",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1550,
+        "end_line": 1702
+      },
+      "fields": [
+        {
+          "name": "delay",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1561,
+            "end_line": 1563
+          },
+          "adcom_list": "List: Start Delay Modes"
+        },
+        {
+          "name": "skip",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1566,
+            "end_line": 1568
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "skipmin",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1571,
+            "end_line": 1573
+          }
+        },
+        {
+          "name": "skipafter",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1576,
+            "end_line": 1578
+          }
+        },
+        {
+          "name": "playmethod",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1581,
+            "end_line": 1583
+          },
+          "adcom_list": "List: Playback Methods"
+        },
+        {
+          "name": "playend",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1586,
+            "end_line": 1588
+          },
+          "adcom_list": "List: Playback Cessation Modes"
+        },
+        {
+          "name": "feed",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1591,
+            "end_line": 1593
+          },
+          "adcom_list": "List: Feed Types"
+        },
+        {
+          "name": "nvol",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1596,
+            "end_line": 1598
+          },
+          "adcom_list": "List: Volume Normalization Modes"
+        },
+        {
+          "name": "mime",
+          "type_spec": "string array; required",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1601,
+            "end_line": 1603
+          }
+        },
+        {
+          "name": "api",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1606,
+            "end_line": 1608
+          },
+          "adcom_list": "List: API Frameworks"
+        },
+        {
+          "name": "ctype",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1611,
+            "end_line": 1613
+          },
+          "adcom_list": "List: Creative Subtypes - Audio/Video"
+        },
+        {
+          "name": "mindur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1616,
+            "end_line": 1618
+          }
+        },
+        {
+          "name": "maxdur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1621,
+            "end_line": 1623
+          }
+        },
+        {
+          "name": "rqddurs",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1626,
+            "end_line": 1628
+          }
+        },
+        {
+          "name": "maxext",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1631,
+            "end_line": 1633
+          }
+        },
+        {
+          "name": "minbitr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1636,
+            "end_line": 1638
+          }
+        },
+        {
+          "name": "maxbitr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1641,
+            "end_line": 1643
+          }
+        },
+        {
+          "name": "delivery",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1646,
+            "end_line": 1648
+          },
+          "adcom_list": "List: Delivery Methods"
+        },
+        {
+          "name": "maxseq",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1651,
+            "end_line": 1653
+          }
+        },
+        {
+          "name": "poddur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1656,
+            "end_line": 1658
+          }
+        },
+        {
+          "name": "podid",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1661,
+            "end_line": 1663
+          }
+        },
+        {
+          "name": "podseq",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1666,
+            "end_line": 1668
+          },
+          "adcom_list": "List: Pod Sequence"
+        },
+        {
+          "name": "slotinpod",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1671,
+            "end_line": 1673
+          },
+          "adcom_list": "List: Slot Position in Pod"
+        },
+        {
+          "name": "mincpmpersec",
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1676,
+            "end_line": 1678
+          }
+        },
+        {
+          "name": "comp",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1681,
+            "end_line": 1683
+          },
+          "child_object": "Companion"
+        },
+        {
+          "name": "comptype",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1686,
+            "end_line": 1688
+          },
+          "adcom_list": "List: Companion Types"
+        },
+        {
+          "name": "overlayexpdir",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1691,
+            "end_line": 1693
+          },
+          "adcom_list": "List: Expandable Directions"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: AudioPlacement",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1696,
+            "end_line": 1698
+          }
+        }
+      ]
+    },
+    {
+      "name": "Companion",
+      "section": "Object: Companion",
+      "citation": {
+        "section": "Object: Companion",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1703,
+        "end_line": 1743
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Companion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1714,
+            "end_line": 1716
+          }
+        },
+        {
+          "name": "vcm",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Companion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1719,
+            "end_line": 1721
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "display",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Companion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1724,
+            "end_line": 1726
+          },
+          "child_object": "DisplayPlacement"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Companion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1729,
+            "end_line": 1731
+          }
+        }
+      ]
+    },
+    {
+      "name": "Site",
+      "section": "Object: Site",
+      "citation": {
+        "section": "Object: Site",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1779,
+        "end_line": 1863
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1757,
+            "end_line": 1759
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1762,
+            "end_line": 1764
+          }
+        },
+        {
+          "name": "pub",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1767,
+            "end_line": 1769
+          },
+          "child_object": "Publisher"
+        },
+        {
+          "name": "content",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1772,
+            "end_line": 1774
+          },
+          "child_object": "Content"
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1792,
+            "end_line": 1794
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1797,
+            "end_line": 1799
+          }
+        },
+        {
+          "name": "sectcat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1802,
+            "end_line": 1804
+          }
+        },
+        {
+          "name": "pagecat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1807,
+            "end_line": 1809
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1812,
+            "end_line": 1814
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "privpolicy",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1817,
+            "end_line": 1819
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1822,
+            "end_line": 1824
+          }
+        },
+        {
+          "name": "kwarray",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1827,
+            "end_line": 1829
+          }
+        },
+        {
+          "name": "page",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1832,
+            "end_line": 1834
+          }
+        },
+        {
+          "name": "ref",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1837,
+            "end_line": 1839
+          }
+        },
+        {
+          "name": "search",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1842,
+            "end_line": 1844
+          }
+        },
+        {
+          "name": "mobile",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1847,
+            "end_line": 1849
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "amp",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1852,
+            "end_line": 1854
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Site",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1857,
+            "end_line": 1859
+          }
+        }
+      ]
+    },
+    {
+      "name": "App",
+      "section": "Object: App",
+      "citation": {
+        "section": "Object: App",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1864,
+        "end_line": 1948
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1757,
+            "end_line": 1759
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1762,
+            "end_line": 1764
+          }
+        },
+        {
+          "name": "pub",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1767,
+            "end_line": 1769
+          },
+          "child_object": "Publisher"
+        },
+        {
+          "name": "content",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1772,
+            "end_line": 1774
+          },
+          "child_object": "Content"
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1877,
+            "end_line": 1879
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1882,
+            "end_line": 1884
+          }
+        },
+        {
+          "name": "sectcat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1887,
+            "end_line": 1889
+          }
+        },
+        {
+          "name": "pagecat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1892,
+            "end_line": 1894
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1897,
+            "end_line": 1899
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "privpolicy",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1902,
+            "end_line": 1904
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1907,
+            "end_line": 1909
+          }
+        },
+        {
+          "name": "kwarray",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1912,
+            "end_line": 1914
+          }
+        },
+        {
+          "name": "bundle",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1917,
+            "end_line": 1919
+          }
+        },
+        {
+          "name": "storeid",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1922,
+            "end_line": 1924
+          }
+        },
+        {
+          "name": "storeurl",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1927,
+            "end_line": 1929
+          }
+        },
+        {
+          "name": "ver",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1932,
+            "end_line": 1934
+          }
+        },
+        {
+          "name": "paid",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1937,
+            "end_line": 1939
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: App",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1942,
+            "end_line": 1944
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dooh",
+      "section": "Object: Dooh",
+      "citation": {
+        "section": "Object: Dooh",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1949,
+        "end_line": 1988
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1757,
+            "end_line": 1759
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1762,
+            "end_line": 1764
+          }
+        },
+        {
+          "name": "pub",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1767,
+            "end_line": 1769
+          },
+          "child_object": "Publisher"
+        },
+        {
+          "name": "content",
+          "type_spec": "object",
+          "citation": {
+            "section": "Abstract Class: DistributionChannel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1772,
+            "end_line": 1774
+          },
+          "child_object": "Content"
+        },
+        {
+          "name": "venue",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Dooh",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1962,
+            "end_line": 1964
+          }
+        },
+        {
+          "name": "fixed",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Dooh",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1967,
+            "end_line": 1969
+          },
+          "value_set": {
+            "values": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "name": "etime",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Dooh",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1972,
+            "end_line": 1974
+          }
+        },
+        {
+          "name": "dpi",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Dooh",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1977,
+            "end_line": 1979
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Dooh",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 1982,
+            "end_line": 1984
+          }
+        }
+      ]
+    },
+    {
+      "name": "Publisher",
+      "section": "Object: Publisher",
+      "citation": {
+        "section": "Object: Publisher",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 1989,
+        "end_line": 2031
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string, recommended",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2000,
+            "end_line": 2002
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2005,
+            "end_line": 2007
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2010,
+            "end_line": 2012
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2015,
+            "end_line": 2017
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2020,
+            "end_line": 2022
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Publisher",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2025,
+            "end_line": 2027
+          }
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "section": "Object: Content",
+      "citation": {
+        "section": "Object: Content",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2032,
+        "end_line": 2073
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2038,
+            "end_line": 2038
+          }
+        },
+        {
+          "name": "episode",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2039,
+            "end_line": 2039
+          }
+        },
+        {
+          "name": "title",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2040,
+            "end_line": 2040
+          }
+        },
+        {
+          "name": "series",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2041,
+            "end_line": 2041
+          }
+        },
+        {
+          "name": "season",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2042,
+            "end_line": 2042
+          }
+        },
+        {
+          "name": "artist",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2043,
+            "end_line": 2043
+          }
+        },
+        {
+          "name": "genre",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2044,
+            "end_line": 2044
+          }
+        },
+        {
+          "name": "genres",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2045,
+            "end_line": 2045
+          }
+        },
+        {
+          "name": "gtax",
+          "type_spec": "integer; default 9",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2046,
+            "end_line": 2046
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "album",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2047,
+            "end_line": 2047
+          }
+        },
+        {
+          "name": "isrc",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2048,
+            "end_line": 2048
+          }
+        },
+        {
+          "name": "url",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2049,
+            "end_line": 2049
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2050,
+            "end_line": 2050
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer; default 1",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2051,
+            "end_line": 2051
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "prodq",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2052,
+            "end_line": 2052
+          },
+          "adcom_list": "List: Production Qualities"
+        },
+        {
+          "name": "context",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2053,
+            "end_line": 2053
+          },
+          "adcom_list": "List: Content Contexts"
+        },
+        {
+          "name": "rating",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2054,
+            "end_line": 2054
+          }
+        },
+        {
+          "name": "urating",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2055,
+            "end_line": 2055
+          }
+        },
+        {
+          "name": "mrating",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2056,
+            "end_line": 2056
+          },
+          "adcom_list": "List: Media Ratings"
+        },
+        {
+          "name": "keywords",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2057,
+            "end_line": 2057
+          }
+        },
+        {
+          "name": "kwarray",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2058,
+            "end_line": 2058
+          }
+        },
+        {
+          "name": "live",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2059,
+            "end_line": 2059
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "srcrel",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2060,
+            "end_line": 2060
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "len",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2061,
+            "end_line": 2061
+          }
+        },
+        {
+          "name": "lang",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2062,
+            "end_line": 2062
+          }
+        },
+        {
+          "name": "langb",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2063,
+            "end_line": 2063
+          }
+        },
+        {
+          "name": "embed",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2064,
+            "end_line": 2064
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "producer",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2065,
+            "end_line": 2065
+          },
+          "child_object": "Producer"
+        },
+        {
+          "name": "network",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2066,
+            "end_line": 2066
+          },
+          "child_object": "Network"
+        },
+        {
+          "name": "channel",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2067,
+            "end_line": 2067
+          },
+          "child_object": "Channel"
+        },
+        {
+          "name": "data",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2068,
+            "end_line": 2068
+          },
+          "child_object": "Data"
+        },
+        {
+          "name": "realtime",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2069,
+            "end_line": 2069
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "firstbroadcast",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2070,
+            "end_line": 2070
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Content",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2071,
+            "end_line": 2071
+          }
+        }
+      ]
+    },
+    {
+      "name": "Producer",
+      "section": "Object: Producer",
+      "citation": {
+        "section": "Object: Producer",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2074,
+        "end_line": 2115
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string, recommended",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2085,
+            "end_line": 2087
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2090,
+            "end_line": 2092
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2095,
+            "end_line": 2097
+          }
+        },
+        {
+          "name": "cat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2100,
+            "end_line": 2102
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2105,
+            "end_line": 2107
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Producer",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2110,
+            "end_line": 2112
+          }
+        }
+      ]
+    },
+    {
+      "name": "Network",
+      "section": "Object: Network",
+      "citation": {
+        "section": "Object: Network",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2116,
+        "end_line": 2147
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Network",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2127,
+            "end_line": 2129
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Network",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2132,
+            "end_line": 2134
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Network",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2137,
+            "end_line": 2139
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Network",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2142,
+            "end_line": 2144
+          }
+        }
+      ]
+    },
+    {
+      "name": "Channel",
+      "section": "Object: Channel",
+      "citation": {
+        "section": "Object: Channel",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2148,
+        "end_line": 2180
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Channel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2159,
+            "end_line": 2161
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Channel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2164,
+            "end_line": 2166
+          }
+        },
+        {
+          "name": "domain",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Channel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2169,
+            "end_line": 2171
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Channel",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2174,
+            "end_line": 2176
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "section": "Object: User",
+      "citation": {
+        "section": "Object: User",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2181,
+        "end_line": 2250
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2194,
+            "end_line": 2196
+          }
+        },
+        {
+          "name": "buyeruid",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2199,
+            "end_line": 2201
+          }
+        },
+        {
+          "name": "yob",
+          "type_spec": "integer, DEPRECATED",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2204,
+            "end_line": 2206
+          }
+        },
+        {
+          "name": "gender",
+          "type_spec": "string, DEPRECATED",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2209,
+            "end_line": 2211
+          }
+        },
+        {
+          "name": "keywords",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2214,
+            "end_line": 2216
+          }
+        },
+        {
+          "name": "kwarray",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2219,
+            "end_line": 2221
+          }
+        },
+        {
+          "name": "consent",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2224,
+            "end_line": 2226
+          }
+        },
+        {
+          "name": "geo",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2229,
+            "end_line": 2231
+          },
+          "child_object": "Geo"
+        },
+        {
+          "name": "data",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2234,
+            "end_line": 2236
+          },
+          "child_object": "Data"
+        },
+        {
+          "name": "eids",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2239,
+            "end_line": 2241
+          },
+          "child_object": "EID"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: User",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2244,
+            "end_line": 2246
+          }
+        }
+      ]
+    },
+    {
+      "name": "Device",
+      "section": "Object: Device",
+      "citation": {
+        "section": "Object: Device",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2251,
+        "end_line": 2411
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2264,
+            "end_line": 2266
+          },
+          "adcom_list": "List: Device Types"
+        },
+        {
+          "name": "ua",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2269,
+            "end_line": 2271
+          }
+        },
+        {
+          "name": "sua",
+          "type_spec": "UserAgent object",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2275,
+            "end_line": 2277
+          },
+          "child_object": "UserAgent"
+        },
+        {
+          "name": "ifa",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2280,
+            "end_line": 2282
+          }
+        },
+        {
+          "name": "dnt",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2285,
+            "end_line": 2287
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "lmt",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2290,
+            "end_line": 2292
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "make",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2295,
+            "end_line": 2297
+          }
+        },
+        {
+          "name": "model",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2300,
+            "end_line": 2302
+          }
+        },
+        {
+          "name": "os",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2305,
+            "end_line": 2307
+          },
+          "adcom_list": "List: Operating Systems"
+        },
+        {
+          "name": "osv",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2310,
+            "end_line": 2312
+          }
+        },
+        {
+          "name": "hwv",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2315,
+            "end_line": 2317
+          }
+        },
+        {
+          "name": "h",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2320,
+            "end_line": 2322
+          }
+        },
+        {
+          "name": "w",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2325,
+            "end_line": 2327
+          }
+        },
+        {
+          "name": "ppi",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2330,
+            "end_line": 2332
+          }
+        },
+        {
+          "name": "pxratio",
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2335,
+            "end_line": 2337
+          }
+        },
+        {
+          "name": "js",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2340,
+            "end_line": 2342
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "lang",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2345,
+            "end_line": 2347
+          }
+        },
+        {
+          "name": "langb",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2350,
+            "end_line": 2352
+          }
+        },
+        {
+          "name": "ip",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2355,
+            "end_line": 2357
+          }
+        },
+        {
+          "name": "ipv6",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2360,
+            "end_line": 2362
+          }
+        },
+        {
+          "name": "xff",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2365,
+            "end_line": 2367
+          }
+        },
+        {
+          "name": "iptr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2370,
+            "end_line": 2372
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "carrier",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2376,
+            "end_line": 2378
+          }
+        },
+        {
+          "name": "mccmnc",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2381,
+            "end_line": 2383
+          }
+        },
+        {
+          "name": "mccmncsim",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2386,
+            "end_line": 2388
+          }
+        },
+        {
+          "name": "contype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2391,
+            "end_line": 2393
+          },
+          "adcom_list": "List: Connection Types"
+        },
+        {
+          "name": "geofetch",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2396,
+            "end_line": 2398
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "geo",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2401,
+            "end_line": 2403
+          },
+          "child_object": "Geo"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Device",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2406,
+            "end_line": 2408
+          }
+        }
+      ]
+    },
+    {
+      "name": "UserAgent",
+      "section": "Object: UserAgent",
+      "citation": {
+        "section": "Object: UserAgent",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2412,
+        "end_line": 2466
+      },
+      "fields": [
+        {
+          "name": "browsers",
+          "type_spec": "array of BrandVersion objects; recommended",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2423,
+            "end_line": 2425
+          },
+          "child_object": "BrandVersion"
+        },
+        {
+          "name": "platform",
+          "type_spec": "BrandVersion object; recommended",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2428,
+            "end_line": 2430
+          },
+          "child_object": "BrandVersion"
+        },
+        {
+          "name": "mobile",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2433,
+            "end_line": 2435
+          }
+        },
+        {
+          "name": "architecture",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2438,
+            "end_line": 2440
+          }
+        },
+        {
+          "name": "bitness",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2443,
+            "end_line": 2445
+          }
+        },
+        {
+          "name": "model",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2448,
+            "end_line": 2450
+          }
+        },
+        {
+          "name": "source",
+          "type_spec": "integer; default 0",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2453,
+            "end_line": 2455
+          },
+          "adcom_list": "List: User-Agent Source"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: UserAgent",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2458,
+            "end_line": 2460
+          }
+        }
+      ]
+    },
+    {
+      "name": "BrandVersion",
+      "section": "Object: BrandVersion",
+      "citation": {
+        "section": "Object: BrandVersion",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2467,
+        "end_line": 2493
+      },
+      "fields": [
+        {
+          "name": "brand",
+          "type_spec": "string; recommended",
+          "citation": {
+            "section": "Object: BrandVersion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2478,
+            "end_line": 2480
+          }
+        },
+        {
+          "name": "version",
+          "type_spec": "array of string",
+          "citation": {
+            "section": "Object: BrandVersion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2483,
+            "end_line": 2485
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: BrandVersion",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2488,
+            "end_line": 2490
+          }
+        }
+      ]
+    },
+    {
+      "name": "Geo",
+      "section": "Object: Geo",
+      "citation": {
+        "section": "Object: Geo",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2494,
+        "end_line": 2575
+      },
+      "fields": [
+        {
+          "name": "type",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2507,
+            "end_line": 2509
+          },
+          "adcom_list": "List: Location Types"
+        },
+        {
+          "name": "lat",
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2512,
+            "end_line": 2514
+          }
+        },
+        {
+          "name": "lon",
+          "type_spec": "float",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2517,
+            "end_line": 2519
+          }
+        },
+        {
+          "name": "accur",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2522,
+            "end_line": 2524
+          }
+        },
+        {
+          "name": "lastfix",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2527,
+            "end_line": 2529
+          }
+        },
+        {
+          "name": "ipserv",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2532,
+            "end_line": 2534
+          },
+          "adcom_list": "List: IP Location Services"
+        },
+        {
+          "name": "country",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2537,
+            "end_line": 2539
+          }
+        },
+        {
+          "name": "region",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2543,
+            "end_line": 2545
+          }
+        },
+        {
+          "name": "metro",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2548,
+            "end_line": 2550
+          }
+        },
+        {
+          "name": "city",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2554,
+            "end_line": 2556
+          }
+        },
+        {
+          "name": "zip",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2559,
+            "end_line": 2561
+          }
+        },
+        {
+          "name": "utcoffset",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2564,
+            "end_line": 2566
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Geo",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2569,
+            "end_line": 2571
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data",
+      "section": "Object: Data",
+      "citation": {
+        "section": "Object: Data",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2576,
+        "end_line": 2615
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Data",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2589,
+            "end_line": 2591
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Data",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2594,
+            "end_line": 2596
+          }
+        },
+        {
+          "name": "cids",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Data",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2599,
+            "end_line": 2601
+          }
+        },
+        {
+          "name": "segment",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: Data",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2604,
+            "end_line": 2606
+          },
+          "child_object": "Segment"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Data",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2609,
+            "end_line": 2611
+          }
+        }
+      ]
+    },
+    {
+      "name": "Segment",
+      "section": "Object: Segment",
+      "citation": {
+        "section": "Object: Segment",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2616,
+        "end_line": 2648
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Segment",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2627,
+            "end_line": 2629
+          }
+        },
+        {
+          "name": "name",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Segment",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2632,
+            "end_line": 2634
+          }
+        },
+        {
+          "name": "value",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Segment",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2637,
+            "end_line": 2639
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Segment",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2642,
+            "end_line": 2644
+          }
+        }
+      ]
+    },
+    {
+      "name": "EID",
+      "section": "Object: Extended Identifiers",
+      "citation": {
+        "section": "Object: Extended Identifiers",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2649,
+        "end_line": 2692
+      },
+      "fields": [
+        {
+          "name": "source",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2660,
+            "end_line": 2662
+          }
+        },
+        {
+          "name": "uids",
+          "type_spec": "object array",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2665,
+            "end_line": 2667
+          },
+          "child_object": "UID"
+        },
+        {
+          "name": "inserter",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2670,
+            "end_line": 2672
+          }
+        },
+        {
+          "name": "matcher",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2675,
+            "end_line": 2677
+          }
+        },
+        {
+          "name": "mm",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2680,
+            "end_line": 2682
+          },
+          "adcom_list": "List: ID Match Methods"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Extended Identifiers",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2686,
+            "end_line": 2688
+          }
+        }
+      ]
+    },
+    {
+      "name": "UID",
+      "section": "Object: Extended Identifier UIDs",
+      "citation": {
+        "section": "Object: Extended Identifier UIDs",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2693,
+        "end_line": 2718
+      },
+      "fields": [
+        {
+          "name": "id",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Extended Identifier UIDs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2702,
+            "end_line": 2704
+          }
+        },
+        {
+          "name": "atype",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Extended Identifier UIDs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2707,
+            "end_line": 2709
+          },
+          "adcom_list": "List: Agent Types"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Extended Identifier UIDs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2712,
+            "end_line": 2714
+          }
+        }
+      ]
+    },
+    {
+      "name": "Regs",
+      "section": "Object: Regs",
+      "citation": {
+        "section": "Object: Regs",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2719,
+        "end_line": 2758
+      },
+      "fields": [
+        {
+          "name": "coppa",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Regs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2730,
+            "end_line": 2732
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "gdpr",
+          "type_spec": "integer",
+          "citation": {
+            "section": "Object: Regs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2736,
+            "end_line": 2738
+          },
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "name": "gpp",
+          "type_spec": "string",
+          "citation": {
+            "section": "Object: Regs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2742,
+            "end_line": 2744
+          }
+        },
+        {
+          "name": "gpp_sid",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Regs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2747,
+            "end_line": 2749
+          }
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Regs",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2752,
+            "end_line": 2754
+          }
+        }
+      ]
+    },
+    {
+      "name": "Restrictions",
+      "section": "Object: Restrictions",
+      "citation": {
+        "section": "Object: Restrictions",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 2759,
+        "end_line": 4870
+      },
+      "fields": [
+        {
+          "name": "acat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2770,
+            "end_line": 2772
+          }
+        },
+        {
+          "name": "bcat",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2775,
+            "end_line": 2777
+          }
+        },
+        {
+          "name": "cattax",
+          "type_spec": "integer; default 2",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2780,
+            "end_line": 2782
+          },
+          "adcom_list": "List: Category Taxonomies"
+        },
+        {
+          "name": "badv",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2785,
+            "end_line": 2787
+          }
+        },
+        {
+          "name": "bapp",
+          "type_spec": "string array",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2790,
+            "end_line": 2792
+          }
+        },
+        {
+          "name": "battr",
+          "type_spec": "integer array",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2795,
+            "end_line": 2797
+          },
+          "adcom_list": "List: Creative Attributes"
+        },
+        {
+          "name": "ext",
+          "type_spec": "object",
+          "citation": {
+            "section": "Object: Restrictions",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 2800,
+            "end_line": 2802
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spec",
+      "section": "Appendix C: OpenRTB Interfaces",
+      "citation": {
+        "section": "Appendix C: OpenRTB Interfaces",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 0,
+        "end_line": 0
+      },
+      "fields": [
+        {
+          "name": "placement",
+          "type_spec": "object; required",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Placement"
+        }
+      ]
+    },
+    {
+      "name": "Media",
+      "section": "Appendix C: OpenRTB Interfaces",
+      "citation": {
+        "section": "Appendix C: OpenRTB Interfaces",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 0,
+        "end_line": 0
+      },
+      "fields": [
+        {
+          "name": "ad",
+          "type_spec": "object; required",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Ad"
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "section": "Appendix C: OpenRTB Interfaces",
+      "citation": {
+        "section": "Appendix C: OpenRTB Interfaces",
+        "canonical_source_file": "source.md",
+        "helper_source_file": "source.md",
+        "start_line": 0,
+        "end_line": 0
+      },
+      "fields": [
+        {
+          "name": "regs",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Regs"
+        },
+        {
+          "name": "restrictions",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Restrictions"
+        },
+        {
+          "name": "site",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Site"
+        },
+        {
+          "name": "app",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "App"
+        },
+        {
+          "name": "dooh",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Dooh"
+        },
+        {
+          "name": "user",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "User"
+        },
+        {
+          "name": "device",
+          "type_spec": "object",
+          "citation": {
+            "section": "Appendix C: OpenRTB Interfaces",
+            "canonical_source_file": "source.md",
+            "helper_source_file": "source.md",
+            "start_line": 0,
+            "end_line": 0
+          },
+          "child_object": "Device"
+        }
+      ]
+    }
+  ]
+}

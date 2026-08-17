@@ -4,7 +4,7 @@ use serde_json::{Map, Value};
 
 use crate::{
     adcom_lists::adcom_list_by_name,
-    canonical_field, canonical_object,
+    canonical_adcom_object, canonical_field, canonical_object,
     dialect::{proto_declares_bool, snake_case_of_camel},
     path_status,
     version_rules::rule_path_leaves,
@@ -148,6 +148,7 @@ fn validate_payload(
         root,
         &mut Vec::new(),
         &mut String::new(),
+        true,
         &mut issues,
     );
 
@@ -159,9 +160,10 @@ fn validate_payload(
 
 /// OpenRTB 3.0 splits the transport layer (this catalog: Openrtb, Request,
 /// Item, Response, Bid) from the domain layer, which is AdCOM and lives under
-/// `item.spec` and `bid.media`. Everything in the transport layer is checked
-/// here; the domain objects are accepted as opaque objects, since no AdCOM
-/// catalog ships yet.
+/// `item.spec`, `bid.media`, and `request.context`. Transport objects are
+/// always checked. Domain objects are checked against the AdCOM 1.0 catalog
+/// when the envelope names AdCOM (the default); any other domainspec leaves
+/// them as opaque objects.
 fn validate_layered_payload(
     version: OpenRtbVersion,
     dialect: Dialect,
@@ -236,6 +238,10 @@ fn validate_layered_payload(
     }
 
     let mut instance_path = String::from(ENVELOPE_MEMBER);
+    let walk_adcom = match envelope.get("domainspec").and_then(Value::as_str) {
+        None => true,
+        Some(value) => value.eq_ignore_ascii_case(DEFAULT_DOMAIN_SPEC),
+    };
     validate_known_object(
         version,
         dialect,
@@ -244,6 +250,7 @@ fn validate_layered_payload(
         envelope,
         &mut vec![ENVELOPE_MEMBER],
         &mut instance_path,
+        walk_adcom,
         &mut issues,
     );
 
@@ -366,6 +373,7 @@ fn validate_known_object<'a>(
     object: &'a Map<String, Value>,
     logical_segments: &mut Vec<&'a str>,
     instance_path: &mut String,
+    walk_adcom: bool,
     issues: &mut Vec<Issue>,
 ) {
     let Some(definition) = canonical_object(version, object_name) else {
@@ -394,10 +402,9 @@ fn validate_known_object<'a>(
                 id: String::from("openrtb.field.required"),
                 severity: Severity::Error,
                 message: format!(
-                    "{} is required on OpenRTB {} {}.",
+                    "{} is required on {}.",
                     field.name,
-                    version.id(),
-                    object_name
+                    object_catalog_label(version, object_name)
                 ),
                 path: Some(join_instance_path(instance_path, field.name)),
                 section: Some(String::from(field.citation.section)),
@@ -503,40 +510,46 @@ fn validate_known_object<'a>(
 
         if matches!(field_definition.shape, ExpectedShape::Object) && value.is_object() {
             if let Some(child_object_name) = field_definition.child_object {
-                validate_known_object(
-                    version,
-                    dialect,
-                    kind,
-                    child_object_name,
-                    value.as_object().expect("checked object shape"),
-                    logical_segments,
-                    instance_path,
-                    issues,
-                );
+                if should_walk_child(walk_adcom, child_object_name) {
+                    validate_known_object(
+                        version,
+                        dialect,
+                        kind,
+                        child_object_name,
+                        value.as_object().expect("checked object shape"),
+                        logical_segments,
+                        instance_path,
+                        walk_adcom,
+                        issues,
+                    );
+                }
             }
         }
 
         if matches!(field_definition.shape, ExpectedShape::ObjectArray) && value.is_array() {
             if let Some(child_object_name) = field_definition.child_object {
-                for (index, item) in value
-                    .as_array()
-                    .expect("checked array shape")
-                    .iter()
-                    .enumerate()
-                {
-                    if let Some(item_object) = item.as_object() {
-                        let item_path_length = push_index_segment(instance_path, index);
-                        validate_known_object(
-                            version,
-                            dialect,
-                            kind,
-                            child_object_name,
-                            item_object,
-                            logical_segments,
-                            instance_path,
-                            issues,
-                        );
-                        instance_path.truncate(item_path_length);
+                if should_walk_child(walk_adcom, child_object_name) {
+                    for (index, item) in value
+                        .as_array()
+                        .expect("checked array shape")
+                        .iter()
+                        .enumerate()
+                    {
+                        if let Some(item_object) = item.as_object() {
+                            let item_path_length = push_index_segment(instance_path, index);
+                            validate_known_object(
+                                version,
+                                dialect,
+                                kind,
+                                child_object_name,
+                                item_object,
+                                logical_segments,
+                                instance_path,
+                                walk_adcom,
+                                issues,
+                            );
+                            instance_path.truncate(item_path_length);
+                        }
                     }
                 }
             }
@@ -763,6 +776,9 @@ fn validate_object_semantics(
 ) {
     validate_generic_exclusive_pairs(object, instance_path, object_section, issues);
 
+    let adcom_object = matches!(version.family(), crate::OpenRtbFamily::ThreeZero)
+        && canonical_adcom_object(object_name).is_some();
+
     match object_name {
         "BidRequest" => {
             validate_bid_request_semantics(object, instance_path, object_section, issues)
@@ -772,11 +788,17 @@ fn validate_object_semantics(
         }
         "Bid" => validate_bid_semantics(version, object, instance_path, object_section, issues),
         "Imp" => validate_imp_semantics(object, instance_path, object_section, issues),
-        "Video" => validate_video_semantics(object, instance_path, object_section, issues),
-        "Audio" => validate_audio_semantics(object, instance_path, object_section, issues),
+        "Video" if !adcom_object => {
+            validate_video_semantics(object, instance_path, object_section, issues)
+        }
+        "Audio" if !adcom_object => {
+            validate_audio_semantics(object, instance_path, object_section, issues)
+        }
         "Deal" => validate_deal_semantics(object, instance_path, object_section, issues),
         "Regs" => validate_regs_semantics(object, instance_path, object_section, issues),
-        "Native" => validate_native_semantics(object, instance_path, object_section, issues),
+        "Native" if !adcom_object => {
+            validate_native_semantics(object, instance_path, object_section, issues)
+        }
         "Source" => validate_source_semantics(object, instance_path, object_section, issues),
         "SupplyChain" => {
             validate_supply_chain_semantics(object, instance_path, object_section, issues)
@@ -784,7 +806,141 @@ fn validate_object_semantics(
         "SupplyChainNode" => {
             validate_supply_chain_node_semantics(object, instance_path, object_section, issues)
         }
+        "Placement" => require_at_least_one_of(
+            object,
+            &["display", "video", "audio"],
+            instance_path,
+            object_section,
+            "adcom.placement.subtype_required",
+            "A Placement needs at least one of display, video, or audio.",
+            issues,
+        ),
+        "Ad" => require_at_least_one_of(
+            object,
+            &["display", "video", "audio"],
+            instance_path,
+            object_section,
+            "adcom.ad.subtype_required",
+            "An Ad needs at least one of display, video, or audio.",
+            issues,
+        ),
+        "Asset" => require_at_least_one_of(
+            object,
+            &["title", "image", "video", "data", "link"],
+            instance_path,
+            object_section,
+            "adcom.asset.subtype_required",
+            "An Asset needs at least one of title, image, video, data, or link.",
+            issues,
+        ),
+        "AssetFormat" => require_at_least_one_of(
+            object,
+            &["title", "img", "video", "data"],
+            instance_path,
+            object_section,
+            "adcom.assetformat.subtype_required",
+            "An AssetFormat needs at least one of title, img, video, or data.",
+            issues,
+        ),
+        "Context" => {
+            validate_adcom_context_semantics(object, instance_path, object_section, issues)
+        }
+        "VideoPlacement" | "AudioPlacement" => {
+            validate_adcom_av_placement_semantics(object, instance_path, object_section, issues)
+        }
         _ => {}
+    }
+}
+
+/// 2.x passes `walk_adcom = true` because every nested object lives in that
+/// version's catalog. On 3.0, AdCOM children are skipped when the envelope
+/// names a domain spec other than AdCOM.
+fn should_walk_child(walk_adcom: bool, child_object_name: &str) -> bool {
+    walk_adcom || canonical_adcom_object(child_object_name).is_none()
+}
+
+fn object_catalog_label(version: OpenRtbVersion, object_name: &str) -> String {
+    if matches!(version.family(), crate::OpenRtbFamily::ThreeZero)
+        && canonical_adcom_object(object_name).is_some()
+    {
+        format!("AdCOM 1.0 {object_name}")
+    } else {
+        format!("OpenRTB {} {object_name}", version.id())
+    }
+}
+
+fn require_at_least_one_of(
+    object: &Map<String, Value>,
+    fields: &[&str],
+    instance_path: &str,
+    section: &str,
+    issue_id: &str,
+    message: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if fields.iter().any(|field| object.contains_key(*field)) {
+        return;
+    }
+
+    issues.push(Issue {
+        id: String::from(issue_id),
+        severity: Severity::Error,
+        message: String::from(message),
+        path: Some(String::from(instance_path)),
+        section: Some(String::from(section)),
+    });
+}
+
+fn validate_adcom_context_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let channels = ["site", "app", "dooh"]
+        .into_iter()
+        .filter(|field| object.contains_key(*field))
+        .collect::<Vec<_>>();
+    if channels.len() > 1 {
+        issues.push(Issue {
+            id: String::from("openrtb.fields.mutually_exclusive"),
+            severity: Severity::Error,
+            message: String::from(
+                "Only one of site, app, or dooh may be present on the same AdCOM context.",
+            ),
+            path: Some(join_instance_path(instance_path, channels[0])),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
+fn validate_adcom_av_placement_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let skippable = object.get("skip").and_then(integer_value) == Some(1);
+    for dependent_field in ["skipmin", "skipafter"] {
+        if object.contains_key(dependent_field) && !skippable {
+            issues.push(Issue {
+                id: String::from("openrtb.field.requires_skippable_video"),
+                severity: Severity::Error,
+                message: format!(
+                    "{} may only be present when skip is set to 1.",
+                    join_instance_path(instance_path, dependent_field)
+                ),
+                path: Some(join_instance_path(instance_path, dependent_field)),
+                section: Some(String::from(section)),
+            });
+        }
+    }
+
+    if object.contains_key("rqddurs") && object.contains_key("mindur") {
+        push_mutually_exclusive_issue("mindur", "rqddurs", instance_path, section, issues);
+    }
+    if object.contains_key("rqddurs") && object.contains_key("maxdur") {
+        push_mutually_exclusive_issue("maxdur", "rqddurs", instance_path, section, issues);
     }
 }
 

@@ -239,6 +239,7 @@
         {
           "name": "context",
           "type_spec": "object; recommended",
+          "child_object": "Context",
           "citation": {
             "section": "Object: Request",
             "canonical_source_file": "source.md",
@@ -533,6 +534,7 @@
         {
           "name": "spec",
           "type_spec": "object; required",
+          "child_object": "Spec",
           "citation": {
             "section": "Object: Item",
             "canonical_source_file": "source.md",
@@ -1011,6 +1013,7 @@
         {
           "name": "media",
           "type_spec": "object",
+          "child_object": "Media",
           "citation": {
             "section": "Object: Bid",
             "canonical_source_file": "source.md",

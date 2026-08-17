@@ -169,6 +169,22 @@ pub fn canonical_object_catalog(version: OpenRtbVersion) -> Option<&'static Stat
         .map(|(_, catalog)| *catalog)
 }
 
+pub fn canonical_adcom_catalog() -> Option<&'static StaticCatalog> {
+    GENERATED_ADCOM_CATALOGS
+        .iter()
+        .find(|(candidate, _)| *candidate == "1.0")
+        .map(|(_, catalog)| *catalog)
+}
+
+pub fn canonical_adcom_object(object_name: &str) -> Option<&'static StaticObject> {
+    canonical_adcom_catalog().and_then(|catalog| {
+        catalog
+            .objects
+            .iter()
+            .find(|object| object.name == object_name)
+    })
+}
+
 pub fn canonical_object(
     version: OpenRtbVersion,
     object_name: &str,
@@ -275,5 +291,19 @@ mod tests {
         assert_eq!(field.citation.canonical_source_file, "source.md");
         assert_eq!(field.citation.helper_source_file, "source.md");
         assert_eq!(root.citation.section, "Object: Openrtb");
+    }
+
+    #[test]
+    fn catalog_3_0_walks_adcom_placement_through_item_spec() {
+        let spec = canonical_field(OpenRtbVersion::V3_0, "Item", "spec")
+            .expect("3.0 Item.spec should exist");
+        assert_eq!(spec.child_object, Some("Spec"));
+        let placement = canonical_field(OpenRtbVersion::V3_0, "Spec", "placement")
+            .expect("AdCOM Spec.placement should exist");
+        assert_eq!(placement.child_object, Some("Placement"));
+        assert!(canonical_object(OpenRtbVersion::V3_0, "Placement").is_some());
+        assert!(canonical_adcom_object("Placement").is_some());
+        assert!(canonical_adcom_object("Ad").is_some());
+        assert!(canonical_adcom_object("Context").is_some());
     }
 }

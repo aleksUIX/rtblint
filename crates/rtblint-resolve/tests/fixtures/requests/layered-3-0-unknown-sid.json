@@ -1,0 +1,23 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "request": {
+      "id": "req-3-0",
+      "source": {
+        "schain": {
+          "complete": 1,
+          "ver": "1.0",
+          "nodes": [
+            { "asi": "exchange1.example", "sid": "not-a-seller", "hp": 1 }
+          ]
+        }
+      },
+      "context": {
+        "site": { "domain": "publisher.example" }
+      },
+      "item": [{ "id": "1", "spec": { "placement": { "display": { "w": 300, "h": 250 } } } }]
+    }
+  }
+}

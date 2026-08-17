@@ -41,7 +41,7 @@ jobs:
             echo "CARGO_REGISTRY_TOKEN secret not set; skipping crates.io publish."
             exit 0
           fi
-          for crate in rtblint-core rtblint rtblint-mcp; do
+          for crate in rtblint-core rtblint-resolve rtblint rtblint-mcp; do
             version=$(cargo metadata --no-deps --format-version 1 | jq -r ".packages[] | select(.name==\"$crate\") | .version")
             if curl -sf "https://crates.io/api/v1/crates/$crate/$version" -H "User-Agent: rtblint-release" > /dev/null; then
               echo "$crate $version already on crates.io; skipping."

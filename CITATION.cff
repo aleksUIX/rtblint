@@ -19,3 +19,14 @@ preferred-citation:
   doi: 10.13140/RG.2.2.27937.57448
   url: "https://www.researchgate.net/publication/410825866_How_Machine-Checkable_Is_OpenRTB_Classifying_the_Normative_Content_of_the_Protocol_That_Clears_Real-Time_Advertising"
   notes: "Preprint. Dataset and scripts in paper/openrtb-checkability/ of this repository."
+references:
+  - type: report
+    title: "Measuring OpenRTB Dialects in Client-Side Header Bidding"
+    authors:
+      - family-names: Sekowski
+        given-names: Aleksander
+    year: 2026
+    month: 8
+    doi: 10.13140/RG.2.2.26572.78720
+    url: "https://www.researchgate.net/publication/412299694_Measuring_OpenRTB_Dialects_in_Client-Side_Header_Bidding"
+    notes: "Preprint. Live-traffic measurement. Dataset and scripts in vast-media/paper/openrtb-wild/."

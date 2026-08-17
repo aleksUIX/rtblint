@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1
+
+# gRPC server image for the ARTF demo stack (and for anyone who wants
+# rtblint-grpc in a container). Separate from the MCP Dockerfile: different
+# binary, different ports, different reason to pull.
+
+FROM rust:1-slim-bookworm AS builder
+WORKDIR /build
+
+COPY Cargo.toml Cargo.lock README.md ./
+COPY crates ./crates
+COPY proto ./proto
+
+RUN cargo build --release -p rtblint-grpc --bin rtblint-grpc
+
+FROM debian:bookworm-slim
+COPY --from=builder /build/target/release/rtblint-grpc /usr/local/bin/rtblint-grpc
+
+EXPOSE 50061 9091
+
+ENV RTBLINT_GRPC_ADDR=0.0.0.0:50061 \
+    RTBLINT_METRICS_ADDR=0.0.0.0:9091
+
+ENTRYPOINT ["rtblint-grpc"]

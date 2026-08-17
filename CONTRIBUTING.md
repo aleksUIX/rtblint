@@ -19,6 +19,7 @@ All three must pass; CI enforces them.
 - `crates/rtblint-core`: the validation engine and embedded spec catalogs
 - `crates/rtblint`: the CLI
 - `crates/rtblint-mcp`: MCP server over stdio
+- `crates/rtblint-resolve`: opt-in sellers.json / ads.txt cache lookups
 - `crates/rtblint-wasm`: wasm-bindgen bindings
 - `npm/`: the Node package, wrapping a committed WASM build in `npm/wasm/`
 - `python/`, `go/`: not-implemented-yet stubs
@@ -30,10 +31,13 @@ All three must pass; CI enforces them.
   `crates/rtblint-core/tests/fixtures/`
 - Version delta rules in `crates/rtblint-core/src/version_rules.rs`
 - AdCOM list additions in `crates/rtblint-core/src/adcom_lists.rs`
+- AdCOM object catalog in `crates/rtblint-core/specs/adcom-1.0-object-catalog.json`
 - Bug reports with a payload that validates wrong (see the issue template)
 
-Every new rule needs a stable dotted id (`openrtb.<area>.<name>`), a fixture
-exercising it, and a spec section reference.
+Every new rule needs a stable dotted id (`openrtb.<area>.<name>`, or
+`adcom.<area>.<name>` for AdCOM domain rules), a fixture exercising it, and a
+spec section reference. Cache lookups (`openrtb.resolve.*`) live in
+`rtblint-resolve` with fixtures under that crate; they have no spec section.
 
 ## Spec catalogs
 

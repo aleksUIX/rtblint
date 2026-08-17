@@ -35,21 +35,21 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   `RTBResponse` mutation set cross-validated against the auction it targets,
   and an apply-then-revalidate pass that reports only the OpenRTB findings
   the mutations introduced
+- AdCOM 1.0 object catalog: OpenRTB 3.0 `item.spec`, `bid.media`, and
+  `request.context` are validated as Placement, Ad, and Context rather than
+  accepted as opaque. Site/App/Dooh inherit DistributionChannel. Subtype
+  rules fire when a Placement or Ad has none of display/video/audio.
+- Opt-in `--resolve`: each SupplyChain payment hop is checked against that
+  domain's sellers.json, and `app.bundle` or `site.domain` against the
+  publisher's ads.txt or app-ads.txt, from a locally cached directory
+  (`--cache`). The offline core stays a pure function of the payload.
 
 ## Next
 
-- AdCOM 1.0 object catalog, so the 3.0 domain layer (`item.spec`,
-  `bid.media`) is validated instead of accepted as opaque
-- Opt-in `--resolve` mode: extend the existing offline SupplyChain node
-  hygiene rules with external resolution, checking each `nodes[].asi`
-  against that domain's sellers.json, `sid` against the entry found there,
-  and `app.bundle` or `site.domain` against the publisher's ads.txt or
-  app-ads.txt. Backed by a locally cached reference database, shipped as a
-  separate crate so the offline core stays a pure function of the payload
+- NDJSON stream mode: lint captured bid streams, aggregate rule frequencies
 
 ## Later
 
-- NDJSON stream mode: lint captured bid streams, aggregate rule frequencies
 - Exchange dialect profiles (validate against a specific platform's
   documented requirements on top of the spec), on the dialect machinery the
   protobuf JSON profile already established

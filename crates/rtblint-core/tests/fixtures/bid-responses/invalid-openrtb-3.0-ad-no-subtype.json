@@ -1,0 +1,26 @@
+{
+  "openrtb": {
+    "ver": "3.0",
+    "domainspec": "adcom",
+    "domainver": "1.0",
+    "response": {
+      "id": "req-3-0-ad-no-subtype",
+      "seatbid": [
+        {
+          "bid": [
+            {
+              "id": "bid-1",
+              "item": "item-1",
+              "price": 1.0,
+              "media": {
+                "ad": {
+                  "id": "creative-no-subtype"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

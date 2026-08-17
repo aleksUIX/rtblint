@@ -1,0 +1,3 @@
+# publisher.example ads.txt
+CONTACT=ads@publisher.example
+exchange1.example, seller-abc, DIRECT

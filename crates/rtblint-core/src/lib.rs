@@ -16,9 +16,10 @@ pub use artf::{
     validate_artf_response_against_request, ArtfApplication, ArtfMutationOutcome,
 };
 pub use canonical_catalog::{
-    canonical_field, canonical_object, canonical_object_catalog, canonical_object_catalog_versions,
-    CanonicalField, CanonicalObject, CanonicalObjectCatalog, CatalogCitation, CatalogValueSet,
-    ExpectedShape, StaticCatalog, StaticCitation, StaticField, StaticObject, StaticValueSet,
+    canonical_adcom_catalog, canonical_adcom_object, canonical_field, canonical_object,
+    canonical_object_catalog, canonical_object_catalog_versions, CanonicalField, CanonicalObject,
+    CanonicalObjectCatalog, CatalogCitation, CatalogValueSet, ExpectedShape, StaticCatalog,
+    StaticCitation, StaticField, StaticObject, StaticValueSet,
 };
 pub use dialect::{proto_bool_fields, Dialect};
 pub use schema_manifest::{
@@ -185,6 +186,15 @@ pub struct ValidationResult {
     pub issues: Vec<Issue>,
 }
 
+impl Default for ValidationResult {
+    fn default() -> Self {
+        Self {
+            valid: true,
+            issues: Vec::new(),
+        }
+    }
+}
+
 /// Severity of a validation issue. Serializes as a lowercase string
 /// ("error", "warning").
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
@@ -223,6 +233,26 @@ pub struct Issue {
     pub path: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub section: Option<String>,
+}
+
+impl Issue {
+    /// Builds a finding. `section` is omitted; catalog-backed rules set it
+    /// internally. Downstream crates (for example `rtblint-resolve`) use this
+    /// because `Issue` is non-exhaustive.
+    pub fn new(
+        id: impl Into<String>,
+        severity: Severity,
+        message: impl Into<String>,
+        path: Option<String>,
+    ) -> Self {
+        Self {
+            id: id.into(),
+            severity,
+            message: message.into(),
+            path,
+            section: None,
+        }
+    }
 }
 
 #[cfg(test)]
@@ -1079,6 +1109,82 @@ mod tests {
             &result,
             "openrtb.native.request.unparseable",
             "imp[0].native.request"
+        ));
+    }
+
+    #[test]
+    fn validate_3_0_walks_adcom_placement() {
+        let result = validate_bid_request_for_version(
+            OpenRtbVersion::V3_0,
+            r#"{
+                "openrtb": {
+                    "ver": "3.0",
+                    "domainspec": "adcom",
+                    "domainver": "1.0",
+                    "request": {
+                        "id": "req-1",
+                        "item": [{
+                            "id": "1",
+                            "spec": {
+                                "placement": {
+                                    "tagid": "plc-1",
+                                    "display": { "w": 300, "h": 250 }
+                                }
+                            }
+                        }]
+                    }
+                }
+            }"#,
+        );
+        assert!(result.valid, "{:?}", result);
+        assert!(result.issues.is_empty(), "{:?}", result.issues);
+    }
+
+    #[test]
+    fn validate_3_0_reports_unknown_adcom_field() {
+        let result = validate_bid_request_for_version(
+            OpenRtbVersion::V3_0,
+            r#"{
+                "openrtb": {
+                    "ver": "3.0",
+                    "domainver": "1.0",
+                    "request": {
+                        "id": "req-1",
+                        "item": [{
+                            "id": "1",
+                            "spec": {
+                                "placement": {
+                                    "display": { "w": 300, "h": 250 },
+                                    "bogus": 1
+                                }
+                            }
+                        }]
+                    }
+                }
+            }"#,
+        );
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.field.undefined",
+            "openrtb.request.item[0].spec.placement.bogus"
+        ));
+    }
+
+    #[test]
+    fn validate_2_x_still_walks_site_despite_adcom_name_overlap() {
+        let result = validate(
+            r#"{
+                "id": "request-1",
+                "imp": [{ "id": "imp-1", "banner": { "w": 300, "h": 250 } }],
+                "site": { "id": "site-1", "notafield": true }
+            }"#,
+        );
+        assert!(!result.valid);
+        assert!(has_issue(
+            &result,
+            "openrtb.field.undefined",
+            "site.notafield"
         ));
     }
 }

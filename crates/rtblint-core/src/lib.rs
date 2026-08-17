@@ -5,6 +5,7 @@ mod canonical_catalog;
 pub mod catalog_extract;
 mod dialect;
 mod pair;
+mod profile;
 mod schema_manifest;
 mod validator;
 mod version_rules;
@@ -22,6 +23,7 @@ pub use canonical_catalog::{
     StaticCitation, StaticField, StaticObject, StaticValueSet,
 };
 pub use dialect::{proto_bool_fields, Dialect};
+pub use profile::{Profile, RequiredField};
 pub use schema_manifest::{
     schema_manifest, schema_manifest_versions, schema_path_entry, SchemaCoverage, SchemaManifest,
     SchemaPathEntry, SchemaPathState,
@@ -63,12 +65,12 @@ pub fn validate(_input: &str) -> ValidationResult {
 
 /// Validates an OpenRTB bid request payload for a specific tracked version.
 pub fn validate_bid_request_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validator::validate_bid_request(version, Dialect::SpecJson, input)
+    validator::validate_bid_request(version, Dialect::SpecJson, Profile::Spec, input)
 }
 
 /// Validates an OpenRTB bid response payload for a specific tracked version.
 pub fn validate_bid_response_for_version(version: OpenRtbVersion, input: &str) -> ValidationResult {
-    validator::validate_bid_response(version, Dialect::SpecJson, input)
+    validator::validate_bid_response(version, Dialect::SpecJson, Profile::Spec, input)
 }
 
 /// Validates an OpenRTB bid request payload written in a specific JSON
@@ -85,7 +87,21 @@ pub fn validate_bid_request_with_dialect(
     dialect: Dialect,
     input: &str,
 ) -> ValidationResult {
-    validator::validate_bid_request(version, dialect, input)
+    validate_bid_request_with_profile(version, dialect, Profile::Spec, input)
+}
+
+/// Validates an OpenRTB bid request against a JSON dialect and an exchange
+/// profile. [`Profile::Spec`] is just the specification.
+/// [`Profile::GoogleAuthorizedBuyers`] applies Google's documented protocol
+/// extras on top: `at: 3` (FIXED_PRICE) is a valid auction type, and each Imp
+/// must carry `ext.billing_id`.
+pub fn validate_bid_request_with_profile(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    profile: Profile,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_request(version, dialect, profile, input)
 }
 
 /// Validates an OpenRTB bid response payload written in a specific JSON
@@ -95,7 +111,18 @@ pub fn validate_bid_response_with_dialect(
     dialect: Dialect,
     input: &str,
 ) -> ValidationResult {
-    validator::validate_bid_response(version, dialect, input)
+    validate_bid_response_with_profile(version, dialect, Profile::Spec, input)
+}
+
+/// Validates an OpenRTB bid response against a JSON dialect and an exchange
+/// profile. See [`validate_bid_request_with_profile`].
+pub fn validate_bid_response_with_profile(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    profile: Profile,
+    input: &str,
+) -> ValidationResult {
+    validator::validate_bid_response(version, dialect, profile, input)
 }
 
 /// Validates an OpenRTB bid response payload against the bid request it
@@ -119,6 +146,7 @@ pub fn validate_bid_response_against_request(
     pair::validate_bid_response_against_request(
         version,
         Dialect::SpecJson,
+        Profile::Spec,
         request_input,
         response_input,
     )
@@ -133,7 +161,32 @@ pub fn validate_bid_response_against_request_with_dialect(
     request_input: &str,
     response_input: &str,
 ) -> ValidationResult {
-    pair::validate_bid_response_against_request(version, dialect, request_input, response_input)
+    validate_bid_response_against_request_with_profile(
+        version,
+        dialect,
+        Profile::Spec,
+        request_input,
+        response_input,
+    )
+}
+
+/// Validates a bid response against its bid request, with both payloads
+/// written in a specific JSON dialect and checked against an exchange
+/// profile. See [`validate_bid_request_with_profile`].
+pub fn validate_bid_response_against_request_with_profile(
+    version: OpenRtbVersion,
+    dialect: Dialect,
+    profile: Profile,
+    request_input: &str,
+    response_input: &str,
+) -> ValidationResult {
+    pair::validate_bid_response_against_request(
+        version,
+        dialect,
+        profile,
+        request_input,
+        response_input,
+    )
 }
 
 /// Validates whether an object field exists in the canonical catalog for a specific OpenRTB version.

@@ -43,16 +43,15 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   domain's sellers.json, and `app.bundle` or `site.domain` against the
   publisher's ads.txt or app-ads.txt, from a locally cached directory
   (`--cache`). The offline core stays a pure function of the payload.
-
-## Next
-
-- NDJSON stream mode: lint captured bid streams, aggregate rule frequencies
+- NDJSON stream mode: `--batch` lints one payload per line from a file or
+  stdin; `--summary` prints how often each rule id fired across the capture
+- Exchange profiles: documented protocol requirements on top of the spec.
+  `--profile google-ab` (Google Authorized Buyers) accepts `at: 3`
+  (FIXED_PRICE) and requires `Imp.ext.billing_id`. Orthogonal to `--dialect`.
+  Business policy stays out.
 
 ## Later
 
-- Exchange dialect profiles (validate against a specific platform's
-  documented requirements on top of the spec), on the dialect machinery the
-  protobuf JSON profile already established
 - ARTF beyond v1.0: the intent set is growing in the reference repository, and
   each new intent brings a payload shape and a target vocabulary to check
 - GitHub Action and pre-commit hook

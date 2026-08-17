@@ -158,6 +158,33 @@ function validate_dialect(version_id, dialect_id, input) {
 exports.validate_dialect = validate_dialect;
 
 /**
+ * Validate an OpenRTB bid request against a JSON dialect and an exchange
+ * profile ("spec" or "google-ab"). Empty profile id means the specification
+ * only. Unknown ids are rejected.
+ * @param {string} version_id
+ * @param {string} dialect_id
+ * @param {string} profile_id
+ * @param {string} input
+ * @returns {any}
+ */
+function validate_profile(version_id, dialect_id, profile_id, input) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(dialect_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(profile_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ptr3 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len3 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_profile(ptr0, len0, ptr1, len1, ptr2, len2, ptr3, len3);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_profile = validate_profile;
+
+/**
  * Validate an OpenRTB bid response payload against the latest tracked 2.6 snapshot.
  *
  * Returns `{ valid: boolean, issues: Array<{ id, severity, message, path }> }`.
@@ -202,6 +229,35 @@ function validate_response_against_request(version_id, request, response) {
 exports.validate_response_against_request = validate_response_against_request;
 
 /**
+ * Validate an OpenRTB bid response against the bid request it answers, for
+ * a specific dialect and exchange profile.
+ * @param {string} version_id
+ * @param {string} dialect_id
+ * @param {string} profile_id
+ * @param {string} request
+ * @param {string} response
+ * @returns {any}
+ */
+function validate_response_against_request_profile(version_id, dialect_id, profile_id, request, response) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(dialect_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(profile_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ptr3 = passStringToWasm0(request, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len3 = WASM_VECTOR_LEN;
+    const ptr4 = passStringToWasm0(response, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len4 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_response_against_request_profile(ptr0, len0, ptr1, len1, ptr2, len2, ptr3, len3, ptr4, len4);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_response_against_request_profile = validate_response_against_request_profile;
+
+/**
  * Validate an OpenRTB bid response written in a specific JSON dialect.
  * @param {string} version_id
  * @param {string} dialect_id
@@ -222,6 +278,32 @@ function validate_response_dialect(version_id, dialect_id, input) {
     return takeFromExternrefTable0(ret[0]);
 }
 exports.validate_response_dialect = validate_response_dialect;
+
+/**
+ * Validate an OpenRTB bid response against a JSON dialect and an exchange
+ * profile.
+ * @param {string} version_id
+ * @param {string} dialect_id
+ * @param {string} profile_id
+ * @param {string} input
+ * @returns {any}
+ */
+function validate_response_profile(version_id, dialect_id, profile_id, input) {
+    const ptr0 = passStringToWasm0(version_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passStringToWasm0(dialect_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ptr2 = passStringToWasm0(profile_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len2 = WASM_VECTOR_LEN;
+    const ptr3 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len3 = WASM_VECTOR_LEN;
+    const ret = wasm.validate_response_profile(ptr0, len0, ptr1, len1, ptr2, len2, ptr3, len3);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+}
+exports.validate_response_profile = validate_response_profile;
 
 /**
  * Validate an OpenRTB bid response payload against a specific tracked version id

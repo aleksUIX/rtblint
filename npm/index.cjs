@@ -65,6 +65,29 @@ function validateResponseDialect(input, dialect, version) {
   return wasm.validate_response_dialect(version ?? "", dialect, input);
 }
 
+/**
+ * Validate an OpenRTB bid request against an exchange profile.
+ * "spec" (default) is the specification only. "google-ab" is Google
+ * Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and
+ * each Imp must carry ext.billing_id.
+ * @param {string} input - Raw bid request JSON.
+ * @param {"spec"|"google-ab"} profile - Exchange profile.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateProfile(input, profile, version) {
+  return wasm.validate_profile(version ?? "", "spec-json", profile, input);
+}
+
+/**
+ * Validate an OpenRTB bid response against an exchange profile.
+ * @param {string} input - Raw bid response JSON.
+ * @param {"spec"|"google-ab"} profile - Exchange profile.
+ * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+function validateResponseProfile(input, profile, version) {
+  return wasm.validate_response_profile(version ?? "", "spec-json", profile, input);
+}
+
 /** Every field the IAB OpenRTB protobuf schema types differently from the spec. */
 function protoBoolDivergences() {
   return wasm.proto_bool_divergences();
@@ -124,6 +147,8 @@ module.exports = {
   validateResponseAgainstRequest,
   validateDialect,
   validateResponseDialect,
+  validateProfile,
+  validateResponseProfile,
   protoBoolDivergences,
   validateArtfRequest,
   validateArtfResponse,

@@ -103,6 +103,32 @@ export function validateResponseDialect(
   version?: string
 ): ValidationResult;
 
+/**
+ * Exchange profile applied on top of the spec. "spec" is the specification
+ * only. "google-ab" is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE)
+ * is a valid auction type, and each Imp must carry ext.billing_id.
+ */
+export type Profile = "spec" | "google-ab";
+
+/**
+ * Validate an OpenRTB bid request against an exchange profile.
+ * @param input Raw bid request JSON.
+ * @param profile Exchange profile.
+ * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ */
+export function validateProfile(
+  input: string,
+  profile: Profile,
+  version?: string
+): ValidationResult;
+
+/** Validate an OpenRTB bid response against an exchange profile. */
+export function validateResponseProfile(
+  input: string,
+  profile: Profile,
+  version?: string
+): ValidationResult;
+
 /** Every field the OpenRTB protobuf schema types differently from the spec. */
 export function protoBoolDivergences(): ProtoBoolField[];
 

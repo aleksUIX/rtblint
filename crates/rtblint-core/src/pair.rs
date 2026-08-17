@@ -13,16 +13,17 @@ use serde_json::{Map, Value};
 use crate::{
     canonical_object,
     validator::{classify_adm, finalize_result, integer_value, validate_bid_response, AdmMarkup},
-    Dialect, Issue, OpenRtbVersion, Severity,
+    Dialect, Issue, OpenRtbVersion, Profile, Severity,
 };
 
 pub(crate) fn validate_bid_response_against_request(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     request_input: &str,
     response_input: &str,
 ) -> crate::ValidationResult {
-    let mut result = validate_bid_response(version, dialect, response_input);
+    let mut result = validate_bid_response(version, dialect, profile, response_input);
 
     // The cross-checks are written against 2.x shapes (imp ids, media
     // subtypes, pmp deals). A 3.0 pair validates layer by layer instead, and

@@ -115,6 +115,7 @@ impl RtblintService for RtblintApi {
             let request = request.into_inner();
             let version = convert::version(request.context.as_ref())?;
             let dialect = convert::dialect(request.context.as_ref());
+            let profile = convert::profile(request.context.as_ref())?;
 
             // Required, and rejected rather than guessed. A bid request and a
             // bid response are both JSON objects with an `id`, so any sniffing
@@ -127,13 +128,17 @@ impl RtblintService for RtblintApi {
             let result = match kind {
                 PayloadKind::BidRequest => {
                     run(budget, move || {
-                        core::validate_bid_request_with_dialect(version, dialect, &document)
+                        core::validate_bid_request_with_profile(
+                            version, dialect, profile, &document,
+                        )
                     })
                     .await?
                 }
                 PayloadKind::BidResponse => {
                     run(budget, move || {
-                        core::validate_bid_response_with_dialect(version, dialect, &document)
+                        core::validate_bid_response_with_profile(
+                            version, dialect, profile, &document,
+                        )
                     })
                     .await?
                 }
@@ -162,14 +167,16 @@ impl RtblintService for RtblintApi {
             let request = request.into_inner();
             let version = convert::version(request.context.as_ref())?;
             let dialect = convert::dialect(request.context.as_ref());
+            let profile = convert::profile(request.context.as_ref())?;
 
             let bid_request = request.bid_request;
             let bid_response = request.bid_response;
 
             let result = run(budget, move || {
-                core::validate_bid_response_against_request_with_dialect(
+                core::validate_bid_response_against_request_with_profile(
                     version,
                     dialect,
+                    profile,
                     &bid_request,
                     &bid_response,
                 )
@@ -193,6 +200,7 @@ impl RtblintService for RtblintApi {
             let context = request.context.as_ref();
             let version = convert::version(context)?;
             convert::reject_dialect_on_artf(context)?;
+            convert::reject_profile_on_artf(context)?;
 
             let rtb_request = request.rtb_request;
             let result = run(budget, move || {
@@ -217,6 +225,7 @@ impl RtblintService for RtblintApi {
             let context = request.context.as_ref();
             let version = convert::version(context)?;
             convert::reject_dialect_on_artf(context)?;
+            convert::reject_profile_on_artf(context)?;
 
             let rtb_request = request.rtb_request;
             let rtb_response = request.rtb_response;
@@ -355,6 +364,7 @@ mod tests {
                 context: Some(crate::proto::ValidationContext {
                     version: "9.9".to_string(),
                     dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: String::new(),
                 }),
             }))
             .await
@@ -375,6 +385,7 @@ mod tests {
                 context: Some(crate::proto::ValidationContext {
                     version: "2.5".to_string(),
                     dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: String::new(),
                 }),
             }))
             .await
@@ -490,6 +501,7 @@ mod tests {
                 context: Some(crate::proto::ValidationContext {
                     version: String::new(),
                     dialect: crate::proto::JsonDialect::Proto as i32,
+                    profile: String::new(),
                 }),
             }))
             .await
@@ -499,6 +511,76 @@ mod tests {
             .expect("verdict present");
 
         assert!(as_proto.valid, "unexpected findings: {:?}", as_proto.issues);
+    }
+
+    /// Google's auction type 3 is not in the spec's {1, 2} set, so the same
+    /// payload is invalid under the spec profile and valid under google-ab.
+    #[tokio::test]
+    async fn the_profile_decides_whether_fixed_price_is_an_auction_type() {
+        let google = r#"{
+            "id": "r1",
+            "at": 3,
+            "imp": [{
+                "id": "i1",
+                "banner": { "w": 300, "h": 250 },
+                "ext": { "billing_id": ["1"] }
+            }]
+        }"#;
+
+        let as_spec = service()
+            .validate(validate_request(google, PayloadKind::BidRequest))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(!as_spec.valid);
+        assert!(as_spec
+            .issues
+            .iter()
+            .any(|issue| issue.rule_id == "openrtb.value.invalid" && issue.path == "at"));
+
+        let as_google = service()
+            .validate(Request::new(ValidateRequest {
+                document: google.to_string(),
+                kind: PayloadKind::BidRequest as i32,
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: "google-ab".to_string(),
+                }),
+            }))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(
+            as_google.valid,
+            "unexpected findings: {:?}",
+            as_google.issues
+        );
+    }
+
+    #[tokio::test]
+    async fn an_unknown_profile_is_rejected() {
+        let status = service()
+            .validate(Request::new(ValidateRequest {
+                document: VALID_REQUEST.to_string(),
+                kind: PayloadKind::BidRequest as i32,
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: "magnite".to_string(),
+                }),
+            }))
+            .await
+            .expect_err("unknown profile is rejected");
+
+        assert_eq!(status.code(), tonic::Code::InvalidArgument);
+        assert!(status.message().contains("magnite"));
     }
 
     // -- ARTF --
@@ -597,6 +679,7 @@ mod tests {
                 context: Some(crate::proto::ValidationContext {
                     version: String::new(),
                     dialect: crate::proto::JsonDialect::Proto as i32,
+                    profile: String::new(),
                 }),
             }))
             .await
@@ -604,6 +687,24 @@ mod tests {
 
         assert_eq!(status.code(), tonic::Code::InvalidArgument);
         assert!(status.message().contains("protobuf JSON by definition"));
+    }
+
+    #[tokio::test]
+    async fn a_declared_profile_is_refused_on_the_artf_rpcs() {
+        let status = service()
+            .validate_artf_envelope(Request::new(ValidateArtfEnvelopeRequest {
+                rtb_request: ARTF_ENVELOPE.to_string(),
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: "google-ab".to_string(),
+                }),
+            }))
+            .await
+            .expect_err("a declared profile is refused");
+
+        assert_eq!(status.code(), tonic::Code::InvalidArgument);
+        assert!(status.message().contains("not an exchange"));
     }
 
     #[tokio::test]

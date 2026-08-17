@@ -16,8 +16,8 @@ use serde_json::{json, Value};
 
 use rtblint_core::{
     validate_artf_mutations_applied, validate_artf_request, validate_artf_response_against_request,
-    validate_bid_request_with_dialect, validate_bid_response_against_request_with_dialect,
-    validate_bid_response_with_dialect, Dialect, OpenRtbVersion,
+    validate_bid_request_with_profile, validate_bid_response_against_request_with_profile,
+    validate_bid_response_with_profile, Dialect, OpenRtbVersion, Profile,
 };
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
@@ -111,6 +111,13 @@ fn tool_definitions() -> Value {
             "description": "JSON dialect the payload is written in. spec-json (default) types flag fields such as imp.secure, regs.coppa and pmp.private_auction as integers, the way the OpenRTB specification does. proto-json follows the IAB OpenRTB protobuf schema, which declares 28 of those fields bool, so true/false is correct there and an integer is the error. Use proto-json for anything that came off a gRPC bidstream integration.",
         })
     };
+    let profile_property = || {
+        json!({
+            "type": "string",
+            "enum": ["spec", "google-ab"],
+            "description": "Exchange profile applied on top of the spec. spec (default) is the specification only. google-ab is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and each Imp must carry ext.billing_id.",
+        })
+    };
     let payload_schema = |payload_description: &str| {
         json!({
             "type": "object",
@@ -121,6 +128,7 @@ fn tool_definitions() -> Value {
                 },
                 "version": version_property(),
                 "dialect": dialect_property(),
+                "profile": profile_property(),
             },
             "required": ["payload"],
         })
@@ -148,6 +156,7 @@ fn tool_definitions() -> Value {
                     },
                     "version": version_property(),
                     "dialect": dialect_property(),
+                    "profile": profile_property(),
                 },
                 "required": ["payload"],
             },
@@ -403,22 +412,42 @@ fn run_validation(id: Value, arguments: &Value, payload_type: &str) -> Value {
         },
     };
 
+    let profile = match arguments.get("profile").and_then(Value::as_str) {
+        None => Profile::Spec,
+        Some(profile_id) => match Profile::from_id(profile_id) {
+            Some(profile) => profile,
+            None => {
+                return success_response(
+                    id,
+                    tool_result_text(
+                        &format!(
+                            "Unsupported profile: {profile_id}. Use one of: {}",
+                            Profile::ids().join(", ")
+                        ),
+                        true,
+                    ),
+                );
+            }
+        },
+    };
+
     let bid_request = arguments.get("bid_request").and_then(Value::as_str);
     let result = if payload_type == "response" {
         match bid_request {
-            Some(request) => validate_bid_response_against_request_with_dialect(
-                version, dialect, request, payload,
+            Some(request) => validate_bid_response_against_request_with_profile(
+                version, dialect, profile, request, payload,
             ),
-            None => validate_bid_response_with_dialect(version, dialect, payload),
+            None => validate_bid_response_with_profile(version, dialect, profile, payload),
         }
     } else {
-        validate_bid_request_with_dialect(version, dialect, payload)
+        validate_bid_request_with_profile(version, dialect, profile, payload)
     };
 
     let report = json!({
         "version": version.id(),
         "payload_type": payload_type,
         "dialect": dialect.as_str(),
+        "profile": profile.as_str(),
         "valid": result.valid,
         "issues": result.issues,
     });
@@ -624,6 +653,7 @@ mod tests {
         let spec = payload_of(tool_result(&spec));
         assert_eq!(spec["valid"], json!(false));
         assert_eq!(spec["dialect"], "spec-json");
+        assert_eq!(spec["profile"], "spec");
 
         let proto = run_validation(
             json!(2),
@@ -640,6 +670,38 @@ mod tests {
         let result = run_validation(
             json!(1),
             &json!({ "payload": "{}", "dialect": "yaml" }),
+            "request",
+        );
+        assert_eq!(tool_result(&result)["isError"], json!(true));
+    }
+
+    #[test]
+    fn profile_argument_allows_google_fixed_price() {
+        let payload = r#"{
+            "id": "req-1",
+            "at": 3,
+            "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "billing_id": ["1"] } }]
+        }"#;
+
+        let spec = run_validation(json!(1), &json!({ "payload": payload }), "request");
+        let spec = payload_of(tool_result(&spec));
+        assert_eq!(spec["valid"], json!(false));
+
+        let google = run_validation(
+            json!(2),
+            &json!({ "payload": payload, "profile": "google-ab" }),
+            "request",
+        );
+        let google = payload_of(tool_result(&google));
+        assert_eq!(google["valid"], json!(true));
+        assert_eq!(google["profile"], "google-ab");
+    }
+
+    #[test]
+    fn unknown_profile_is_reported_as_a_tool_error() {
+        let result = run_validation(
+            json!(1),
+            &json!({ "payload": "{}", "profile": "magnite" }),
             "request",
         );
         assert_eq!(tool_result(&result)["isError"], json!(true));

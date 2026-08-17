@@ -116,9 +116,10 @@ message ValidateArtfEnvelopeRequest {
   // The RTBRequest as JSON.
   string rtb_request = 1;
 
-  // Optional. ValidationContext.dialect must be unset here: ARTF transports
-  // its OpenRTB payloads as protobuf messages, so their JSON dialect is a fact
-  // about the framework rather than a choice the caller gets to make.
+  // Optional. ValidationContext.dialect and .profile must be unset here: ARTF
+  // transports its OpenRTB payloads as protobuf messages, so their JSON dialect
+  // is a fact about the framework rather than a choice the caller gets to make,
+  // and ARTF is not an exchange profile.
   ValidationContext context = 2;
 }
 
@@ -148,6 +149,8 @@ message ValidateArtfMutationsRequest {
   // should not pay for a rewrite of the payload.
   bool apply = 3;
 
+  // Optional. ValidationContext.dialect and .profile must be unset, for the
+  // same reason as ValidateArtfEnvelopeRequest.
   ValidationContext context = 4;
 }
 
@@ -287,6 +290,14 @@ message ValidationContext {
   // default, because a payload arriving over JSON without further context is
   // spec JSON by convention.
   JsonDialect dialect = 2;
+
+  // Exchange profile applied on top of the spec. Empty means the specification
+  // only. "google-ab" is Google Authorized Buyers OpenRTB as documented at
+  // developers.google.com/authorized-buyers/rtb/openrtb-guide: extra enum
+  // values (at=3 FIXED_PRICE) and required Imp.ext.billing_id. A string rather
+  // than an enum, like version, so a new profile does not require a wire
+  // contract release. An unknown id is rejected with INVALID_ARGUMENT.
+  string profile = 3;
 }
 
 // Everything needed to reproduce a verdict later.

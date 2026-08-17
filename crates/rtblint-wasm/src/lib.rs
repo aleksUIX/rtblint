@@ -15,8 +15,10 @@ use rtblint_core::{
     proto_bool_fields, validate as core_validate, validate_artf_mutations_applied,
     validate_artf_request as core_validate_artf_request, validate_artf_response_against_request,
     validate_bid_request_for_version, validate_bid_request_with_dialect,
-    validate_bid_response_against_request, validate_bid_response_for_version,
-    validate_bid_response_with_dialect, version_profiles, Dialect, OpenRtbVersion, VersionRuleKind,
+    validate_bid_request_with_profile, validate_bid_response_against_request,
+    validate_bid_response_against_request_with_profile, validate_bid_response_for_version,
+    validate_bid_response_with_dialect, validate_bid_response_with_profile, version_profiles,
+    Dialect, OpenRtbVersion, Profile, VersionRuleKind,
 };
 use serde::Serialize;
 use wasm_bindgen::prelude::*;
@@ -157,6 +159,21 @@ fn resolve_dialect(dialect_id: &str) -> Dialect {
     Dialect::from_id(dialect_id).unwrap_or(Dialect::SpecJson)
 }
 
+/// Resolve a profile id. Empty means the specification only. An unknown id is
+/// an error rather than a silent fallback: a typo would otherwise validate
+/// against the spec and look like a green Authorized Buyers check.
+fn resolve_profile(profile_id: &str) -> Result<Profile, JsValue> {
+    if profile_id.is_empty() {
+        return Ok(Profile::Spec);
+    }
+    Profile::from_id(profile_id).ok_or_else(|| {
+        JsValue::from_str(&format!(
+            "Unsupported profile: {profile_id}. Use one of: {}",
+            Profile::ids().join(", ")
+        ))
+    })
+}
+
 /// Validate an OpenRTB bid request written in a specific JSON dialect
 /// ("spec-json" or "proto-json"). protobuf JSON declares 28 of the spec's
 /// integer flag fields as bool, so the two encodings disagree in both
@@ -185,6 +202,60 @@ pub fn validate_response_dialect(
         resolve_version(version_id),
         resolve_dialect(dialect_id),
         input,
+    ))
+}
+
+/// Validate an OpenRTB bid request against a JSON dialect and an exchange
+/// profile ("spec" or "google-ab"). Empty profile id means the specification
+/// only. Unknown ids are rejected.
+#[wasm_bindgen]
+pub fn validate_profile(
+    version_id: &str,
+    dialect_id: &str,
+    profile_id: &str,
+    input: &str,
+) -> Result<JsValue, JsValue> {
+    to_js(&validate_bid_request_with_profile(
+        resolve_version(version_id),
+        resolve_dialect(dialect_id),
+        resolve_profile(profile_id)?,
+        input,
+    ))
+}
+
+/// Validate an OpenRTB bid response against a JSON dialect and an exchange
+/// profile.
+#[wasm_bindgen]
+pub fn validate_response_profile(
+    version_id: &str,
+    dialect_id: &str,
+    profile_id: &str,
+    input: &str,
+) -> Result<JsValue, JsValue> {
+    to_js(&validate_bid_response_with_profile(
+        resolve_version(version_id),
+        resolve_dialect(dialect_id),
+        resolve_profile(profile_id)?,
+        input,
+    ))
+}
+
+/// Validate an OpenRTB bid response against the bid request it answers, for
+/// a specific dialect and exchange profile.
+#[wasm_bindgen]
+pub fn validate_response_against_request_profile(
+    version_id: &str,
+    dialect_id: &str,
+    profile_id: &str,
+    request: &str,
+    response: &str,
+) -> Result<JsValue, JsValue> {
+    to_js(&validate_bid_response_against_request_with_profile(
+        resolve_version(version_id),
+        resolve_dialect(dialect_id),
+        resolve_profile(profile_id)?,
+        request,
+        response,
     ))
 }
 

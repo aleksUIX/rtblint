@@ -54,6 +54,13 @@ export function validate_artf_response_applied(version_id: string, rtb_request: 
 export function validate_dialect(version_id: string, dialect_id: string, input: string): any;
 
 /**
+ * Validate an OpenRTB bid request against a JSON dialect and an exchange
+ * profile ("spec" or "google-ab"). Empty profile id means the specification
+ * only. Unknown ids are rejected.
+ */
+export function validate_profile(version_id: string, dialect_id: string, profile_id: string, input: string): any;
+
+/**
  * Validate an OpenRTB bid response payload against the latest tracked 2.6 snapshot.
  *
  * Returns `{ valid: boolean, issues: Array<{ id, severity, message, path }> }`.
@@ -70,9 +77,21 @@ export function validate_response(input: string): any;
 export function validate_response_against_request(version_id: string, request: string, response: string): any;
 
 /**
+ * Validate an OpenRTB bid response against the bid request it answers, for
+ * a specific dialect and exchange profile.
+ */
+export function validate_response_against_request_profile(version_id: string, dialect_id: string, profile_id: string, request: string, response: string): any;
+
+/**
  * Validate an OpenRTB bid response written in a specific JSON dialect.
  */
 export function validate_response_dialect(version_id: string, dialect_id: string, input: string): any;
+
+/**
+ * Validate an OpenRTB bid response against a JSON dialect and an exchange
+ * profile.
+ */
+export function validate_response_profile(version_id: string, dialect_id: string, profile_id: string, input: string): any;
 
 /**
  * Validate an OpenRTB bid response payload against a specific tracked version id

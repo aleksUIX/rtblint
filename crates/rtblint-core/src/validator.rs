@@ -7,8 +7,9 @@ use crate::{
     canonical_adcom_object, canonical_field, canonical_object,
     dialect::{proto_declares_bool, snake_case_of_camel},
     path_status,
+    profile::path_populated,
     version_rules::rule_path_leaves,
-    Dialect, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Severity, StaticField,
+    Dialect, ExpectedShape, Issue, OpenRtbVersion, PathStateKind, Profile, Severity, StaticField,
     ValidationResult,
 };
 
@@ -53,17 +54,19 @@ impl PayloadKind {
 pub(crate) fn validate_bid_request(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     input: &str,
 ) -> ValidationResult {
-    validate_payload(version, dialect, input, PayloadKind::BidRequest)
+    validate_payload(version, dialect, profile, input, PayloadKind::BidRequest)
 }
 
 pub(crate) fn validate_bid_response(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     input: &str,
 ) -> ValidationResult {
-    validate_payload(version, dialect, input, PayloadKind::BidResponse)
+    validate_payload(version, dialect, profile, input, PayloadKind::BidResponse)
 }
 
 /// OpenRTB 3.0 wraps everything in a single `openrtb` member.
@@ -82,11 +85,12 @@ const SUPPLY_CHAIN_LENGTH_CEILING: usize = 10;
 fn validate_payload(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     input: &str,
     kind: PayloadKind,
 ) -> ValidationResult {
     if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
-        return validate_layered_payload(version, dialect, input, kind);
+        return validate_layered_payload(version, dialect, profile, input, kind);
     }
 
     if canonical_object(version, kind.root_object()).is_none() {
@@ -143,6 +147,7 @@ fn validate_payload(
     validate_known_object(
         version,
         dialect,
+        profile,
         kind,
         kind.root_object(),
         root,
@@ -167,6 +172,7 @@ fn validate_payload(
 fn validate_layered_payload(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     input: &str,
     kind: PayloadKind,
 ) -> ValidationResult {
@@ -245,6 +251,7 @@ fn validate_layered_payload(
     validate_known_object(
         version,
         dialect,
+        profile,
         kind,
         ENVELOPE_OBJECT,
         envelope,
@@ -368,6 +375,7 @@ pub(crate) fn finalize_result(issues: Vec<Issue>) -> ValidationResult {
 fn validate_known_object<'a>(
     version: OpenRtbVersion,
     dialect: Dialect,
+    profile: Profile,
     kind: PayloadKind,
     object_name: &str,
     object: &'a Map<String, Value>,
@@ -385,6 +393,7 @@ fn validate_known_object<'a>(
     // payload field as undefined would be a false positive, so field-level
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
+        push_profile_required(profile, object_name, object, instance_path, issues);
         validate_object_semantics(
             version,
             object_name,
@@ -411,6 +420,8 @@ fn validate_known_object<'a>(
             });
         }
     }
+
+    push_profile_required(profile, object_name, object, instance_path, issues);
 
     for (field_name, value) in object {
         logical_segments.push(field_name.as_str());
@@ -506,7 +517,14 @@ fn validate_known_object<'a>(
             issues,
         );
         validate_required_array_contents(field_definition, value, instance_path, issues);
-        validate_catalog_value_set(field_definition, value, instance_path, issues);
+        validate_catalog_value_set(
+            profile,
+            object_name,
+            field_definition,
+            value,
+            instance_path,
+            issues,
+        );
 
         if matches!(field_definition.shape, ExpectedShape::Object) && value.is_object() {
             if let Some(child_object_name) = field_definition.child_object {
@@ -514,6 +532,7 @@ fn validate_known_object<'a>(
                     validate_known_object(
                         version,
                         dialect,
+                        profile,
                         kind,
                         child_object_name,
                         value.as_object().expect("checked object shape"),
@@ -540,6 +559,7 @@ fn validate_known_object<'a>(
                             validate_known_object(
                                 version,
                                 dialect,
+                                profile,
                                 kind,
                                 child_object_name,
                                 item_object,
@@ -673,6 +693,8 @@ fn validate_required_array_contents(
 }
 
 fn validate_catalog_value_set(
+    profile: Profile,
+    object_name: &str,
     field: &StaticField,
     value: &Value,
     instance_path: &str,
@@ -686,18 +708,23 @@ fn validate_catalog_value_set(
     match value {
         Value::Number(_) => {
             if let Some(integer) = integer_value(value) {
-                validate_integer_against_value_set(
-                    &value_set,
-                    integer,
-                    instance_path,
-                    section,
-                    issues,
-                );
+                if !profile.allows_enum_value(object_name, field.name, integer) {
+                    validate_integer_against_value_set(
+                        &value_set,
+                        integer,
+                        instance_path,
+                        section,
+                        issues,
+                    );
+                }
             }
         }
         Value::Array(values) => {
             for (index, item) in values.iter().enumerate() {
                 if let Some(integer) = integer_value(item) {
+                    if profile.allows_enum_value(object_name, field.name, integer) {
+                        continue;
+                    }
                     validate_integer_against_value_set(
                         &value_set,
                         integer,
@@ -1379,6 +1406,31 @@ fn validate_duration_semantics(
 
     if object.contains_key("rqddurs") && object.contains_key("maxduration") {
         push_mutually_exclusive_issue("maxduration", "rqddurs", instance_path, section, issues);
+    }
+}
+
+fn push_profile_required(
+    profile: Profile,
+    object_name: &str,
+    object: &Map<String, Value>,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
+    for required in profile.extra_required() {
+        if required.object != object_name || path_populated(object, required.path) {
+            continue;
+        }
+        issues.push(Issue {
+            id: String::from("openrtb.profile.field_required"),
+            severity: Severity::Error,
+            message: format!(
+                "{object_name}.{} is required by {}.",
+                required.path,
+                profile.display_name()
+            ),
+            path: Some(join_instance_path(instance_path, required.path)),
+            section: None,
+        });
     }
 }
 

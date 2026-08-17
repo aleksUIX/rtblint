@@ -21,6 +21,7 @@ Website and playground: [rtblint.org](https://rtblint.org)
 - Response markup coherence: `bid.adm` content vs the declared `bid.mtype` (native JSON encoding, VAST/DAAST roots, double-encoded payloads)
 - Request/response cross-validation: with the originating request supplied, every bid's `impid`, `mtype`, `adm` markup, `dealid`, seat, and currency are checked against what the request actually offered
 - JSON dialect: spec JSON types flag fields such as `imp.secure` and `regs.coppa` as integers, while the IAB OpenRTB protobuf schema declares 28 of them `bool`. Either encoding is correct on its own transport and wrong on the other, so the caller declares which one it meant
+- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. Business policy stays out
 - ARTF envelopes and mutation sets, including applying the mutations and revalidating what comes out
 
 Every finding carries a stable rule id, a severity, a message, and a JSON path.
@@ -71,11 +72,14 @@ rtblint validate --type response response.json
 rtblint validate --type response --request request.json response.json
 rtblint validate --version 2.5 --format json request.json
 rtblint validate --dialect proto-json grpc-bid-request.json
+rtblint validate --profile google-ab google-bid-request.json
 rtblint validate --resolve --cache ./supply-cache request.json
+rtblint validate --summary bids.ndjson
+rtblint validate --batch --summary bids.ndjson
 cat request.json | rtblint validate --stdin
 ```
 
-`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
+`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
 
 ```text
 <dir>/sellers/<asi>/sellers.json
@@ -83,7 +87,7 @@ cat request.json | rtblint validate --stdin
 <dir>/app-ads/<app.bundle>/app-ads.txt
 ```
 
-Nothing is fetched; populate the cache yourself. See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
+Nothing is fetched; populate the cache yourself. `--batch` lints one JSON object per line from a file or stdin. `--summary` adds rule-frequency totals for a captured stream (`--summary bids.ndjson` for the histogram alone). See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
 
 Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
 
@@ -111,12 +115,14 @@ For gRPC bidstream payloads and ARTF:
 ```js
 import {
   validateDialect,
+  validateProfile,
   validateArtfRequest,
   validateArtfResponseApplied,
   protoBoolDivergences,
 } from "rtblint-core";
 
 validateDialect(JSON.stringify(bidRequest), "proto-json");
+validateProfile(JSON.stringify(bidRequest), "google-ab");
 validateArtfRequest(JSON.stringify(rtbRequest));
 
 // { result, application }: what the mutations broke, and the payloads they produced
@@ -132,7 +138,7 @@ protoBoolDivergences(); // the 28 fields the two schemas type differently
 
 Hosted Streamable HTTP (no install): [https://rtblint.org/mcp](https://rtblint.org/mcp). Smithery listing: [aleksander/rtblint](https://smithery.ai/servers/aleksander/rtblint) (same account as vastlint).
 
-`rtblint-mcp` also speaks MCP over stdio. Tools: `validate_bid_request`, `validate_bid_response` (optional `bid_request` for cross-validation), `validate_artf_request`, `validate_artf_response` (`apply` writes the mutations and revalidates), `list_openrtb_versions`, `get_adcp_capabilities`. Validation tools take an optional `dialect` argument.
+`rtblint-mcp` also speaks MCP over stdio. Tools: `validate_bid_request`, `validate_bid_response` (optional `bid_request` for cross-validation), `validate_artf_request`, `validate_artf_response` (`apply` writes the mutations and revalidates), `list_openrtb_versions`, `get_adcp_capabilities`. Validation tools take optional `dialect` and `profile` arguments.
 
 The ARTF tools are the guardrail an agent calls around its own work: check the envelope it was handed, then check the mutation set it is about to propose, before the orchestrator sees it.
 
@@ -164,6 +170,8 @@ for issue in &result.issues {
     println!("{} {} {:?}", issue.severity, issue.id, issue.path);
 }
 ```
+
+`validate_bid_request_with_profile` applies an exchange profile (`Profile::GoogleAuthorizedBuyers`) on top of the spec. `validate_bid_request_with_dialect` selects spec JSON vs protobuf JSON.
 
 ## JSON Schemas
 

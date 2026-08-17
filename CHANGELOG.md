@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- NDJSON stream mode. `--batch` accepts a file (not only stdin). `--summary`
+  prints rule frequencies across the capture: payload counts, error/warning
+  totals, and each rule id ranked by how often it fired. `--batch --summary`
+  emits per-payload lines then the totals; `--summary` alone is the histogram.
+  JSON summary is an object with `"type": "summary"`.
+- Exchange profiles. `--profile google-ab` (library
+  `validate_bid_request_with_profile`, MCP `profile`, npm `validateProfile`,
+  gRPC `ValidationContext.profile`) applies Google Authorized Buyers' documented
+  protocol extras on top of the spec: `at: 3` (FIXED_PRICE) is a valid auction
+  type, and each Imp must carry `ext.billing_id`. Unknown ids are rejected.
+  New rule id: `openrtb.profile.field_required`. Extra enums do not mint a new
+  id; they skip `openrtb.value.invalid`. Orthogonal to `--dialect`. ARTF
+  refuses the flag. Business policy (floors, blocklists) stays out.
+
 ## 0.9.0 (2026-08-16)
 
 ### Added

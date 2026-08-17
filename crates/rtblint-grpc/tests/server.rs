@@ -122,6 +122,7 @@ async fn an_unknown_version_is_rejected_and_lists_what_is_available() {
             context: Some(ValidationContext {
                 version: "2.6-209901".to_string(),
                 dialect: JsonDialect::Unspecified as i32,
+                profile: String::new(),
             }),
         }))
         .await
@@ -154,6 +155,7 @@ async fn every_advertised_version_is_actually_usable() {
                 context: Some(ValidationContext {
                     version: version.id.clone(),
                     dialect: JsonDialect::Unspecified as i32,
+                    profile: String::new(),
                 }),
             }))
             .await

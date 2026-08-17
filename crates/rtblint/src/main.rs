@@ -1,4 +1,5 @@
 use std::{
+    collections::HashMap,
     env, fs,
     io::{self, BufRead, Read, Write},
     process,
@@ -6,7 +7,9 @@ use std::{
 
 use serde::Serialize;
 
-use rtblint_core::{ArtfApplication, Dialect, Issue, OpenRtbVersion, Severity, ValidationResult};
+use rtblint_core::{
+    ArtfApplication, Dialect, Issue, OpenRtbVersion, Profile, Severity, ValidationResult,
+};
 use rtblint_resolve::Cache;
 
 const DEFAULT_VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
@@ -52,8 +55,8 @@ fn run() -> Result<i32, String> {
     }
 
     let command = parse_validate_command(validate_args)?;
-    if command.batch {
-        return run_batch(&command);
+    if command.batch || command.summary {
+        return run_stream(&command);
     }
 
     let (mut result, application) = validate_one(&command, &command.input);
@@ -71,21 +74,22 @@ fn validate_one(
 ) -> (ValidationResult, Option<ArtfApplication>) {
     let version = command.version;
     let dialect = command.dialect;
+    let profile = command.profile;
     let request = command.request_context.as_deref();
 
     match (command.payload_type, request) {
         (PayloadType::Request, _) => (
-            rtblint_core::validate_bid_request_with_dialect(version, dialect, input),
+            rtblint_core::validate_bid_request_with_profile(version, dialect, profile, input),
             None,
         ),
         (PayloadType::Response, Some(request)) => (
-            rtblint_core::validate_bid_response_against_request_with_dialect(
-                version, dialect, request, input,
+            rtblint_core::validate_bid_response_against_request_with_profile(
+                version, dialect, profile, request, input,
             ),
             None,
         ),
         (PayloadType::Response, None) => (
-            rtblint_core::validate_bid_response_with_dialect(version, dialect, input),
+            rtblint_core::validate_bid_response_with_profile(version, dialect, profile, input),
             None,
         ),
         (PayloadType::ArtfRequest, _) => {
@@ -122,8 +126,10 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
     let mut output_format = OutputFormat::Human;
     let mut payload_type = PayloadType::Request;
     let mut batch = false;
+    let mut summary = false;
     let mut request_path: Option<String> = None;
     let mut dialect = Dialect::SpecJson;
+    let mut profile = Profile::Spec;
     let mut apply = false;
     let mut resolve = false;
     let mut cache_dir: Option<String> = None;
@@ -168,6 +174,9 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             "--batch" => {
                 batch = true;
             }
+            "--summary" => {
+                summary = true;
+            }
             "--type" => {
                 let Some(value) = args.next() else {
                     return Err(format!(
@@ -200,6 +209,21 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
                     format!("Unsupported dialect: {value}\n\nUse one of: spec-json, proto-json")
                 })?;
             }
+            "--profile" => {
+                let Some(value) = args.next() else {
+                    return Err(format!(
+                        "Missing value for --profile.\n\n{}",
+                        validate_usage_text()
+                    ));
+                };
+
+                profile = Profile::from_id(&value).ok_or_else(|| {
+                    format!(
+                        "Unsupported profile: {value}\n\nUse one of: {}",
+                        Profile::ids().join(", ")
+                    )
+                })?;
+            }
             "--apply" => {
                 apply = true;
             }
@@ -229,10 +253,12 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
             }
         }
     }
-    let input = if batch {
-        if file_path.is_some() {
+    let stream = batch || summary;
+    let stream_path = if stream { file_path.clone() } else { None };
+    let input = if stream {
+        if read_stdin && file_path.is_some() {
             return Err(format!(
-                "--batch reads newline-delimited payloads from stdin; do not pass a file.\n\n{}",
+                "Choose exactly one input source.\n\n{}",
                 validate_usage_text()
             ));
         }
@@ -330,83 +356,267 @@ fn parse_validate_command(args: Vec<String>) -> Result<ValidateCommand, String> 
         ));
     }
 
+    if matches!(
+        payload_type,
+        PayloadType::ArtfRequest | PayloadType::ArtfResponse
+    ) && profile != Profile::Spec
+    {
+        return Err(format!(
+            "--profile does not apply to ARTF payloads: ARTF is not an exchange \
+             dialect.\n\n{}",
+            validate_usage_text()
+        ));
+    }
+
     Ok(ValidateCommand {
         input,
         version,
         output_format,
         payload_type,
         batch,
+        summary,
+        stream_path,
         request_context,
         dialect,
+        profile,
         apply,
         cache,
     })
 }
 
-/// Batch mode: one JSON payload per stdin line, one result per stdout line.
-/// The process, spec catalogs, and allocator warm-up are paid once, so
-/// per-payload cost approaches pure parse+validate time.
-fn run_batch(command: &ValidateCommand) -> Result<i32, String> {
-    let output_format = command.output_format;
-    let stdin = io::stdin();
+/// NDJSON stream: one JSON payload per line from a file or stdin. `--batch`
+/// emits one result per payload; `--summary` emits rule-frequency totals.
+/// Catalogs and the allocator warm up once, so per-payload cost approaches
+/// parse+validate time.
+fn run_stream(command: &ValidateCommand) -> Result<i32, String> {
+    match command.stream_path.as_deref() {
+        Some(path) => {
+            let file =
+                fs::File::open(path).map_err(|error| format!("Failed to read {path}: {error}"))?;
+            consume_stream(command, io::BufReader::new(file))
+        }
+        None => consume_stream(command, io::stdin().lock()),
+    }
+}
+
+fn consume_stream(command: &ValidateCommand, reader: impl BufRead) -> Result<i32, String> {
     let stdout = io::stdout();
     let mut out = io::BufWriter::new(stdout.lock());
-    let mut all_valid = true;
-    let mut count = 0usize;
+    let mut stats = StreamStats::default();
+    let emit_lines = command.batch;
 
-    for (line_number, line) in stdin.lock().lines().enumerate() {
-        let line = line.map_err(|error| format!("Failed to read stdin: {error}"))?;
+    for (line_number, line) in reader.lines().enumerate() {
+        let line = line.map_err(|error| format!("Failed to read input: {error}"))?;
         if line.trim().is_empty() {
             continue;
         }
-        count += 1;
 
         let (mut result, _) = validate_one(command, &line);
         apply_resolution(command, &line, &mut result);
-        all_valid &= result.valid;
+        stats.record(&result);
 
-        match output_format {
-            OutputFormat::Json => {
-                let report = BatchReport {
-                    index: line_number + 1,
-                    valid: result.valid,
-                    issues: &result.issues,
-                };
-                let encoded = serde_json::to_string(&report)
-                    .map_err(|error| format!("Failed to serialize JSON output: {error}"))?;
-                writeln!(out, "{encoded}")
-                    .map_err(|error| format!("Failed to write stdout: {error}"))?;
-            }
-            OutputFormat::Human => {
-                let error_count = result
-                    .issues
-                    .iter()
-                    .filter(|issue| issue.severity == Severity::Error)
-                    .count();
-                let warning_count = result
-                    .issues
-                    .iter()
-                    .filter(|issue| issue.severity == Severity::Warning)
-                    .count();
-                let verdict = if result.valid { "OK" } else { "FAILED" };
-                writeln!(
-                    out,
-                    "#{} {verdict}: {error_count} error(s), {warning_count} warning(s)",
-                    line_number + 1
-                )
-                .map_err(|error| format!("Failed to write stdout: {error}"))?;
-            }
+        if emit_lines {
+            write_payload_line(&mut out, command.output_format, line_number + 1, &result)?;
         }
+    }
+
+    if stats.payloads == 0 {
+        return Err(String::from("Input was empty."));
+    }
+
+    if command.summary {
+        if emit_lines && matches!(command.output_format, OutputFormat::Human) {
+            writeln!(out).map_err(|error| format!("Failed to write stdout: {error}"))?;
+        }
+        write_summary(&mut out, command.output_format, emit_lines, &stats)?;
     }
 
     out.flush()
         .map_err(|error| format!("Failed to flush stdout: {error}"))?;
 
-    if count == 0 {
-        return Err(String::from("Stdin was empty."));
+    Ok(if stats.invalid == 0 { 0 } else { 1 })
+}
+
+fn write_payload_line(
+    out: &mut impl Write,
+    output_format: OutputFormat,
+    index: usize,
+    result: &ValidationResult,
+) -> Result<(), String> {
+    match output_format {
+        OutputFormat::Json => {
+            let report = BatchReport {
+                index,
+                valid: result.valid,
+                issues: &result.issues,
+            };
+            let encoded = serde_json::to_string(&report)
+                .map_err(|error| format!("Failed to serialize JSON output: {error}"))?;
+            writeln!(out, "{encoded}")
+                .map_err(|error| format!("Failed to write stdout: {error}"))?;
+        }
+        OutputFormat::Human => {
+            let error_count = result
+                .issues
+                .iter()
+                .filter(|issue| issue.severity == Severity::Error)
+                .count();
+            let warning_count = result
+                .issues
+                .iter()
+                .filter(|issue| issue.severity == Severity::Warning)
+                .count();
+            let verdict = if result.valid { "OK" } else { "FAILED" };
+            writeln!(
+                out,
+                "#{index} {verdict}: {error_count} error(s), {warning_count} warning(s)"
+            )
+            .map_err(|error| format!("Failed to write stdout: {error}"))?;
+        }
+    }
+    Ok(())
+}
+
+fn write_summary(
+    out: &mut impl Write,
+    output_format: OutputFormat,
+    compact: bool,
+    stats: &StreamStats,
+) -> Result<(), String> {
+    match output_format {
+        OutputFormat::Json => {
+            let report = stats.summary_report();
+            let encoded = if compact {
+                serde_json::to_string(&report)
+            } else {
+                serde_json::to_string_pretty(&report)
+            }
+            .map_err(|error| format!("Failed to serialize JSON output: {error}"))?;
+            writeln!(out, "{encoded}")
+                .map_err(|error| format!("Failed to write stdout: {error}"))?;
+        }
+        OutputFormat::Human => {
+            writeln!(
+                out,
+                "{} payload(s): {} valid, {} invalid",
+                stats.payloads, stats.valid, stats.invalid
+            )
+            .map_err(|error| format!("Failed to write stdout: {error}"))?;
+            writeln!(
+                out,
+                "{} error(s), {} warning(s)",
+                stats.errors, stats.warnings
+            )
+            .map_err(|error| format!("Failed to write stdout: {error}"))?;
+            let rules = stats.ranked_rules();
+            if rules.is_empty() {
+                writeln!(out, "No findings.")
+                    .map_err(|error| format!("Failed to write stdout: {error}"))?;
+            } else {
+                writeln!(out, "\nRule frequencies:")
+                    .map_err(|error| format!("Failed to write stdout: {error}"))?;
+                for rule in rules {
+                    writeln!(
+                        out,
+                        "  {:>6}  {:<8}  {}",
+                        rule.count,
+                        rule.severity.as_str(),
+                        rule.id
+                    )
+                    .map_err(|error| format!("Failed to write stdout: {error}"))?;
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+#[derive(Default)]
+struct StreamStats {
+    payloads: usize,
+    valid: usize,
+    invalid: usize,
+    errors: usize,
+    warnings: usize,
+    rules: HashMap<String, RuleFreq>,
+}
+
+struct RuleFreq {
+    severity: Severity,
+    count: usize,
+}
+
+#[derive(Serialize)]
+struct RuleFrequency {
+    id: String,
+    severity: Severity,
+    count: usize,
+}
+
+#[derive(Serialize)]
+struct StreamSummary {
+    #[serde(rename = "type")]
+    kind: &'static str,
+    payloads: usize,
+    valid: usize,
+    invalid: usize,
+    errors: usize,
+    warnings: usize,
+    rules: Vec<RuleFrequency>,
+}
+
+impl StreamStats {
+    fn record(&mut self, result: &ValidationResult) {
+        self.payloads += 1;
+        if result.valid {
+            self.valid += 1;
+        } else {
+            self.invalid += 1;
+        }
+        for issue in &result.issues {
+            match issue.severity {
+                Severity::Error => self.errors += 1,
+                Severity::Warning => self.warnings += 1,
+                _ => self.errors += 1,
+            }
+            let entry = self.rules.entry(issue.id.clone()).or_insert(RuleFreq {
+                severity: issue.severity,
+                count: 0,
+            });
+            entry.count += 1;
+        }
     }
 
-    Ok(if all_valid { 0 } else { 1 })
+    fn ranked_rules(&self) -> Vec<RuleFrequency> {
+        let mut rules: Vec<RuleFrequency> = self
+            .rules
+            .iter()
+            .map(|(id, freq)| RuleFrequency {
+                id: id.clone(),
+                severity: freq.severity,
+                count: freq.count,
+            })
+            .collect();
+        rules.sort_by(|left, right| {
+            right
+                .count
+                .cmp(&left.count)
+                .then_with(|| left.id.cmp(&right.id))
+        });
+        rules
+    }
+
+    fn summary_report(&self) -> StreamSummary {
+        StreamSummary {
+            kind: "summary",
+            payloads: self.payloads,
+            valid: self.valid,
+            invalid: self.invalid,
+            errors: self.errors,
+            warnings: self.warnings,
+            rules: self.ranked_rules(),
+        }
+    }
 }
 
 fn read_from_stdin() -> Result<String, String> {
@@ -563,7 +773,7 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] <file.json>\n  rtblint validate [...] --stdin\n  rtblint validate --batch [...]";
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
 
 fn usage_text() -> String {
     format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
@@ -580,6 +790,9 @@ fn validate_usage_text() -> String {
          flag fields as integers, proto-json follows the IAB OpenRTB protobuf schema, where 28 of \
          those fields are bool. ARTF payloads are always protobuf JSON, so the flag is rejected \
          there.\n\
+         --profile applies an exchange's documented protocol requirements on top of the spec: \
+         spec (default) is the specification only; google-ab is Google Authorized Buyers \
+         (at=3 FIXED_PRICE, Imp.ext.billing_id required). ARTF payloads reject the flag.\n\
          --request supplies the payload a response is cross-validated against: the originating \
          bid request for --type response (impid, mtype, adm markup, dealid, seat, and currency \
          coherence), or the RTBRequest envelope for --type artf-response (intent eligibility and \
@@ -591,8 +804,10 @@ fn validate_usage_text() -> String {
          publisher's ads.txt or app-ads.txt. Requires --cache <dir> laid out as \
          sellers/<asi>/sellers.json, ads/<domain>/ads.txt, app-ads/<bundle>/app-ads.txt. The \
          core stays offline; this pass only reads the local cache.\n\
-         --batch reads one JSON payload per stdin line and emits one result per line; exit code 0 \
-         means every payload was valid."
+         --batch reads one JSON payload per line (a file, or stdin) and emits one result per \
+         payload; exit code 0 means every payload was valid.\n\
+         --summary reads the same NDJSON stream and prints rule frequencies (how often each id \
+         fired). Combine with --batch for per-payload lines plus the totals."
     )
 }
 
@@ -601,12 +816,18 @@ struct ValidateCommand {
     version: OpenRtbVersion,
     output_format: OutputFormat,
     payload_type: PayloadType,
+    /// One result per NDJSON payload line.
     batch: bool,
+    /// Rule-frequency totals after the stream.
+    summary: bool,
+    /// NDJSON file. `None` means stdin.
+    stream_path: Option<String>,
     /// The payload a response is cross-validated against: a bid request for
     /// `--type response`, an ARTF RTBRequest envelope for `--type
     /// artf-response`.
     request_context: Option<String>,
     dialect: Dialect,
+    profile: Profile,
     /// Apply an ARTF mutation set and revalidate the result.
     apply: bool,
     /// Local sellers.json / ads.txt cache. Present only with `--resolve`.
@@ -688,4 +909,122 @@ struct ValidationReport<'a> {
     /// The payloads an `--apply` run produced, and which mutations went in.
     #[serde(skip_serializing_if = "Option::is_none")]
     application: Option<&'a ArtfApplication>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn issue(id: &str, severity: Severity) -> Issue {
+        Issue::new(id, severity, String::from("x"), Some(String::from("path")))
+    }
+
+    fn result(valid: bool, issues: Vec<Issue>) -> ValidationResult {
+        let mut result = ValidationResult::default();
+        result.valid = valid;
+        result.issues = issues;
+        result
+    }
+
+    #[test]
+    fn frequencies_count_each_finding_and_rank_by_count() {
+        let mut stats = StreamStats::default();
+        stats.record(&result(
+            false,
+            vec![
+                issue("openrtb.field.required", Severity::Error),
+                issue("openrtb.field.required", Severity::Error),
+                issue("openrtb.field.deprecated", Severity::Warning),
+            ],
+        ));
+        stats.record(&result(true, Vec::new()));
+
+        assert_eq!(stats.payloads, 2);
+        assert_eq!(stats.valid, 1);
+        assert_eq!(stats.invalid, 1);
+        assert_eq!(stats.errors, 2);
+        assert_eq!(stats.warnings, 1);
+
+        let rules = stats.ranked_rules();
+        assert_eq!(rules[0].id, "openrtb.field.required");
+        assert_eq!(rules[0].count, 2);
+        assert_eq!(rules[1].id, "openrtb.field.deprecated");
+        assert_eq!(rules[1].count, 1);
+        assert_eq!(stats.summary_report().kind, "summary");
+    }
+
+    #[test]
+    fn batch_accepts_a_file_path() {
+        let command =
+            parse_validate_command(vec![String::from("--batch"), String::from("bids.ndjson")])
+                .expect("parse");
+        assert!(command.batch);
+        assert!(!command.summary);
+        assert_eq!(command.stream_path.as_deref(), Some("bids.ndjson"));
+    }
+
+    #[test]
+    fn summary_without_batch_is_histogram_only() {
+        let command =
+            parse_validate_command(vec![String::from("--summary"), String::from("bids.ndjson")])
+                .expect("parse");
+        assert!(command.summary);
+        assert!(!command.batch);
+        assert_eq!(command.stream_path.as_deref(), Some("bids.ndjson"));
+    }
+
+    #[test]
+    fn profile_flag_selects_google_ab() {
+        let command = parse_validate_command(vec![
+            String::from("--profile"),
+            String::from("google-ab"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ])
+        .expect("parse");
+        assert_eq!(command.profile, Profile::GoogleAuthorizedBuyers);
+    }
+
+    #[test]
+    fn unknown_profile_is_an_error() {
+        match parse_validate_command(vec![
+            String::from("--profile"),
+            String::from("magnite"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ]) {
+            Err(error) => assert!(error.contains("Unsupported profile: magnite")),
+            Ok(_) => panic!("unknown profile should be an error"),
+        }
+    }
+
+    #[test]
+    fn artf_rejects_a_profile_flag() {
+        match parse_validate_command(vec![
+            String::from("--type"),
+            String::from("artf-request"),
+            String::from("--profile"),
+            String::from("google-ab"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ]) {
+            Err(error) => assert!(error.contains("--profile does not apply to ARTF")),
+            Ok(_) => panic!("profile on ARTF should be an error"),
+        }
+    }
+
+    #[test]
+    fn equal_counts_sort_by_id() {
+        let mut stats = StreamStats::default();
+        stats.record(&result(
+            false,
+            vec![
+                issue("openrtb.z", Severity::Error),
+                issue("openrtb.a", Severity::Error),
+            ],
+        ));
+        let rules = stats.ranked_rules();
+        assert_eq!(rules[0].id, "openrtb.a");
+        assert_eq!(rules[1].id, "openrtb.z");
+    }
 }

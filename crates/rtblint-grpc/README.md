@@ -73,6 +73,8 @@ grpcurl -plaintext -d '{"document":"{}","kind":"PAYLOAD_KIND_BID_REQUEST"}' \
   localhost:50061 openadtech.rtblint.v1.RtblintService/Validate
 grpcurl -plaintext -d '{"document":"{}","kind":"PAYLOAD_KIND_BID_REQUEST","context":{"dialect":"JSON_DIALECT_PROTO"}}' \
   localhost:50061 openadtech.rtblint.v1.RtblintService/Validate
+grpcurl -plaintext -d '{"document":"{}","kind":"PAYLOAD_KIND_BID_REQUEST","context":{"profile":"google-ab"}}' \
+  localhost:50061 openadtech.rtblint.v1.RtblintService/Validate
 grpcurl -plaintext -d '{}' localhost:50061 grpc.health.v1.Health/Check
 ```
 
@@ -117,7 +119,8 @@ rather than folded into `applied`, because "could not apply" is not "accepted".
 `ValidationContext.dialect` is refused on both ARTF RPCs, including when it
 names the correct dialect. ARTF carries its OpenRTB messages as protobuf, so
 their JSON encoding is a fact about the framework rather than a choice, and
-accepting the field would teach callers otherwise.
+accepting the field would teach callers otherwise. `ValidationContext.profile`
+is refused the same way: ARTF is not an exchange dialect.
 
 ## Provenance and versions
 

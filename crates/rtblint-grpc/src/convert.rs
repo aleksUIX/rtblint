@@ -114,6 +114,24 @@ pub fn dialect(context: Option<&proto::ValidationContext>) -> core::Dialect {
     }
 }
 
+/// Resolves the exchange profile a request asked for.
+///
+/// Empty means the specification only. An unknown id is rejected rather than
+/// silently ignored: unlike JsonDialect, this is a string, so a typo is a
+/// typo, not a value a later build added.
+pub fn profile(context: Option<&proto::ValidationContext>) -> Result<core::Profile, Status> {
+    let raw = context.map(|context| context.profile.trim()).unwrap_or("");
+    if raw.is_empty() {
+        return Ok(core::Profile::Spec);
+    }
+    core::Profile::from_id(raw).ok_or_else(|| {
+        Status::invalid_argument(format!(
+            "Unsupported profile: {raw}. Use one of: {}",
+            core::Profile::ids().join(", ")
+        ))
+    })
+}
+
 /// Refuses a dialect on the ARTF RPCs.
 ///
 /// ARTF transports its OpenRTB payloads as protobuf messages, so their JSON is
@@ -130,6 +148,18 @@ pub fn reject_dialect_on_artf(context: Option<&proto::ValidationContext>) -> Res
     Err(Status::invalid_argument(
         "ValidationContext.dialect does not apply to ARTF payloads: ARTF carries its OpenRTB \
          messages as protobuf, so they are protobuf JSON by definition. Leave the field unset",
+    ))
+}
+
+/// Refuses an exchange profile on the ARTF RPCs.
+pub fn reject_profile_on_artf(context: Option<&proto::ValidationContext>) -> Result<(), Status> {
+    let raw = context.map(|context| context.profile.trim()).unwrap_or("");
+    if raw.is_empty() {
+        return Ok(());
+    }
+    Err(Status::invalid_argument(
+        "ValidationContext.profile does not apply to ARTF payloads: ARTF is not an exchange \
+         dialect. Leave the field unset",
     ))
 }
 
@@ -152,6 +182,7 @@ mod tests {
         proto::ValidationContext {
             version: version.to_string(),
             dialect: proto::JsonDialect::Unspecified as i32,
+            profile: String::new(),
         }
     }
 
@@ -159,6 +190,7 @@ mod tests {
         proto::ValidationContext {
             version: String::new(),
             dialect: dialect as i32,
+            profile: String::new(),
         }
     }
 
@@ -187,6 +219,7 @@ mod tests {
         let context = proto::ValidationContext {
             version: String::new(),
             dialect: 99,
+            profile: String::new(),
         };
         assert_eq!(dialect(Some(&context)), core::Dialect::SpecJson);
     }
@@ -201,6 +234,56 @@ mod tests {
                 .expect_err("a declared dialect is refused on ARTF");
             assert_eq!(status.code(), tonic::Code::InvalidArgument);
         }
+    }
+
+    fn profile_context(profile: &str) -> proto::ValidationContext {
+        proto::ValidationContext {
+            version: String::new(),
+            dialect: proto::JsonDialect::Unspecified as i32,
+            profile: profile.to_string(),
+        }
+    }
+
+    #[test]
+    fn an_absent_or_empty_profile_is_spec() {
+        assert_eq!(profile(None).unwrap(), core::Profile::Spec);
+        assert_eq!(
+            profile(Some(&profile_context(""))).unwrap(),
+            core::Profile::Spec
+        );
+        assert_eq!(
+            profile(Some(&profile_context("  "))).unwrap(),
+            core::Profile::Spec
+        );
+    }
+
+    #[test]
+    fn google_ab_aliases_map_through() {
+        assert_eq!(
+            profile(Some(&profile_context("google-ab"))).unwrap(),
+            core::Profile::GoogleAuthorizedBuyers
+        );
+        assert_eq!(
+            profile(Some(&profile_context("adx"))).unwrap(),
+            core::Profile::GoogleAuthorizedBuyers
+        );
+    }
+
+    #[test]
+    fn an_unknown_profile_is_rejected_and_lists_what_is_available() {
+        let error = profile(Some(&profile_context("magnite"))).unwrap_err();
+        assert_eq!(error.code(), tonic::Code::InvalidArgument);
+        assert!(error.message().contains("magnite"));
+        assert!(error.message().contains("google-ab"));
+    }
+
+    #[test]
+    fn artf_refuses_a_declared_profile() {
+        assert!(reject_profile_on_artf(None).is_ok());
+        assert!(reject_profile_on_artf(Some(&profile_context(""))).is_ok());
+        let status = reject_profile_on_artf(Some(&profile_context("google-ab")))
+            .expect_err("a declared profile is refused on ARTF");
+        assert_eq!(status.code(), tonic::Code::InvalidArgument);
     }
 
     #[test]

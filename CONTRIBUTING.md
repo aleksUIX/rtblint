@@ -38,6 +38,8 @@ Every new rule needs a stable dotted id (`openrtb.<area>.<name>`, or
 `adcom.<area>.<name>` for AdCOM domain rules), a fixture exercising it, and a
 spec section reference. Cache lookups (`openrtb.resolve.*`) live in
 `rtblint-resolve` with fixtures under that crate; they have no spec section.
+Exchange profiles (`openrtb.profile.*`) live in `profile.rs` and fire from
+`validator.rs`; they cite the exchange's published protocol, not the spec.
 
 ## Spec catalogs
 

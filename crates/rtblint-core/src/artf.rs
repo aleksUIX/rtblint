@@ -28,7 +28,7 @@
 use serde::Serialize;
 use serde_json::{json, Map, Value};
 
-use crate::{pair, validator, Dialect, Issue, OpenRtbVersion, Severity, ValidationResult};
+use crate::{pair, validator, Dialect, Issue, OpenRtbVersion, Profile, Severity, ValidationResult};
 
 /// Envelope members the ARTF proto defines.
 const RTB_REQUEST_MEMBERS: &[&str] = &[
@@ -425,6 +425,7 @@ pub fn validate_artf_mutations_applied(
                 pair::validate_bid_response_against_request(
                     version,
                     Dialect::ProtoJson,
+                    Profile::Spec,
                     &pretty(request),
                     &pretty(response),
                 )
@@ -435,6 +436,7 @@ pub fn validate_artf_mutations_applied(
         let after = pair::validate_bid_response_against_request(
             version,
             Dialect::ProtoJson,
+            Profile::Spec,
             mutated_request,
             mutated_response,
         )
@@ -690,9 +692,9 @@ fn validate_embedded_payload(
 
 fn validate_openrtb(version: OpenRtbVersion, payload: &str, is_request: bool) -> Vec<Issue> {
     if is_request {
-        validator::validate_bid_request(version, Dialect::ProtoJson, payload).issues
+        validator::validate_bid_request(version, Dialect::ProtoJson, Profile::Spec, payload).issues
     } else {
-        validator::validate_bid_response(version, Dialect::ProtoJson, payload).issues
+        validator::validate_bid_response(version, Dialect::ProtoJson, Profile::Spec, payload).issues
     }
 }
 

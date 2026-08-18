@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.11.0 (2026-08-17)
+
 ### Added
 
 - Nested spec walks for payloads OpenRTB carries as strings or opaque `ext`

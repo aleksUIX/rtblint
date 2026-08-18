@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.12.0 (2026-08-17)
+
 ### Added
 
 - GitHub Action in this repository (`uses: aleksUIX/rtblint@<tag>`). Downloads

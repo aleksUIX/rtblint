@@ -101,7 +101,7 @@ Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
 The Action lives in this repo. Pin a release tag so CI downloads that CLI tarball:
 
 ```yaml
-- uses: aleksUIX/rtblint@v0.11.0
+- uses: aleksUIX/rtblint@v0.12.0
   with:
     path: fixtures/bid-request.json
     spec-version: 2.6-202505

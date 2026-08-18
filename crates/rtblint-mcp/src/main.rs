@@ -114,8 +114,8 @@ fn tool_definitions() -> Value {
     let profile_property = || {
         json!({
             "type": "string",
-            "enum": ["spec", "google-ab"],
-            "description": "Exchange profile applied on top of the spec. spec (default) is the specification only. google-ab is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and each Imp must carry ext.billing_id.",
+            "enum": ["spec", "google-ab", "prebid-server"],
+            "description": "Exchange profile applied on top of the spec. spec (default) is the specification only. google-ab is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and each Imp must carry ext.billing_id. prebid-server is Prebid Server /openrtb2/auction: each Imp must name a bidder or a stored request, wseat/bseat are refused, and stored-request objects need id.",
         })
     };
     let payload_schema = |payload_description: &str| {
@@ -695,6 +695,27 @@ mod tests {
         let google = payload_of(tool_result(&google));
         assert_eq!(google["valid"], json!(true));
         assert_eq!(google["profile"], "google-ab");
+    }
+
+    #[test]
+    fn profile_argument_requires_a_prebid_bidder() {
+        let payload = r#"{
+            "id": "req-1",
+            "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+        }"#;
+
+        let spec = run_validation(json!(1), &json!({ "payload": payload }), "request");
+        let spec = payload_of(tool_result(&spec));
+        assert_eq!(spec["valid"], json!(true));
+
+        let prebid = run_validation(
+            json!(2),
+            &json!({ "payload": payload, "profile": "prebid" }),
+            "request",
+        );
+        let prebid = payload_of(tool_result(&prebid));
+        assert_eq!(prebid["valid"], json!(false));
+        assert_eq!(prebid["profile"], "prebid-server");
     }
 
     #[test]

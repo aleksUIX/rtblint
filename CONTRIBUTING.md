@@ -29,6 +29,9 @@ All three must pass; CI enforces them.
 - New semantic rules (cross-field checks the catalogs can't express) in
   `crates/rtblint-core/src/validator.rs`, with fixtures under
   `crates/rtblint-core/tests/fixtures/`
+- Nested payload rules (Native Ads 1.2, GPP/TCF, macros, SKAdNetwork) in
+  `native.rs`, `privacy.rs`, `macros.rs`, and `skadn.rs`, called from
+  `validator.rs` / `pair.rs`
 - Version delta rules in `crates/rtblint-core/src/version_rules.rs`
 - AdCOM list additions in `crates/rtblint-core/src/adcom_lists.rs`
 - AdCOM object catalog in `crates/rtblint-core/specs/adcom-1.0-object-catalog.json`

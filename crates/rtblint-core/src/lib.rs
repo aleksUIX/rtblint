@@ -4,9 +4,13 @@ mod canonical_catalog;
 #[doc(hidden)]
 pub mod catalog_extract;
 mod dialect;
+mod macros;
+mod native;
 mod pair;
+mod privacy;
 mod profile;
 mod schema_manifest;
+mod skadn;
 mod validator;
 mod version_rules;
 
@@ -94,7 +98,9 @@ pub fn validate_bid_request_with_dialect(
 /// profile. [`Profile::Spec`] is just the specification.
 /// [`Profile::GoogleAuthorizedBuyers`] applies Google's documented protocol
 /// extras on top: `at: 3` (FIXED_PRICE) is a valid auction type, and each Imp
-/// must carry `ext.billing_id`.
+/// must carry `ext.billing_id`. [`Profile::PrebidServer`] applies Prebid
+/// Server `/openrtb2/auction` extras: each Imp must name a bidder or a stored
+/// request, `wseat`/`bseat` are refused, and stored-request objects need `id`.
 pub fn validate_bid_request_with_profile(
     version: OpenRtbVersion,
     dialect: Dialect,
@@ -1126,7 +1132,7 @@ mod tests {
                     {
                         "id": "imp-1",
                         "native": {
-                            "request": "{\"native\":{\"ver\":\"1.2\"}}"
+                            "request": "{\"native\":{\"ver\":\"1.2\",\"assets\":[{\"id\":1,\"title\":{\"len\":90}}]}}"
                         }
                     }
                 ]

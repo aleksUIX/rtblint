@@ -565,6 +565,44 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn the_profile_requires_a_prebid_bidder() {
+        let payload = r#"{
+            "id": "r1",
+            "imp": [{ "id": "i1", "banner": { "w": 300, "h": 250 } }]
+        }"#;
+
+        let as_spec = service()
+            .validate(validate_request(payload, PayloadKind::BidRequest))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+        assert!(as_spec.valid, "unexpected findings: {:?}", as_spec.issues);
+
+        let as_pbs = service()
+            .validate(Request::new(ValidateRequest {
+                document: payload.to_string(),
+                kind: PayloadKind::BidRequest as i32,
+                context: Some(crate::proto::ValidationContext {
+                    version: String::new(),
+                    dialect: crate::proto::JsonDialect::Unspecified as i32,
+                    profile: "prebid-server".to_string(),
+                }),
+            }))
+            .await
+            .expect("validate succeeds")
+            .into_inner()
+            .verdict
+            .expect("verdict present");
+
+        assert!(!as_pbs.valid);
+        assert!(as_pbs.issues.iter().any(|issue| {
+            issue.rule_id == "openrtb.profile.prebid.bidder_required" && issue.path == "imp[0].ext"
+        }));
+    }
+
+    #[tokio::test]
     async fn an_unknown_profile_is_rejected() {
         let status = service()
             .validate(Request::new(ValidateRequest {

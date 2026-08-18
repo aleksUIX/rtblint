@@ -159,7 +159,7 @@ exports.validate_dialect = validate_dialect;
 
 /**
  * Validate an OpenRTB bid request against a JSON dialect and an exchange
- * profile ("spec" or "google-ab"). Empty profile id means the specification
+ * profile ("spec", "google-ab", or "prebid-server"). Empty profile id means the specification
  * only. Unknown ids are rejected.
  * @param {string} version_id
  * @param {string} dialect_id

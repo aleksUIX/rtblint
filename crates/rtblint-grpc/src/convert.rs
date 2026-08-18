@@ -267,6 +267,10 @@ mod tests {
             profile(Some(&profile_context("adx"))).unwrap(),
             core::Profile::GoogleAuthorizedBuyers
         );
+        assert_eq!(
+            profile(Some(&profile_context("pbs"))).unwrap(),
+            core::Profile::PrebidServer
+        );
     }
 
     #[test]
@@ -275,6 +279,7 @@ mod tests {
         assert_eq!(error.code(), tonic::Code::InvalidArgument);
         assert!(error.message().contains("magnite"));
         assert!(error.message().contains("google-ab"));
+        assert!(error.message().contains("prebid-server"));
     }
 
     #[test]

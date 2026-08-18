@@ -45,10 +45,19 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   (`--cache`). The offline core stays a pure function of the payload.
 - NDJSON stream mode: `--batch` lints one payload per line from a file or
   stdin; `--summary` prints how often each rule id fired across the capture
-- Exchange profiles: documented protocol requirements on top of the spec.
+- Exchange profiles: documented protocol extras on top of the spec.
   `--profile google-ab` (Google Authorized Buyers) accepts `at: 3`
-  (FIXED_PRICE) and requires `Imp.ext.billing_id`. Orthogonal to `--dialect`.
-  Business policy stays out.
+  (FIXED_PRICE) and requires `Imp.ext.billing_id`. `--profile prebid-server`
+  (aliases `prebid`, `pbs`) applies Prebid Server `/openrtb2/auction` extras:
+  each Imp must name a bidder or stored request, `wseat`/`bseat` are refused,
+  stored-request objects need `id`, native request asset ids are optional.
+  Orthogonal to `--dialect`. Business policy stays out.
+- Nested specs: Native Ads 1.2 markup in `imp.native.request` and native
+  `bid.adm` (assets, ids, subtypes, required-asset pairing against the
+  request); GPP header decode vs `gpp_sid` and TCF 2 shape on `user.consent`;
+  `${AUCTION_*}` macros on `nurl`/`burl`/`lurl`/`adm`; EID/UID required
+  fields and `device.sua` as UserAgent; IAB SKAdNetwork extension on
+  `imp.ext.skadn` and `bid.ext.skadn`.
 
 ## Later
 

@@ -394,8 +394,10 @@ fn validate_known_object<'a>(
     // checks are skipped and only object semantics run.
     if definition.fields.is_empty() {
         push_profile_required(profile, object_name, object, instance_path, issues);
+        crate::profile::push_profile_semantics(profile, object_name, object, instance_path, issues);
         validate_object_semantics(
             version,
+            profile,
             object_name,
             definition.section,
             object,
@@ -422,6 +424,7 @@ fn validate_known_object<'a>(
     }
 
     push_profile_required(profile, object_name, object, instance_path, issues);
+    crate::profile::push_profile_semantics(profile, object_name, object, instance_path, issues);
 
     for (field_name, value) in object {
         logical_segments.push(field_name.as_str());
@@ -526,8 +529,12 @@ fn validate_known_object<'a>(
             issues,
         );
 
+        let child_object_name = field_definition
+            .child_object
+            .or_else(|| implied_child_object(object_name, field_name));
+
         if matches!(field_definition.shape, ExpectedShape::Object) && value.is_object() {
-            if let Some(child_object_name) = field_definition.child_object {
+            if let Some(child_object_name) = child_object_name {
                 if should_walk_child(walk_adcom, child_object_name) {
                     validate_known_object(
                         version,
@@ -546,7 +553,7 @@ fn validate_known_object<'a>(
         }
 
         if matches!(field_definition.shape, ExpectedShape::ObjectArray) && value.is_array() {
-            if let Some(child_object_name) = field_definition.child_object {
+            if let Some(child_object_name) = child_object_name {
                 if should_walk_child(walk_adcom, child_object_name) {
                     for (index, item) in value
                         .as_array()
@@ -581,6 +588,7 @@ fn validate_known_object<'a>(
 
     validate_object_semantics(
         version,
+        profile,
         object_name,
         definition.section,
         object,
@@ -795,6 +803,7 @@ fn validate_integer_against_value_set(
 
 fn validate_object_semantics(
     version: OpenRtbVersion,
+    profile: Profile,
     object_name: &str,
     object_section: &str,
     object: &Map<String, Value>,
@@ -824,9 +833,13 @@ fn validate_object_semantics(
         "Deal" => validate_deal_semantics(object, instance_path, object_section, issues),
         "Regs" => validate_regs_semantics(object, instance_path, object_section, issues),
         "Native" if !adcom_object => {
-            validate_native_semantics(object, instance_path, object_section, issues)
+            validate_native_semantics(profile, object, instance_path, object_section, issues)
         }
         "Source" => validate_source_semantics(object, instance_path, object_section, issues),
+        "User" => crate::privacy::validate_user_consent(object, instance_path, issues),
+        "EID" => validate_eid_semantics(object, instance_path, object_section, issues),
+        "UID" => validate_uid_semantics(object, instance_path, object_section, issues),
+        "UserAgent" => validate_user_agent_semantics(object, instance_path, object_section, issues),
         "SupplyChain" => {
             validate_supply_chain_semantics(object, instance_path, object_section, issues)
         }
@@ -884,6 +897,17 @@ fn validate_object_semantics(
 /// names a domain spec other than AdCOM.
 fn should_walk_child(walk_adcom: bool, child_object_name: &str) -> bool {
     walk_adcom || canonical_adcom_object(child_object_name).is_none()
+}
+
+/// Catalog extraction missed a few `child_object` links: `device.sua` is a
+/// UserAgent, and `useragent.browsers` is BrandVersion[]. Walk them anyway
+/// so nested required fields and types fire.
+fn implied_child_object(object_name: &str, field_name: &str) -> Option<&'static str> {
+    match (object_name, field_name) {
+        ("Device", "sua") => Some("UserAgent"),
+        ("UserAgent", "browsers") => Some("BrandVersion"),
+        _ => None,
+    }
 }
 
 fn object_catalog_label(version: OpenRtbVersion, object_name: &str) -> String {
@@ -1139,6 +1163,15 @@ fn validate_bid_semantics(
     section: &str,
     issues: &mut Vec<Issue>,
 ) {
+    crate::macros::validate_bid_macros(object, instance_path, issues);
+    if let Some(skadn) = extension_object(object, "skadn") {
+        crate::skadn::validate_response(
+            skadn,
+            &join_instance_path(instance_path, "ext.skadn"),
+            issues,
+        );
+    }
+
     let Some(adm) = object.get("adm").and_then(Value::as_str) else {
         return;
     };
@@ -1239,6 +1272,12 @@ fn validate_bid_semantics(
             }
         }
     }
+
+    if markup == AdmMarkup::NativeJson && matches!(mtype, Some(4) | None) {
+        if let Some(root) = crate::native::parse_encoded_object(adm) {
+            crate::native::validate_markup_response(&root, &adm_path, issues);
+        }
+    }
 }
 
 fn validate_imp_semantics(
@@ -1264,6 +1303,14 @@ fn validate_imp_semantics(
     }
 
     validate_bidfloor_semantics(object, instance_path, section, issues);
+
+    if let Some(skadn) = extension_object(object, "skadn") {
+        crate::skadn::validate_request(
+            skadn,
+            &join_instance_path(instance_path, "ext.skadn"),
+            issues,
+        );
+    }
 }
 
 fn validate_deal_semantics(
@@ -1495,6 +1542,18 @@ fn validate_regs_semantics(
         });
     }
 
+    if gpp_present {
+        if let Some(gpp) = object.get("gpp").and_then(Value::as_str) {
+            let sids = object.get("gpp_sid").and_then(Value::as_array);
+            crate::privacy::validate_gpp(
+                gpp,
+                sids.map(|items| items.as_slice()),
+                instance_path,
+                issues,
+            );
+        }
+    }
+
     if let Some(us_privacy) = object.get("us_privacy").and_then(Value::as_str) {
         if !us_privacy.is_empty() && !is_us_privacy_string_shape(us_privacy) {
             issues.push(Issue {
@@ -1512,6 +1571,7 @@ fn validate_regs_semantics(
 }
 
 fn validate_native_semantics(
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1545,9 +1605,22 @@ fn validate_native_semantics(
                          convention predates Native Ads 1.1, which made the Native Markup \
                          Request the root object.",
                     ),
-                    path: Some(request_path),
+                    path: Some(request_path.clone()),
                     section: Some(String::from(section)),
                 });
+            }
+            if let Some(root) = crate::native::parse_encoded_object(request_raw) {
+                let ver = root
+                    .get("ver")
+                    .and_then(Value::as_str)
+                    .or_else(|| object.get("ver").and_then(Value::as_str));
+                crate::native::validate_markup_request(
+                    &root,
+                    &request_path,
+                    ver,
+                    profile.native_request_asset_id_required(),
+                    issues,
+                );
             }
         }
         Ok(_) => {}
@@ -1564,6 +1637,97 @@ fn validate_native_semantics(
             });
         }
     }
+}
+
+fn validate_eid_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if !non_empty_string_field(object.get("source")) {
+        issues.push(Issue {
+            id: String::from("openrtb.eid.field_required"),
+            severity: Severity::Error,
+            message: String::from(
+                "EID.source is required: the canonical domain of the identity provider \
+                 (for example id5-sync.com).",
+            ),
+            path: Some(join_instance_path(instance_path, "source")),
+            section: Some(String::from(section)),
+        });
+    }
+    let uids_ok = object
+        .get("uids")
+        .and_then(Value::as_array)
+        .is_some_and(|items| !items.is_empty());
+    if !uids_ok {
+        issues.push(Issue {
+            id: String::from("openrtb.eid.field_required"),
+            severity: Severity::Error,
+            message: String::from("EID.uids is required and must contain at least one UID."),
+            path: Some(join_instance_path(instance_path, "uids")),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
+fn validate_uid_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    if !non_empty_string_field(object.get("id")) {
+        issues.push(Issue {
+            id: String::from("openrtb.eid.field_required"),
+            severity: Severity::Error,
+            message: String::from("UID.id is required: the identifier from this source."),
+            path: Some(join_instance_path(instance_path, "id")),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
+fn validate_user_agent_semantics(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    section: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let browsers_ok = object
+        .get("browsers")
+        .and_then(Value::as_array)
+        .is_some_and(|items| !items.is_empty());
+    if !browsers_ok {
+        issues.push(Issue {
+            id: String::from("openrtb.sua.browsers_empty"),
+            severity: Severity::Warning,
+            message: String::from(
+                "device.sua.browsers is recommended and should list at least one BrandVersion; \
+                 an empty Structured User Agent cannot replace device.ua.",
+            ),
+            path: Some(join_instance_path(instance_path, "browsers")),
+            section: Some(String::from(section)),
+        });
+    }
+}
+
+fn extension_object<'a>(
+    object: &'a Map<String, Value>,
+    name: &str,
+) -> Option<&'a Map<String, Value>> {
+    object
+        .get("ext")
+        .and_then(Value::as_object)
+        .and_then(|ext| ext.get(name))
+        .and_then(Value::as_object)
+}
+
+fn non_empty_string_field(value: Option<&Value>) -> bool {
+    value
+        .and_then(Value::as_str)
+        .is_some_and(|text| !text.is_empty())
 }
 
 fn validate_source_semantics(
@@ -2181,7 +2345,7 @@ fn schema_path(kind: PayloadKind, logical_segments: &[&str]) -> Option<String> {
     Some(logical_segments.join("."))
 }
 
-fn join_instance_path(base: &str, segment: &str) -> String {
+pub(crate) fn join_instance_path(base: &str, segment: &str) -> String {
     if base.is_empty() {
         return String::from(segment);
     }

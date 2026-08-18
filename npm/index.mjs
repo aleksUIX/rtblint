@@ -70,9 +70,11 @@ export function validateResponseDialect(input, dialect, version) {
  * Validate an OpenRTB bid request against an exchange profile.
  * "spec" (default) is the specification only. "google-ab" is Google
  * Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and
- * each Imp must carry ext.billing_id.
+ * each Imp must carry ext.billing_id. "prebid-server" is Prebid Server
+ * /openrtb2/auction: each Imp must name a bidder or stored request, and
+ * wseat/bseat are refused.
  * @param {string} input - Raw bid request JSON.
- * @param {"spec"|"google-ab"} profile - Exchange profile.
+ * @param {"spec"|"google-ab"|"prebid-server"} profile - Exchange profile.
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  */
 export function validateProfile(input, profile, version) {
@@ -82,7 +84,7 @@ export function validateProfile(input, profile, version) {
 /**
  * Validate an OpenRTB bid response against an exchange profile.
  * @param {string} input - Raw bid response JSON.
- * @param {"spec"|"google-ab"} profile - Exchange profile.
+ * @param {"spec"|"google-ab"|"prebid-server"} profile - Exchange profile.
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  */
 export function validateResponseProfile(input, profile, version) {

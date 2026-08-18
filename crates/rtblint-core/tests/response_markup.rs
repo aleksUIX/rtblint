@@ -39,7 +39,7 @@ fn response_with_bid(bid_fields: &str) -> String {
 #[test]
 fn native_mtype_accepts_json_adm() {
     let response = response_with_bid(
-        r#", "mtype": 4, "adm": "{\"native\":{\"ver\":\"1.2\",\"link\":{\"url\":\"https://example.com\"}}}""#,
+        r#", "mtype": 4, "adm": "{\"native\":{\"ver\":\"1.2\",\"link\":{\"url\":\"https://example.com\"},\"assets\":[{\"id\":1,\"title\":{\"text\":\"Hello\"}}]}}""#,
     );
     let result = validate_bid_response_for_version(VERSION, &response);
     assert!(result.valid, "issues: {:?}", result.issues);
@@ -170,7 +170,7 @@ const BANNER_NATIVE_REQUEST: &str = r#"{
     "cur": ["USD", "EUR"],
     "imp": [
         { "id": "imp-1", "banner": { "w": 300, "h": 250 } },
-        { "id": "imp-2", "native": { "request": "{\"ver\":\"1.2\"}" } },
+        { "id": "imp-2", "native": { "request": "{\"ver\":\"1.2\",\"assets\":[{\"id\":1,\"required\":1,\"title\":{\"len\":90}}]}" } },
         {
             "id": "imp-3",
             "video": { "mimes": ["video/mp4"] },

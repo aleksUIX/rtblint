@@ -12,6 +12,7 @@ use serde_json::{Map, Value};
 
 use crate::{
     canonical_object,
+    native::{self, NativeRequestIndex},
     validator::{classify_adm, finalize_result, integer_value, validate_bid_response, AdmMarkup},
     Dialect, Issue, OpenRtbVersion, Profile, Severity,
 };
@@ -98,6 +99,7 @@ struct ImpContext<'a> {
     video: bool,
     audio: bool,
     native: bool,
+    native_assets: NativeRequestIndex,
     /// `Some` when the imp carries a pmp object; the vec holds its deal ids.
     deal_ids: Option<Vec<&'a str>>,
 }
@@ -127,6 +129,14 @@ impl<'a> RequestContext<'a> {
                     .collect::<Vec<_>>()
             });
 
+            let native_assets = imp
+                .get("native")
+                .and_then(Value::as_object)
+                .and_then(|native| native.get("request").and_then(Value::as_str))
+                .and_then(native::parse_encoded_object)
+                .map(|request| native::index_markup_request(&request))
+                .unwrap_or_default();
+
             imps.insert(
                 imp_id,
                 ImpContext {
@@ -134,6 +144,7 @@ impl<'a> RequestContext<'a> {
                     video: imp.contains_key("video"),
                     audio: imp.contains_key("audio"),
                     native: imp.contains_key("native"),
+                    native_assets,
                     deal_ids,
                 },
             );
@@ -313,9 +324,19 @@ fn cross_validate_bid(
                     "adm is a native JSON payload, but imp \"{impid}\" does not offer a native \
                      subtype."
                 ),
-                path: Some(adm_path),
+                path: Some(adm_path.clone()),
                 section: bid_section.map(String::from),
             }),
+            AdmMarkup::NativeJson if imp.native => {
+                if let Some(response) = native::parse_encoded_object(adm) {
+                    native::validate_response_against_request(
+                        &imp.native_assets,
+                        &response,
+                        &adm_path,
+                        issues,
+                    );
+                }
+            }
             AdmMarkup::Vast if !imp.video && !imp.audio => issues.push(Issue {
                 id: String::from("openrtb.bid.adm.media_type_mismatch"),
                 severity: Severity::Error,
@@ -323,7 +344,7 @@ fn cross_validate_bid(
                     "adm is VAST markup, but imp \"{impid}\" offers neither a video nor an \
                      audio subtype."
                 ),
-                path: Some(adm_path),
+                path: Some(adm_path.clone()),
                 section: bid_section.map(String::from),
             }),
             AdmMarkup::OtherMarkup | AdmMarkup::Other

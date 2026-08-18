@@ -21,7 +21,8 @@ Website and playground: [rtblint.org](https://rtblint.org)
 - Response markup coherence: `bid.adm` content vs the declared `bid.mtype` (native JSON encoding, VAST/DAAST roots, double-encoded payloads)
 - Request/response cross-validation: with the originating request supplied, every bid's `impid`, `mtype`, `adm` markup, `dealid`, seat, and currency are checked against what the request actually offered
 - JSON dialect: spec JSON types flag fields such as `imp.secure` and `regs.coppa` as integers, while the IAB OpenRTB protobuf schema declares 28 of them `bool`. Either encoding is correct on its own transport and wrong on the other, so the caller declares which one it meant
-- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. Business policy stays out
+- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. `--profile prebid-server` requires each Imp to name a bidder or stored request and refuses `wseat`/`bseat`. Business policy stays out
+- Nested specs OpenRTB carries as strings or opaque `ext`: Native Ads 1.2 markup (`imp.native.request` and native `bid.adm`, including required-asset pairing), GPP header vs `gpp_sid` and TCF 2 shape, `${AUCTION_*}` macros on billing and loss URLs, EID/SUA structure, SKAdNetwork `ext.skadn`
 - ARTF envelopes and mutation sets, including applying the mutations and revalidating what comes out
 
 Every finding carries a stable rule id, a severity, a message, and a JSON path.
@@ -73,13 +74,14 @@ rtblint validate --type response --request request.json response.json
 rtblint validate --version 2.5 --format json request.json
 rtblint validate --dialect proto-json grpc-bid-request.json
 rtblint validate --profile google-ab google-bid-request.json
+rtblint validate --profile prebid-server pbs-auction.json
 rtblint validate --resolve --cache ./supply-cache request.json
 rtblint validate --summary bids.ndjson
 rtblint validate --batch --summary bids.ndjson
 cat request.json | rtblint validate --stdin
 ```
 
-`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
+`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--profile prebid-server` applies Prebid Server `/openrtb2/auction` extras (bidder or stored request on each Imp, no `wseat`/`bseat`). `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
 
 ```text
 <dir>/sellers/<asi>/sellers.json
@@ -123,6 +125,7 @@ import {
 
 validateDialect(JSON.stringify(bidRequest), "proto-json");
 validateProfile(JSON.stringify(bidRequest), "google-ab");
+validateProfile(JSON.stringify(bidRequest), "prebid-server");
 validateArtfRequest(JSON.stringify(rtbRequest));
 
 // { result, application }: what the mutations broke, and the payloads they produced
@@ -171,7 +174,7 @@ for issue in &result.issues {
 }
 ```
 
-`validate_bid_request_with_profile` applies an exchange profile (`Profile::GoogleAuthorizedBuyers`) on top of the spec. `validate_bid_request_with_dialect` selects spec JSON vs protobuf JSON.
+`validate_bid_request_with_profile` applies an exchange profile (`Profile::GoogleAuthorizedBuyers`, `Profile::PrebidServer`) on top of the spec. `validate_bid_request_with_dialect` selects spec JSON vs protobuf JSON.
 
 ## JSON Schemas
 

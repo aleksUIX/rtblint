@@ -2,6 +2,39 @@
 
 ## Unreleased
 
+### Added
+
+- Nested spec walks for payloads OpenRTB carries as strings or opaque `ext`
+  objects. Native Ads 1.2 markup in `imp.native.request` and native `bid.adm`
+  is checked for assets, asset ids, subtypes, and (with `--request`) required
+  asset pairing. GPP headers are decoded (type, version, Fibonacci section
+  ids) and compared to `gpp_sid`; TCF 2 core-string shape is checked on
+  `user.consent` and GPP sections 2 and 5. OpenRTB `${AUCTION_*}` macros are
+  scanned on `nurl`/`burl`/`lurl`/`adm`. EID `source`/`uids`/`id` are
+  required; `device.sua` is walked as UserAgent (including BrandVersion
+  `brand`). `imp.ext.skadn` and `bid.ext.skadn` follow the IAB SKAdNetwork
+  community extension. New rule ids:
+  `openrtb.native.assets_missing`, `openrtb.native.asset.id_required`,
+  `openrtb.native.asset.id_duplicate`, `openrtb.native.asset.subtype_required`,
+  `openrtb.native.field_required`, `openrtb.native.layout_removed`,
+  `openrtb.native.value.invalid`, `openrtb.native.asset.required_missing`,
+  `openrtb.native.asset.id_unknown`, `openrtb.native.asset.type_mismatch`,
+  `openrtb.regs.gpp_malformed`, `openrtb.regs.gpp_section_mismatch`,
+  `openrtb.regs.tcf_malformed`, `openrtb.macro.unknown`,
+  `openrtb.bid.price_macro_missing`, `openrtb.bid.loss_macro_missing`,
+  `openrtb.eid.field_required`, `openrtb.sua.browsers_empty`,
+  `openrtb.skadn.field_required`. VAST inside `adm` is still a root sniff;
+  composing vastlint stays out.
+- Prebid Server profile. `--profile prebid-server` (aliases `prebid`, `pbs`)
+  applies `/openrtb2/auction` protocol extras: each Imp must name at least one
+  bidder (`imp.ext.prebid.bidder.{bidder}` or legacy `imp.ext.{bidder}`) or a
+  stored request / stored auction response id; `storedrequest` objects need
+  `id`; `wseat`/`bseat` are refused; `ext.prebid.trace` is `verbose` or
+  `basic`; native request asset ids are optional (PBS fills them). Floors,
+  bid adjustments, and targeting stay out. New rule ids:
+  `openrtb.profile.prebid.bidder_required`, `openrtb.profile.field_forbidden`,
+  `openrtb.profile.value_invalid`.
+
 ## 0.10.0 (2026-08-16)
 
 ### Added

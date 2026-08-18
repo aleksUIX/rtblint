@@ -773,7 +773,7 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab|prebid-server] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
 
 fn usage_text() -> String {
     format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
@@ -792,7 +792,9 @@ fn validate_usage_text() -> String {
          there.\n\
          --profile applies an exchange's documented protocol requirements on top of the spec: \
          spec (default) is the specification only; google-ab is Google Authorized Buyers \
-         (at=3 FIXED_PRICE, Imp.ext.billing_id required). ARTF payloads reject the flag.\n\
+         (at=3 FIXED_PRICE, Imp.ext.billing_id required); prebid-server is Prebid Server \
+         /openrtb2/auction (each Imp must name a bidder or stored request, wseat/bseat refused). \
+         ARTF payloads reject the flag.\n\
          --request supplies the payload a response is cross-validated against: the originating \
          bid request for --type response (impid, mtype, adm markup, dealid, seat, and currency \
          coherence), or the RTBRequest envelope for --type artf-response (intent eligibility and \
@@ -983,6 +985,18 @@ mod tests {
         ])
         .expect("parse");
         assert_eq!(command.profile, Profile::GoogleAuthorizedBuyers);
+    }
+
+    #[test]
+    fn profile_flag_selects_prebid_server() {
+        let command = parse_validate_command(vec![
+            String::from("--profile"),
+            String::from("pbs"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ])
+        .expect("parse");
+        assert_eq!(command.profile, Profile::PrebidServer);
     }
 
     #[test]

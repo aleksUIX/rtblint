@@ -114,8 +114,8 @@ fn tool_definitions() -> Value {
     let profile_property = || {
         json!({
             "type": "string",
-            "enum": ["spec", "google-ab", "prebid-server"],
-            "description": "Exchange profile applied on top of the spec. spec (default) is the specification only. google-ab is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and each Imp must carry ext.billing_id. prebid-server is Prebid Server /openrtb2/auction: each Imp must name a bidder or a stored request, wseat/bseat are refused, and stored-request objects need id.",
+            "enum": ["spec", "google-ab", "prebid-server", "xandr", "magnite"],
+            "description": "Exchange profile applied on top of the spec. spec (default) is the specification only. google-ab is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE) is a valid auction type, and each Imp must carry ext.billing_id. prebid-server is Prebid Server /openrtb2/auction: each Imp must name a bidder or a stored request, wseat/bseat are refused, and stored-request objects need id. xandr is Microsoft Monetize outgoing requests: ext.appnexus.seller_member_id and video.ext.appnexus.context. magnite is Magnite xAPI identity fields: imp.ext.rp.zone_id, site/app ext.rp.site_id, publisher.ext.rp.account_id.",
         })
     };
     let payload_schema = |payload_description: &str| {
@@ -722,7 +722,7 @@ mod tests {
     fn unknown_profile_is_reported_as_a_tool_error() {
         let result = run_validation(
             json!(1),
-            &json!({ "payload": "{}", "profile": "magnite" }),
+            &json!({ "payload": "{}", "profile": "amazon-tam" }),
             "request",
         );
         assert_eq!(tool_result(&result)["isError"], json!(true));

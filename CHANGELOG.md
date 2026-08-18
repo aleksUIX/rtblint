@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+### Added
+
+- GitHub Action in this repository (`uses: aleksUIX/rtblint@<tag>`). Downloads
+  the prebuilt CLI tarball for Linux/macOS x86_64 and aarch64. Inputs cover
+  `--type`, `--dialect`, `--profile`, OpenRTB `--version` (`spec-version`),
+  pairing `--request`, `--batch`, and `--summary`. Release workflow builds
+  musl and macOS archives and attaches them to the GitHub Release;
+  `workflow_dispatch` can attach binaries to an existing tag.
+- Xandr profile. `--profile xandr` (aliases `appnexus`, `microsoft`) requires
+  `ext.appnexus.seller_member_id` on outgoing Microsoft Monetize bid requests
+  and `video.ext.appnexus.context` (0–7) on video impressions.
+  `ext.appnexus.markup_delivery` must be 0 or 1 when present.
+- Magnite profile. `--profile magnite` (aliases `rubicon`, `xapi`, `dv+`)
+  requires Magnite xAPI identity fields: `imp.ext.rp.zone_id`, site/app
+  `ext.rp.site_id`, and `publisher.ext.rp.account_id`. Floors and blocklists
+  stay out.
+
 ## 0.11.0 (2026-08-17)
 
 ### Added

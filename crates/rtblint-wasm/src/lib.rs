@@ -206,7 +206,7 @@ pub fn validate_response_dialect(
 }
 
 /// Validate an OpenRTB bid request against a JSON dialect and an exchange
-/// profile ("spec", "google-ab", or "prebid-server"). Empty profile id means the specification
+/// profile ("spec", "google-ab", "prebid-server", "xandr", or "magnite"). Empty profile id means the specification
 /// only. Unknown ids are rejected.
 #[wasm_bindgen]
 pub fn validate_profile(

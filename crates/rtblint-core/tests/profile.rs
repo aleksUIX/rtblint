@@ -352,3 +352,209 @@ fn prebid_server_rejects_invalid_bid_type() {
         "seatbid[0].bid[0].ext.prebid.type"
     ));
 }
+
+fn xandr_validate(payload: &str) -> ValidationResult {
+    validate_bid_request_with_profile(VERSION, Dialect::SpecJson, Profile::Xandr, payload)
+}
+
+fn magnite_validate(payload: &str) -> ValidationResult {
+    validate_bid_request_with_profile(VERSION, Dialect::SpecJson, Profile::Magnite, payload)
+}
+
+#[test]
+fn spec_profile_does_not_require_xandr_seller_member_id() {
+    let payload = r#"{
+        "id": "req-1",
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = validate_bid_request_for_version(VERSION, payload);
+    assert!(
+        result.valid,
+        "spec profile should not require seller_member_id: {:?}",
+        result.issues
+    );
+}
+
+#[test]
+fn xandr_requires_seller_member_id() {
+    let payload = r#"{
+        "id": "req-1",
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "ext.appnexus.seller_member_id"
+    ));
+}
+
+#[test]
+fn xandr_banner_request_with_seller_member_id_is_valid() {
+    let payload = r#"{
+        "id": "req-1",
+        "ext": { "appnexus": { "seller_member_id": 123 } },
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(result.valid, "xandr banner: {:?}", result.issues);
+}
+
+#[test]
+fn xandr_requires_video_context() {
+    let payload = r#"{
+        "id": "req-1",
+        "ext": { "appnexus": { "seller_member_id": 123 } },
+        "imp": [{ "id": "1", "video": { "mimes": ["video/mp4"] } }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "imp[0].video.ext.appnexus.context"
+    ));
+}
+
+#[test]
+fn xandr_rejects_video_context_outside_documented_set() {
+    let payload = r#"{
+        "id": "req-1",
+        "ext": { "appnexus": { "seller_member_id": 123 } },
+        "imp": [{
+            "id": "1",
+            "video": {
+                "mimes": ["video/mp4"],
+                "ext": { "appnexus": { "context": 9 } }
+            }
+        }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.value_invalid",
+        "imp[0].video.ext.appnexus.context"
+    ));
+}
+
+#[test]
+fn xandr_accepts_documented_video_context() {
+    let payload = r#"{
+        "id": "req-1",
+        "ext": { "appnexus": { "seller_member_id": 123 } },
+        "imp": [{
+            "id": "1",
+            "video": {
+                "mimes": ["video/mp4"],
+                "ext": { "appnexus": { "context": 1 } }
+            }
+        }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(result.valid, "xandr video: {:?}", result.issues);
+}
+
+#[test]
+fn xandr_rejects_invalid_markup_delivery() {
+    let payload = r#"{
+        "id": "req-1",
+        "ext": { "appnexus": { "seller_member_id": 123, "markup_delivery": 2 } },
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = xandr_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.value_invalid",
+        "ext.appnexus.markup_delivery"
+    ));
+}
+
+#[test]
+fn spec_profile_does_not_require_magnite_zone_id() {
+    let payload = r#"{
+        "id": "req-1",
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = validate_bid_request_for_version(VERSION, payload);
+    assert!(
+        result.valid,
+        "spec profile should not require zone_id: {:?}",
+        result.issues
+    );
+}
+
+#[test]
+fn magnite_requires_zone_id() {
+    let payload = r#"{
+        "id": "req-1",
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
+    }"#;
+    let result = magnite_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "imp[0].ext.rp.zone_id"
+    ));
+}
+
+#[test]
+fn magnite_requires_site_identity_fields() {
+    let payload = r#"{
+        "id": "req-1",
+        "site": { "id": "s1", "domain": "publisher.example" },
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "rp": { "zone_id": 3 } } }]
+    }"#;
+    let result = magnite_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "site.ext.rp.site_id"
+    ));
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "site.publisher.ext.rp.account_id"
+    ));
+}
+
+#[test]
+fn magnite_requires_app_identity_fields() {
+    let payload = r#"{
+        "id": "req-1",
+        "app": { "id": "a1", "bundle": "com.example.app" },
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "rp": { "zone_id": 3 } } }]
+    }"#;
+    let result = magnite_validate(payload);
+    assert!(!result.valid);
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "app.ext.rp.site_id"
+    ));
+    assert!(has_issue(
+        &result,
+        "openrtb.profile.field_required",
+        "app.publisher.ext.rp.account_id"
+    ));
+}
+
+#[test]
+fn magnite_accepts_documented_identity_fields() {
+    let payload = r#"{
+        "id": "req-1",
+        "site": {
+            "id": "s1",
+            "domain": "publisher.example",
+            "publisher": { "id": "p1", "ext": { "rp": { "account_id": 1 } } },
+            "ext": { "rp": { "site_id": 2 } }
+        },
+        "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "rp": { "zone_id": 3 } } }]
+    }"#;
+    let result = magnite_validate(payload);
+    assert!(result.valid, "magnite: {:?}", result.issues);
+}

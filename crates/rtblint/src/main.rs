@@ -773,7 +773,7 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab|prebid-server] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab|prebid-server|xandr|magnite] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
 
 fn usage_text() -> String {
     format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
@@ -793,7 +793,10 @@ fn validate_usage_text() -> String {
          --profile applies an exchange's documented protocol requirements on top of the spec: \
          spec (default) is the specification only; google-ab is Google Authorized Buyers \
          (at=3 FIXED_PRICE, Imp.ext.billing_id required); prebid-server is Prebid Server \
-         /openrtb2/auction (each Imp must name a bidder or stored request, wseat/bseat refused). \
+         /openrtb2/auction (each Imp must name a bidder or stored request, wseat/bseat refused); \
+         xandr is Microsoft Monetize outgoing requests (ext.appnexus.seller_member_id, video \
+         context); magnite is Magnite xAPI identity fields (imp.ext.rp.zone_id, site/app \
+         ext.rp.site_id, publisher.ext.rp.account_id). \
          ARTF payloads reject the flag.\n\
          --request supplies the payload a response is cross-validated against: the originating \
          bid request for --type response (impid, mtype, adm markup, dealid, seat, and currency \
@@ -1000,14 +1003,38 @@ mod tests {
     }
 
     #[test]
+    fn profile_flag_selects_xandr() {
+        let command = parse_validate_command(vec![
+            String::from("--profile"),
+            String::from("appnexus"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ])
+        .expect("parse");
+        assert_eq!(command.profile, Profile::Xandr);
+    }
+
+    #[test]
+    fn profile_flag_selects_magnite() {
+        let command = parse_validate_command(vec![
+            String::from("--profile"),
+            String::from("rubicon"),
+            String::from("--batch"),
+            String::from("bids.ndjson"),
+        ])
+        .expect("parse");
+        assert_eq!(command.profile, Profile::Magnite);
+    }
+
+    #[test]
     fn unknown_profile_is_an_error() {
         match parse_validate_command(vec![
             String::from("--profile"),
-            String::from("magnite"),
+            String::from("amazon-tam"),
             String::from("--batch"),
             String::from("bids.ndjson"),
         ]) {
-            Err(error) => assert!(error.contains("Unsupported profile: magnite")),
+            Err(error) => assert!(error.contains("Unsupported profile: amazon-tam")),
             Ok(_) => panic!("unknown profile should be an error"),
         }
     }

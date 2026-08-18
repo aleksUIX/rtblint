@@ -271,15 +271,25 @@ mod tests {
             profile(Some(&profile_context("pbs"))).unwrap(),
             core::Profile::PrebidServer
         );
+        assert_eq!(
+            profile(Some(&profile_context("appnexus"))).unwrap(),
+            core::Profile::Xandr
+        );
+        assert_eq!(
+            profile(Some(&profile_context("rubicon"))).unwrap(),
+            core::Profile::Magnite
+        );
     }
 
     #[test]
     fn an_unknown_profile_is_rejected_and_lists_what_is_available() {
-        let error = profile(Some(&profile_context("magnite"))).unwrap_err();
+        let error = profile(Some(&profile_context("amazon-tam"))).unwrap_err();
         assert_eq!(error.code(), tonic::Code::InvalidArgument);
-        assert!(error.message().contains("magnite"));
+        assert!(error.message().contains("amazon-tam"));
         assert!(error.message().contains("google-ab"));
         assert!(error.message().contains("prebid-server"));
+        assert!(error.message().contains("xandr"));
+        assert!(error.message().contains("magnite"));
     }
 
     #[test]

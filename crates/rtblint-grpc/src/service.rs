@@ -611,14 +611,14 @@ mod tests {
                 context: Some(crate::proto::ValidationContext {
                     version: String::new(),
                     dialect: crate::proto::JsonDialect::Unspecified as i32,
-                    profile: "magnite".to_string(),
+                    profile: "amazon-tam".to_string(),
                 }),
             }))
             .await
             .expect_err("unknown profile is rejected");
 
         assert_eq!(status.code(), tonic::Code::InvalidArgument);
-        assert!(status.message().contains("magnite"));
+        assert!(status.message().contains("amazon-tam"));
     }
 
     // -- ARTF --

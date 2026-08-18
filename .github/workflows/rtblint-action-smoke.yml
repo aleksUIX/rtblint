@@ -1,0 +1,68 @@
+name: rtblint-action-smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "action.yml"
+      - ".github/workflows/rtblint-action-smoke.yml"
+      - "crates/rtblint-core/tests/fixtures/bid-requests/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "action.yml"
+      - ".github/workflows/rtblint-action-smoke.yml"
+      - "crates/rtblint-core/tests/fixtures/bid-requests/**"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke test in-repo rtblint action
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Probe CLI binaries
+        id: probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://github.com/aleksUIX/rtblint/releases/latest/download/rtblint-linux-x86_64.tar.gz"
+          if curl -fsIL "$url" >/dev/null; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "No CLI tarball on the latest GitHub Release yet. Attach binaries via the Release workflow_dispatch, then re-run."
+          fi
+
+      - name: Valid fixture should pass
+        if: steps.probe.outputs.ready == 'true'
+        uses: ./
+        with:
+          path: crates/rtblint-core/tests/fixtures/bid-requests/valid-web-video.json
+          version: latest
+
+      - name: Invalid fixture should fail
+        if: steps.probe.outputs.ready == 'true'
+        id: invalid
+        continue-on-error: true
+        uses: ./
+        with:
+          path: crates/rtblint-core/tests/fixtures/bid-requests/invalid-missing-video-mimes.json
+          version: latest
+
+      - name: Assert invalid fixture failed as expected
+        if: steps.probe.outputs.ready == 'true'
+        shell: bash
+        run: |
+          if [[ "${{ steps.invalid.outcome }}" != "failure" ]]; then
+            echo "Expected invalid fixture step to fail, got: ${{ steps.invalid.outcome }}"
+            exit 1
+          fi

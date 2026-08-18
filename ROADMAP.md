@@ -51,7 +51,13 @@ What RTBlint does today and where it's heading. Not a promise of dates.
   (aliases `prebid`, `pbs`) applies Prebid Server `/openrtb2/auction` extras:
   each Imp must name a bidder or stored request, `wseat`/`bseat` are refused,
   stored-request objects need `id`, native request asset ids are optional.
-  Orthogonal to `--dialect`. Business policy stays out.
+  `--profile xandr` requires `ext.appnexus.seller_member_id` and video
+  `ext.appnexus.context`. `--profile magnite` requires xAPI identity fields
+  (`imp.ext.rp.zone_id`, site/app `ext.rp.site_id`,
+  `publisher.ext.rp.account_id`). Orthogonal to `--dialect`. Business policy
+  stays out.
+- GitHub Action in this repo (`uses: aleksUIX/rtblint@<tag>`). Prebuilt musl /
+  macOS CLI tarballs on GitHub Releases.
 - Nested specs: Native Ads 1.2 markup in `imp.native.request` and native
   `bid.adm` (assets, ids, subtypes, required-asset pairing against the
   request); GPP header decode vs `gpp_sid` and TCF 2 shape on `user.consent`;
@@ -63,8 +69,8 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 
 - ARTF beyond v1.0: the intent set is growing in the reference repository, and
   each new intent brings a payload shape and a target vocabulary to check
-- GitHub Action and pre-commit hook
-- Homebrew tap, Docker image, prebuilt static binaries
+- Pre-commit hook
+- Homebrew tap, Docker image
 - Python and Go bindings over the Rust core (the current packages are
   explicit stubs)
 

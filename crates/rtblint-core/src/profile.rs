@@ -26,6 +26,17 @@ pub enum Profile {
     /// Prebid Server `/openrtb2/auction`, as documented at
     /// <https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html>.
     PrebidServer,
+    /// Microsoft Monetize (Xandr) outgoing bid request to bidders, as
+    /// documented at
+    /// <https://learn.microsoft.com/en-us/xandr/bidders/outgoing-bid-request-to-bidders>
+    /// and the OpenRTB 2.6 video context note at
+    /// <https://learn.microsoft.com/en-us/xandr/supply-partners/integration-with-openrtb-2-6>.
+    Xandr,
+    /// Magnite DV+ Exchange API (xAPI) JSON, as documented by the public
+    /// protobuf extensions at
+    /// <https://github.com/MagniteEngineering/xapi-proto>. Identity fields
+    /// only: zone, site, and account ids. Floors and blocklists stay out.
+    Magnite,
 }
 
 impl Profile {
@@ -34,6 +45,8 @@ impl Profile {
             Self::Spec => "spec",
             Self::GoogleAuthorizedBuyers => "google-ab",
             Self::PrebidServer => "prebid-server",
+            Self::Xandr => "xandr",
+            Self::Magnite => "magnite",
         }
     }
 
@@ -42,6 +55,8 @@ impl Profile {
             Self::Spec => "the OpenRTB specification",
             Self::GoogleAuthorizedBuyers => "Google Authorized Buyers",
             Self::PrebidServer => "Prebid Server",
+            Self::Xandr => "Xandr",
+            Self::Magnite => "Magnite",
         }
     }
 
@@ -57,13 +72,17 @@ impl Profile {
             | "google-authorized-buyers"
             | "authorized-buyers" => Some(Self::GoogleAuthorizedBuyers),
             "prebid-server" | "prebid_server" | "prebid" | "pbs" => Some(Self::PrebidServer),
+            "xandr" | "appnexus" | "microsoft" | "microsoft-monetize" | "monetize" => {
+                Some(Self::Xandr)
+            }
+            "magnite" | "rubicon" | "dvplus" | "dv+" | "xapi" => Some(Self::Magnite),
             _ => None,
         }
     }
 
     /// Canonical ids, for error messages that list what is available.
     pub fn ids() -> &'static [&'static str] {
-        &["spec", "google-ab", "prebid-server"]
+        &["spec", "google-ab", "prebid-server", "xandr", "magnite"]
     }
 
     /// Whether this profile documents `object.field = value` as a valid enum
@@ -80,6 +99,8 @@ impl Profile {
         match self {
             Self::Spec | Self::PrebidServer => &[],
             Self::GoogleAuthorizedBuyers => GOOGLE_AB_REQUIRED,
+            Self::Xandr => XANDR_REQUIRED,
+            Self::Magnite => MAGNITE_REQUIRED,
         }
     }
 
@@ -134,6 +155,45 @@ const GOOGLE_AB_REQUIRED: &[RequiredField] = &[RequiredField {
     path: "ext.billing_id",
 }];
 
+/// Microsoft Monetize outgoing bid requests name the selling member, and
+/// video impressions include the AppNexus context enum alongside
+/// `plcmt` / `placement`.
+const XANDR_REQUIRED: &[RequiredField] = &[
+    RequiredField {
+        object: "BidRequest",
+        path: "ext.appnexus.seller_member_id",
+    },
+    RequiredField {
+        object: "Video",
+        path: "ext.appnexus.context",
+    },
+];
+
+/// Magnite xAPI identity fields on the JSON mapping of the DV+ extensions
+/// (`ext.rp`). Floors, blocklists, and proxy demand stay out.
+const MAGNITE_REQUIRED: &[RequiredField] = &[
+    RequiredField {
+        object: "Imp",
+        path: "ext.rp.zone_id",
+    },
+    RequiredField {
+        object: "Site",
+        path: "ext.rp.site_id",
+    },
+    RequiredField {
+        object: "App",
+        path: "ext.rp.site_id",
+    },
+    RequiredField {
+        object: "Site",
+        path: "publisher.ext.rp.account_id",
+    },
+    RequiredField {
+        object: "App",
+        path: "publisher.ext.rp.account_id",
+    },
+];
+
 /// `imp.ext` keys Prebid Server does not treat as bidder codes. From
 /// `openrtb_ext.IsPotentialBidder` / reserved bidder names.
 const PREBID_RESERVED_IMP_EXT: &[&str] = &[
@@ -145,7 +205,7 @@ const PREBID_BID_TYPES: &[&str] = &["banner", "video", "native", "audio"];
 
 fn extra_enum_values(profile: Profile) -> &'static [ExtraEnum] {
     match profile {
-        Profile::Spec | Profile::PrebidServer => &[],
+        Profile::Spec | Profile::PrebidServer | Profile::Xandr | Profile::Magnite => &[],
         Profile::GoogleAuthorizedBuyers => GOOGLE_AB_ENUMS,
     }
 }
@@ -178,7 +238,8 @@ fn value_at<'a>(object: &'a Map<String, Value>, path: &str) -> Option<&'a Value>
 
 /// Profile checks that are not a single extra-required path: Prebid Server
 /// bidder targeting, stored-request ids, forbidden `wseat`/`bseat`, and the
-/// documented `ext.prebid` value sets.
+/// documented `ext.prebid` value sets. Xandr checks closed `ext.appnexus`
+/// value sets the catalog does not walk (ext is open).
 pub(crate) fn push_profile_semantics(
     profile: Profile,
     object_name: &str,
@@ -186,15 +247,73 @@ pub(crate) fn push_profile_semantics(
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    if profile != Profile::PrebidServer {
-        return;
-    }
-    match object_name {
-        "BidRequest" => validate_prebid_bid_request(object, instance_path, issues),
-        "App" => validate_prebid_app(object, instance_path, issues),
-        "Bid" => validate_prebid_bid(object, instance_path, issues),
+    match profile {
+        Profile::PrebidServer => match object_name {
+            "BidRequest" => validate_prebid_bid_request(object, instance_path, issues),
+            "App" => validate_prebid_app(object, instance_path, issues),
+            "Bid" => validate_prebid_bid(object, instance_path, issues),
+            _ => {}
+        },
+        Profile::Xandr => match object_name {
+            "BidRequest" => validate_xandr_bid_request(object, instance_path, issues),
+            "Video" => validate_xandr_video(object, instance_path, issues),
+            _ => {}
+        },
         _ => {}
     }
+}
+
+fn validate_xandr_bid_request(
+    object: &Map<String, Value>,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
+    require_integer_in_range(
+        object,
+        "ext.appnexus.markup_delivery",
+        0,
+        1,
+        "ext.appnexus.markup_delivery must be 0 (adm) or 1 (nurl).",
+        instance_path,
+        issues,
+    );
+}
+
+fn validate_xandr_video(object: &Map<String, Value>, instance_path: &str, issues: &mut Vec<Issue>) {
+    require_integer_in_range(
+        object,
+        "ext.appnexus.context",
+        0,
+        7,
+        "ext.appnexus.context must be 0 (unknown) through 7 (interstitial).",
+        instance_path,
+        issues,
+    );
+}
+
+fn require_integer_in_range(
+    object: &Map<String, Value>,
+    path: &str,
+    min: i64,
+    max: i64,
+    message: &str,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) {
+    let Some(value) = value_at(object, path) else {
+        return;
+    };
+    if value
+        .as_i64()
+        .is_some_and(|number| (min..=max).contains(&number))
+    {
+        return;
+    }
+    issues.push(profile_issue(
+        "openrtb.profile.value_invalid",
+        String::from(message),
+        join_instance_path(instance_path, path),
+    ));
 }
 
 fn validate_prebid_bid_request(
@@ -503,9 +622,16 @@ mod tests {
         );
         assert_eq!(Profile::from_id("prebid"), Some(Profile::PrebidServer));
         assert_eq!(Profile::from_id("pbs"), Some(Profile::PrebidServer));
-        assert_eq!(Profile::from_id("magnite"), None);
+        assert_eq!(Profile::from_id("xandr"), Some(Profile::Xandr));
+        assert_eq!(Profile::from_id("appnexus"), Some(Profile::Xandr));
+        assert_eq!(Profile::from_id("magnite"), Some(Profile::Magnite));
+        assert_eq!(Profile::from_id("rubicon"), Some(Profile::Magnite));
+        assert_eq!(Profile::from_id("amazon-tam"), None);
         assert_eq!(Profile::default(), Profile::Spec);
-        assert_eq!(Profile::ids(), &["spec", "google-ab", "prebid-server"]);
+        assert_eq!(
+            Profile::ids(),
+            &["spec", "google-ab", "prebid-server", "xandr", "magnite"]
+        );
     }
 
     #[test]

@@ -108,9 +108,12 @@ export function validateResponseDialect(
  * only. "google-ab" is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE)
  * is a valid auction type, and each Imp must carry ext.billing_id.
  * "prebid-server" is Prebid Server /openrtb2/auction: each Imp must name a
- * bidder or stored request, and wseat/bseat are refused.
+ * bidder or stored request, and wseat/bseat are refused. "xandr" is Microsoft
+ * Monetize outgoing requests: ext.appnexus.seller_member_id and
+ * video.ext.appnexus.context. "magnite" is Magnite xAPI identity fields:
+ * imp.ext.rp.zone_id, site/app ext.rp.site_id, publisher.ext.rp.account_id.
  */
-export type Profile = "spec" | "google-ab" | "prebid-server";
+export type Profile = "spec" | "google-ab" | "prebid-server" | "xandr" | "magnite";
 
 /**
  * Validate an OpenRTB bid request against an exchange profile.

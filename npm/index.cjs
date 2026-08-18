@@ -73,7 +73,7 @@ function validateResponseDialect(input, dialect, version) {
  * /openrtb2/auction: each Imp must name a bidder or stored request, and
  * wseat/bseat are refused.
  * @param {string} input - Raw bid request JSON.
- * @param {"spec"|"google-ab"|"prebid-server"} profile - Exchange profile.
+ * @param {"spec"|"google-ab"|"prebid-server"|"xandr"|"magnite"} profile - Exchange profile.
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  */
 function validateProfile(input, profile, version) {
@@ -83,7 +83,7 @@ function validateProfile(input, profile, version) {
 /**
  * Validate an OpenRTB bid response against an exchange profile.
  * @param {string} input - Raw bid response JSON.
- * @param {"spec"|"google-ab"|"prebid-server"} profile - Exchange profile.
+ * @param {"spec"|"google-ab"|"prebid-server"|"xandr"|"magnite"} profile - Exchange profile.
  * @param {string} [version] - OpenRTB version id (default: latest tracked 2.6 snapshot).
  */
 function validateResponseProfile(input, profile, version) {

@@ -21,7 +21,7 @@ Website and playground: [rtblint.org](https://rtblint.org)
 - Response markup coherence: `bid.adm` content vs the declared `bid.mtype` (native JSON encoding, VAST/DAAST roots, double-encoded payloads)
 - Request/response cross-validation: with the originating request supplied, every bid's `impid`, `mtype`, `adm` markup, `dealid`, seat, and currency are checked against what the request actually offered
 - JSON dialect: spec JSON types flag fields such as `imp.secure` and `regs.coppa` as integers, while the IAB OpenRTB protobuf schema declares 28 of them `bool`. Either encoding is correct on its own transport and wrong on the other, so the caller declares which one it meant
-- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. `--profile prebid-server` requires each Imp to name a bidder or stored request and refuses `wseat`/`bseat`. Business policy stays out
+- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. `--profile prebid-server` requires each Imp to name a bidder or stored request and refuses `wseat`/`bseat`. `--profile xandr` requires `ext.appnexus.seller_member_id` and video `ext.appnexus.context`. `--profile magnite` requires xAPI identity fields (`imp.ext.rp.zone_id`, site/app `ext.rp.site_id`, `publisher.ext.rp.account_id`). Business policy stays out
 - Nested specs OpenRTB carries as strings or opaque `ext`: Native Ads 1.2 markup (`imp.native.request` and native `bid.adm`, including required-asset pairing), GPP header vs `gpp_sid` and TCF 2 shape, `${AUCTION_*}` macros on billing and loss URLs, EID/SUA structure, SKAdNetwork `ext.skadn`
 - ARTF envelopes and mutation sets, including applying the mutations and revalidating what comes out
 
@@ -58,6 +58,7 @@ The ARTF v1.0 document and its `.proto` use different vocabularies for the same 
 | Rust library | [`rtblint-core`](https://crates.io/crates/rtblint-core) | Working |
 | MCP server | [`rtblint-mcp`](https://crates.io/crates/rtblint-mcp) | Working |
 | Node (WASM) | `rtblint-core` on npm | Working |
+| GitHub Action | [`aleksUIX/rtblint`](https://github.com/aleksUIX/rtblint) | Working |
 | Python | `rtblint` on PyPI | Not implemented yet |
 | Go | `github.com/aleksUIX/rtblint/go` | Not implemented yet |
 
@@ -75,13 +76,15 @@ rtblint validate --version 2.5 --format json request.json
 rtblint validate --dialect proto-json grpc-bid-request.json
 rtblint validate --profile google-ab google-bid-request.json
 rtblint validate --profile prebid-server pbs-auction.json
+rtblint validate --profile xandr xandr-bid-request.json
+rtblint validate --profile magnite magnite-bid-request.json
 rtblint validate --resolve --cache ./supply-cache request.json
 rtblint validate --summary bids.ndjson
 rtblint validate --batch --summary bids.ndjson
 cat request.json | rtblint validate --stdin
 ```
 
-`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--profile prebid-server` applies Prebid Server `/openrtb2/auction` extras (bidder or stored request on each Imp, no `wseat`/`bseat`). `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
+`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--profile prebid-server` applies Prebid Server `/openrtb2/auction` extras (bidder or stored request on each Imp, no `wseat`/`bseat`). `--profile xandr` applies Microsoft Monetize extras (`ext.appnexus.seller_member_id`, video `ext.appnexus.context`). `--profile magnite` applies Magnite xAPI identity fields. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
 
 ```text
 <dir>/sellers/<asi>/sellers.json
@@ -92,6 +95,19 @@ cat request.json | rtblint validate --stdin
 Nothing is fetched; populate the cache yourself. `--batch` lints one JSON object per line from a file or stdin. `--summary` adds rule-frequency totals for a captured stream (`--summary bids.ndjson` for the histogram alone). See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
 
 Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.
+
+## GitHub Action
+
+The Action lives in this repo. Pin a release tag so CI downloads that CLI tarball:
+
+```yaml
+- uses: aleksUIX/rtblint@v0.11.0
+  with:
+    path: fixtures/bid-request.json
+    spec-version: 2.6-202505
+```
+
+`version` selects the CLI release (`auto` follows the action's own `v*` tag). `spec-version` is the OpenRTB snapshot. Linux and macOS runners, x86_64 and aarch64.
 
 ## Node
 

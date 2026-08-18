@@ -296,7 +296,10 @@ message ValidationContext {
   // developers.google.com/authorized-buyers/rtb/openrtb-guide: extra enum
   // values (at=3 FIXED_PRICE) and required Imp.ext.billing_id. "prebid-server"
   // is Prebid Server /openrtb2/auction: each Imp must name a bidder or stored
-  // request, wseat/bseat are refused. A string rather
+  // request, wseat/bseat are refused. "xandr" is Microsoft Monetize outgoing
+  // requests (ext.appnexus.seller_member_id, video.ext.appnexus.context).
+  // "magnite" is Magnite xAPI identity fields (imp.ext.rp.zone_id, site/app
+  // ext.rp.site_id, publisher.ext.rp.account_id). A string rather
   // than an enum, like version, so a new profile does not require a wire
   // contract release. An unknown id is rejected with INVALID_ARGUMENT.
   string profile = 3;

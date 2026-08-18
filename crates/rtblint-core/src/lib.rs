@@ -101,6 +101,10 @@ pub fn validate_bid_request_with_dialect(
 /// must carry `ext.billing_id`. [`Profile::PrebidServer`] applies Prebid
 /// Server `/openrtb2/auction` extras: each Imp must name a bidder or a stored
 /// request, `wseat`/`bseat` are refused, and stored-request objects need `id`.
+/// [`Profile::Xandr`] requires `ext.appnexus.seller_member_id` and, on video
+/// impressions, `video.ext.appnexus.context`. [`Profile::Magnite`] requires
+/// the xAPI identity fields `imp.ext.rp.zone_id`, `site`/`app` `ext.rp.site_id`,
+/// and `publisher.ext.rp.account_id`.
 pub fn validate_bid_request_with_profile(
     version: OpenRtbVersion,
     dialect: Dialect,

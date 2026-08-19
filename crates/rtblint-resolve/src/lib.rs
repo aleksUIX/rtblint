@@ -242,8 +242,8 @@ fn supply_chain_nodes(request: &Map<String, Value>, prefix: &str) -> Vec<ChainNo
                 asi,
                 sid,
                 payment,
-                sid_path: format!("{schain_path}.nodes[{index}].sid"),
-                asi_path: format!("{schain_path}.nodes[{index}].asi"),
+                sid_path: format!("{}.nodes[{}].sid", schain_path, index),
+                asi_path: format!("{}.nodes[{}].asi", schain_path, index),
             })
         })
         .collect()

@@ -69,7 +69,7 @@ async fn serve(config: Config) -> Result<(), Box<dyn std::error::Error>> {
     if let Some(metrics_addr) = config.metrics_addr {
         tokio::spawn(async move {
             if let Err(error) = metrics::serve(metrics_addr).await {
-                eprintln!("metrics endpoint stopped: {error}");
+                eprintln!("metrics endpoint stopped: {}", error);
             }
         });
         eprintln!("metrics on http://{metrics_addr}/metrics");

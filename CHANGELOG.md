@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Fixed
+
+- CodeQL `rust/unused-variable`: pass format arguments explicitly so `schain_path`,
+  metrics `error`, schema `file_name`, and ARTF `label` count as reads.
+
 ## 0.12.1 (2026-08-19)
 
 ### Security

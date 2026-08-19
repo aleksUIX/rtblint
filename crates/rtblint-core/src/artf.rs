@@ -468,7 +468,7 @@ fn parse_root(input: &str, label: &str) -> Result<Map<String, Value>, Vec<Issue>
         vec![issue(
             "artf.payload.root_not_object",
             Severity::Error,
-            format!("An ARTF {label} is a JSON object at the top level."),
+            format!("An ARTF {} is a JSON object at the top level.", label),
             None,
         )]
     })

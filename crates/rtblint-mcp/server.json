@@ -10,7 +10,7 @@
   },
   "documentation": "https://rtblint.org/docs/mcp/",
   "license": "Apache-2.0",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "remotes": [
     {
       "type": "streamable-http",

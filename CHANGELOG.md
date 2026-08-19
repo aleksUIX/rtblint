@@ -2,8 +2,12 @@
 
 ## Unreleased
 
+## 0.12.2 (2026-08-19)
+
 ### Fixed
 
+- Rebuild the committed npm WASM so `coreVersion()` matches the release. 0.12.1
+  published `rtblint-core` on npm with a 0.12.0 wasm blob.
 - CodeQL `rust/unused-variable`: pass format arguments explicitly so `schain_path`,
   metrics `error`, schema `file_name`, and ARTF `label` count as reads.
 

@@ -59,14 +59,15 @@ description text to them.
 ## WASM artifact
 
 `npm/wasm/` is a committed build. If your change touches `rtblint-core` or
-`rtblint-wasm`, rebuild it:
+`rtblint-wasm`, or you bump the workspace version, rebuild it:
 
 ```bash
-wasm-pack build crates/rtblint-wasm --target nodejs --out-dir ../../npm/wasm --out-name rtblint_wasm
-rm -f npm/wasm/package.json && : > npm/wasm/.gitignore
+scripts/rebuild-npm-wasm.sh
 ```
 
-CI verifies the WASM crate still builds.
+That runs wasm-pack, drops wasm-pack's generated `package.json`, and checks
+`coreVersion()` against the workspace version. CI smoke-tests the committed
+blob; it does not rebuild it. Skip this and npm can publish a stale wasm.
 
 ## Commit style
 

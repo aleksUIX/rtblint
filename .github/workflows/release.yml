@@ -30,6 +30,21 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo test --workspace
       - run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Smoke-test committed npm package
+        run: |
+          workspace_version=$(grep '^version = ' Cargo.toml | head -1 | cut -d'"' -f2)
+          node <<EOF
+          const r = require("./npm/index.cjs");
+          const pkg = require("./npm/package.json");
+          const out = r.validate(JSON.stringify({ id: "ci", imp: [{ id: "i", banner: {} }] }));
+          if (!out.valid) {
+            throw new Error("committed wasm artifact failed smoke test: " + JSON.stringify(out));
+          }
+          if (r.coreVersion() !== "$workspace_version" || pkg.version !== "$workspace_version") {
+            throw new Error("version drift: workspace $workspace_version, wasm " + r.coreVersion() + ", package.json " + pkg.version + ". Rebuild npm/wasm.");
+          }
+          console.log("npm wasm ok, core", r.coreVersion());
+          EOF
 
   publish-crates:
     needs: verify

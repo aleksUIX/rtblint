@@ -244,3 +244,6 @@ DOI: [10.13140/RG.2.2.27937.57448](https://doi.org/10.13140/RG.2.2.27937.57448)
 
 Sekowski, A. (2026). *Measuring OpenRTB Dialects in Client-Side Header Bidding*. Preprint.
 DOI: [10.13140/RG.2.2.26572.78720](https://doi.org/10.13140/RG.2.2.26572.78720)
+
+Sekowski, A. (2026). *Why CTV Ad Fraud Keeps Working: A Verifiability Analysis of the Connected TV Supply Chain*. Preprint.
+[ResearchGate](https://www.researchgate.net/publication/413532379_Why_CTV_Ad_Fraud_Keeps_Working_A_Verifiability_Analysis_of_the_Connected_TV_Supply_Chain). Field inventory extracted from this catalog. Artifacts: [github.com/aleksUIX/ctv-verification-gap](https://github.com/aleksUIX/ctv-verification-gap).

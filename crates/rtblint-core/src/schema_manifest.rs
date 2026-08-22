@@ -100,8 +100,10 @@ fn load_2_6_latest_manifest() -> &'static SchemaManifest {
 }
 
 fn parse_manifest(file_name: &str, raw: &str) -> SchemaManifest {
-    serde_json::from_str(raw)
-        .unwrap_or_else(|error| panic!("failed to parse schema manifest {}: {}", file_name, error))
+    match serde_json::from_str(raw) {
+        Ok(manifest) => manifest,
+        Err(error) => panic!("failed to parse schema manifest {file_name}: {error}"),
+    }
 }
 
 #[cfg(test)]

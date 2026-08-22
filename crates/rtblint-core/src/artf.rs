@@ -464,14 +464,15 @@ fn parse_root(input: &str, label: &str) -> Result<Map<String, Value>, Vec<Issue>
         )]
     })?;
 
-    value.as_object().cloned().ok_or_else(|| {
-        vec![issue(
+    match value.as_object() {
+        Some(root) => Ok(root.clone()),
+        None => Err(vec![issue(
             "artf.payload.root_not_object",
             Severity::Error,
-            format!("An ARTF {} is a JSON object at the top level.", label),
+            format!("An ARTF {label} is a JSON object at the top level."),
             None,
-        )]
-    })
+        )]),
+    }
 }
 
 fn validate_envelope_members(

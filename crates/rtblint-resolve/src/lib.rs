@@ -209,19 +209,21 @@ fn supply_chain_nodes(request: &Map<String, Value>, prefix: &str) -> Vec<ChainNo
         return Vec::new();
     };
 
-    let (schain, schain_path) =
-        if let Some(schain) = source.get("schain").and_then(Value::as_object) {
-            (schain, json_path(prefix, "source.schain"))
-        } else if let Some(schain) = source
-            .get("ext")
-            .and_then(Value::as_object)
-            .and_then(|ext| ext.get("schain"))
-            .and_then(Value::as_object)
-        {
-            (schain, json_path(prefix, "source.ext.schain"))
-        } else {
-            return Vec::new();
-        };
+    let schain_path;
+    let schain = if let Some(schain) = source.get("schain").and_then(Value::as_object) {
+        schain_path = json_path(prefix, "source.schain");
+        schain
+    } else if let Some(schain) = source
+        .get("ext")
+        .and_then(Value::as_object)
+        .and_then(|ext| ext.get("schain"))
+        .and_then(Value::as_object)
+    {
+        schain_path = json_path(prefix, "source.ext.schain");
+        schain
+    } else {
+        return Vec::new();
+    };
 
     let Some(nodes) = schain.get("nodes").and_then(Value::as_array) else {
         return Vec::new();

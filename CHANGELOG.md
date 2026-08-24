@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.12.3 (2026-08-24)
+
+### Changed
+
+- Bump `jsonschema` to 0.50.0.
+
 ## 0.12.2 (2026-08-19)
 
 ### Fixed

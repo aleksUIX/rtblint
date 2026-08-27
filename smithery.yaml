@@ -1,6 +1,8 @@
 # Legacy Smithery stdio image. The listing that agents actually use is the
 # hosted Streamable HTTP endpoint at https://rtblint.org/mcp, published with:
 #   npx @smithery/cli mcp publish "https://rtblint.org/mcp" -n aleksander/rtblint
+# GET /mcp returns a JSON descriptor that includes privacy.stores_payloads.
+# After changing that, republish so the Smithery listing picks it up.
 # Keep this file for the local-bundle path; do not point Smithery at the
 # Dockerfile as the primary listing.
 # rtblint-mcp takes no configuration: no API keys, env, or args.

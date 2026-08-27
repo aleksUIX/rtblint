@@ -155,7 +155,7 @@ protoBoolDivergences(); // the 28 fields the two schemas type differently
 
 ## MCP server
 
-Hosted Streamable HTTP (no install): [https://rtblint.org/mcp](https://rtblint.org/mcp). Smithery listing: [aleksander/rtblint](https://smithery.ai/servers/aleksander/rtblint) (same account as vastlint).
+Hosted Streamable HTTP (no install): [https://rtblint.org/mcp](https://rtblint.org/mcp). Smithery listing: [aleksander/rtblint](https://smithery.ai/servers/aleksander/rtblint) (same account as vastlint). Payloads sent to the hosted endpoint may be stored (identifiers stripped) so the rules can be improved; see [rtblint.org/privacy](https://rtblint.org/privacy/). Local `rtblint-mcp` over stdio does not send payloads.
 
 `rtblint-mcp` also speaks MCP over stdio. Tools: `validate_bid_request`, `validate_bid_response` (optional `bid_request` for cross-validation), `validate_artf_request`, `validate_artf_response` (`apply` writes the mutations and revalidates), `list_openrtb_versions`, `get_adcp_capabilities`. Validation tools take optional `dialect` and `profile` arguments.
 

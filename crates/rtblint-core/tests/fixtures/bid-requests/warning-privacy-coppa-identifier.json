@@ -1,0 +1,25 @@
+{
+  "id": "req-privacy-coppa-ifa-001",
+  "at": 1,
+  "tmax": 200,
+  "regs": {
+    "coppa": 1
+  },
+  "device": {
+    "ifa": "aebe4057-cebe-4301-8cc6-5e6e41c0bf47"
+  },
+  "site": {
+    "id": "site-privacy-1",
+    "domain": "publisher.example",
+    "page": "https://publisher.example/article"
+  },
+  "imp": [
+    {
+      "id": "imp-privacy-1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

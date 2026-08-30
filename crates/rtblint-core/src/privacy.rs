@@ -175,6 +175,74 @@ pub(crate) fn validate_user_consent(
     }
 }
 
+/// TCF 2 core bits that contradiction checks need. `None` if the string is
+/// not a readable TCF 2 core (shape errors stay on `validate_user_consent`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) struct TcfCore {
+    pub purpose1_consent: bool,
+    pub purpose_one_treatment: bool,
+}
+
+pub(crate) fn decode_tcf_core(value: &str) -> Option<TcfCore> {
+    let core = value.split('.').next().unwrap_or(value);
+    let mut reader = BitReader::from_alphabet(core)?;
+    let version = reader.read_bits(6)?;
+    if version != 2 {
+        return None;
+    }
+    let _created = reader.read_bits(36)?;
+    let _last_updated = reader.read_bits(36)?;
+    let _cmp_id = reader.read_bits(12)?;
+    let _cmp_version = reader.read_bits(12)?;
+    let _consent_screen = reader.read_bits(6)?;
+    let _consent_language = reader.read_bits(12)?;
+    let _vendor_list_version = reader.read_bits(12)?;
+    let _policy_version = reader.read_bits(6)?;
+    let _is_service_specific = reader.read_bits(1)?;
+    let _use_non_standard = reader.read_bits(1)?;
+    let _special_features = reader.read_bits(12)?;
+    let purposes_consent = reader.read_bits(24)?;
+    let _purposes_li = reader.read_bits(24)?;
+    let purpose_one_treatment = reader.read_bits(1)?;
+    let _publisher_cc = reader.read_bits(12)?;
+    Some(TcfCore {
+        purpose1_consent: (purposes_consent >> 23) & 1 == 1,
+        purpose_one_treatment: purpose_one_treatment == 1,
+    })
+}
+
+#[cfg(test)]
+pub(crate) fn encode_tcf_core(purpose1_consent: bool, purpose_one_treatment: bool) -> String {
+    let mut writer = BitWriter::default();
+    writer.write_bits(2, 6);
+    writer.write_bits(0, 36);
+    writer.write_bits(0, 36);
+    writer.write_bits(1, 12);
+    writer.write_bits(1, 12);
+    writer.write_bits(1, 6);
+    writer.write_bits((b'E' - b'A') as i64, 6);
+    writer.write_bits((b'N' - b'A') as i64, 6);
+    writer.write_bits(1, 12);
+    writer.write_bits(2, 6);
+    writer.write_bits(1, 1);
+    writer.write_bits(0, 1);
+    writer.write_bits(0, 12);
+    let purposes = if purpose1_consent { 1_i64 << 23 } else { 0 };
+    writer.write_bits(purposes, 24);
+    writer.write_bits(0, 24);
+    writer.write_bits(i64::from(purpose_one_treatment), 1);
+    writer.write_bits(0, 12);
+    writer.finish()
+}
+
+/// Payload of GPP section `want`, if the header decodes and that id is present.
+pub(crate) fn gpp_section(gpp: &str, want: i64) -> Option<&str> {
+    let (header, sections) = split_gpp(gpp)?;
+    let ids = decode_header(header)?;
+    let index = ids.iter().position(|id| *id == want)?;
+    sections.get(index).copied()
+}
+
 fn split_gpp(gpp: &str) -> Option<(&str, Vec<&str>)> {
     let mut parts = gpp.split('~');
     let header = parts.next()?;
@@ -370,6 +438,49 @@ fn six_bit_value(ch: char) -> Option<u8> {
 }
 
 #[cfg(test)]
+#[derive(Default)]
+struct BitWriter {
+    bits: Vec<bool>,
+}
+
+#[cfg(test)]
+impl BitWriter {
+    fn write_bits(&mut self, value: i64, n: usize) {
+        for shift in (0..n).rev() {
+            self.bits.push((value >> shift) & 1 == 1);
+        }
+    }
+
+    fn finish(self) -> String {
+        let mut chars = String::new();
+        let mut i = 0;
+        while i < self.bits.len() {
+            let mut value = 0_u8;
+            for _ in 0..6 {
+                value <<= 1;
+                if i < self.bits.len() && self.bits[i] {
+                    value |= 1;
+                }
+                i += 1;
+            }
+            chars.push(six_bit_char(value));
+        }
+        chars
+    }
+}
+
+#[cfg(test)]
+fn six_bit_char(value: u8) -> char {
+    match value {
+        0..=25 => (b'A' + value) as char,
+        26..=51 => (b'a' + (value - 26)) as char,
+        52..=61 => (b'0' + (value - 52)) as char,
+        62 => '-',
+        _ => '_',
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
@@ -401,5 +512,35 @@ mod tests {
     #[test]
     fn tcf_rejects_v1_prefix() {
         assert!(tcf_shape_error("BAAAAAAAAAA").unwrap().contains("TCF 1.1"));
+    }
+
+    #[test]
+    fn tcf_core_roundtrip_purpose1() {
+        let with = encode_tcf_core(true, false);
+        let without = encode_tcf_core(false, false);
+        let treated = encode_tcf_core(false, true);
+        assert_eq!(
+            decode_tcf_core(&with),
+            Some(TcfCore {
+                purpose1_consent: true,
+                purpose_one_treatment: false,
+            })
+        );
+        assert_eq!(
+            decode_tcf_core(&without),
+            Some(TcfCore {
+                purpose1_consent: false,
+                purpose_one_treatment: false,
+            })
+        );
+        assert_eq!(
+            decode_tcf_core(&treated),
+            Some(TcfCore {
+                purpose1_consent: false,
+                purpose_one_treatment: true,
+            })
+        );
+        assert!(with.starts_with('C'));
+        assert!(tcf_shape_error(&with).is_none());
     }
 }

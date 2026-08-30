@@ -9,9 +9,11 @@ What RTBlint does today and where it's heading. Not a promise of dates.
 - Stable rule ids, typed severities, JSON paths, and spec section citations
   on every finding
 - Semantic rule pack for the failure modes catalogs alone can't catch:
-  SupplyChain node hygiene, GPP/US Privacy string coherence, CTV pod
-  duration sanity, native request encoding, tmax/currency/bidfloor
-  plausibility
+  SupplyChain node hygiene, GPP/US Privacy string coherence, privacy
+  signal contradictions (COPPA/LMT/DNT/GDPR versus identifiers, TCF
+  Purpose 1, US Privacy sale opt-out, email-shaped identifiers, DSA
+  Transparency fields), CTV pod duration sanity, native request encoding,
+  tmax/currency/bidfloor plausibility
 - CLI batch mode; spec catalogs compiled to static Rust data
 - Rust library and CLI, MCP server over stdio, WASM-backed npm package
 - Web playground at [rtblint.org](https://rtblint.org)

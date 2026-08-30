@@ -8,6 +8,7 @@ mod macros;
 mod native;
 mod pair;
 mod privacy;
+mod privacy_signals;
 mod profile;
 mod schema_manifest;
 mod skadn;

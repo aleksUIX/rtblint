@@ -243,6 +243,13 @@ const VALIDATED_FIXTURES: &[FixtureCase] = &[
         expected_issues: &[],
     },
     FixtureCase {
+        name: "warning-privacy-coppa-identifier",
+        version: OpenRtbVersion::V2_6_202606,
+        input: include_str!("fixtures/bid-requests/warning-privacy-coppa-identifier.json"),
+        valid: true,
+        expected_issues: &[("openrtb.privacy.coppa_identifier", "device.ifa")],
+    },
+    FixtureCase {
         name: "warning-video-pod-rqddurs-empty",
         version: OpenRtbVersion::V2_6_202606,
         input: include_str!("fixtures/bid-requests/warning-video-pod-rqddurs-empty.json"),

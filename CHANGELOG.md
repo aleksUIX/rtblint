@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+## 0.13.0 (2026-08-29)
+
+### Added
+
+- Payload-versus-declaration privacy checks in `rtblint-core`, always on for
+  2.x BidRequest and AdCOM Context. Findings state facts about the document
+  (the flag and the identifier contradict each other). They do not state legal
+  conclusions. Consent-string forensics (GVL, CMP lists, entropy) stay out.
+  New rule ids: `openrtb.privacy.coppa_identifier`,
+  `openrtb.privacy.coppa_eids`, `openrtb.privacy.coppa_geo`,
+  `openrtb.privacy.coppa_segments`, `openrtb.privacy.lmt_ifa`,
+  `openrtb.privacy.dnt_identifiers`, `openrtb.privacy.gdpr_without_consent`,
+  `openrtb.privacy.tcf_purpose1_identifiers`,
+  `openrtb.privacy.us_privacy_sale_eids`, `openrtb.privacy.pii_email`,
+  `openrtb.privacy.dsa_dsarequired_invalid`,
+  `openrtb.privacy.dsa_transparency_domain`, `openrtb.bid.dsa.field_required`.
+  TCF Purpose 1 is read from the core-string bits on `user.consent` or GPP
+  sections 2 and 5. `regs.coppa` / `device.lmt` / `device.dnt` / `regs.gdpr`
+  accept both spec JSON `1` and proto JSON `true`. Zeroed IFAs are not treated
+  as identifiers.
+
 ## 0.12.3 (2026-08-24)
 
 ### Changed

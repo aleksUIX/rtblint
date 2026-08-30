@@ -963,6 +963,8 @@ fn validate_adcom_context_semantics(
             section: Some(String::from(section)),
         });
     }
+
+    crate::privacy_signals::validate_privacy_signals(object, instance_path, issues);
 }
 
 fn validate_adcom_av_placement_semantics(
@@ -1083,6 +1085,8 @@ fn validate_bid_request_semantics(
             }
         }
     }
+
+    crate::privacy_signals::validate_privacy_signals(object, instance_path, issues);
 }
 
 fn validate_bid_response_semantics(
@@ -1164,6 +1168,7 @@ fn validate_bid_semantics(
     issues: &mut Vec<Issue>,
 ) {
     crate::macros::validate_bid_macros(object, instance_path, issues);
+    crate::privacy_signals::validate_bid_dsa(object, instance_path, issues);
     if let Some(skadn) = extension_object(object, "skadn") {
         crate::skadn::validate_response(
             skadn,

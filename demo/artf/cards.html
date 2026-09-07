@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ARTF reel cards</title>
+    <style>
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url("./linkedin/fonts/geist-latin-400.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 500;
+        font-display: block;
+        src: url("./linkedin/fonts/geist-latin-500.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url("./linkedin/fonts/geist-mono-latin-400.woff2") format("woff2");
+      }
+      :root {
+        --ink: #161616;
+        --soft: #4f4f4b;
+        --muted: #8a8a84;
+        --paper: #f4f3ee;
+        --card: #fff;
+        --line: #d8d5cc;
+        --artf: #1d4ed8;
+        --artf-fill: #eef2ff;
+        --drop: #b42318;
+        --ok: #0f766e;
+        --sans: Geist, ui-sans-serif, system-ui, sans-serif;
+        --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; background: #111; }
+      .card {
+        width: 1920px;
+        height: 1080px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        overflow: hidden;
+        padding: 76px 108px 72px;
+        display: flex;
+        flex-direction: column;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 10px;
+        background: var(--artf);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 24px;
+      }
+      .kicker {
+        margin: 0;
+        font: 400 18px/1 var(--mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--artf);
+      }
+      .meta {
+        margin: 0;
+        font: 400 18px/1 var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      h1 {
+        margin: 28px 0 0;
+        font: 400 84px/1.05 var(--sans);
+        letter-spacing: -0.038em;
+        max-width: 14ch;
+      }
+      .lede {
+        margin: 22px 0 0;
+        font: 400 30px/1.38 var(--sans);
+        color: var(--soft);
+        max-width: 26em;
+      }
+      .hops {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .hop {
+        background: var(--card);
+        border: 1px solid var(--line);
+        padding: 20px 22px 18px;
+        min-height: 168px;
+      }
+      .hop.drop { border-color: var(--drop); }
+      .hop.ok { border-color: var(--ok); }
+      .hop.artf { border-color: var(--artf); background: var(--artf-fill); }
+      .hop b {
+        display: block;
+        font: 400 13px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hop.drop b { color: var(--drop); }
+      .hop.ok b { color: var(--ok); }
+      .hop.artf b { color: var(--artf); }
+      .hop strong {
+        display: block;
+        margin-top: 10px;
+        font: 400 28px/1.15 var(--sans);
+        letter-spacing: -0.025em;
+      }
+      .hop span {
+        display: block;
+        margin-top: 8px;
+        font: 400 18px/1.35 var(--sans);
+        color: var(--soft);
+      }
+      .band {
+        margin-top: auto;
+        border: 1px solid var(--artf);
+        background: #f7f8ff;
+        padding: 18px 22px;
+        font: 400 24px/1.35 var(--sans);
+      }
+      .band .tok {
+        font: 400 16px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--artf);
+        margin-right: 14px;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font: 400 18px/1.4 var(--sans);
+        color: var(--soft);
+      }
+      .foot em {
+        font-style: normal;
+        color: var(--ink);
+      }
+      .byline {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+      }
+      .byline .who {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        text-align: right;
+      }
+      .byline .role {
+        font: 400 13px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .byline .name {
+        font: 400 22px/1.1 var(--sans);
+        color: var(--ink);
+        letter-spacing: -0.02em;
+      }
+      .byline a {
+        font: 400 16px/1.2 var(--mono);
+        color: var(--artf);
+        text-decoration: none;
+      }
+      .byline img {
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 20%;
+        border: 2px solid var(--artf);
+        background: var(--card);
+      }
+      .lines {
+        margin: 36px 0 0;
+        display: grid;
+        gap: 18px;
+        max-width: 1280px;
+      }
+      .line {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 20px;
+        align-items: baseline;
+      }
+      .line b {
+        font: 400 18px/1.2 var(--mono);
+        color: var(--artf);
+        letter-spacing: 0.06em;
+      }
+      .line p {
+        margin: 0;
+        font: 400 30px/1.28 var(--sans);
+      }
+      .closer {
+        margin-top: auto;
+        border: 1px solid var(--artf);
+        background: #f7f8ff;
+        padding: 22px 24px 20px;
+      }
+      .closer h2 {
+        margin: 0;
+        font: 400 40px/1.18 var(--sans);
+        letter-spacing: -0.03em;
+      }
+      .closer p {
+        margin: 10px 0 0;
+        font: 400 22px/1.4 var(--sans);
+        color: var(--soft);
+        max-width: 38em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card" id="intro">
+      <div class="top">
+        <p class="kicker">ARTF · Episode 2</p>
+        <p class="meta">Five-minute demo</p>
+      </div>
+      <h1>The missing hop</h1>
+      <p class="lede">
+        An agent can rewrite OpenRTB inside the host. v1.0 never asks if the auction is still valid afterwards. This is that check: five seats on one CTV mid-roll, then the same binary at volume.
+      </p>
+      <div class="hops">
+        <div class="hop drop"><b>1 · SSP</b><strong>Illegal</strong><span>Fluent gRPC. Drop before the DSP.</span></div>
+        <div class="hop drop"><b>2 · Engineer</b><strong>Poison</strong><span>ARTF ok. OpenRTB is not.</span></div>
+        <div class="hop ok"><b>3 · DSP</b><strong>Curation</strong><span>Bid on the rewritten ticket.</span></div>
+        <div class="hop"><b>4 · Publisher</b><strong>Suppress</strong><span>A deal leaves the wire.</span></div>
+        <div class="hop artf"><b>5 · Bid</b><strong>Shade</strong><span>$18.40 becomes $12.88.</span></div>
+      </div>
+      <p class="band"><span class="tok">Then</span> 5,000 auctions a second through real gRPC. Laptop slice, not a colo.</p>
+      <div class="foot">
+        <span>Stub SSP, agent, DSP, and TV. <em>Real rtblint-grpc.</em> Independent. Not an IAB product.</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="outro">
+      <div class="top">
+        <p class="kicker">What you saw</p>
+      </div>
+      <div class="lines">
+        <div class="line"><b>01</b><p>Fluent gRPC is not a valid auction. Drop before the DSP.</p></div>
+        <div class="line"><b>02</b><p>A well-formed mutation can still emit illegal OpenRTB.</p></div>
+        <div class="line"><b>03</b><p>On a clean apply, the buyer bids on the ticket the agent wrote.</p></div>
+        <div class="line"><b>04</b><p>Curation can pull a deal. The path still has to be this auction.</p></div>
+        <div class="line"><b>05</b><p>A shaded bid is still a bid. The price is not.</p></div>
+      </div>
+      <div class="closer">
+        <h2>Envelope. Mutation. Applied.</h2>
+        <p>Apply the patch, then revalidate the auction. VASTlint was the creative hop. This is the bid hop. The spec shipped. The check did not, until it did. Independent implementation. Not an IAB product.</p>
+      </div>
+      <div class="foot">
+        <span>Same binary at 5,000/s. Synthetic mix, real guardrail. rtblint.org</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="intro-one">
+      <div class="top">
+        <p class="kicker">ARTF · Episode 1</p>
+        <p class="meta">Five-minute intro</p>
+      </div>
+      <h1>Inside the host</h1>
+      <p class="lede">
+        An agent runs as a container inside the SSP, DSP, or exchange that already holds the bid. It patches OpenRTB. Buyers bid on whatever the host forwarded. The same hop can run again after a bid comes back.
+      </p>
+      <div class="hops">
+        <div class="hop"><b>1 · Host</b><strong>Your infra</strong><span>SSP, DSP, or exchange. Data stays here.</span></div>
+        <div class="hop artf"><b>2 · Agent</b><strong>Patch</strong><span>OCI container. Mutations on this ticket.</span></div>
+        <div class="hop"><b>3 · Apply</b><strong>Orchestrator</strong><span>Accept or reject each write.</span></div>
+        <div class="hop ok"><b>4 · DSP</b><strong>Forward</strong><span>Bids on BidRequest-prime.</span></div>
+        <div class="hop artf"><b>5 · Shade</b><strong>BidResponse</strong><span>$18.40 becomes $12.88.</span></div>
+      </div>
+      <p class="band"><span class="tok">Then</span> the mixer at 5,000/s. Grafana is the count. Laptop slice, not a colo.</p>
+      <div class="foot">
+        <span>Stub host, agent, DSP, and TV. <em>Real gRPC apply.</em> Independent. Not an IAB product.</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="outro-one">
+      <div class="top">
+        <p class="kicker">What you saw</p>
+      </div>
+      <div class="lines">
+        <div class="line"><b>01</b><p>The agent lives in the host. The bidstream does not leave.</p></div>
+        <div class="line"><b>02</b><p>OpenRTB stays OpenRTB. The agent writes a patch, not a new object.</p></div>
+        <div class="line"><b>03</b><p>The DSP bids on the ticket the host actually forwarded.</p></div>
+        <div class="line"><b>04</b><p>Curation can add a deal or pull one. That can be the product.</p></div>
+        <div class="line"><b>05</b><p>After the bid, the same hop can shade the price.</p></div>
+      </div>
+      <div class="closer">
+        <h2>Container. Patch. Forward.</h2>
+        <p>The hop ends when a winner is chosen. VAST, the player, and measurement are the next film. Independent simulation. Not an IAB product.</p>
+      </div>
+      <div class="foot">
+        <span>Same hop at volume. Synthetic mix, real gRPC. rtblint.org</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="intro-three">
+      <div class="top">
+        <p class="kicker">ARTF · Episode 3</p>
+        <p class="meta">Five-minute demo</p>
+      </div>
+      <h1>The envelope</h1>
+      <p class="lede">
+        ARTF is a constrained envelope around an agent the host already trusts. The host names the stage, the budget, and the vocabulary. The agent returns patches. The orchestrator still chooses.
+      </p>
+      <div class="hops">
+        <div class="hop artf"><b>1 · Host</b><strong>Envelope</strong><span>Lifecycle, id, tmax, the attached object.</span></div>
+        <div class="hop"><b>2 · Offer</b><strong>Intents</strong><span>Host vocabulary for this hop.</span></div>
+        <div class="hop"><b>3 · Paths</b><strong>Ids</strong><span>This impression, this deal, this seat.</span></div>
+        <div class="hop ok"><b>4 · Apply</b><strong>Choose</strong><span>Four land. One was not offered.</span></div>
+        <div class="hop artf"><b>5 · Shade</b><strong>Same RPC</strong><span>Later stage, different list, different paths.</span></div>
+      </div>
+      <p class="band"><span class="tok">Then</span> 5,000 auctions a second. tmax is the SLA of the hop. Laptop slice, not a colo.</p>
+      <div class="foot">
+        <span>Stub host, agent, DSP, and TV. <em>Real gRPC apply.</em> Independent. Not an IAB product.</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="outro-three">
+      <div class="top">
+        <p class="kicker">What you saw</p>
+      </div>
+      <div class="lines">
+        <div class="line"><b>01</b><p>Lifecycle names the stage. You still have to attach the object.</p></div>
+        <div class="line"><b>02</b><p>The agent is reusable. The intent list is not.</p></div>
+        <div class="line"><b>03</b><p>Paths name ids in this auction, not offsets in a blob.</p></div>
+        <div class="line"><b>04</b><p>Independently acceptable means the host still chooses.</p></div>
+        <div class="line"><b>05</b><p>Same RPC after the bid. Different list, different paths.</p></div>
+      </div>
+      <div class="closer">
+        <h2>Envelope. Vocabulary. Apply.</h2>
+        <p>Package the agent once. Keep policy and timing where the bid already lives. Independent simulation. Not an IAB product.</p>
+      </div>
+      <div class="foot">
+        <span>Same hop at 5,000/s. Synthetic mix, real gRPC. rtblint.org</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="intro-four">
+      <div class="top">
+        <p class="kicker">ARTF · Episode 4</p>
+        <p class="meta">Five-minute demo</p>
+      </div>
+      <h1>Fan-in</h1>
+      <p class="lede">
+        Many agents, one ticket, two stages. Specialists answer the same envelope in parallel. The host applies. Each DSP shades in isolation. Agents never wrote the bid.
+      </p>
+      <div class="hops">
+        <div class="hop artf"><b>1 · Request</b><strong>Fan-in</strong><span>Five specialists. One tmax.</span></div>
+        <div class="hop ok"><b>2 · Apply</b><strong>Host write</strong><span>Intent, agent, OpenRTB field.</span></div>
+        <div class="hop"><b>3 · Fanout</b><strong>Two DSPs</strong><span>Same BidRequest-prime.</span></div>
+        <div class="hop artf"><b>4 · Shade</b><strong>Isolated</strong><span>Alpha cannot see beta.</span></div>
+        <div class="hop"><b>5 · After</b><strong>Boundary</strong><span>VAST, CDN, pixels. Not ARTF.</span></div>
+      </div>
+      <p class="band"><span class="tok">Then</span> the same hop at volume. Watch specialists, not a dummy. Laptop slice, not a colo.</p>
+      <div class="foot">
+        <span>Stub SSP, DSPs, agents, and creative. <em>Real gRPC apply.</em> Independent. Not an IAB product.</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+    <section class="card" id="outro-four">
+      <div class="top">
+        <p class="kicker">What you saw</p>
+      </div>
+      <div class="lines">
+        <div class="line"><b>01</b><p>One envelope. Many answers. One clock.</p></div>
+        <div class="line"><b>02</b><p>The apply table is the proof. Agents never wrote the bid.</p></div>
+        <div class="line"><b>03</b><p>Buyers bid on what you forwarded. Then each DSP shades its own seat.</p></div>
+        <div class="line"><b>04</b><p>Request agents share an SSP. Shaders never share a DSP.</p></div>
+        <div class="line"><b>05</b><p>The gold nodes were the framework. VAST is the stack after.</p></div>
+      </div>
+      <div class="closer">
+        <h2>Specialists. Isolation. Apply.</h2>
+        <p>Package specialists. Keep isolation. Keep the ticket. Independent simulation. Not an IAB product.</p>
+      </div>
+      <div class="foot">
+        <span>Lab hop graph. Synthetic mix, real gRPC. rtblint.org</span>
+        <div class="byline">
+          <div class="who">
+            <span class="role">Author</span>
+            <span class="name">Alex Sekowski</span>
+            <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+          </div>
+          <img src="./linkedin/author/alex.jpg" alt="Alex Sekowski" width="92" height="92" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

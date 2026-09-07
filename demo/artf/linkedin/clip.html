@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ARTF series clip</title>
+<style>
+  @font-face {
+    font-family: Geist;
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("./fonts/geist-latin-400.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: Geist;
+    font-style: normal;
+    font-weight: 500;
+    font-display: block;
+    src: url("./fonts/geist-latin-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Geist Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("./fonts/geist-mono-latin-400.woff2") format("woff2");
+  }
+  :root {
+    --ink: #161616;
+    --soft: #4f4f4b;
+    --muted: #8a8a84;
+    --paper: #f4f3ee;
+    --card: #fff;
+    --line: #d8d5cc;
+    --artf: #1d4ed8;
+    --artf-fill: #eef2ff;
+    --drop: #b42318;
+    --ok: #0f766e;
+    --sans: Geist, ui-sans-serif, system-ui, sans-serif;
+    --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #111; }
+  .portrait {
+    width: 1080px;
+    height: 1350px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow: hidden;
+    padding: 64px 72px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  .portrait::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: var(--artf);
+  }
+  .band {
+    width: 1080px;
+    height: 590px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    position: relative;
+    overflow: hidden;
+    padding: 36px 72px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .band::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: var(--artf);
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .kicker {
+    margin: 0;
+    font: 400 22px/1 var(--mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--artf);
+  }
+  .meta {
+    margin: 0;
+    font: 400 20px/1 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    margin: 28px 0 0;
+    font: 400 92px/1.02 var(--sans);
+    letter-spacing: -0.04em;
+    max-width: 12ch;
+  }
+  .lede {
+    margin: 22px 0 0;
+    font: 400 32px/1.35 var(--sans);
+    color: var(--soft);
+    max-width: 22em;
+  }
+  .hops {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .hop {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 16px 18px 14px;
+  }
+  .hop.artf { border-color: var(--artf); background: var(--artf-fill); }
+  .hop.drop { border-color: var(--drop); }
+  .hop.ok { border-color: var(--ok); }
+  .hop b {
+    display: block;
+    font: 400 13px/1 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hop.artf b { color: var(--artf); }
+  .hop.drop b { color: var(--drop); }
+  .hop.ok b { color: var(--ok); }
+  .hop strong {
+    display: block;
+    margin-top: 8px;
+    font: 400 28px/1.15 var(--sans);
+    letter-spacing: -0.025em;
+  }
+  .hop span {
+    display: block;
+    margin-top: 6px;
+    font: 400 18px/1.3 var(--sans);
+    color: var(--soft);
+  }
+  .call {
+    margin-top: auto;
+    border: 1px solid var(--artf);
+    background: #f7f8ff;
+    padding: 18px 20px;
+    font: 400 26px/1.35 var(--sans);
+  }
+  .call .tok {
+    font: 400 16px/1 var(--mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--artf);
+    margin-right: 12px;
+  }
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font: 400 20px/1.35 var(--sans);
+    color: var(--soft);
+  }
+  .foot em { font-style: normal; color: var(--ink); }
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .byline .who {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+  }
+  .byline .role {
+    font: 400 12px/1 var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .byline .name {
+    font: 400 22px/1.1 var(--sans);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .byline a {
+    font: 400 15px/1.2 var(--mono);
+    color: var(--artf);
+    text-decoration: none;
+  }
+  .byline img {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--artf);
+    background: var(--card);
+  }
+  .lines {
+    margin: 28px 0 0;
+    display: grid;
+    gap: 16px;
+  }
+  .line {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .line b {
+    font: 400 18px/1.2 var(--mono);
+    color: var(--artf);
+    letter-spacing: 0.06em;
+  }
+  .line p {
+    margin: 0;
+    font: 400 30px/1.28 var(--sans);
+  }
+  .closer {
+    margin-top: auto;
+    border: 1px solid var(--artf);
+    background: #f7f8ff;
+    padding: 20px 22px 18px;
+  }
+  .closer h2 {
+    margin: 0;
+    font: 400 40px/1.15 var(--sans);
+    letter-spacing: -0.03em;
+  }
+  .closer p {
+    margin: 10px 0 0;
+    font: 400 24px/1.38 var(--sans);
+    color: var(--soft);
+  }
+  .band h2 {
+    margin: 18px 0 0;
+    font: 400 64px/1.05 var(--sans);
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+  }
+  .band .body {
+    margin: 16px 0 0;
+    font: 400 30px/1.32 var(--sans);
+    color: var(--soft);
+    max-width: 22em;
+  }
+  .eps {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
+  }
+  .ep {
+    flex: 1;
+    border: 1px solid var(--line);
+    background: var(--card);
+    padding: 12px 12px 10px;
+    font: 400 14px/1.2 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .ep.on {
+    border-color: var(--artf);
+    background: var(--artf-fill);
+    color: var(--artf);
+  }
+  .ep.drop {
+    border-color: var(--drop);
+    color: var(--drop);
+  }
+</style>
+</head>
+<body>
+  <section class="portrait" id="intro">
+    <div class="top">
+      <p class="kicker">ARTF</p>
+      <p class="meta">Four clips</p>
+    </div>
+    <h1>The hop before the bid</h1>
+    <p class="lede">
+      I am putting ARTF inside a production-grade ad stack. The simulator is the open reference. The clips teach the hop.
+    </p>
+    <div class="hops">
+      <div class="hop artf"><b>1 · Host</b><strong>Inside the host</strong><span>Agent as a container. OpenRTB stays OpenRTB.</span></div>
+      <div class="hop drop"><b>2 · Check</b><strong>Apply, then revalidate</strong><span>A legal envelope can still wreck the auction.</span></div>
+      <div class="hop"><b>3 · Call</b><strong>The envelope</strong><span>Lifecycle, tmax, intents. Host still chooses.</span></div>
+      <div class="hop ok"><b>4 · Graph</b><strong>Fan-in</strong><span>Specialists in. Isolated shaders out.</span></div>
+    </div>
+    <p class="call"><span class="tok">OSS</span> Steal the hop. Dummy TV, stub SSP. Real gRPC apply.</p>
+    <div class="foot">
+      <span>rtblint.org</span>
+      <div class="byline">
+        <div class="who">
+          <span class="role">Author</span>
+          <span class="name">Alex Sekowski</span>
+          <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+        </div>
+        <img src="./author/alex.jpg" alt="Alex Sekowski" width="84" height="84" />
+      </div>
+    </div>
+  </section>
+
+  <section class="portrait" id="outro">
+    <div class="top">
+      <p class="kicker">Four clips</p>
+      <p class="meta">Fully OSS</p>
+    </div>
+    <div class="lines">
+      <div class="line"><b>01</b><p>The agent lives in the host. The bidstream does not leave.</p></div>
+      <div class="line"><b>02</b><p>Apply the patch, then revalidate the auction.</p></div>
+      <div class="line"><b>03</b><p>The envelope is the product. Vocabulary stays on the host.</p></div>
+      <div class="line"><b>04</b><p>Fan-in is the production shape. Agents never write the bid.</p></div>
+    </div>
+    <div class="closer">
+      <h2>Steal the hop.</h2>
+      <p>Production-grade stack with ARTF on the auction. Open reference for anyone building the same seat. ARTF stops at the auction. VAST is the next hop.</p>
+    </div>
+    <div class="foot">
+      <span>github.com/aleksUIX/rtblint · rtblint.org</span>
+      <div class="byline">
+        <div class="who">
+          <span class="role">Author</span>
+          <span class="name">Alex Sekowski</span>
+          <a href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a>
+        </div>
+        <img src="./author/alex.jpg" alt="Alex Sekowski" width="84" height="84" />
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="cap-break">
+    <div class="top">
+      <p class="kicker">Episode 2</p>
+      <p class="meta">The check</p>
+    </div>
+    <h2>Apply, then revalidate</h2>
+    <p class="body">Well-formed ARTF can still emit illegal OpenRTB. The host has to check the ticket after the patch.</p>
+    <div class="eps">
+      <div class="ep">1 Host</div>
+      <div class="ep drop on">2 Check</div>
+      <div class="ep">3 Envelope</div>
+      <div class="ep">4 Fan-in</div>
+    </div>
+  </section>
+
+  <section class="band" id="cap-env">
+    <div class="top">
+      <p class="kicker">Episode 3</p>
+      <p class="meta">The call</p>
+    </div>
+    <h2>The envelope</h2>
+    <p class="body">Host names the stage, the clock, and the vocabulary. Agent returns patches. Orchestrator still chooses, change by change.</p>
+    <div class="eps">
+      <div class="ep">1 Host</div>
+      <div class="ep">2 Check</div>
+      <div class="ep on">3 Envelope</div>
+      <div class="ep">4 Fan-in</div>
+    </div>
+  </section>
+
+  <section class="band" id="cap-fan">
+    <div class="top">
+      <p class="kicker">Episode 4</p>
+      <p class="meta">The graph</p>
+    </div>
+    <h2>Fan-in</h2>
+    <p class="body">Many specialists on the way out. An isolated shader per DSP on the way back. One apply onto one ticket.</p>
+    <div class="eps">
+      <div class="ep">1 Host</div>
+      <div class="ep">2 Check</div>
+      <div class="ep">3 Envelope</div>
+      <div class="ep on">4 Fan-in</div>
+    </div>
+  </section>
+
+  <section class="band" id="cap-vol">
+    <div class="top">
+      <p class="kicker">Same hop</p>
+      <p class="meta">At volume</p>
+    </div>
+    <h2>Synthetic mix. Real gRPC.</h2>
+    <p class="body">Laptop loop, not a colo. ARTF stops at the auction.</p>
+    <div class="eps">
+      <div class="ep on">Mixer</div>
+      <div class="ep">rtblint</div>
+      <div class="ep">OSS</div>
+      <div class="ep">Next: clips</div>
+    </div>
+  </section>
+</body>
+</html>

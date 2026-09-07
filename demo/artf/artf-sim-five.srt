@@ -1,0 +1,44 @@
+1
+00:00:02,000 --> 00:00:41,000
+0 · Publisher / CTV
+A mid-roll is about to fire. This is the OpenRTB the exchange is holding. ARTF lets an agent rewrite it.
+
+2
+00:00:41,200 --> 00:01:20,000
+1 · SSP · looks legal, is not
+Wrong lifecycle, wrong ids, missing paths. One legacy write would have landed. We still drop the set.
+
+3
+00:01:20,200 --> 00:01:51,000
+2 · Engineer · mutation fine, auction not
+ADD_METRICS value "high". Well-formed ARTF. After apply, OpenRTB is not.
+
+4
+00:01:51,200 --> 00:02:34,000
+3 · DSP · curation lands
+New segments, new deal, floor $12 to $14.50, viewability 0.82. The DSP bids on the rewritten ticket.
+
+5
+00:02:34,200 --> 00:03:05,000
+4 · Publisher · a deal leaves the wire
+SUPPRESS_DEALS pulls deal-standard. Curation is allowed to do that. The path still has to be this auction.
+
+6
+00:03:05,200 --> 00:03:44,000
+5 · DSP · the bid is shaded
+Response-stage hop. $18.40 in, $12.88 out. Same dummy, new clearing price.
+
+7
+00:03:44,200 --> 00:04:13,000
+Volume · same hop, many living rooms
+Synthetic mix at 200/s. 90% clean, 8% illegal, 2% breaking. Real gRPC. Not an exchange's QPS.
+
+8
+00:04:13,200 --> 00:04:45,000
+Grafana · real rtblint-grpc
+p99 against a 150ms tmax. Drops are the dirty mix. Shed should sit at zero.
+
+9
+00:04:45,200 --> 00:05:01,000
+The bid hop
+Envelope, mutation, applied. VASTlint was the creative hop. This is the bid hop. Independent. Not an IAB product.

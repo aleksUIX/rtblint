@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARTF hop</title>
+    <style>
+      :root {
+        --bg: #f3f2ee;
+        --panel: #fff;
+        --text: #1a1a1a;
+        --soft: #5a5a56;
+        --muted: #8b8b85;
+        --line: #dcdad3;
+        --accent: #1d4ed8;
+        --ok: #0f766e;
+        --bad: #b42318;
+        --busy: #b45309;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font: 19px/1.4 ui-sans-serif, system-ui, sans-serif;
+      }
+      body { display: flex; flex-direction: column; }
+      main {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        margin: 0;
+        padding: 10px 16px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 0;
+      }
+      h1 { margin: 0; font-size: 1.55rem; font-weight: 650; letter-spacing: -0.02em; }
+      header small { color: var(--muted); font-size: 0.88rem; }
+      .links a, .stream-go, .stream-stop, .beat, .hose select {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        font: inherit;
+        cursor: pointer;
+      }
+      .links a { padding: 7px 12px; font-size: 0.88rem; color: var(--accent); }
+      .stats {
+        display: flex;
+        gap: 28px;
+        margin: 0;
+        padding: 8px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: var(--soft);
+        font-variant-numeric: tabular-nums;
+        font-size: 1.02rem;
+      }
+      .stats b { font-weight: 500; color: var(--muted); margin-right: 6px; }
+      .stats em { font-style: normal; font-weight: 650; color: var(--text); }
+      .stats .bad em { color: var(--bad); }
+      .stage {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 14px;
+        margin: 0;
+        flex: 1;
+        min-height: 0;
+        align-items: stretch;
+      }
+      .tv-wrap {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 12px 16px;
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .ticket, .intent-pane {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 12px 16px;
+        min-height: 0;
+        height: 100%;
+      }
+      .intent-pane { display: flex; flex-direction: column; }
+      #muts { flex: 1; overflow: auto; min-height: 0; }
+      .pane-h {
+        margin: 0 0 10px;
+        font-size: 0.78rem;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .bezel {
+        flex: 1;
+        min-height: 0;
+        background: #111;
+        border: 8px solid #2a2a2a;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+      }
+      .screen { position: relative; flex: 1; width: 100%; height: 100%; background: #1a1a1a; }
+      .show {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, #2c3340, #151820);
+      }
+      .show-title {
+        position: absolute; left: 22px; bottom: 32px;
+        color: #f3f3f0;
+        font-size: 1.45rem;
+      }
+      .show-title small {
+        display: block;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #c5c5c0;
+      }
+      .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: #333; }
+      .progress i { display: block; height: 100%; width: 72%; background: #d6d3cc; }
+      .overlay {
+        position: absolute; inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 12px;
+      }
+      .screen.unsold .overlay.unsold,
+      .screen.poison .overlay.poison,
+      .screen.ad .overlay.ad { display: flex; }
+      .overlay.unsold { background: rgba(0,0,0,0.7); color: #fff; }
+      .overlay.unsold span { margin-top: 6px; font-size: 1rem; color: #ddd; }
+      .overlay.unsold strong { color: #f0a8a4; letter-spacing: 0.06em; font-size: 2rem; }
+      .overlay.poison strong { font-size: 2rem; }
+      .overlay.poison {
+        background: repeating-linear-gradient(0deg, rgba(180,35,24,0.2) 0 2px, transparent 2px 4px), #2a1010;
+        animation: glitch 0.18s steps(2) infinite;
+        color: #f0a8a4;
+      }
+      @keyframes glitch { 50% { transform: translate(1px, -1px); } }
+      .overlay.ad { color: #fff; }
+      .overlay.ad.green { background: linear-gradient(135deg, #14532d, #052e16); }
+      .overlay.ad.amber { background: linear-gradient(135deg, #7c4a12, #1c1206); }
+      .overlay.ad.blue { background: linear-gradient(135deg, #0f3a5c, #071018); }
+      .ad-kicker { font-size: 0.86rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+      .ad-title { margin: 10px 0 6px; font-size: 2.4rem; }
+      .ad-line { font-size: 1.1rem; opacity: 0.9; }
+      .ad-legal {
+        position: absolute; left: 12px; right: 12px; bottom: 10px;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.65;
+      }
+      .tv-cap { margin: 10px 0 0; color: var(--muted); font-size: 0.86rem; }
+      .ticket-meta { color: var(--soft); font-size: 0.92rem; margin: 0 0 8px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 8px; }
+      .chip {
+        border: 1px solid var(--line);
+        background: #fafaf8;
+        padding: 6px 10px;
+        font: 600 0.82rem/1.2 ui-monospace, Menlo, monospace;
+      }
+      .chip.add { border-color: var(--ok); color: var(--ok); background: #f0faf8; }
+      .chip.del { border-color: var(--bad); color: var(--bad); text-decoration: line-through; }
+      .chip.chg { border-color: var(--busy); color: var(--busy); background: #fff7ed; }
+      .chip.poison { border-color: var(--bad); color: var(--bad); }
+      .row-label {
+        font-size: 0.76rem;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 10px 0 6px;
+      }
+      .price { margin: 0; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+      .price.chg { color: var(--busy); }
+      .price del { color: var(--muted); font-size: 1rem; margin-right: 8px; }
+      .punch { min-height: 1.2em; margin: 0 0 10px; font-size: 0.95rem; color: var(--soft); }
+      .punch.bad { color: var(--bad); }
+      .mut {
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        margin: 0 0 8px;
+        font: 14px/1.35 ui-monospace, Menlo, monospace;
+      }
+      .mut b { display: block; }
+      .mut i { font-style: normal; color: var(--muted); }
+      .mut.bounced, .mut.poison { border-color: var(--bad); }
+      .mut.applied { border-color: var(--ok); }
+      .mut.skipped { border-color: var(--busy); }
+      .mut .st {
+        float: right;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .mut.applied .st { color: var(--ok); }
+      .mut.bounced .st, .mut.poison .st { color: var(--bad); }
+      .mut.skipped .st { color: var(--busy); }
+      .find { margin: 2px 0 0; color: var(--muted); }
+      .pipe {
+        display: grid;
+        grid-template-columns: 1fr 14px 1fr 14px 1fr 14px 1fr;
+        gap: 0;
+        margin: 0;
+        align-items: stretch;
+        flex: 0 0 auto;
+      }
+      .node {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 10px 14px;
+      }
+      .node b {
+        display: block;
+        font-size: 0.76rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .node em { display: block; margin-top: 3px; font-style: normal; font-weight: 650; font-size: 1.05rem; }
+      .node.busy { border-color: var(--busy); }
+      .node.ok { border-color: var(--ok); }
+      .node.error { border-color: var(--bad); }
+      .rail { align-self: center; height: 1px; background: var(--line); }
+      .rail.on { background: var(--accent); }
+      .beats {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr) auto;
+        gap: 8px;
+        margin: 0;
+        align-items: stretch;
+        flex: 0 0 auto;
+      }
+      .beat, .hose {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-start;
+        padding: 10px 12px;
+        text-align: left;
+      }
+      .hose { flex-direction: row; align-items: center; gap: 8px; }
+      .beat:hover:not(:disabled), .stream-go:hover { border-color: var(--accent); }
+      .beat:disabled { opacity: 0.5; cursor: wait; }
+      .beat.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+      .beat b, .hose b { font-size: 0.76rem; color: var(--muted); font-weight: 650; }
+      .beat strong { font-size: 0.98rem; }
+      .hose-row { display: flex; gap: 6px; }
+      .hose select, .stream-go, .stream-stop { padding: 7px 10px; font-size: 0.88rem; }
+      .stream-go { color: var(--accent); }
+      .stream-stop { color: var(--bad); }
+      .barcode {
+        display: flex;
+        height: 14px;
+        gap: 1px;
+        margin: 0;
+        background: #eceae4;
+        overflow: hidden;
+        flex: 0 0 auto;
+      }
+      .barcode i { flex: 1; min-width: 2px; background: #ddd9d0; }
+      .barcode i.forward { background: var(--ok); }
+      .barcode i.drop { background: var(--bad); }
+      body.ep1 .beat[data-beat="illegal"],
+      body.ep1 .beat[data-beat="breaking"] { display: none; }
+      body.ep1 .map-beat { display: flex; }
+      body.ep1 .beats { grid-template-columns: repeat(4, 1fr) auto; }
+      body.ep3 .beat[data-beat="illegal"],
+      body.ep3 .beat[data-beat="breaking"],
+      body.ep3 .beat[data-beat="suppress"],
+      body.ep3 .beat[data-beat="clean"] { display: none; }
+      body.ep3 .env-beat,
+      body.ep3 .offer-beat,
+      body.ep3 .policy-beat { display: flex; }
+      body.ep3 .beats { grid-template-columns: repeat(4, 1fr) auto; }
+      body.ep3 #envelope { display: block; }
+      body.ep3 .stage { grid-template-columns: 1.15fr 1fr 1.25fr; }
+      body.ep3 #envelope {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 6px;
+        margin: 0 0 8px;
+      }
+      body.ep3 #envelope .pane-h,
+      body.ep3 .env-row[data-env="intents"],
+      body.ep3 .env-intents { grid-column: 1 / -1; }
+      body.ep3 .env-row { padding: 3px 6px; }
+      body.ep3 .mut { padding: 7px 9px; margin: 0 0 5px; }
+      body.ep3 .punch { font-size: 0.86rem; min-height: 0; margin: 0 0 6px; }
+      .map-beat, .env-beat, .offer-beat, .policy-beat { display: none; }
+      #envelope { display: none; margin: 0 0 10px; }
+      .env-row {
+        display: grid;
+        grid-template-columns: 7.2rem 1fr;
+        gap: 8px;
+        align-items: baseline;
+        padding: 5px 8px;
+        border: 1px solid transparent;
+        font: 12.5px/1.35 ui-monospace, Menlo, monospace;
+      }
+      .env-row.on {
+        border-color: var(--accent);
+        background: #eef2ff;
+      }
+      .env-row b {
+        font-weight: 650;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.68rem;
+      }
+      .env-row span { color: var(--text); word-break: break-all; }
+      .env-row .sub {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+      .env-intents {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        grid-column: 1 / -1;
+        padding: 4px 8px 8px;
+      }
+      .tok {
+        border: 1px solid var(--line);
+        background: #fafaf8;
+        padding: 4px 8px;
+        font: 600 0.68rem/1.2 ui-monospace, Menlo, monospace;
+      }
+      .tok.on { border-color: var(--accent); color: var(--accent); background: #eef2ff; }
+      .tok.off {
+        border-color: var(--line);
+        color: var(--muted);
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+      #envelope.focus-intents .env-intents {
+        outline: 1px solid var(--accent);
+        background: #eef2ff;
+      }
+      .mut.on { border-color: var(--accent); background: #eef2ff; }
+      .mut .path {
+        display: block;
+        margin-top: 4px;
+        font-style: normal;
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+      .chip.path-on, #t-bid.path-on {
+        outline: 2px solid var(--accent);
+        background: #eef2ff;
+      }
+      #hop-map {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background: var(--bg);
+        color: var(--text);
+        padding: 36px 56px 32px;
+        flex-direction: column;
+      }
+      #hop-map.on { display: flex; }
+      #hop-map .kicker {
+        margin: 0;
+        font: 650 0.82rem/1 ui-monospace, Menlo, monospace;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      #hop-map h2 {
+        margin: 10px 0 0;
+        font-size: 2.6rem;
+        font-weight: 650;
+        letter-spacing: -0.035em;
+      }
+      #hop-map .lede {
+        margin: 12px 0 0;
+        font-size: 1.35rem;
+        color: var(--soft);
+        max-width: 42em;
+      }
+      .hop-flow {
+        display: grid;
+        grid-template-columns: 0.9fr 1.6fr 0.9fr;
+        gap: 18px;
+        margin: 28px 0 0;
+        flex: 1;
+        min-height: 0;
+        align-items: stretch;
+      }
+      .hop-col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hop-col .node, .hop-host .node {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 16px 18px;
+        flex: 1;
+      }
+      .hop-col .node b, .hop-host .node b {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hop-col .node em, .hop-host .node em {
+        display: block;
+        margin-top: 8px;
+        font-style: normal;
+        font-weight: 650;
+        font-size: 1.45rem;
+        letter-spacing: -0.02em;
+      }
+      .hop-col .node span, .hop-host .node span {
+        display: block;
+        margin-top: 6px;
+        color: var(--soft);
+        font-size: 1.02rem;
+      }
+      .hop-host {
+        border: 2px solid var(--accent);
+        background: #f7f8ff;
+        padding: 16px 18px 18px;
+        display: flex;
+        flex-direction: column;
+      }
+      .hop-host .host-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 0 0 14px;
+        font: 650 0.82rem/1.2 ui-monospace, Menlo, monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .hop-host .host-label span {
+        color: var(--muted);
+        letter-spacing: 0;
+        text-transform: none;
+        font-family: inherit;
+        font-weight: 500;
+      }
+      .host-row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 12px;
+        flex: 1;
+        align-items: stretch;
+      }
+      .host-row .grpc {
+        align-self: center;
+        font: 650 0.82rem/1.2 ui-monospace, Menlo, monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        text-align: center;
+      }
+      .hop-host .node.agent {
+        border-color: var(--accent);
+        background: #eef2ff;
+      }
+      .hop-host .node.agent b { color: var(--accent); }
+      .hop-host .host-note {
+        margin: 14px 0 0;
+        color: var(--soft);
+        font-size: 1.05rem;
+      }
+      .hop-after {
+        margin-top: 18px;
+        border: 1px dashed var(--line);
+        background: #fafaf8;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .hop-after p {
+        margin: 0;
+        font: 650 0.78rem/1 ui-monospace, Menlo, monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hop-after span {
+        font-size: 1.2rem;
+        font-weight: 650;
+      }
+      .ops {
+        display: grid;
+        grid-template-columns: 1.65fr 1fr;
+        gap: 12px;
+        flex: 0 0 268px;
+        min-height: 0;
+      }
+      .log-pane, .flyout {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 10px 12px;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .log-pane h2, .flyout h2 {
+        margin: 0 0 8px;
+        font-size: 0.78rem;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .log {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+        font: 13.5px/1.45 ui-monospace, Menlo, monospace;
+        color: var(--soft);
+      }
+      .log .row { margin: 0 0 3px; cursor: pointer; white-space: nowrap; }
+      .log .row:hover, .log .row.on { background: #eceae4; }
+      .log .row .actor { color: var(--text); font-weight: 650; }
+      .log .row.error, .log .row.drop { color: var(--bad); }
+      .log .row.ok, .log .row.forward { color: var(--ok); }
+      .log .k { color: var(--muted); }
+      .flyout .kicker {
+        margin: 0 0 6px;
+        font: 650 0.72rem/1 ui-monospace, Menlo, monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .flyout h3 {
+        margin: 0 0 8px;
+        font-size: 1.12rem;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+      .flyout p { margin: 0 0 10px; color: var(--soft); font-size: 0.92rem; }
+      .flyout .keys {
+        margin-top: auto;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+        font: 12.5px/1.45 ui-monospace, Menlo, monospace;
+        color: var(--muted);
+      }
+      .inbox { margin: 0; font-size: 0.82rem; color: var(--muted); }
+      @media (max-width: 900px) {
+        .stage, .beats, header, .ops { display: flex; flex-direction: column; }
+        .pipe { grid-template-columns: 1fr; }
+        .rail { display: none; }
+        .ops { flex: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>ARTF hop <small id="who-now">Publisher</small></h1>
+        <div class="links">
+          <a id="grafana" href="http://localhost:3001/d/artf-sim" target="_blank" rel="noreferrer">Grafana</a>
+        </div>
+      </header>
+      <div class="stats">
+        <span><b>Auctions</b><em id="s-auctions">0</em></span>
+        <span><b>QPS</b><em id="s-qps">0</em></span>
+        <span><b>Fwd</b><em id="s-fwd">0</em></span>
+        <span id="drop-stat"><b>Drop</b><em id="s-drop">0</em></span>
+        <span id="p99-stat"><b>p99</b><em id="s-p99">0 ms</em></span>
+        <span><b>In flight</b><em id="s-fly">0</em></span>
+      </div>
+      <div class="stage">
+        <div class="tv-wrap">
+          <p class="pane-h">Slot</p>
+          <div class="bezel">
+            <div class="screen content" id="tv" data-mode="content">
+              <div class="show">
+                <div class="show-title"><small>streaming.example</small>Night Shift S3 E4</div>
+                <div class="progress"><i></i></div>
+              </div>
+              <div class="overlay unsold">
+                <strong>NO BID</strong>
+                <span>DSP not called</span>
+              </div>
+              <div class="overlay poison">
+                <strong>INVALID</strong>
+                <span>OpenRTB broke</span>
+              </div>
+              <div class="overlay ad" id="ad">
+                <div class="ad-kicker" id="ad-kicker">Dummy mid-roll</div>
+                <div class="ad-title" id="ad-title">Advertiser</div>
+                <div class="ad-line" id="ad-line"></div>
+                <div class="ad-legal">Dummy · not delivery</div>
+              </div>
+            </div>
+          </div>
+          <p class="tv-cap" id="tv-cap">1920×1080 · 15–30s · PMP</p>
+        </div>
+        <div class="ticket">
+          <p class="pane-h">Auction</p>
+          <p class="ticket-meta" id="t-meta">idle</p>
+          <div class="row-label">Imp</div>
+          <div class="chips" id="t-imp"></div>
+          <div class="row-label">Deals</div>
+          <div class="chips" id="t-deals"></div>
+          <div class="row-label">Segments</div>
+          <div class="chips" id="t-segs"></div>
+          <div class="row-label">Metrics</div>
+          <div class="chips" id="t-metrics"></div>
+          <div class="row-label">Bid</div>
+          <p class="price" id="t-bid">none</p>
+        </div>
+        <div class="intent-pane">
+          <div id="envelope">
+            <p class="pane-h">Envelope</p>
+            <div class="env-row" data-env="lifecycle"><b>lifecycle</b><span id="env-lifecycle">-</span></div>
+            <div class="env-row" data-env="id"><b>id</b><span id="env-id">-</span></div>
+            <div class="env-row" data-env="tmax"><b>tmax</b><span id="env-tmax">-</span></div>
+            <div class="env-row" data-env="originator"><b>originator</b><span id="env-originator">-</span></div>
+            <div class="env-row" data-env="attached"><b>attached</b><span id="env-attached">-</span></div>
+            <div class="env-row" data-env="intents"><b>intents</b><span class="sub" id="env-intents-note">host vocabulary for this hop</span></div>
+            <div class="env-intents" id="env-intents"></div>
+          </div>
+          <p class="pane-h">Mutations</p>
+          <p class="punch" id="punch">Waiting on the agent.</p>
+          <div id="muts"></div>
+        </div>
+      </div>
+      <div class="pipe">
+        <div class="node" id="n-ssp"><b>SSP</b><em>exchange-7</em></div>
+        <div class="rail" id="r1"></div>
+        <div class="node" id="n-agent"><b>Agent</b><em>curator-1</em></div>
+        <div class="rail" id="r2"></div>
+        <div class="node" id="n-rtblint"><b>RTBlint</b><em>gRPC</em></div>
+        <div class="rail" id="r3"></div>
+        <div class="node" id="n-dsp"><b>DSP</b><em>dsp-1</em></div>
+      </div>
+      <div class="beats">
+        <button class="beat map-beat" data-beat="map" type="button">
+          <b>0 Hop</b>
+          <strong>Where</strong>
+        </button>
+        <button class="beat env-beat" data-beat="envelope" type="button">
+          <b>0 Host</b>
+          <strong>Envelope</strong>
+        </button>
+        <button class="beat offer-beat" data-beat="offer" type="button">
+          <b>1 Offer</b>
+          <strong>Intents</strong>
+        </button>
+        <button class="beat" data-beat="illegal" type="button">
+          <b>1 SSP</b>
+          <strong>Illegal</strong>
+        </button>
+        <button class="beat" data-beat="breaking" type="button">
+          <b>2 Engineer</b>
+          <strong>Poison</strong>
+        </button>
+        <button class="beat" data-beat="clean" type="button">
+          <b>3 DSP</b>
+          <strong>Curation</strong>
+        </button>
+        <button class="beat policy-beat" data-beat="policy" type="button">
+          <b>2 Paths</b>
+          <strong>Apply</strong>
+        </button>
+        <button class="beat" data-beat="suppress" type="button">
+          <b>4 Publisher</b>
+          <strong>Suppress</strong>
+        </button>
+        <button class="beat" data-beat="shade" type="button">
+          <b>5 Bid</b>
+          <strong>Shade</strong>
+        </button>
+        <div class="hose">
+          <select id="qps" aria-label="QPS">
+            <option value="200">200/s</option>
+            <option value="500">500/s</option>
+            <option value="1000">1k/s</option>
+            <option value="2000" selected>2k/s</option>
+            <option value="5000">5k/s</option>
+            <option value="10000">10k/s</option>
+          </select>
+          <select id="secs" aria-label="Duration">
+            <option value="20">20s</option>
+            <option value="45">45s</option>
+            <option value="90" selected>90s</option>
+            <option value="180">180s</option>
+          </select>
+          <button class="stream-go" id="go" type="button">Start</button>
+          <button class="stream-stop" id="stop" type="button">Stop</button>
+        </div>
+      </div>
+      <div class="barcode" id="barcode" aria-hidden="true"></div>
+      <div class="ops">
+        <div class="log-pane">
+          <h2>Exchange log</h2>
+          <div class="log" id="tape"></div>
+          <p class="inbox" id="inbox"></p>
+        </div>
+        <aside class="flyout" id="flyout">
+          <p class="kicker" id="fly-kicker">How to read a line</p>
+          <h3 id="fly-title">req · pop · inv · hop · outcome · gate · rule · ms</h3>
+          <p id="fly-body">
+            Same shape as an SSP tail. Click a row. Drops are sampled harder than forwards so the dirty mix stays visible.
+          </p>
+          <div class="keys" id="fly-keys">
+            gate=mutations · agent could not point at this auction. DSP not called.<br />
+            gate=applied · patch wrote illegal OpenRTB. Do not fan out.<br />
+            gate=forward · both checks empty. Host may send BidRequest-prime.<br />
+            ms vs tmax=150 · hop time. p99 should sit in the first milliseconds.
+          </div>
+        </aside>
+      </div>
+    </main>
+    <div id="hop-map" aria-hidden="true">
+      <p class="kicker">Where the hop sits</p>
+      <h2>Inside the host</h2>
+      <p class="lede">
+        The agent is a container in the SSP, DSP, or exchange you already run. OpenRTB stays OpenRTB. Buyers bid on whatever you actually forwarded.
+      </p>
+      <div class="hop-flow">
+        <div class="hop-col">
+          <div class="node"><b>Publisher</b><em>CTV / app / site</em><span>the slot you already sell</span></div>
+          <div class="node"><b>BidRequest</b><em>imp · deals · segments</em><span>on the wire already</span></div>
+        </div>
+        <div class="hop-host">
+          <p class="host-label">Host · SSP / DSP / exchange <span>data and SLA stay here</span></p>
+          <div class="host-row">
+            <div class="node agent"><b>Agent</b><em>OCI container</em><span>returns mutations</span></div>
+            <div class="grpc">in-host · tmax</div>
+            <div class="node"><b>Orchestrator</b><em>accept or reject each</em><span>apply on this ticket</span></div>
+          </div>
+          <p class="host-note">PUBLISHER_BID_REQUEST before fanout · DSP_BID_RESPONSE after a bid</p>
+        </div>
+        <div class="hop-col">
+          <div class="node"><b>DSP</b><em>bids on BidRequest-prime</em><span>whatever the host forwarded</span></div>
+          <div class="node"><b>BidResponse</b><em>still OpenRTB</em><span>response-stage hop</span></div>
+        </div>
+      </div>
+      <div class="hop-after">
+        <p>After the win · not ARTF</p>
+        <span>VAST / DAAST</span>
+        <span>Player</span>
+        <span>Beacons</span>
+      </div>
+    </div>
+    <script>
+      const tapeEl = document.getElementById("tape");
+      const punchEl = document.getElementById("punch");
+      const inboxEl = document.getElementById("inbox");
+      const barcode = document.getElementById("barcode");
+      const grafana = document.getElementById("grafana");
+      const buttons = [...document.querySelectorAll(".beat")];
+      const rails = [...document.querySelectorAll(".rail")];
+      const tv = document.getElementById("tv");
+      const ad = document.getElementById("ad");
+      const nodes = {
+        ssp: document.getElementById("n-ssp"),
+        agent: document.getElementById("n-agent"),
+        rtblint: document.getElementById("n-rtblint"),
+        dsp: document.getElementById("n-dsp"),
+      };
+      const WHO = {
+        publisher: "Publisher",
+        ssp: "SSP",
+        exchange: "Engineer",
+        agent: "Agent",
+        dsp: "DSP",
+      };
+      const EP1 = /(?:^|[?&])ep=1(?:&|$)/.test(location.search);
+      const EP3 = /(?:^|[?&])ep=3(?:&|$)/.test(location.search);
+      const hopMap = document.getElementById("hop-map");
+      const envelopeEl = document.getElementById("envelope");
+
+      if (EP1) {
+        document.body.classList.add("ep1");
+        const who = document.getElementById("who-now");
+        const tag = document.createElement("small");
+        tag.textContent = "Episode 1 · ";
+        tag.style.marginRight = "6px";
+        who.parentNode.insertBefore(tag, who);
+        document.querySelector("#n-ssp b").textContent = "Host";
+        document.querySelector("#n-ssp em").textContent = "your infra";
+        document.querySelector("#n-rtblint b").textContent = "Apply";
+        document.querySelector("#n-rtblint em").textContent = "orchestrator";
+        punchEl.textContent = "The host holds the ticket.";
+        document.getElementById("fly-title").textContent = "req · hop · outcome · gate · ms";
+        const relabel = {
+          clean: ["1 DSP", "Curation"],
+          suppress: ["2 Publisher", "Suppress"],
+          shade: ["3 Bid", "Shade"],
+        };
+        for (const [id, [b, s]] of Object.entries(relabel)) {
+          const btn = document.querySelector(`[data-beat="${id}"]`);
+          btn.querySelector("b").textContent = b;
+          btn.querySelector("strong").textContent = s;
+        }
+        document.getElementById("fly-body").textContent =
+          "Same shape as an SSP tail. Click a row. This mix is mostly forwards: clean curation, suppress, and shade.";
+        document.getElementById("fly-keys").innerHTML =
+          "hop=request · publisher BidRequest, before fanout.<br>" +
+          "hop=response · DSP BidResponse, after a bid.<br>" +
+          "outcome=forward · host sent BidRequest-prime, or accepted the shade.<br>" +
+          "ms vs tmax=150 · this hop has to finish inside the auction clock.";
+        grafana.href =
+          "http://localhost:3001/d/artf-sim-hop?orgId=1&refresh=1s&kiosk&from=now-1m&to=now";
+      }
+
+      if (EP3) {
+        document.body.classList.add("ep3");
+        WHO.ssp = "Host";
+        const who = document.getElementById("who-now");
+        const tag = document.createElement("small");
+        tag.textContent = "Episode 3 · ";
+        tag.style.marginRight = "6px";
+        who.parentNode.insertBefore(tag, who);
+        document.querySelector("#n-ssp b").textContent = "Host";
+        document.querySelector("#n-rtblint b").textContent = "Apply";
+        document.querySelector("#n-rtblint em").textContent = "orchestrator";
+        const shadeBtn = document.querySelector("[data-beat=shade]");
+        shadeBtn.querySelector("b").textContent = "3 Shade";
+        shadeBtn.querySelector("strong").textContent = "BidResponse";
+        document.getElementById("fly-body").textContent =
+          "Same shape as an SSP tail. Click a row. This mix is mostly forwards: the envelope hop under tmax.";
+        document.getElementById("fly-keys").innerHTML =
+          "envelope · lifecycle, id, tmax, originator, applicable_intents, attached OpenRTB.<br>" +
+          "skipped · host did not offer that intent on this hop.<br>" +
+          "hop=response · same RPC, BidResponse, BID_SHADE only.<br>" +
+          "ms vs tmax=150 · envelope budget, not a made-up SLO.";
+        const tmax = document.createElement("span");
+        tmax.innerHTML = "<b>tmax</b><em>150 ms</em>";
+        document.querySelector(".stats").appendChild(tmax);
+      }
+
+      for (let i = 0; i < 120; i += 1) barcode.appendChild(document.createElement("i"));
+
+      const events = new EventSource("/events");
+      events.onmessage = (msg) => {
+        const ev = JSON.parse(msg.data);
+        if (ev.type === "tick") {
+          paintTick(ev);
+          return;
+        }
+        if (ev.type === "stage") {
+          paintStage(ev);
+          return;
+        }
+        if (ev.type === "auction") {
+          mark(ev.outcome);
+          return;
+        }
+        if (ev.type === "log") {
+          logLine(ev);
+          return;
+        }
+        if (ev.type === "stream") {
+          rails.forEach((r) => r.classList.toggle("on", Boolean(ev.on)));
+          return;
+        }
+        if (ev.actor) {
+          paintNode(ev);
+          if (ev.extra && ev.extra.punchline) {
+            punchEl.textContent = ev.extra.punchline;
+            punchEl.className = "punch " + (ev.kind === "ok" ? "" : "bad");
+          }
+        }
+      };
+
+      function paintTick(s) {
+        set("s-auctions", s.auctions);
+        set("s-qps", s.qps);
+        set("s-fwd", s.forwarded);
+        set("s-drop", s.dropped);
+        const p99 = s.p99_ms || 0;
+        set("s-p99", p99.toFixed(1) + " ms");
+        set("s-fly", s.inFlight);
+        document.getElementById("drop-stat")?.classList.toggle("bad", Number(s.dropped) > 0);
+        document.getElementById("p99-stat")?.classList.toggle("bad", p99 > 150);
+        if (s.grafana && !EP1) grafana.href = s.grafana;
+        rails.forEach((r) => r.classList.toggle("on", Boolean(s.stream && s.stream.on)));
+      }
+
+      function set(id, v) {
+        document.getElementById(id).textContent = v;
+      }
+
+      function money(n) {
+        if (typeof n !== "number") return "-";
+        return "$" + n.toFixed(2);
+      }
+
+      function chip(text, kind, attrs) {
+        const el = document.createElement("span");
+        el.className = "chip " + (kind || "same");
+        el.textContent = text;
+        if (attrs) {
+          for (const [k, v] of Object.entries(attrs)) {
+            if (v) el.setAttribute(k, v);
+          }
+        }
+        return el;
+      }
+
+      function fill(id, list) {
+        document.getElementById(id).replaceChildren(...list);
+      }
+
+      function dealMap(list) {
+        const m = new Map();
+        for (const d of list || []) m.set(d.id, d);
+        return m;
+      }
+
+      function paintWho(perspective) {
+        document.getElementById("who-now").textContent = WHO[perspective] || perspective || "Publisher";
+      }
+
+      function paintTv(stage) {
+        const mode = stage.tv || "content";
+        tv.dataset.mode = mode;
+        tv.className = "screen " + mode;
+        const dummy = stage.dummy;
+        if (mode === "ad" && dummy) {
+          ad.className = "overlay ad " + (dummy.tone || "green");
+          document.getElementById("ad-kicker").textContent = dummy.kicker || "Dummy";
+          document.getElementById("ad-title").textContent = dummy.title || "Advertiser";
+          document.getElementById("ad-line").textContent = dummy.line || "";
+        }
+        const cap = document.getElementById("tv-cap");
+        const t = stage.after || stage.before;
+        const size = t ? t.w + "×" + t.h + " · " + t.min + "–" + t.max + "s" : "1920×1080 · 15–30s";
+        if (mode === "ad") cap.textContent = size + " · dummy ad";
+        else if (mode === "unsold") cap.textContent = size + " · unsold";
+        else if (mode === "poison") cap.textContent = size + " · invalid";
+        else cap.textContent = size + " · PMP";
+      }
+
+      function paintTicket(stage) {
+        const before = stage.before || {};
+        const after = stage.after || before;
+        const auction = after.id || before.id || "idle";
+        document.getElementById("t-meta").textContent =
+          auction + (stage.hop === "response" ? " · bid response" : "");
+
+        fill("t-imp", [
+          chip((after.w || 1920) + "×" + (after.h || 1080)),
+          chip((after.min || 15) + "–" + (after.max || 30) + "s"),
+          chip("floor " + money(after.floor), after.floor !== before.floor ? "chg" : "same"),
+        ]);
+
+        const bDeals = dealMap(before.deals);
+        const aDeals = dealMap(after.deals);
+        const dealChips = [];
+        for (const [id, d] of aDeals) {
+          const prev = bDeals.get(id);
+          if (!prev) {
+            dealChips.push(chip(id + " " + (d.floor != null ? money(d.floor) : "on"), "add", {
+              "data-kind": "deal-add",
+              "data-path": "/imp/imp-1",
+            }));
+          } else if (prev.floor !== d.floor) {
+            dealChips.push(chip(id + " " + money(prev.floor) + " → " + money(d.floor), "chg", {
+              "data-kind": "deal-chg",
+              "data-path": "/imp/imp-1/pmp/deals/" + id,
+            }));
+          } else {
+            dealChips.push(chip(id + " " + money(d.floor), "same", {
+              "data-path": "/imp/imp-1/pmp/deals/" + id,
+            }));
+          }
+        }
+        for (const [id, d] of bDeals) {
+          if (!aDeals.has(id)) dealChips.push(chip(id + " " + money(d.floor), "del"));
+        }
+        fill("t-deals", dealChips.length ? dealChips : [chip("none")]);
+
+        const bSeg = new Set(before.segments || []);
+        const aSeg = new Set(after.segments || []);
+        const segChips = [];
+        for (const id of aSeg) {
+          segChips.push(chip(id, bSeg.has(id) ? "same" : "add", {
+            "data-kind": "seg",
+            "data-path": "/user/data/segment",
+          }));
+        }
+        for (const id of bSeg) if (!aSeg.has(id)) segChips.push(chip(id, "del"));
+        fill("t-segs", segChips.length ? segChips : [chip("none")]);
+
+        const metrics = after.metrics || [];
+        if (!metrics.length) fill("t-metrics", [chip("none")]);
+        else {
+          fill(
+            "t-metrics",
+            metrics.map((m) => chip(m.type + " " + m.value, typeof m.value === "string" ? "poison" : "add", {
+              "data-kind": "metric",
+              "data-path": "/imp/imp-1",
+            })),
+          );
+        }
+
+        const bidEl = document.getElementById("t-bid");
+        bidEl.dataset.path = "/seatbid/dsp-1/bid/bid-ctv";
+        const bb = stage.bidBefore;
+        const ba = stage.bidAfter;
+        const dspPrice = stage.dspPrice;
+        if (ba && bb && ba.price !== bb.price) {
+          bidEl.className = "price chg";
+          bidEl.innerHTML = "<del>" + money(bb.price) + "</del>" + money(ba.price);
+        } else if (typeof dspPrice === "number") {
+          bidEl.className = "price";
+          bidEl.textContent = money(dspPrice);
+        } else if (ba) {
+          bidEl.className = "price";
+          bidEl.textContent = money(ba.price);
+        } else {
+          bidEl.className = "price";
+          bidEl.textContent = "none";
+        }
+      }
+
+      function paintMutations(stage) {
+        const box = document.getElementById("muts");
+        const list = stage.mutations || [];
+        if (!list.length) {
+          box.textContent = "";
+          return;
+        }
+        box.replaceChildren(
+          ...list.map((m) => {
+            const div = document.createElement("div");
+            div.className = "mut " + (m.status || "proposed");
+            div.dataset.path = m.path || "";
+            div.dataset.intent = m.intent || "";
+            const st = document.createElement("span");
+            st.className = "st";
+            st.textContent = m.status || "proposed";
+            const b = document.createElement("b");
+            b.textContent = m.intent || "(none)";
+            div.append(st, b);
+            if (m.path) {
+              const path = document.createElement("i");
+              path.className = "path";
+              path.textContent = m.path;
+              div.append(path);
+            }
+            if (m.reason) {
+              const line = document.createElement("div");
+              line.className = "find";
+              line.textContent = m.reason;
+              div.append(line);
+            }
+            const ids = (m.findings || []).map((f) => f.id).filter(Boolean);
+            if (ids.length) {
+              const line = document.createElement("div");
+              line.className = "find";
+              line.textContent = ids.slice(0, 2).join("  ");
+              div.append(line);
+            }
+            return div;
+          }),
+        );
+      }
+
+      function paintEnvelope(stage) {
+        const env = stage.envelope;
+        if (!env || !envelopeEl) return;
+        set("env-lifecycle", env.lifecycle || "-");
+        const idEl = document.getElementById("env-id");
+        idEl.innerHTML =
+          (env.epId || "-") +
+          (env.bidId
+            ? '<span class="sub">not bid request ' + env.bidId + "</span>"
+            : "");
+        set("env-tmax", (env.tmax || 150) + " ms");
+        set(
+          "env-originator",
+          [env.originatorType, env.originatorId].filter(Boolean).join(" · ") || "-",
+        );
+        const attached = env.attached || "bid_request";
+        document.getElementById("env-attached").innerHTML =
+          attached +
+          '<span class="sub">' +
+          (attached === "bid_response" ? "bid is in the envelope" : "object under mutation") +
+          "</span>";
+        const box = document.getElementById("env-intents");
+        const toks = [];
+        for (const name of env.intents || []) {
+          const t = document.createElement("span");
+          t.className = "tok on";
+          t.textContent = name;
+          toks.push(t);
+        }
+        for (const name of env.notOffered || []) {
+          const t = document.createElement("span");
+          t.className = "tok off";
+          t.textContent = name;
+          toks.push(t);
+        }
+        box.replaceChildren(...toks);
+      }
+
+      function artfEnvFocus(key) {
+        envelopeEl?.querySelectorAll(".env-row").forEach((el) => {
+          el.classList.toggle("on", el.dataset.env === key);
+        });
+        envelopeEl?.classList.toggle("focus-intents", key === "intents");
+      }
+
+      function artfMutFocus(index) {
+        const muts = [...document.querySelectorAll(".mut")];
+        muts.forEach((el, idx) => el.classList.toggle("on", idx === index));
+        const el = muts[index];
+        el?.scrollIntoView({ block: "nearest" });
+        const path = el?.dataset.path || "";
+        const intent = el?.dataset.intent || "";
+        document.querySelectorAll(".chip, #t-bid").forEach((c) => {
+          let on = false;
+          if (intent === "ACTIVATE_SEGMENTS") on = c.dataset.kind === "seg";
+          else if (intent === "ACTIVATE_DEALS") on = c.dataset.kind === "deal-add";
+          else if (intent === "ADJUST_DEAL_FLOOR") on = c.dataset.kind === "deal-chg";
+          else if (intent === "ADD_METRICS") on = c.dataset.kind === "metric";
+          else if (intent === "BID_SHADE") on = c.id === "t-bid";
+          else on = Boolean(path) && c.dataset.path === path;
+          c.classList.toggle("path-on", on);
+        });
+      }
+
+      window.artfEnvFocus = artfEnvFocus;
+      window.artfMutFocus = artfMutFocus;
+
+      function paintStage(stage) {
+        if (stage.phase) document.body.dataset.phase = stage.phase;
+        paintWho(stage.perspective);
+        paintTv(stage);
+        paintTicket(stage);
+        paintEnvelope(stage);
+        paintMutations(stage);
+        const agentEm = document.querySelector("#n-agent em");
+        if (agentEm) agentEm.textContent = stage.hop === "response" ? "shader-1" : "curator-1";
+        if (stage.punchline) {
+          punchEl.textContent = stage.punchline;
+          punchEl.className = "punch " + (stage.forwarded ? "" : "bad");
+        }
+      }
+
+      function paintNode(ev) {
+        const n = nodes[ev.actor];
+        if (!n) return;
+        n.classList.remove("busy", "ok", "error");
+        if (ev.kind === "info") n.classList.add("busy");
+        if (ev.kind === "ok") n.classList.add("ok");
+        if (ev.kind === "error") n.classList.add("error");
+      }
+
+      const FLY = {
+        mutations: {
+          kicker: "gate=mutations",
+          title: "The auction was never asked",
+          body: "The agent spoke fluent gRPC and still could not point at this BidRequest: wrong lifecycle, unknown impression, or an id mismatch. DSP is not called.",
+        },
+        applied: {
+          kicker: "gate=applied",
+          title: "ARTF ok. OpenRTB is not.",
+          body: "Mutations applied, then revalidate failed. Typical: a metric landed as a string. The rewritten ticket must not fan out.",
+        },
+        forward: {
+          kicker: "gate=forward",
+          title: "Both checks empty",
+          body: "Host may send BidRequest-prime to buyers. Curation and suppress still have to name paths that exist on this auction.",
+        },
+        read: {
+          kicker: "How to read a line",
+          title: "req · pop · inv · hop · outcome · gate · rule · ms",
+          body: "Same shape as an SSP tail. Click a row. Drops are sampled harder than forwards so the dirty mix stays visible.",
+        },
+      };
+      if (EP1) {
+        FLY.forward = {
+          kicker: "outcome=forward",
+          title: "Host forwarded",
+          body: "BidRequest-prime went to the DSP, or the shade was accepted. Suppress and shade still forward; those are legal jobs.",
+        };
+        FLY.read = {
+          kicker: "How to read a line",
+          title: "req · hop · outcome · gate · ms",
+          body: "Same shape as an SSP tail. Click a row. This mix is mostly forwards: clean curation, suppress, and shade.",
+        };
+      }
+      const seenGate = new Set();
+      let flyLock = 0;
+
+      function clock(ts) {
+        const d = new Date(ts || Date.now());
+        return d.toISOString().slice(11, 23);
+      }
+
+      function showFly(key, extra) {
+        const spec = FLY[key] || FLY.read;
+        document.getElementById("fly-kicker").textContent = spec.kicker;
+        document.getElementById("fly-title").textContent = spec.title;
+        document.getElementById("fly-body").textContent = spec.body;
+        const keys = document.getElementById("fly-keys");
+        if (extra) {
+          keys.textContent = EP1
+            ? extra.id +
+              "  " +
+              extra.hop +
+              "  " +
+              extra.outcome +
+              "/" +
+              extra.gate +
+              (extra.rule ? "  " + extra.rule : "") +
+              "  " +
+              Number(extra.ms || 0).toFixed(1) +
+              "ms  tmax=" +
+              (extra.tmax || 150)
+            : extra.id +
+              "  " +
+              extra.pop +
+              "  " +
+              extra.inv +
+              "  " +
+              extra.hop +
+              "  " +
+              extra.outcome +
+              "/" +
+              extra.gate +
+              (extra.rule ? "  " + extra.rule : "") +
+              "  " +
+              Number(extra.ms || 0).toFixed(1) +
+              "ms  tmax=" +
+              (extra.tmax || 150);
+        }
+      }
+
+      function logLine(ev) {
+        const div = document.createElement("div");
+        div.className = "row " + (ev.outcome || ev.kind || "");
+        const rule = ev.rule ? ev.rule : "-";
+        div.innerHTML =
+          '<span class="k">' +
+          clock(ev.ts) +
+          "</span>  " +
+          ev.id +
+          "  " +
+          (EP1
+            ? ""
+            : (ev.pop || "us-west-2") + "  " + (ev.inv || "ctv") + "  ") +
+          (ev.hop || "PUBLISHER_BID_REQUEST") +
+          "  " +
+          ev.outcome +
+          "  " +
+          (ev.gate || "-") +
+          "  " +
+          rule +
+          "  " +
+          Number(ev.ms || 0).toFixed(1) +
+          "ms";
+        div.addEventListener("click", () => {
+          flyLock = Date.now() + 8000;
+          tapeEl.querySelectorAll(".row.on").forEach((el) => el.classList.remove("on"));
+          div.classList.add("on");
+          showFly(ev.gate || "read", ev);
+        });
+        tapeEl.prepend(div);
+        while (tapeEl.childElementCount > 80) tapeEl.lastChild.remove();
+        if (ev.gate && !seenGate.has(ev.gate) && Date.now() > flyLock) {
+          seenGate.add(ev.gate);
+          showFly(ev.gate, ev);
+          tapeEl.querySelectorAll(".row.on").forEach((el) => el.classList.remove("on"));
+          div.classList.add("on");
+        }
+      }
+
+      function mark(outcome) {
+        const tick = document.createElement("i");
+        tick.className = outcome;
+        barcode.appendChild(tick);
+        if (barcode.childElementCount > 160) barcode.firstChild.remove();
+      }
+
+      async function refreshInbox() {
+        const r = await fetch("/inbox");
+        const body = await r.json();
+        if (typeof body.received !== "number") {
+          inboxEl.textContent = "";
+          return;
+        }
+        inboxEl.textContent = "DSP inbox  " + (body.total ?? body.received);
+      }
+
+      async function run(beat) {
+        buttons.forEach((b) => {
+          b.disabled = true;
+          b.classList.toggle("on", b.dataset.beat === beat);
+        });
+        punchEl.textContent = "";
+        punchEl.className = "punch";
+        Object.values(nodes).forEach((n) => n.classList.remove("busy", "ok", "error"));
+        try {
+          const r = await fetch("/run", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ beat, hopOnly: EP1 }),
+          });
+          const body = await r.json();
+          if (!r.ok) punchEl.textContent = body.error || r.statusText;
+          if (body.stage) paintStage(body.stage);
+          if (body.auction) mark(body.auction.outcome);
+          await refreshInbox();
+        } finally {
+          buttons.forEach((b) => {
+            b.disabled = false;
+          });
+        }
+      }
+
+      buttons.forEach((b) => b.addEventListener("click", () => {
+        if (b.dataset.beat === "map") {
+          hopMap.classList.toggle("on");
+          hopMap.setAttribute("aria-hidden", hopMap.classList.contains("on") ? "false" : "true");
+          b.classList.toggle("on", hopMap.classList.contains("on"));
+          return;
+        }
+        if (b.dataset.beat === "envelope") {
+          hopMap.classList.remove("on");
+          envelopeEl?.classList.add("live");
+          artfEnvFocus("lifecycle");
+          punchEl.textContent = "Lifecycle names the stage. You still have to attach the object.";
+          punchEl.className = "punch";
+          buttons.forEach((x) => x.classList.toggle("on", x === b));
+          return;
+        }
+        if (b.dataset.beat === "offer") {
+          hopMap.classList.remove("on");
+          envelopeEl?.classList.add("offered");
+          artfEnvFocus("intents");
+          punchEl.textContent = "The agent is reusable. The intent list is not.";
+          punchEl.className = "punch";
+          buttons.forEach((x) => x.classList.toggle("on", x === b));
+          return;
+        }
+        hopMap.classList.remove("on");
+        document.querySelector("[data-beat=map]")?.classList.remove("on");
+        run(b.dataset.beat);
+      }));
+      hopMap.addEventListener("click", () => {
+        hopMap.classList.remove("on");
+        hopMap.setAttribute("aria-hidden", "true");
+        document.querySelector("[data-beat=map]")?.classList.remove("on");
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || !hopMap.classList.contains("on")) return;
+        hopMap.classList.remove("on");
+        hopMap.setAttribute("aria-hidden", "true");
+        document.querySelector("[data-beat=map]")?.classList.remove("on");
+      });
+      document.getElementById("go").addEventListener("click", async () => {
+        await fetch("/stream", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            qps: Number(document.getElementById("qps").value),
+            seconds: Number(document.getElementById("secs").value),
+            mix: EP1 || EP3 ? "production" : "dirt",
+          }),
+        });
+      });
+      document.getElementById("stop").addEventListener("click", () => {
+        fetch("/stream/stop", { method: "POST" });
+      });
+      fetch("/stats").then((r) => r.json()).then(paintTick).catch(() => {});
+      fetch("/stage")
+        .then((r) => r.json())
+        .then((s) => {
+          s.tv = "content";
+          s.perspective = EP3 ? "ssp" : "publisher";
+          paintStage(s);
+          if (EP3) artfEnvFocus("lifecycle");
+        })
+        .catch(() => {});
+    </script>
+  </body>
+</html>

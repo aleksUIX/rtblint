@@ -17,7 +17,7 @@ name = "rtblint"
 path = "src/main.rs"
 
 [dependencies]
-rtblint-core = { path = "../rtblint-core", version = "0.13.2" }
-rtblint-resolve = { path = "../rtblint-resolve", version = "0.13.2" }
+rtblint-core = { path = "../rtblint-core", version = "0.13.3" }
+rtblint-resolve = { path = "../rtblint-resolve", version = "0.13.3" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

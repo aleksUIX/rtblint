@@ -112,10 +112,13 @@ jobs:
               exit 0
             fi
             echo "NPM_TOKEN publish failed; retrying with OIDC trusted publishing"
-            rm -f .npmrc
+            unset NODE_AUTH_TOKEN
+            rm -f "${NPM_CONFIG_USERCONFIG:-.npmrc}"
+            unset NPM_CONFIG_USERCONFIG
           else
             echo "NPM_TOKEN not set; using OIDC trusted publishing"
-            rm -f .npmrc
+            rm -f "${NPM_CONFIG_USERCONFIG:-.npmrc}"
+            unset NPM_CONFIG_USERCONFIG
           fi
           publish
 

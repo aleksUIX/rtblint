@@ -99,7 +99,7 @@ jobs:
       - name: Use current npm for trusted publishing
         run: |
           set -euo pipefail
-          npm install -g npm@latest
+          npm install -g npm@12.2.0
           echo "npm $(npm --version)"
       - name: Publish npm package
         working-directory: npm

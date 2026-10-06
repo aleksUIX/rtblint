@@ -87,10 +87,20 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.sha }}
+      # Node 24 plus current npm: trusted publishing needs npm >= 11.5.1.
+      # npm 10 signs the provenance statement, then PUT returns 404 because it
+      # never exchanges the GitHub OIDC token for a registry credential.
+      # Do not set registry-url. setup-node would write an _authToken line and
+      # npm would skip the OIDC exchange.
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org
+          node-version: 24
+          package-manager-cache: false
+      - name: Use current npm for trusted publishing
+        run: |
+          set -euo pipefail
+          npm install -g npm@latest
+          echo "npm $(npm --version)"
       - name: Publish npm package
         working-directory: npm
         env:
@@ -103,24 +113,25 @@ jobs:
             echo "$name@$version already on npm; skipping."
             exit 0
           fi
-          publish() {
-            npm publish --access public --provenance
-          }
-          if [ -n "${NODE_AUTH_TOKEN:-}" ]; then
-            echo "Publishing $name@$version with NPM_TOKEN"
-            if publish; then
-              exit 0
-            fi
-            echo "NPM_TOKEN publish failed; retrying with OIDC trusted publishing"
-            unset NODE_AUTH_TOKEN
-            rm -f "${NPM_CONFIG_USERCONFIG:-.npmrc}"
-            unset NPM_CONFIG_USERCONFIG
-          else
-            echo "NPM_TOKEN not set; using OIDC trusted publishing"
-            rm -f "${NPM_CONFIG_USERCONFIG:-.npmrc}"
-            unset NPM_CONFIG_USERCONFIG
+          # Trusted publisher on npmjs.com must match this file:
+          # GitHub Actions, aleksUIX/rtblint, workflow filename release.yml.
+          # No environment. A token npmrc blocks that exchange, so OIDC goes first.
+          token="${NODE_AUTH_TOKEN:-}"
+          unset NODE_AUTH_TOKEN
+          echo "Publishing $name@$version with OIDC trusted publishing"
+          if npm publish --access public --provenance; then
+            exit 0
           fi
-          publish
+          if [ -z "$token" ]; then
+            echo "OIDC publish failed and NPM_TOKEN is not set."
+            exit 1
+          fi
+          echo "OIDC publish failed; retrying with NPM_TOKEN"
+          printf '%s\n' "//registry.npmjs.org/:_authToken=${token}" > .npmrc
+          npm publish --access public
+          status=$?
+          rm -f .npmrc
+          exit "$status"
 
   # Publishes the hosted MCP (https://rtblint.org/mcp) to smithery.ai.
   # Same account as vastlint (aleksander/vastlint). One-time:

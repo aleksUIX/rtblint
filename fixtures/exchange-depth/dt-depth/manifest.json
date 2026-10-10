@@ -1490,26 +1490,26 @@
       "expected_valid": false
     },
     {
-      "id": "dt-extension-type-device-ext-inputLanguage",
+      "id": "dt-extension-type-device-ext-inputlanguage-camel-case",
       "profile": "digital-turbine",
       "version": "2.6-202606",
       "direction": "request",
-      "file": "dt-extension-type-device-ext-inputLanguage.json",
+      "file": "dt-extension-type-device-ext-inputlanguage-camel-case.json",
       "expected_profile_findings": [
         {
           "id": "openrtb.profile.field_type",
-          "path": "device.ext.inputlanguage[0]",
+          "path": "device.ext.inputLanguage[0]",
           "severity": "error"
         }
       ],
       "expected_valid": false
     },
     {
-      "id": "dt-extension-type-device-ext-inputlanguage",
+      "id": "dt-extension-type-device-ext-inputlanguage-lower-case",
       "profile": "digital-turbine",
       "version": "2.6-202606",
       "direction": "request",
-      "file": "dt-extension-type-device-ext-inputlanguage.json",
+      "file": "dt-extension-type-device-ext-inputlanguage-lower-case.json",
       "expected_profile_findings": [
         {
           "id": "openrtb.profile.field_type",

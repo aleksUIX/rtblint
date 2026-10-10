@@ -4,15 +4,28 @@ use rtblint_core::{
     validate_bid_response_with_profile, Dialect, OpenRtbVersion, Profile, Severity,
 };
 use serde_json::Value;
-use std::{fs, path::PathBuf};
+use std::{collections::HashSet, fs, path::PathBuf};
 #[test]
 fn digital_turbine_current_public_contract_corpus() {
     let root =
         PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../fixtures/exchange-depth/dt-depth");
     let manifest: Value =
         serde_json::from_str(&fs::read_to_string(root.join("manifest.json")).unwrap()).unwrap();
+    let filenames: HashSet<_> = fs::read_dir(&root)
+        .unwrap()
+        .map(|entry| entry.unwrap().file_name().into_string().unwrap())
+        .collect();
     let mut failures = Vec::new();
     for case in manifest["cases"].as_array().unwrap() {
+        for key in ["file", "request_file"] {
+            if let Some(filename) = case[key].as_str() {
+                assert!(
+                    filenames.contains(filename),
+                    "{}: {filename} must match the exact fixture filename spelling",
+                    case["id"]
+                );
+            }
+        }
         let input = fs::read_to_string(root.join(case["file"].as_str().unwrap())).unwrap();
         let profile = Profile::from_id(case["profile"].as_str().unwrap()).unwrap();
         let version = OpenRtbVersion::from_id(case["version"].as_str().unwrap()).unwrap();

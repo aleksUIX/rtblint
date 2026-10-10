@@ -186,10 +186,28 @@
     "clippy_result": "passed",
     "format_command": "rustfmt --edition 2021 crates/rtblint-core/src/profile/digital_turbine.rs crates/rtblint-core/tests/exchange_depth_digital_turbine.rs",
     "format_result": "passed",
-    "manifest_sha256": "0565daf0427b05621db537fd10bad8d1dcca4ba5e809c3bcb2818dc405696dd7",
-    "source_module_sha256": "e898bc8c3ced2a2b342fe7d85a46c61ef23c32812e1a11da6884086bb4fa1ec2"
+    "manifest_sha256": "db0f4aacf6b54d60857423d573d94fe7de2fac94887a6e20b443c76d663a5607",
+    "source_module_sha256": "e898bc8c3ced2a2b342fe7d85a46c61ef23c32812e1a11da6884086bb4fa1ec2",
+    "case_sensitive_file_check": "Passed: all 343 manifest filenames have distinct case-folded names; generated alias payloads and expected paths independently match committed controls.",
+    "generator_manifest_match": "Passed: local generator independently reproduced corrected manifest and every payload byte for all 343 cases."
   },
   "source_module": "crates/rtblint-core/src/profile/digital_turbine.rs",
   "oracle_test": "crates/rtblint-core/tests/exchange_depth_digital_turbine.rs",
-  "source_receipt_limit": "The receipt records retrieval dates and hashes of retrieved public Markdown. Current vendor pages can change; full source snapshots remain local audit evidence."
+  "source_receipt_limit": "The receipt records retrieval dates and hashes of retrieved public Markdown. Current vendor pages can change; full source snapshots remain local audit evidence.",
+  "case_count_by_profile": {
+    "digital-turbine": 340,
+    "spec": 3
+  },
+  "source_alias_evidence": {
+    "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs",
+    "retrieved_guide_lines": [
+      297,
+      300
+    ],
+    "wire_fields": [
+      "device.ext.inputLanguage",
+      "device.ext.inputlanguage"
+    ],
+    "contract": "Both guide entries specify a string array; each alias has an independent malformed-element fixture with its own path."
+  }
 }

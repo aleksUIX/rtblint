@@ -1,0 +1,12 @@
+{
+  "id": "handler-request",
+  "imp": [
+    {
+      "id": "1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

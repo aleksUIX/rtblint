@@ -1,0 +1,58 @@
+{
+  "id": "dt-auction",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "buyer",
+      "bid": [
+        {
+          "id": "bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Ad</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "cid": "campaign",
+          "crid": "creative",
+          "cat": [
+            "IAB9"
+          ],
+          "attr": [],
+          "burl": "https://bill.example/?price=${AUCTION_PRICE}",
+          "ext": {
+            "crtype": "HTML",
+            "skadn": {
+              "version": "1.0",
+              "network": "test.skadnetwork",
+              "campaign": "50",
+              "itunesitem": "2002",
+              "sourceapp": "1001",
+              "fidelities": [
+                {
+                  "fidelity": 1,
+                  "nonce": "11111111-1111-1111-1111-111111111111",
+                  "timestamp": "1700000000000",
+                  "signature": "signature"
+                }
+              ],
+              "skoverlay": {
+                "present": 1,
+                "dismissible": 1,
+                "delay": 0,
+                "pos": 0,
+                "endcarddelay": -1,
+                "autoclose": 60,
+                "autoclick": 0,
+                "landpageclick": 0,
+                "landpagedelay": -1
+              },
+              "productpageid": "page"
+            }
+          },
+          "bundle": "2002"
+        }
+      ]
+    }
+  ]
+}

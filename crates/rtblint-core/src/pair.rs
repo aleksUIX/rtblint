@@ -69,8 +69,14 @@ pub(crate) fn validate_bid_response_against_request(
         return result;
     };
 
-    let context = RequestContext::index(request);
-    cross_validate(version, &context, response, &mut result.issues);
+    // DV360 uses id 0 for its documented invalid-request no-bid response.
+    if profile.is_error_response(response) {
+        return finalize_result(result.issues);
+    }
+
+    let context = RequestContext::index(profile, request);
+    cross_validate(version, profile, &context, response, &mut result.issues);
+    crate::profile::push_profile_pair(profile, request, response, &mut result.issues);
     finalize_result(result.issues)
 }
 
@@ -105,7 +111,7 @@ struct ImpContext<'a> {
 }
 
 impl<'a> RequestContext<'a> {
-    fn index(request: &'a Map<String, Value>) -> Self {
+    fn index(profile: Profile, request: &'a Map<String, Value>) -> Self {
         let mut imps = HashMap::new();
         for imp in request
             .get("imp")
@@ -131,9 +137,7 @@ impl<'a> RequestContext<'a> {
 
             let native_assets = imp
                 .get("native")
-                .and_then(Value::as_object)
-                .and_then(|native| native.get("request").and_then(Value::as_str))
-                .and_then(native::parse_encoded_object)
+                .and_then(|value| crate::profile::compat::native_request(profile, value))
                 .map(|request| native::index_markup_request(&request))
                 .unwrap_or_default();
 
@@ -154,7 +158,13 @@ impl<'a> RequestContext<'a> {
             id: request.get("id").and_then(Value::as_str),
             currencies: string_list(request.get("cur")),
             wseat: string_list(request.get("wseat")),
-            bseat: string_list(request.get("bseat")),
+            bseat: if crate::profile::compat::seat_precedence(profile)
+                && request.contains_key("wseat")
+            {
+                None
+            } else {
+                string_list(request.get("bseat"))
+            },
             imps,
         }
     }
@@ -169,6 +179,7 @@ fn string_list(value: Option<&Value>) -> Option<Vec<&str>> {
 /// Pass two: cross-checks over the already-validated response.
 fn cross_validate(
     version: OpenRtbVersion,
+    profile: Profile,
     context: &RequestContext<'_>,
     response: &Map<String, Value>,
     issues: &mut Vec<Issue>,
@@ -261,12 +272,20 @@ fn cross_validate(
                 continue;
             };
             let bid_path = format!("seatbid[{seatbid_index}].bid[{bid_index}]");
-            cross_validate_bid(context, bid, &bid_path, bid_section.as_deref(), issues);
+            cross_validate_bid(
+                profile,
+                context,
+                bid,
+                &bid_path,
+                bid_section.as_deref(),
+                issues,
+            );
         }
     }
 }
 
 fn cross_validate_bid(
+    profile: Profile,
     context: &RequestContext<'_>,
     bid: &Map<String, Value>,
     bid_path: &str,
@@ -362,6 +381,22 @@ fn cross_validate_bid(
                 });
             }
             _ => {}
+        }
+    }
+
+    if !bid
+        .get("adm")
+        .and_then(Value::as_str)
+        .is_some_and(|markup| !markup.trim().is_empty())
+        && crate::profile::compat::adm_native(profile)
+    {
+        if let Some(response) = crate::profile::compat::native_bid(profile, bid) {
+            native::validate_response_against_request(
+                &imp.native_assets,
+                &response,
+                &format!("{bid_path}.adm_native"),
+                issues,
+            );
         }
     }
 

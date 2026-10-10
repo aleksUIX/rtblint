@@ -27,7 +27,7 @@ inputs:
     required: false
     default: ""
   profile:
-    description: Exchange profile (spec, google-ab, prebid-server, xandr, magnite)
+    description: Exchange and integration-direction profile ID (see README for supported IDs)
     required: false
     default: ""
   format:

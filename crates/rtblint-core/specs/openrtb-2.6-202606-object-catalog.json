@@ -1206,7 +1206,12 @@
         {
           "name": "skip",
           "type_spec": "integer",
-          "adcom_list": "List: Creative Attributes",
+          "value_set": {
+            "values": [
+              0,
+              1
+            ]
+          },
           "citation": {
             "section": "3.2.7",
             "canonical_source_file": "source.md",

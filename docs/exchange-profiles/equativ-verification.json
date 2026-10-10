@@ -1,0 +1,23 @@
+{
+  "run_date": "2026-10-09",
+  "command": "cargo test -p rtblint-core --test exchange_depth_equativ",
+  "result": "pass",
+  "case_count": 541,
+  "case_counts_by_profile": {
+    "equativ-supplier": 275,
+    "equativ": 266
+  },
+  "source_documents": 5,
+  "hashes": {
+    "crates/rtblint-core/src/profile/equativ.rs": "ea57470e377e0c31100538feb47082a0e8a0ddc33662948e61de8b983390bce3",
+    "crates/rtblint-core/tests/exchange_depth_equativ.rs": "9de466f9de9624107eef62d93c7f3898b52da5cfc3af4a635bc78be28cbb9ef6",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/equativ/cases.jsonl": "96a274506bad4c4ce866895d4754e74def8280cc1d36a8293f1652b8e1519272",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/equativ/build_cases.py": "a8498e3e071b7c2b8ef65f71cdf9e3738055bfaf812289bd78da4bb2c521c579",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/equativ/oracle.json": "2204660ae9445b21aa9ac6c0e08725737ff97e9de26587ea4f8e8dfd7507b0b9",
+    "docs/exchange-profiles/equativ-sources.json": "052e5baa3c6e7dd8e75c0337f79ced5216a5f3a7036a8016c8dff28d3ebfe031",
+    "docs/exchange-profiles/equativ-descriptors.json": "f88dec4b2e211c023625783c32069a67a902ec16839527bc7c7252a8394a5033",
+    "docs/exchange-profiles/equativ.md": "4f45bb1d0e85c8beb8c3abd34a0597bfd6f393df6a8937f2177a60526f88e8ac",
+    "docs/exchange-profiles/equativ-field-inventory.json": "e63f365775de231bf781da0e406fc47f4866cbdd8b4e7ea3775500edf387f41a"
+  },
+  "limitations": "Synthetic pinned-source oracle. Runtime and account acceptance are not claimed. Descriptor shape controls do not claim whole-payload validity."
+}

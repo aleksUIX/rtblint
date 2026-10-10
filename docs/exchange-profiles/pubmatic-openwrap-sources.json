@@ -1,0 +1,168 @@
+{
+  "source_commit": "24ff50ca1f00ca1e80ab80bcfa1c812c35f87797",
+  "commit_date": "2026-09-17T06:13:24Z",
+  "retrieved_utc": "2026-10-09",
+  "scope": "Published OpenWrap custom wire implementation and explicitly selected CTV endpoint. This is not a PubMatic exchange acceptance contract.",
+  "primary_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/adpod.go",
+      "sha256": "6d5892b565d8e320bcdb4b7b08d85b32db027e2dfa2434c188d520cd2ec2e5aa",
+      "bytes": 1285
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/constants.go",
+      "sha256": "7c8b4db03167db3b5dd55c72689263c390e8ff2ddb50679c604528d261df9d14",
+      "bytes": 24488
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/device.go",
+      "sha256": "6ba711e461e952b1457228cc5faf283d9e09d4877195a6958434b12a7c5e7166",
+      "bytes": 4087
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/openwrap.go",
+      "sha256": "0be668455b3b4892e68534e5ff92d281e55b740d34c77d4c91f436e1dda285e6",
+      "bytes": 11003
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/openwrap_test.go",
+      "sha256": "251cfd5a7b2716b94237306a19d8e6c829505cc8c8dfc2a47396dc61385f4844",
+      "bytes": 827
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/ortb.go",
+      "sha256": "039040f0d3c7347af012ab5f9a72370bf2a30176302620518f39c1c3ca61814f",
+      "bytes": 1743
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "sha256": "d0ee42b4b965a057db06713d8840c9696d16a71f98b4c17f82a0e6486d720935",
+      "bytes": 5957
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "sha256": "93160b43bf16e3f5866f91735811748903ce74fba20b7db81cc5ec10c75ddc0f",
+      "bytes": 4931
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/source.go",
+      "sha256": "9bbf78a8256e0aedfb837d4521e319e5ba8074a9736150c00ce71bc782383aa2",
+      "bytes": 205
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/video.go",
+      "sha256": "43da1da2948aa980cbef4a09b1458f6de212926d2aa0349956c74406f70227ef",
+      "bytes": 2418
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/beforevalidationhook.go",
+      "sha256": "0e83bc1ee3ea77b76cb5fc64c78a3e1acccb43a2053f6d16ba0dd3c632d92f08",
+      "bytes": 61468
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/beforevalidationhook_test.go",
+      "sha256": "051b5e8b05bf3b11fb2b35687f9caa62d1b1531e63dd42af8f8036b419a51731",
+      "bytes": 383481
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/adpod/adpod.go",
+      "sha256": "09f9cd5281c67e5507b1aba3e177b71678dbd86673ffa36e99e7df19ba6ec07b",
+      "bytes": 8767
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/ortb/imp.go",
+      "sha256": "8ccd762b302a577809fa135c1e03d443ddae9214ac642021685b466704ddd608",
+      "bytes": 3600
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/adpod.go",
+      "sha256": "217a13397322f0e02f46791a0f886122e3246adc8cf7a48f2727196b74e1777f",
+      "bytes": 6007
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/adpodBuilder.go",
+      "sha256": "1cef5ce4aa87415d357f1dc68eca7675ae640204acff1efeefe00a11d6ffbf0c",
+      "bytes": 4626
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/cache.go",
+      "sha256": "cd215e3be2e598a5f4851807d89b16e4094819ab6853a9cdf3790161e9a36603",
+      "bytes": 1342
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/convert.go",
+      "sha256": "3b953a1fd16f869a64f34d8e2ac454e078b8c1bd058b249b0056ee73e7a6b26b",
+      "bytes": 456
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/error.go",
+      "sha256": "b01ec77407bc77978b5831890814d5b480197f7e2498c8c3970f9c197e9e5176",
+      "bytes": 414
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/json.go",
+      "sha256": "430de6e3a16bc2e7af29e3f3f8a0392710ed6fe1d803b4bfed0657c0fa5e2ee1",
+      "bytes": 9031
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/openrtb.go",
+      "sha256": "191d092e49b009055f684603b05bca53ff0833366d2e124466ba0b0a94555c85",
+      "bytes": 4832
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/util.go",
+      "sha256": "774859e9aed2d3c3c06c20bb49c938f615b746c148d0b40e065c5c419973c0b4",
+      "bytes": 1313
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/middleware/adpod/vast.go",
+      "sha256": "ec7adbde8a31170adfe7c67fc29c5b050de3252ed8829198b6949aed0e36dc14",
+      "bytes": 4646
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request_wrapper.go",
+      "sha256": "d1870ed34262bfa7a69f016ce4e171bb26a38a7aa2de3e110df1e60602ba5df5",
+      "bytes": 42533
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "sha256": "2c48d5c070a854767c0302fbe3f683887fd4346b9e7351e13858360b513e3eab",
+      "bytes": 1438
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/bid_ow.go",
+      "sha256": "4a86016c932b6629c70ff89f0e3336ab192bad2a571787260fc054fefdca79e5",
+      "bytes": 836
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "sha256": "df12650906c8d114ffc2b60a0185fdb1e458ca81d1ca34bbb9e84a80792e0b3c",
+      "bytes": 22026
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/bid.go",
+      "sha256": "d7baa298351f99fb67ff6f2bf45114400717016ea4a06e842cd43fd42f7b06fc",
+      "bytes": 7852
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "sha256": "5acc68a2b378d2631a530b2c2665eb52556734910a42d7daa6bb17abb7f3e37b",
+      "bytes": 14028
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/endpoints/legacy/ctv/video.go",
+      "sha256": "85a2bce29c30f3a1ddd1bd2e3970dc0623f9b22e0f58002955337e4c0c3d5dbd",
+      "bytes": 2208
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/deal_tier.go",
+      "sha256": "7cf4d67b523ea20702bd0864951197476f066610f194a27147a119180363d758",
+      "bytes": 1520
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PubMatic-OpenWrap/prebid-server/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/user.go",
+      "sha256": "c3f35760910a0dd8ce86dd4f4926902c4145ff3ecd4295446159c316d98846f1",
+      "bytes": 2216
+    }
+  ]
+}

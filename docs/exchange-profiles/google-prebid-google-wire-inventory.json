@@ -1,0 +1,1998 @@
+{
+  "protocol_version": "v210",
+  "extension_roots": {
+    "Imp": ".com.google.doubleclick.ImpExt",
+    "App": ".com.google.doubleclick.AppExt",
+    "Banner": ".com.google.doubleclick.BannerExt",
+    "BidResponse": ".com.google.doubleclick.BidResponseExt",
+    "Bid": ".com.google.doubleclick.BidExt",
+    "NativeRequest": ".com.google.doubleclick.NativeRequestExt",
+    "EventTracker": ".com.google.doubleclick.EventTrackerExt",
+    "Publisher": ".com.google.doubleclick.PublisherExt",
+    "Site": ".com.google.doubleclick.SiteExt",
+    "BidRequest": ".com.google.doubleclick.BidRequestExt",
+    "User": ".com.google.doubleclick.UserExt",
+    "UID": ".com.google.doubleclick.UIDExt",
+    "Data": ".com.google.doubleclick.DataExt",
+    "Device": ".com.google.doubleclick.DeviceExt",
+    "Regs": ".com.google.doubleclick.RegsExt",
+    "Deal": ".com.google.doubleclick.DealExt",
+    "Source": ".com.google.doubleclick.SourceExt",
+    "Geo": ".com.google.doubleclick.GeoExt",
+    "Video": ".com.google.doubleclick.VideoExt",
+    "Audio": ".com.google.doubleclick.AudioExt",
+    "Native": ".com.google.doubleclick.NativeExt"
+  },
+  "message_count": 63,
+  "field_count": 246,
+  "fields": [
+    {
+      "message": ".com.google.doubleclick.AppExt",
+      "field": "installed_sdk",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.AppExt.InstalledSdk",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt",
+      "field": "inventorypartnerdomain",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk",
+      "field": "id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk",
+      "field": "sdk_version",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.AppExt.InstalledSdk.Version",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk",
+      "field": "adapter_version",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.AppExt.InstalledSdk.Version",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk.Version",
+      "field": "major",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk.Version",
+      "field": "minor",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AppExt.InstalledSdk.Version",
+      "field": "micro",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.AudioExt",
+      "field": "bidfloor",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt",
+      "field": "clpadslot",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BannerExt.CollapsibleAdSlot",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt",
+      "field": "flexslot",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BannerExt.FlexSlot",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt",
+      "field": "bidfloor",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.CollapsibleAdSlot",
+      "field": "wmax",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.CollapsibleAdSlot",
+      "field": "hmax",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.FlexSlot",
+      "field": "wmin",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.FlexSlot",
+      "field": "wmax",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.FlexSlot",
+      "field": "hmin",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BannerExt.FlexSlot",
+      "field": "hmax",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "impression_tracking_url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "ad_choices_destination_url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "click_tracking_urls",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "exchange_deal_type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidExt.ExchangeDealType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "attribute",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "amp_ad_url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "sdk_rendered_ad",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SdkRenderedAd",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "event_notification_token",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.EventNotificationToken",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "restricted_category",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "billing_id",
+      "protobuf_type": 3,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "third_party_buyer_token",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "buyer_reporting_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "fcap",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.FrequencyCap",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "skadn",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "app_promotion_type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidExt.AppPromotionType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "bid_group_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "dsa",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.Dsa",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "clpad",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.CollapsibleAd",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "clickurl",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt",
+      "field": "engagementclickfailureurl",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.CollapsibleAd",
+      "field": "wexp",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.CollapsibleAd",
+      "field": "hexp",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.Dsa",
+      "field": "behalf",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.Dsa",
+      "field": "paid",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.Dsa",
+      "field": "adrender",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.EventNotificationToken",
+      "field": "payload",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.FrequencyCap",
+      "field": "fcap_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.FrequencyCap",
+      "field": "time_unit",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidExt.FrequencyCap.TimeUnit",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.FrequencyCap",
+      "field": "time_range",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.FrequencyCap",
+      "field": "max_imp",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "version",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "network",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "campaign",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "sourceidentifier",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "itunesitem",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "productpageid",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "fidelities",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.Fidelity",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "nonce",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "sourceapp",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "timestamp",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "signature",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse",
+      "field": "skoverlay",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.SKOverlay",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.Fidelity",
+      "field": "fidelity",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.SKAdNetworkFidelityType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.Fidelity",
+      "field": "nonce",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.Fidelity",
+      "field": "timestamp",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.Fidelity",
+      "field": "signature",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.SKOverlay",
+      "field": "delay",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.SKOverlay",
+      "field": "endcarddelay",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SKAdNetworkResponse.SKOverlay",
+      "field": "dismissible",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd",
+      "field": "id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd",
+      "field": "rendering_data",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd",
+      "field": "sdk_params",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SdkRenderedAd.KeyValue",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd",
+      "field": "declared_ad",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "field": "html_snippet",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "field": "video_url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "field": "video_vast_xml",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "field": "native_response",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.DeclaredAd",
+      "field": "click_through_url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.KeyValue",
+      "field": "key",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidExt.SdkRenderedAd.KeyValue",
+      "field": "value",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt",
+      "field": "bid_feedback",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt",
+      "field": "google_query_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt",
+      "field": "fcap_scope",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidRequestExt.FrequencyCappingScope",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt",
+      "field": "privacy_treatments",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt",
+      "field": "expids",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "request_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "creative_status_code",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "price",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "minimum_bid_to_win",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "billable_event_rate_bid_adjustment",
+      "protobuf_type": 2,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "sampled_mediation_cpm_ahead_of_auction_winner",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "event_notification_token",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.BidRequestExt.BidFeedback.EventNotificationToken",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback",
+      "field": "buyer_creative_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.BidFeedback.EventNotificationToken",
+      "field": "payload",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "field": "ip",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments.IpGeneralization",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "field": "user_agent",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments.UserAgentGeneralization",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "field": "non_personalized_ads_reason",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments.NonPersonalizedAdsReason",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "field": "allow_user_data_collection",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments",
+      "field": "storagerestrict",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.BidRequestExt.PrivacyTreatments.DeviceStorageRestrictionReason",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.BidResponseExt",
+      "field": "processing_time_ms",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DataExt",
+      "field": "segtax",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "deal_type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.DealExt.DealType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "must_bid",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "publisher_blocks_overridden",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "creative_source",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.DealExt.CreativeSourceType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "creative_constraints",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.DealExt.CreativeConstraints",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt",
+      "field": "billing_id",
+      "protobuf_type": 3,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt.CreativeConstraints",
+      "field": "mtypes",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.CreativeMarkupType",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt.CreativeConstraints",
+      "field": "skippability",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.DealExt.CreativeConstraints.SkippabilityConstraint",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DealExt.CreativeConstraints",
+      "field": "maxduration",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "session_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "atts",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "ifv",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "metereddata",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "chargelevel",
+      "protobuf_type": 2,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "charging",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "diskspace",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "audioout",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.DeviceExt.AudioOutputMethod",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "dooh",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.DeviceExt.Dooh",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "ifa_type",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "memory",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "scrollposx",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt",
+      "field": "scrollposy",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.DeviceExt.Dooh",
+      "field": "venuetypeid",
+      "protobuf_type": 3,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.EventTrackerExt",
+      "field": "verification_parameters",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.EventTrackerExt",
+      "field": "vendorKey",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.GeoExt",
+      "field": "geo_criteria_id",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "billing_id",
+      "protobuf_type": 3,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "publisher_settings_list_id",
+      "protobuf_type": 6,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "allowed_vendor_type",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "excluded_creatives",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.ExcludedCreative",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "dfp_ad_unit_code",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "ampad",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.AmpAdRequirementType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "buyer_generated_request_data",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.BuyerGeneratedRequestData",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "billable_event_rate_adjustment",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "billable_event_rate_bid_adjustment",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.BillableEventRateBidAdjustment",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "open_bidding",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.OpenBidding",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "allowed_restricted_category",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "skadn",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "creative_enforcement_settings",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.CreativeEnforcementSettings",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "is_app_open_ad",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "ad_unit_mapping",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.AdUnitMapping",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "gpid",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "jsver",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "highengagement",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "ottplacement",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.OttPlacement",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "adlocx",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "adlocy",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt",
+      "field": "iframeorigin",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.IframeOrigin",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.AdUnitMapping",
+      "field": "keyvals",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.AdUnitMapping.Keyval",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.AdUnitMapping",
+      "field": "format",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.AdUnitMapping.FormatType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.AdUnitMapping.Keyval",
+      "field": "key",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.AdUnitMapping.Keyval",
+      "field": "value",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BillableEventRateBidAdjustment",
+      "field": "bid_adjustment",
+      "protobuf_type": 2,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BillableEventRateBidAdjustment",
+      "field": "creative_type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.BillableEventRateBidAdjustment.CreativeType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BillableEventRateBidAdjustment",
+      "field": "sdk",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.AppExt.InstalledSdk",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BuyerGeneratedRequestData",
+      "field": "source_app",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.ImpExt.BuyerGeneratedRequestData.SourceApp",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BuyerGeneratedRequestData",
+      "field": "data",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.BuyerGeneratedRequestData.SourceApp",
+      "field": "id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.CreativeEnforcementSettings",
+      "field": "policy_enforcement",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.CreativeEnforcementSettings.PolicyEnforcement",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.CreativeEnforcementSettings",
+      "field": "publisher_blocks_enforcement",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.ImpExt.CreativeEnforcementSettings.PublisherBlocksEnforcement",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.ExcludedCreative",
+      "field": "buyer_creative_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.OpenBidding",
+      "field": "is_open_bidding",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "field": "versions",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "field": "sourceapp",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "field": "skadnetids",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "field": "fidelities",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.SKAdNetworkFidelityType",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.ImpExt.SKAdNetworkRequest",
+      "field": "skoverlay",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeExt",
+      "field": "bidfloor",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeRequestExt",
+      "field": "style_id",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeRequestExt",
+      "field": "style_height",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeRequestExt",
+      "field": "style_width",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeRequestExt",
+      "field": "style_layout_type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.NativeRequestExt.LayoutType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.NativeRequestExt",
+      "field": "pos",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.AdPosition",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.PublisherExt",
+      "field": "country",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.PublisherExt",
+      "field": "host_publisher_id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.PublisherExt",
+      "field": "directpay",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt",
+      "field": "gdpr",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt",
+      "field": "lgpd",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt",
+      "field": "dsa",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.RegsExt.Dsa",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt.Dsa",
+      "field": "dsarequired",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.RegsExt.Dsa.DsaSupport",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt.Dsa",
+      "field": "pubrender",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.RegsExt.Dsa.PublisherRenderingSupport",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.RegsExt.Dsa",
+      "field": "datatopub",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.RegsExt.Dsa.DataToPublisher",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "amp",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.SiteExt.AmpPage",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "page_visibility",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.SiteExt.VisibilityState",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "uact",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.SiteExt.UserActivation",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "ntype",
+      "protobuf_type": 14,
+      "type_name": ".com.google.doubleclick.SiteExt.NavigationType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "is_semi_transparent_request",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt",
+      "field": "inventorypartnerdomain",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt.UserActivation",
+      "field": "wasact",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SiteExt.UserActivation",
+      "field": "isact",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SourceExt",
+      "field": "omidpn",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.SourceExt",
+      "field": "omidpv",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UIDExt",
+      "field": "stype",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt",
+      "field": "consented_providers_settings",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.UserExt.ConsentedProvidersSettings",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt",
+      "field": "consent",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt",
+      "field": "eids",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.BidRequest.User.EID",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt",
+      "field": "session",
+      "protobuf_type": 11,
+      "type_name": ".com.google.doubleclick.UserExt.Session",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt",
+      "field": "idage",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.ConsentedProvidersSettings",
+      "field": "consented_providers",
+      "protobuf_type": 3,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.ConsentedProvidersSettings",
+      "field": "additional_consent",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.Session",
+      "field": "duration",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.Session",
+      "field": "depth",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.Session",
+      "field": "requestssinceappopen",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.UserExt.Session",
+      "field": "priorclicks",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.VideoExt",
+      "field": "inferredplcmt",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.Plcmt",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.VideoExt",
+      "field": "embeddedoffsite",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.doubleclick.VideoExt",
+      "field": "bidfloor",
+      "protobuf_type": 1,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID",
+      "field": "source",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID",
+      "field": "uids",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.BidRequest.User.EID.UID",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID",
+      "field": "inserter",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID",
+      "field": "matcher",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID",
+      "field": "mm",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID.UID",
+      "field": "id",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.BidRequest.User.EID.UID",
+      "field": "atype",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.AgentType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "ver",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "assets",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Asset",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "assetsurl",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "dcourl",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "link",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Link",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "imptrackers",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "jstracker",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "eventtrackers",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.EventTracker",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse",
+      "field": "privacy",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "title",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Asset.Title",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "img",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Asset.Image",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "video",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Asset.Video",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "data",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Asset.Data",
+      "repeated": false,
+      "oneof": 0
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "id",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "required",
+      "protobuf_type": 8,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset",
+      "field": "link",
+      "protobuf_type": 11,
+      "type_name": ".com.google.openrtb.NativeResponse.Link",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Data",
+      "field": "type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.DataAssetType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Data",
+      "field": "len",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Data",
+      "field": "label",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Data",
+      "field": "value",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Image",
+      "field": "type",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.ImageAssetType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Image",
+      "field": "url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Image",
+      "field": "w",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Image",
+      "field": "h",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Title",
+      "field": "text",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Title",
+      "field": "len",
+      "protobuf_type": 5,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Asset.Video",
+      "field": "vasttag",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.EventTracker",
+      "field": "event",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.EventType",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.EventTracker",
+      "field": "method",
+      "protobuf_type": 14,
+      "type_name": ".com.google.openrtb.EventTrackingMethod",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.EventTracker",
+      "field": "url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Link",
+      "field": "url",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Link",
+      "field": "clicktrackers",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": true,
+      "oneof": null
+    },
+    {
+      "message": ".com.google.openrtb.NativeResponse.Link",
+      "field": "fallback",
+      "protobuf_type": 9,
+      "type_name": "",
+      "repeated": false,
+      "oneof": null
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "sources": [
+    {
+      "id": "index-seller",
+      "url": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "reviewed_at": "2026-10-09",
+      "sha256": "16b041dfb0a6208a91b07e8b8161a6ce3b9d3a3f328a560e81f6f31e8174d9ab",
+      "scope": "Primary vendor table facts and authored tests; complete remote acceptance not asserted."
+    },
+    {
+      "id": "index-dsp",
+      "url": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "reviewed_at": "2026-10-09",
+      "sha256": "ce2d01f2a7de98279e70c6bae64382d25fc6c1b7996578fe500f5a8fac32addf",
+      "scope": "Primary vendor table facts and authored tests; complete remote acceptance not asserted."
+    },
+    {
+      "id": "index-response",
+      "url": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "reviewed_at": "2026-10-09",
+      "sha256": "89d5455bd0d3e5d6d8f16ce52ee61c4aaa86e8bcd2a0a5a757451f185a72609c",
+      "scope": "Primary vendor table facts and authored tests; complete remote acceptance not asserted."
+    },
+    {
+      "id": "dv360",
+      "url": "https://developers.google.com/display-video/ortb-spec",
+      "reviewed_at": "2026-10-09",
+      "sha256": "0a396734e698bb9c423864b0159bfbd4590ad0767883bd9d8ef5020e15d1d938",
+      "scope": "Primary vendor table facts and authored tests; complete remote acceptance not asserted."
+    }
+  ]
+}

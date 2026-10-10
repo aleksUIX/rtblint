@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Added
+
+- Expand exchange profiles from four vendor contracts to 26 vendor and producer profiles, with separate buyer, supplier, seller, SDK and OpenWrap CTV scopes. Sources, field inventories, independent boundary cases and remaining gaps live in `docs/exchange-profiles`.
+- Add recursive vendor extension typing and documented conditional, enum, native, SKAdNetwork, DSA and request/response constraints. Unknown future extension keys remain open.
+- Expose profile-aware paired response validation and an optional JSON dialect through both npm entry points. Keep profile IDs, source links and direction metadata synchronized across CLI, MCP, gRPC, browser and Worker consumers.
+- Preserve canonical validation and emit a scope warning for an unsupported vendor direction or OpenRTB 3.0.
+
+### Fixed
+
+- Treat `Video.skip` as a 0/1 flag in all nine affected OpenRTB 2.6 catalogs and generated schemas. A later prose reference to creative attributes no longer replaces the flag's value set.
+- Remove unsourced required Xandr and Magnite extension fields. Preserve documented optional and defaulted fields across the deeper contracts.
+- Apply native request asset pairing to supported alternate markup when `adm` is empty.
+
 ## 0.13.5 (2026-10-05)
 
 ### Changed

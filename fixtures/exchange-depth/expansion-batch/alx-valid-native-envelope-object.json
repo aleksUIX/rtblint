@@ -1,0 +1,41 @@
+{
+  "id": "request-1",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid-1",
+          "impid": "1",
+          "price": 1.5,
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://bidder.example/bill?p=${AUCTION_PRICE}",
+          "cat": [
+            "IAB9"
+          ],
+          "crid": "creative-1",
+          "adm_native": {
+            "native": {
+              "ver": "1.2",
+              "assets": [
+                {
+                  "id": 1,
+                  "title": {
+                    "text": "Example"
+                  }
+                }
+              ],
+              "link": {
+                "url": "https://advertiser.example"
+              }
+            }
+          },
+          "ext": {
+            "crtype": "native"
+          }
+        }
+      ]
+    }
+  ]
+}

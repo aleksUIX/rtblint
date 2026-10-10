@@ -1,0 +1,35 @@
+{
+  "id": "dt-auction",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "buyer",
+      "bid": [
+        {
+          "id": "bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Ad</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "cid": "campaign",
+          "crid": "creative",
+          "cat": [
+            "IAB9"
+          ],
+          "attr": [],
+          "burl": "https://bill.example/?price=${AUCTION_PRICE}",
+          "ext": {
+            "crtype": "HTML",
+            "dualendcard": 0,
+            "clicktrackers": [
+              "https://click.example"
+            ]
+          },
+          "bundle": "123"
+        }
+      ]
+    }
+  ]
+}

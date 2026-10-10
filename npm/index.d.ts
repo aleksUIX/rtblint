@@ -104,34 +104,69 @@ export function validateResponseDialect(
 ): ValidationResult;
 
 /**
- * Exchange profile applied on top of the spec. "spec" is the specification
- * only. "google-ab" is Google Authorized Buyers OpenRTB: at=3 (FIXED_PRICE)
- * is a valid auction type, and each Imp must carry ext.billing_id.
- * "prebid-server" is Prebid Server /openrtb2/auction: each Imp must name a
- * bidder or stored request, and wseat/bseat are refused. "xandr" is Microsoft
- * Monetize outgoing requests: ext.appnexus.seller_member_id and
- * video.ext.appnexus.context. "magnite" is Magnite xAPI identity fields:
- * imp.ext.rp.zone_id, site/app ext.rp.site_id, publisher.ext.rp.account_id.
+ * Published exchange protocol constraints on top of the selected OpenRTB snapshot.
+ * Choose the traffic direction named by the profile. Optional extensions remain
+ * optional unless the vendor explicitly requires them in the captured context.
+ * "magnite" covers DV+ xAPI, "xandr" covers Microsoft Monetize bidder traffic.
  */
-export type Profile = "spec" | "google-ab" | "prebid-server" | "xandr" | "magnite";
+export type Profile =
+  | "spec"
+  | "google-ab"
+  | "prebid-server"
+  | "xandr"
+  | "magnite"
+  | "dv360"
+  | "index-exchange"
+  | "index-exchange-seller"
+  | "unity"
+  | "vungle"
+  | "bidswitch"
+  | "bidswitch-supplier"
+  | "inmobi"
+  | "inmobi-supplier"
+  | "mobilefuse"
+  | "mobilefuse-sdk"
+  | "applovin-alx"
+  | "commerce-grid"
+  | "digital-turbine"
+  | "sovrn"
+  | "equativ"
+  | "equativ-supplier"
+  | "triplelift-supplier"
+  | "adform-handler"
+  | "yandex-sdk-bidding"
+  | "pubmatic-openwrap"
+  | "pubmatic-openwrap-ctv";
 
 /**
  * Validate an OpenRTB bid request against an exchange profile.
  * @param input Raw bid request JSON.
  * @param profile Exchange profile.
  * @param version OpenRTB version id (default: latest tracked 2.6 snapshot).
+ * @param dialect JSON flag encoding (default: spec-json).
  */
 export function validateProfile(
   input: string,
   profile: Profile,
-  version?: string
+  version?: string,
+  dialect?: Dialect
 ): ValidationResult;
 
 /** Validate an OpenRTB bid response against an exchange profile. */
 export function validateResponseProfile(
   input: string,
   profile: Profile,
-  version?: string
+  version?: string,
+  dialect?: Dialect
+): ValidationResult;
+
+/** Validate a response against its originating request and destination profile. */
+export function validateResponseAgainstRequestProfile(
+  response: string,
+  request: string,
+  profile: Profile,
+  version?: string,
+  dialect?: Dialect
 ): ValidationResult;
 
 /** Every field the OpenRTB protobuf schema types differently from the spec. */

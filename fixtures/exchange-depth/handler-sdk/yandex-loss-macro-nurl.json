@@ -1,0 +1,19 @@
+{
+  "id": "yandex-request",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid",
+          "impid": "1",
+          "price": 1,
+          "ext": {
+            "signaldata": "{\"cache_id\":\"opaque-ad\"}"
+          },
+          "nurl": "https://events.example/?loss=${AUCTION_LOSS}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "grid-request",
+  "cur": [
+    "USD"
+  ],
+  "site": {
+    "publisher": {
+      "id": "pub"
+    }
+  },
+  "user": {
+    "buyeruid": "criteo-user"
+  },
+  "device": {
+    "ua": "ua",
+    "ip": "203.0.113.2",
+    "dnt": 0,
+    "lmt": 0,
+    "geo": {
+      "country": "USA"
+    }
+  },
+  "source": {
+    "ext": {
+      "sourcetype": 1,
+      "sourceorigin": 1
+    },
+    "schain": {
+      "ver": "1.0",
+      "complete": 1,
+      "nodes": [
+        {
+          "asi": "seller.example",
+          "sid": "pub",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "instl": 0,
+      "native": {
+        "request": {
+          "ver": "1.2",
+          "privacy": 1,
+          "context": 1,
+          "contextsubtype": 11,
+          "plcmttype": 1,
+          "plcmtcnt": 1,
+          "aurlsupport": 1,
+          "api": [],
+          "ext": {},
+          "assets": [
+            {
+              "id": 1,
+              "required": 1,
+              "title": {
+                "len": 25,
+                "ext": {}
+              },
+              "ext": {}
+            },
+            {
+              "id": 2,
+              "img": {
+                "type": 3,
+                "w": 300,
+                "h": 250,
+                "wmin": 300,
+                "hmin": 250,
+                "ext": {}
+              }
+            },
+            {
+              "id": 3,
+              "video": {
+                "mimes": [
+                  "video/mp4"
+                ],
+                "minduration": 5,
+                "maxduration": 30,
+                "protocols": [
+                  2
+                ],
+                "ext": {}
+              }
+            },
+            {
+              "id": 4,
+              "data": {
+                "type": 1,
+                "len": 25,
+                "ext": []
+              }
+            }
+          ],
+          "eventtrackers": [
+            {
+              "event": 1,
+              "methods": [
+                1
+              ],
+              "ext": {}
+            }
+          ]
+        },
+        "ver": "1.2"
+      }
+    }
+  ]
+}

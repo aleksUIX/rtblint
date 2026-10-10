@@ -1,0 +1,821 @@
+{
+  "fields": [
+    {
+      "surface": "index-seller",
+      "object": "BidRequest",
+      "field": "ssl",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Source",
+      "field": "omidpn",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Source",
+      "field": "omidpv",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Regs",
+      "field": "dsa",
+      "type": "Kind::Object(INDEX_SELLER_DSA)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Regs",
+      "field": "gdpr",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "DSA",
+      "field": "datatopub",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "DSA",
+      "field": "pubrender",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "DSA",
+      "field": "dsarequired",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "DSA",
+      "field": "transparency",
+      "type": "Kind::Array(&Kind::Object(INDEX_SELLER_TRANSPARENCY))"
+    },
+    {
+      "surface": "index-seller",
+      "object": "TRANSPARENCY",
+      "field": "domain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "TRANSPARENCY",
+      "field": "dsaparams",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "ae",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "dfp_ad_unit_code",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "gpid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "skadn",
+      "type": "Kind::Object(INDEX_SELLER_SKAD)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "sid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Imp",
+      "field": "tid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKAD",
+      "field": "version",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKAD",
+      "field": "versions",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKAD",
+      "field": "sourceapp",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKAD",
+      "field": "skadnetids",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKAD",
+      "field": "skadnetlist",
+      "type": "Kind::Object(INDEX_SELLER_SKADLIST)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKADLIST",
+      "field": "max",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKADLIST",
+      "field": "excl",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "SKADLIST",
+      "field": "addl",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Banner",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Video",
+      "field": "rewarded",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Video",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Native",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Deal",
+      "field": "guaranteed",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Site",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Site",
+      "field": "inventorypartnerdomain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "App",
+      "field": "inventorypartnerdomain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "App",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Content",
+      "field": "channel",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Content",
+      "field": "content_channel",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Content",
+      "field": "network",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Content",
+      "field": "content_network",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Content",
+      "field": "distrib_name",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Device",
+      "field": "atts",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Device",
+      "field": "cdep",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Device",
+      "field": "ifv",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Device",
+      "field": "ifa_type",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "User",
+      "field": "consent",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "User",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-seller",
+      "object": "EID",
+      "field": "rtipartner",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "UID",
+      "field": "rtipartner",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-seller",
+      "object": "Data",
+      "field": "segtax",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "BidRequest",
+      "field": "placement",
+      "type": "Kind::Object(INDEX_DSP_PLACEMENT)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "BidRequest",
+      "field": "tz",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "PLACEMENT",
+      "field": "name",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "PLACEMENT",
+      "field": "private",
+      "type": "Kind::CompatibleFlag"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Source",
+      "field": "sourceType",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Source",
+      "field": "sourceOrigin",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Source",
+      "field": "omidpn",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Source",
+      "field": "omidpv",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Regs",
+      "field": "dsa",
+      "type": "Kind::Object(INDEX_DSP_DSA)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Regs",
+      "field": "gdpr",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Regs",
+      "field": "us_privacy",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "DSA",
+      "field": "datatopub",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "DSA",
+      "field": "pubrender",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "DSA",
+      "field": "transparency",
+      "type": "Kind::Array(&Kind::Object(INDEX_DSP_TRANSPARENCY))"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "DSA",
+      "field": "dsarequired",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "TRANSPARENCY",
+      "field": "domain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "TRANSPARENCY",
+      "field": "dsaparams",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "bcrid",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "floor",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "hb",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "wopv",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "skadn",
+      "type": "Kind::Object(INDEX_DSP_SKAD)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "gpid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "tid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "ae",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Imp",
+      "field": "sid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Banner",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Video",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Video",
+      "field": "playertype",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Video",
+      "field": "renderedBy",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Video",
+      "field": "rewarded",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Native",
+      "field": "bidfloor",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Native",
+      "field": "renderedBy",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Pmp",
+      "field": "name",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Deal",
+      "field": "disc",
+      "type": "Kind::Number"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Deal",
+      "field": "guaranteed",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKAD",
+      "field": "version",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKAD",
+      "field": "versions",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKAD",
+      "field": "sourceapp",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKAD",
+      "field": "skadnetids",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKAD",
+      "field": "skadnetlist",
+      "type": "Kind::Object(INDEX_DSP_SKADLIST)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKADLIST",
+      "field": "max",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKADLIST",
+      "field": "excl",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "SKADLIST",
+      "field": "addl",
+      "type": "Kind::Array(&Kind::String)"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Site",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Site",
+      "field": "inventorypartnerdomain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "App",
+      "field": "inventorypartnerdomain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "App",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Content",
+      "field": "channel",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Content",
+      "field": "content_channel",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Content",
+      "field": "network",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Content",
+      "field": "content_network",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Content",
+      "field": "distrib_name",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Device",
+      "field": "atts",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Device",
+      "field": "cdep",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Device",
+      "field": "ifv",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Device",
+      "field": "ifa_type",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "User",
+      "field": "consent",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "User",
+      "field": "data",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "EID",
+      "field": "rtipartner",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "UID",
+      "field": "rtipartner",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Data",
+      "field": "segclass",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-dsp",
+      "object": "Data",
+      "field": "segtax",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-response",
+      "object": "Bid",
+      "field": "dsa",
+      "type": "Kind::Object(INDEX_RESPONSE_DSA)"
+    },
+    {
+      "surface": "index-response",
+      "object": "Bid",
+      "field": "skadn",
+      "type": "Kind::Object(INDEX_RESPONSE_SKAD)"
+    },
+    {
+      "surface": "index-response",
+      "object": "DSA",
+      "field": "adrender",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-response",
+      "object": "DSA",
+      "field": "behalf",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "DSA",
+      "field": "paid",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "DSA",
+      "field": "transparency",
+      "type": "Kind::Array(&Kind::Object(INDEX_RESPONSE_TRANSPARENCY))"
+    },
+    {
+      "surface": "index-response",
+      "object": "TRANSPARENCY",
+      "field": "domain",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "TRANSPARENCY",
+      "field": "dsaparams",
+      "type": "Kind::Array(&Kind::Integer)"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "version",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "network",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "campaign",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "itunesitem",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "fidelities",
+      "type": "Kind::Array(&Kind::Object(INDEX_RESPONSE_FIDELITY))"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "nonce",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "sourceapp",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "timestamp",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "SKAD",
+      "field": "signature",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "FIDELITY",
+      "field": "fidelity",
+      "type": "Kind::Integer"
+    },
+    {
+      "surface": "index-response",
+      "object": "FIDELITY",
+      "field": "nonce",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "FIDELITY",
+      "field": "timestamp",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "FIDELITY",
+      "field": "signature",
+      "type": "Kind::String"
+    },
+    {
+      "surface": "index-response",
+      "object": "FIDELITY",
+      "field": "ext",
+      "type": "Kind::Object(&[])"
+    },
+    {
+      "surface": "index-response",
+      "object": "BidResponse",
+      "field": "igbid",
+      "type": "Kind::Array(&Kind::Object(&[]))"
+    }
+  ],
+  "deferred": []
+}

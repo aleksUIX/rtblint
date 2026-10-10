@@ -1,0 +1,88 @@
+{
+  "pbs_commit": "fa73b89049767eaab6d9f48dc3b0a275db563233",
+  "fetched_at": "2026-10-09",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/request.go",
+      "file": "openrtb_ext_request.go",
+      "sha256": "c2a860bea98b3261e4b5d485a9d1f539ad473b3a6eb911979cdf3874938855af"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/imp.go",
+      "file": "openrtb_ext_imp.go",
+      "sha256": "74906c9f9d9842956179f551b3e7868af871e5c11c7076bffa1f964395b0dd47"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/bid.go",
+      "file": "openrtb_ext_bid.go",
+      "sha256": "db65e4e96eae77ea0a9012525ccd55770eb09b8d68bc0b4829e100800529d978"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/response.go",
+      "file": "openrtb_ext_response.go",
+      "sha256": "18fe2df47f16355f9b4c8ac01f7f754e5eae4f04f7868573a76b6b3b0484e500"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/endpoints/openrtb2/auction.go",
+      "file": "endpoints_openrtb2_auction.go",
+      "sha256": "9cd8fdd660f6fd609b13274e8e511a48dcf80c968e0802958b013631617c663c"
+    },
+    {
+      "url": "https://developers.google.com/static/authorized-buyers/rtb/downloads/openrtb-proto.txt",
+      "file": "openrtb-proto.txt",
+      "sha256": "93fd8aa2f38397b8287767684be254bed525a545c5936407180482e2f6864522"
+    },
+    {
+      "url": "https://developers.google.com/static/authorized-buyers/rtb/downloads/openrtb-adx-proto.txt",
+      "file": "openrtb-adx-proto.txt",
+      "sha256": "78c09ae8747896279a43320d356b7ea33636cae5d0f907e5de235782d95ef643"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/multibid.go",
+      "file": "openrtb_ext_multibid.go",
+      "sha256": "b07d3a98a8a14054ceb1621778e6744d669fb02a20b0475bbf506009e4a72296"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/multibid_test.go",
+      "file": "openrtb_ext_multibid_test.go",
+      "sha256": "b4d36790df71d5f34aebe1af82a086fa6a7aa774008a5fb64d44dce4f661175f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/user.go",
+      "file": "openrtb_ext_user.go",
+      "sha256": "bf0492672514ba7dc99619b96d27c73bb0ea0339b049ae2fb9cbc32009dc9dc0"
+    }
+  ],
+  "google_protocol_version": "v210",
+  "documentation": [
+    {
+      "id": "google-guide",
+      "url": "https://developers.google.com/authorized-buyers/rtb/openrtb-guide"
+    },
+    {
+      "id": "google-multiple-buyers",
+      "url": "https://developers.google.com/authorized-buyers/rtb/response-guide/bid-multiple"
+    },
+    {
+      "id": "google-frequency-caps-help",
+      "url": "https://support.google.com/authorizedbuyers/answer/10890762?hl=en"
+    },
+    {
+      "id": "pbs-auction-docs",
+      "url": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    },
+    {
+      "id": "pbs-stored-request-merge",
+      "url": "https://github.com/prebid/prebid-server/blob/fa73b89049767eaab6d9f48dc3b0a275db563233/docs/developers/stored-requests.md"
+    },
+    {
+      "id": "google-buyer-sdk-ads",
+      "url": "https://developers.google.com/authorized-buyers/rtb/buyer-sdk-ads",
+      "file": "buyer-sdk-ads.html",
+      "sha256": "18b0793595778c5a9fa82cc0ea915389e4b287835c0c2f2718565e43af81435c",
+      "bytes": 133967,
+      "retrieved": "2026-10-09",
+      "document_updated": "2026-09-17"
+    }
+  ]
+}

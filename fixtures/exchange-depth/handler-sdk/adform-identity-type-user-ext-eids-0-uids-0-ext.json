@@ -1,0 +1,33 @@
+{
+  "id": "handler-request",
+  "imp": [
+    {
+      "id": "1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ],
+  "user": {
+    "ext": {
+      "consent": "",
+      "digitrust": {
+        "id": "opaque-id"
+      },
+      "eids": [
+        {
+          "source": "identity.example",
+          "uids": [
+            {
+              "id": "opaque-user",
+              "atype": 1,
+              "ext": []
+            }
+          ],
+          "ext": {}
+        }
+      ]
+    }
+  }
+}

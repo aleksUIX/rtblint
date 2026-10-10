@@ -1,0 +1,2016 @@
+{
+  "schema": "rtblint-independent-exchange-cases/v1",
+  "reviewed_at": "2026-10-09",
+  "cases": [
+    {
+      "id": "inmobi-supplier-inventory-app-control",
+      "profile": "inmobi-supplier",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"
+    },
+    {
+      "id": "inmobi-supplier-inventory-site-control",
+      "profile": "inmobi-supplier",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"
+    },
+    {
+      "id": "inmobi-supplier-inventory-missing",
+      "profile": "inmobi-supplier",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.inventory_required",
+          "path": "app",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"
+    },
+    {
+      "id": "inmobi-supplier-negotiated-audio",
+      "profile": "inmobi-supplier",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "audio": {
+              "mimes": [
+                "audio/mp3"
+              ]
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.supplier_unsupported",
+          "path": "imp[0].audio",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"
+    },
+    {
+      "id": "inmobi-supplier-negotiated-pmp",
+      "profile": "inmobi-supplier",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {}
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.supplier_unsupported",
+          "path": "imp[0].pmp",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"
+    },
+    {
+      "id": "inmobi-video-linear-experiences-control",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "w": 640,
+              "h": 360,
+              "linearity": 1,
+              "ext": {
+                "experiences": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-video-experience-enum",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "w": 640,
+              "h": 360,
+              "linearity": 1,
+              "ext": {
+                "experiences": [
+                  4
+                ]
+              }
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.video_experience",
+          "path": "imp[0].video.ext.experiences[0]",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-video-nonlinear",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "w": 640,
+              "h": 360,
+              "linearity": 2,
+              "ext": {
+                "experiences": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.video_linearity",
+          "path": "imp[0].video.linearity",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-history-recent-first-iap",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1",
+          "ext": {
+            "iap": [
+              {
+                "recenttransactiontime": 200
+              },
+              {
+                "recenttransactiontime": 100
+              }
+            ]
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-history-conflicting-order-iap",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1",
+          "ext": {
+            "iap": [
+              {
+                "recenttransactiontime": 100
+              },
+              {
+                "recenttransactiontime": 200
+              }
+            ]
+          }
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.history_order",
+          "path": "device.ext.iap",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-history-recent-first-advertiserrelevancy",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1",
+          "ext": {
+            "advertiserrelevancy": [
+              {
+                "lastbidtime": 200
+              },
+              {
+                "lastbidtime": 100
+              }
+            ]
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-history-conflicting-order-advertiserrelevancy",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1",
+          "ext": {
+            "advertiserrelevancy": [
+              {
+                "lastbidtime": 100
+              },
+              {
+                "lastbidtime": 200
+              }
+            ]
+          }
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.history_order",
+          "path": "device.ext.advertiserrelevancy",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-nonempty-category-control",
+      "profile": "inmobi",
+      "direction": "response",
+      "input": {
+        "id": "source-boundary",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1,
+                "adm": "<div>Ad</div>",
+                "burl": "https://buyer.example/bill",
+                "cat": [
+                  "IAB1"
+                ],
+                "crid": "creative",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "w": 320,
+                "h": 50
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-responses-dsp"
+    },
+    {
+      "id": "inmobi-empty-category",
+      "profile": "inmobi",
+      "direction": "response",
+      "input": {
+        "id": "source-boundary",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1,
+                "adm": "<div>Ad</div>",
+                "burl": "https://buyer.example/bill",
+                "cat": [],
+                "crid": "creative",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "w": 320,
+                "h": 50
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.category_required",
+          "path": "seatbid[0].bid[0].cat",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-responses-dsp"
+    },
+    {
+      "id": "mobilefuse-native-version-1.1",
+      "profile": "mobilefuse",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "native": {
+              "ver": "1.1",
+              "request": "{\"ver\": \"1.1\", \"assets\": [{\"id\": 1, \"title\": {\"len\": 25}}]}"
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.mobilefuse.native_version",
+          "path": "imp[0].native.ver",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://docs.mobilefuse.com/docs/bid-requests"
+    },
+    {
+      "id": "mobilefuse-native-version-1.2",
+      "profile": "mobilefuse",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"len\": 25}}]}"
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://docs.mobilefuse.com/docs/bid-requests"
+    },
+    {
+      "id": "inmobi-chain-omitted-control",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-source-without-chain-control",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "omidpn": "partner"
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-legacy-location-control",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-vendor-optional-asi-control",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-ver",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": 1,
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.ver",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-complete",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": true,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": {},
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                "node"
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0]",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-asi",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": 1,
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].asi",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-sid",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": 1,
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-hp",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 2,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-rid",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": 1,
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].rid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-name",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": 1,
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].name",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-domain",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": 1,
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].domain",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-nodes-0-ext",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": []
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].ext",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-type-ext",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": []
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.ext",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-required-ver",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.ver",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-required-complete",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-required-nodes",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-required-nodes-0-sid",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-required-nodes-0-hp",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-empty-nodes",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.inmobi.schain_nodes",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "inmobi-chain-invalid-container",
+      "profile": "inmobi",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": []
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain",
+          "severity": "error"
+        }
+      ],
+      "source": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"
+    },
+    {
+      "id": "spec-keeps-untyped-legacy-chain-open",
+      "profile": "spec",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.publisher.game"
+        },
+        "device": {
+          "ua": "ua",
+          "lmt": 0,
+          "ip": "192.0.2.1"
+        },
+        "source": {
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 2,
+              "nodes": [
+                {
+                  "asi": "exchange.example",
+                  "sid": "publisher-id",
+                  "hp": 1,
+                  "rid": "request-id",
+                  "name": "Exchange",
+                  "domain": "exchange.example",
+                  "ext": {}
+                }
+              ],
+              "ext": {}
+            }
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://github.com/InteractiveAdvertisingBureau/openrtb2.x"
+    },
+    {
+      "id": "pbs-alias-reference-control",
+      "profile": "prebid-server",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "ext": {
+              "prebid": {
+                "bidder": {
+                  "testbidder": {
+                    "placement": "example"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "ext": {
+          "prebid": {
+            "aliases": {
+              "other": "testbidder"
+            },
+            "aliasgvlids": {
+              "other": 1
+            }
+          }
+        }
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    },
+    {
+      "id": "pbs-alias-self-reference",
+      "profile": "prebid-server",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "ext": {
+              "prebid": {
+                "bidder": {
+                  "testbidder": {
+                    "placement": "example"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "ext": {
+          "prebid": {
+            "aliases": {
+              "testbidder": "testbidder"
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.prebid.alias_noop",
+          "path": "ext.prebid.aliases.testbidder",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    },
+    {
+      "id": "pbs-alias-gvl-reference-missing",
+      "profile": "prebid-server",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "ext": {
+              "prebid": {
+                "bidder": {
+                  "testbidder": {
+                    "placement": "example"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "ext": {
+          "prebid": {
+            "aliases": {
+              "other": "testbidder"
+            },
+            "aliasgvlids": {
+              "undeclared": 1
+            }
+          }
+        }
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.prebid.alias_not_declared",
+          "path": "ext.prebid.aliasgvlids.undeclared",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    },
+    {
+      "id": "pbs-currency-1",
+      "profile": "prebid-server",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "ext": {
+              "prebid": {
+                "bidder": {
+                  "testbidder": {
+                    "placement": "example"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "cur": [
+          "USD"
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    },
+    {
+      "id": "pbs-currency-2",
+      "profile": "prebid-server",
+      "direction": "request",
+      "input": {
+        "id": "source-boundary",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "ext": {
+              "prebid": {
+                "bidder": {
+                  "testbidder": {
+                    "placement": "example"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "cur": [
+          "USD",
+          "EUR"
+        ]
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.prebid.currency_truncated",
+          "path": "cur",
+          "severity": "warning"
+        }
+      ],
+      "source": "https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"
+    }
+  ]
+}

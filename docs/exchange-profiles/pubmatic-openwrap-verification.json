@@ -1,0 +1,35 @@
+{
+  "run_date": "2026-10-09",
+  "source_commit": "24ff50ca1f00ca1e80ab80bcfa1c812c35f87797",
+  "commands": [
+    "cargo test -p rtblint-core --test exchange_depth_pubmatic_openwrap",
+    "cargo clippy -p rtblint-core --lib --test exchange_depth_pubmatic_openwrap -- -D warnings"
+  ],
+  "result": "pass",
+  "test_groups": 6,
+  "case_count": 733,
+  "positive_cases": 451,
+  "mutation_cases": 282,
+  "case_counts_by_profile": {
+    "pubmatic-openwrap": 689,
+    "pubmatic-openwrap-ctv": 43,
+    "spec": 1
+  },
+  "typed_custom_inventory_paths": 156,
+  "generator_exact_bytes_reproduced": true,
+  "hashes": {
+    "crates/rtblint-core/src/profile/pubmatic_openwrap.rs": "f84f591f1b183dacd41b5c40c528b1974377b772d479ec67f1f2d95fc034f3ef",
+    "crates/rtblint-core/tests/exchange_depth_pubmatic_openwrap.rs": "fc513ee329bf0a20fe70eb3d0ce2f203f856ebdfad01c862b328dce074fbd06a",
+    "fixtures/exchange-depth/pubmatic-openwrap/cases.json": "9478cff922dd1a240632a76f710e99dec1deeb390f81dac2703e7ddae2aaf4fd",
+    "docs/exchange-profiles/pubmatic-openwrap-case-generate.py": "f1f7df4f00e7e446537e600481447828b6a2a252a5ca7ab55031c2e1db6dde4f",
+    "docs/exchange-profiles/pubmatic-openwrap-sources.json": "78ed015c1efa48548a387390b4740b09f4ea642bc9c4d4901ae4cfa30eec6fdc",
+    "docs/exchange-profiles/pubmatic-openwrap-field-inventory.json": "d90c14d952ffd9f17392e0cda670a4abd351bb6a94c37efdd63ca636b4cdf6d8",
+    "docs/exchange-profiles/pubmatic-openwrap-depth.md": "d325270d9ac961d9348768acb540d20e62784620766779a134956739e03f5051"
+  },
+  "limitations": [
+    "Published OpenWrap producer middleware scope, not full PubMatic exchange acceptance.",
+    "Account-derived settings and normalized Prebid fields cannot be required at raw custom request stage.",
+    "Generic OpenRTB and SKAdNetwork checks remain active.",
+    "Unknown keys open; canonical wire names inspected."
+  ]
+}

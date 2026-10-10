@@ -1,0 +1,22 @@
+{
+  "run_date": "2026-10-09",
+  "command": "cargo test -p rtblint-core --test exchange_depth_bidswitch",
+  "result": "pass",
+  "case_count": 1178,
+  "case_counts_by_profile": {
+    "bidswitch": 717,
+    "bidswitch-supplier": 461
+  },
+  "source_documents": 81,
+  "hashes": {
+    "crates/rtblint-core/src/profile/bidswitch.rs": "8500611a082fa94a593bf351bcfd43523ac1ff48532e7125d8d5548a613850c5",
+    "crates/rtblint-core/tests/exchange_depth_bidswitch.rs": "5b35598f3a28309a63a2a9925515f4db18c63cf576c1aff1e0c5d4cd29303d4c",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/bidswitch/cases.jsonl": "7ef269e79b040dd07c22c80c9c149fc262a269d8078804646e9ecdb868b0572b",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/bidswitch/build_cases.py": "4334b5689fc98dc0e70c51cc377c01e6960e462ce79df356f5a7d863485c97d8",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/bidswitch/oracle.json": "545792eefa751311b316a1352f2578014fe90e3c558958b5dfdc3e0de0b27048",
+    "docs/exchange-profiles/bidswitch-sources.json": "f1c936f1172770b3a0bd8fb013f848fb895b4f904890eab0af8676709b5a7bcd",
+    "docs/exchange-profiles/bidswitch-descriptors.json": "2c3162fa6fbca5dd01ba931b6225f2187be250f01702fbf58583eff406cd0c4c",
+    "docs/exchange-profiles/bidswitch.md": "fc759f8260375e6c42e61e7fde880a0436aa2092049a4e32bd4f39224b6c935a"
+  },
+  "limitations": "Synthetic pinned-source oracle. Runtime and account acceptance are not claimed. Descriptor shape controls do not claim whole-payload validity."
+}

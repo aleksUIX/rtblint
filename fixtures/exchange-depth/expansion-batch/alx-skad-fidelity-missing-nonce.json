@@ -1,0 +1,44 @@
+{
+  "id": "request-1",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid-1",
+          "impid": "1",
+          "price": 1.5,
+          "adm": "<div>Ad</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://bidder.example/bill?p=${AUCTION_PRICE}",
+          "cat": [
+            "IAB9"
+          ],
+          "crid": "creative-1",
+          "bundle": "987654321",
+          "ext": {
+            "crtype": "HTML",
+            "clicktrackers": [
+              "https://click.example"
+            ],
+            "skadn": {
+              "version": "3.0",
+              "network": "example.skadnetwork",
+              "campaign": "100",
+              "itunesitem": "987654321",
+              "sourceapp": "123456789",
+              "fidelities": [
+                {
+                  "fidelity": 1,
+                  "signature": "signed-value",
+                  "timestamp": "1700000000000"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

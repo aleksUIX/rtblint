@@ -1,0 +1,72 @@
+{
+  "reviewed_at": "2026-10-09",
+  "sources": [
+    {
+      "id": "inmobi-supplier",
+      "url": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview",
+      "final_url": "https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview",
+      "sha256": "3968d4e35ef645d10c849c1bcfddd97e574eb94169ef58bafdcfbb040f19bca2",
+      "file": "inmobi-supplier.html"
+    },
+    {
+      "id": "inmobi-supplier-faq",
+      "url": "https://support.inmobi.com/monetize/cat-faqs/frequently-asked-questions-ortb",
+      "final_url": "https://support.inmobi.com/monetize/cat-faqs/frequently-asked-questions-ortb",
+      "sha256": "58f63f1817fce41ead2e34d702dc9e29df5ba5fc9a656bd2c2d7efb14aab724b",
+      "file": "inmobi-supplier-faq.html"
+    },
+    {
+      "id": "inmobi-outgoing",
+      "url": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp",
+      "final_url": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp",
+      "sha256": "6831e6d5f3557048a12a472b7d3edf0496dba94bde9a9c92a7cf3be29bea9531",
+      "file": "inmobi-outgoing.html"
+    },
+    {
+      "id": "inmobi-response",
+      "url": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-responses-dsp",
+      "final_url": "https://support.inmobi.com/advertise/integration/ortb-specs/bid-responses-dsp",
+      "sha256": "7311aac6ce73601f29ac09a77e50f591fa215946bf5ff1ff6312dd8cdb95fdf3",
+      "file": "inmobi-response.html"
+    },
+    {
+      "id": "inmobi-enums",
+      "url": "https://support.inmobi.com/advertise/integration/ortb-specs/enumerated-lists",
+      "final_url": "https://support.inmobi.com/advertise/integration/ortb-specs/enumerated-lists",
+      "sha256": "cc6f5a72cb08b9351bc743973d3d120a438dd886ca737be51ef72415f889304f",
+      "file": "inmobi-enums.html"
+    },
+    {
+      "id": "inmobi-getting-started",
+      "url": "https://support.inmobi.com/advertise/integration/ortb-specs/getting-started-dsp",
+      "final_url": "https://support.inmobi.com/advertise/integration/ortb-specs/getting-started-dsp",
+      "sha256": "d099bce182aa7cf5c6620c08b49e71d968e5a0b68e66157550a4bacced523fdc",
+      "file": "inmobi-getting-started.html"
+    },
+    {
+      "id": "mobilefuse-request",
+      "url": "https://docs.mobilefuse.com/docs/bid-requests",
+      "retrieval": "public browser reader",
+      "sha256": null,
+      "direct_retrieval": "HTTP 403; Markdown URL redirected to password page",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "id": "mobilefuse-response",
+      "url": "https://docs.mobilefuse.com/docs/bid-responses",
+      "retrieval": "public browser reader",
+      "sha256": null,
+      "direct_retrieval": "HTTP 403; Markdown URL redirected to password page",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "id": "mobilefuse-sdk",
+      "url": "https://docs.mobilefuse.com/docs/sdk-bidding",
+      "retrieval": "public browser reader",
+      "sha256": null,
+      "direct_retrieval": "HTTP 403; Markdown URL redirected to password page",
+      "reviewed_at": "2026-10-09"
+    }
+  ],
+  "retrieval_notes": "InMobi hashes pin retrieved official HTML bytes. MobileFuse public browser snapshots are current reader evidence, direct downloads were blocked or redirected; no raw protocol-content hash is claimed."
+}

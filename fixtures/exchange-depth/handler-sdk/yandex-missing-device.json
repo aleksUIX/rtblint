@@ -1,0 +1,34 @@
+{
+  "id": "yandex-request",
+  "tmax": 3000,
+  "cur": [
+    "USD"
+  ],
+  "app": {
+    "bundle": "test.bundle"
+  },
+  "user": {
+    "data": [
+      {
+        "segment": [
+          {
+            "signal": "opaque-sdk-token"
+          }
+        ]
+      }
+    ]
+  },
+  "imp": [
+    {
+      "id": "1",
+      "tagid": "configured-unit",
+      "banner": {
+        "w": 320,
+        "h": 50
+      },
+      "ext": {
+        "ad_type": "banner"
+      }
+    }
+  ]
+}

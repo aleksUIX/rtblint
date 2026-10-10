@@ -1,0 +1,26 @@
+{
+  "reviewed_at": "2026-10-09",
+  "status": "focused_tests_passed",
+  "command": "cargo test -p rtblint-core --test exchange_depth_final_controls --test exchange_depth_unity_vungle",
+  "case_count": 102,
+  "counts": {
+    "unity": 60,
+    "vungle": 42
+  },
+  "source_inventory": "docs/exchange-profiles/final-controls-sources/receipts.json",
+  "hashes": {
+    "crates/rtblint-core/src/profile/unity.rs": "0a891ab293ed48e044b1d09a1e3f468784f6bdb2b0cb7225a1f02cdb3aefe085",
+    "crates/rtblint-core/src/profile/vungle.rs": "0417dfd6c5b38026e9fd65ae0a6652bf448ea436b9a81f1d54e2e7429c0de686",
+    "crates/rtblint-core/tests/exchange_depth_final_controls.rs": "83b07f0f708a29d50ff48a0bf8b1e12686912753ebea71dd8801a1e7c68f7541",
+    "fixtures/exchange-depth/final-controls/build-cases.py": "569921448854b7e3044fd12302673bb3d87a5ab43525e3328ad2f950b0d66de2",
+    "fixtures/exchange-depth/final-controls/cases.json": "f7a9bfec23e862edbe56986b90f9a27e7d6b938906966215de74a1e04b3b2e5e",
+    "docs/exchange-profiles/final-controls.md": "42674dfd4023faf0eccb43252fd5b2b03ca1639f273523aabf97095c35318df5",
+    "docs/exchange-profiles/final-controls-sources/receipts.json": "38bcb97e431e4aecf78dfa8504bab31c083e6f9df3fa65027d6f7ac664f6b91b"
+  },
+  "limitations": [
+    "Unity only compares complete explicit deal ID captures with a uniquely resolved impression.",
+    "Vungle No-marked supply-chain members remain optional; producer type checks do not certify upstream truth or exchange acceptance.",
+    "Vungle raw HTTP capture returned 403; its current primary browser text was verified directly."
+  ],
+  "additional_command": "cargo test -p rtblint-core --test exchange_depth_final_controls --test exchange_depth_unity_vungle --test exchange_depth_bidswitch --test exchange_depth_xandr_magnite"
+}

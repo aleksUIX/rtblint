@@ -1,0 +1,74 @@
+{
+  "reviewed_at": "2026-10-09",
+  "profiles": [
+    "xandr",
+    "magnite"
+  ],
+  "status": "focused_tests_passed",
+  "focused_command": "cargo test -p rtblint-core --test exchange_depth_xandr_magnite",
+  "cases": 465,
+  "counts": {
+    "xandr": {
+      "cases": 104,
+      "negative_cases": 46,
+      "pairs": 10
+    },
+    "magnite": {
+      "cases": 361,
+      "negative_cases": 165,
+      "pairs": 43
+    }
+  },
+  "default_profile_isolation_checked_per_case": true,
+  "magnite_field_descriptors": 111,
+  "magnite_messages": 45,
+  "source_inventory": [
+    {
+      "repository": "MagniteEngineering/xapi-proto",
+      "commit": "69975f4206b85dd8db159231d7b3bc8f33232f15",
+      "path": "src/proto/com/magnite/openrtb/v2/openrtb-xapi.proto",
+      "url": "https://raw.githubusercontent.com/MagniteEngineering/xapi-proto/69975f4206b85dd8db159231d7b3bc8f33232f15/src/proto/com/magnite/openrtb/v2/openrtb-xapi.proto",
+      "sha256": "d6773683a5adb71660a9730619eef6df0228ab43cb1e34aee131d0136cd33cda",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "repository": "MicrosoftDocs/xandr-docs",
+      "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+      "path": "xandr-docs/bidders/outgoing-bid-request-to-bidders.md",
+      "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/outgoing-bid-request-to-bidders.md",
+      "sha256": "ab592129e33d9f6f823865a13d916c7b4f922ec67f1ab28de56d07a386191add",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "repository": "MicrosoftDocs/xandr-docs",
+      "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+      "path": "xandr-docs/bidders/incoming-bid-response-from-bidders.md",
+      "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/incoming-bid-response-from-bidders.md",
+      "sha256": "aa85c3bb14e90f4202ebe51aebdd8dbf419bc1825cc9846f641f2293273f2a54",
+      "reviewed_at": "2026-10-09"
+    },
+    {
+      "repository": "MicrosoftDocs/xandr-docs",
+      "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+      "path": "xandr-docs/bidders/integration-with-openrtb-2-6.md",
+      "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/integration-with-openrtb-2-6.md",
+      "sha256": "ce4b9383726629946fb0b7c42ea1a33a28a5035bc568edc3f052af882d5552d6",
+      "reviewed_at": "2026-10-09"
+    }
+  ],
+  "files": {
+    "crates/rtblint-core/src/profile/xandr.rs": "c1f70e945ec13b26bd337bba8da94b77b6f7435780b96f490b20fa78bad9520e",
+    "crates/rtblint-core/src/profile/magnite.rs": "e8f1548747df8c31ff9306e172b31f686d4e8d154d6671e7dec704fa834d9660",
+    "crates/rtblint-core/tests/exchange_depth_xandr_magnite.rs": "4406a0cc2b98945bcb12c02a421626986672391f94013de75ecd2e627478985a",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/xandr-magnite/cases.jsonl": "cd561b92f5ca08cd35d958a22336d00c288a49fc2f30f08f54e8b1a77e171321",
+    "docs/exchange-profiles/xandr-magnite-sources.json": "ed27bf6093c05edfe0064a794310cb4f4e6730bcfcccf0ef59db48ff24660070",
+    "docs/exchange-profiles/xandr-magnite-descriptors.json": "f418923323ff31b12b402b7c95d0cf226f91674547e7060a4541bfffec5e4d19",
+    "docs/exchange-profiles/xandr-magnite.md": "0dcebdcd8a86d294125f0e85709700062cc9cbc52991e890d9a9c5ccc5acdb99",
+    "crates/rtblint-core/tests/fixtures/exchange-depth/xandr-magnite/build-source-cases.py": "56e8564c9e970aa5ade7e583fbc3df5dc5a3e0498fa7a47b3f4d3b34025bc0d1"
+  },
+  "limitations": [
+    "Public-evidence model and local protocol checks, not full exchange acceptance",
+    "Magnite JSON wire guide is currently gated; compatible flags and key/value forms are explicitly documented",
+    "Supplier Xandr, Magnite Streaming and SpringServe are outside these profiles"
+  ]
+}

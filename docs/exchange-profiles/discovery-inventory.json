@@ -1,0 +1,1579 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-09",
+  "baseline_commit": "ea7df0af19b3083971135ddb1817de6ae4d2ebe2",
+  "scope": "Additional exchange, DSP and mediation protocol surfaces. Distinct exchanges are counted separately from directional profiles.",
+  "method": "Current primary vendor documentation and official producer artifacts only. Prebid adapter payloads do not prove full exchange acceptance. Searches without retrieved evidence are explicitly deferred.",
+  "completeness": "This is a public-evidence discovery inventory, not a complete specification certification or acceptance guarantee.",
+  "priority": [
+    "Index Exchange",
+    "DV360",
+    "Unity Exchange",
+    "Vungle Exchange / Liftoff Monetize",
+    "InMobi",
+    "BidSwitch",
+    "Criteo Commerce Grid",
+    "AppLovin Exchange ALX",
+    "MobileFuse",
+    "Digital Turbine Exchange / Fyber",
+    "Sovrn",
+    "Equativ / Smart",
+    "FreeWheel",
+    "TripleLift",
+    "Yandex Open Bidding",
+    "Adform OpenRTB Handler"
+  ],
+  "candidate_count": 37,
+  "candidates": [
+    {
+      "name": "Index Exchange",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "seller_to_index_request",
+        "index_to_dsp_request",
+        "dsp_to_index_response"
+      ],
+      "versions": [
+        "2.6"
+      ],
+      "official_sources": [
+        "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+        "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+        "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm"
+      ],
+      "additional_checkable_constraints": [
+        "Inbound seller request requires device.ip or device.ipv6.",
+        "Inbound site requires domain or page.",
+        "DSP bids require adm; paired multi-size banner format requests require bid.w and bid.h.",
+        "Outgoing video requires minduration, maxduration and protocols beyond generic 2.6 optional fields.",
+        "Multiple video impressions in the seller request must share one supplied podid, with malformed or ambiguous references deferred."
+      ],
+      "documented_or_evidence_gaps": [
+        "Do not merge seller and DSP directional contracts.",
+        "Price units may be configured as cents; account settings cannot be inferred.",
+        "Secure creative acceptance needs actual rendered resources, not a textual URL scan."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "index-exchange",
+          "index-exchange-seller"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "index-exchange": 252,
+          "index-exchange-seller": 139
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/index-dv360/cases.json": {
+            "index-exchange": 178,
+            "index-exchange-seller": 104
+          },
+          "fixtures/exchange-depth/index-dv360-peer-review/cases.json": {
+            "index-exchange": 58,
+            "index-exchange-seller": 10
+          },
+          "fixtures/exchange-depth/index-structured-pods/cases.json": {
+            "index-exchange-seller": 17
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "index-exchange": 16,
+            "index-exchange-seller": 8
+          }
+        }
+      }
+    },
+    {
+      "name": "DV360",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "exchange_to_dv360_request",
+        "dv360_to_exchange_response"
+      ],
+      "versions": [
+        "2.6"
+      ],
+      "official_sources": [
+        "https://developers.google.com/display-video/ortb-spec"
+      ],
+      "additional_checkable_constraints": [
+        "Request device and user objects are required; empty observed objects are legitimate unknown data.",
+        "BidRequest.at=3 is documented beyond the generic 1/2 auction enum.",
+        "Video requires a nonempty protocols list.",
+        "Sound-off playback values conflict with in-stream placement; plcmt takes precedence over placement.",
+        "disable_gma_format is forbidden without gdemsignals.",
+        "Only one of the documented mainline/extension privacy signal locations is expected."
+      ],
+      "documented_or_evidence_gaps": [
+        "Supply chain is required in almost all cases, so missing chain needs a qualified finding.",
+        "Currency allowlists and account integration defaults are unavailable.",
+        "Response id=0 and missing cur are documented parse-error exceptions.",
+        "Protobuf beta and remote ads.txt/schain decisions are outside JSON-only validation."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "dv360"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "dv360": 153
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/index-dv360/cases.json": {
+            "dv360": 70
+          },
+          "fixtures/exchange-depth/index-dv360-peer-review/cases.json": {
+            "dv360": 73
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "dv360": 10
+          }
+        }
+      }
+    },
+    {
+      "name": "Unity Exchange",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "unity_to_dsp_request",
+        "dsp_to_unity_response"
+      ],
+      "versions": [
+        "2.6",
+        "legacy 2.5 docs references"
+      ],
+      "official_sources": [
+        "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-requests",
+        "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+        "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/get-started"
+      ],
+      "additional_checkable_constraints": [
+        "Response cur and SeatBid.seat are explicitly required.",
+        "Bid price must be positive and accepts at most three decimal places.",
+        "Response adomain/crid and documented markup/notification requirements add exchange-specific constraints.",
+        "Notification alternatives depend on burl, nurl and impression-tracker availability; read full table before implementation."
+      ],
+      "documented_or_evidence_gaps": [
+        "Currency is configured per adsource, not USD-only.",
+        "Request attributes are sent when available unless the description says otherwise.",
+        "A prose seatbid selection note uses bid.id where impid is expected; do not enforce the likely typo.",
+        "Latency, creative playback, partner exchange rate and endpoint transport require external evidence."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "unity"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "unity": 62
+        },
+        "fixture_manifest": "fixtures/exchange-depth/unity-vungle/manifest.json",
+        "evidence_receipt": "unity-vungle-evidence.json",
+        "public_document": "docs/exchange-profiles/unity-vungle.md",
+        "all_replay_fixture_count_by_profile": {
+          "unity": 122
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/final-controls/cases.json": {
+            "unity": 60
+          },
+          "fixtures/exchange-depth/unity-vungle/manifest.json": {
+            "unity": 62
+          }
+        }
+      }
+    },
+    {
+      "name": "Vungle Exchange / Liftoff Monetize",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "vungle_to_dsp_request",
+        "dsp_to_vungle_response"
+      ],
+      "versions": [
+        "2.5"
+      ],
+      "official_sources": [
+        "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide"
+      ],
+      "additional_checkable_constraints": [
+        "App and device are always passed in Vungle requests.",
+        "Video delivery, minbitrate, maxbitrate, protocols, boxingallowed and playbackmethod are always passed.",
+        "Documented extension schemas and response requirements are substantial enough for a real profile."
+      ],
+      "documented_or_evidence_gaps": [
+        "Use current guide dated August 19, 2026, not old copied schemas.",
+        "SKAdNetwork opt-in, network registration, SDK version and creative format context affect conditional requirements.",
+        "Do not equate producer always-passed fields with supply integration requirements."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "vungle"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "vungle": 92
+        },
+        "fixture_manifest": "fixtures/exchange-depth/unity-vungle/manifest.json",
+        "evidence_receipt": "unity-vungle-evidence.json",
+        "public_document": "docs/exchange-profiles/unity-vungle.md",
+        "all_replay_fixture_count_by_profile": {
+          "vungle": 134
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/final-controls/cases.json": {
+            "vungle": 42
+          },
+          "fixtures/exchange-depth/unity-vungle/manifest.json": {
+            "vungle": 92
+          }
+        }
+      }
+    },
+    {
+      "name": "InMobi",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "publisher_to_inmobi_request",
+        "inmobi_to_dsp_request",
+        "dsp_to_inmobi_response"
+      ],
+      "versions": [
+        "2.5"
+      ],
+      "official_sources": [
+        "https://support.inmobi.com/monetize/other-integrations/ortb-integrations/overview-ortb",
+        "https://support.inmobi.com/monetize/ortb-25-specification/bid-request-overview",
+        "https://support.inmobi.com/advertise/integration/ortb-specs/getting-started-dsp"
+      ],
+      "additional_checkable_constraints": [
+        "Inbound publisher request requires imp.tagid or imp.ext.placementid.",
+        "Inbound publisher integration currently requires app and device and documents in-app-only support.",
+        "There are complete direction-specific request/response tables for DSP integration."
+      ],
+      "documented_or_evidence_gaps": [
+        "Do not apply inbound placement IDs to outgoing buyer traffic.",
+        "Placement existence, cookie synchronization, gzip and HTTP status require context not present in a JSON value.",
+        "Native and privacy-dependent capabilities require their actual integration context."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "inmobi",
+          "inmobi-supplier"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "inmobi": 214,
+          "inmobi-supplier": 28
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/inmobi-mobilefuse/cases.json": {
+            "inmobi": 182,
+            "inmobi-supplier": 23
+          },
+          "fixtures/exchange-depth/peer-review-boundaries/cases.json": {
+            "inmobi": 32,
+            "inmobi-supplier": 5
+          }
+        },
+        "fixture_count_by_profile": {
+          "inmobi": 182,
+          "inmobi-supplier": 23
+        },
+        "fixture_manifest": "fixtures/exchange-depth/inmobi-mobilefuse/cases.json",
+        "public_document": "docs/exchange-profiles/inmobi-mobilefuse-depth.md"
+      }
+    },
+    {
+      "name": "BidSwitch",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_bidswitch_request",
+        "bidswitch_to_buyer_request",
+        "buyer_to_bidswitch_response"
+      ],
+      "versions": [
+        "supplier 1.1 / OpenRTB 2.6",
+        "buyer 5.7 / OpenRTB 2.6",
+        "legacy supplier 1.0 / 2.5"
+      ],
+      "official_sources": [
+        "https://protocol.bidswitch.com/standards-v57/bidrequest.html",
+        "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+        "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-request.html",
+        "https://docs.bidswitch.com/index.html"
+      ],
+      "additional_checkable_constraints": [
+        "Outgoing buyer request requires device, user, tmax, cur and ext; empty user is explicitly valid after privacy opt-out.",
+        "Supplier request device is required, but user/tmax/cur are optional.",
+        "Response banner adm is required and permits at most one win-price macro.",
+        "Video response protocol is required, and markup comes through video-specific extensions.",
+        "wseat takes precedence over bseat, unlike a generic conjunctive seat restriction check."
+      ],
+      "documented_or_evidence_gaps": [
+        "Supplier page introductory site/app requirement conflicts with its later DOOH support, so keep DOOH valid.",
+        "5.x protocol extension, s2s notification settings and supplier-specific optional fields need their documented conditions.",
+        "Supplier compatibility, prices, agency mapping, HTTP callbacks and remote approval are external."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "bidswitch",
+          "bidswitch-supplier"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "bidswitch": 717,
+          "bidswitch-supplier": 461
+        },
+        "replay_corpora": {
+          "crates/rtblint-core/tests/fixtures/exchange-depth/bidswitch/cases.jsonl": {
+            "bidswitch": 717,
+            "bidswitch-supplier": 461
+          }
+        },
+        "fixture_count_by_profile": {
+          "bidswitch": 683,
+          "bidswitch-supplier": 427
+        },
+        "public_document": "docs/exchange-profiles/bidswitch.md",
+        "evidence_receipt": "bidswitch-verification.json"
+      }
+    },
+    {
+      "name": "Sovrn",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "sovrn_to_buyer_request"
+      ],
+      "versions": [
+        "2.5 core, 2.6 passthrough"
+      ],
+      "official_sources": [
+        "https://knowledge.sovrn.com/kb/sovrn-ortb-specs",
+        "https://knowledge.sovrn.com/kb/which-version-of-the-ortb-specs-does-sovrn-support"
+      ],
+      "additional_checkable_constraints": [
+        "Imp.tagid is required.",
+        "Banner w/h are marked required, although format description also gives an alternate size path.",
+        "Video minduration/maxduration/w/h are required."
+      ],
+      "documented_or_evidence_gaps": [
+        "Current article exposes request tables only; no stronger response contract substantiated.",
+        "Banner format alternative must avoid rejecting documented format-only inputs without resolving prose.",
+        "Do not enforce article typos declaring protocols or schain as scalars against canonical OpenRTB."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "sovrn"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "sovrn": 18
+        },
+        "fixture_manifest": "fixtures/exchange-depth/expansion-batch/manifest.json",
+        "evidence_receipt": "expansion-batch-evidence.json",
+        "public_document": "docs/exchange-profiles/expansion-batch.md",
+        "all_replay_fixture_count_by_profile": {
+          "sovrn": 19
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/expansion-batch/manifest.json": {
+            "sovrn": 18
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "sovrn": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Digital Turbine Exchange / Fyber",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "exchange_to_dsp_request",
+        "dsp_to_exchange_response",
+        "request_response_pair"
+      ],
+      "versions": [
+        "2.2/2.3/2.5 public support list; complete current 2.5 guide, fixture compatibility under 2.5/latest 2.6"
+      ],
+      "official_sources": [
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skadnetwork",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skoverlay",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/auto-store",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dual-end-card",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dsp-dual-end-card",
+        "https://docs.digitalturbine.com/dt-ads-demand/ad-creative-types/rewarded-playables",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/sample-bid-requests",
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/supported-auction-macros",
+        "https://dsp-form.prod.fyber.com/",
+        "https://www.digitalturbine.com/legal/fyber-demand-content-guidelines"
+      ],
+      "additional_checkable_constraints": [
+        "request producer object and field presence, including present User consent and PMP private_auction",
+        "supply-chain recursive typing and required members",
+        "extended identifier recursive typing",
+        "GPP and legacy regulatory extension typing",
+        "SDK app/device/user/impression extensions, documented ranges and compatible boolean alternatives",
+        "banner/video producer fields and values",
+        "direct-object and canonical-request-string Native decoded field types and producer constants",
+        "Native required-asset response pairing",
+        "response metadata and USD",
+        "auction-price macro carriers and minimum-to-win context",
+        "SKAdNetwork request/response nested fields, campaign/source identifier bounds, UUIDs, decimal timestamps and fidelity",
+        "exact null SKAdNetwork network-list request alternative",
+        "SKOverlay flags and delay ranges",
+        "AutoStore and dual-end-card store ID conditions, strict DSP-dual boolean",
+        "display click tracker requirement only when feature and click firing explicitly enabled",
+        "paired SKAdNetwork source/network/version agreement, matching impression deals and rewarded playable attribution",
+        "unknown extensions and creative-type strings remain open",
+        "conflicting presence claims stay warnings"
+      ],
+      "documented_or_evidence_gaps": [
+        "signature cryptographic validity",
+        "actual tracking execution and position inside markup",
+        "SDK runtime eligibility and delivery",
+        "account feature enablement and seller/buyer configuration",
+        "jurisdiction and publisher privacy availability",
+        "HTTP compression and transport",
+        "creative content and advertiser policy",
+        "unsupported future keys explicitly ignored; no closed inferred creative acceptance enum",
+        "geo.dma type unspecified",
+        "Conflicting mandatory/optional source labels generate warnings, not rejection.",
+        "Source-specific Native placement typos and boolean ambiguity are retained with narrow compatibility."
+      ],
+      "examples": [
+        "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/sample-bid-requests"
+      ],
+      "implementation": {
+        "canonical_profile_ids": [
+          "digital-turbine"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "digital-turbine": 359
+        },
+        "fixture_manifest": "fixtures/exchange-depth/dt-depth/manifest.json",
+        "evidence_receipt": "digital-turbine-depth-evidence.json",
+        "public_document": "docs/exchange-profiles/digital-turbine-depth.md",
+        "all_replay_fixture_count_by_profile": {
+          "digital-turbine": 360
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/dt-depth/manifest.json": {
+            "digital-turbine": 340
+          },
+          "fixtures/exchange-depth/expansion-batch/manifest.json": {
+            "digital-turbine": 19
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "digital-turbine": 1
+          }
+        },
+        "fixture_manifests": [
+          "fixtures/exchange-depth/dt-depth/manifest.json",
+          "fixtures/exchange-depth/expansion-batch/manifest.json"
+        ],
+        "primary_depth_fixture_count_by_profile": {
+          "digital-turbine": 340
+        },
+        "spec_control_case_records_in_fixture_manifests": 3,
+        "public_source_status": "Current full public 2.5 guide retrieved and pinned; acceptance remains scoped to locally checkable semantics."
+      }
+    },
+    {
+      "name": "Criteo Commerce Grid",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_commerce_grid_request"
+      ],
+      "versions": [
+        "2.6 endpoint with mixed legacy 2.5 descriptions"
+      ],
+      "official_sources": [
+        "https://docs.commercegrid.criteo.com/kb/guide/en/custom-server-to-server-openrtb-Vy9QrGVwyl/Steps/2366154"
+      ],
+      "additional_checkable_constraints": [
+        "Device, user and cur required.",
+        "Imp.instl required.",
+        "App/video impressions require displaymanager and displaymanagerver.",
+        "In-app imp.clickbrowser and app.bundle required.",
+        "Banner.format plus banner.w/h required.",
+        "Metric.vendor required.",
+        "Native privacy must be 1.",
+        "Device ua/geo/dnt/lmt/ip required in this documented integration."
+      ],
+      "documented_or_evidence_gaps": [
+        "Network ID can be in the URL or payload, so JSON-only omission must defer.",
+        "gpid is simultaneously recommended and mandatory in one row.",
+        "Native payload location/encoding alternatives and legacy/schema typos need compatibility handling.",
+        "Account inventory mapping, privacy jurisdiction and response fields on separate steps are unreviewed."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "commerce-grid"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "commerce-grid": 339
+        },
+        "fixture_manifest": "fixtures/exchange-depth/expansion-batch/manifest.json",
+        "evidence_receipt": "expansion-batch-evidence.json",
+        "public_document": "docs/exchange-profiles/expansion-batch.md",
+        "all_replay_fixture_count_by_profile": {
+          "commerce-grid": 340
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/expansion-batch/manifest.json": {
+            "commerce-grid": 339
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "commerce-grid": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "AppLovin Exchange ALX",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "alx_to_dsp_request",
+        "dsp_to_alx_response"
+      ],
+      "versions": [
+        "2.5"
+      ],
+      "official_sources": [
+        "https://support.applovin.com/en/max/demand-partners/demand-side-platforms/applovin-ortb-specification/bid-responses"
+      ],
+      "additional_checkable_constraints": [
+        "DSP bids require adm, adomain, burl, cat and crid.",
+        "Response currency accepts only USD, defaulting to USD.",
+        "Advertiser domain cannot contain HTTP scheme or slash.",
+        "SKAdNetwork requires bundle and matching itunesitem; campaign bounds are version-dependent.",
+        "Supplied seat has a 40-character alphanumeric limit.",
+        "CTV duration and HTML+SKAdNetwork clicktrackers have explicit conditional requirements.",
+        "Native request and response carriers reject malformed encoded JSON and preserve canonical carrier boundaries across all accepted encodings."
+      ],
+      "documented_or_evidence_gaps": [
+        "SDK bidders are exempt from mandatory adm, so profile must expressly mean DSP integration.",
+        "4 KB raw response limit requires input byte length, not compact reserialization.",
+        "Markup URL-encoding prose conflicts with official examples; do not over-enforce.",
+        "Creative crtype can be preconfigured on account, so absence is not universally an error."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "applovin-alx"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "applovin-alx": 106
+        },
+        "fixture_manifest": "fixtures/exchange-depth/expansion-batch/manifest.json",
+        "evidence_receipt": "expansion-batch-evidence.json",
+        "public_document": "docs/exchange-profiles/expansion-batch.md",
+        "all_replay_fixture_count_by_profile": {
+          "applovin-alx": 107
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/expansion-batch/manifest.json": {
+            "applovin-alx": 106
+          },
+          "fixtures/exchange-depth/reference/cases.json": {
+            "applovin-alx": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "MobileFuse",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_mobilefuse_in_app_request",
+        "mediation_sdk_to_mobilefuse_request"
+      ],
+      "versions": [
+        "2.5"
+      ],
+      "official_sources": [
+        "https://docs.mobilefuse.com/docs/bid-requests",
+        "https://docs.mobilefuse.com/docs/bid-responses",
+        "https://docs.mobilefuse.com/docs/sdk-bidding",
+        "https://docs.mobilefuse.com/docs/integration-types"
+      ],
+      "additional_checkable_constraints": [
+        "In-app request requires app/device, app.bundle and imp.tagid.",
+        "Only the first imp is processed; additional imps ignored.",
+        "Supplied tmax must be at least 100.",
+        "badv supports at most 50 entries.",
+        "Native request supports object or JSON-string encoding and version 1.2.",
+        "Separate SDK mediation contract requires first user data segment signal and first imp.tagid."
+      ],
+      "documented_or_evidence_gaps": [
+        "App-only requirement does not describe separate web Prebid or TAM pathways.",
+        "Do not require SDK signal token on ordinary S2S requests.",
+        "Endpoint SSP partner ID and token rendering need context.",
+        "DSP acceptance and downstream support differ by demand partner."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "mobilefuse",
+          "mobilefuse-sdk"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "mobilefuse": 51,
+          "mobilefuse-sdk": 18
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/inmobi-mobilefuse/cases.json": {
+            "mobilefuse": 49,
+            "mobilefuse-sdk": 18
+          },
+          "fixtures/exchange-depth/peer-review-boundaries/cases.json": {
+            "mobilefuse": 2
+          }
+        },
+        "fixture_count_by_profile": {
+          "mobilefuse": 49,
+          "mobilefuse-sdk": 18
+        }
+      }
+    },
+    {
+      "name": "Equativ / Smart",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_equativ_request",
+        "equativ_to_dsp_request",
+        "dsp_to_equativ_response"
+      ],
+      "versions": [
+        "2.6"
+      ],
+      "official_sources": [
+        "https://help.equativ.com/open-rtb-api-integration-bid-request-specification",
+        "https://help.equativ.com/open-rtb-api-integration-get-started",
+        "https://help.equativ.com/connect-bidder-to-equativ-ssp-supported-fields",
+        "https://help.equativ.com/en_US/connect-bidder-to-equativ-ssp/connect-bidder-to-equativ-ssp-bid-request-and-bid-response-examples"
+      ],
+      "additional_checkable_constraints": [
+        "Inbound Site.domain required.",
+        "Publisher network account ID has a documented integer type.",
+        "Optional extension fields have typed schemas suitable for validation."
+      ],
+      "documented_or_evidence_gaps": [
+        "Network ID has an alternate authentication transport; missing publisher.id cannot be unconditionally rejected.",
+        "Inbound API tables and outbound DSP contracts are separate.",
+        "Supported fields page references a downloadable mapping that needs complete review."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "equativ",
+          "equativ-supplier"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "equativ": 266,
+          "equativ-supplier": 275
+        },
+        "replay_corpora": {
+          "crates/rtblint-core/tests/fixtures/exchange-depth/equativ/cases.jsonl": {
+            "equativ": 266,
+            "equativ-supplier": 275
+          }
+        },
+        "fixture_count_by_profile": {
+          "equativ": 266,
+          "equativ-supplier": 275
+        },
+        "public_document": "docs/exchange-profiles/equativ.md",
+        "evidence_receipt": "equativ-verification.json"
+      }
+    },
+    {
+      "name": "FreeWheel",
+      "disposition": "defer_current_primary_contract_access",
+      "directions": [
+        "freewheel_to_demand_request",
+        "demand_to_freewheel_response"
+      ],
+      "versions": [
+        "2.2",
+        "2.5",
+        "2.6 by DSP configuration"
+      ],
+      "official_sources": [
+        "https://hub.freewheel.tv/x/goKnl",
+        "https://www.freewheel.com/wp-content/uploads/2023/07/FreeWheel_Programmatic_Metadata_Guide.pdf"
+      ],
+      "additional_checkable_constraints": [
+        "Producer table always passes test/tmax/cur/regs.",
+        "Video w/h and protocols are always passed.",
+        "Deal.at=3 is documented fixed price.",
+        "Optional device ext.atts enum is explicitly 0 to 3."
+      ],
+      "documented_or_evidence_gaps": [
+        "Always-passed describes outgoing producer behavior, not inbound acceptance.",
+        "tmax 200 applies unconditionally only to documented guaranteed requests.",
+        "Transport, enabled schain, creative review and account DSP version require context.",
+        "One wseat row incorrectly says bid response, so avoid inferred response mandates.",
+        "Current substantive response guide could not be retrieved; canonical page presents access challenge.",
+        "Cached producer table and configured-version behavior do not prove a complete current acceptance profile."
+      ],
+      "examples": [],
+      "evidence_document": "docs/exchange-profiles/freewheel-source-review.md"
+    },
+    {
+      "name": "TripleLift",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_triplelift_request",
+        "triplelift_to_supplier_response",
+        "paired_supplier_exchange"
+      ],
+      "versions": [
+        "Current September 2026 OpenRTB 2.x supplier contract",
+        "Native Ads 1.2"
+      ],
+      "official_sources": [
+        "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-request-objects",
+        "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-response-objects",
+        "https://support.triplelift.com/en_US/openrtb/native-request-object-v12",
+        "https://support.triplelift.com/en_US/openrtb/native-response-object-v12"
+      ],
+      "additional_checkable_constraints": [
+        "Placement tagid, banner format, recursively typed Native 1.2 request and response fields.",
+        "Canonical native media, script tracker markup, tracker event/method membership and required tracker fields.",
+        "Paired remote asset support and event/method negotiation with malformed reference deferral."
+      ],
+      "documented_or_evidence_gaps": [
+        "Supplier scope only. Current migration tables supersede historical native-only and fixed-ID restrictions.",
+        "Conflicting banner-format requiredness versus supported width/height fallback is a warning.",
+        "Account authentication and optional identifiers require external context; response data.vasttag row is a likely table-copy error."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "triplelift-supplier"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "triplelift-supplier": 144
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/triplelift/cases.json": {
+            "triplelift-supplier": 144
+          }
+        },
+        "fixture_count_by_profile": {
+          "triplelift-supplier": 144
+        },
+        "fixture_manifest": "fixtures/exchange-depth/triplelift/cases.json",
+        "public_document": "docs/exchange-profiles/triplelift-depth.md",
+        "evidence_receipt": "triplelift-verification.json"
+      }
+    },
+    {
+      "name": "Yandex Open Bidding",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "mediation_to_yandex_mobile_request",
+        "yandex_to_mediation_response"
+      ],
+      "versions": [
+        "2.5"
+      ],
+      "official_sources": [
+        "https://ads.yandex.com/helpcenter/en/support/open-bidding/open-bidding-integration-android",
+        "https://ads.yandex.com/helpcenter/en/support/open-bidding/open-bidding-integration-ios"
+      ],
+      "additional_checkable_constraints": [
+        "App.bundle required.",
+        "Response signaldata is explicitly required to return to client.",
+        "Documented single SeatBid and single bid response shape.",
+        "Bidder token and SDK-rendered response distinguish this contract from a generic DSP."
+      ],
+      "documented_or_evidence_gaps": [
+        "Server endpoint and SDK/client context are integration-specific.",
+        "Do not use this Android Open Bidding page as full Yandex DSP/SSP protocol.",
+        "Some media field descriptions contain obvious copy errors."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "yandex-sdk-bidding"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "yandex-sdk-bidding": 39
+        },
+        "fixture_manifest": "fixtures/exchange-depth/handler-sdk/manifest.json",
+        "evidence_receipt": "handler-sdk-evidence.json",
+        "public_document": "docs/exchange-profiles/handler-sdk.md",
+        "all_replay_fixture_count_by_profile": {
+          "yandex-sdk-bidding": 39
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/handler-sdk/manifest.json": {
+            "yandex-sdk-bidding": 39
+          }
+        }
+      }
+    },
+    {
+      "name": "Yahoo DSP / ConnectID",
+      "disposition": "defer_full_profile",
+      "directions": [
+        "supplier_to_yahoo_dsp_request"
+      ],
+      "versions": [
+        "2.5 extension eids",
+        "2.6 mainline eids"
+      ],
+      "official_sources": [
+        "https://help.yahooinc.com/connect-id/docs/integrate-with-connectid-server-to-server-method"
+      ],
+      "additional_checkable_constraints": [
+        "Conditional Yahoo ConnectID eids use source yahoo.com, nonempty uids and UID id; eids location depends on version."
+      ],
+      "documented_or_evidence_gaps": [
+        "The official ConnectID optional identity guide documents OpenRTB 2.5 extension and 2.6 standard EID paths, but not a full Yahoo exchange request and response contract.",
+        "The direct exchange acceptance contract remains unverified in retrieved primary evidence."
+      ],
+      "examples": [],
+      "evidence_document": "docs/exchange-profiles/remaining-exchange-source-review.md"
+    },
+    {
+      "name": "Adform OpenRTB Handler",
+      "disposition": "implemented_scoped_public_contract",
+      "directions": [
+        "supplier_to_handler_request",
+        "handler_to_supplier_response",
+        "paired_dsa_contract"
+      ],
+      "versions": [
+        "2.x handler with modern extensions"
+      ],
+      "official_sources": [
+        "https://www.adformhelp.com/hc/en-us/articles/10431570694033",
+        "https://www.adformhelp.com/hc/en-us/articles/9739088948113-Adform-OpenRTB-Handler-Sample-Bid-Requests",
+        "https://www.adformhelp.com/hc/en-us/articles/9739105213841-Adform-OpenRTB-Handler-Bid-Response-Specifications"
+      ],
+      "additional_checkable_constraints": [
+        "Supplied ext.pt string has a net-price default.",
+        "Optional DSA extension has explicit typed enum contracts.",
+        "0.0.0.0 IP disables header fallback in this handler."
+      ],
+      "documented_or_evidence_gaps": [
+        "Handler is a particular integration surface, not all Adform DSP or exchange traffic.",
+        "Video constraints come from account UI and unsupported fields may be ignored.",
+        "Most advertised required rules duplicate core OpenRTB; no generic-only profile."
+      ],
+      "examples": [],
+      "implementation": {
+        "canonical_profile_ids": [
+          "adform-handler"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "fixture_count_by_profile": {
+          "adform-handler": 86
+        },
+        "fixture_manifest": "fixtures/exchange-depth/handler-sdk/manifest.json",
+        "evidence_receipt": "handler-sdk-evidence.json",
+        "public_document": "docs/exchange-profiles/handler-sdk.md",
+        "all_replay_fixture_count_by_profile": {
+          "adform-handler": 86
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/handler-sdk/manifest.json": {
+            "adform-handler": 86
+          }
+        }
+      }
+    },
+    {
+      "name": "Smaato / Verve Brand+",
+      "disposition": "defer_generic_only_contract",
+      "directions": [
+        "verve_brand_to_dsp_request",
+        "dsp_to_verve_brand_response"
+      ],
+      "versions": [
+        "2.6"
+      ],
+      "official_sources": [
+        "https://developers.smaato.com/marketers/2-6-specifications/",
+        "https://developers-brand.verve.com/docs/brand-openrtb-specifications"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Smaato 2.6 endpoint redirects to the current Verve Brand+ specification.",
+        "Retrieved tables mostly restate generic OpenRTB. Unsupported fields are ignored or passed through, not universally rejected.",
+        "No substantive additional acceptance rule established. Do not pad coverage with a generic-only profile.",
+        "Legacy Smaato 2.5 and specific native/SDK extensions could support a separately named future contract after complete review."
+      ],
+      "examples": []
+    },
+    {
+      "name": "OpenX",
+      "disposition": "defer_current_primary_contract_access",
+      "directions": [
+        "openx_to_buyer_request",
+        "buyer_to_openx_response",
+        "supplier_to_openx_request",
+        "openx_to_supplier_response"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://docs.openx.com/",
+        "https://docs.openx.com/s2s-openrtb-bidrequests/",
+        "https://docs.openx.com/s2s-openrtb-bidresponses/",
+        "https://docs.openx.com/openrtb-bidrequest/",
+        "https://docs.openx.com/openrtb-bidresponse/"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official navigation names current supplier and buyer OpenRTB tables.",
+        "GET requests to 35 direct protocol routes followed OAuth/login and returned 1,381-byte application shells. The substantive tables were not retrieved.",
+        "Navigation and producer adapters do not establish exchange acceptance rules."
+      ],
+      "examples": [],
+      "evidence_document": "docs/exchange-profiles/remaining-exchange-source-review.md"
+    },
+    {
+      "name": "PubMatic",
+      "disposition": "implemented_scoped_public_contract_full_exchange_deferred",
+      "directions": [
+        "client_to_openwrap_request",
+        "openwrap_to_client_response",
+        "client_to_openwrap_ctv_request",
+        "openwrap_ctv_to_client_response"
+      ],
+      "versions": [
+        "Published OpenWrap fork commit 24ff50ca1f00ca1e80ab80bcfa1c812c35f87797",
+        "Generic OpenRTB version remains caller-selected"
+      ],
+      "official_sources": [
+        "https://help.pubmatic.com/",
+        "https://github.com/PubMatic-OpenWrap/prebid-server/tree/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797"
+      ],
+      "additional_checkable_constraints": [
+        "Recursive custom wire objects, arrays, bidder maps, boolean types and signed integer widths.",
+        "The selected CTV endpoint requires video and validates explicit per-impression adpod after count defaults of 1 and 3.",
+        "The CTV supply-chain helper drops invalid chains, producing a profile warning."
+      ],
+      "documented_or_evidence_gaps": [
+        "PubMatic exchange acceptance is separate from OpenWrap producer middleware. Detailed exchange support documentation requires login.",
+        "The raw stage does not prove normalized PBS bidder configuration. Account-derived placement, consent and stored settings remain unknown.",
+        "CTV aggregate responses do not prove a simple per-bid duration or count cap."
+      ],
+      "examples": [],
+      "profile_ids": [
+        "pubmatic-openwrap",
+        "pubmatic-openwrap-ctv"
+      ],
+      "evidence_document": "docs/exchange-profiles/pubmatic-openwrap-depth.md",
+      "implementation": {
+        "canonical_profile_ids": [
+          "pubmatic-openwrap",
+          "pubmatic-openwrap-ctv"
+        ],
+        "status": "implemented_and_targeted_oracles_passed",
+        "all_replay_fixture_count_by_profile": {
+          "pubmatic-openwrap": 689,
+          "pubmatic-openwrap-ctv": 43
+        },
+        "replay_corpora": {
+          "fixtures/exchange-depth/pubmatic-openwrap/cases.json": {
+            "pubmatic-openwrap": 689,
+            "pubmatic-openwrap-ctv": 43
+          }
+        },
+        "fixture_count_by_profile": {
+          "pubmatic-openwrap": 689,
+          "pubmatic-openwrap-ctv": 43
+        },
+        "fixture_manifest": "fixtures/exchange-depth/pubmatic-openwrap/cases.json",
+        "evidence_receipt": "pubmatic-openwrap-verification.json",
+        "public_document": "docs/exchange-profiles/pubmatic-openwrap-depth.md"
+      }
+    },
+    {
+      "name": "Amazon APS / TAM / UAM",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://aps.amazon.com/aps/transparent-ad-marketplace/"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public product information does not expose a complete demand partner OpenRTB schema. Partner-specific SDK or bidder bridge documentation is not APS acceptance evidence."
+      ],
+      "examples": []
+    },
+    {
+      "name": "The Trade Desk",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://partner.thetradedesk.com/"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public API/partner surfaces were located, but a full direct OpenRTB acceptance specification was not retrieved. UID2 evidence does not establish exchange-wide mandatory fields."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Microsoft Ad Exchange",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://learn.microsoft.com/en-us/xandr/bidders/outgoing-bid-request-to-bidders"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Current documented Microsoft Monetize surface is existing Xandr. Do not count a rename as another exchange or infer a separate Microsoft contract."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Magnite Streaming / SpringServe",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://springserve.atlassian.net/wiki/spaces/SSD/pages/1621754369/OpenRTB+Bidder+Integration"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public SpringServe bidder guide confirms 2.5, endpoint regions and cookie synchronization but lacks substantive extra payload requirements. It is not the existing DV+ xAPI protocol."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Beachfront",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public full bid request/response protocol not retrieved. Search did not substantiate extra field constraints."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Sharethrough",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://support.sharethrough.com/hc/en-us/articles/115004153003-DCO-FAQ",
+        "https://support.sharethrough.com/hc/en-us/articles/210376926-Frequently-Asked-Questions"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public creative/DCO FAQs refer to Native 1.2 and tracker limits. They do not provide a full OpenRTB payload contract."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Moloco",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://help.moloco.com/hc/en-us",
+        "https://www.moloco.com/terms-and-policies/brand-safety-policy"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Targeted current primary-source review retrieved campaign, measurement and app-ads.txt policy material, but no substantive direct OpenRTB request/response acceptance contract. This does not prove the vendor has no specification."
+      ],
+      "examples": [],
+      "evidence_document": "docs/exchange-profiles/remaining-exchange-source-review.md"
+    },
+    {
+      "name": "BidsData",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "No unambiguous official protocol source found under this name. Do not invent a profile or conflate with BidSwitch/BidData."
+      ],
+      "examples": []
+    },
+    {
+      "name": "RTB House",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://www.rtbhouse.com/blog/seller-defined-audiences-analysis-series-part-i-sda-introduction-initial-insights"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official SDA discussion exists, but no additional full direct protocol acceptance contract was retrieved. Prebid adapter is insufficient."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Media.net",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://www.media.net/ad-quality-policy/",
+        "https://github.com/InteractiveAdvertisingBureau/openrtb3-converter"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official policy requires respecting requests, and a generic OpenRTB converter exists. Neither defines substantive vendor-specific payload constraints."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Samsung Ads",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public CTV/product statements discuss 2.6 integration but no full Samsung-specific direct protocol was retrieved. Do not assume Publica implementation is Samsung acceptance contract."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Nexxen",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public product/job information confirms OpenRTB integration, but no complete official field specification was retrieved. Legacy Tremor/Unruly surfaces need explicit current compatibility evidence."
+      ],
+      "examples": []
+    },
+    {
+      "name": "AdColony",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://developer.digitalturbine.com/"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Legacy AdColony protocol should not be conflated with DT Exchange. No current separate extra OpenRTB schema retrieved."
+      ],
+      "examples": []
+    },
+    {
+      "name": "BIGO Ads",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://bigoads.com/help/developers"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official developer docs expose SDK and reporting. No public direct OpenRTB acceptance specification retrieved."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Mintegral",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://adv.mintegral.com/doc/files/mintegral_integration_instruction_en.pdf"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official advertiser tracking and SDK material does not define direct OpenRTB. No full extra contract retrieved."
+      ],
+      "examples": []
+    },
+    {
+      "name": "Pangle",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Public mediation guides and Prebid parameters are not a full direct OpenRTB specification. No additional acceptance rules substantiated."
+      ],
+      "examples": []
+    },
+    {
+      "name": "LoopMe",
+      "disposition": "defer_no_substantive_public_contract",
+      "directions": [
+        "unconfirmed_direct_protocol"
+      ],
+      "versions": [
+        "not established"
+      ],
+      "official_sources": [
+        "https://loopme.pactsafe.io/"
+      ],
+      "additional_checkable_constraints": [],
+      "documented_or_evidence_gaps": [
+        "Official legal materials mention OpenRTB roles, without an extra field-level integration contract."
+      ],
+      "examples": []
+    }
+  ],
+  "disposition_counts": {
+    "implemented_scoped_public_contract": 15,
+    "defer_current_primary_contract_access": 2,
+    "defer_full_profile": 1,
+    "defer_generic_only_contract": 1,
+    "implemented_scoped_public_contract_full_exchange_deferred": 1,
+    "defer_no_substantive_public_contract": 17
+  },
+  "implemented_scoped_candidate_count": 16,
+  "existing_profiles_outside_expansion_inventory": [
+    "google-ab",
+    "prebid-server",
+    "xandr",
+    "magnite"
+  ],
+  "replay_count_method": "Counts include case records in all checked-in exchange-depth cases.json, cases.jsonl and manifest.json corpora. Primary fixture counts remain separate; reference and peer-review controls are included only in all-replay counts.",
+  "all_replay_fixture_count_by_profile": {
+    "adform-handler": 86,
+    "applovin-alx": 107,
+    "bidswitch": 717,
+    "bidswitch-supplier": 461,
+    "commerce-grid": 340,
+    "digital-turbine": 360,
+    "dv360": 153,
+    "equativ": 266,
+    "equativ-supplier": 275,
+    "google-ab": 648,
+    "index-exchange": 252,
+    "index-exchange-seller": 139,
+    "inmobi": 214,
+    "inmobi-supplier": 28,
+    "magnite": 361,
+    "mobilefuse": 51,
+    "mobilefuse-sdk": 18,
+    "prebid-server": 121,
+    "pubmatic-openwrap": 689,
+    "pubmatic-openwrap-ctv": 43,
+    "sovrn": 19,
+    "spec": 54,
+    "triplelift-supplier": 144,
+    "unity": 122,
+    "vungle": 134,
+    "xandr": 104,
+    "yandex-sdk-bidding": 39
+  },
+  "replay_corpus_count": 18,
+  "total_replay_case_records": 5945,
+  "replay_corpus_inventory": {
+    "crates/rtblint-core/tests/fixtures/exchange-depth/bidswitch/cases.jsonl": {
+      "case_records": 1178,
+      "by_profile": {
+        "bidswitch": 717,
+        "bidswitch-supplier": 461
+      },
+      "sha256": "7ef269e79b040dd07c22c80c9c149fc262a269d8078804646e9ecdb868b0572b"
+    },
+    "crates/rtblint-core/tests/fixtures/exchange-depth/equativ/cases.jsonl": {
+      "case_records": 541,
+      "by_profile": {
+        "equativ": 266,
+        "equativ-supplier": 275
+      },
+      "sha256": "96a274506bad4c4ce866895d4754e74def8280cc1d36a8293f1652b8e1519272"
+    },
+    "crates/rtblint-core/tests/fixtures/exchange-depth/xandr-magnite/cases.jsonl": {
+      "case_records": 465,
+      "by_profile": {
+        "magnite": 361,
+        "xandr": 104
+      },
+      "sha256": "cd561b92f5ca08cd35d958a22336d00c288a49fc2f30f08f54e8b1a77e171321"
+    },
+    "fixtures/exchange-depth/dt-depth/manifest.json": {
+      "case_records": 343,
+      "by_profile": {
+        "digital-turbine": 340,
+        "spec": 3
+      },
+      "sha256": "0565daf0427b05621db537fd10bad8d1dcca4ba5e809c3bcb2818dc405696dd7"
+    },
+    "fixtures/exchange-depth/expansion-batch/manifest.json": {
+      "case_records": 482,
+      "by_profile": {
+        "applovin-alx": 106,
+        "commerce-grid": 339,
+        "digital-turbine": 19,
+        "sovrn": 18
+      },
+      "sha256": "dbc6a65af21d7332627f26027aa9dabfcd1cab2ee5b33a1549c8737ce4387b24"
+    },
+    "fixtures/exchange-depth/final-controls/cases.json": {
+      "case_records": 102,
+      "by_profile": {
+        "unity": 60,
+        "vungle": 42
+      },
+      "sha256": "f7a9bfec23e862edbe56986b90f9a27e7d6b938906966215de74a1e04b3b2e5e"
+    },
+    "fixtures/exchange-depth/google-prebid/cases.json": {
+      "case_records": 763,
+      "by_profile": {
+        "google-ab": 647,
+        "prebid-server": 116
+      },
+      "sha256": "74f2e39716c92bc7ba00ad3fb1574c9e7044fe7d6842018845abe8e3c3b71185"
+    },
+    "fixtures/exchange-depth/handler-sdk/manifest.json": {
+      "case_records": 126,
+      "by_profile": {
+        "adform-handler": 86,
+        "spec": 1,
+        "yandex-sdk-bidding": 39
+      },
+      "sha256": "b5058d5435ed086bd29af3402e733dc72d897e0145e53ea32aaa18a8b1e0b699"
+    },
+    "fixtures/exchange-depth/index-dv360/cases.json": {
+      "case_records": 352,
+      "by_profile": {
+        "dv360": 70,
+        "index-exchange": 178,
+        "index-exchange-seller": 104
+      },
+      "sha256": "a2fc2cba5eaa96587de94f2a43594c473b18fb0d7821a8386e157958c2e53f12"
+    },
+    "fixtures/exchange-depth/index-dv360-peer-review/cases.json": {
+      "case_records": 141,
+      "by_profile": {
+        "dv360": 73,
+        "index-exchange": 58,
+        "index-exchange-seller": 10
+      },
+      "sha256": "ecb4fe6ab7d8f48c48750e82c8ba7149e5692d7a46be988cf6a5bfeb8bed2eb6"
+    },
+    "fixtures/exchange-depth/index-structured-pods/cases.json": {
+      "case_records": 18,
+      "by_profile": {
+        "index-exchange-seller": 17,
+        "spec": 1
+      },
+      "sha256": "2fc2936d25e5b055ad27de3e2faca58f895cdeeeff17b64c0aafd8906189c1c7"
+    },
+    "fixtures/exchange-depth/inmobi-mobilefuse/cases.json": {
+      "case_records": 273,
+      "by_profile": {
+        "inmobi": 182,
+        "inmobi-supplier": 23,
+        "mobilefuse": 49,
+        "mobilefuse-sdk": 18,
+        "spec": 1
+      },
+      "sha256": "8528af645d888f006c55726d1db76a4ace496059afdddbae05887cceb772b702"
+    },
+    "fixtures/exchange-depth/peer-review-boundaries/cases.json": {
+      "case_records": 45,
+      "by_profile": {
+        "inmobi": 32,
+        "inmobi-supplier": 5,
+        "mobilefuse": 2,
+        "prebid-server": 5,
+        "spec": 1
+      },
+      "sha256": "dda9331d9053e5ab260320d5c467ab80662cd9fd8bf0e59826265b695860f316"
+    },
+    "fixtures/exchange-depth/pubmatic-openwrap/cases.json": {
+      "case_records": 733,
+      "by_profile": {
+        "pubmatic-openwrap": 689,
+        "pubmatic-openwrap-ctv": 43,
+        "spec": 1
+      },
+      "sha256": "9478cff922dd1a240632a76f710e99dec1deeb390f81dac2703e7ddae2aaf4fd"
+    },
+    "fixtures/exchange-depth/reference/cases.json": {
+      "case_records": 39,
+      "by_profile": {
+        "applovin-alx": 1,
+        "commerce-grid": 1,
+        "digital-turbine": 1,
+        "dv360": 10,
+        "google-ab": 1,
+        "index-exchange": 16,
+        "index-exchange-seller": 8,
+        "sovrn": 1
+      },
+      "sha256": "327be9471af5d7bb2b411223cf8405a86d996163e738cdf8f0742d05d771e36e"
+    },
+    "fixtures/exchange-depth/spec-video-skip/cases.json": {
+      "case_records": 45,
+      "by_profile": {
+        "spec": 45
+      },
+      "sha256": "31b34cc85ba87c890c603fa5d400b1663f957496164f86c906bee7e50f61b64c"
+    },
+    "fixtures/exchange-depth/triplelift/cases.json": {
+      "case_records": 145,
+      "by_profile": {
+        "spec": 1,
+        "triplelift-supplier": 144
+      },
+      "sha256": "528cdeb4ececca11a4fdb96333f1fe94a810a5e90a64f6f74766e7cd05d661a8"
+    },
+    "fixtures/exchange-depth/unity-vungle/manifest.json": {
+      "case_records": 154,
+      "by_profile": {
+        "unity": 62,
+        "vungle": 92
+      },
+      "sha256": "91f24ca84605d993e223b7bd52ea9834c16db1f2b8a2fa1301c8705618eb97ca"
+    }
+  },
+  "final_scope_summary": {
+    "local_candidate_version": "0.14.0",
+    "additional_candidates_reviewed": 37,
+    "additional_candidates_implemented_as_scoped_public_contracts": 16,
+    "additional_candidates_deferred": 21,
+    "existing_products_deepened": 4,
+    "products_with_implemented_scoped_contracts": 20,
+    "non_spec_directional_profiles": 26,
+    "spec_profile_included_in_consumer_catalog": true,
+    "non_spec_replay_case_records": 5891,
+    "spec_control_case_records": 54,
+    "all_replay_case_records": 5945,
+    "checked_in_replay_corpora": 18,
+    "scope_outcomes": {
+      "implemented_scoped_public_contract": 15,
+      "defer_current_primary_contract_access": 2,
+      "defer_full_profile": 1,
+      "defer_generic_only_contract": 1,
+      "implemented_scoped_public_contract_full_exchange_deferred": 1,
+      "defer_no_substantive_public_contract": 17
+    },
+    "by_profile": {
+      "adform-handler": 86,
+      "applovin-alx": 107,
+      "bidswitch": 717,
+      "bidswitch-supplier": 461,
+      "commerce-grid": 340,
+      "digital-turbine": 360,
+      "dv360": 153,
+      "equativ": 266,
+      "equativ-supplier": 275,
+      "google-ab": 648,
+      "index-exchange": 252,
+      "index-exchange-seller": 139,
+      "inmobi": 214,
+      "inmobi-supplier": 28,
+      "magnite": 361,
+      "mobilefuse": 51,
+      "mobilefuse-sdk": 18,
+      "prebid-server": 121,
+      "pubmatic-openwrap": 689,
+      "pubmatic-openwrap-ctv": 43,
+      "sovrn": 19,
+      "spec": 54,
+      "triplelift-supplier": 144,
+      "unity": 122,
+      "vungle": 134,
+      "xandr": 104,
+      "yandex-sdk-bidding": 39
+    },
+    "scope_limit": "Scoped primary public contracts and locally checkable semantics. Fixture records are not percentages of exchange acceptance or a complete certification. Public access deferrals describe retrieved evidence, not absence of a vendor specification. PubMatic OpenWrap producer contracts do not certify full PubMatic exchange acceptance.",
+    "release_status": "Local candidate. No RTBLint publication or deployment."
+  }
+}

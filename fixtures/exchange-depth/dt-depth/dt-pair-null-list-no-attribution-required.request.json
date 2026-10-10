@@ -1,0 +1,176 @@
+{
+  "id": "dt-auction",
+  "at": 1,
+  "tmax": 300,
+  "cur": [
+    "USD"
+  ],
+  "bcat": [],
+  "badv": [],
+  "bapp": [],
+  "source": {
+    "fd": 0,
+    "tid": "transaction",
+    "ext": {
+      "schain": {
+        "ver": "1.0",
+        "complete": 1,
+        "nodes": [
+          {
+            "asi": "fyber.com",
+            "sid": "seller",
+            "hp": 1
+          }
+        ]
+      },
+      "omidpn": "DT",
+      "omidpv": "1.0"
+    }
+  },
+  "regs": {
+    "coppa": 0,
+    "ext": {
+      "gdpr": 0,
+      "us_privacy": "1---",
+      "gpp": "",
+      "gpp_sid": [
+        2,
+        6
+      ]
+    }
+  },
+  "app": {
+    "id": "app",
+    "name": "App",
+    "bundle": "1001",
+    "cat": [
+      "IAB9"
+    ],
+    "ver": "1.0",
+    "privacypolicy": 1,
+    "publisher": {
+      "id": "seller",
+      "name": "Publisher"
+    },
+    "ext": {
+      "storecat": "Games",
+      "storesubcat": [
+        "Puzzle"
+      ],
+      "fmwname": "native",
+      "apilevel": 35
+    }
+  },
+  "device": {
+    "ua": "Mozilla/5.0",
+    "dnt": 0,
+    "ip": "192.0.2.1",
+    "devicetype": 4,
+    "h": 1920,
+    "w": 1080,
+    "js": 1,
+    "language": "en",
+    "connectiontype": 2,
+    "geo": {
+      "country": "USA"
+    },
+    "ext": {
+      "headset": 0,
+      "atts": 3,
+      "inputlanguage": [
+        "en"
+      ],
+      "ifv": "idfv",
+      "diskspace": 1,
+      "totaldisk": 2,
+      "ringmute": 0,
+      "charging": 1,
+      "bluetooth": 0,
+      "batterylevel": 8,
+      "batterysaver": 0,
+      "darkmode": 1,
+      "airplane": 0,
+      "dnd": 0
+    },
+    "os": "iOS"
+  },
+  "user": {
+    "ext": {
+      "consent": "",
+      "impdepth": 2,
+      "sessionduration": 10,
+      "lastbundle": "last.app",
+      "lastadomain": "last.example",
+      "clickrate": 5,
+      "lastclick": 0,
+      "lastclicktype": 0,
+      "completionrate": 70,
+      "eids": [
+        {
+          "source": "id.example",
+          "uids": [
+            {
+              "id": "user",
+              "atype": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "displaymanager": "DT",
+      "displaymanagerver": "1.0",
+      "instl": 0,
+      "tagid": "placement",
+      "bidfloor": 0.1,
+      "bidfloorcur": "USD",
+      "clickbrowser": 0,
+      "secure": 0,
+      "exp": 1800,
+      "rwdd": 0,
+      "ext": {
+        "brsrclk": 0,
+        "dpl": 1,
+        "skadn": {
+          "versions": [
+            "2.0",
+            "2.2",
+            "3.0",
+            "4.0"
+          ],
+          "sourceapp": "1001",
+          "skadnetids": null,
+          "skoverlay": [
+            "present",
+            "delay"
+          ],
+          "productpage": 1
+        }
+      },
+      "banner": {
+        "id": "banner",
+        "w": 320,
+        "h": 50,
+        "btype": [],
+        "battr": [],
+        "pos": 1,
+        "topframe": 0,
+        "mimes": [
+          "text/html"
+        ],
+        "api": [
+          3,
+          5,
+          7
+        ],
+        "ext": {
+          "rewarded": 0,
+          "autostore": 1
+        }
+      }
+    }
+  ]
+}

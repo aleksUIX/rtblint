@@ -1,0 +1,1108 @@
+{
+  "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+  "cases": [
+    {
+      "id": "same-pod",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "unset-pod-",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": ""
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "unset-pod-None",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": null
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "missing-one-pod",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "missing-both-pods",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ]
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.podid",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "different-pods",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.pod_id_mismatch",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "spec-allows-different-pods",
+      "profile": "spec",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch",
+        "openrtb.profile.field_required"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "three-same-pods",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "3",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "three-different-pods",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          {
+            "id": "3",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-3"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.pod_id_mismatch",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.index.pod_id_mismatch",
+          "path": "imp[2].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "banner-outside-video-pod",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "3",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "single-nonpodded-video",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch",
+        "openrtb.profile.field_required"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "single-video-plus-banner",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ]
+            }
+          },
+          {
+            "id": "2",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch",
+        "openrtb.profile.field_required"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "wrong-pod-type-defers-membership",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": 7
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[1].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "malformed-video-defers-7",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          {
+            "id": "3",
+            "video": 7
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[2].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "malformed-video-defers-[]",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          {
+            "id": "3",
+            "video": []
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[2].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "malformed-video-defers-wrong",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          {
+            "id": "3",
+            "video": "wrong"
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[2].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "malformed-video-defers-True",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          {
+            "id": "3",
+            "video": true
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[2].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "malformed-imp-defers-membership",
+      "profile": "index-exchange-seller",
+      "version": "2.6-202606",
+      "direction": "request",
+      "input": {
+        "id": "r",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-1"
+            }
+          },
+          {
+            "id": "2",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "w": 640,
+              "h": 360,
+              "minduration": 1,
+              "maxduration": 30,
+              "protocols": [
+                2
+              ],
+              "podid": "pod-2"
+            }
+          },
+          null
+        ]
+      },
+      "valid": false,
+      "expected": [],
+      "forbidden": [
+        "openrtb.profile.index.pod_id_mismatch"
+      ],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    }
+  ]
+}

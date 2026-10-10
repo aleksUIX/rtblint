@@ -1,0 +1,56 @@
+{
+  "id": "grid-request",
+  "cur": [
+    "USD"
+  ],
+  "site": {
+    "publisher": {
+      "id": "pub"
+    }
+  },
+  "user": {
+    "buyeruid": "criteo-user"
+  },
+  "device": {
+    "ua": "ua",
+    "ip": "203.0.113.2",
+    "dnt": 0,
+    "lmt": 0,
+    "geo": {
+      "country": "USA"
+    }
+  },
+  "source": {
+    "ext": {
+      "sourcetype": 3,
+      "sourceorigin": 1
+    },
+    "schain": {
+      "ver": "1.0",
+      "complete": 1,
+      "nodes": [
+        {
+          "asi": "seller.example",
+          "sid": "pub",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "instl": 0,
+      "banner": {
+        "w": 300,
+        "h": 250,
+        "format": [
+          {
+            "w": 300,
+            "h": 250
+          }
+        ]
+      }
+    }
+  ]
+}

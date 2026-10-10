@@ -13,6 +13,29 @@ use serde_json::{Map, Value};
 
 use crate::{Issue, Severity};
 
+mod adform;
+mod applovin;
+mod bidswitch;
+mod commerce_grid;
+pub(crate) mod compat;
+mod contract;
+mod digital_turbine;
+mod dv360;
+mod equativ;
+mod google;
+mod index_exchange;
+mod inmobi;
+mod magnite;
+mod mobilefuse;
+mod prebid;
+mod pubmatic_openwrap;
+mod sovrn;
+mod triplelift;
+mod unity;
+mod vungle;
+mod xandr;
+mod yandex;
+
 /// An exchange's documented protocol requirements, applied on top of the spec.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 #[non_exhaustive]
@@ -34,29 +57,173 @@ pub enum Profile {
     Xandr,
     /// Magnite DV+ Exchange API (xAPI) JSON, as documented by the public
     /// protobuf extensions at
-    /// <https://github.com/MagniteEngineering/xapi-proto>. Identity fields
-    /// only: zone, site, and account ids. Floors and blocklists stay out.
+    /// <https://github.com/MagniteEngineering/xapi-proto>.
     Magnite,
+    /// Display & Video 360.
+    Dv360,
+    /// Index Exchange DSP.
+    IndexExchange,
+    /// Index Exchange supplier ingest.
+    IndexExchangeSeller,
+    /// Unity Exchange.
+    Unity,
+    /// Vungle Exchange.
+    Vungle,
+    /// BidSwitch buyer 5.7.
+    BidSwitch,
+    /// BidSwitch supplier 1.1.
+    BidSwitchSupplier,
+    /// InMobi DSP.
+    InMobi,
+    /// InMobi supplier ingest.
+    InMobiSupplier,
+    /// MobileFuse in-app bidding.
+    MobileFuse,
+    /// MobileFuse SDK bidding.
+    MobileFuseSdk,
+    /// AppLovin ALX DSP response.
+    AppLovinAlx,
+    /// Commerce Grid supplier ingest.
+    CommerceGrid,
+    /// Digital Turbine Exchange's published request and response contract.
+    DigitalTurbine,
+    /// Sovrn request.
+    Sovrn,
+    /// Equativ bidder contract.
+    Equativ,
+    /// Equativ supplier ingest.
+    EquativSupplier,
+    /// TripleLift supplier ingest.
+    TripleLiftSupplier,
+    /// Adform OpenRTB handler.
+    AdformHandler,
+    /// Yandex Android and iOS SDK bidding.
+    YandexSdkBidding,
+    /// PubMatic OpenWrap custom wire fields.
+    PubMaticOpenWrap,
+    /// PubMatic OpenWrap CTV ad-pod middleware.
+    PubMaticOpenWrapCtv,
 }
 
 impl Profile {
     pub fn as_str(self) -> &'static str {
         match self {
             Self::Spec => "spec",
+            Self::PubMaticOpenWrap => "pubmatic-openwrap",
+            Self::PubMaticOpenWrapCtv => "pubmatic-openwrap-ctv",
+            Self::TripleLiftSupplier => "triplelift-supplier",
+            Self::AdformHandler => "adform-handler",
+            Self::YandexSdkBidding => "yandex-sdk-bidding",
+            Self::Equativ => "equativ",
+            Self::EquativSupplier => "equativ-supplier",
+
+            Self::AppLovinAlx => "applovin-alx",
+            Self::CommerceGrid => "commerce-grid",
+            Self::DigitalTurbine => "digital-turbine",
+            Self::Sovrn => "sovrn",
+
+            Self::InMobi => "inmobi",
+            Self::InMobiSupplier => "inmobi-supplier",
+            Self::MobileFuse => "mobilefuse",
+            Self::MobileFuseSdk => "mobilefuse-sdk",
+
             Self::GoogleAuthorizedBuyers => "google-ab",
             Self::PrebidServer => "prebid-server",
             Self::Xandr => "xandr",
             Self::Magnite => "magnite",
+            Self::Dv360 => "dv360",
+            Self::IndexExchange => "index-exchange",
+            Self::IndexExchangeSeller => "index-exchange-seller",
+            Self::Unity => "unity",
+            Self::Vungle => "vungle",
+            Self::BidSwitch => "bidswitch",
+            Self::BidSwitchSupplier => "bidswitch-supplier",
         }
     }
 
     pub fn display_name(self) -> &'static str {
         match self {
             Self::Spec => "the OpenRTB specification",
+            Self::PubMaticOpenWrap => "PubMatic OpenWrap wire contract",
+            Self::PubMaticOpenWrapCtv => "PubMatic OpenWrap CTV middleware",
+            Self::TripleLiftSupplier => "TripleLift supplier ingest",
+            Self::AdformHandler => "Adform OpenRTB handler",
+            Self::YandexSdkBidding => "Yandex SDK bidding",
+            Self::Equativ => "Equativ bidder contract",
+            Self::EquativSupplier => "Equativ supplier ingest",
+
+            Self::AppLovinAlx => "AppLovin ALX DSP response",
+            Self::CommerceGrid => "Commerce Grid supplier ingest",
+            Self::DigitalTurbine => "Digital Turbine Exchange",
+            Self::Sovrn => "Sovrn request",
+
+            Self::InMobi => "InMobi DSP",
+            Self::InMobiSupplier => "InMobi supplier ingest",
+            Self::MobileFuse => "MobileFuse in-app bidding",
+            Self::MobileFuseSdk => "MobileFuse SDK bidding",
+
             Self::GoogleAuthorizedBuyers => "Google Authorized Buyers",
             Self::PrebidServer => "Prebid Server",
             Self::Xandr => "Xandr",
             Self::Magnite => "Magnite",
+            Self::Dv360 => "Display & Video 360",
+            Self::IndexExchange => "Index Exchange DSP",
+            Self::IndexExchangeSeller => "Index Exchange supplier ingest",
+            Self::Unity => "Unity Exchange",
+            Self::Vungle => "Vungle Exchange",
+            Self::BidSwitch => "BidSwitch buyer 5.7",
+            Self::BidSwitchSupplier => "BidSwitch supplier 1.1",
+        }
+    }
+
+    /// Whether public evidence supports this profile's request contract.
+    pub fn supports_request(self) -> bool {
+        !matches!(self, Self::AppLovinAlx)
+    }
+
+    /// Whether public evidence supports this profile's response contract.
+    pub fn supports_response(self) -> bool {
+        !matches!(
+            self,
+            Self::IndexExchangeSeller | Self::CommerceGrid | Self::Sovrn
+        )
+    }
+
+    /// Primary protocol source for this exchange contract.
+    pub fn source_url(self) -> Option<&'static str> {
+        match self {
+            Self::Spec => None,
+            Self::PubMaticOpenWrap => Some("https://github.com/PubMatic-OpenWrap/prebid-server/tree/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797"),
+            Self::PubMaticOpenWrapCtv => Some("https://github.com/PubMatic-OpenWrap/prebid-server/tree/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797"),
+            Self::TripleLiftSupplier => Some("https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-request-objects"),
+            Self::AdformHandler => Some("https://www.adformhelp.com/hc/en-us/articles/10431570694033"),
+            Self::YandexSdkBidding => Some("https://ads.yandex.com/helpcenter/en/support/open-bidding/open-bidding-integration-android"),
+            Self::Equativ => Some("https://help.equativ.com/connect-bidder-to-equativ-ssp-supported-fields"),
+            Self::EquativSupplier => Some("https://help.equativ.com/open-rtb-api-integration-bid-request-specification"),
+
+            Self::AppLovinAlx => Some("https://support.applovin.com/en/max/demand-partners/demand-side-platforms/applovin-ortb-specification/bid-responses"),
+            Self::CommerceGrid => Some("https://docs.commercegrid.criteo.com/kb/guide/en/custom-server-to-server-openrtb-Vy9QrGVwyl/Steps/2366154"),
+            Self::DigitalTurbine => Some("https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs"),
+            Self::Sovrn => Some("https://knowledge.sovrn.com/kb/sovrn-ortb-specs"),
+
+            Self::InMobi => Some("https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp"),
+            Self::InMobiSupplier => Some("https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview"),
+            Self::MobileFuse => Some("https://docs.mobilefuse.com/docs/bid-requests"),
+            Self::MobileFuseSdk => Some("https://docs.mobilefuse.com/docs/sdk-bidding"),
+
+            Self::BidSwitch => Some("https://protocol.bidswitch.com/standards-v57/bidrequest.html"),
+            Self::BidSwitchSupplier => Some("https://protocol.bidswitch.com/ssp-protocol-v11/ssp-request.html"),
+
+            Self::GoogleAuthorizedBuyers => Some("https://developers.google.com/authorized-buyers/rtb/openrtb-guide"),
+            Self::PrebidServer => Some("https://docs.prebid.org/prebid-server/endpoints/openrtb2/pbs-endpoint-auction.html"),
+            Self::Xandr => Some("https://learn.microsoft.com/en-us/xandr/bidders/outgoing-bid-request-to-bidders"),
+            Self::Magnite => Some("https://github.com/MagniteEngineering/xapi-proto"),
+            Self::Dv360 => Some("https://developers.google.com/display-video/ortb-spec"),
+            Self::IndexExchange => Some("https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"),
+            Self::IndexExchangeSeller => Some("https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"),
+            Self::Unity => Some("https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-requests"),
+            Self::Vungle => Some("https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide"),
+
         }
     }
 
@@ -76,18 +243,92 @@ impl Profile {
                 Some(Self::Xandr)
             }
             "magnite" | "rubicon" | "dvplus" | "dv+" | "xapi" => Some(Self::Magnite),
+            "dv360" => Some(Self::Dv360),
+            "index-exchange" => Some(Self::IndexExchange),
+            "index-exchange-seller" => Some(Self::IndexExchangeSeller),
+            "unity" => Some(Self::Unity),
+            "vungle" => Some(Self::Vungle),
+            "display-video-360" => Some(Self::Dv360),
+            "liftoff" => Some(Self::Vungle),
+            "bidswitch" => Some(Self::BidSwitch),
+            "bidswitch-supplier" => Some(Self::BidSwitchSupplier),
+            "inmobi" => Some(Self::InMobi),
+            "inmobi-supplier" => Some(Self::InMobiSupplier),
+            "mobilefuse" => Some(Self::MobileFuse),
+            "mobilefuse-sdk" => Some(Self::MobileFuseSdk),
+            "applovin-alx" => Some(Self::AppLovinAlx),
+            "commerce-grid" => Some(Self::CommerceGrid),
+            "digital-turbine" => Some(Self::DigitalTurbine),
+            "sovrn" => Some(Self::Sovrn),
+            "equativ" => Some(Self::Equativ),
+            "equativ-supplier" => Some(Self::EquativSupplier),
+            "triplelift-supplier" => Some(Self::TripleLiftSupplier),
+            "adform-handler" => Some(Self::AdformHandler),
+            "yandex-sdk-bidding" => Some(Self::YandexSdkBidding),
+            "pubmatic-openwrap" => Some(Self::PubMaticOpenWrap),
+            "pubmatic-openwrap-ctv" => Some(Self::PubMaticOpenWrapCtv),
             _ => None,
         }
     }
 
     /// Canonical ids, for error messages that list what is available.
     pub fn ids() -> &'static [&'static str] {
-        &["spec", "google-ab", "prebid-server", "xandr", "magnite"]
+        &[
+            "spec",
+            "google-ab",
+            "prebid-server",
+            "xandr",
+            "magnite",
+            "dv360",
+            "index-exchange",
+            "index-exchange-seller",
+            "unity",
+            "vungle",
+            "bidswitch",
+            "bidswitch-supplier",
+            "inmobi",
+            "inmobi-supplier",
+            "mobilefuse",
+            "mobilefuse-sdk",
+            "applovin-alx",
+            "commerce-grid",
+            "digital-turbine",
+            "sovrn",
+            "equativ",
+            "equativ-supplier",
+            "triplelift-supplier",
+            "adform-handler",
+            "yandex-sdk-bidding",
+            "pubmatic-openwrap",
+            "pubmatic-openwrap-ctv",
+        ]
     }
 
     /// Whether this profile documents `object.field = value` as a valid enum
     /// member the specification does not list.
     pub fn allows_enum_value(self, object_name: &str, field_name: &str, value: i64) -> bool {
+        if matches!(self, Self::Equativ | Self::EquativSupplier)
+            && object_name == "Video"
+            && field_name == "plcmt"
+            && (5..=9).contains(&value)
+        {
+            return true;
+        }
+        if self == Self::Dv360
+            && ((matches!(object_name, "BidRequest" | "Deal") && field_name == "at" && value == 3)
+                || (object_name == "Video"
+                    && matches!(field_name, "placement" | "plcmt" | "playbackmethod")
+                    && value == 0))
+        {
+            return true;
+        }
+        if matches!(self, Self::IndexExchange | Self::IndexExchangeSeller)
+            && object_name == "Deal"
+            && field_name == "at"
+            && (value == 3 || (self == Self::IndexExchangeSeller && value >= 500))
+        {
+            return true;
+        }
         extra_enum_values(self).iter().any(|entry| {
             entry.object == object_name && entry.field == field_name && entry.value == value
         })
@@ -96,12 +337,118 @@ impl Profile {
     /// Extra required fields this profile documents, as `(object, dotted path)`
     /// pairs relative to that object (`ext.billing_id` lives on Imp).
     pub fn extra_required(self) -> &'static [RequiredField] {
-        match self {
-            Self::Spec | Self::PrebidServer => &[],
-            Self::GoogleAuthorizedBuyers => GOOGLE_AB_REQUIRED,
-            Self::Xandr => XANDR_REQUIRED,
-            Self::Magnite => MAGNITE_REQUIRED,
+        if self == Self::GoogleAuthorizedBuyers {
+            GOOGLE_AB_REQUIRED
+        } else {
+            &[]
         }
+    }
+
+    /// Vendor sources that explicitly retain a community extension location.
+    pub(crate) fn allows_legacy_path(self, path: &str) -> bool {
+        match self {
+            Self::DigitalTurbine => matches!(
+                path,
+                "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "regs.ext.gpp"
+                    | "regs.ext.gpp_sid"
+                    | "user.ext.consent"
+                    | "user.ext.eids"
+                    | "source.ext.schain"
+            ),
+            Self::PubMaticOpenWrap | Self::PubMaticOpenWrapCtv => matches!(
+                path,
+                "regs.ext.gdpr" | "regs.ext.us_privacy" | "user.ext.consent"
+            ),
+            Self::TripleLiftSupplier => matches!(
+                path,
+                "regs.ext.gdpr" | "regs.ext.us_privacy" | "regs.ext.gpp" | "regs.ext.gpp_sid"
+            ),
+            Self::AdformHandler => matches!(
+                path,
+                "regs.ext.gdpr" | "source.ext.schain" | "user.ext.consent" | "user.ext.eids"
+            ),
+            Self::Equativ | Self::EquativSupplier => matches!(
+                path,
+                "regs.ext.gdpr" | "user.ext.consent" | "source.ext.schain" | "user.ext.eids"
+            ),
+            Self::CommerceGrid => matches!(
+                path,
+                "regs.ext.gdpr" | "regs.ext.us_privacy" | "regs.ext.gpp" | "user.ext.consent"
+            ),
+            Self::Sovrn => path == "regs.ext.gdpr",
+            Self::InMobi | Self::InMobiSupplier => {
+                matches!(path, "regs.ext.gdpr" | "user.ext.consent")
+                    || (self == Self::InMobiSupplier && path == "user.ext.eids")
+                    || (self == Self::InMobi && path == "source.ext.schain")
+            }
+            Self::MobileFuse | Self::MobileFuseSdk => matches!(
+                path,
+                "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "regs.ext.gpp"
+                    | "regs.ext.gpp_sid"
+                    | "user.ext.consent"
+            ),
+            Self::BidSwitch => matches!(
+                path,
+                "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "user.ext.consent"
+                    | "user.ext.eids"
+                    | "source.ext.schain"
+                    | "site.ext.inventorypartnerdomain"
+                    | "app.ext.inventorypartnerdomain"
+                    | "ext.dooh"
+                    | "ext.s2s_nurl"
+                    | "imp.video.ext.rewarded"
+                    | "imp.ext.ssai"
+            ),
+            Self::GoogleAuthorizedBuyers => matches!(
+                path,
+                "app.ext.inventorypartnerdomain"
+                    | "site.ext.inventorypartnerdomain"
+                    | "regs.ext.gdpr"
+                    | "user.ext.consent"
+            ),
+            Self::Xandr => path == "app.ext.inventorypartnerdomain",
+            Self::Unity => matches!(
+                path,
+                "regs.ext.gdpr" | "regs.ext.us_privacy" | "user.ext.consent"
+            ),
+            Self::Vungle => matches!(
+                path,
+                "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "user.ext.consent"
+                    | "user.ext.eids"
+                    | "source.ext.schain"
+            ),
+            Self::Dv360 => matches!(
+                path,
+                "app.ext.inventorypartnerdomain"
+                    | "site.ext.inventorypartnerdomain"
+                    | "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "user.ext.consent"
+                    | "user.ext.eids"
+                    | "source.ext.schain"
+            ),
+            Self::IndexExchange | Self::IndexExchangeSeller => matches!(
+                path,
+                "app.ext.inventorypartnerdomain"
+                    | "site.ext.inventorypartnerdomain"
+                    | "regs.ext.gdpr"
+                    | "regs.ext.us_privacy"
+                    | "user.ext.consent"
+            ),
+            _ => false,
+        }
+    }
+
+    pub(crate) fn is_error_response(self, response: &Map<String, Value>) -> bool {
+        self == Self::Dv360 && dv360::invalid_request_response(response)
     }
 
     /// Native Ads 1.2 requires each request asset to carry an integer `id`.
@@ -155,58 +502,11 @@ const GOOGLE_AB_REQUIRED: &[RequiredField] = &[RequiredField {
     path: "ext.billing_id",
 }];
 
-/// Microsoft Monetize outgoing bid requests name the selling member, and
-/// video impressions include the AppNexus context enum alongside
-/// `plcmt` / `placement`.
-const XANDR_REQUIRED: &[RequiredField] = &[
-    RequiredField {
-        object: "BidRequest",
-        path: "ext.appnexus.seller_member_id",
-    },
-    RequiredField {
-        object: "Video",
-        path: "ext.appnexus.context",
-    },
-];
-
-/// Magnite xAPI identity fields on the JSON mapping of the DV+ extensions
-/// (`ext.rp`). Floors, blocklists, and proxy demand stay out.
-const MAGNITE_REQUIRED: &[RequiredField] = &[
-    RequiredField {
-        object: "Imp",
-        path: "ext.rp.zone_id",
-    },
-    RequiredField {
-        object: "Site",
-        path: "ext.rp.site_id",
-    },
-    RequiredField {
-        object: "App",
-        path: "ext.rp.site_id",
-    },
-    RequiredField {
-        object: "Site",
-        path: "publisher.ext.rp.account_id",
-    },
-    RequiredField {
-        object: "App",
-        path: "publisher.ext.rp.account_id",
-    },
-];
-
-/// `imp.ext` keys Prebid Server does not treat as bidder codes. From
-/// `openrtb_ext.IsPotentialBidder` / reserved bidder names.
-const PREBID_RESERVED_IMP_EXT: &[&str] = &[
-    "prebid", "data", "context", "general", "gpid", "skadn", "tid", "ae", "igs", "all",
-];
-
-const PREBID_TRACE_VALUES: &[&str] = &["verbose", "basic"];
-const PREBID_BID_TYPES: &[&str] = &["banner", "video", "native", "audio"];
-
 fn extra_enum_values(profile: Profile) -> &'static [ExtraEnum] {
-    match profile {
-        Profile::Spec | Profile::PrebidServer | Profile::Xandr | Profile::Magnite => &[],
-        Profile::GoogleAuthorizedBuyers => GOOGLE_AB_ENUMS,
+    if profile == Profile::GoogleAuthorizedBuyers {
+        GOOGLE_AB_ENUMS
+    } else {
+        &[]
     }
 }
 
@@ -226,7 +526,7 @@ pub(crate) fn path_populated(
     }
 }
 
-fn value_at<'a>(object: &'a Map<String, Value>, path: &str) -> Option<&'a Value> {
+pub(super) fn value_at<'a>(object: &'a Map<String, Value>, path: &str) -> Option<&'a Value> {
     let mut parts = path.split('.');
     let first = parts.next()?;
     let mut current = object.get(first)?;
@@ -247,51 +547,111 @@ pub(crate) fn push_profile_semantics(
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
+    let start = issues.len();
     match profile {
-        Profile::PrebidServer => match object_name {
-            "BidRequest" => validate_prebid_bid_request(object, instance_path, issues),
-            "App" => validate_prebid_app(object, instance_path, issues),
-            "Bid" => validate_prebid_bid(object, instance_path, issues),
-            _ => {}
-        },
-        Profile::Xandr => match object_name {
-            "BidRequest" => validate_xandr_bid_request(object, instance_path, issues),
-            "Video" => validate_xandr_video(object, instance_path, issues),
-            _ => {}
-        },
+        Profile::PubMaticOpenWrap | Profile::PubMaticOpenWrapCtv => pubmatic_openwrap::validate(
+            profile == Profile::PubMaticOpenWrapCtv,
+            object_name,
+            object,
+            instance_path,
+            issues,
+        ),
+        Profile::TripleLiftSupplier => {
+            triplelift::validate(object_name, object, instance_path, issues)
+        }
+        Profile::AdformHandler => adform::validate(object_name, object, instance_path, issues),
+        Profile::YandexSdkBidding => yandex::validate(object_name, object, instance_path, issues),
+        Profile::GoogleAuthorizedBuyers => {
+            google::validate(object_name, object, instance_path, issues)
+        }
+        Profile::Magnite => magnite::validate(object_name, object, instance_path, issues),
+        Profile::Dv360 => dv360::validate(object_name, object, instance_path, issues),
+        Profile::IndexExchange => {
+            index_exchange::validate(false, object_name, object, instance_path, issues)
+        }
+        Profile::IndexExchangeSeller => {
+            index_exchange::validate(true, object_name, object, instance_path, issues)
+        }
+        Profile::Unity => unity::validate(object_name, object, instance_path, issues),
+        Profile::Vungle => vungle::validate(object_name, object, instance_path, issues),
+        Profile::BidSwitch => {
+            bidswitch::validate(object_name, object, instance_path, issues, false)
+        }
+        Profile::BidSwitchSupplier => {
+            bidswitch::validate(object_name, object, instance_path, issues, true)
+        }
+        Profile::InMobi => inmobi::validate(false, object_name, object, instance_path, issues),
+        Profile::InMobiSupplier => {
+            inmobi::validate(true, object_name, object, instance_path, issues)
+        }
+        Profile::MobileFuse => {
+            mobilefuse::validate(false, object_name, object, instance_path, issues)
+        }
+        Profile::MobileFuseSdk => {
+            mobilefuse::validate(true, object_name, object, instance_path, issues)
+        }
+        Profile::AppLovinAlx => applovin::validate(object_name, object, instance_path, issues),
+        Profile::CommerceGrid => {
+            commerce_grid::validate(object_name, object, instance_path, issues)
+        }
+        Profile::DigitalTurbine => {
+            digital_turbine::validate(object_name, object, instance_path, issues)
+        }
+        Profile::Sovrn => sovrn::validate(object_name, object, instance_path, issues),
+        Profile::Equativ => equativ::validate(object_name, object, instance_path, issues, false),
+        Profile::EquativSupplier => {
+            equativ::validate(object_name, object, instance_path, issues, true)
+        }
+        Profile::PrebidServer => prebid::validate(object_name, object, instance_path, issues),
+        Profile::Xandr => xandr::validate(object_name, object, instance_path, issues),
         _ => {}
+    }
+    cite_profile_issues(profile, &mut issues[start..]);
+}
+
+pub(crate) fn push_profile_pair(
+    profile: Profile,
+    request: &Map<String, Value>,
+    response: &Map<String, Value>,
+    issues: &mut Vec<Issue>,
+) {
+    let start = issues.len();
+    match profile {
+        Profile::TripleLiftSupplier => triplelift::validate_pair(request, response, issues),
+        Profile::AdformHandler => adform::validate_pair(request, response, issues),
+        Profile::YandexSdkBidding => yandex::validate_pair(request, response, issues),
+        Profile::GoogleAuthorizedBuyers => google::validate_pair(request, response, issues),
+        Profile::Dv360 => dv360::validate_pair(request, response, issues),
+        Profile::IndexExchange => index_exchange::validate_pair(request, response, issues),
+        Profile::Unity => unity::validate_pair(request, response, issues),
+        Profile::Vungle => vungle::validate_pair(request, response, issues),
+        Profile::BidSwitch => bidswitch::validate_pair(request, response, issues, false),
+        Profile::BidSwitchSupplier => bidswitch::validate_pair(request, response, issues, true),
+        Profile::InMobi => inmobi::validate_pair(request, response, issues),
+        Profile::MobileFuse | Profile::MobileFuseSdk => {
+            mobilefuse::validate_pair(request, response, issues)
+        }
+        Profile::AppLovinAlx => applovin::validate_pair(request, response, issues),
+        Profile::DigitalTurbine => digital_turbine::validate_pair(request, response, issues),
+        Profile::Equativ => equativ::validate_pair(request, response, issues, false),
+        Profile::EquativSupplier => equativ::validate_pair(request, response, issues, true),
+        Profile::PrebidServer => prebid::validate_pair(request, response, issues),
+        Profile::Xandr => xandr::validate_pair(request, response, issues),
+        Profile::Magnite => magnite::validate_pair(request, response, issues),
+        _ => {}
+    }
+    cite_profile_issues(profile, &mut issues[start..]);
+}
+
+fn cite_profile_issues(profile: Profile, issues: &mut [Issue]) {
+    for issue in issues {
+        if issue.section.is_none() {
+            issue.section = profile.source_url().map(String::from);
+        }
     }
 }
 
-fn validate_xandr_bid_request(
-    object: &Map<String, Value>,
-    instance_path: &str,
-    issues: &mut Vec<Issue>,
-) {
-    require_integer_in_range(
-        object,
-        "ext.appnexus.markup_delivery",
-        0,
-        1,
-        "ext.appnexus.markup_delivery must be 0 (adm) or 1 (nurl).",
-        instance_path,
-        issues,
-    );
-}
-
-fn validate_xandr_video(object: &Map<String, Value>, instance_path: &str, issues: &mut Vec<Issue>) {
-    require_integer_in_range(
-        object,
-        "ext.appnexus.context",
-        0,
-        7,
-        "ext.appnexus.context must be 0 (unknown) through 7 (interstitial).",
-        instance_path,
-        issues,
-    );
-}
-
-fn require_integer_in_range(
+pub(super) fn require_integer_in_range(
     object: &Map<String, Value>,
     path: &str,
     min: i64,
@@ -316,267 +676,7 @@ fn require_integer_in_range(
     ));
 }
 
-fn validate_prebid_bid_request(
-    object: &Map<String, Value>,
-    instance_path: &str,
-    issues: &mut Vec<Issue>,
-) {
-    for field in ["wseat", "bseat"] {
-        if object.contains_key(field) {
-            issues.push(profile_issue(
-                "openrtb.profile.field_forbidden",
-                format!(
-                    "BidRequest.{field} is refused by Prebid Server; impressions are offered to \
-                     a bidder only when imp.ext.prebid.bidder.{{bidder}} (or the legacy \
-                     imp.ext.{{bidder}}) is present."
-                ),
-                join_instance_path(instance_path, field),
-            ));
-        }
-    }
-
-    require_stored_id(object, "ext.prebid.storedrequest", instance_path, issues);
-    require_stored_id(
-        object,
-        "ext.prebid.storedauctionresponse",
-        instance_path,
-        issues,
-    );
-
-    if let Some(channel) = value_at(object, "ext.prebid.channel") {
-        match channel.as_object() {
-            Some(fields) => {
-                if !path_populated(fields, "name") {
-                    issues.push(profile_issue(
-                        "openrtb.profile.field_required",
-                        String::from(
-                            "ext.prebid.channel.name is required by Prebid Server when channel \
-                             is present.",
-                        ),
-                        join_instance_path(instance_path, "ext.prebid.channel.name"),
-                    ));
-                }
-            }
-            None => issues.push(profile_issue(
-                "openrtb.profile.value_invalid",
-                String::from(
-                    "ext.prebid.channel must be an object (typically {\"name\": \"pbjs\", \
-                     \"version\": \"...\"}).",
-                ),
-                join_instance_path(instance_path, "ext.prebid.channel"),
-            )),
-        }
-    }
-
-    if let Some(trace) = value_at(object, "ext.prebid.trace") {
-        let allowed = trace
-            .as_str()
-            .is_some_and(|value| PREBID_TRACE_VALUES.contains(&value));
-        if !allowed {
-            issues.push(profile_issue(
-                "openrtb.profile.value_invalid",
-                String::from("ext.prebid.trace must be \"verbose\" or \"basic\"."),
-                join_instance_path(instance_path, "ext.prebid.trace"),
-            ));
-        }
-    }
-
-    let request_has_stored = path_populated(object, "ext.prebid.storedrequest.id");
-    let Some(imps) = object.get("imp").and_then(Value::as_array) else {
-        return;
-    };
-    for (index, imp) in imps.iter().enumerate() {
-        let Some(imp) = imp.as_object() else {
-            continue;
-        };
-        let imp_path = format!("{}imp[{index}]", prefix(instance_path));
-        validate_prebid_imp(imp, &imp_path, request_has_stored, issues);
-    }
-}
-
-fn validate_prebid_imp(
-    imp: &Map<String, Value>,
-    imp_path: &str,
-    request_has_stored: bool,
-    issues: &mut Vec<Issue>,
-) {
-    require_stored_id(imp, "ext.prebid.storedrequest", imp_path, issues);
-    require_stored_id(imp, "ext.prebid.storedauctionresponse", imp_path, issues);
-    require_stored_bid_responses(imp, imp_path, issues);
-
-    if let Some(bidder) = value_at(imp, "ext.prebid.bidder") {
-        if !bidder.is_object() {
-            issues.push(profile_issue(
-                "openrtb.profile.value_invalid",
-                String::from("imp.ext.prebid.bidder must be an object keyed by bidder code."),
-                join_instance_path(imp_path, "ext.prebid.bidder"),
-            ));
-        }
-    }
-
-    if request_has_stored
-        || value_at(imp, "ext.prebid.storedrequest").is_some()
-        || value_at(imp, "ext.prebid.storedauctionresponse").is_some()
-        || value_at(imp, "ext.prebid.storedbidresponse").is_some()
-        || imp_has_bidder_targeting(imp)
-    {
-        return;
-    }
-    issues.push(profile_issue(
-        "openrtb.profile.prebid.bidder_required",
-        String::from(
-            "Prebid Server requires each Imp to name at least one bidder \
-             (imp.ext.prebid.bidder.{bidder}), a legacy imp.ext.{bidder} object, or a stored \
-             request / stored auction response id that supplies them after merge.",
-        ),
-        join_instance_path(imp_path, "ext"),
-    ));
-}
-
-fn imp_has_bidder_targeting(imp: &Map<String, Value>) -> bool {
-    if path_populated(imp, "ext.prebid.storedrequest.id")
-        || path_populated(imp, "ext.prebid.storedauctionresponse.id")
-    {
-        return true;
-    }
-    if let Some(Value::Array(items)) = value_at(imp, "ext.prebid.storedbidresponse") {
-        if items.iter().any(|item| {
-            item.as_object()
-                .is_some_and(|entry| path_populated(entry, "id") && path_populated(entry, "bidder"))
-        }) {
-            return true;
-        }
-    }
-    let Some(ext) = imp.get("ext").and_then(Value::as_object) else {
-        return false;
-    };
-    if let Some(bidder) = value_at(imp, "ext.prebid.bidder").and_then(Value::as_object) {
-        if !bidder.is_empty() {
-            return true;
-        }
-    }
-    ext.iter()
-        .any(|(key, value)| !is_reserved_imp_ext(key) && value.is_object())
-}
-
-fn is_reserved_imp_ext(key: &str) -> bool {
-    PREBID_RESERVED_IMP_EXT
-        .iter()
-        .any(|reserved| reserved.eq_ignore_ascii_case(key))
-}
-
-fn require_stored_id(
-    object: &Map<String, Value>,
-    object_path: &str,
-    instance_path: &str,
-    issues: &mut Vec<Issue>,
-) {
-    let Some(value) = value_at(object, object_path) else {
-        return;
-    };
-    if !value.is_object() {
-        issues.push(profile_issue(
-            "openrtb.profile.value_invalid",
-            format!("{object_path} must be an object with a non-empty id."),
-            join_instance_path(instance_path, object_path),
-        ));
-        return;
-    }
-    let id_path = format!("{object_path}.id");
-    if path_populated(object, &id_path) {
-        return;
-    }
-    issues.push(profile_issue(
-        "openrtb.profile.field_required",
-        format!("{object_path}.id is required by Prebid Server when {object_path} is present."),
-        join_instance_path(instance_path, &id_path),
-    ));
-}
-
-fn require_stored_bid_responses(imp: &Map<String, Value>, imp_path: &str, issues: &mut Vec<Issue>) {
-    let Some(value) = value_at(imp, "ext.prebid.storedbidresponse") else {
-        return;
-    };
-    let Some(items) = value.as_array() else {
-        issues.push(profile_issue(
-            "openrtb.profile.value_invalid",
-            String::from("imp.ext.prebid.storedbidresponse must be an array of objects."),
-            join_instance_path(imp_path, "ext.prebid.storedbidresponse"),
-        ));
-        return;
-    };
-    for (index, item) in items.iter().enumerate() {
-        let Some(entry) = item.as_object() else {
-            continue;
-        };
-        let entry_path = format!("{imp_path}.ext.prebid.storedbidresponse[{index}]");
-        if !path_populated(entry, "id") {
-            issues.push(profile_issue(
-                "openrtb.profile.field_required",
-                String::from(
-                    "imp.ext.prebid.storedbidresponse.id is required by Prebid Server when a \
-                     stored bid response entry is present.",
-                ),
-                format!("{entry_path}.id"),
-            ));
-        }
-        if !path_populated(entry, "bidder") {
-            issues.push(profile_issue(
-                "openrtb.profile.field_required",
-                String::from(
-                    "imp.ext.prebid.storedbidresponse.bidder is required by Prebid Server when a \
-                     stored bid response entry is present.",
-                ),
-                format!("{entry_path}.bidder"),
-            ));
-        }
-    }
-}
-
-fn validate_prebid_app(object: &Map<String, Value>, instance_path: &str, issues: &mut Vec<Issue>) {
-    require_string_if_present(object, "ext.prebid.source", instance_path, issues);
-    require_string_if_present(object, "ext.prebid.version", instance_path, issues);
-}
-
-fn validate_prebid_bid(object: &Map<String, Value>, instance_path: &str, issues: &mut Vec<Issue>) {
-    let Some(value) = value_at(object, "ext.prebid.type") else {
-        return;
-    };
-    let allowed = value
-        .as_str()
-        .is_some_and(|text| PREBID_BID_TYPES.contains(&text));
-    if allowed {
-        return;
-    }
-    issues.push(profile_issue(
-        "openrtb.profile.value_invalid",
-        String::from(
-            "bid.ext.prebid.type must be \"banner\", \"video\", \"native\", or \"audio\".",
-        ),
-        join_instance_path(instance_path, "ext.prebid.type"),
-    ));
-}
-
-fn require_string_if_present(
-    object: &Map<String, Value>,
-    path: &str,
-    instance_path: &str,
-    issues: &mut Vec<Issue>,
-) {
-    let Some(value) = value_at(object, path) else {
-        return;
-    };
-    if value.is_string() {
-        return;
-    }
-    issues.push(profile_issue(
-        "openrtb.profile.value_invalid",
-        format!("{path} must be a string when present."),
-        join_instance_path(instance_path, path),
-    ));
-}
-
-fn prefix(instance_path: &str) -> String {
+pub(super) fn prefix(instance_path: &str) -> String {
     if instance_path.is_empty() {
         String::new()
     } else {
@@ -584,14 +684,14 @@ fn prefix(instance_path: &str) -> String {
     }
 }
 
-fn join_instance_path(base: &str, segment: &str) -> String {
+pub(super) fn join_instance_path(base: &str, segment: &str) -> String {
     if base.is_empty() {
         return String::from(segment);
     }
     format!("{base}.{segment}")
 }
 
-fn profile_issue(id: &str, message: String, path: String) -> Issue {
+pub(super) fn profile_issue(id: &str, message: String, path: String) -> Issue {
     Issue {
         id: String::from(id),
         severity: Severity::Error,
@@ -629,9 +729,19 @@ mod tests {
         assert_eq!(Profile::from_id("amazon-tam"), None);
         assert_eq!(Profile::default(), Profile::Spec);
         assert_eq!(
-            Profile::ids(),
+            &Profile::ids()[..5],
             &["spec", "google-ab", "prebid-server", "xandr", "magnite"]
         );
+        let mut seen = std::collections::HashSet::new();
+        for id in Profile::ids() {
+            assert!(seen.insert(id), "duplicate canonical profile {id}");
+            let profile = Profile::from_id(id).expect("listed profile is parseable");
+            assert_eq!(profile.as_str(), *id, "canonical profile round trip");
+            assert!(!profile.display_name().is_empty());
+            if profile != Profile::Spec {
+                assert!(profile.source_url().is_some());
+            }
+        }
     }
 
     #[test]
@@ -641,12 +751,5 @@ mod tests {
         assert!(!Profile::Spec.allows_enum_value("BidRequest", "at", 3));
         assert!(!Profile::PrebidServer.allows_enum_value("BidRequest", "at", 3));
         assert!(!Profile::GoogleAuthorizedBuyers.allows_enum_value("BidRequest", "at", 4));
-    }
-
-    #[test]
-    fn reserved_imp_ext_is_case_insensitive() {
-        assert!(is_reserved_imp_ext("prebid"));
-        assert!(is_reserved_imp_ext("SKAdN"));
-        assert!(!is_reserved_imp_ext("appnexus"));
     }
 }

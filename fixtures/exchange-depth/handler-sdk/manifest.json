@@ -1,0 +1,1601 @@
+{
+  "source_date": "2026-10-09",
+  "cases": [
+    {
+      "id": "adform-valid-default-price-type",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-default-price-type.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-price-type-net",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-price-type-net.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-price-type-gross",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-price-type-gross.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-price-type-integer",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-price-type-integer.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "ext.pt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-dsa-request",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-dsa-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-dsa-request-latest",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-valid-dsa-request-latest.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-request-example-aliases",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-request-example-aliases.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-invalid-dsa-dsarequired",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-dsa-dsarequired.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.dsa.dsarequired"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-dsa-required",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-dsa-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.dsa.required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-dsa-pubrender",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-dsa-pubrender.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.dsa.pubrender"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-dsa-datatopub",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-dsa-datatopub.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.dsa.datatopub"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-type-gpc",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-type-gpc.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gpc"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-type-dsa",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-type-dsa.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.dsa"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-type-dsa-transparency",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-type-dsa-transparency.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.dsa.transparency"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-type-dsa-transparency-0-domain",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-type-dsa-transparency-0-domain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.dsa.transparency[0].domain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-type-dsa-transparency-0-dsaparams",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-type-dsa-transparency-0-dsaparams.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.dsa.transparency[0].dsaparams"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-parameter-dsaparams",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-parameter-dsaparams.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_parameter",
+          "path": "regs.ext.dsa.transparency[0].dsaparams[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-parameter-params",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-parameter-params.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_parameter",
+          "path": "regs.ext.dsa.transparency[0].params[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-invalid-gdpr",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-invalid-gdpr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.gdpr"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-gpp-2-5",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-gpp-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-modern-privacy-type-regs-gpp-1",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-modern-privacy-type-regs-gpp-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.gpp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-modern-privacy-type-regs-gpp_sid-1",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-modern-privacy-type-regs-gpp_sid-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.gpp_sid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-modern-privacy-type-regs-gpp_sid-['7']",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-modern-privacy-type-regs-gpp_sid-['7'].json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.gpp_sid[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-legacy-identities-2.5",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-legacy-identities-2.5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-legacy-identities-2.6-202606",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-valid-legacy-identities-2.6-202606.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-canonical-identities-2.5",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-canonical-identities-2.5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-canonical-identities-2.6-202606",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-valid-canonical-identities-2.6-202606.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids-0",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids-0-source",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids-0-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids[0].source"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids-0-uids",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids-0-uids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids[0].uids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids-0-uids-0-id",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids-0-uids-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids[0].uids[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-canonical-identity-type-user-eids-0-uids-0-atype",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-canonical-identity-type-user-eids-0-uids-0-atype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.eids[0].uids[0].atype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "spec-2-5-still-rejects-modern-eids",
+      "profile": "spec",
+      "version": "2.5",
+      "direction": "request",
+      "file": "spec-2-5-still-rejects-modern-eids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.field.not_yet_available",
+          "path": "user.eids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-consent",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-consent.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.consent"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-digitrust",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-digitrust.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.digitrust"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-digitrust-id",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-digitrust-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.digitrust.id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-source",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].source"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-uids",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-uids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-uids-0",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-uids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-uids-0-id",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-uids-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-uids-0-atype",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-uids-0-atype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].atype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-uids-0-ext",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-uids-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-identity-type-user-ext-eids-0-ext",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-identity-type-user-ext-eids-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-legacy-supply-chain-2.5",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-legacy-supply-chain-2.5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-legacy-supply-chain-2.6-202606",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-valid-legacy-supply-chain-2.6-202606.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-ver",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-complete",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-complete.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.complete"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-asi",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-asi.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].asi"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-sid",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-sid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].sid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-hp",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-hp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].hp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-rid",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-rid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].rid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-name",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-name.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].name"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-domain",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-domain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].domain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-nodes-0-ext",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-nodes-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-type-source-ext-schain-ext",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-type-source-ext-schain-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-missing-source-ext-schain-ver",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-missing-source-ext-schain-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-missing-source-ext-schain-complete",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-missing-source-ext-schain-complete.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.complete"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-missing-source-ext-schain-nodes",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-missing-source-ext-schain-nodes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-missing-source-ext-schain-nodes-0-asi",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-missing-source-ext-schain-nodes-0-asi.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].asi"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-missing-source-ext-schain-nodes-0-sid",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-missing-source-ext-schain-nodes-0-sid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].sid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-schain-empty-nodes",
+      "profile": "adform-handler",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "adform-schain-empty-nodes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.schain_nodes",
+          "path": "source.ext.schain.nodes"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-native-exact",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-native-exact.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-native-minimum",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-native-minimum.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-native-mixed",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-valid-native-mixed.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-native-unbounded-image",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "request",
+      "file": "adform-native-unbounded-image.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.native_image_size",
+          "path": "imp[0].native.request.assets[0].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-dsa-response",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-valid-dsa-response.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-valid-dsa-pair",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "adform-valid-dsa-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "adform-valid-dsa-pair.request.json"
+    },
+    {
+      "id": "adform-valid-alias-dsa-pair",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "adform-valid-alias-dsa-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "adform-valid-alias-dsa-pair.request.json"
+    },
+    {
+      "id": "adform-valid-unicode-name-behalf",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-valid-unicode-name-behalf.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-long-unicode-name-behalf",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-long-unicode-name-behalf.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_name_length",
+          "path": "seatbid[0].bid[0].ext.dsa.behalf"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-valid-unicode-name-paid",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-valid-unicode-name-paid.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-long-unicode-name-paid",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-long-unicode-name-paid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_name_length",
+          "path": "seatbid[0].bid[0].ext.dsa.paid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-dsa-missing-paid",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-dsa-missing-paid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.dsa.paid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-dsa-wrong-paid-type",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-dsa-wrong-paid-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.dsa.paid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-dsa-wrong-renderer",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-dsa-wrong-renderer.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.dsa.adrender"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-response-wrong-params",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-response-wrong-params.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_parameter",
+          "path": "seatbid[0].bid[0].ext.dsa.transparency[0].params[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "adform-pair-required-dsa-missing",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "adform-pair-required-dsa-missing.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.adform.dsa_required",
+          "path": "seatbid[0].bid[0].ext.dsa"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "adform-pair-required-dsa-missing.request.json"
+    },
+    {
+      "id": "adform-valid-optional-dsa-0",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "adform-valid-optional-dsa-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "adform-valid-optional-dsa-0.request.json"
+    },
+    {
+      "id": "adform-valid-optional-dsa-1",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "adform-valid-optional-dsa-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "adform-valid-optional-dsa-1.request.json"
+    },
+    {
+      "id": "adform-valid-dur-2-5",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-valid-dur-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "adform-dur-wrong-type",
+      "profile": "adform-handler",
+      "version": "2.5",
+      "direction": "response",
+      "file": "adform-dur-wrong-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].dur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-valid-banner-request",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-banner-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-banner-request-latest",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "yandex-valid-banner-request-latest.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-missing-app",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-app.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-device",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-device.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-user",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-user.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "user"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-tmax",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-tmax.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "tmax"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-cur",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-cur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-app-bundle",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-app-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.bundle"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-device-ua",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-device-ua.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ua"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-device-ip",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-device-ip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ip"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-imp-0-tagid",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-imp-0-tagid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].tagid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-imp-0-ext-ad_type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-imp-0-ext-ad_type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.ad_type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-valid-sdk-only-interstitial",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-sdk-only-interstitial.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-sdk-only-rewarded",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-sdk-only-rewarded.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-sdk-only-appopenad",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-sdk-only-appopenad.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-sdk-only-native",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-sdk-only-native.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-invalid-ad-type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-invalid-ad-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.ad_type",
+          "path": "imp[0].ext.ad_type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-ad-type-wrong-type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-ad-type-wrong-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.ad_type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-empty-cur",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-empty-cur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.currency_offer",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-missing-sdk-token",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-missing-sdk-token.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.bidder_token",
+          "path": "user.data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-empty-sdk-token",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-empty-sdk-token.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.bidder_token",
+          "path": "user.data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-sdk-token-type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-sdk-token-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.data[0].segment[0].signal"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-valid-sdk-privacy",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-valid-sdk-privacy.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-sdk-privacy-latest",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "yandex-valid-sdk-privacy-latest.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-invalid-privacy-regs-gdpr",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-invalid-privacy-regs-gdpr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.gdpr"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-invalid-privacy-regs-ext-consent",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-invalid-privacy-regs-ext-consent.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.consent"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-invalid-consent-type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-invalid-consent-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.tcf_consent_string"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-valid-sdk-response",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-valid-sdk-response.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-valid-sdk-pair",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "yandex-valid-sdk-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "yandex-valid-sdk-pair.request.json"
+    },
+    {
+      "id": "yandex-response-missing-signal",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-response-missing-signal.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.signaldata"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-response-signal-type",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-response-signal-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.signaldata"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-multiple-seats",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-multiple-seats.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.response_count",
+          "path": "seatbid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-multiple-bids",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-multiple-bids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.response_count",
+          "path": "seatbid[0].bid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-loss-macro-nurl",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-loss-macro-nurl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.macro_context",
+          "path": "seatbid[0].bid[0].nurl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-loss-macro-burl",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-loss-macro-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.macro_context",
+          "path": "seatbid[0].bid[0].burl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-min-to-win-burl",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-min-to-win-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.macro_context",
+          "path": "seatbid[0].bid[0].burl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "yandex-valid-macro-locations",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "response",
+      "file": "yandex-valid-macro-locations.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-ignored-later-impressions",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "request",
+      "file": "yandex-ignored-later-impressions.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.ignored_impressions",
+          "path": "imp[1]"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "yandex-pair-second-imp-rejected",
+      "profile": "yandex-sdk-bidding",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "yandex-pair-second-imp-rejected.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.yandex.impression_mismatch",
+          "path": "seatbid[0].bid[0].impid"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "yandex-pair-second-imp-rejected.request.json"
+    }
+  ]
+}

@@ -1,0 +1,7130 @@
+{
+  "approach": "Independently authored current primary vendor table and prose boundaries. Invalid or ambiguous pair captures defer contextual comparison. Optional child presence is not invented.",
+  "cases": [
+    {
+      "id": "unity-deal-selection-offer-a",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
+      "id": "unity-deal-selection-offer-b",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-b"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
+      "id": "unity-deal-selection-unoffered",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false
+    },
+    {
+      "id": "unity-no-deal-selection-remains-optional",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
+      "id": "unity-incomplete-deal-capture-absent",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-deals-absent",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-pmp-string",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-deals-null",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-deals-string",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": "unknown"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-nonobject-entry",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                false
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-missing-id",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {}
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-numeric-id",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": 7
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-empty-id",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": ""
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-mixed-valid-malformed",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-incomplete-deal-capture-duplicate-ids",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-a"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-explicit-empty-deal-offer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": []
+            }
+          }
+        ]
+      },
+      "valid": false
+    },
+    {
+      "id": "unity-deal-reference-defers-missing-bid-impid",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-deal-reference-defers-unknown-bid-impid",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "unknown",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-deal-reference-defers-duplicate-request-impid",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "unoffered"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.unity.deal_not_offered",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          },
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-well-formed-banner-instl-boundary",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-well-formed-banner-context-requires-dimensions",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-video-boolean-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": false
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-video-boolean-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-video-string-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": "unknown"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-video-string-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-video-array-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-video-array-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-video-null-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": null
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].video",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-video-null-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-audio-boolean-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": false
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].audio",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-audio-boolean-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-audio-string-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": "unknown"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].audio",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-audio-string-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-audio-array-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].audio",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-audio-array-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-audio-null-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": null
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].audio",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-audio-null-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "audio": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-native-boolean-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": false
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].native",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-native-boolean-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-native-string-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": "unknown"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].native",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-native-string-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-native-array-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].native",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-native-array-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-native-null-standalone",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": null
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].native",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-native-null-context-dimensions-defer",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "native": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "unity-malformed-banner-boolean-video-context-defers",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": false,
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "pos": 7
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].banner",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-banner-string-video-context-defers",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": "unknown",
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "pos": 7
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].banner",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-banner-array-video-context-defers",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": [],
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "pos": 7
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].banner",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-malformed-banner-null-video-context-defers",
+      "profile": "unity",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": null,
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "pos": 7
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].banner",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-explicit-response-banner-retains-dimensions",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "BANNER"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 0,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": false
+          }
+        ]
+      },
+      "valid": false
+    },
+    {
+      "id": "unity-two-well-formed-media-defer-banner-dimensions",
+      "profile": "unity",
+      "direction": "pair",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "ext": {
+                  "crtype": "HTML"
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "request": {
+        "id": "unity-final-control",
+        "at": 1,
+        "app": {
+          "id": "publisher"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "instl": 1,
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "offer-a"
+                },
+                {
+                  "id": "offer-b"
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2
+              ],
+              "minduration": 5,
+              "maxduration": 30,
+              "pos": 7
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
+      "id": "unity-explicit-extension-string-type-oracle",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "appname": 7
+                },
+                "dealid": "offer-a"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.type_invalid",
+          "path": "seatbid[0].bid[0].ext.appname",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+      "valid": false
+    },
+    {
+      "id": "unity-campaign-source-boundary-1",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": true
+    },
+    {
+      "id": "unity-campaign-source-boundary-100",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "100",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": true
+    },
+    {
+      "id": "unity-campaign-source-boundary-0",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "0",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": false
+    },
+    {
+      "id": "unity-campaign-source-boundary-101",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "101",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": false
+    },
+    {
+      "id": "unity-sourceidentifier-source-boundary-0000",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "4.0",
+                    "network": "abcd123456.skadnetwork",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000",
+                    "sourceidentifier": "0000"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": true
+    },
+    {
+      "id": "unity-sourceidentifier-source-boundary-123",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "4.0",
+                    "network": "abcd123456.skadnetwork",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000",
+                    "sourceidentifier": "123"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": false
+    },
+    {
+      "id": "unity-sourceidentifier-source-boundary-12a4",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "4.0",
+                    "network": "abcd123456.skadnetwork",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000",
+                    "sourceidentifier": "12a4"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": false
+    },
+    {
+      "id": "unity-timestamp-source-integer-string-oracle",
+      "profile": "unity",
+      "direction": "response",
+      "version": "2.6-202606",
+      "input": {
+        "id": "unity-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "seat": "dsp",
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 0.75,
+                "adm": "<div>Creative</div>",
+                "cat": [
+                  "IAB9"
+                ],
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "burl": "https://dsp.example/bill",
+                "w": 320,
+                "h": 50,
+                "ext": {
+                  "crtype": "HTML",
+                  "storeurl": "https://apps.apple.com/app/id123456789",
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "123456789",
+                    "sourceapp": "987654321",
+                    "signature": "signature",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "later"
+                  }
+                },
+                "dealid": "offer-a",
+                "bundle": "123456789"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.unity.skadn_timestamp",
+          "path": "seatbid[0].bid[0].ext.skadn.timestamp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+      "valid": false
+    },
+    {
+      "id": "vungle-optional-regs-and-schain-absent",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-full-schain-control",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-optional-schain-empty-object",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {}
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-optional-schain-empty-nodes",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "nodes": []
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-optional-schain-optional-node-members",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "nodes": [
+                {}
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-invalid-schain",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": "unknown"
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-ver",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": 1,
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.ver",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-nodes",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": {}
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-nodes-entry",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                false
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-asi-integer",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": 7,
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].asi",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-asi-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": null,
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].asi",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-sid-integer",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": 7,
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-sid-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": null,
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-rid-integer",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": 7,
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].rid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-rid-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": null,
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].rid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-name-integer",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": 7,
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].name",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-invalid-schain-node-name-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": null,
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "source.ext.schain.nodes[0].name",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-complete-0",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 0,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-schain-complete-1",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-schain-complete-2",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 2,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-complete--1",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": -1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-complete-\"1\"",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": "1",
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-complete-true",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": true,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-complete-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": null,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-hp-0",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 0
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-schain-hp-1",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-schain-hp-2",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 2
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-hp--1",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": -1
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-hp-\"1\"",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": "1"
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-hp-true",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": true
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-hp-null",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": null
+                }
+              ]
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-conditional-regs-missing-ext",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {}
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs.ext",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-conditional-regs-empty-ext",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {
+          "ext": {}
+        }
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-conditional-regs-gdpr-zero",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {
+          "ext": {
+            "gdpr": 0
+          }
+        }
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-conditional-regs-gdpr-one",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {
+          "ext": {
+            "gdpr": 1
+          }
+        }
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-conditional-regs-null-ext",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {
+          "ext": null
+        }
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs.ext",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "regs.ext",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-conditional-regs-scalar-ext",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ],
+        "regs": {
+          "ext": "unknown"
+        }
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs.ext",
+          "severity": "error"
+        },
+        {
+          "id": "openrtb.profile.vungle.type_invalid",
+          "path": "regs.ext",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-schain-unknown-members-remain-open",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {
+          "ext": {
+            "schain": {
+              "complete": 1,
+              "ver": "1.0",
+              "nodes": [
+                {
+                  "asi": "vungle.com",
+                  "sid": "seller",
+                  "rid": "upstream",
+                  "name": "Seller",
+                  "hp": 1,
+                  "future": [
+                    false
+                  ]
+                }
+              ],
+              "future": {
+                "anything": [
+                  true,
+                  null
+                ]
+              }
+            }
+          }
+        },
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "banner": {
+              "id": "1",
+              "w": 320,
+              "h": 50,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "mimes": [
+                "text/html"
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-non-usd-currency-source-advisory",
+      "profile": "vungle",
+      "direction": "response",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "cur": "EUR",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 1,
+                "adm": "<div>Creative</div>",
+                "adomain": [
+                  "advertiser.example"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.currency_ignored",
+          "path": "cur",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    },
+    {
+      "id": "vungle-native-javascript-source-advisory",
+      "profile": "vungle",
+      "direction": "response",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "cur": "USD",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "creative",
+                "impid": "1",
+                "price": 1,
+                "adm": "{\"native\": {\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://cdn.example/main.jpg\", \"w\": 1200, \"h\": 627}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"jstracker\": \"<script>tracker()</script>\"}}",
+                "adomain": [
+                  "advertiser.example"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.native_unsupported",
+          "path": "seatbid[0].bid[0].adm.native.jstracker",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/8582189840923-Vungle-Exchange-OpenRTB-2-5-Native-Ad-Integration",
+      "valid": true
+    },
+    {
+      "id": "vungle-native-request-version-source-1.1",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "native": {
+              "ver": "1.1",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"img\": {\"type\": 3, \"w\": 1200, \"h\": 627}}]}"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": "openrtb.profile.vungle.native_version",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": false
+    },
+    {
+      "id": "vungle-native-request-version-source-1.2",
+      "profile": "vungle",
+      "direction": "request",
+      "version": "2.5",
+      "input": {
+        "id": "vungle-final-control",
+        "at": 1,
+        "tmax": 200,
+        "cur": [
+          "USD"
+        ],
+        "source": {},
+        "app": {
+          "id": "app",
+          "cat": [
+            "IAB9"
+          ],
+          "publisher": {
+            "id": "publisher"
+          }
+        },
+        "device": {
+          "ua": "Android SDK",
+          "ip": "192.0.2.1",
+          "w": 1080,
+          "h": 1920,
+          "connectiontype": 2
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "VungleDroid",
+            "displaymanagerver": "7.4.1",
+            "tagid": "placement",
+            "bidfloor": 0,
+            "bidfloorcur": "USD",
+            "secure": 1,
+            "clickbrowser": 0,
+            "ext": {
+              "pcta": 0
+            },
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"img\": {\"type\": 3, \"w\": 1200, \"h\": 627}}]}"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "forbidden": [],
+      "source": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+      "valid": true
+    }
+  ]
+}

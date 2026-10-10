@@ -1,0 +1,36 @@
+{
+  "id": "vungle-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Creative</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "ext": {
+            "skadn": {
+              "version": "4.0",
+              "itunesitem": "987654321",
+              "sourceapp": "123456789",
+              "network": "network.skadnetwork",
+              "fidelities": [
+                {
+                  "fidelity": 1,
+                  "nonce": "44f6469a-5be4-4679-abb8-03af9b497b12",
+                  "timestamp": "1648110176239",
+                  "signature": "illustrative-signature"
+                }
+              ],
+              "campaign": "9999"
+            }
+          },
+          "bundle": "987654321"
+        }
+      ]
+    }
+  ]
+}

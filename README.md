@@ -21,7 +21,7 @@ Website and playground: [rtblint.org](https://rtblint.org)
 - Response markup coherence: `bid.adm` content vs the declared `bid.mtype` (native JSON encoding, VAST/DAAST roots, double-encoded payloads)
 - Request/response cross-validation: with the originating request supplied, every bid's `impid`, `mtype`, `adm` markup, `dealid`, seat, and currency are checked against what the request actually offered
 - JSON dialect: spec JSON types flag fields such as `imp.secure` and `regs.coppa` as integers, while the IAB OpenRTB protobuf schema declares 28 of them `bool`. Either encoding is correct on its own transport and wrong on the other, so the caller declares which one it meant
-- Exchange profiles: documented protocol extras on top of the spec. `--profile google-ab` accepts `at: 3` (FIXED_PRICE) and requires `Imp.ext.billing_id`. `--profile prebid-server` requires each Imp to name a bidder or stored request and refuses `wseat`/`bseat`. `--profile xandr` requires `ext.appnexus.seller_member_id` and video `ext.appnexus.context`. `--profile magnite` requires xAPI identity fields (`imp.ext.rp.zone_id`, site/app `ext.rp.site_id`, `publisher.ext.rp.account_id`). Business policy stays out
+- Exchange profiles apply published request, response and paired constraints for the selected vendor and traffic direction. Optional extensions stay optional unless the source explicitly requires them. Profiles include Google Authorized Buyers, Prebid Server, Microsoft Monetize, Magnite DV+ xAPI and separate buyer, supplier and SDK contracts. See [exchange profile evidence](docs/exchange-profiles/) for sources, fixtures and limits
 - Nested specs OpenRTB carries as strings or opaque `ext`: Native Ads 1.2 markup (`imp.native.request` and native `bid.adm`, including required-asset pairing), GPP header vs `gpp_sid` and TCF 2 shape, `${AUCTION_*}` macros on billing and loss URLs, EID/SUA structure, SKAdNetwork `ext.skadn`
 - Privacy signal contradictions: `regs.coppa` / `device.lmt` / `device.dnt` / `regs.gdpr` versus identifiers on the same payload, TCF Purpose 1 versus device-storage IDs, US Privacy Opt-Out Sale versus hashed EIDs, email-shaped `user.id` / `site.page`, DSA Transparency field presence. Findings describe the document. They do not state a legal conclusion.
 - ARTF envelopes and mutation sets, including applying the mutations and revalidating what comes out
@@ -85,7 +85,7 @@ rtblint validate --batch --summary bids.ndjson
 cat request.json | rtblint validate --stdin
 ```
 
-`--request` supplies the originating bid request so the response is also cross-validated against it (works with `--batch` too: one request, many response lines). `--dialect proto-json` validates a payload that came off a gRPC bidstream integration. `--profile google-ab` applies Google Authorized Buyers' documented protocol extras (`at: 3` FIXED_PRICE, required `Imp.ext.billing_id`) on top of the spec. `--profile prebid-server` applies Prebid Server `/openrtb2/auction` extras (bidder or stored request on each Imp, no `wseat`/`bseat`). `--profile xandr` applies Microsoft Monetize extras (`ext.appnexus.seller_member_id`, video `ext.appnexus.context`). `--profile magnite` applies Magnite xAPI identity fields. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and the publisher's ads.txt / app-ads.txt from a local directory:
+`--request` supplies the originating bid request for paired checks, including batch validation. `--dialect proto-json` selects the protobuf JSON encoding. `--profile` selects the vendor contract and traffic direction. Xandr checks bidder-facing Microsoft Monetize traffic; Magnite checks the DV+ xAPI extension model. Their optional seller, context and inventory identity fields are checked when supplied. Account-specific and runtime acceptance remain outside the payload. `--resolve --cache <dir>` checks SupplyChain hops against sellers.json and ads.txt / app-ads.txt from a local directory:
 
 ```text
 <dir>/sellers/<asi>/sellers.json
@@ -192,6 +192,11 @@ for issue in &result.issues {
 ```
 
 `validate_bid_request_with_profile` applies an exchange profile (`Profile::GoogleAuthorizedBuyers`, `Profile::PrebidServer`) on top of the spec. `validate_bid_request_with_dialect` selects spec JSON vs protobuf JSON.
+
+
+Published profile IDs: `spec`, `google-ab`, `prebid-server`, `xandr`, `magnite`, `dv360`, `index-exchange`, `index-exchange-seller`, `unity`, `vungle`, `bidswitch`, `bidswitch-supplier`, `inmobi`, `inmobi-supplier`, `mobilefuse`, `mobilefuse-sdk`, `applovin-alx`, `commerce-grid`, `digital-turbine`, `sovrn`, `equativ`, `equativ-supplier`, `triplelift-supplier`, `adform-handler`, `yandex-sdk-bidding`, `pubmatic-openwrap`, `pubmatic-openwrap-ctv`. Select the matching direction, such as `bidswitch` for buyer 5.7 and `bidswitch-supplier` for supplier 1.1.
+
+See the [profile scope and source evidence](docs/exchange-profiles/README.md) for checked fields, supported directions and explicit gaps. Paired response validation uses the request as reference context; run request validation separately for its complete report.
 
 ## JSON Schemas
 

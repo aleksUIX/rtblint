@@ -1,0 +1,25 @@
+{
+  "id": "sovrn-request",
+  "site": {
+    "publisher": {
+      "id": "onboarded-publisher"
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "tagid": "onboarded-tag",
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "maxduration": 30,
+        "w": -1,
+        "h": 360,
+        "protocols": [
+          3
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1201 @@
+{
+  "cases": [
+    {
+      "id": "202210-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202210",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202210-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202210",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202210-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202210",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202210-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202210",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202210-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202210",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202211-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202211",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202211-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202211",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202211-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202211",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202211-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202211",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202211-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202211",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202303-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202303",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202303-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202303",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202303-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202303",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202303-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202303",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202303-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202303",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202309-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202309",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202309-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202309",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202309-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202309",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202309-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202309",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202309-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202309",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202402-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202402",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202402-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202402",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202402-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202402",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202402-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202402",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202402-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202402",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202409-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202409",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202409-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202409",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202409-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202409",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202409-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202409",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202409-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202409",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202501-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202501",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202501-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202501",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202501-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202501",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202501-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202501",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202501-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202501",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202505-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202505",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202505-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202505",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202505-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202505",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202505-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202505",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202505-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202505",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202606-skip-0",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202606-skip-1",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202606-skip-2",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202606-skip-16",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 16
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    },
+    {
+      "id": "202606-skip-500",
+      "profile": "spec",
+      "direction": "request",
+      "version": "2.6-202606",
+      "input": {
+        "id": "r",
+        "imp": [
+          {
+            "id": "i",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "skip": 500
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "source": "IAB OpenRTB 2.6 section 3.2.7, Video.skip: binary flag. Per-release source archives are under .openrtb-specs/2.x."
+    }
+  ]
+}

@@ -1,0 +1,6419 @@
+{
+  "source_date": "2026-10-09",
+  "cases": [
+    {
+      "id": "alx-valid-defaults",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-defaults.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-2-5",
+      "profile": "applovin-alx",
+      "version": "2.5",
+      "direction": "response",
+      "file": "alx-valid-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-missing-adm",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-missing-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-missing-adomain",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-missing-adomain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adomain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-missing-burl",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-missing-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].burl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-missing-cat",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-missing-cat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].cat"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-missing-crid",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-missing-crid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].crid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-currency-EUR",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-currency-EUR.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.currency",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-currency-usd",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-currency-usd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.currency",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-currency-7",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-currency-7.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.currency",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-seat-4",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-seat-4.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-seat-40",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-seat-40.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-seat-empty",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-seat-empty.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.seat_format",
+          "path": "seatbid[0].seat"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-seat-long",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-seat-long.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.seat_format",
+          "path": "seatbid[0].seat"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-seat-punctuation",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-seat-punctuation.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.seat_format",
+          "path": "seatbid[0].seat"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-adomain-empty",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-adomain-empty.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-adomain-url",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-adomain-url.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-adomain-path",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-adomain-path.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-crtype-html",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-html.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-mraid-1.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-mraid-1.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-mraid-2.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-mraid-2.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-mraid-3.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-mraid-3.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-vast-2.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-vast-2.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-vast-3.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-vast-3.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-vast-4.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-vast-4.0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-vast-4.1",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-vast-4.1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-crtype-vast-4.2",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-crtype-vast-4.2.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-top-level-crtype",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-top-level-crtype.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-crtype-audio",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-crtype-audio.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.creative_type",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-extension-type-crtype",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-extension-type-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-extension-type-clicktrackers",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-extension-type-clicktrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.clicktrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-extension-type-imptrackers",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-extension-type-imptrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.imptrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-extension-type-vendor",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-extension-type-vendor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.vendor[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-extension-type-duration",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-extension-type-duration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.duration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-api-1",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-api-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-apis-1",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-apis-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].apis[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-api-2",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-api-2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-apis-2",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-apis-2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].apis[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-api-4",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-api-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-unsupported-apis-4",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-unsupported-apis-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.api_unsupported",
+          "path": "seatbid[0].bid[0].apis[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-loss-macro-nurl",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-loss-macro-nurl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.macro_context",
+          "path": "seatbid[0].bid[0].nurl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-loss-macro-burl",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-loss-macro-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.macro_context",
+          "path": "seatbid[0].bid[0].burl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-loss-macro",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-loss-macro.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-duration-zero",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-duration-zero.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.duration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-native-adm",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-native-adm.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-native-video-adm",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-video-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.native_video",
+          "path": "seatbid[0].bid[0].adm.native.assets[0].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-native-adm-native-object",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-native-adm-native-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-native-video-adm-native-object",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-video-adm-native-object.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.native_video",
+          "path": "seatbid[0].bid[0].adm_native.assets[0].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-native-adm-native-string",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-native-adm-native-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-native-video-adm-native-string",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-video-adm-native-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.native_video",
+          "path": "seatbid[0].bid[0].adm_native.assets[0].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-number",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-number.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-boolean",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-boolean.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-array",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-array.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-invalid-json",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-invalid-json.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-json-array",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-json-array.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-json-number",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-json-number.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-json-boolean",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-json-boolean.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-json-null",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-json-null.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-native-encoding-json-string",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-native-encoding-json-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "seatbid[0].bid[0].adm_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-optional-null-native-with-adm",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-optional-null-native-with-adm.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-native-envelope-object",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-native-envelope-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-native-envelope-string",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-native-envelope-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-skad-3",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-skad-3.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-skad-4-0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-skad-4-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-skad-4-9999",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-skad-4-9999.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-valid-skad-legacy",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-skad-legacy.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-skad-missing-bundle",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].bundle"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-clicktrackers",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-clicktrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.clicktrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-version",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-network",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-network.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-campaign",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-campaign.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-sourceapp",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-itunesitem",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-itunesitem.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-missing-ext-skadn-fidelities",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-missing-ext-skadn-fidelities.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-empty-clicktrackers",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-empty-clicktrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.clicktrackers",
+          "path": "seatbid[0].bid[0].ext.clicktrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-empty-fidelities",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-empty-fidelities.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_fidelity",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-version-1.0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-version-1.0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_version",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-version-banana",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-version-banana.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_version",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-version-2.x",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-version-2.x.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_version",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-3-campaign-0",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-3-campaign-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-3-campaign-101",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-3-campaign-101.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-3-campaign-1x",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-3-campaign-1x.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-4-campaign-overflow",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-4-campaign-overflow.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-app-mismatch",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-app-mismatch.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-missing-fidelity",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-missing-fidelity.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].fidelity"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-missing-nonce",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-missing-nonce.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-missing-signature",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-missing-signature.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].signature"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-missing-timestamp",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-missing-timestamp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-format-nonce",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-format-nonce.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_nonce",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-skad-fidelity-format-timestamp",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-skad-fidelity-format-timestamp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_timestamp",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-skoverlay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-valid-skoverlay.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-overlay-missing-video_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-missing-video_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.video_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-overlay-negative-video_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-negative-video_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.video_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-overlay-missing-companion_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-missing-companion_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.companion_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-overlay-negative-companion_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-negative-companion_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.companion_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-overlay-missing-sk_dismiss_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-missing-sk_dismiss_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.sk_dismiss_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-overlay-negative-sk_dismiss_delay",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-overlay-negative-sk_dismiss_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.sk_dismiss_delay"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-valid-skad-pair",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-valid-skad-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "alx-valid-skad-pair.request.json"
+    },
+    {
+      "id": "alx-pair-skad-sourceapp",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-pair-skad-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "alx-pair-skad-sourceapp.request.json"
+    },
+    {
+      "id": "alx-pair-skad-network",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-pair-skad-network.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "alx-pair-skad-network.request.json"
+    },
+    {
+      "id": "alx-pair-publisher-bundle",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-pair-publisher-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.publisher_bundle",
+          "path": "seatbid[0].bid[0].bundle"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "alx-pair-publisher-bundle.request.json"
+    },
+    {
+      "id": "alx-valid-ctv-duration",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-valid-ctv-duration.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "alx-valid-ctv-duration.request.json"
+    },
+    {
+      "id": "alx-ctv-missing-duration",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "alx-ctv-missing-duration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.duration"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "alx-ctv-missing-duration.request.json"
+    },
+    {
+      "id": "alx-response-bytes-4096",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-response-bytes-4096.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "alx-response-bytes-4097",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-response-bytes-4097.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.response_size",
+          "path": null
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "alx-response-utf8-bytes",
+      "profile": "applovin-alx",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "alx-response-utf8-bytes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.applovin.response_size",
+          "path": null
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-web-without-page",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-web-without-page.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-source-type-2",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-source-type-2.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-source-type-3",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-source-type-3.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-2",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-2.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-3",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-3.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-4",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-4.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-5",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-6",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-6.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-origin-7",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-origin-7.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-missing-device",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-user",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-user.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "user"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-cur",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-cur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-source",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-user-buyeruid",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-user-buyeruid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "user.buyeruid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-source-schain",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-source-schain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.schain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-source-ext-sourcetype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-source-ext-sourcetype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.sourcetype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-source-ext-sourceorigin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-source-ext-sourceorigin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.sourceorigin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-site-publisher",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-site-publisher.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "site.publisher"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-ua",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-ua.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ua"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-ip",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-ip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ip"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-geo",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-geo.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.geo"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-dnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-dnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.dnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-lmt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-lmt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.lmt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-missing-device-geo-country",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-missing-device-geo-country.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.geo.country"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-instl",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-instl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].instl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-banner-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-banner-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-banner-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-banner-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-banner-format",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-banner-format.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.format"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-banner-format-0-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-banner-format-0-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.format[0].w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-missing-banner-format-0-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-missing-banner-format-0-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.format[0].h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-currency_offer-[]",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-currency_offer-[].json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.currency_offer",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-banner_format-[]",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-banner_format-[].json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.banner_format",
+          "path": "imp[0].banner.format"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-banner_format-301",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-banner_format-301.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.banner_format",
+          "path": "imp[0].banner.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-enum-source-ext-sourcetype-4",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-enum-source-ext-sourcetype-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.sourcetype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-enum-source-ext-sourceorigin-8",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-enum-source-ext-sourceorigin-8.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.sourceorigin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-enum-source-ext-sourcetype-1",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-enum-source-ext-sourcetype-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "source.ext.sourcetype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-enum-cattax-2",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-enum-cattax-2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "cattax"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-language-conflict",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-language-conflict.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.language_conflict",
+          "path": "wlangb"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-type-ext-gpid",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-type-ext-gpid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.gpid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-type-ext-bidder-uid",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-type-ext-bidder-uid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.bidder.uid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-imp-type-ext-publisher_sub_id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-imp-type-ext-publisher_sub_id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.publisher_sub_id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-metric",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-metric.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-metric-missing-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-metric-missing-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].metric[0].type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-metric-missing-value",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-metric-missing-value.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].metric[0].value"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-metric-missing-vendor",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-metric-missing-vendor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].metric[0].vendor"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-metric-overflow",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-metric-overflow.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.metric_value",
+          "path": "imp[0].metric[0].value"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-app-scrubbed-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-app-scrubbed-id.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-app-missing-app-bundle",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-app-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.bundle"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-device-os",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-device-os.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.os"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-device-ifa",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-device-ifa.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ifa"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-imp-0-displaymanager",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-imp-0-displaymanager.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanager"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-imp-0-displaymanagerver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-imp-0-displaymanagerver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanagerver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-imp-0-clickbrowser",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-imp-0-clickbrowser.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].clickbrowser"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-app-missing-imp-0-rwdd",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-app-missing-imp-0-rwdd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].rwdd"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-video.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-video-missing-mimes",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-mimes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.mimes"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-protocols",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-protocols.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.protocols"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-plcmt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-plcmt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.plcmt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-skip",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-skip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.skip"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-playbackmethod",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-playbackmethod.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.playbackmethod"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-displaymanager",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-displaymanager.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanager"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-video-missing-displaymanagerver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-video-missing-displaymanagerver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanagerver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-exact-video-durations",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-exact-video-durations.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-valid-pmp",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-pmp.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-pmp-missing-private-auction",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-pmp-missing-private-auction.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.private_auction"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-pmp-missing-floor",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-pmp-missing-floor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.deals[0].bidfloor"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-skad",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-skad.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-skad-missing-version",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-skad-missing-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.skadn.version"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-skad-missing-sourceapp",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-skad-missing-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.skadn.sourceapp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-skad-missing-skadnetids",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-skad-missing-skadnetids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.skadn.skadnetids"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-skad-publisher-mismatch",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-skad-publisher-mismatch.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.skadn_mismatch",
+          "path": "imp[0].ext.skadn.sourceapp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-legacy-privacy",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-legacy-privacy.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-gdpr-invalid",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-gdpr-invalid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.gdpr"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-privacy-type-regs-ext-us_privacy",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-privacy-type-regs-ext-us_privacy.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.us_privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-privacy-type-regs-ext-gpp",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-privacy-type-regs-ext-gpp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gpp"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-privacy-type-user-ext-consent",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-privacy-type-user-ext-consent.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.consent"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-direct-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-direct-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-direct-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-direct-object.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-direct-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-direct-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-direct-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-direct-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-request-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-request-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-request-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-request-object.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.request.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-request-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-request-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-request-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-request-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.request.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-request_native-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-request_native-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-request_native-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-request_native-object.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.request_native.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-request_native-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-request_native-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-no-privacy-request_native-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-no-privacy-request_native-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.commerce_grid.native_privacy",
+          "path": "imp[0].native.request_native.privacy"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-direct-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-direct-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-direct-object-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-object-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-object-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-direct-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-direct-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-direct-string-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-direct-string-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-direct-string-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-request-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-request-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-request-object-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-object-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-object-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-request-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-request-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-request-string-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request-string-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request-string-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-request_native-object",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-request_native-object.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-request_native-object-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-object-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-object-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-valid-native-typed-request_native-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-valid-native-typed-request_native-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "grid-native-type-request_native-string-ver",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.ver"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-context",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.context"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-contextsubtype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.contextsubtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-plcmttype",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.plcmttype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-plcmtcnt",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.plcmtcnt"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-aurlsupport",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-aurlsupport.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.aurlsupport"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-api",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.api"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-api-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-api-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.api[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-id",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-required",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-required.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].required"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-title",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-title.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-title-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-title-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-title-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-title-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].title.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-w",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-h",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-wmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-wmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.wmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-hmin",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-hmin.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.hmin"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-1-img-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-1-img-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[1].img.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video-mimes-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video-mimes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.mimes[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video-minduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.minduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video-maxduration",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video-protocols-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video-protocols-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.protocols[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-2-video-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-2-video-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[2].video.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-3-data",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-3-data.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-3-data-type",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-3-data-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.type"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-3-data-len",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-3-data-len.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.len"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-assets-3-data-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-assets-3-data-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.assets[3].data.ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-eventtrackers",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-eventtrackers-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-eventtrackers-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-eventtrackers-0-event",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-eventtrackers-0-event.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].event"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-eventtrackers-0-methods-0",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-eventtrackers-0-methods-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].methods[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-type-request_native-string-eventtrackers-0-ext",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-type-request_native-string-eventtrackers-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request_native.eventtrackers[0].ext"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-direct-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-direct-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-direct-number",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-direct-number.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-request-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-request-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native.request"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-request-number",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-request-number.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native.request"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-request_native-string",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-request_native-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native.request_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "grid-native-encoding-request_native-number",
+      "profile": "commerce-grid",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "grid-native-encoding-request_native-number.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.native_encoding",
+          "path": "imp[0].native.request_native"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-onboarding",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-onboarding.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "response",
+      "file": "dt-valid-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-missing-cid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-cid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].cid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-missing-crid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-crid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].crid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-missing-adomain",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-adomain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adomain"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-missing-attr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-attr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].attr"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-missing-cat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-cat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].cat"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-missing-ext-crtype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-ext-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-missing-seat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-seat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].seat"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-crtype-wrong-type",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-crtype-wrong-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-crtype-empty",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-crtype-empty.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.creative_type",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-eur",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-eur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.currency",
+          "path": "cur"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-price-nurl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-price-nurl.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-price-adm",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-price-adm.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-missing-price-macro",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-missing-price-macro.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.price_macro",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-min-to-win",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-min-to-win.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-min-to-win-burl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-min-to-win-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.macro_context",
+          "path": "seatbid[0].bid[0].burl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-min-to-win-lurl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-min-to-win-lurl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.macro_context",
+          "path": "seatbid[0].bid[0].lurl"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-min-to-win-adm",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-min-to-win-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.macro_context",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-valid-banner",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-valid-banner.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-valid-banner-2-5",
+      "profile": "sovrn",
+      "version": "2.5",
+      "direction": "request",
+      "file": "sovrn-valid-banner-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-missing-site-publisher-id",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-missing-site-publisher-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "site.publisher.id"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-missing-imp-0-tagid",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-missing-imp-0-tagid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].tagid"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-missing-imp-0-banner-w",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-missing-imp-0-banner-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-missing-imp-0-banner-h",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-missing-imp-0-banner-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-valid-format-alternative",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-valid-format-alternative.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-valid-video-without-min",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-valid-video-without-min.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-video-missing-maxduration",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-missing-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.maxduration"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-video-missing-w",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-missing-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-video-missing-h",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-missing-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.h"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-video-missing-protocols",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-missing-protocols.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.protocols"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-video-empty-protocols",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-empty-protocols.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.sovrn.protocols",
+          "path": "imp[0].video.protocols"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-video-negative-size",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-video-negative-size.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.w"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-valid-private-deals",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-valid-private-deals.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-private-deal-object",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-private-deal-object.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.deals[0]"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "sovrn-valid-legacy-gdpr",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-valid-legacy-gdpr.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "sovrn-gdpr-invalid",
+      "profile": "sovrn",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "sovrn-gdpr-invalid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "regs.ext.gdpr"
+        }
+      ],
+      "expected_valid": false
+    }
+  ]
+}

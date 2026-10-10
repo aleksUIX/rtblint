@@ -1,0 +1,121 @@
+{
+  "run_date": "2026-10-09",
+  "base": "ea7df0af19b3083971135ddb1817de6ae4d2ebe2",
+  "profile_scope": [
+    "google-ab",
+    "prebid-server"
+  ],
+  "commands": [
+    "cargo test -p rtblint-core --test exchange_depth_google_prebid",
+    "cargo clippy -p rtblint-core --lib --test exchange_depth_google_prebid -- -D warnings"
+  ],
+  "result": "pass",
+  "test_groups": 7,
+  "schema": {
+    "google_protocol_version": 210,
+    "extension_roots": 21,
+    "reachable_messages": 63,
+    "distinct_fields": 246
+  },
+  "fixtures": {
+    "total": 763,
+    "positive": 391,
+    "mutation": 372,
+    "independent_sdk_controls": 79,
+    "null_billing_and_reference_controls": 6
+  },
+  "case_counts_by_profile": {
+    "google-ab": 647,
+    "prebid-server": 116
+  },
+  "case_counts_by_profile_and_direction": {
+    "google-ab/pair": 62,
+    "google-ab/request": 324,
+    "google-ab/response": 261,
+    "prebid-server/pair": 3,
+    "prebid-server/request": 106,
+    "prebid-server/response": 7
+  },
+  "sdk_surrounding_context_generator_exact_bytes_reproduced": true,
+  "hashes": {
+    "crates/rtblint-core/src/profile/google.rs": "366f4a05e351884e7b554c9f9a2f8be43963301a95869bccdcd4e1d23181ab3d",
+    "crates/rtblint-core/src/profile/google_schema.rs": "3ed0842838dbd5ff008f1c6406d69504be6dc1a4cc021567c1c125aa2fb6fcbc",
+    "crates/rtblint-core/src/profile/prebid.rs": "928dc981f43a5c7a410f4dba366cb098a4ac17dfec7d4905e5f5892b8bb752c5",
+    "crates/rtblint-core/tests/exchange_depth_google_prebid.rs": "e57c5cf9d70f466ddb516731227477e6eefcaa39ad14eea7075f56136f7ec2a8",
+    "fixtures/exchange-depth/google-prebid/cases.json": "74f2e39716c92bc7ba00ad3fb1574c9e7044fe7d6842018845abe8e3c3b71185",
+    "docs/exchange-profiles/google-sdk-case-generate.py": "87fcec0026f5fb6a5cb0a3046c49f98b0721fb7e1339fcb9f4f153c0d7619d19",
+    "docs/exchange-profiles/google-prebid-generate.py": "7481a11df8c85df49f5c9fe5328d4a2198eb0ef405a419fbe8c070c75dc5dad8",
+    "docs/exchange-profiles/google-prebid-sources.json": "07e6acf8d7c0caab3345d45b36b5156ae65d0e48caace1a771b28026fc0d5031",
+    "docs/exchange-profiles/google-prebid-google-wire-inventory.json": "916d5d77429296998a7bea7dffdf70ae7993e9b43efe19a2100e021083a6bf72",
+    "docs/exchange-profiles/google-prebid-depth.md": "dbaea7b36ac5be4cfd5892aaa9f2c2221007a9abdca513745300d60125156464"
+  },
+  "primary_source_byte_checks": [
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/request.go",
+      "sha256": "c2a860bea98b3261e4b5d485a9d1f539ad473b3a6eb911979cdf3874938855af",
+      "bytes": 21310
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/imp.go",
+      "sha256": "74906c9f9d9842956179f551b3e7868af871e5c11c7076bffa1f964395b0dd47",
+      "bytes": 3337
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/bid.go",
+      "sha256": "db65e4e96eae77ea0a9012525ccd55770eb09b8d68bc0b4829e100800529d978",
+      "bytes": 7575
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/response.go",
+      "sha256": "18fe2df47f16355f9b4c8ac01f7f754e5eae4f04f7868573a76b6b3b0484e500",
+      "bytes": 5632
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/endpoints/openrtb2/auction.go",
+      "sha256": "9cd8fdd660f6fd609b13274e8e511a48dcf80c968e0802958b013631617c663c",
+      "bytes": 67921
+    },
+    {
+      "url": "https://developers.google.com/static/authorized-buyers/rtb/downloads/openrtb-proto.txt",
+      "sha256": "93fd8aa2f38397b8287767684be254bed525a545c5936407180482e2f6864522",
+      "bytes": 137965
+    },
+    {
+      "url": "https://developers.google.com/static/authorized-buyers/rtb/downloads/openrtb-adx-proto.txt",
+      "sha256": "78c09ae8747896279a43320d356b7ea33636cae5d0f907e5de235782d95ef643",
+      "bytes": 81282
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/multibid.go",
+      "sha256": "b07d3a98a8a14054ceb1621778e6744d669fb02a20b0475bbf506009e4a72296",
+      "bytes": 2861
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/multibid_test.go",
+      "sha256": "b4d36790df71d5f34aebe1af82a086fa6a7aa774008a5fb64d44dce4f661175f",
+      "bytes": 11924
+    },
+    {
+      "url": "https://raw.githubusercontent.com/prebid/prebid-server/fa73b89049767eaab6d9f48dc3b0a275db563233/openrtb_ext/user.go",
+      "sha256": "bf0492672514ba7dc99619b96d27c73bb0ea0339b049ae2fb9cbc32009dc9dc0",
+      "bytes": 1948
+    },
+    {
+      "url": "https://developers.google.com/authorized-buyers/rtb/buyer-sdk-ads",
+      "sha256": "18b0793595778c5a9fa82cc0ea915389e4b287835c0c2f2718565e43af81435c",
+      "bytes": 133967
+    }
+  ],
+  "semantic_boundaries": [
+    "Selected SDK-only required fields use independently retrieved September 2026 guide rather than protocol optional labels.",
+    "SDK Native image type and provided Native member requiredness stay scoped to SDK declared Native. Asset IDs remain optional.",
+    "Exact parameter comparison only with a nonempty complete response selection and complete unambiguous offered mappings. Order is irrelevant. Missing/empty or malformed/partial references defer.",
+    "Notification payload limit measures parsed string UTF-8 bytes. Oversize tokens are ignored with warning, not bid rejection. Opaque base64-looking values are not decoded.",
+    "Null billing does not select among multiple offered IDs. Existing Google decimal-string wire validation still rejects null.",
+    "Unknown future extension keys remain open. Account, runtime, classification, signatures and remote stored data are external to this static oracle."
+  ],
+  "limitations": [
+    "Google protocol extension shapes plus documented locally checkable semantics, not complete exchange acceptance or binary protobuf certification.",
+    "PBS-Go pinned public contract only; Java/host-specific behavior, adapter schemas, stored request expansion and runtime outcomes are outside static evidence."
+  ]
+}

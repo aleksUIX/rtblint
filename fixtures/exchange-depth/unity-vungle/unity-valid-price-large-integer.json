@@ -1,0 +1,29 @@
+{
+  "id": "unity-request",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "buyer",
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1000000,
+          "adm": "<div>Creative</div>",
+          "cat": [
+            "IAB9"
+          ],
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://bidder.example/bill",
+          "w": 320,
+          "h": 50,
+          "ext": {
+            "crtype": "HTML"
+          }
+        }
+      ]
+    }
+  ]
+}

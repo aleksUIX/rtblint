@@ -1,0 +1,195 @@
+{
+  "audit_date": "2026-10-09",
+  "profile": "digital-turbine",
+  "directions": [
+    "exchange_to_dsp_request",
+    "dsp_to_exchange_response",
+    "request_response_pair"
+  ],
+  "primary_sources": [
+    {
+      "source": "full_guide",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "248a18f2e87f88c143e69a920b1cfbfe83cab04322b226296cde7c7e6d6fa567"
+    },
+    {
+      "source": "skadnetwork",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skadnetwork",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skadnetwork.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "e7d8762a546e3eb0afe0d142a3815854622d8e83d63c11057ae53de5b6d0750b"
+    },
+    {
+      "source": "skoverlay",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skoverlay",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/skoverlay.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "cd319fca197a5e276a6c532daba2df52dad7e95e7b95d0cc387b42694fbac35a"
+    },
+    {
+      "source": "auto_store",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/auto-store",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/auto-store.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "3de6a626b6518f816bde84768557d24d02c1c429d7271fe03accee9061c6dc80"
+    },
+    {
+      "source": "dual_end_card",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dual-end-card",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dual-end-card.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "befad3bbb17ecaafe08eca33ee2b07253ddcd66d9ef4bf9d16a8fec048cdcdcd"
+    },
+    {
+      "source": "dsp_dual_end_card",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dsp-dual-end-card",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/dsp-dual-end-card.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "8844c78551ed2166e7ea1eaffc12e6891a77ef6ec936ff992c7701b5c72b18fd"
+    },
+    {
+      "source": "rewarded_playables",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/ad-creative-types/rewarded-playables",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/ad-creative-types/rewarded-playables.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "79a4e210df88e76a756d75916b261f489cffdadf12d9b4ab6c7b14e803718486"
+    },
+    {
+      "source": "samples",
+      "url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/sample-bid-requests",
+      "download_url": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs/sample-bid-requests.md",
+      "retrieved_date": "2026-10-09",
+      "sha256": "e781326705c6bc72eeb99cf22d40a2e66621044be205d7108ed2dd916564b8fc"
+    }
+  ],
+  "public_protocol_versions": [
+    "2.2",
+    "2.3",
+    "2.5"
+  ],
+  "fixture_versions": [
+    "2.5",
+    "2.6-202606"
+  ],
+  "version_limit": "Current 2.5 guide contains newer fields; fixture compatibility under 2.5 and latest 2.6 is not complete vendor protocol certification for every version.",
+  "fixture_manifest": "fixtures/exchange-depth/dt-depth/manifest.json",
+  "generator": {
+    "public": false,
+    "location": "local audit artifact",
+    "reproduction_limit": "The public repository supplies the generated fixture JSON and Rust oracle test. Full mutation regeneration requires the local generator."
+  },
+  "fixture_count": 343,
+  "case_count_by_direction": {
+    "request": 264,
+    "response": 64,
+    "pair": 15
+  },
+  "positive_count": 45,
+  "fixture_assertions": [
+    "finding ID",
+    "finding path",
+    "error or warning severity",
+    "validity",
+    "positive controls without profile findings"
+  ],
+  "implemented_groups": [
+    "request producer object and field presence, including present User consent and PMP private_auction",
+    "supply-chain recursive typing and required members",
+    "extended identifier recursive typing",
+    "GPP and legacy regulatory extension typing",
+    "SDK app/device/user/impression extensions, documented ranges and compatible boolean alternatives",
+    "banner/video producer fields and values",
+    "direct-object and canonical-request-string Native decoded field types and producer constants",
+    "Native required-asset response pairing",
+    "response metadata and USD",
+    "auction-price macro carriers and minimum-to-win context",
+    "SKAdNetwork request/response nested fields, campaign/source identifier bounds, UUIDs, decimal timestamps and fidelity",
+    "exact null SKAdNetwork network-list request alternative",
+    "SKOverlay flags and delay ranges",
+    "AutoStore and dual-end-card store ID conditions, strict DSP-dual boolean",
+    "display click tracker requirement only when feature and click firing explicitly enabled",
+    "paired SKAdNetwork source/network/version agreement, matching impression deals and rewarded playable attribution",
+    "unknown extensions and creative-type strings remain open",
+    "conflicting presence claims stay warnings"
+  ],
+  "source_conflicts_retained": [
+    "User required in object table but optional in top-level overview",
+    "cur marked always passed but recommended only for multiple currencies",
+    "badv, bapp, Source.tid, Publisher.name absent in published examples despite always-passed labels",
+    "secure omission explicitly means unknown secure state",
+    "browser click and SDK support metadata conditional on eligibility",
+    "banner dimensions recommended when no format rather than universally required",
+    "companion banner requirements depend on available companions",
+    "Deal.at optional override and Deal.wseat omission permits unrestricted seats",
+    "Device.atts always-passed labels conflict and availability is iOS dependent",
+    "Geo DMA/metro availability and DMA JSON type not established",
+    "older response attr/cat/crtype mandatory wording conflicts with optional current full guide",
+    "response adm marked required but prose calls it optional; burl absent from published examples",
+    "boolean prose uses numeric flags; specific ambiguous fields accept bool or 0/1",
+    "Native placement table typos corrected using canonical spelling in source examples",
+    "SKAdNetwork versions table type String conflicts with array description and IAB schema",
+    "SKAdNetwork dedicated-guide reply requirement narrowed to usable offered network list because null FAQ remains valid",
+    "banner AutoStore reversed flag labels conflict with dedicated AutoStore guide; dedicated guide values retained"
+  ],
+  "external_or_uncheckable_gaps": [
+    "signature cryptographic validity",
+    "actual tracking execution and position inside markup",
+    "SDK runtime eligibility and delivery",
+    "account feature enablement and seller/buyer configuration",
+    "jurisdiction and publisher privacy availability",
+    "HTTP compression and transport",
+    "creative content and advertiser policy",
+    "unsupported future keys explicitly ignored; no closed inferred creative acceptance enum",
+    "geo.dma type unspecified"
+  ],
+  "compatibility_paths": {
+    "legacy": [
+      "source.ext.schain",
+      "user.ext.eids",
+      "user.ext.consent",
+      "regs.ext.gdpr",
+      "regs.ext.us_privacy"
+    ],
+    "source_scoped_2_5_fields": [
+      "Regs.ext.gpp",
+      "Regs.ext.gpp_sid",
+      "Imp.rwdd",
+      "Video.plcmt",
+      "Geo.dma"
+    ],
+    "native_request_forms": [
+      "direct object at imp.native",
+      "JSON string at imp.native.request"
+    ],
+    "unsupported_native_forms": [
+      "direct string at imp.native",
+      "request_native alias"
+    ],
+    "skad_request_null_only": "imp.ext.skadn.skadnetids; other required and typed metadata preserved"
+  },
+  "old_expansion_dt_cases": {
+    "count": 19,
+    "manifest": "fixtures/exchange-depth/expansion-batch/manifest.json",
+    "updated_conflicts": [
+      "attr omission",
+      "cat omission",
+      "ext.crtype omission"
+    ],
+    "result": "passed as part of full 482-case expansion suite"
+  },
+  "verification": {
+    "test_command": "cargo test -p rtblint-core --test exchange_depth_digital_turbine --test exchange_depth_expansion_batch --test exchange_depth_peer_review_boundaries",
+    "test_result": "passed; 343 DT depth cases, 482 expansion cases, 45 peer review cases",
+    "clippy_command": "cargo clippy -p rtblint-core --test exchange_depth_digital_turbine --test exchange_depth_expansion_batch --test exchange_depth_peer_review_boundaries -- -D warnings",
+    "clippy_result": "passed",
+    "format_command": "rustfmt --edition 2021 crates/rtblint-core/src/profile/digital_turbine.rs crates/rtblint-core/tests/exchange_depth_digital_turbine.rs",
+    "format_result": "passed",
+    "manifest_sha256": "0565daf0427b05621db537fd10bad8d1dcca4ba5e809c3bcb2818dc405696dd7",
+    "source_module_sha256": "e898bc8c3ced2a2b342fe7d85a46c61ef23c32812e1a11da6884086bb4fa1ec2"
+  },
+  "source_module": "crates/rtblint-core/src/profile/digital_turbine.rs",
+  "oracle_test": "crates/rtblint-core/tests/exchange_depth_digital_turbine.rs",
+  "source_receipt_limit": "The receipt records retrieval dates and hashes of retrieved public Markdown. Current vendor pages can change; full source snapshots remain local audit evidence."
+}

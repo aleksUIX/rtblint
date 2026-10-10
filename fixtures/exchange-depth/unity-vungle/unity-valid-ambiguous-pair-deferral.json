@@ -1,0 +1,46 @@
+{
+  "id": "unity-request",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "seat": "buyer",
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1.234,
+          "adm": "<div>Creative</div>",
+          "cat": [
+            "IAB9"
+          ],
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://bidder.example/bill",
+          "w": 320,
+          "h": 50,
+          "ext": {
+            "crtype": "HTML",
+            "skadn": {
+              "version": "3.0",
+              "itunesitem": "987654321",
+              "sourceapp": "123456789",
+              "network": "network.skadnetwork",
+              "campaign": "100",
+              "fidelities": [
+                {
+                  "fidelity": 1,
+                  "nonce": "44f6469a-5be4-4679-abb8-03af9b497b12",
+                  "timestamp": "1648110176239",
+                  "signature": "illustrative-signature"
+                }
+              ]
+            },
+            "storeurl": "https://apps.apple.com/app/id987654321"
+          },
+          "bundle": "987654321"
+        }
+      ]
+    }
+  ]
+}

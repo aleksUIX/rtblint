@@ -1,0 +1,60 @@
+[
+  {
+    "url": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/bid-responses",
+    "path": "output/reviews/rtblint-exchange-depth-2026-10-09/primary-sources/unity-bid-responses-final-controls.html",
+    "sha256": "e58bd367ba6187d459ad4f1b56144fd0655ba7e37290a77b2b2949ce7767a469",
+    "reviewed_at": "2026-10-09",
+    "bytes": 699463,
+    "capture_scope": "Workspace review artifact, outside the distributable repository."
+  },
+  {
+    "url": "https://support.vungle.com/hc/en-us/articles/360045953431-Vungle-Exchange-OpenRTB-2-5-Integration-Guide",
+    "reviewed_at": "2026-10-09",
+    "source_date": "2026-08-19",
+    "browser_review": "Primary page directly read; sections 2.3, 3.2.2, 3.2.2.1, 3.2.2.2 and 3.2.3 verified.",
+    "raw_capture_status": "Public HTTP retrieval returned 403; primary browser contents available.",
+    "facts": {
+      "source.ext.schain": "optional object",
+      "source.ext.schain.complete": "optional integer flag 0 or 1",
+      "source.ext.schain.ver": "optional string",
+      "source.ext.schain.nodes": "optional object array",
+      "node_string_fields": [
+        "asi",
+        "sid",
+        "rid",
+        "name"
+      ],
+      "node.hp": "optional integer flag 0 or 1",
+      "regs": "optional object",
+      "regs.ext": "object, Always Passed Yes inside optional Regs",
+      "regs.ext.gdpr": "optional integer flag",
+      "regs.ext.us_privacy": "optional string",
+      "Native.ver": "required string, only 1.2 supported",
+      "BidResponse.cur": "optional string, every supplied currency processed as USD"
+    }
+  },
+  {
+    "url": "https://docs.unity.com/en-us/grow/programmatic/unity-exchange/ios14-support",
+    "reviewed_at": "2026-10-09",
+    "browser_review": "Current primary attribution table directly verified.",
+    "facts": {
+      "campaign": "string representation of integer 1 through 100 for earlier attribution versions",
+      "sourceidentifier": "four digit string for version 4.0 and later",
+      "timestamp": "string representation of Unix milliseconds",
+      "network": "string identifying a network advertised in request"
+    }
+  },
+  {
+    "url": "https://support.vungle.com/hc/en-us/articles/8582189840923-Vungle-Exchange-OpenRTB-2-5-Native-Ad-Integration",
+    "reviewed_at": "2026-10-09",
+    "browser_review": "Current primary feature support table directly verified.",
+    "facts": {
+      "jstracker": "unsupported JavaScript impression tracker, surfaced as advisory",
+      "main_image_asset_id": "1",
+      "main_image_formats": [
+        "JPG",
+        "PNG"
+      ]
+    }
+  }
+]

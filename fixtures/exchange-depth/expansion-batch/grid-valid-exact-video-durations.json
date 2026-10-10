@@ -1,0 +1,68 @@
+{
+  "id": "grid-request",
+  "cur": [
+    "USD"
+  ],
+  "site": {
+    "publisher": {
+      "id": "pub"
+    }
+  },
+  "user": {
+    "buyeruid": "criteo-user"
+  },
+  "device": {
+    "ua": "ua",
+    "ip": "203.0.113.2",
+    "dnt": 0,
+    "lmt": 0,
+    "geo": {
+      "country": "USA"
+    }
+  },
+  "source": {
+    "ext": {
+      "sourcetype": 1,
+      "sourceorigin": 1
+    },
+    "schain": {
+      "ver": "1.0",
+      "complete": 1,
+      "nodes": [
+        {
+          "asi": "seller.example",
+          "sid": "pub",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "instl": 0,
+      "displaymanager": "player",
+      "displaymanagerver": "1.0",
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "protocols": [
+          2
+        ],
+        "w": 640,
+        "h": 360,
+        "plcmt": 1,
+        "skip": 0,
+        "playbackmethod": [
+          1
+        ],
+        "api": [],
+        "rqddurs": [
+          15,
+          30
+        ]
+      }
+    }
+  ]
+}

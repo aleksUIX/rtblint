@@ -1,0 +1,72 @@
+{
+  "id": "vungle-request",
+  "at": 1,
+  "tmax": 300,
+  "cur": [
+    "USD"
+  ],
+  "source": {},
+  "app": {
+    "id": "publisher-app",
+    "bundle": "123456789",
+    "cat": [
+      "IAB9"
+    ],
+    "publisher": {
+      "id": "publisher"
+    }
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (iPhone)",
+    "ip": "203.0.113.2",
+    "w": 1080,
+    "h": 1920,
+    "connectiontype": 2,
+    "os": "iOS"
+  },
+  "imp": [
+    {
+      "id": "1",
+      "displaymanager": "Vungle",
+      "displaymanagerver": "7.4.1",
+      "tagid": "placement",
+      "bidfloor": 0,
+      "bidfloorcur": "USD",
+      "secure": 1,
+      "clickbrowser": 0,
+      "ext": {
+        "pcta": 0,
+        "skadn": {
+          "version": "3.0",
+          "versions": [
+            "2.0",
+            "2.2",
+            "3.0",
+            "4.0"
+          ],
+          "sourceapp": "other",
+          "skadnetids": [
+            "network.skadnetwork"
+          ],
+          "ext": {
+            "sko": 1
+          }
+        }
+      },
+      "banner": {
+        "w": 320,
+        "h": 50,
+        "format": [
+          {
+            "w": 320,
+            "h": 50
+          }
+        ],
+        "id": "1",
+        "mimes": [
+          "text/html"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "handler-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Ad</div>",
+          "ext": {
+            "dsa": {
+              "behalf": "Advertiser",
+              "adrender": 1,
+              "transparency": [
+                {
+                  "domain": "buyer.example",
+                  "params": [
+                    1,
+                    2,
+                    3
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

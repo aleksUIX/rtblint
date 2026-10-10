@@ -1,0 +1,16 @@
+{
+  "id": "sovrn-request",
+  "site": {
+    "publisher": {}
+  },
+  "imp": [
+    {
+      "id": "1",
+      "tagid": "onboarded-tag",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ]
+}

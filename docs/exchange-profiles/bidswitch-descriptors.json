@@ -1,0 +1,2984 @@
+{
+  "scope": "Public source field-name and type facts. Optional markers do not imply unconditional requirements.",
+  "descriptors": [
+    {
+      "object": "BidRequest",
+      "path": "ext.ssp",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.media_src",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google_query_id",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.gumgum",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.rubicon",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.adtruth",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.tv",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.dooh",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.clktrkrq",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.s2s_nurl",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.is_secure",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.wt",
+      "shape": "Number",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.tgroup",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.status",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.pub_id",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.auth_id",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.supplier_domain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Refresh Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.count",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Refresh Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings[].reftype",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "RefSettings Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings[].minint",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "RefSettings Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.wopv",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.google",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.yieldone",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.inventory_class",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.notification_type",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.s2s_nurl",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.gpid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.ae",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.ssai",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "qty.multiplier",
+      "shape": "Number",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "qty.sourcetype",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "qty.vendor",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.version",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.versions",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.sourceapp",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetids",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.productpage",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.max",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.excl",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.addl",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore.present",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore.click",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.google.excluded_attribute",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Google Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.google.allowed_vendor_type",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Google Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.yieldone.allowed_creative_types",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Yieldone Impression Extension Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.yieldone.allowed_creative_category_id",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Yieldone Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.yieldone.cat",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Yieldone Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.yieldone.inventory_class",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+      "table": "Yieldone Impression Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.dooh.publisher",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "DOOH Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.dooh.audience",
+      "shape": "Number",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "DOOH Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.dooh.impmultiply",
+      "shape": "Number",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "DOOH Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google.detected_vertical",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Google Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google.detected_vertical[].id",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Detected Vertical Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google.detected_vertical[].weight",
+      "shape": "Number",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Detected Vertical Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.adtruth.tdl_millis",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Adtruth Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.gumgum.cat",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Gumgum Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.rubicon.ast",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+      "table": "Rubicon Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Banner",
+      "path": "ext.rewarded",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/banner.html",
+      "table": "Banner Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Video",
+      "path": "ext.rewarded",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/video.html",
+      "table": "Video Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Audio",
+      "path": "ext.format",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/audio.html",
+      "table": "Audio extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Device",
+      "path": "ext.atts",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.truncated_ip",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.ifa_type",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.idv",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.cdep",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.ug",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.cookie_age",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.google_consent",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.impdepth",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.sessionduration",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.consented_providers_settings",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.eids",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.consent",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.consented_providers_settings.consented_providers",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+      "table": "Consented Providers \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Site",
+      "path": "ext.amp",
+      "shape": "Flag",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/site-object.html",
+      "table": "Site Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Site",
+      "path": "ext.inventorypartnerdomain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/site-object.html",
+      "table": "Site Extension Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "App",
+      "path": "ext.inventorypartnerdomain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/app-object.html",
+      "table": "App Extension Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Source",
+      "path": "ext.omidpn",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "Source Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.omidpv",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "Source Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "Source Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.complete",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "schain \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "schain \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.ver",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "schain \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].asi",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].sid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].hp",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].rid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].name",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Source",
+      "path": "ext.schain.nodes[].domain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/source.html",
+      "table": "supply chain node \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Data",
+      "path": "ext.segtax",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/data-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Data",
+      "path": "ext.segclass",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/data-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.buyer_wseat",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/deal-object.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.deal_type",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/deal-object.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.guaranteed",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/deal-object.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.gdpr",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.us_privacy",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.dsarequired",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.pubrender",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.datatopub",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency[].domain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency[].dsaparams",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+      "table": "Regs Ext DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.at1",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.asid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.country",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.advertiser_name",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.agency_name",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.agency_id",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.lpdomain",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.language",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.google",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.yieldone",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.vast_url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.daast_url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dur",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.deal",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.img_url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.click_url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.js_url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.version",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.network",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.campaign",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.itunesitem",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.nonce",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.sourceapp",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.timestamp",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.signature",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.productpageid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.sourceidentifier",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].fidelity",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].nonce",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].timestamp",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].signature",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.behalf",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.paid",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.adrender",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency[].domain",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency[].dsaparams",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.present",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.click",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.show_on_skip",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data[].name",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-data.html",
+      "table": "Bid Response Data Extension Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data[].value",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/response-data.html",
+      "table": "Bid Response Data Extension Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.protocol",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Bid Response Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.true_price_opt_out",
+      "shape": "Flag",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Bid Response Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Bid Response Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].id",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Interest Group Bids Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Interest Group Bids Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer[].origin",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+      "table": "Interest Group Buyer Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Native",
+      "path": "request",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Native",
+      "path": "battr",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "api",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "ext",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "ext.triplelift",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Request Extension Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "ext.adchoicesurl_required",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Request Extension Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "ext.triplelift.formats",
+      "shape": "Integers",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native.html",
+      "table": "Native Request Extension TripleLift Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.link",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.ext",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.ver",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.privacy",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers",
+      "shape": "Objects",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.imptrackers",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.jstracker",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.ext.viewtracker",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.ext.adchoiceurl",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].id",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].required",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].title",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].img",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].video",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].data",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].link",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].title.text",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Title Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].img.url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].img.h",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].img.w",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].video.vasttag",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Video Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].video.ext",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Video Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].video.ext.playbackmethod",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Video Object Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.assets[].data.value",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Asset Data Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.link.url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Link Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.link.clicktrackers",
+      "shape": "Strings",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Native Link Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers[].event",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Event Tracker Response Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers[].method",
+      "shape": "Integer",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Event Tracker Response Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers[].url",
+      "shape": "String",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Event Tracker Response Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers[].customdata",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Event Tracker Response Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.native.eventtrackers[].ext",
+      "shape": "Object",
+      "supplier": false,
+      "source": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+      "table": "Event Tracker Response Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.dsp_uuids",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google_query_id",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.google_audiences",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.purch",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.status",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.pub_id",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.auth_id",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidRequest",
+      "path": "ext.ads_txt.supplier_domain",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+      "table": "Ads.txt Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Refresh Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.count",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Refresh Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings[].reftype",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "RefSettings Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "refresh.refsettings[].minint",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "RefSettings Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.wopv",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.wseat",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.gpid",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.ae",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.crawlid",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Impression Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "qty.multiplier",
+      "shape": "Number",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "qty.sourcetype",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "qty.vendor",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "Qty Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.version",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.versions",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.sourceapp",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetids",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.productpage",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadn Extension Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.max",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.excl",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.skadn.skadnetlist.addl",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "skadnetlist Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore.present",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Imp",
+      "path": "ext.autostore.click",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Banner",
+      "path": "ext.rewarded",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-banner.html",
+      "table": "Banner Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Video",
+      "path": "ext.rewarded",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-video.html",
+      "table": "Video Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.atts",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.dooh",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.truncated_ip",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.ifa_type",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.idfv",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Device",
+      "path": "ext.cdep",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+      "table": "Device Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.impdepth",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.sessionduration",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.consented_providers_settings",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-user-object.html",
+      "table": "User Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "User",
+      "path": "ext.consented_providers_settings.consented_providers",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-user-object.html",
+      "table": "Consented Providers \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Site",
+      "path": "ext.amp",
+      "shape": "Flag",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-site-object.html",
+      "table": "Site Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.omidpn",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-source-object.html",
+      "table": "Source Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Source",
+      "path": "ext.omidpv",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-source-object.html",
+      "table": "Source Extension Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Data",
+      "path": "ext.segtax",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-data-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Data",
+      "path": "ext.segclass",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-data-object.html",
+      "table": "Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.buyer_wseat",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-deals.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.deal_type",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-deals.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Deal",
+      "path": "ext.guaranteed",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-deals.html",
+      "table": "Deal Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.dsarequired",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.pubrender",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.datatopub",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency[].domain",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Regs",
+      "path": "ext.dsa.transparency[].dsaparams",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+      "table": "Regs Ext DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.advertiser_name",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.agency_name",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.agency_id",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.third_party_buyer_token",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.version",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.network",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.campaign",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.itunesitem",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.nonce",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.sourceapp",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.timestamp",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.signature",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.productpageid",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.sourceidentifier",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "skadn Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].fidelity",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].nonce",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].timestamp",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.skadn.fidelities[].signature",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Fidelities Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.behalf",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.paid",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.adrender",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency[].domain",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.dsa.transparency[].dsaparams",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "DSA Transparency Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.present",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.click",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.autostore.show_on_skip",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "AutoStore Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data[].name",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-data.html",
+      "table": "Bid Response Data Extension Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "ext.data[].value",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-data.html",
+      "table": "Bid Response Data Extension Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Response Ext Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].impid",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Bids Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Bids Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].ignurl",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Bids Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer[].origin",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Buyer Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer[].seat",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Buyer Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer[].cur",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Buyer Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "BidResponse",
+      "path": "ext.igbid[].igbuyer[].ps",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+      "table": "Interest Group Buyer Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "request_native",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Native",
+      "path": "battr",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Native",
+      "path": "api",
+      "shape": "Integers",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-native.html",
+      "table": "Native Object \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+      "table": "Bid Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.link",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.imptrackers",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.ver",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.jstracker",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.eventtrackers",
+      "shape": "Objects",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.privacy",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].id",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].required",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].title",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].img",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].video",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].data",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].link",
+      "shape": "Object",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].title.text",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Title Object Properties \u00b6",
+      "optional_marker": true
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].img.url",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].img.h",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].img.w",
+      "shape": "Integer",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Image Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].video.vasttag",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Video Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.assets[].data.value",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Asset Data Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.link.url",
+      "shape": "String",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Link Object Properties \u00b6",
+      "optional_marker": false
+    },
+    {
+      "object": "Bid",
+      "path": "adm_native.link.clicktrackers",
+      "shape": "Strings",
+      "supplier": true,
+      "source": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+      "table": "Native Link Object Properties \u00b6",
+      "optional_marker": true
+    }
+  ]
+}

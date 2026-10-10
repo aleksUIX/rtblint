@@ -1,0 +1,35 @@
+{
+  "id": "yandex-request",
+  "tmax": 3000,
+  "cur": [
+    "USD"
+  ],
+  "device": {
+    "ua": "SDK device",
+    "ip": "203.0.113.2"
+  },
+  "user": {
+    "data": [
+      {
+        "segment": [
+          {
+            "signal": "opaque-sdk-token"
+          }
+        ]
+      }
+    ]
+  },
+  "imp": [
+    {
+      "id": "1",
+      "tagid": "configured-unit",
+      "banner": {
+        "w": 320,
+        "h": 50
+      },
+      "ext": {
+        "ad_type": "banner"
+      }
+    }
+  ]
+}

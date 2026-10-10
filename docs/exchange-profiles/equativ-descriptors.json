@@ -1,0 +1,464 @@
+[
+  {
+    "object": "BidRequest",
+    "path": "ext.network_id",
+    "shape": "Integer",
+    "supplier_only": true,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "BidRequest",
+    "path": "ext.bid_feedback",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "BidRequest",
+    "path": "ext.bid_feedback[].feedback_token",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "BidRequest",
+    "path": "ext.bid_feedback[].loss",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "BidRequest",
+    "path": "ext.bid_feedback[].price",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bid_feedback",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bid_feedback[].feedback_token",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bid_feedback[].loss",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bid_feedback[].price",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bidder",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bidder.plcmtuuid",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bidder.siteId",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bidder.pageId",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.bidder.formatId",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.gpid",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Imp",
+    "path": "ext.dfp_ad_unit_code",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Banner",
+    "path": "ext.bidfloor",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Video",
+    "path": "ext.bidfloor",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Audio",
+    "path": "ext.bidfloor",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Native",
+    "path": "ext.bidfloor",
+    "shape": "Number",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Video",
+    "path": "ext.orientation",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Video",
+    "path": "ext.rewarded",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Site",
+    "path": "ext.amp",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Device",
+    "path": "ext.atts",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Device",
+    "path": "ext.ifa_type",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.consent",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.gdpr",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.omidpn",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.omidpv",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Publisher",
+    "path": "ext.directpay",
+    "shape": "Flag",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "BidResponse",
+    "path": "ext.dealtype",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "BidResponse",
+    "path": "ext.feedback_token",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.complete",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.ver",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].asi",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].sid",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].hp",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].rid",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].name",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Source",
+    "path": "ext.schain.nodes[].domain",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.behalf",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.paid",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.adrender",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.dsarequired",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.pubrender",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.datatopub",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].source",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].inserter",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].matcher",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].mm",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].ext",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].uids",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].uids[].id",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].uids[].atype",
+    "shape": "Integer",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "User",
+    "path": "ext.eids[].uids[].ext",
+    "shape": "Object",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.transparency",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.transparency[].domain",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Bid",
+    "path": "ext.dsa.transparency[].dsaparams",
+    "shape": "Integers",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.transparency",
+    "shape": "Objects",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.transparency[].domain",
+    "shape": "String",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  },
+  {
+    "object": "Regs",
+    "path": "ext.dsa.transparency[].dsaparams",
+    "shape": "Integers",
+    "supplier_only": false,
+    "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+  }
+]

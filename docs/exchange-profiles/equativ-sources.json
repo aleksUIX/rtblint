@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification",
+    "sha256": "58066324e05e9b1b6bac3a2e387b095f7b6b52ef89ceeac377998dd6474b0d06",
+    "retrieved_at": "2026-10-09",
+    "tables": 36
+  },
+  {
+    "url": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification",
+    "sha256": "218c8d8e3ca6eff253a19799d531c8a0a997d718f5b0440b065682b94157661b",
+    "retrieved_at": "2026-10-09",
+    "tables": 7
+  },
+  {
+    "url": "https://help.equativ.com/open-rtb-api-integration-get-started",
+    "sha256": "1f684f13890d99f67d0387217a53cf81e04056280a9b975b259b8bfcdf4444fe",
+    "retrieved_at": "2026-10-09",
+    "tables": 1
+  },
+  {
+    "url": "https://help.equativ.com/connect-bidder-to-equativ-ssp-supported-fields",
+    "sha256": "70c8cd93d3ceb34e22478a8d5adeec217642e02a1a799d46891a1bc90cb1982e",
+    "retrieved_at": "2026-10-09",
+    "tables": 0
+  },
+  {
+    "url": "https://help.equativ.com/openrtb-api-integration-samples",
+    "sha256": "0749700af085ac8f6067abe486e9980ddfd787b6fbf9b78d1568b9696db455d8",
+    "retrieved_at": "2026-10-09",
+    "tables": 0
+  }
+]

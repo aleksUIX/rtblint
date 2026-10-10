@@ -55,8 +55,8 @@ export function validate_dialect(version_id: string, dialect_id: string, input: 
 
 /**
  * Validate an OpenRTB bid request against a JSON dialect and an exchange
- * profile ("spec", "google-ab", "prebid-server", "xandr", or "magnite"). Empty profile id means the specification
- * only. Unknown ids are rejected.
+ * profile. Canonical IDs are published by `Profile::ids()` and distinguish
+ * vendor traffic directions. Empty profile id means the specification only. Unknown ids are rejected.
  */
 export function validate_profile(version_id: string, dialect_id: string, profile_id: string, input: string): any;
 

@@ -1,0 +1,23 @@
+{
+  "id": "request-1",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid-1",
+          "impid": "1",
+          "price": 1.5,
+          "adm": "<div>Ad</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://events.example/?loss=${AUCTION_LOSS}",
+          "cat": [
+            "IAB9"
+          ],
+          "crid": "creative-1"
+        }
+      ]
+    }
+  ]
+}

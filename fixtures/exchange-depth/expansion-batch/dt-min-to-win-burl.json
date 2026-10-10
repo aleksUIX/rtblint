@@ -1,0 +1,29 @@
+{
+  "id": "request-1",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid-1",
+          "impid": "1",
+          "price": 1.5,
+          "adm": "<div>Ad</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "burl": "https://events.example/?p=${AUCTION_PRICE}&m=${AUCTION_MIN_TO_WIN}",
+          "cat": [
+            "IAB9"
+          ],
+          "crid": "creative-1",
+          "cid": "campaign-1",
+          "attr": [],
+          "ext": {
+            "crtype": "HTML"
+          }
+        }
+      ],
+      "seat": "buyer-seat"
+    }
+  ]
+}

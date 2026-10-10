@@ -1,0 +1,7 @@
+{
+  "count": 1178,
+  "type_facts": 331,
+  "source_inventory": "docs/exchange-profiles/bidswitch-sources.json",
+  "approach": "All field name and type expectations come from public vendor tables. Rule conditions and directional boundaries are independently selected from prose. Descriptor shape controls assert type acceptance only; valid:true controls assert full payload validity. Negative cases never learn expectations from validator output.",
+  "synthetic": true
+}

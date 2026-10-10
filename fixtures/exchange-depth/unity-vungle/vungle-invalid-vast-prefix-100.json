@@ -1,0 +1,18 @@
+{
+  "id": "vungle-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "                                                                                                    <VAST version=\"3.0\"><Ad/></VAST>",
+          "adomain": [
+            "advertiser.example"
+          ]
+        }
+      ]
+    }
+  ]
+}

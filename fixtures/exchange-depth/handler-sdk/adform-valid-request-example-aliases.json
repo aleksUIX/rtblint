@@ -1,0 +1,33 @@
+{
+  "id": "handler-request",
+  "imp": [
+    {
+      "id": "1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ],
+  "regs": {
+    "ext": {
+      "gdpr": 0,
+      "gpc": "1",
+      "dsa": {
+        "pubrender": 0,
+        "datatopub": 2,
+        "transparency": [
+          {
+            "domain": "platform.example",
+            "params": [
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "required": 2
+      }
+    }
+  }
+}

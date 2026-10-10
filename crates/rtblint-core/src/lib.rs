@@ -181,9 +181,10 @@ pub fn validate_bid_response_against_request_with_dialect(
     )
 }
 
-/// Validates a bid response against its bid request, with both payloads
-/// written in a specific JSON dialect and checked against an exchange
-/// profile. See [`validate_bid_request_with_profile`].
+/// Validates a bid response under an exchange profile and compares it with
+/// its originating request. Both inputs use the selected JSON dialect.
+/// Validate the request separately with [`validate_bid_request_with_profile`]
+/// for a complete request report; this function uses it as pairing context.
 pub fn validate_bid_response_against_request_with_profile(
     version: OpenRtbVersion,
     dialect: Dialect,

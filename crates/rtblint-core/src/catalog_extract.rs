@@ -22,9 +22,20 @@ pub struct ExtractedValueSet {
 }
 
 /// Extracts the documented integer value set from a field description, if any.
-/// AdCOM list references win over inline value enumerations, matching the
-/// validator's historical precedence.
+/// An explicit binary flag in the opening sentence constrains this field.
+/// A later list reference can describe another object, as Video.skip refers
+/// to Bid.attr. Other descriptions retain AdCOM list precedence.
 pub fn extract_value_set(description: &str) -> Option<ExtractedValueSet> {
+    let opening = description.split(['.', '\n']).next().unwrap_or(description);
+    if let Some((values, None)) = parse_inline_integer_value_set(opening) {
+        if values == [0, 1] {
+            return Some(ExtractedValueSet {
+                adcom_list: None,
+                values,
+                minimum_inclusive: None,
+            });
+        }
+    }
     if let Some(list) = adcom_list_value_set(description) {
         return Some(ExtractedValueSet {
             adcom_list: Some(list.name),
@@ -239,6 +250,14 @@ fn parse_minimum_inclusive_value(description: &str) -> Option<i64> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn opening_binary_flag_is_not_a_later_creative_attribute_reference() {
+        let extracted = extract_value_set("Skippability, where 0 = disabled, 1 = enabled. Bid.attr can report a skippable creative. Refer to List: Creative Attributes in AdCOM 1.0.").unwrap();
+        assert_eq!(extracted.adcom_list, None);
+        assert_eq!(extracted.values, vec![0, 1]);
+        assert_eq!(extracted.minimum_inclusive, None);
+    }
 
     #[test]
     fn extracts_adcom_list_reference() {

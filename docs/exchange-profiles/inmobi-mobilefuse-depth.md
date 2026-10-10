@@ -1,0 +1,39 @@
+# InMobi and MobileFuse contracts keep their directions explicit
+
+Reviewed 2026-10-09. The four profiles supplement the selected OpenRTB catalog. They do not certify all exchange behavior or infer requiredness from sample payloads. Fixtures contain independent source-table examples and mutations, with positive controls for nullable state, absent consent, future extension keys, native objects, SDK token handling and opposite-direction behavior.
+
+## InMobi supplier ingest accepts app and web inventory
+
+`inmobi-supplier` covers publisher or supply partner requests sent to InMobi. Its placement identifier is either nonempty `imp.tagid` or integer `imp.ext.placementid`. Device, user agent and the limit-ad-tracking field are required. Banner sizes require positive width and height directly or in a format entry. Video requires width, height and MIME declarations; its rewarded extension is an integer flag. Device IDFV and ATT extension shapes and the ATT enum are checked.
+
+The supplier request table says app-only, yet includes Site, and the current supplier FAQ supports app and web integrations. This profile requires app or site and accepts either. Supplier impressions may offer banner and video together. It does not apply the outgoing DSP single-format rule to these requests.
+
+Both IP families and an advertising identifier are marked required in the device table. The guide does not explain alternatives or privacy redaction. Missing both addresses produces an advisory rather than inventing a requirement to transmit both families or an identifier when unavailable. Account registration of placement IDs cannot be proved locally. Audio and PMP are listed unsupported in the supplier version and produce scoped advisories because negotiated availability is unknown. Supplier responses retain the selected OpenRTB rules without borrowing bidder-side mandatory fields.
+
+Sources: [supplier request guide](https://support.inmobi.com/monetize/ortb-integrations/bid-request-overview), [supplier FAQ](https://support.inmobi.com/monetize/cat-faqs/frequently-asked-questions-ortb).
+
+## InMobi outgoing DSP traffic has separate creative obligations
+
+`inmobi` covers exchange requests to DSPs and their bid responses. Each impression advertises one format. The outgoing request guide permits auction types 1 and 2. Observed extensions enforce documented wire types for auction and mediation IDs, header bidding, viewability vendors, Auto Store eligibility, user session depth, provider lists and regulatory flags. SDK guarantees are qualified advisories because producer configuration and SDK version are external state.
+
+Device extension validation covers all documented telemetry shapes, including boot history, in-app purchase history, advertiser bidding history, CPM history, memory and emulator flags, Play Store state, audio and display state, CPU/API/disk values, locale/languages, battery and volume percentages, ATT, IDFV and App Set ID scope. Histories contain at most five entries. Purchase and advertiser histories must be omitted when empty. Play Store version conflicts with an explicit disabled-store flag. History ordering is advisory: the advertiser example contradicts the documented order, and boot timestamps have platform jitter. Recent-window eligibility, reconstructed timestamps, source ownership, precision policy and platform availability cannot be established from an isolated payload.
+
+The outgoing guide's `source.ext.schain` location receives recursive field types and conditional checks for the declared chain's version, completeness, nodes, seller ID and payment flag. Node `asi` remains optional because the vendor table explicitly marks it optional. These requirements apply to the outgoing contract and do not transfer to supplier ingest. An omitted chain is accepted; relationship and producer context are unavailable.
+
+Bid responses require seat, billing URL and creative categories. Non-native markup and banner dimensions are checked when the media type is known, or from a unique paired impression. Native `admobject` receives ordinary Native Ads markup checks and paired required-asset checks. The encoded native request context is 1501. Creative IDs beyond 64 characters produce a truncation advisory. The current response table calls creative ID and advertiser domains recommended, while Getting Started calls them mandatory; the profile surfaces that conflict as an advisory.
+
+Response extensions validate bidder and advertiser strings, tracker arrays, campaign type, browser mode, video experience and StoreKit overlay shapes. Nullable overlay trigger delays remain valid. Paired video experiences must be offered; malformed or ambiguous references defer comparisons. SKAdNetwork identity must appear in a complete, well-formed request network list. Signature verification, cryptographic provenance, rendered orientation and negotiated tracker activation remain outside local validation.
+
+Several published cells conflict with their descriptions or examples: integer `tagid`, integer SKAdNetwork versions described as strings, integer banner type described as a rewarded string, and a viewability-vendor key containing a space. They do not justify weakening the standard string fields or inventing alternate keys. Optional fields with undefined types, such as orientation, remain open.
+
+Sources: [outgoing request guide](https://support.inmobi.com/advertise/integration/ortb-specs/bid-requet-dsp), [response guide](https://support.inmobi.com/advertise/integration/ortb-specs/bid-responses-dsp), [enumerated lists](https://support.inmobi.com/advertise/integration/ortb-specs/enumerated-lists), [Getting Started](https://support.inmobi.com/advertise/integration/ortb-specs/getting-started-dsp).
+
+## MobileFuse app supply and SDK mediation have separate requirements
+
+`mobilefuse` validates the documented app-supply contract: app bundle, device user agent, either IP family, placement tag, supplied first-price auction type, timeout of at least 100 milliseconds, at most 50 blocked advertiser domains and USD response currency. Supplied addresses must match their declared family. Extra impressions produce an advisory because MobileFuse ignores them; a paired bid for a later impression also receives an advisory. One impression can advertise multiple media formats.
+
+Video MIME types can be absent, meaning any type is acceptable. Native requests can be objects or encoded strings; both receive Native Ads semantic checks. Expected Native version 1.2 is advisory. Known extensions validate IDFV/ATT, OM SDK strings, legacy regulatory declarations, hashed email objects and MobileFuse render/cache/click event strings. Hash algorithm examples are not treated as a closed enum. Relationship-dependent supply-chain requiredness remains a gap because the publisher relationship is not in the payload.
+
+`mobilefuse-sdk` requires an opaque string token in the first user data segment, at most 4000 UTF-8 bytes, and a placement tag on the first impression. Later ignored impressions produce an advisory and do not acquire an SDK placement-tag requirement. Each returned bid needs a nonempty string rendering token in `ext.signaldata`. The token is not decoded or inspected. The narrower SDK contract does not inherit unproven app/device requiredness. Unknown privacy preferences and SDK responses without markup are valid. Standard no-bid JSON still needs the core no-bid reason or a bid; HTTP 204 has no JSON body and is outside this API.
+
+Sources: [bid requests](https://docs.mobilefuse.com/docs/bid-requests), [bid responses](https://docs.mobilefuse.com/docs/bid-responses), [SDK bidding](https://docs.mobilefuse.com/docs/sdk-bidding). Public browser retrieval exposed these pages; direct downloads currently returned 403 or a password page. The manifest records this limitation rather than pinning password HTML as protocol evidence.

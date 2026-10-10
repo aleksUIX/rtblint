@@ -1,0 +1,34 @@
+{
+  "reviewed_at": "2026-10-09",
+  "sources": [
+    {
+      "id": "triplelift-request",
+      "url": "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-request-objects",
+      "final_url": "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-request-objects",
+      "sha256": "83ff241f3a6b334b65aab028d8536399bb7c41e8abe6360012fea9fba53ac3cd",
+      "file": "triplelift-request.html"
+    },
+    {
+      "id": "triplelift-response",
+      "url": "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-response-objects",
+      "final_url": "https://support.triplelift.com/en_US/openrtb/openrtb-2x-bid-response-objects",
+      "sha256": "4fc3d368297d94140769c3c0b3f3a839090b27737e9f756a77e885efed788a60",
+      "file": "triplelift-response.html"
+    },
+    {
+      "id": "triplelift-native-request",
+      "url": "https://support.triplelift.com/en_US/openrtb/native-request-object-v12",
+      "final_url": "https://support.triplelift.com/en_US/openrtb/native-request-object-v12",
+      "sha256": "1df9ebf77f698960b312cc9900ad0d18ac508ddd39f18e5c50a39ac7b6467842",
+      "file": "triplelift-native-request.html"
+    },
+    {
+      "id": "triplelift-native-response",
+      "url": "https://support.triplelift.com/en_US/openrtb/native-response-object-v12",
+      "final_url": "https://support.triplelift.com/en_US/openrtb/native-response-object-v12",
+      "sha256": "43a45d2d6d8b5d6957e254133d679c75cb4059300473001910d8ccb50857bf0b",
+      "file": "triplelift-native-response.html"
+    }
+  ],
+  "scope": "Current September 16, 2026 supplier S2S plus Native 1.2"
+}

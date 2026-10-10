@@ -1,0 +1,6504 @@
+{
+  "cases": [
+    {
+      "id": "index-unavailable-bcrid-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {}
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-unavailable-bcrid-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "hb": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-unavailable-bcrid-2",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "gpid": "slot"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-fixed-size-(320, 50)",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-fixed-size-(300, 250)",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 300,
+                "h": 250,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-fixed-size-(728, 90)",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-banner-missing-w",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-banner-missing-h",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-multiformat-no-banner-dimensions-2",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 2,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<VAST version=\"3.0\"></VAST>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360
+            },
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-multiformat-no-banner-dimensions-4",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "{\"native\": {\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360
+            },
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-multiformat-no-banner-dimensions-None",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360
+            },
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-malformed-media-does-not-infer-banner",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        },
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].h"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "video": "malformed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-malformed-mtype-does-not-infer-banner",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": "malformed",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-nonfixed-format-ratio",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "wratio": 16,
+                  "hratio": 9,
+                  "wmin": 300
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-nonfixed-format-range",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ],
+              "wmin": 100,
+              "wmax": 1000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-nonfixed-format-empty",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-nonfixed-format-incomplete",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-nonfixed-format-malformed",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 728,
+                "h": 90,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.banner_size_unoffered",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": "wrong",
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-dimensions-reference-empty",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-dimensions-reference-malformed",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": "wrong",
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-dimensions-reference-incomplete",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-dimensions-reference-ratio",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "wratio": 16,
+                  "hratio": 9,
+                  "wmin": 300
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-exchange-deal-at-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-exchange-deal-at-2",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 2
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].pmp.deals[0].at",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-exchange-deal-at-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 3
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-exchange-deal-at-500",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 500
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].pmp.deals[0].at",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-exchange-deal-at-501",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 501
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].pmp.deals[0].at",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-exchange-seller-deal-at-1",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-exchange-seller-deal-at-2",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 2
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].pmp.deals[0].at",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-exchange-seller-deal-at-3",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 3
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-exchange-seller-deal-at-500",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 500
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-exchange-seller-deal-at-501",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 501
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-metric-click_through_rate--0.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "click_through_rate",
+                "value": -0.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-click_through_rate-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "click_through_rate",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-click_through_rate-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "click_through_rate",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-click_through_rate-1.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "click_through_rate",
+                "value": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-click_through_rate-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "click_through_rate",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-video_completion_rate--0.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "video_completion_rate",
+                "value": -0.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-video_completion_rate-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "video_completion_rate",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-video_completion_rate-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "video_completion_rate",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-video_completion_rate-1.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "video_completion_rate",
+                "value": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-video_completion_rate-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "video_completion_rate",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-viewability--0.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "viewability",
+                "value": -0.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-viewability-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "viewability",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-viewability-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "viewability",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-viewability-1.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "viewability",
+                "value": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-viewability-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "viewability",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.metric_probability",
+          "path": "imp[0].metric[0].value",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-session_depth--0.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "session_depth",
+                "value": -0.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-session_depth-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "session_depth",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-session_depth-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "session_depth",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-session_depth-1.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "session_depth",
+                "value": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-session_depth-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "session_depth",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-future_metric--0.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "future_metric",
+                "value": -0.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-future_metric-0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "future_metric",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-future_metric-1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "future_metric",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-future_metric-1.1",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "future_metric",
+                "value": 1.1
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-metric-future_metric-3",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "metric": [
+              {
+                "type": "future_metric",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm"
+    },
+    {
+      "id": "index-seller-pod-null",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "poddur": null
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].video.poddur",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-seller-pod-dynamic-complete",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "poddur": 60,
+              "maxseq": 2,
+              "podid": "pod"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-seller-pod-no-maxseq",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "poddur": 60,
+              "podid": "pod"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.maxseq",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-seller-pod-no-podid",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "poddur": 60,
+              "maxseq": 2
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.podid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-seller-pod-structured",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 200,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "podid": "pod"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm"
+    },
+    {
+      "id": "index-skad-matching",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": [
+                  "network.skadnetwork"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-unoffered",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": [
+                  "other.skadnetwork"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-malformed",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": [
+                  1
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-mixed",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": [
+                  "other.skadnetwork",
+                  1
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-empty",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-blank",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 1,
+                "w": 320,
+                "h": 50,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "adm": "<div>Banner</div>",
+                "ext": {
+                  "skadn": {
+                    "version": "2.0",
+                    "network": "network.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "123",
+                    "nonce": "nonce",
+                    "timestamp": "1",
+                    "signature": "opaque"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_network",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 200,
+        "ext": {},
+        "device": {},
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 320,
+              "h": 50,
+              "topframe": 0,
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                },
+                {
+                  "w": 300,
+                  "h": 250
+                }
+              ]
+            },
+            "ext": {
+              "skadn": {
+                "version": "2.0",
+                "sourceapp": "123",
+                "skadnetids": [
+                  ""
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "dv360-publisher-68",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-publisher-69",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example",
+          "publisher": {}
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "site.publisher.id",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-publisher-70",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example",
+          "publisher": {
+            "id": ""
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "site.publisher.id",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-publisher-71",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example",
+          "publisher": {
+            "id": null
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "site.publisher.id",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-native-version-None",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-native-version-1.0",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.0"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.native_version",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-native-version-1.1",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.1"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.native_version",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-native-version-1.2",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "native": {
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 50}}]}",
+              "ver": "1.2"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-None-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": []
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-0-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [],
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-1-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [],
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-2-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [],
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-3-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [],
+              "plcmt": 3
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[0]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                0
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                6
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[2, 6]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2,
+                6
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[1]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[3]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                3
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[4]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                4
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[5]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                5
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[1, 2]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                1,
+                2
+              ],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-sound-4-[]",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [],
+              "plcmt": 4
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-placement-precedence-(0, 2)",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "placement": 2,
+              "plcmt": 0
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-placement-precedence-(1, 2)",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "placement": 2,
+              "plcmt": 1
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.instream_sound",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-placement-precedence-(2, 1)",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "placement": 1,
+              "plcmt": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-placement-precedence-(None, 2)",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "placement": 2
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    },
+    {
+      "id": "dv360-placement-precedence-(None, 5)",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "Browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                3
+              ],
+              "minduration": 0,
+              "maxduration": 30,
+              "w": 640,
+              "h": 360,
+              "playbackmethod": [
+                2
+              ],
+              "placement": 5
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec"
+    }
+  ]
+}

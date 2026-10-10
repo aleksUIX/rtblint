@@ -1,0 +1,872 @@
+{
+  "magnite_source_commit": "69975f4206b85dd8db159231d7b3bc8f33232f15",
+  "messages": {
+    "KeyValuePair": [
+      {
+        "name": "key",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "KeyValuePair"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "KeyValuePair"
+      }
+    ],
+    "Window": [
+      {
+        "name": "url",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "Window"
+      },
+      {
+        "name": "depth",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "Window"
+      },
+      {
+        "name": "w",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "Window"
+      },
+      {
+        "name": "h",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "Window"
+      }
+    ],
+    "BidRequestExt.Rp": [
+      {
+        "name": "zone_id",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidRequestExt.Rp"
+      },
+      {
+        "name": "badvid",
+        "type": "int32",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidRequestExt.Rp"
+      },
+      {
+        "name": "baindid",
+        "type": "int32",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidRequestExt.Rp"
+      }
+    ],
+    "BidRequestExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidRequestExt"
+      }
+    ],
+    "ImpExt.ProxyBid": [
+      {
+        "name": "id",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.ProxyBid"
+      },
+      {
+        "name": "price",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.ProxyBid"
+      }
+    ],
+    "ImpExt.ProxyDemand": [
+      {
+        "name": "marketrate",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.ProxyDemand"
+      },
+      {
+        "name": "bids",
+        "type": "ProxyBid",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.ProxyDemand"
+      }
+    ],
+    "ImpExt.Floor": [
+      {
+        "name": "id",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Floor"
+      },
+      {
+        "name": "price",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Floor"
+      },
+      {
+        "name": "dpf",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "ImpExt.Floor"
+      },
+      {
+        "name": "pmptier",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Floor"
+      },
+      {
+        "name": "pmppriority",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Floor"
+      }
+    ],
+    "ImpExt.Rp": [
+      {
+        "name": "zone_id",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "enc",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "slot",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "target",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "track",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "rtb",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "nolog",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "proxydemand",
+        "type": "ProxyDemand",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "floors",
+        "type": "Floor",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      },
+      {
+        "name": "gpid",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt.Rp"
+      }
+    ],
+    "ImpExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt"
+      },
+      {
+        "name": "window",
+        "type": "Window",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt"
+      },
+      {
+        "name": "viewabilityvendors",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "ImpExt"
+      },
+      {
+        "name": "gpid",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "ImpExt"
+      }
+    ],
+    "VideoExt.Rp": [
+      {
+        "name": "size_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt.Rp"
+      }
+    ],
+    "VideoExt.Ad": [
+      {
+        "name": "w",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt.Ad"
+      },
+      {
+        "name": "h",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt.Ad"
+      }
+    ],
+    "VideoExt": [
+      {
+        "name": "orientation",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt"
+      },
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt"
+      },
+      {
+        "name": "ad",
+        "type": "Ad",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt"
+      },
+      {
+        "name": "skip",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "VideoExt"
+      },
+      {
+        "name": "skipdelay",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "VideoExt"
+      },
+      {
+        "name": "placement",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "VideoExt"
+      }
+    ],
+    "BannerExt.Rp": [
+      {
+        "name": "size_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BannerExt.Rp"
+      },
+      {
+        "name": "alt_size_ids",
+        "type": "uint32",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BannerExt.Rp"
+      },
+      {
+        "name": "mime",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BannerExt.Rp"
+      },
+      {
+        "name": "usenurl",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "BannerExt.Rp"
+      },
+      {
+        "name": "useimptrackers",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BannerExt.Rp"
+      }
+    ],
+    "BannerExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BannerExt"
+      }
+    ],
+    "AdQuality": [
+      {
+        "name": "sensitivity",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AdQuality"
+      }
+    ],
+    "AppExt.Rp": [
+      {
+        "name": "site_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AppExt.Rp"
+      },
+      {
+        "name": "aq",
+        "type": "AdQuality",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AppExt.Rp"
+      },
+      {
+        "name": "blocklists",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "AppExt.Rp"
+      }
+    ],
+    "AppExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AppExt"
+      }
+    ],
+    "SiteExt.Rp": [
+      {
+        "name": "site_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SiteExt.Rp"
+      },
+      {
+        "name": "aq",
+        "type": "AdQuality",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SiteExt.Rp"
+      },
+      {
+        "name": "blocklists",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "SiteExt.Rp"
+      }
+    ],
+    "SiteExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SiteExt"
+      },
+      {
+        "name": "window",
+        "type": "Window",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SiteExt"
+      }
+    ],
+    "DoohExt.Rp": [
+      {
+        "name": "site_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DoohExt.Rp"
+      },
+      {
+        "name": "blocklists",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "DoohExt.Rp"
+      }
+    ],
+    "DoohExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DoohExt"
+      }
+    ],
+    "PublisherExt.Rp": [
+      {
+        "name": "account_id",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "PublisherExt.Rp"
+      }
+    ],
+    "PublisherExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "PublisherExt"
+      }
+    ],
+    "DeviceExt.Rp": [
+      {
+        "name": "res",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt.Rp"
+      },
+      {
+        "name": "pixelratio",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt.Rp"
+      },
+      {
+        "name": "xff",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt.Rp"
+      }
+    ],
+    "DeviceExt.Dooh": [
+      {
+        "name": "impmultiply",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt.Dooh"
+      }
+    ],
+    "DeviceExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt"
+      },
+      {
+        "name": "ipmask",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt"
+      },
+      {
+        "name": "dooh",
+        "type": "Dooh",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "DeviceExt"
+      }
+    ],
+    "GeoExt.Rp": [
+      {
+        "name": "consent",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "GeoExt.Rp"
+      }
+    ],
+    "GeoExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "GeoExt"
+      }
+    ],
+    "UserExt.Dt": [
+      {
+        "name": "id",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "UserExt.Dt"
+      },
+      {
+        "name": "pref",
+        "type": "uint64",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "UserExt.Dt"
+      },
+      {
+        "name": "keyv",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "UserExt.Dt"
+      }
+    ],
+    "UserExt.Rp": [
+      {
+        "name": "target",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "UserExt.Rp"
+      }
+    ],
+    "UserExt": [
+      {
+        "name": "dt",
+        "type": "Dt",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "UserExt"
+      },
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "UserExt"
+      },
+      {
+        "name": "liveramp_idl",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "UserExt"
+      }
+    ],
+    "RegsExt": [
+      {
+        "name": "s22580",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "RegsExt"
+      }
+    ],
+    "SourceExt": [
+      {
+        "name": "ssreq",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SourceExt"
+      }
+    ],
+    "NativeExt.Rp": [
+      {
+        "name": "size_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "NativeExt.Rp"
+      }
+    ],
+    "NativeExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "NativeExt"
+      }
+    ],
+    "NativeRequestExt": [
+      {
+        "name": "privacy",
+        "type": "bool",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "NativeRequestExt"
+      }
+    ],
+    "AudioExt.Rp": [
+      {
+        "name": "size_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AudioExt.Rp"
+      }
+    ],
+    "AudioExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "AudioExt"
+      }
+    ],
+    "BidResponseExt.Rp": [
+      {
+        "name": "statuscode",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidResponseExt.Rp"
+      },
+      {
+        "name": "statusmsg",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidResponseExt.Rp"
+      },
+      {
+        "name": "time",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidResponseExt.Rp"
+      }
+    ],
+    "BidResponseExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidResponseExt"
+      }
+    ],
+    "SeatBidExt.Rp": [
+      {
+        "name": "buyer",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SeatBidExt.Rp"
+      }
+    ],
+    "SeatBidExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "SeatBidExt"
+      }
+    ],
+    "BidExt.Rp": [
+      {
+        "name": "advid",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "mime",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "adtype",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "size_id",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "targeting",
+        "type": "KeyValuePair",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "creativeapi",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "viewabilityvendors",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "estimated",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "adjustbid",
+        "type": "double",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "deprecated_pmptier",
+        "type": "string",
+        "repeated": false,
+        "deprecated": true,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "aqid",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "aindid",
+        "type": "int32",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "burl",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "imptrackers",
+        "type": "string",
+        "repeated": true,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "pmptier",
+        "type": "int32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      },
+      {
+        "name": "response_format",
+        "type": "uint32",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt.Rp"
+      }
+    ],
+    "BidExt": [
+      {
+        "name": "rp",
+        "type": "Rp",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "BidExt"
+      }
+    ],
+    "EventTrackerExt": [
+      {
+        "name": "verification_parameters",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "EventTrackerExt"
+      },
+      {
+        "name": "vendorKey",
+        "type": "string",
+        "repeated": false,
+        "deprecated": false,
+        "scope": "EventTrackerExt"
+      }
+    ]
+  }
+}

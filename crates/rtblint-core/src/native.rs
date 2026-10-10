@@ -74,6 +74,15 @@ pub(crate) fn parse_encoded_object(encoded: &str) -> Option<Map<String, Value>> 
     unwrap_native_root(value)
 }
 
+/// Decode a documented object-form or string-form Native envelope.
+pub(crate) fn parse_object_value(value: &Value) -> Option<Map<String, Value>> {
+    match value {
+        Value::String(encoded) => parse_encoded_object(encoded),
+        Value::Object(_) => unwrap_native_root(value.clone()),
+        _ => None,
+    }
+}
+
 fn unwrap_native_root(value: Value) -> Option<Map<String, Value>> {
     match value {
         Value::Object(mut fields) => {

@@ -1,0 +1,4895 @@
+{
+  "source_date": "2026-10-09",
+  "cases": [
+    {
+      "id": "dt-supported-complete-request",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-supported-complete-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-supported-complete-request-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-supported-complete-request-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-required-app",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-regs",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-regs.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-at",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-at.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "at",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-tmax",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-tmax.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "tmax",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-bcat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-bcat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "bcat",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source-fd",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source-fd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.fd",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source-ext-schain",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source-ext-schain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source-ext-schain-ver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source-ext-schain-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source-ext-schain-complete",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source-ext-schain-complete.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-source-ext-schain-nodes",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-source-ext-schain-nodes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-user-ext-consent",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-user-ext-consent.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "user.ext.consent",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-regs-coppa",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-regs-coppa.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs.coppa",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-regs-ext-gdpr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-regs-ext-gdpr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "regs.ext.gdpr",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-id",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.id",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-name",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-name.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.name",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-cat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-cat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.cat",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-ver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-privacypolicy",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-privacypolicy.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.privacypolicy",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-publisher",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-publisher.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.publisher",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-app-publisher-id",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-app-publisher-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app.publisher.id",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-ua",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-ua.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ua",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-dnt",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-dnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.dnt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-ip",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-ip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ip",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-devicetype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-devicetype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.devicetype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-h",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.h",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-w",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.w",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-js",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-js.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.js",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-language",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-language.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.language",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-connectiontype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-connectiontype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.connectiontype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-ext-headset",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-ext-headset.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ext.headset",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-device-geo-country",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-device-geo-country.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.geo.country",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-displaymanager",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-displaymanager.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanager",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-displaymanagerver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-displaymanagerver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanagerver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-instl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-instl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].instl",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-tagid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-tagid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].tagid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-bidfloor",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-bidfloor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].bidfloor",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-bidfloorcur",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-bidfloorcur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].bidfloorcur",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-clickbrowser",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-clickbrowser.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].clickbrowser",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-exp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-exp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].exp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-required-imp-0-rwdd",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-required-imp-0-rwdd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].rwdd",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-user",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-user.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "user",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-cur",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-cur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "cur",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-badv",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-badv.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "badv",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-bapp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-bapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "bapp",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-source-tid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-source-tid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "source.tid",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-imp-0-secure",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-secure.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "imp[0].secure",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-imp-0-ext-brsrclk",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-ext-brsrclk.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "imp[0].ext.brsrclk",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-btype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-btype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.btype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-battr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-battr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.battr",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-pos",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-pos.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.pos",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-topframe",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-topframe.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.topframe",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-mimes",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-mimes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.mimes",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-api",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.api",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-id",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.id",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-advisory-imp-0-banner-ext-rewarded",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-imp-0-banner-ext-rewarded.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "imp[0].banner.ext.rewarded",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-advisory-app-publisher-name",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-advisory-app-publisher-name.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "app.publisher.name",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-ver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-complete",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-complete.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.complete",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes-0-asi",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes-0-asi.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].asi",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes-0-sid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes-0-sid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes-0-hp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes-0-hp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-type-source-ext-schain-nodes-0-ext",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-type-source-ext-schain-nodes-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "source.ext.schain.nodes[0].ext",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-node-required-asi",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-node-required-asi.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].asi",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-node-required-sid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-node-required-sid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].sid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-node-required-hp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-node-required-hp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source.ext.schain.nodes[0].hp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-chain-empty",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-chain-empty.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.array_empty",
+          "path": "source.ext.schain.nodes",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-regs-ext-gdpr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-regs-ext-gdpr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gdpr",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-regs-ext-us_privacy",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-regs-ext-us_privacy.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.us_privacy",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-regs-ext-gpp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-regs-ext-gpp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gpp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-regs-ext-gpp_sid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-regs-ext-gpp_sid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gpp_sid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-regs-ext-gpp_sid-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-regs-ext-gpp_sid-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "regs.ext.gpp_sid[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-consent",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-consent.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.consent",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-impdepth",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-impdepth.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.impdepth",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-sessionduration",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-sessionduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.sessionduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-lastbundle",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-lastbundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.lastbundle",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-lastadomain",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-lastadomain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.lastadomain",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-clickrate",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-clickrate.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.clickrate",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-lastclick",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-lastclick.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.lastclick",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-lastclicktype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-lastclicktype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.lastclicktype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-completionrate",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-completionrate.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.completionrate",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-source",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].source",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-uids",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-uids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-uids-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-uids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-uids-0-id",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-uids-0-id.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].id",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-uids-0-atype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-uids-0-atype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].atype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-user-ext-eids-0-uids-0-ext",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-user-ext-eids-0-uids-0-ext.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "user.ext.eids[0].uids[0].ext",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-app-ext-devuserid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-app-ext-devuserid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "app.ext.devuserid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-app-ext-storecat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-app-ext-storecat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "app.ext.storecat",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-app-ext-storesubcat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-app-ext-storesubcat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "app.ext.storesubcat[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-app-ext-fmwname",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-app-ext-fmwname.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "app.ext.fmwname",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-app-ext-apilevel",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-app-ext-apilevel.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "app.ext.apilevel",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-inputLanguage",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-inputLanguage.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.inputlanguage[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-inputlanguage",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-inputlanguage.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.inputlanguage[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-ifv",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-ifv.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.ifv",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-atts",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-atts.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.atts",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-diskspace",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-diskspace.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.diskspace",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-totaldisk",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-totaldisk.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.totaldisk",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-ringmute",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-ringmute.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.ringmute",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-charging",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-charging.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.charging",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-bluetooth",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-bluetooth.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.bluetooth",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-headset",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-headset.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.headset",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-batterysaver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-batterysaver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.batterysaver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-darkmode",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-darkmode.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.darkmode",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-airplane",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-airplane.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.airplane",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-device-ext-dnd",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-device-ext-dnd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "device.ext.dnd",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-imp-0-ext-brsrclk",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-imp-0-ext-brsrclk.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.brsrclk",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-imp-0-ext-dpl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-imp-0-ext-dpl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.dpl",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-imp-0-banner-ext-rewarded",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-imp-0-banner-ext-rewarded.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].banner.ext.rewarded",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-extension-type-imp-0-banner-ext-autostore",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-extension-type-imp-0-banner-ext-autostore.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].banner.ext.autostore",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-app-ext-storesubcat-['a', 'b', 'c', 'd']",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-app-ext-storesubcat-['a', 'b', 'c', 'd'].json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.store_categories",
+          "path": "app.ext.storesubcat",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-app-ext-fmwname-other",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-app-ext-fmwname-other.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.framework",
+          "path": "app.ext.fmwname",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-device-ext-atts-4",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-device-ext-atts-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.atts",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-device-ext-batterylevel-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-device-ext-batterylevel-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.batterylevel",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-device-ext-batterylevel-9",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-device-ext-batterylevel-9.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.batterylevel",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-device-ext-diskspace--1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-device-ext-diskspace--1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.diskspace",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-device-ext-totaldisk--1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-device-ext-totaldisk--1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.totaldisk",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-user-ext-impdepth--1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-user-ext-impdepth--1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "user.ext.impdepth",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-user-ext-sessionduration--1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-user-ext-sessionduration--1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "user.ext.sessionduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-user-ext-clickrate-101",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-user-ext-clickrate-101.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.percentage",
+          "path": "user.ext.clickrate",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-user-ext-completionrate--1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-user-ext-completionrate--1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.percentage",
+          "path": "user.ext.completionrate",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-user-ext-lastclicktype-3",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-user-ext-lastclicktype-3.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "user.ext.lastclicktype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-value-at-3",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-value-at-3.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "at",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-compatible-boolean-False",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-compatible-boolean-False.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-compatible-boolean-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-compatible-boolean-True.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-compatible-boolean-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-compatible-boolean-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-compatible-boolean-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-compatible-boolean-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-unknown-extensions",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-unknown-extensions.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-legacy-gpp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-legacy-gpp.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-legacy-gpp-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-valid-legacy-gpp-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-video",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-video.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-video-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-valid-video-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-video-required-minduration",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.minduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-maxduration",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.maxduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-w",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-w.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.w",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-h",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-h.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.h",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-startdelay",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-startdelay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.startdelay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-placement",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-placement.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.placement",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-plcmt",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-plcmt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.plcmt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-skip",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-skip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.skip",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-battr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-battr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.battr",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-playbackmethod",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-playbackmethod.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.playbackmethod",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-playbackend",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-playbackend.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.playbackend",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-pos",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-pos.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.pos",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-api",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-api.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.api",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-ext-rewarded",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-ext-rewarded.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.ext.rewarded",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-required-ext-mraidendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-required-ext-mraidendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].video.ext.mraidendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-startdelay",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-startdelay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.startdelay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-placement",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-placement.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.placement",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-plcmt",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-plcmt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.plcmt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-linearity",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-linearity.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.linearity",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-playbackend",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-playbackend.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.playbackend",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-pos",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-pos.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.pos",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-protocols",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-protocols.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.producer_value",
+          "path": "imp[0].video.protocols[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-playbackmethod",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-playbackmethod.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.producer_value",
+          "path": "imp[0].video.playbackmethod[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-companiontype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-companiontype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.producer_value",
+          "path": "imp[0].video.companiontype[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-ext-rewarded",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-ext-rewarded.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].video.ext.rewarded",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-ext-mraidendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-ext-mraidendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].video.ext.mraidendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-ext-autostore",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-ext-autostore.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].video.ext.autostore",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-ext-dualendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-ext-dualendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].video.ext.dualendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-video-value-ext-dspdualendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-video-value-ext-dspdualendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].video.ext.dspdualendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-dsp-dual-true",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-dsp-dual-true.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-dsp-dual-default",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-dsp-dual-default.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-native-direct",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-native-direct.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-native-direct-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-valid-native-direct-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-native-request-string",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-native-request-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-native-request-string-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-valid-native-request-string-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-native-direct-ver-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-ver-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.native_version",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-ver-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-ver-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.native_version",
+          "path": "imp[0].native.request.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-context-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-context-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.context",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-context-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-context-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.context",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-contextsubtype-2",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-contextsubtype-2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.contextsubtype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-contextsubtype-2",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-contextsubtype-2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.contextsubtype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-plcmttype-3",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-plcmttype-3.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.plcmttype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-plcmttype-3",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-plcmttype-3.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.plcmttype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-plcmtcnt-4",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-plcmtcnt-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.plcmtcnt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-plcmtcnt-4",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-plcmtcnt-4.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.plcmtcnt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-seq-5",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-seq-5.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.seq",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-seq-5",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-seq-5.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.seq",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-context-6",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-context-6.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.context",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-context-6",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-context-6.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.context",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-7",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-7.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-7",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-7.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-0-8",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-0-8.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-0-8",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-0-8.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-0-required-9",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-0-required-9.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].required",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-0-required-9",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-0-required-9.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].required",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-0-title-10",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-0-title-10.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-0-title-10",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-0-title-10.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-0-title-len-11",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-0-title-len-11.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[0].title.len",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-0-title-len-11",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-0-title-len-11.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.len",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-1-img-wmin-12",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-1-img-wmin-12.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.wmin",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-1-img-wmin-12",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-1-img-wmin-12.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.wmin",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-1-img-hmin-13",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-1-img-hmin-13.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.hmin",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-1-img-hmin-13",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-1-img-hmin-13.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.hmin",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-1-img-mimes-14",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-1-img-mimes-14.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[1].img.mimes[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-1-img-mimes-14",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-1-img-mimes-14.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[1].img.mimes[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-2-video-mimes-15",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-2-video-mimes-15.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.mimes[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-2-video-mimes-15",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-2-video-mimes-15.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.mimes[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-2-video-protocols-16",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-2-video-protocols-16.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.protocols[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-2-video-protocols-16",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-2-video-protocols-16.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.protocols[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-2-video-minduration-17",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-2-video-minduration-17.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[2].video.minduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-2-video-minduration-17",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-2-video-minduration-17.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[2].video.minduration",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-4-data-type-18",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-4-data-type-18.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[4].data.type",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-4-data-type-18",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-4-data-type-18.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[4].data.type",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-4-data-len-19",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-4-data-len-19.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.assets[4].data.len",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-4-data-len-19",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-4-data-len-19.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[4].data.len",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-eventtrackers-20",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-eventtrackers-20.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-eventtrackers-20",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-eventtrackers-20.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-eventtrackers-0-21",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-eventtrackers-0-21.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-eventtrackers-0-21",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-eventtrackers-0-21.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-eventtrackers-0-event-22",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-eventtrackers-0-event-22.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-eventtrackers-0-event-22",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-eventtrackers-0-event-22.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].native.request.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-eventtrackers-0-methods-23",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-eventtrackers-0-methods-23.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.producer_value",
+          "path": "imp[0].native.eventtrackers[0].methods[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-eventtrackers-0-methods-23",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-eventtrackers-0-methods-23.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.producer_value",
+          "path": "imp[0].native.request.eventtrackers[0].methods[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-eventtrackers-0-methods-24",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-eventtrackers-0-methods-24.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.eventtrackers[0].methods[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-eventtrackers-0-methods-24",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-eventtrackers-0-methods-24.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].methods[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-direct-assets-0-id-25",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-direct-assets-0-id-25.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.native_asset",
+          "path": "imp[0].native.assets[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-string-assets-0-id-25",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-string-assets-0-id-25.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.native_asset",
+          "path": "imp[0].native.request.assets[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-ver",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-ver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-context",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-context.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.context",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-contextsubtype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-contextsubtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.contextsubtype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-plcmttype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-plcmttype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.plcmttype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-plcmtcnt",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-plcmtcnt.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.plcmtcnt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-seq",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-seq.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.seq",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-eventtrackers",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-eventtrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.eventtrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-native-required-assets",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-native-required-assets.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.assets",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-unsupported-direct-native-string",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-unsupported-direct-native-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.type.mismatch",
+          "path": "imp[0].native",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-unsupported-native-carrier",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-unsupported-native-carrier.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.ver",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-spec-native-direct-isolation",
+      "profile": "spec",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-spec-native-direct-isolation.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.field.required",
+          "path": "imp[0].native.request",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-response",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-2-5",
+      "profile": "digital-turbine",
+      "version": "2.5",
+      "direction": "response",
+      "file": "dt-valid-response-2-5.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-advisory-attr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-advisory-attr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].attr",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-advisory-cat",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-advisory-cat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].cat",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-advisory-ext-crtype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-advisory-ext-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].ext.crtype",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-advisory-burl",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-advisory-burl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].burl",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-advisory-adm",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-advisory-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.source_conflict",
+          "path": "seatbid[0].bid[0].adm",
+          "severity": "warning"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-required-cid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-required-cid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].cid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-required-crid",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-required-crid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].crid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-required-adomain",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-required-adomain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adomain",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-autostore",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-autostore.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.autostore",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-autostoreclick",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-autostoreclick.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.autostoreclick",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-dualendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-dualendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.dualendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-dspdualendcard",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-dspdualendcard.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.dspdualendcard",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-clicktrackers",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-clicktrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.clicktrackers[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-skadn",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-skadn.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-type-ext-crtype",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-type-ext-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.crtype",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-null-creative-type",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-null-creative-type.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-unclosed-creative-type",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-unclosed-creative-type.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-autostore-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-autostore-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-autostore-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-autostore-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-autostoreclick-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-autostoreclick-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-autostoreclick-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-autostoreclick-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-dualendcard-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-dualendcard-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-response-dualendcard-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-response-dualendcard-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-response-autostore-needs-store",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-autostore-needs-store.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.store_id",
+          "path": "seatbid[0].bid[0].bundle",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-dualendcard-needs-store",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-dualendcard-needs-store.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].bundle",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-autoclick-needs-trackers",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-autoclick-needs-trackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.clicktrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-response-empty-clicktrackers",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-response-empty-clicktrackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.clicktrackers",
+          "path": "seatbid[0].bid[0].ext.clicktrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-skad-request",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-skad-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-null-skadnetids",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-null-skadnetids.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-spec-null-skadnetids-isolation",
+      "profile": "spec",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-spec-null-skadnetids-isolation.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.skadn.field_required",
+          "path": "imp[0].ext.skadn.skadnetids",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-spec-rwdd-isolation",
+      "profile": "spec",
+      "version": "2.5",
+      "direction": "request",
+      "file": "dt-spec-rwdd-isolation.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.field.not_yet_available",
+          "path": "imp[0].rwdd",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-rwdd-documented-flag-type",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-rwdd-documented-flag-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].rwdd",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-plcmt-documented-value-type",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-plcmt-documented-value-type.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.plcmt",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-absent-network-list",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-absent-network-list.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.skadn.skadnetids",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-versions",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-versions.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.versions",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-versions-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-versions-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.versions[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-sourceapp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.sourceapp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-skadnetids",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-skadnetids.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.skadnetids",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-skadnetids-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-skadnetids-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.skadnetids[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-skoverlay",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-skoverlay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.skoverlay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-skoverlay-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-skoverlay-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.skoverlay[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-productpage",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-productpage.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.productpage",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-type-skadnetlist",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-type-skadnetlist.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].ext.skadn.skadnetlist",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-old-version",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-old-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_version",
+          "path": "imp[0].ext.skadn.versions[0]",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-request-source-mismatch",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-skad-request-source-mismatch.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_mismatch",
+          "path": "imp[0].ext.skadn.sourceapp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-skad-response",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-skad-response.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-skad-pair",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-valid-skad-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-valid-skad-pair.request.json"
+    },
+    {
+      "id": "dt-skad-response-version-1.0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-version-1.0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_version",
+          "path": "seatbid[0].bid[0].ext.skadn.version",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-campaign-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-campaign-0.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-campaign-101",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-campaign-101.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-itunesitem-other",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-itunesitem-other.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-fidelities-0-nonce-bad",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-fidelities-0-nonce-bad.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_nonce",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-fidelities-0-timestamp-1.5",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-fidelities-0-timestamp-1.5.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_timestamp",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-fidelities-0-fidelity-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-fidelities-0-fidelity-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].fidelity",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-fidelities-0-signature-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-fidelities-0-signature-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].signature",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-delay-61",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-delay-61.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.delay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-endcarddelay--2",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-endcarddelay--2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.endcarddelay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-autoclose-61",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-autoclose-61.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.autoclose",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-landpagedelay--2",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-landpagedelay--2.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.landpagedelay",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-present-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-present-True.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.present",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-dismissible-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-dismissible-True.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.dismissible",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-pos-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-pos-True.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.pos",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-autoclick-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-autoclick-True.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.autoclick",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-skoverlay-landpageclick-True",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-skoverlay-landpageclick-True.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.landpageclick",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-skad-response-productpageid-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-skad-response-productpageid-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].ext.skadn.productpageid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-overlay-required-present",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-overlay-required-present.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.present",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-fidelity-required-fidelity",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-fidelity-required-fidelity.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].fidelity",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-fidelity-required-nonce",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-fidelity-required-nonce.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-fidelity-required-timestamp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-fidelity-required-timestamp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-fidelity-required-signature",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-fidelity-required-signature.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].signature",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-skad-four-0001",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-skad-four-0001.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-skad-four-9999",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-skad-four-9999.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-invalid-skad-four-0000",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-invalid-skad-four-0000.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-invalid-skad-four-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-invalid-skad-four-1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-invalid-skad-four-10000",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-invalid-skad-four-10000.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-invalid-skad-four-abcd",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-invalid-skad-four-abcd.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-pair-requires-skad",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-pair-requires-skad.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-pair-requires-skad.request.json"
+    },
+    {
+      "id": "dt-pair-null-list-no-attribution-required",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-pair-null-list-no-attribution-required.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-pair-null-list-no-attribution-required.request.json"
+    },
+    {
+      "id": "dt-pair-sourceapp",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-pair-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-pair-sourceapp.request.json"
+    },
+    {
+      "id": "dt-pair-network",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-pair-network.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.network",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-pair-network.request.json"
+    },
+    {
+      "id": "dt-pair-version",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-pair-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.skadn_version",
+          "path": "seatbid[0].bid[0].ext.skadn.version",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-pair-version.request.json"
+    },
+    {
+      "id": "dt-valid-deal-request",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-deal-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-pmp-required-private_auction",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-pmp-required-private_auction.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.private_auction",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-pmp-required-deals",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-pmp-required-deals.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.deals",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-pmp-null-private-auction",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-pmp-null-private-auction.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.private_auction",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-pmp-invalid-private-auction",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-pmp-invalid-private-auction.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.value.invalid",
+          "path": "imp[0].pmp.private_auction",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-deal-required-floor",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-deal-required-floor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].pmp.deals[0].bidfloor",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-private-deal-request",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-valid-private-deal-request.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-null-consent-required-when-user-present",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "dt-null-consent-required-when-user-present.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "user.ext.consent",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-deal-pair",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-valid-deal-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-valid-deal-pair.request.json"
+    },
+    {
+      "id": "dt-deal-pair-mismatch",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-deal-pair-mismatch.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.deal_mismatch",
+          "path": "seatbid[0].bid[0].dealid",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-deal-pair-mismatch.request.json"
+    },
+    {
+      "id": "dt-valid-rewarded-playable-pair",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-valid-rewarded-playable-pair.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-valid-rewarded-playable-pair.request.json"
+    },
+    {
+      "id": "dt-playable-needs-interactive-attr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-playable-needs-interactive-attr.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.digital_turbine.playable_attr",
+          "path": "seatbid[0].bid[0].attr",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-playable-needs-interactive-attr.request.json"
+    },
+    {
+      "id": "dt-nonrewarded-playable-does-not-infer-attr",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-nonrewarded-playable-does-not-infer-attr.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-nonrewarded-playable-does-not-infer-attr.request.json"
+    },
+    {
+      "id": "dt-valid-disabled-autostore-click-0",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-disabled-autostore-click-0.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-disabled-autostore-click-1",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-disabled-autostore-click-1.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-valid-disabled-overlay-click",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-disabled-overlay-click.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    },
+    {
+      "id": "dt-enabled-overlay-click-needs-trackers",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-enabled-overlay-click-needs-trackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.clicktrackers",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "dt-valid-native-pair-direct",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-valid-native-pair-direct.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-valid-native-pair-direct.request.json"
+    },
+    {
+      "id": "dt-native-pair-required-asset-direct",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-native-pair-required-asset-direct.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.native.asset.required_missing",
+          "path": "seatbid[0].bid[0].adm",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-native-pair-required-asset-direct.request.json"
+    },
+    {
+      "id": "dt-valid-native-pair-request-string",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-valid-native-pair-request-string.json",
+      "expected_profile_findings": [],
+      "expected_valid": true,
+      "request_file": "dt-valid-native-pair-request-string.request.json"
+    },
+    {
+      "id": "dt-native-pair-required-asset-request-string",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "dt-native-pair-required-asset-request-string.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.native.asset.required_missing",
+          "path": "seatbid[0].bid[0].adm",
+          "severity": "error"
+        }
+      ],
+      "expected_valid": false,
+      "request_file": "dt-native-pair-required-asset-request-string.request.json"
+    },
+    {
+      "id": "dt-valid-unknown-response-extension",
+      "profile": "digital-turbine",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "dt-valid-unknown-response-extension.json",
+      "expected_profile_findings": [],
+      "expected_valid": true
+    }
+  ]
+}

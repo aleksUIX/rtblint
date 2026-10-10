@@ -1,0 +1,3714 @@
+{
+  "schema": "rtblint-independent-exchange-cases/v1",
+  "reviewed_at": "2026-10-09",
+  "sources": "../../../docs/exchange-profiles/triplelift-sources.json",
+  "cases": [
+    {
+      "id": "supplier-minimum",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "native-request-minimum",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "native-response-minimum",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "missing-identifiers-and-consent-unknown-valid",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ],
+        "device": {}
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "placement-required",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].tagid",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "banner-size-missing",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {}
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].banner.format",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "banner-exact-fallback-contract-conflict",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "w": 320,
+              "h": 50
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.banner_format_fallback",
+          "path": "imp[0].banner.format",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "id": "banner-format-empty",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": []
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.banner_format_empty",
+          "path": "imp[0].banner.format",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "bundle-optional-prose-contract-conflict",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ],
+        "app": {
+          "id": "app-1"
+        }
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.bundle_contract_conflict",
+          "path": "app.bundle",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "id": "bundle-published",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ],
+        "app": {
+          "bundle": "com.app"
+        }
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "multi-format-and-audio-currently-supported",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            },
+            "audio": {
+              "mimes": [
+                "audio/mpeg"
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-ver-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-ver-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": 1.2, \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.ver",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-context-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"context\": 1}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-context-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"context\": true}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.context",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-plcmttype-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"plcmttype\": 1}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-plcmttype-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"plcmttype\": true}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmttype",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-plcmtcnt-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"plcmtcnt\": 1}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-plcmtcnt-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"plcmtcnt\": 1.5}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.plcmtcnt",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-aurlsupport-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"aurlsupport\": 1}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-aurlsupport-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"aurlsupport\": true}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.aurlsupport",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": {}, \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-eventtrackers-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-eventtrackers-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": {}}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].id-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].id-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": true, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].id",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].required-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].required-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": true, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].required",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].title-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].title-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": []}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].title.len-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].title.len-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": true}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].title.len",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"img\": {\"type\": 3, \"wmin\": 300, \"hmin\": 250}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"img\": []}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].video-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].video-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"video\": []}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].video",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].data-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"data\": {\"type\": 1, \"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].data-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"data\": []}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].data",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.type-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.type-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": false, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.w-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.w-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": false, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.w",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.h-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.h-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": false, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.h",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.wmin-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.wmin-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": false, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.wmin",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.hmin-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.hmin-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": false, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.hmin",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].img.mimes-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": [\"image/png\"]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].img.mimes-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3, \"w\": 300, \"h\": 250, \"wmin\": 300, \"hmin\": 250, \"mimes\": {}}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].img.mimes",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].video.mimes-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].video.mimes-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": {}, \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].video.mimes",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].video.minduration-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].video.minduration-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": false, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].video.minduration",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].video.maxduration-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].video.maxduration-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": false, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].video.maxduration",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].video.protocols-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": [2, 3]}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].video.protocols-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"mimes\": [\"video/mp4\"], \"minduration\": 1, \"maxduration\": 30, \"protocols\": {}}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].video.protocols",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].data.type-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"data\": {\"type\": 1, \"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].data.type-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"data\": {\"type\": false, \"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].data.type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-assets[0].data.len-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"data\": {\"type\": 1, \"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-assets[0].data.len-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"data\": {\"type\": 1, \"len\": false}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].data.len",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-eventtrackers[0].event-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-eventtrackers[0].event-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": true, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "request-eventtrackers[0].methods-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "request-eventtrackers[0].methods-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": {}}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].methods",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "image-type-required",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"wmin\": 300, \"hmin\": 250}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].native.request.assets[0].img.type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "image-dimensions-recommended",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"type\": 3}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.image_size_recommended",
+          "path": "imp[0].native.request.assets[0].img.wmin",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "id": "asset-required-closed-flag",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 2, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.assets[0].required",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "tracker-method-item-type",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [true]}]}"
+            }
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "imp[0].native.request.eventtrackers[0].methods[0]",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-ver-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-ver-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": 1.2, \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.ver",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": {}, \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assetsurl-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": \"https://assets.example/creative\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assetsurl-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": false}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assetsurl",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-dcourl-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"dcourl\": \"https://assets.example/dco\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-dcourl-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"dcourl\": false}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.dcourl",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-link-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-link-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": []}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.link",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-imptrackers-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"imptrackers\": [\"https://track.example/imp\"]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-imptrackers-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"imptrackers\": {}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.imptrackers",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-jstracker-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"jstracker\": \"<script>track();</script>\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-jstracker-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"jstracker\": false}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.jstracker",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-privacy-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"privacy\": \"https://advertiser.example/privacy\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-privacy-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"privacy\": false}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.privacy",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-eventtrackers-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example/imp\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-eventtrackers-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": {}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.eventtrackers",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].id-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].id-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": true, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].id",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].required-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}, \"required\": 1}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].required-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}, \"required\": true}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].required",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].title-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].title-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": []}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].title",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].title.text-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].title.text-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": 1}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].title.text",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].title.len-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\", \"len\": 5}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].title.len-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\", \"len\": false}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].title.len",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].img-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].img-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": []}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].img",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].video-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"vasttag\": \"<VAST version=\\\"4.0\\\"></VAST>\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].video-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": []}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].video",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].link-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}, \"link\": {\"url\": \"https://advertiser.example/asset\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].link-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}, \"link\": []}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].link",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].img.url-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].img.url-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": 1, \"type\": 3, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].img.url",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].img.type-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].img.type-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": false, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].img.type",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].img.w-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].img.w-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": false, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].img.w",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].img.h-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": 300, \"h\": 250}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].img.h-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://assets.example/image\", \"type\": 3, \"w\": 300, \"h\": false}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].img.h",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-assets[0].video.vasttag-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"vasttag\": \"<VAST version=\\\"4.0\\\"></VAST>\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-assets[0].video.vasttag-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"video\": {\"vasttag\": 1}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.assets[0].video.vasttag",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-link.url-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-link.url-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": 1}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.link.url",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-link.clicktrackers-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\", \"clicktrackers\": [\"https://track.example/click\"]}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-link.clicktrackers-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\", \"clicktrackers\": {}}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.link.clicktrackers",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-link.fallback-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\", \"fallback\": \"https://advertiser.example\"}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-link.fallback-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\", \"fallback\": 1}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.link.fallback",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-eventtrackers[0].event-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-eventtrackers[0].event-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": true, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-eventtrackers[0].method-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-eventtrackers[0].method-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": true, \"url\": \"https://track.example\", \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].method",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-eventtrackers[0].url-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-eventtrackers[0].url-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": 1, \"customdata\": {}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].url",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "response-eventtrackers[0].customdata-published-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": {\"key\": \"opaque\"}}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "response-eventtrackers[0].customdata-wrong-shape",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 1, \"url\": \"https://track.example\", \"customdata\": []}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_type",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].customdata",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "jstracker-must-be-script-markup",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"jstracker\": \"track()\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.jstracker_markup",
+          "path": "seatbid[0].bid[0].adm.jstracker",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "tracker-event-required",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"method\": 1}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "tracker-method-required",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].method",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "tracker-event-closed-standard-range",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 0, \"method\": 1}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.event_enum",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].event",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "tracker-method-closed-standard-range",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 3}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.event_enum",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0].method",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "id": "native-vendor-event-method-allowed",
+      "profile": "triplelift-supplier",
+      "direction": "response",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 500, \"method\": 500}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "pair-offered-event-and-method",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 1, \"method\": 2, \"url\": \"https://track.example/js\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-event-unoffered",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 2, \"method\": 2, \"url\": \"https://track.example/js\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.event_unoffered",
+          "path": "seatbid[0].bid[0].adm.eventtrackers[0]",
+          "severity": "error"
+        }
+      ],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-malformed-offer-defers",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 2, \"method\": 2, \"url\": \"https://track.example/js\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [\"future\"]}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-assetsurl-supported",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": \"https://assets.example/creative\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"aurlsupport\": 1}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-assetsurl-omission-default-unsupported",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": \"https://assets.example/creative\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.assetsurl_unsupported",
+          "path": "seatbid[0].bid[0].adm.assetsurl",
+          "severity": "error"
+        }
+      ],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-assetsurl-explicitly-unsupported",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": \"https://assets.example/creative\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.assetsurl_unsupported",
+          "path": "seatbid[0].bid[0].adm.assetsurl",
+          "severity": "error"
+        }
+      ],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"aurlsupport\": 0}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-assetsurl-malformed-support-defers",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"link\": {\"url\": \"https://advertiser.example\"}, \"assetsurl\": \"https://assets.example/creative\"}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": true,
+      "expected": [],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"aurlsupport\": \"future\"}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pair-wrapper-event-path",
+      "profile": "triplelift-supplier",
+      "direction": "pair",
+      "input": {
+        "id": "tl-request",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid-1",
+                "impid": "1",
+                "price": 1.2,
+                "mtype": 4,
+                "adm": "{\"native\": {\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Native title\"}}], \"link\": {\"url\": \"https://advertiser.example\"}, \"eventtrackers\": [{\"event\": 2, \"method\": 1}]}}"
+              }
+            ]
+          }
+        ]
+      },
+      "valid": false,
+      "expected": [
+        {
+          "id": "openrtb.profile.triplelift.event_unoffered",
+          "path": "seatbid[0].bid[0].adm.native.eventtrackers[0]",
+          "severity": "error"
+        }
+      ],
+      "request": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "future-native-extensions-open",
+      "profile": "triplelift-supplier",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "tagid": "placement-1",
+            "native": {
+              "ver": "1.2",
+              "request": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"required\": 1, \"title\": {\"len\": 25}}], \"eventtrackers\": [{\"event\": 1, \"methods\": [1, 2]}], \"unknown_future_field\": {\"opaque\": true}}"
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    },
+    {
+      "id": "spec-does-not-inherit-placement-requiredness",
+      "profile": "spec",
+      "direction": "request",
+      "input": {
+        "id": "tl-request",
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "format": [
+                {
+                  "w": 320,
+                  "h": 50
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "valid": true,
+      "expected": []
+    }
+  ]
+}

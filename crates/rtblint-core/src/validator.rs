@@ -89,6 +89,26 @@ fn validate_payload(
     input: &str,
     kind: PayloadKind,
 ) -> ValidationResult {
+    if profile != Profile::Spec
+        && (matches!(version.family(), crate::OpenRtbFamily::ThreeZero)
+            || match kind {
+                PayloadKind::BidRequest => !profile.supports_request(),
+                PayloadKind::BidResponse => !profile.supports_response(),
+            })
+    {
+        let mut result = validate_payload(version, dialect, Profile::Spec, input, kind);
+        result.issues.push(Issue {
+            id: String::from("openrtb.profile.scope.unsupported"),
+            severity: Severity::Warning,
+            message: format!(
+                "{} has no verified OpenRTB {} {} contract in this build. Canonical specification checks were applied.",
+                profile.display_name(), version.id(), kind.label()
+            ),
+            path: None,
+            section: profile.source_url().map(String::from),
+        });
+        return result;
+    }
     if matches!(version.family(), crate::OpenRtbFamily::ThreeZero) {
         return validate_layered_payload(version, dialect, profile, input, kind);
     }
@@ -144,6 +164,9 @@ fn validate_payload(
     };
 
     let mut issues = Vec::new();
+    if matches!(kind, PayloadKind::BidResponse) {
+        crate::profile::compat::raw_response(profile, input, &mut issues);
+    }
     validate_known_object(
         version,
         dialect,
@@ -408,7 +431,9 @@ fn validate_known_object<'a>(
     }
 
     for field in definition.fields.iter().filter(|field| field.required) {
-        if !object.contains_key(field.name) {
+        if !object.contains_key(field.name)
+            && !crate::profile::compat::required_exception(profile, object_name, field.name, object)
+        {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
                 severity: Severity::Error,
@@ -430,9 +455,68 @@ fn validate_known_object<'a>(
         logical_segments.push(field_name.as_str());
         let parent_path_length = push_path_segment(instance_path, field_name);
 
+        if object_name == "Imp"
+            && field_name == "native"
+            && (profile == Profile::CommerceGrid
+                || (profile == Profile::DigitalTurbine
+                    && value
+                        .as_object()
+                        .is_some_and(|map| !map.contains_key("request"))))
+        {
+            crate::profile::compat::direct_native(profile, value, instance_path, issues);
+            if let Some(envelope) = value
+                .as_object()
+                .filter(|map| map.contains_key("request") || map.contains_key("request_native"))
+            {
+                for metadata in ["ver", "api", "battr", "ext"] {
+                    let Some(member) = envelope.get(metadata) else {
+                        continue;
+                    };
+                    let Some(field) = canonical_field(version, "Native", metadata) else {
+                        continue;
+                    };
+                    let metadata_path = join_instance_path(instance_path, metadata);
+                    validate_field_value_shape(
+                        dialect,
+                        "Native",
+                        field,
+                        member,
+                        &metadata_path,
+                        issues,
+                    );
+                    validate_catalog_value_set(
+                        profile,
+                        "Native",
+                        field,
+                        member,
+                        &metadata_path,
+                        issues,
+                    );
+                    if metadata == "ext" {
+                        logical_segments.push("ext");
+                        let mut extension_path = metadata_path;
+                        validate_extension_value(
+                            version,
+                            profile,
+                            kind,
+                            member,
+                            logical_segments,
+                            &mut extension_path,
+                            issues,
+                        );
+                        logical_segments.pop();
+                    }
+                }
+            }
+            instance_path.truncate(parent_path_length);
+            logical_segments.pop();
+            continue;
+        }
+
         if field_name == "ext" {
             validate_extension_value(
                 version,
+                profile,
                 kind,
                 value,
                 logical_segments,
@@ -484,6 +568,11 @@ fn validate_known_object<'a>(
         };
 
         let Some(field_definition) = field_definition else {
+            if crate::profile::compat::extra_field(profile, object_name, field_name) {
+                instance_path.truncate(parent_path_length);
+                logical_segments.pop();
+                continue;
+            }
             issues.push(uncatalogued_field_issue(
                 version,
                 kind,
@@ -503,6 +592,7 @@ fn validate_known_object<'a>(
         if field_definition.deprecated || rule_path_leaves().contains(field_name.as_str()) {
             push_path_status_issues(
                 version,
+                profile,
                 kind,
                 logical_segments,
                 instance_path,
@@ -511,14 +601,16 @@ fn validate_known_object<'a>(
                 issues,
             );
         }
-        validate_field_value_shape(
-            dialect,
-            object_name,
-            field_definition,
-            value,
-            instance_path,
-            issues,
-        );
+        if !crate::profile::compat::field_shape(profile, object_name, field_name, value) {
+            validate_field_value_shape(
+                dialect,
+                object_name,
+                field_definition,
+                value,
+                instance_path,
+                issues,
+            );
+        }
         validate_required_array_contents(field_definition, value, instance_path, issues);
         validate_catalog_value_set(
             profile,
@@ -616,8 +708,10 @@ fn push_index_segment(path: &mut String, index: usize) -> usize {
     previous_length
 }
 
+#[allow(clippy::too_many_arguments)]
 fn validate_extension_value<'a>(
     version: OpenRtbVersion,
+    profile: Profile,
     kind: PayloadKind,
     value: &'a Value,
     logical_segments: &mut Vec<&'a str>,
@@ -632,6 +726,7 @@ fn validate_extension_value<'a>(
                 if rule_path_leaves().contains(field_name.as_str()) {
                     push_path_status_issues(
                         version,
+                        profile,
                         kind,
                         logical_segments,
                         instance_path,
@@ -642,6 +737,7 @@ fn validate_extension_value<'a>(
                 }
                 validate_extension_value(
                     version,
+                    profile,
                     kind,
                     child,
                     logical_segments,
@@ -657,6 +753,7 @@ fn validate_extension_value<'a>(
                 let parent_path_length = push_index_segment(instance_path, index);
                 validate_extension_value(
                     version,
+                    profile,
                     kind,
                     item,
                     logical_segments,
@@ -810,7 +907,7 @@ fn validate_object_semantics(
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
-    validate_generic_exclusive_pairs(object, instance_path, object_section, issues);
+    validate_generic_exclusive_pairs(profile, object, instance_path, object_section, issues);
 
     let adcom_object = matches!(version.family(), crate::OpenRtbFamily::ThreeZero)
         && canonical_adcom_object(object_name).is_some();
@@ -820,10 +917,17 @@ fn validate_object_semantics(
             validate_bid_request_semantics(object, instance_path, object_section, issues)
         }
         "BidResponse" => {
-            validate_bid_response_semantics(object, instance_path, object_section, issues)
+            validate_bid_response_semantics(profile, object, instance_path, object_section, issues)
         }
-        "Bid" => validate_bid_semantics(version, object, instance_path, object_section, issues),
-        "Imp" => validate_imp_semantics(object, instance_path, object_section, issues),
+        "Bid" => validate_bid_semantics(
+            version,
+            profile,
+            object,
+            instance_path,
+            object_section,
+            issues,
+        ),
+        "Imp" => validate_imp_semantics(profile, object, instance_path, object_section, issues),
         "Video" if !adcom_object => {
             validate_video_semantics(object, instance_path, object_section, issues)
         }
@@ -998,6 +1102,7 @@ fn validate_adcom_av_placement_semantics(
 }
 
 fn validate_generic_exclusive_pairs(
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1010,6 +1115,9 @@ fn validate_generic_exclusive_pairs(
         ("keywords", "kwarray"),
         ("language", "langb"),
     ] {
+        if left == "wseat" && crate::profile::compat::seat_precedence(profile) {
+            continue;
+        }
         if object.contains_key(left) && object.contains_key(right) {
             push_mutually_exclusive_issue(left, right, instance_path, section, issues);
         }
@@ -1090,6 +1198,7 @@ fn validate_bid_request_semantics(
 }
 
 fn validate_bid_response_semantics(
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1100,7 +1209,11 @@ fn validate_bid_response_semantics(
         .and_then(Value::as_array)
         .is_some_and(|items| !items.is_empty());
 
-    if !has_seatbid && !object.contains_key("nbr") {
+    if !has_seatbid
+        && !object.contains_key("nbr")
+        && !crate::profile::compat::interest_group_response(profile, object)
+        && !crate::profile::compat::empty_no_bid(profile, object)
+    {
         issues.push(Issue {
             id: String::from("openrtb.response.seatbid_or_nbr.required"),
             severity: Severity::Error,
@@ -1162,6 +1275,7 @@ pub(crate) fn classify_adm(adm: &str) -> AdmMarkup {
 /// in-payload declaration of what the markup should be.
 fn validate_bid_semantics(
     version: OpenRtbVersion,
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1171,12 +1285,25 @@ fn validate_bid_semantics(
     crate::privacy_signals::validate_bid_dsa(object, instance_path, issues);
     if let Some(skadn) = extension_object(object, "skadn") {
         crate::skadn::validate_response(
+            profile,
             skadn,
             &join_instance_path(instance_path, "ext.skadn"),
             issues,
         );
     }
 
+    if crate::profile::compat::adm_native(profile) {
+        if let Some(root) = object
+            .get("adm_native")
+            .and_then(crate::native::parse_object_value)
+        {
+            crate::native::validate_markup_response(
+                &root,
+                &join_instance_path(instance_path, "adm_native"),
+                issues,
+            );
+        }
+    }
     let Some(adm) = object.get("adm").and_then(Value::as_str) else {
         return;
     };
@@ -1286,6 +1413,7 @@ fn validate_bid_semantics(
 }
 
 fn validate_imp_semantics(
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1295,7 +1423,7 @@ fn validate_imp_semantics(
         .into_iter()
         .any(|field| object.contains_key(field));
 
-    if !has_media_type {
+    if !has_media_type && !crate::profile::compat::token_impression(profile, object) {
         issues.push(Issue {
             id: String::from("openrtb.imp.media_type.required"),
             severity: Severity::Error,
@@ -1311,6 +1439,7 @@ fn validate_imp_semantics(
 
     if let Some(skadn) = extension_object(object, "skadn") {
         crate::skadn::validate_request(
+            profile,
             skadn,
             &join_instance_path(instance_path, "ext.skadn"),
             issues,
@@ -1481,7 +1610,7 @@ fn push_profile_required(
                 profile.display_name()
             ),
             path: Some(join_instance_path(instance_path, required.path)),
-            section: None,
+            section: profile.source_url().map(String::from),
         });
     }
 }
@@ -1582,10 +1711,35 @@ fn validate_native_semantics(
     section: &str,
     issues: &mut Vec<Issue>,
 ) {
-    let Some(request_raw) = object.get("request").and_then(Value::as_str) else {
+    let request_field = if object.contains_key("request") {
+        "request"
+    } else if crate::profile::compat::native_alternative(profile) {
+        "request_native"
+    } else {
+        "request"
+    };
+    if crate::profile::compat::native_object(profile) {
+        if let Some(root) = object.get(request_field).and_then(Value::as_object) {
+            let request_path = join_instance_path(instance_path, request_field);
+            let decoded = crate::native::parse_object_value(&Value::Object(root.clone()))
+                .expect("object Native request");
+            crate::native::validate_markup_request(
+                &decoded,
+                &request_path,
+                decoded
+                    .get("ver")
+                    .and_then(Value::as_str)
+                    .or_else(|| object.get("ver").and_then(Value::as_str)),
+                profile.native_request_asset_id_required(),
+                issues,
+            );
+            return;
+        }
+    }
+    let Some(request_raw) = object.get(request_field).and_then(Value::as_str) else {
         return;
     };
-    let request_path = join_instance_path(instance_path, "request");
+    let request_path = join_instance_path(instance_path, request_field);
 
     match serde_json::from_str::<Value>(request_raw) {
         Ok(Value::String(_)) => {
@@ -1619,6 +1773,18 @@ fn validate_native_semantics(
                     .get("ver")
                     .and_then(Value::as_str)
                     .or_else(|| object.get("ver").and_then(Value::as_str));
+                if matches!(
+                    profile,
+                    Profile::GoogleAuthorizedBuyers | Profile::DigitalTurbine
+                ) {
+                    crate::profile::push_profile_semantics(
+                        profile,
+                        "NativeRequest",
+                        &root,
+                        &request_path,
+                        issues,
+                    );
+                }
                 crate::native::validate_markup_request(
                     &root,
                     &request_path,
@@ -2248,6 +2414,7 @@ fn uncatalogued_field_issue(
 #[allow(clippy::too_many_arguments)]
 fn push_path_status_issues(
     version: OpenRtbVersion,
+    profile: Profile,
     kind: PayloadKind,
     logical_segments: &[&str],
     instance_path: &str,
@@ -2260,6 +2427,9 @@ fn push_path_status_issues(
     };
 
     let status = path_status(version, &schema_path);
+    if status.kind == PathStateKind::Moved && profile.allows_legacy_path(&schema_path) {
+        return;
+    }
     // Prefer the section recorded on the matching version rule; fall back to
     // the catalog citation of the field itself.
     let rule_section = status

@@ -1,0 +1,27 @@
+{
+  "reviewed_at": "2026-10-09",
+  "baseline": "ea7df0af19b3083971135ddb1817de6ae4d2ebe2",
+  "version": "0.14.0",
+  "scope": "triplelift",
+  "case_count": 145,
+  "positive_count": 73,
+  "mutation_count": 72,
+  "profiles": {
+    "triplelift-supplier": 144,
+    "spec": 1
+  },
+  "directions": {
+    "request": 72,
+    "response": 65,
+    "pair": 8
+  },
+  "case_sha256": "528cdeb4ececca11a4fdb96333f1fe94a810a5e90a64f6f74766e7cd05d661a8",
+  "test_command": "cargo test -p rtblint-core --test exchange_depth_index_dv360 --test exchange_depth_index_dv360_peer_review --test exchange_depth_triplelift",
+  "test_status": "passed",
+  "clippy_command": "cargo clippy -p rtblint-core --lib --test exchange_depth_index_dv360_peer_review --test exchange_depth_triplelift -- -D warnings",
+  "clippy_status": "passed",
+  "limitations": [
+    "Published primary-source constraints only; accounts, runtime transport and remote creative retrieval remain external.",
+    "Pair API checks supplied response against request references and does not validate the supplied request itself."
+  ]
+}

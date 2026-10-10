@@ -1,0 +1,3095 @@
+{
+  "facts": [
+    {
+      "object": "BidRequest",
+      "field": "acat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "allimps",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "app",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "at",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "badv",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "bapp",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "bcat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "bseat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "cattax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "cur",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "device",
+      "type_column": "OBJECT",
+      "necessity_column": "REQUIRED",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "dooh",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "ext",
+      "type_column": "DICTIONARY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "imp",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "REQUIRED",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "regs",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "site",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "source",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "test",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "tmax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "user",
+      "type_column": "OBJECT",
+      "necessity_column": "REQUIRED",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "wlang",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "wlangb",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidRequest",
+      "field": "wseat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "audio",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "banner",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "REQUIRED",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "bidfloorcur",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "clickbrowser",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "displaymanager",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "displaymanagerver",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "dt",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "exp",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "iframebuster",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "instl",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "metric",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "native",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "pmp",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "qty",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "refresh",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "rwdd",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "secure",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "ssai",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "tagid",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "video",
+      "type_column": "OBJECT",
+      "necessity_column": "SEE DESCRIPTION",
+      "table_index": 1,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "api",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "btype",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "expdir",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "ext.bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "format",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "h",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "pos",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "topframe",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "vcm",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Banner",
+      "field": "w",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Format",
+      "field": "h",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Format",
+      "field": "w",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "api",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "battr",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "boxingallowed",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "companionad",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "companiontype",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "delivery",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "durfloors",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "ext.bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "ext.orientation",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "ext.rewarded",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "h",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "linearity",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "maxbitrate",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "maxduration",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "maxextended",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "maxseq",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL, RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "mimes",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "REQUIRED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "minbitrate",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "mincpmpersec",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "minduration",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "placement",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "playbackend",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "playbackmethod",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "plcmt",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "poddedupe",
+      "type_column": "ENUM ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "poddur",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL, RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "podid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "podseq",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "pos",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "protocols",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL, RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "rqddurs",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "sequence",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "skip",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "skipafter",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "skipmin",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "slotinpod",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "startdelay",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Video",
+      "field": "w",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 4,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "api",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "delivery",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "durfloors",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "ext.bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "feed",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "maxbitrate",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "maxduration",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "maxextended",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "maxseq",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "mimes",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "REQUIRED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "minbitrate",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "mincpmpersec",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "minduration",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "poddur",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL, RECOMMENDED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "podid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "podseq",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "protocols",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "rqddurs",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "sequence",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "slotinpod",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Audio",
+      "field": "startdelay",
+      "type_column": "INTEGER",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 5,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Native",
+      "field": "ext.bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 6,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "bidder",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 7,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "dfp_ad_unit_code",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 7,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "gpid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 7,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "plcmtuuid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 8,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "siteId",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 8,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "pageId",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 8,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "formatId",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 8,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "PMP",
+      "field": "deals",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 9,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "PMP",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 9,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "PMP",
+      "field": "private_auction",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 9,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "at",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "bidfloor",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "bidfloorcur",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "durfloors",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "guar",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "mincpmpersec",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "wadomain",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Deal",
+      "field": "wseat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 10,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Metric",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 11,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Metric",
+      "field": "type",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 11,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Metric",
+      "field": "value",
+      "type_column": "FLOAT",
+      "necessity_column": "REQUIRED",
+      "table_index": 11,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Metric",
+      "field": "vendor",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 11,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "feedback_token",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 12,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "loss",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 12,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Imp",
+      "field": "price",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 12,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "bundle",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 13,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification",
+      "resolution": "Advisory: child table required contradicts parent strongly-recommended App ID or Bundle ID."
+    },
+    {
+      "object": "App",
+      "field": "cat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "inventorypartnerdomain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "keywords",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "pagecat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "publisher",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "App",
+      "field": "storeurl",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 13,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "content",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "ext.amp",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "inventorypartnerdomain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "keywords",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "page",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "publisher",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Site",
+      "field": "ref",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 14,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "album",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "artist",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "cat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "cattax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "channel",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "contentrating",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "context",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "data",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "embeddable",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "episode",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "genre",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "genres",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "gtax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "isrc",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "keywords",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "kwarray",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "langb",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "language",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "len",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "livestream",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "network",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "producer",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "prodq",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "qagmediarating",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "season",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "series",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "sourcerelationship",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "title",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "url",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Content",
+      "field": "userrating",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 15,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Data",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 16,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Data",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 16,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Data",
+      "field": "segment",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 16,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Segment",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 17,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Segment",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 17,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Segment",
+      "field": "value",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 17,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "cat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "cattax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Producer",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 18,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Channel",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 19,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Channel",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": null,
+      "table_index": 19,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Channel",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 19,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Channel",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 19,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Network",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 20,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Network",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": null,
+      "table_index": 20,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Network",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 20,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Network",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 20,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "cat",
+      "type_column": "STRING ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 21,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "cattax",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 21,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 21,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 21,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "id",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 21,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Publisher",
+      "field": "directpay",
+      "type_column": "BOOLEAN",
+      "necessity_column": "OPTIONAL",
+      "table_index": 22,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "content",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "keywords",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "publisher",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "venuetype",
+      "type_column": "INT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "DOOH",
+      "field": "venuetypetax",
+      "type_column": "INTEGER; always 1",
+      "necessity_column": "OPTIONAL",
+      "table_index": 23,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "carrier",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "connectiontype",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "devicetype",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "dnt",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "dpidmd5",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "dpidsha1",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ext.atts",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ext.ifa_type",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "geo",
+      "type_column": "OBJECT",
+      "necessity_column": "RECOMMENDED",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "h",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "hwv",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ifa",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ip",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "language",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "make",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "model",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "os",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "osv",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ppi",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "pxratio",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "sua",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "ua",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Device",
+      "field": "w",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 24,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "accuracy",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "country",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "lat",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "lon",
+      "type_column": "FLOAT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "metro",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "type",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "utcoffset",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Geo",
+      "field": "zip",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 25,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Qty",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 26,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Qty",
+      "field": "multiplier",
+      "type_column": "FLOAT",
+      "necessity_column": "REQUIRED",
+      "table_index": 26,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Qty",
+      "field": "sourcetype",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 26,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Qty",
+      "field": "vendor",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED (if sourcetype is present and set to 1 )",
+      "table_index": 26,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "buyeruid",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 27,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "consent",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 27,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "data",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 27,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "eids",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 27,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "ext.consent",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 27,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "User",
+      "field": "ext.eids",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 27,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification",
+      "resolution": "Current documented legacy 2.5 array path; explicit array prose and nested EID/UID type checks."
+    },
+    {
+      "object": "EID",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "EID",
+      "field": "inserter",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "EID",
+      "field": "matcher",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "EID",
+      "field": "mm",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "EID",
+      "field": "source",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "EID",
+      "field": "uids",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 28,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "UID",
+      "field": "atype",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 29,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "UID",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 29,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "UID",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 29,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "ext.omidpn",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 30,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "ext.omidpv",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 30,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "ext.schain",
+      "type_column": "OBJECT",
+      "necessity_column": "REQUIRED (except in case of owned and operated inventory); NOT REQUIRED if source.schain is sent",
+      "table_index": 30,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "ext.schain.nodes",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "REQUIRED",
+      "table_index": 30,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "fd",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 30,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "pchain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 30,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "schain",
+      "type_column": "OBJECT",
+      "necessity_column": "REQUIRED (except in case of owned and operated inventory); NOT REQUIRED if source.ext.schain is sent",
+      "table_index": 30,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Source",
+      "field": "tid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 30,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChain",
+      "field": "complete",
+      "type_column": "INTEGER",
+      "necessity_column": "REQUIRED",
+      "table_index": 31,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChain",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 31,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChain",
+      "field": "nodes",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "REQUIRED",
+      "table_index": 31,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChain",
+      "field": "ver",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 31,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "asi",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": "OPTIONAL",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "hp",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "name",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "rid",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "SupplyChainNode",
+      "field": "sid",
+      "type_column": "STRING",
+      "necessity_column": "REQUIRED",
+      "table_index": 32,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "coppa",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "ext.gdpr",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "gdpr",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "gpp",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "gpp_sid",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "us_privacy",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 33,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "datatopub",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 34,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "dsarequired",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 34,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "pubrender",
+      "type_column": "INTEGER",
+      "necessity_column": "OPTIONAL",
+      "table_index": 34,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "transparency",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 34,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": "OPTIONAL",
+      "table_index": 35,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "Regs",
+      "field": "dsaparams",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": "OPTIONAL",
+      "table_index": 35,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-request-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "cur",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "ext",
+      "type_column": "DICTIONARY",
+      "necessity_column": null,
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "id",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 0,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "nbr",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 0,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "seatbid",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": null,
+      "table_index": 0,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "dealtype",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 1,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "feedback_token",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 1,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "BidResponse",
+      "field": "impression_tracking_url",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 1,
+      "classification": "source-conflict",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "SeatBid",
+      "field": "bid",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": null,
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "SeatBid",
+      "field": "seat",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 2,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "adomain",
+      "type_column": "STRING ARRAY",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "adm",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "burl",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "cid",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "crid",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "dealid",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "dur",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "ext",
+      "type_column": "OBJECT",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "h",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "id",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "impid",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "lurl",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "mtype",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "nurl",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "price",
+      "type_column": "FLOAT",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "w",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 3,
+      "classification": "base-spec",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "dsa",
+      "type_column": "OBJECT",
+      "necessity_column": null,
+      "table_index": 4,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "adrender",
+      "type_column": "INTEGER",
+      "necessity_column": null,
+      "table_index": 5,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "behalf",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 5,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "paid",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 5,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "transparency",
+      "type_column": "OBJECT ARRAY",
+      "necessity_column": null,
+      "table_index": 5,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "domain",
+      "type_column": "STRING",
+      "necessity_column": null,
+      "table_index": 6,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    },
+    {
+      "object": "Bid",
+      "field": "dsaparams",
+      "type_column": "INTEGER ARRAY",
+      "necessity_column": null,
+      "table_index": 6,
+      "classification": "profile",
+      "source": "https://help.equativ.com/open-rtb-api-integration-bid-response-specification"
+    }
+  ],
+  "source_conflicts": "See equativ.md. Type columns alone do not override canonical types when prose/examples disagree.",
+  "inherited": "Canonical fields retain the selected OpenRTB schema type, enum, requiredness and pair checks."
+}

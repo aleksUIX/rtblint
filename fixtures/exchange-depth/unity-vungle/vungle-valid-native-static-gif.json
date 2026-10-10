@@ -1,0 +1,18 @@
+{
+  "id": "vungle-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "{\"native\": {\"ver\": \"1.2\", \"link\": {\"url\": \"https://advertiser.example/app\"}, \"assets\": [{\"id\": 1, \"img\": {\"url\": \"https://cdn.example/image.gif\", \"w\": 1200, \"h\": 600}}]}}",
+          "adomain": [
+            "advertiser.example"
+          ]
+        }
+      ]
+    }
+  ]
+}

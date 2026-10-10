@@ -1,0 +1,1097 @@
+{
+  "source_commit": "24ff50ca1f00ca1e80ab80bcfa1c812c35f87797",
+  "custom_wire_paths": [
+    {
+      "direction": "request",
+      "path": "ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.profileid",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.versionid",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.ssauction",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.sumry_disable",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.clientconfig",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.supportdeals",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.includebrandcategory",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.abtest",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.wiid",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.ssai",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.kv",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.kv.vendor",
+      "wire_type": "opaque",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.video",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.video.adrule",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.sdksubintegration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.wrapper.edsstatus",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.bidder",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.bidder.vendor",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.bidder.vendor.vendor",
+      "wire_type": "opaque",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.minads",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.maxads",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.adminduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.admaxduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.excladv",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.excliabcat",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.crosspodexcladv",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.crosspodexcliabcat",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.excliabcatwindow",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.adpod.excladvwindow",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency.content",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency.content.vendor",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency.content.vendor.include",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency.content.vendor.keys",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.transparency.content.vendor.keys[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.keyval",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.keyval.vendor",
+      "wire_type": "opaque",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.tracker_disabled",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.googlessufeature",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "ext.prebid.debug_override",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.wrapper",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.wrapper.adserverurl",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.wrapper.div",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.reward",
+      "wire_type": "int8",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.keywords",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.keywords[0]",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.keywords[0].key",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.keywords[0].value",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.keywords[0].value[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.dealtier",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/deal_tier.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.dealtier.prefix",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/deal_tier.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.bidder.vendor.dealtier.minDealTier",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/deal_tier.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.data",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.gpid",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.prebid",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.owsdk",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.owsdk.vendor",
+      "wire_type": "opaque",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.billing_id",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.billing_id[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.publisher_setting_list_id",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.publisher_setting_list_id[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.allowed_vendor_type",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.allowed_vendor_type[0]",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.excluded_creatives",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.excluded_creatives[0]",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.excluded_creatives[0].buyer_creative_id",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.is_app_open_ad",
+      "wire_type": "int8",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.allowed_restricted_category",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.allowed_restricted_category[0]",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.creative_enforcement_settings",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.creative_enforcement_settings.policy_enforcement",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.creative_enforcement_settings.scan_enforcement",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.creative_enforcement_settings.publisher_blocks_enforcement",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].ext.dfp_ad_unit_code",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.offset",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.minads",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.maxads",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.adminduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.admaxduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.excladv",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].video.ext.adpod.excliabcat",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext.flexslot",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext.flexslot.wmin",
+      "wire_type": "int32",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext.flexslot.wmax",
+      "wire_type": "int32",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext.flexslot.hmin",
+      "wire_type": "int32",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "imp[0].banner.ext.flexslot.hmax",
+      "wire_type": "int32",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/pubmatic_ow.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "regs.ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "regs.ext.gdpr",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "regs.ext.us_privacy",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/request.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "source.ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/source.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "source.ext.omidpv",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/source.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "source.ext.omidpn",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/source.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "request",
+      "path": "user.ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/user.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "request",
+      "path": "user.ext.consent",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/user.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.errorCode",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.errorMessage",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.refreshInterval",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.crtype",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0]",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].vastTagID",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].bidder",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].bid",
+      "wire_type": "number",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].errorCode",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].errorMessage",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].width",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].height",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.summary[0].regex",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.minduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.maxduration",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.skip",
+      "wire_type": "int8",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.skipmin",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.skipafter",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.battr",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.battr[0]",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.playbackmethod",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.video.playbackmethod[0]",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.banner",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.dspid",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.winner",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.netecpm",
+      "wire_type": "number",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.origbidcpm",
+      "wire_type": "number",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.origbidcur",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.origbidcpmusd",
+      "wire_type": "number",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.fsc",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.isAdpodBid",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.targeting",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.targeting.vendor",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.debug",
+      "wire_type": "object",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": true
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.debug.Targeting",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.debug.Targeting.vendor",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.debug.targeting",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.debug.targeting.vendor",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.aprc",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.refbids",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.adpod.refbids[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/openrtb_ext/openwrap.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.ibv",
+      "wire_type": "boolean",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.clicktrackers",
+      "wire_type": "array",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.clicktrackers[0]",
+      "wire_type": "string",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.owsdk",
+      "wire_type": "map",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.owsdk.vendor",
+      "wire_type": "opaque",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.act",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    },
+    {
+      "direction": "response",
+      "path": "seatbid[0].bid[0].ext.bidexp_enf",
+      "wire_type": "integer",
+      "source": "https://github.com/PubMatic-OpenWrap/prebid-server/blob/24ff50ca1f00ca1e80ab80bcfa1c812c35f87797/modules/pubmatic/openwrap/models/response.go",
+      "unknown_keys_open": false
+    }
+  ]
+}

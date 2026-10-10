@@ -1,0 +1,7 @@
+{
+  "count": 541,
+  "extension_type_facts": 66,
+  "sources": "docs/exchange-profiles/equativ-sources.json",
+  "approach": "Independent source-derived shape, boundary, mandatory, processing-limit and compatibility facts. Descriptor controls assert shape only. Full valid controls are explicitly marked. No expected results are copied from the validator.",
+  "synthetic": true
+}

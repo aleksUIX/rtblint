@@ -1,0 +1,24 @@
+{
+  "id": "request-1",
+  "app": {
+    "bundle": "123456789"
+  },
+  "imp": [
+    {
+      "id": "1",
+      "banner": {
+        "w": 300,
+        "h": 250
+      },
+      "ext": {
+        "skadn": {
+          "version": "3.0",
+          "sourceapp": "123456789",
+          "skadnetids": [
+            "example.skadnetwork"
+          ]
+        }
+      }
+    }
+  ]
+}

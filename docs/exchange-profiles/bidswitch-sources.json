@@ -1,0 +1,569 @@
+[
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/data-format.html",
+    "sha256": "19944c8b62bd8b38574d066291187116d8c38914b403575f95529ecea4dffab0",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-app-object.html",
+    "sha256": "d1e750285d2f55a09f5f2f0c15488191812353aae0fa018b799b49e955d0280e",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-audio.html",
+    "sha256": "1ad86484637c174f0122b92511efe2aa4327dd9f749b0ac8f072d63d8cc3627f",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-backward-compatibility.html",
+    "sha256": "ff6be64fb5270bed7aa4672e5305f0acc68b145f6f6bc35a603ae1f1539b0a40",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-banner.html",
+    "sha256": "7c456cd6ebde9b6d86ffe1593402868b6147df3b893ec0200d57b72a32d8cc06",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-bid-request-examples.html",
+    "sha256": "4a57c2fd648c2e9396fdefc0a705bbc895f6ce1e49c4c668c17202b9712df9a9",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-bid-response-examples.html",
+    "sha256": "88db64ce53c3d2b2b607c65db68d01da739c260f2225b170e57a0665fe6bb588",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-content-channel.html",
+    "sha256": "cde11ea51f98852e59f4e94cffe25c47dc245cb969aafacd72db5efb2501ee76",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-content-network.html",
+    "sha256": "b8e7eb5ce7ed7740366572d29018a685cb93cdc03f2c5f6da0b9ceae2a43a916",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-content-object.html",
+    "sha256": "4a570dca5878b2c51e252f3ffe6344b3e54029def456b18311bc269d14f1b8d6",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-content-producer.html",
+    "sha256": "c53a8ba378265782edae2b27d1ea01d3bf5e1b6ac13ff850e3a5fed4bb7dea12",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-data-object.html",
+    "sha256": "4f817db780e145ffd614c6a3fcd96cf31756c7407042a8240fae5ca1ee4d9268",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-deals.html",
+    "sha256": "df6e61b9f7b657aa494ea8e0e21041e5e5a34b0589e6527aa177aa75d0596aab",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-device-object.html",
+    "sha256": "3bf75bfffec26806bb9127700d763c887558f51af7ea573ac51598c0b807e8c9",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-dooh.html",
+    "sha256": "7a87dc6ea0d244c7f5b0b0369ec01801b2d2718b8154ce184c77b36ad7fd44bb",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-ext-object.html",
+    "sha256": "a2abb27a2dadafce79b6a941c4f805b70b6f8510ebcc6ce1e69b3001d7352d7d",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-format.html",
+    "sha256": "68d6921bc5a40f0019f833c0fa30442499f12d9aa7c7b56944910947a0c366d1",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-geo-object.html",
+    "sha256": "124e19fe81d6e57b479fc521a6a1489d56afe59a2a570bb1dc34add695bb9d29",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-impressions.html",
+    "sha256": "2a338cec62a1d5cdaf6687c3ffabe73a22b84db602f074f4f9a3b1a1f2449b26",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-macros.html",
+    "sha256": "5a1ad24a7fa5b587b5ef21077c42819a459e46e3895bfa1ce58acdae6c517248",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-metric.html",
+    "sha256": "ea37a356066bd020979bf5f20e86cf471ab12a99dd3f5d1c182450718c9424ea",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-native-request.html",
+    "sha256": "7753b7b3e7766c1401a4de6e638afb36f31ed12200f4b2fb7ab5691cdc61341c",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-native.html",
+    "sha256": "2d21c9f277b751184970d3c7d0358f7be100e9ba559ecca5bf9133eb7c58dff6",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-private-deal.html",
+    "sha256": "5b19ca866d3be0ef9265ac6fb0648200150298c6df48288fb4de4a7c5beda828",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-publisher-object.html",
+    "sha256": "71cdff5e8db20535a1a9f2063f278b658c9a9b3ae973d669924dd01d1f9dec79",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-recommended-fields.html",
+    "sha256": "15eca38e6b674139ec2dcdffc128dcc2c15c0df1856313466f606ec8e274b6a1",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-regulation-object.html",
+    "sha256": "4b0b9836f4beac70c2b5dd32ab90f55429ced882299b145515694a5582648e17",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-release-notes.html",
+    "sha256": "e7916e3d9f28161a9c02f12d66621b492edb7472987f8bcc66b0ff0e8ec0dd3c",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-request.html",
+    "sha256": "7eccd6f783da00429f031e712b04c317810c93ad08c35f6512097b5e8c7c2a8a",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-bid-object.html",
+    "sha256": "32ee50ffbc644cee4a23a762e3943bb14edee02ce2cbbecc7f4dcaf1a914e3b5",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-data.html",
+    "sha256": "e5d94ab9f959db3fde49bbc56d56fcbcd036a740a7628ecc8d763293da709c19",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-ext.html",
+    "sha256": "20294f7d7eff89d8fe45c213bff01ecb633085ed7ab57dd3ae01ca707b3f5d71",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-native-object.html",
+    "sha256": "6c438dbb4a77bb16350b8d004b2eaa88c5fcf2de951810ee64ee090a407621e3",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response-seat-bid.html",
+    "sha256": "e302f0da53a84868080069abdc51a0903eac1922e8334ee0388f992fbcb9114e",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-response.html",
+    "sha256": "c8fab2ee26ee228e01e0a6dfa80df74a9d20467157693dfd783a197496116928",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-sensitive-categories.html",
+    "sha256": "da5c2d8321d56c8f81107d9bc923e92fd291db27347f65232e14af73a7ca3853",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-site-object.html",
+    "sha256": "3670bae2501d5b9727d3e6aad73ab341fa4c0de24d248381564709f7017395dd",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-source-object.html",
+    "sha256": "008f4b65ab17b64f4d60ac768a3a575f99fff54f5528533554895ab178fe9f14",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-user-object.html",
+    "sha256": "5856f0cb350ca0d7b1125fa6b6f55fda14698153c6d82885d444d94ac5d0e62a",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/ssp-protocol-v11/ssp-video.html",
+    "sha256": "a77fb950afc7b442ca36a3a86c630e625b2b3fdeb280c2b0b2b5b745e29e7318",
+    "retrieved_at": "2026-10-09",
+    "document_version": "supplier-1.1",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/app-object.html",
+    "sha256": "c4fdaeeee5b20011351faa4b5668254d6bed6cc17218db7b729a3fa0eca5a8c0",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/audio.html",
+    "sha256": "f81e7053474bd386b4d4a05ab3459dbec1863d293a1f48b236486c3fa614d059",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/banner.html",
+    "sha256": "debcc5ab0c5a5d71ea479fcd5cb76863001a93c5141bb7e87e453765f7b5b8ec",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bid-request-examples.html",
+    "sha256": "01c8b47e0af0f69287b99c90b946f4992ebdd83ff78a56959dad455cdfe14f2e",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bid-response-examples.html",
+    "sha256": "e407509093b22b791b26c9dd75e5822bdf9c83e4701778be314e572ccff1f114",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bid-response-ext.html",
+    "sha256": "89a97c0f99b0e77db274e6e03c8c74753432d145d91dd963719f15d9ec346a82",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bid-response.html",
+    "sha256": "8ac1d91afd44db9895f59727b4fd7344a6edf32cf6e6b0ba3c0167de37cf9eb7",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bidrequest.html",
+    "sha256": "ac9ad464c7eb5df008375b53552adda92e643de8219ff6862d98f9739a5eac22",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/bidswitch-categories.html",
+    "sha256": "ea44f9def4a7044e984a03af2f6527f54eff7c41589c292569ebc5a7fab2d783",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/burl.html",
+    "sha256": "bf8f4577e3c264010a29f281e67796bd10d9a8990c671b37120178e82c9f6ed8",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/compatibility-deprecation.html",
+    "sha256": "74c5283302860a9cfdad80c9f297cc0b6fd23910cf1cad5912857699b3e82d06",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/content-channel.html",
+    "sha256": "fe4b515e656bb6ed374b3dacaf4ac24a9953b65884ea7a596554e7bbd0157d6d",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/content-network.html",
+    "sha256": "374e3e78e93a95972bc4f50150dd844623c9986c1b256fa4cf89b3e51464256e",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/content-object.html",
+    "sha256": "f2acf81ad2de27d2cee4e2d0383bf776d645fcefcc3f2cc63de4f1748165c035",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/content-producer.html",
+    "sha256": "196b301d68d43fbfa20b83ebbe54bef7063ce889afcb815ae9c68de3802c8dc6",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/data-format.html",
+    "sha256": "93ed8cd712659e2f1598604c9b76c430d05510a09420b07301d6d25bf6ea6932",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/data-object.html",
+    "sha256": "2b75ad5d9bc8eecac1f5c3ac19c5ae4576e656bd42c7449ecadad5a9042cbe69",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/deal-object.html",
+    "sha256": "4e0fc5fc3730b975f8c3b7e7e6e8dba6eeac4843d30e8dfee5720c8a8ec54109",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/device-object.html",
+    "sha256": "c22b709f59d66bab16a231056c6cee21911ee6aeb65d8951e13fe539bd44779e",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/dooh-object.html",
+    "sha256": "575ca994780132c7a81a23beac7d8771864662f3a1e2c4224618a41b5668b210",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/ext-object.html",
+    "sha256": "4fd35edd9105c7e331cb6b8b4599eb2318181316f6e8afb390fcea07ecb8a0f3",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/format.html",
+    "sha256": "4b772ba02f39fa91fe278b56d2480055196a801d38fbce6bca79b81f6a5fbbce",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/geo-object.html",
+    "sha256": "bacda4d7764c1fb93cb8e56d034d57a0c034028351d6779d51c4d5ad5a1f3edc",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/impressions.html",
+    "sha256": "a659554b7513eeb1839b7f6b8a8c39caf98b42b7e136be9cfa0bafee880f9bd2",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/metric.html",
+    "sha256": "765f00287103d6d312c15866fc802cc66fa608537452ccad805546c17f33d752",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/native-object.html",
+    "sha256": "dd933724ee436543fe327f4b790be8cb70cd0cf9602cd1a3003051d69d7ed56f",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/native-request.html",
+    "sha256": "ad5e62c18364e490006c34306adab295660ac95033fabd86eeca5cef7495923f",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/native.html",
+    "sha256": "d49da2a08f0d2836af423672d987a66a32ef9c48fc0d7273c1b37db90de77717",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/private-market-obj.html",
+    "sha256": "836b0e05a83dc4c0044dca634b373d92540ee662bbf26300256511f63874f81d",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/publisher-object.html",
+    "sha256": "537398dfd49a4b3cfbb5b37b5a1d7039ecbe579a686103d692245e7a13afeef6",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/regulation-object.html",
+    "sha256": "7a34498c4a10654ccbb5c288c071939ff1e9958ccf3fde33bb8586d65ea21462",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/response-bid-obj.html",
+    "sha256": "67372cdb0e6756c7e46b0284b656243862f2654cca0aab8a3a6ace6a48d933ed",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/response-data.html",
+    "sha256": "3ef773d15da406722f92897a32ca2a82e2e962542d981adc568fb655b5078dc6",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/seat-bid.html",
+    "sha256": "f673820381f8e58b91af90d5578d2dd97304f0341b9c383120c7eda3733fe985",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/server-to-server-calls.html",
+    "sha256": "9f7c5c3455ec83f462e459d3fc19f9d08eeddc43a395107c60e27cef0c0755f2",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/site-object.html",
+    "sha256": "00410d06ee6f681fd04d8795ce88fc28ebfe330cbcc5a6c96bc8a1a3e25d9385",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/source.html",
+    "sha256": "b442e289211fb582e30ca6fffd5785a03e3943752421d0d198b0167480415897",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/standards.html",
+    "sha256": "8c1a13f0f12450fcd8eb5da3f9c3a16fca4dc0792217a31e88ad99c76ac9aaf9",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/user-object.html",
+    "sha256": "f7b421a4edb76d4c2e7e9c4a3ff9c6251fe09a3cf4cc7dbdf024954b72ecaaf4",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards-v57/video.html",
+    "sha256": "016729c2743e8169d4196274822913a1fa09b180e146cd73f2ceb3aa5567eea9",
+    "retrieved_at": "2026-10-09",
+    "document_version": "5.7",
+    "last_updated": "Last updated Sep 29, 2026\n        "
+  },
+  {
+    "url": "https://protocol.bidswitch.com/standards/macros.html",
+    "sha256": "0a9b7d37116a1382988250f518ace0297d76f5ab1da7dd451d690fd74d867625",
+    "retrieved_at": "2026-10-09",
+    "document_version": "buyer-5.7-cross-reference",
+    "last_updated": "Sep 29, 2026"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "id": "handler-request",
+  "imp": [
+    {
+      "id": "1",
+      "native": {
+        "ver": "1.1",
+        "request": "{\"ver\": \"1.1\", \"assets\": [{\"id\": 1, \"required\": 1, \"img\": {\"type\": 3, \"wmin\": 300, \"hmin\": 250}}]}"
+      }
+    }
+  ]
+}

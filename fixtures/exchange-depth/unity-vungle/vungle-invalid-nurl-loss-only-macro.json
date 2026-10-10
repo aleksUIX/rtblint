@@ -1,0 +1,19 @@
+{
+  "id": "vungle-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Creative</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "nurl": "https://bidder.example/win?p=${MIN_BID_TO_WIN}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# These raw wire fixtures use trailing spaces to test exact response byte limits.
+fixtures/exchange-depth/expansion-batch/alx-response-bytes-4096.json -text whitespace=-blank-at-eol
+fixtures/exchange-depth/expansion-batch/alx-response-bytes-4097.json -text whitespace=-blank-at-eol

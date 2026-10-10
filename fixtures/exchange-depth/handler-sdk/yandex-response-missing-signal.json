@@ -1,0 +1,16 @@
+{
+  "id": "yandex-request",
+  "cur": "USD",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "bid",
+          "impid": "1",
+          "price": 1,
+          "ext": {}
+        }
+      ]
+    }
+  ]
+}

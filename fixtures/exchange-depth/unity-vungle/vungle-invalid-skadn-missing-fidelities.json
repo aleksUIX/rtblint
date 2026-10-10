@@ -1,0 +1,28 @@
+{
+  "id": "vungle-request",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "buyer-bid",
+          "impid": "1",
+          "price": 1,
+          "adm": "<div>Creative</div>",
+          "adomain": [
+            "advertiser.example"
+          ],
+          "ext": {
+            "skadn": {
+              "version": "3.0",
+              "itunesitem": "987654321",
+              "sourceapp": "123456789",
+              "network": "network.skadnetwork",
+              "campaign": "100"
+            }
+          },
+          "bundle": "987654321"
+        }
+      ]
+    }
+  ]
+}

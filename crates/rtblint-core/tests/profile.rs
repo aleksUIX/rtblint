@@ -376,18 +376,17 @@ fn spec_profile_does_not_require_xandr_seller_member_id() {
 }
 
 #[test]
-fn xandr_requires_seller_member_id() {
+fn xandr_seller_member_id_is_optional() {
     let payload = r#"{
         "id": "req-1",
         "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
     }"#;
     let result = xandr_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "ext.appnexus.seller_member_id"
-    ));
+    assert!(
+        result.valid,
+        "optional seller member ID: {:?}",
+        result.issues
+    );
 }
 
 #[test]
@@ -402,19 +401,14 @@ fn xandr_banner_request_with_seller_member_id_is_valid() {
 }
 
 #[test]
-fn xandr_requires_video_context() {
+fn xandr_video_context_is_optional() {
     let payload = r#"{
         "id": "req-1",
         "ext": { "appnexus": { "seller_member_id": 123 } },
         "imp": [{ "id": "1", "video": { "mimes": ["video/mp4"] } }]
     }"#;
     let result = xandr_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "imp[0].video.ext.appnexus.context"
-    ));
+    assert!(result.valid, "optional video context: {:?}", result.issues);
 }
 
 #[test]
@@ -426,7 +420,7 @@ fn xandr_rejects_video_context_outside_documented_set() {
             "id": "1",
             "video": {
                 "mimes": ["video/mp4"],
-                "ext": { "appnexus": { "context": 9 } }
+                "ext": { "appnexus": { "context": 11 } }
             }
         }]
     }"#;
@@ -457,19 +451,14 @@ fn xandr_accepts_documented_video_context() {
 }
 
 #[test]
-fn xandr_rejects_invalid_markup_delivery() {
+fn xandr_does_not_apply_supplier_markup_delivery_to_bidder_requests() {
     let payload = r#"{
         "id": "req-1",
         "ext": { "appnexus": { "seller_member_id": 123, "markup_delivery": 2 } },
         "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
     }"#;
     let result = xandr_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.value_invalid",
-        "ext.appnexus.markup_delivery"
-    ));
+    assert!(result.valid, "supplier-only field: {:?}", result.issues);
 }
 
 #[test]
@@ -487,60 +476,35 @@ fn spec_profile_does_not_require_magnite_zone_id() {
 }
 
 #[test]
-fn magnite_requires_zone_id() {
+fn magnite_zone_id_is_optional() {
     let payload = r#"{
         "id": "req-1",
         "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }]
     }"#;
     let result = magnite_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "imp[0].ext.rp.zone_id"
-    ));
+    assert!(result.valid, "optional zone ID: {:?}", result.issues);
 }
 
 #[test]
-fn magnite_requires_site_identity_fields() {
+fn magnite_site_identity_fields_are_optional() {
     let payload = r#"{
         "id": "req-1",
         "site": { "id": "s1", "domain": "publisher.example" },
         "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "rp": { "zone_id": 3 } } }]
     }"#;
     let result = magnite_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "site.ext.rp.site_id"
-    ));
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "site.publisher.ext.rp.account_id"
-    ));
+    assert!(result.valid, "optional site identity: {:?}", result.issues);
 }
 
 #[test]
-fn magnite_requires_app_identity_fields() {
+fn magnite_app_identity_fields_are_optional() {
     let payload = r#"{
         "id": "req-1",
         "app": { "id": "a1", "bundle": "com.example.app" },
         "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "ext": { "rp": { "zone_id": 3 } } }]
     }"#;
     let result = magnite_validate(payload);
-    assert!(!result.valid);
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "app.ext.rp.site_id"
-    ));
-    assert!(has_issue(
-        &result,
-        "openrtb.profile.field_required",
-        "app.publisher.ext.rp.account_id"
-    ));
+    assert!(result.valid, "optional app identity: {:?}", result.issues);
 }
 
 #[test]

@@ -5,11 +5,12 @@
 
 use serde_json::{Map, Value};
 
-use crate::{Issue, Severity};
+use crate::{Issue, Profile, Severity};
 
 const SECTION: &str = "IAB SKAdNetwork OpenRTB extension";
 
 pub(crate) fn validate_request(
+    profile: Profile,
     skadn: &Map<String, Value>,
     instance_path: &str,
     issues: &mut Vec<Issue>,
@@ -54,7 +55,16 @@ pub(crate) fn validate_request(
                 .and_then(Value::as_array)
                 .is_some_and(|items| !items.is_empty())
     });
-    if !skadnetids && !list_populated {
+    // Liftoff explicitly permits an empty skadnetids array in its request guide.
+    let empty_vungle_ids = profile == Profile::Vungle
+        && skadn
+            .get("skadnetids")
+            .and_then(Value::as_array)
+            .is_some_and(Vec::is_empty);
+    // DT explicitly sends null when this buyer's network is not listed.
+    let unavailable_dt_ids =
+        profile == Profile::DigitalTurbine && skadn.get("skadnetids").is_some_and(Value::is_null);
+    if !skadnetids && !list_populated && !empty_vungle_ids && !unavailable_dt_ids {
         issues.push(issue(
             "openrtb.skadn.field_required",
             Severity::Error,
@@ -68,10 +78,27 @@ pub(crate) fn validate_request(
 }
 
 pub(crate) fn validate_response(
+    profile: Profile,
     skadn: &Map<String, Value>,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
+    // Unity also documents this envelope for ad-experience controls alone.
+    // A partially supplied attribution envelope still receives every signed-field check.
+    let unity_controls = profile == Profile::Unity
+        && !skadn.is_empty()
+        && skadn
+            .keys()
+            .all(|key| matches!(key.as_str(), "skoverlay" | "productpageid" | "ext"))
+        && (skadn.contains_key("skoverlay")
+            || skadn.contains_key("productpageid")
+            || skadn
+                .get("ext")
+                .and_then(Value::as_object)
+                .is_some_and(|ext| ext.contains_key("ask")));
+    if unity_controls {
+        return;
+    }
     let version = skadn.get("version").and_then(Value::as_str).unwrap_or("");
     if version.is_empty() {
         issues.push(issue(
@@ -97,7 +124,9 @@ pub(crate) fn validate_response(
 
     let is_v4 = version.starts_with('4');
     if is_v4 {
-        if !non_empty_string(skadn.get("sourceidentifier")) {
+        let campaign_alias = matches!(profile.as_str(), "applovin-alx" | "vungle")
+            && non_empty_string(skadn.get("campaign"));
+        if !non_empty_string(skadn.get("sourceidentifier")) && !campaign_alias {
             issues.push(issue(
                 "openrtb.skadn.field_required",
                 Severity::Error,

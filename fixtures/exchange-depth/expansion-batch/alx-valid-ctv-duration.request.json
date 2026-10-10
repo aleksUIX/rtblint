@@ -1,0 +1,21 @@
+{
+  "id": "request-1",
+  "device": {
+    "devicetype": 3
+  },
+  "imp": [
+    {
+      "id": "1",
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "minduration": 5,
+        "maxduration": 30,
+        "protocols": [
+          3
+        ]
+      }
+    }
+  ]
+}

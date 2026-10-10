@@ -773,13 +773,14 @@ fn print_validate_usage() {
     eprintln!("{}", validate_usage_text());
 }
 
-const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile spec|google-ab|prebid-server|xandr|magnite] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
+const USAGE_LINES: &str = "  rtblint validate [--type request|response|artf-request|artf-response] [--version <openrtb-version>] [--dialect spec-json|proto-json] [--profile <profile-id>] [--format human|json] [--request <request.json>] [--apply] [--resolve --cache <dir>] [--batch] [--summary] [<file.json>]\n  rtblint validate [...] --stdin\n  rtblint validate --batch [--summary] [<file.ndjson>]\n  rtblint validate --summary [<file.ndjson>]";
 
 fn usage_text() -> String {
     format!("rtblint\n\nUsage:\n{USAGE_LINES}\n  rtblint --version\n  rtblint --help")
 }
 
 fn validate_usage_text() -> String {
+    let profile_ids = Profile::ids().join(", ");
     format!(
         "Usage:\n{USAGE_LINES}\n\n\
          --type selects the payload type (default: request). request and response are OpenRTB \
@@ -790,14 +791,10 @@ fn validate_usage_text() -> String {
          flag fields as integers, proto-json follows the IAB OpenRTB protobuf schema, where 28 of \
          those fields are bool. ARTF payloads are always protobuf JSON, so the flag is rejected \
          there.\n\
-         --profile applies an exchange's documented protocol requirements on top of the spec: \
-         spec (default) is the specification only; google-ab is Google Authorized Buyers \
-         (at=3 FIXED_PRICE, Imp.ext.billing_id required); prebid-server is Prebid Server \
-         /openrtb2/auction (each Imp must name a bidder or stored request, wseat/bseat refused); \
-         xandr is Microsoft Monetize outgoing requests (ext.appnexus.seller_member_id, video \
-         context); magnite is Magnite xAPI identity fields (imp.ext.rp.zone_id, site/app \
-         ext.rp.site_id, publisher.ext.rp.account_id). \
-         ARTF payloads reject the flag.\n\
+         --profile applies the destination's documented protocol contract on top of the spec. \
+         Choose its supplier or bidder direction where separate profiles exist. Optional fields \
+         stay optional; account settings and runtime acceptance are outside local validation. \
+         Available profile ids: {profile_ids}. ARTF payloads reject the flag.\n\
          --request supplies the payload a response is cross-validated against: the originating \
          bid request for --type response (impid, mtype, adm markup, dealid, seat, and currency \
          coherence), or the RTBRequest envelope for --type artf-response (intent eligibility and \

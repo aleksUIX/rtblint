@@ -1,0 +1,1787 @@
+{
+  "source_date": "2026-10-09",
+  "cases": [
+    {
+      "id": "unity-valid-request",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-valid-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-response",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-response.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-pair",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-valid-pair.json",
+      "expected_profile_findings": [],
+      "request_file": "unity-valid-pair.request.json"
+    },
+    {
+      "id": "unity-valid-no-bid",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-no-bid.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-request",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-response",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-response.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-pair",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-valid-pair.json",
+      "expected_profile_findings": [],
+      "request_file": "vungle-valid-pair.request.json"
+    },
+    {
+      "id": "vungle-valid-no-bid",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-no-bid.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-video-request",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-valid-video-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-video-request",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-video-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-skadn-request",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-valid-skadn-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-skadn-response",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-skadn-response.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-skadn-pair",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-valid-skadn-pair.json",
+      "expected_profile_findings": [],
+      "request_file": "unity-valid-skadn-pair.request.json"
+    },
+    {
+      "id": "vungle-valid-skadn-request",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-skadn-request.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-skadn-response",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-skadn-response.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-skadn-pair",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-valid-skadn-pair.json",
+      "expected_profile_findings": [],
+      "request_file": "vungle-valid-skadn-pair.request.json"
+    },
+    {
+      "id": "unity-invalid-count",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-count.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.impression_count",
+          "path": "imp"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-impid",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-impid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.impression_id",
+          "path": "imp[0].id"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-at",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-at.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "at"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-secure",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-secure.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].secure"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-instl",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-instl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].instl"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-video-minduration",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-video-minduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.minduration"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-video-maxduration",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-video-maxduration.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.maxduration"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-video-pos",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-video-pos.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.pos"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-video-placement",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-video-placement.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.value_invalid",
+          "path": "imp[0].video.placement"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-request-skoverlay",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-request-skoverlay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.skadn.skoverlay"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-request-productpage",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-request-productpage.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.skadn.productpage"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-request-ask",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-request-ask.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.skadn.ext.ask"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-atts",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-atts.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.atts"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-request-sourceapp",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-invalid-request-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.skadn_mismatch",
+          "path": "imp[0].ext.skadn.sourceapp"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-privacy-absence",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-valid-privacy-absence.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-cny",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-cny.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-playable-example-token",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-playable-example-token.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-mixed-case",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-mixed-case.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-invalid-missing-cur",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-missing-cur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "cur"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-missing-seat",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-missing-seat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].seat"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-missing-adm",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-missing-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-missing-cat",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-missing-cat.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].cat"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-missing-ext-crtype",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-missing-ext-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-price-zero",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-price-zero.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.price_invalid",
+          "path": "seatbid[0].bid[0].price"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-price-negative",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-price-negative.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.price_invalid",
+          "path": "seatbid[0].bid[0].price"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-price-precision",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-price-precision.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.price_precision",
+          "path": "seatbid[0].bid[0].price"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-price-tiny",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-price-tiny.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.price_precision",
+          "path": "seatbid[0].bid[0].price"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-price-three-decimals",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-price-three-decimals.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-price-two-decimals",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-price-two-decimals.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-valid-price-large-integer",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-price-large-integer.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-invalid-adomain-multiple",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-adomain-multiple.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-adomain-scheme",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-adomain-scheme.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-adomain-path",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-adomain-path.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-adomain-www",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-adomain-www.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-adomain-numeric",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-adomain-numeric.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.advertiser_domain",
+          "path": "seatbid[0].bid[0].adomain[0]"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-adomain-subdomain",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-adomain-subdomain.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-invalid-crtype",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-crtype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.creative_type",
+          "path": "seatbid[0].bid[0].ext.crtype"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-tracker-alternative",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-tracker-alternative.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-invalid-no-burl-no-nurl",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-no-burl-no-nurl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].nurl"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-no-burl-no-trackers",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-no-burl-no-trackers.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.imptrackers"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-advertised-app-bundle",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-advertised-app-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].bundle"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-advertised-app-storeurl",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-advertised-app-storeurl.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.storeurl"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-overlay-show",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-overlay-show.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.show"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-overlay-position",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-overlay-position.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.position"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-overlay-dismissable",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-overlay-dismissable.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.dismissable"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-overlay-video_delay",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-overlay-video_delay.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.skoverlay.video_delay"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-overlay-defaults",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-valid-overlay-defaults.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "unity-invalid-response-ask",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-response-ask.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skadn.ext.ask"
+        }
+      ]
+    },
+    {
+      "id": "unity-invalid-banner-width",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-invalid-banner-width.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].w"
+        }
+      ],
+      "request_file": "unity-invalid-banner-width.request.json"
+    },
+    {
+      "id": "unity-invalid-skadn-network-pair",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-invalid-skadn-network-pair.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "request_file": "unity-invalid-skadn-network-pair.request.json"
+    },
+    {
+      "id": "unity-invalid-skadn-sourceapp-pair",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-invalid-skadn-sourceapp-pair.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp"
+        }
+      ],
+      "request_file": "unity-invalid-skadn-sourceapp-pair.request.json"
+    },
+    {
+      "id": "unity-invalid-skadn-itunesitem",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "response",
+      "file": "unity-invalid-skadn-itunesitem.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.unity.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-app",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-app.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "app"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-device",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-device.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-source",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-source.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "source"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-at",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-at.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "at"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-tmax",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-tmax.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "tmax"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-displaymanager",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-displaymanager.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanager"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-displaymanagerver",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-displaymanagerver.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].displaymanagerver"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-bidfloor",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-bidfloor.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].bidfloor"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-bidfloorcur",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-bidfloorcur.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].bidfloorcur"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-tagid",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-tagid.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].tagid"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-secure",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-secure.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].secure"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-clickbrowser",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-clickbrowser.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].clickbrowser"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-imp-ext-pcta",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-missing-imp-ext-pcta.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.pcta"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-request-ext-pcta",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-ext-pcta.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "imp[0].ext.pcta"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-request-ext-deeplink",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-ext-deeplink.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.deeplink"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-request-ext-skpv",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-ext-skpv.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.skpv"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-request-ext-vxec",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-ext-vxec.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].ext.vxec"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-first-price",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-first-price.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "at"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-currency-offer",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-currency-offer.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.value_invalid",
+          "path": "cur[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-minbitrate",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-minbitrate.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.minbitrate"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-maxbitrate",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-maxbitrate.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.maxbitrate"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-boxingallowed",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-boxingallowed.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "imp[0].video.boxingallowed"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-delivery",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-delivery.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.value_invalid",
+          "path": "imp[0].video.delivery[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-protocols",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-protocols.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.value_invalid",
+          "path": "imp[0].video.protocols[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-playbackmethod",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-playbackmethod.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.value_invalid",
+          "path": "imp[0].video.playbackmethod[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-video-companiontype",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-video-companiontype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.value_invalid",
+          "path": "imp[0].video.companiontype[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-companion-no-mimes",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-companion-no-mimes.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-mixed-media",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-mixed-media.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-ipv6-alternative",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-ipv6-alternative.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-no-ip",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-no-ip.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "device.ip"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-idfv-without-ifa",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-idfv-without-ifa.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-idfv-mismatch",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-idfv-mismatch.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.idfv_mismatch",
+          "path": "device.ext.idfv"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-idfv-live-ifa",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-idfv-live-ifa.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.idfv_context",
+          "path": "device.ext.ifv"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-atts",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-atts.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.atts"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-app-set-id-scope",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-app-set-id-scope.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "device.ext.app_set_id_scope"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-empty-skadnetids",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-empty-skadnetids.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-request-sko-zero-example",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-valid-request-sko-zero-example.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-request-skadn-version",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-skadn-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_version",
+          "path": "imp[0].ext.skadn.versions[0]"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-request-skadn-bundle",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "request",
+      "file": "vungle-invalid-request-skadn-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_mismatch",
+          "path": "imp[0].ext.skadn.sourceapp"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-response-adm",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-missing-response-adm.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-missing-response-adomain",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-missing-response-adomain.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].adomain"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-null-defaults",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-null-defaults.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-response-pcta-pctapage1",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-pcta-pctapage1.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.pcta.pctapage1"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-response-vxec",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-vxec.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.vxec"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-response-skpv-page1onclose",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-skpv-page1onclose.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skpv.page1onclose"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-response-skpv-page2onclose",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-skpv-page2onclose.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.skpv.page2onclose"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-response-campaigntype",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-campaigntype.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.campaigntype"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-response-ai_disclosure",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-response-ai_disclosure.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.value_invalid",
+          "path": "seatbid[0].bid[0].ext.ai_disclosure"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-version",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-itunesitem",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-itunesitem.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-sourceapp",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-network",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-network.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-campaign",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-campaign.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-missing-fidelities",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-missing-fidelities.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-fidelity-missing-fidelity",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-fidelity-missing-fidelity.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].fidelity"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-fidelity-missing-nonce",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-fidelity-missing-nonce.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-fidelity-missing-timestamp",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-fidelity-missing-timestamp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-fidelity-missing-signature",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-fidelity-missing-signature.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].signature"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-campaign-range",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-campaign-range.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_campaign",
+          "path": "seatbid[0].bid[0].ext.skadn.campaign"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-nonce",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-nonce.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_nonce",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].nonce"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-skadn-timestamp",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-timestamp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_timestamp",
+          "path": "seatbid[0].bid[0].ext.skadn.fidelities[0].timestamp"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-skadn-four-sourceidentifier",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-skadn-four-sourceidentifier.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-skadn-four-campaign",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-skadn-four-campaign.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-skadn-four-campaign-only",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-skadn-four-campaign-only.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-skadn-sourceidentifier",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-skadn-sourceidentifier.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_sourceidentifier",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceidentifier"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-overlay",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-overlay.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-disabled-overlay-attributes",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-disabled-overlay-attributes.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skoverlay_disabled",
+          "path": "seatbid[0].bid[0].ext.skadn.ext.skoverlay"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-pair-skadn-network",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-invalid-pair-skadn-network.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.network"
+        }
+      ],
+      "request_file": "vungle-invalid-pair-skadn-network.request.json"
+    },
+    {
+      "id": "vungle-invalid-pair-skadn-sourceapp",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-invalid-pair-skadn-sourceapp.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.sourceapp"
+        }
+      ],
+      "request_file": "vungle-invalid-pair-skadn-sourceapp.request.json"
+    },
+    {
+      "id": "vungle-invalid-pair-skadn-version",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-invalid-pair-skadn-version.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.skadn_mismatch",
+          "path": "seatbid[0].bid[0].ext.skadn.version"
+        }
+      ],
+      "request_file": "vungle-invalid-pair-skadn-version.request.json"
+    },
+    {
+      "id": "vungle-invalid-pcta-default-needs-bundle",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-invalid-pcta-default-needs-bundle.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.field_required",
+          "path": "seatbid[0].bid[0].bundle"
+        }
+      ],
+      "request_file": "vungle-invalid-pcta-default-needs-bundle.request.json"
+    },
+    {
+      "id": "vungle-valid-pcta-opt-out",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-valid-pcta-opt-out.json",
+      "expected_profile_findings": [],
+      "request_file": "vungle-valid-pcta-opt-out.request.json"
+    },
+    {
+      "id": "vungle-valid-pcta-with-bundle",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-valid-pcta-with-bundle.json",
+      "expected_profile_findings": [],
+      "request_file": "vungle-valid-pcta-with-bundle.request.json"
+    },
+    {
+      "id": "vungle-valid-vast-prefix-99",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-vast-prefix-99.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-vast-prefix-100",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-vast-prefix-100.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.vast_prefix",
+          "path": "seatbid[0].bid[0].adm"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-nurl-loss-only-macro",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-nurl-loss-only-macro.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.macro_context",
+          "path": "seatbid[0].bid[0].nurl"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-lurl-loss-only-macro",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-lurl-loss-only-macro.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-native",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-native.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-native-main-image",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-native-main-image.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.native_main_image",
+          "path": "seatbid[0].bid[0].adm.native.assets"
+        }
+      ]
+    },
+    {
+      "id": "vungle-invalid-native-extension",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-native-extension.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.native_image_extension",
+          "path": "seatbid[0].bid[0].adm.native.assets[0].img.url"
+        }
+      ]
+    },
+    {
+      "id": "vungle-valid-native-static-gif",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-valid-native-static-gif.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-invalid-native-icon-size",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "response",
+      "file": "vungle-invalid-native-icon-size.json",
+      "expected_profile_findings": [
+        {
+          "id": "openrtb.profile.vungle.native_icon_size",
+          "path": "seatbid[0].bid[0].adm.native.assets[1].img.w"
+        }
+      ]
+    },
+    {
+      "id": "unity-valid-ambiguous-pair-deferral",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "pair",
+      "file": "unity-valid-ambiguous-pair-deferral.json",
+      "expected_profile_findings": [],
+      "request_file": "unity-valid-ambiguous-pair-deferral.request.json"
+    },
+    {
+      "id": "vungle-valid-ambiguous-pair-deferral",
+      "profile": "vungle",
+      "version": "2.5",
+      "direction": "pair",
+      "file": "vungle-valid-ambiguous-pair-deferral.json",
+      "expected_profile_findings": [],
+      "request_file": "vungle-valid-ambiguous-pair-deferral.request.json"
+    },
+    {
+      "id": "unity-valid-legacy-privacy-latest",
+      "profile": "unity",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "unity-valid-legacy-privacy-latest.json",
+      "expected_profile_findings": []
+    },
+    {
+      "id": "vungle-valid-legacy-privacy-latest",
+      "profile": "vungle",
+      "version": "2.6-202606",
+      "direction": "request",
+      "file": "vungle-valid-legacy-privacy-latest.json",
+      "expected_profile_findings": []
+    }
+  ]
+}

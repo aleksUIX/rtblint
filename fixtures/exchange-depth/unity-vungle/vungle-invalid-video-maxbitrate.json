@@ -1,0 +1,74 @@
+{
+  "id": "vungle-request",
+  "at": 1,
+  "tmax": 300,
+  "cur": [
+    "USD"
+  ],
+  "source": {},
+  "app": {
+    "id": "publisher-app",
+    "bundle": "123456789",
+    "cat": [
+      "IAB9"
+    ],
+    "publisher": {
+      "id": "publisher"
+    }
+  },
+  "device": {
+    "ua": "Mozilla/5.0 (iPhone)",
+    "ip": "203.0.113.2",
+    "w": 1080,
+    "h": 1920,
+    "connectiontype": 2,
+    "os": "iOS"
+  },
+  "imp": [
+    {
+      "id": "1",
+      "displaymanager": "Vungle",
+      "displaymanagerver": "7.4.1",
+      "tagid": "placement",
+      "bidfloor": 0,
+      "bidfloorcur": "USD",
+      "secure": 1,
+      "clickbrowser": 0,
+      "ext": {
+        "pcta": 0
+      },
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "w": 320,
+        "h": 480,
+        "minduration": 0,
+        "maxduration": 120,
+        "protocols": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "boxingallowed": 1,
+        "minbitrate": 250,
+        "maxbitrate": 15001,
+        "delivery": [
+          1,
+          2
+        ],
+        "playbackmethod": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "companiontype": [
+          1,
+          2
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "repository": "MagniteEngineering/xapi-proto",
+    "commit": "69975f4206b85dd8db159231d7b3bc8f33232f15",
+    "path": "src/proto/com/magnite/openrtb/v2/openrtb-xapi.proto",
+    "url": "https://raw.githubusercontent.com/MagniteEngineering/xapi-proto/69975f4206b85dd8db159231d7b3bc8f33232f15/src/proto/com/magnite/openrtb/v2/openrtb-xapi.proto",
+    "sha256": "d6773683a5adb71660a9730619eef6df0228ab43cb1e34aee131d0136cd33cda",
+    "reviewed_at": "2026-10-09"
+  },
+  {
+    "repository": "MicrosoftDocs/xandr-docs",
+    "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+    "path": "xandr-docs/bidders/outgoing-bid-request-to-bidders.md",
+    "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/outgoing-bid-request-to-bidders.md",
+    "sha256": "ab592129e33d9f6f823865a13d916c7b4f922ec67f1ab28de56d07a386191add",
+    "reviewed_at": "2026-10-09"
+  },
+  {
+    "repository": "MicrosoftDocs/xandr-docs",
+    "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+    "path": "xandr-docs/bidders/incoming-bid-response-from-bidders.md",
+    "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/incoming-bid-response-from-bidders.md",
+    "sha256": "aa85c3bb14e90f4202ebe51aebdd8dbf419bc1825cc9846f641f2293273f2a54",
+    "reviewed_at": "2026-10-09"
+  },
+  {
+    "repository": "MicrosoftDocs/xandr-docs",
+    "commit": "ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222",
+    "path": "xandr-docs/bidders/integration-with-openrtb-2-6.md",
+    "url": "https://raw.githubusercontent.com/MicrosoftDocs/xandr-docs/ee7a9adff52bd888ef75f6d9b5b2bb0731bb1222/xandr-docs/bidders/integration-with-openrtb-2-6.md",
+    "sha256": "ce4b9383726629946fb0b7c42ea1a33a28a5035bc568edc3f052af882d5552d6",
+    "reviewed_at": "2026-10-09"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "reviewed_at": "2026-10-09",
+  "baseline": "ea7df0af19b3083971135ddb1817de6ae4d2ebe2",
+  "version": "0.14.0",
+  "scope": "index-dv360-peer-review",
+  "case_count": 141,
+  "positive_count": 100,
+  "mutation_count": 41,
+  "profiles": {
+    "index-exchange": 58,
+    "index-exchange-seller": 10,
+    "dv360": 73
+  },
+  "directions": {
+    "request": 116,
+    "pair": 25
+  },
+  "case_sha256": "ecb4fe6ab7d8f48c48750e82c8ba7149e5692d7a46be988cf6a5bfeb8bed2eb6",
+  "test_command": "cargo test -p rtblint-core --test exchange_depth_index_dv360 --test exchange_depth_index_dv360_peer_review --test exchange_depth_triplelift",
+  "test_status": "passed",
+  "clippy_command": "cargo clippy -p rtblint-core --lib --test exchange_depth_index_dv360_peer_review --test exchange_depth_triplelift -- -D warnings",
+  "clippy_status": "passed",
+  "limitations": [
+    "Published primary-source constraints only; accounts, runtime transport and remote creative retrieval remain external.",
+    "Pair API checks supplied response against request references and does not validate the supplied request itself."
+  ]
+}

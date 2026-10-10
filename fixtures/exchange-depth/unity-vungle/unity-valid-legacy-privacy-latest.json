@@ -1,0 +1,30 @@
+{
+  "id": "unity-request",
+  "at": 1,
+  "imp": [
+    {
+      "id": "1",
+      "secure": 1,
+      "instl": 0,
+      "banner": {
+        "w": 320,
+        "h": 50
+      }
+    }
+  ],
+  "app": {
+    "id": "publisher",
+    "bundle": "123456789"
+  },
+  "regs": {
+    "ext": {
+      "gdpr": 0,
+      "us_privacy": "1---"
+    }
+  },
+  "user": {
+    "ext": {
+      "consent": "0"
+    }
+  }
+}

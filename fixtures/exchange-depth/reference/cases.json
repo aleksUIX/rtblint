@@ -1,0 +1,1673 @@
+{
+  "approach": "Expected IDs, paths and boundaries independently selected from published contracts. Account exemptions use warnings. Positive validity is asserted where complete canonical captures permit it. Scoped unsupported contracts preserve specification validation.",
+  "cases": [
+    {
+      "id": "dv360-reference-control",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "index-exchange-reference-control",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-exchange-seller-reference-control",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": true
+    },
+    {
+      "id": "dv360-response-reference-control",
+      "profile": "dv360",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "dv360-inventory-absent",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.inventory_required",
+          "path": "site",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": false
+    },
+    {
+      "id": "dv360-address-absent",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.ip_required",
+          "path": "device.ip",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": false
+    },
+    {
+      "id": "dv360-privacy-locations",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ],
+        "regs": {
+          "gdpr": 0,
+          "ext": {
+            "gdpr": 0
+          }
+        }
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.privacy_locations",
+          "path": "regs.ext.gdpr",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "dv360-schain-account-advisory",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.schain_expected",
+          "path": "source.schain",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "dv360-ignored-test",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ],
+        "test": 0
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.ignored_field",
+          "path": "test",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "dv360-protocol-list-True",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": []
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.protocols_required",
+          "path": "imp[0].video.protocols",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": false
+    },
+    {
+      "id": "dv360-protocol-list-False",
+      "profile": "dv360",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                6
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.dv360.protocols_required",
+          "path": "imp[0].video.protocols",
+          "severity": "error"
+        }
+      ],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": true
+    },
+    {
+      "id": "dv360-banner-markup-absent",
+      "profile": "dv360",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.dv360.banner_markup",
+          "path": "seatbid[0].bid[0].adm",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://developers.google.com/display-video/ortb-spec",
+      "valid": false
+    },
+    {
+      "id": "index-nonusd-currency",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            }
+          }
+        ],
+        "cur": [
+          "EUR"
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.currency",
+          "path": "cur[0]",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-site-identity-absent",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {},
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.site_identity",
+          "path": "site.domain",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": false
+    },
+    {
+      "id": "index-video-protocol-[]",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [],
+              "minduration": 1,
+              "maxduration": 30,
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.video_protocol",
+          "path": "imp[0].video.protocols",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": false
+    },
+    {
+      "id": "index-video-protocol-[1]",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                1
+              ],
+              "minduration": 1,
+              "maxduration": 30,
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.video_protocol",
+          "path": "imp[0].video.protocols[0]",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": false
+    },
+    {
+      "id": "index-video-protocol-[2, 3, 5, 6, 7, 8, 11, 12, 13, 14]",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "video/mp4"
+              ],
+              "protocols": [
+                2,
+                3,
+                5,
+                6,
+                7,
+                8,
+                11,
+                12,
+                13,
+                14
+              ],
+              "minduration": 1,
+              "maxduration": 30,
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": true
+    },
+    {
+      "id": "index-vpaid-False",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "application/javascript"
+              ],
+              "protocols": [
+                6
+              ],
+              "minduration": 1,
+              "maxduration": 30,
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.vpaid_api",
+          "path": "imp[0].video.api",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": false
+    },
+    {
+      "id": "index-vpaid-True",
+      "profile": "index-exchange-seller",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "device": {
+          "ip": "192.0.2.1"
+        },
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "video": {
+              "mimes": [
+                "application/javascript"
+              ],
+              "protocols": [
+                6
+              ],
+              "minduration": 1,
+              "maxduration": 30,
+              "w": 300,
+              "h": 250,
+              "api": [
+                2
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/publishers/openrtb_integration/list_of_supported_openrtb_bid_request_fields_for_sellers.htm",
+      "valid": true
+    },
+    {
+      "id": "index-deal-discount-0.0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1,
+                  "ext": {
+                    "disc": 0.0
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.deal_discount",
+          "path": "imp[0].pmp.deals[0].ext.disc",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-deal-discount-0.01",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1,
+                  "ext": {
+                    "disc": 0.01
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-deal-discount-1.0",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1,
+                  "ext": {
+                    "disc": 1.0
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-deal-discount-1.01",
+      "profile": "index-exchange",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            },
+            "pmp": {
+              "deals": [
+                {
+                  "id": "deal",
+                  "at": 1,
+                  "ext": {
+                    "disc": 1.01
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.deal_discount",
+          "path": "imp[0].pmp.deals[0].ext.disc",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_request_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-adomain-account-advisory",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.adomain_expected",
+          "path": "seatbid[0].bid[0].adomain",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-seat-account-advisory",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.seat_expected",
+          "path": "seatbid[0].seat",
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-domain-length-128",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-domain-length-129",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.adomain_length",
+          "path": "seatbid[0].bid[0].adomain[0]",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-dsa-length-100",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "ext": {
+                  "dsa": {
+                    "paid": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-dsa-length-101",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "ext": {
+                  "dsa": {
+                    "paid": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.dsa_length",
+          "path": "seatbid[0].bid[0].ext.dsa.paid",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-native-wrapper-False",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "{\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Example\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 4
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.native_wrapper",
+          "path": "seatbid[0].bid[0].adm",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": false
+    },
+    {
+      "id": "index-native-wrapper-True",
+      "profile": "index-exchange",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "{\"native\": {\"ver\": \"1.2\", \"assets\": [{\"id\": 1, \"title\": {\"text\": \"Example\"}}], \"link\": {\"url\": \"https://advertiser.example\"}}}",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 4
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "index-skad-bundle-False",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "bundle": "123",
+                "ext": {
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "456",
+                    "sourceapp": "789",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000",
+                    "signature": "example"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.index.skad_bundle",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem",
+          "severity": "error"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "index-skad-bundle-True",
+      "profile": "index-exchange",
+      "direction": "pair",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1,
+                "bundle": "123",
+                "ext": {
+                  "skadn": {
+                    "version": "2.2",
+                    "network": "abcd123456.skadnetwork",
+                    "campaign": "1",
+                    "itunesitem": "123",
+                    "sourceapp": "789",
+                    "nonce": "00000000-0000-4000-8000-000000000001",
+                    "timestamp": "1700000000000",
+                    "signature": "example"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.index.skad_bundle",
+          "path": "seatbid[0].bid[0].ext.skadn.itunesitem",
+          "severity": "error"
+        }
+      ],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "request": {
+        "id": "req",
+        "tmax": 100,
+        "ext": {},
+        "device": {},
+        "site": {
+          "id": "site",
+          "publisher": {
+            "id": "pub"
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "secure": 1,
+            "banner": {
+              "w": 300,
+              "h": 250,
+              "topframe": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "scope-applovin-alx-request",
+      "profile": "applovin-alx",
+      "direction": "request",
+      "input": {
+        "id": "req",
+        "device": {
+          "ua": "browser",
+          "ip": "192.0.2.1"
+        },
+        "user": {},
+        "site": {
+          "domain": "publisher.example"
+        },
+        "imp": [
+          {
+            "id": "1",
+            "banner": {
+              "w": 300,
+              "h": 250
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://github.com/aleksUIX/rtblint/blob/main/crates/rtblint-core/src/profile.rs",
+      "valid": true
+    },
+    {
+      "id": "scope-index-exchange-seller-response",
+      "profile": "index-exchange-seller",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://kb.indexexchange.com/dsps/open-rtb/list_of_supported_openrtb_bid_response_fields_dsp.htm",
+      "valid": true
+    },
+    {
+      "id": "scope-commerce-grid-response",
+      "profile": "commerce-grid",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://github.com/aleksUIX/rtblint/blob/main/crates/rtblint-core/src/profile.rs",
+      "valid": true
+    },
+    {
+      "id": "scope-sovrn-response",
+      "profile": "sovrn",
+      "direction": "response",
+      "input": {
+        "id": "req",
+        "seatbid": [
+          {
+            "seat": "buyer",
+            "bid": [
+              {
+                "id": "bid",
+                "impid": "1",
+                "price": 1.0,
+                "adm": "<div>Ad</div>",
+                "adomain": [
+                  "advertiser.example"
+                ],
+                "mtype": 1
+              }
+            ]
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://github.com/aleksUIX/rtblint/blob/main/crates/rtblint-core/src/profile.rs",
+      "valid": true
+    },
+    {
+      "id": "scope-digital-turbine-request-supported",
+      "profile": "digital-turbine",
+      "direction": "request",
+      "input": {
+        "id": "dt-auction",
+        "at": 1,
+        "tmax": 300,
+        "cur": [
+          "USD"
+        ],
+        "bcat": [],
+        "badv": [],
+        "bapp": [],
+        "source": {
+          "fd": 0,
+          "tid": "transaction",
+          "ext": {
+            "schain": {
+              "ver": "1.0",
+              "complete": 1,
+              "nodes": [
+                {
+                  "asi": "fyber.com",
+                  "sid": "seller",
+                  "hp": 1
+                }
+              ]
+            },
+            "omidpn": "DT",
+            "omidpv": "1.0"
+          }
+        },
+        "regs": {
+          "coppa": 0,
+          "ext": {
+            "gdpr": 0,
+            "us_privacy": "1---"
+          }
+        },
+        "app": {
+          "id": "app",
+          "name": "App",
+          "bundle": "publisher.example",
+          "cat": [
+            "IAB9"
+          ],
+          "ver": "1.0",
+          "privacypolicy": 1,
+          "publisher": {
+            "id": "seller",
+            "name": "Publisher"
+          },
+          "ext": {
+            "storecat": "Games",
+            "storesubcat": [
+              "Puzzle"
+            ],
+            "fmwname": "native",
+            "apilevel": 35
+          }
+        },
+        "device": {
+          "ua": "Mozilla/5.0",
+          "dnt": 0,
+          "ip": "192.0.2.1",
+          "devicetype": 4,
+          "h": 1920,
+          "w": 1080,
+          "js": 1,
+          "language": "en",
+          "connectiontype": 2,
+          "geo": {
+            "country": "USA"
+          },
+          "ext": {
+            "headset": 0,
+            "atts": 3,
+            "inputlanguage": [
+              "en"
+            ],
+            "ifv": "idfv",
+            "diskspace": 1,
+            "totaldisk": 2,
+            "ringmute": 0,
+            "charging": 1,
+            "bluetooth": 0,
+            "batterylevel": 8,
+            "batterysaver": 0,
+            "darkmode": 1,
+            "airplane": 0,
+            "dnd": 0
+          }
+        },
+        "user": {
+          "ext": {
+            "consent": "",
+            "impdepth": 2,
+            "sessionduration": 10,
+            "lastbundle": "last.app",
+            "lastadomain": "last.example",
+            "clickrate": 5,
+            "lastclick": 0,
+            "lastclicktype": 0,
+            "completionrate": 70,
+            "eids": [
+              {
+                "source": "id.example",
+                "uids": [
+                  {
+                    "id": "user",
+                    "atype": 1
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "imp": [
+          {
+            "id": "1",
+            "displaymanager": "DT",
+            "displaymanagerver": "1.0",
+            "instl": 0,
+            "tagid": "placement",
+            "bidfloor": 0.1,
+            "bidfloorcur": "USD",
+            "clickbrowser": 0,
+            "secure": 0,
+            "exp": 1800,
+            "rwdd": 0,
+            "ext": {
+              "brsrclk": 0,
+              "dpl": 1
+            },
+            "banner": {
+              "id": "banner",
+              "w": 320,
+              "h": 50,
+              "btype": [],
+              "battr": [],
+              "pos": 1,
+              "topframe": 0,
+              "mimes": [
+                "text/html"
+              ],
+              "api": [
+                3,
+                5,
+                7
+              ],
+              "ext": {
+                "rewarded": 0,
+                "autostore": 1
+              }
+            }
+          }
+        ]
+      },
+      "version": "2.6-202606",
+      "expected": [],
+      "forbidden": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "source": "https://docs.digitalturbine.com/dt-ads-demand/dt-exchange-openrtb-2.5-specs",
+      "valid": true
+    },
+    {
+      "id": "scope-google-ab-openrtb3",
+      "profile": "google-ab",
+      "direction": "request",
+      "input": {
+        "openrtb": {
+          "ver": "3.0",
+          "domainspec": "adcom",
+          "domainver": "1.0",
+          "request": {
+            "id": "req",
+            "item": [
+              {
+                "id": "1",
+                "spec": {
+                  "placement": {
+                    "tagid": "placement",
+                    "display": {
+                      "w": 300,
+                      "h": 250
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "version": "3.0",
+      "expected": [
+        {
+          "id": "openrtb.profile.scope.unsupported",
+          "path": null,
+          "severity": "warning"
+        }
+      ],
+      "forbidden": [],
+      "source": "https://github.com/aleksUIX/rtblint/blob/main/crates/rtblint-core/src/profile.rs",
+      "valid": true
+    }
+  ]
+}

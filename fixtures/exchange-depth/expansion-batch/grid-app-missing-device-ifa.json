@@ -1,0 +1,57 @@
+{
+  "id": "grid-request",
+  "cur": [
+    "USD"
+  ],
+  "user": {},
+  "device": {
+    "ua": "ua",
+    "ip": "203.0.113.2",
+    "dnt": 0,
+    "lmt": 0,
+    "geo": {
+      "country": "USA"
+    },
+    "os": "iOS"
+  },
+  "source": {
+    "ext": {
+      "sourcetype": 1,
+      "sourceorigin": 1
+    },
+    "schain": {
+      "ver": "1.0",
+      "complete": 1,
+      "nodes": [
+        {
+          "asi": "seller.example",
+          "sid": "pub",
+          "hp": 1
+        }
+      ]
+    }
+  },
+  "imp": [
+    {
+      "id": "1",
+      "instl": 0,
+      "banner": {
+        "w": 300,
+        "h": 250,
+        "format": [
+          {
+            "w": 300,
+            "h": 250
+          }
+        ]
+      },
+      "displaymanager": "SDK",
+      "displaymanagerver": "1.0",
+      "clickbrowser": 0,
+      "rwdd": 0
+    }
+  ],
+  "app": {
+    "bundle": "123456789"
+  }
+}

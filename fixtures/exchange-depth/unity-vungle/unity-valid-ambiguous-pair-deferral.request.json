@@ -1,0 +1,66 @@
+{
+  "id": "unity-request",
+  "at": 1,
+  "imp": [
+    {
+      "id": "1",
+      "secure": 1,
+      "instl": 0,
+      "banner": {
+        "w": 320,
+        "h": 50
+      },
+      "ext": {
+        "skadn": {
+          "sourceapp": "123456789",
+          "versions": [
+            "2.0",
+            "2.2",
+            "3.0",
+            "4.0"
+          ],
+          "skadnetids": [
+            "network.skadnetwork"
+          ],
+          "skoverlay": 1,
+          "productpage": 1,
+          "ext": {
+            "ask": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "1",
+      "secure": 1,
+      "instl": 0,
+      "banner": {
+        "w": 320,
+        "h": 50
+      },
+      "ext": {
+        "skadn": {
+          "sourceapp": "other",
+          "versions": [
+            "2.0",
+            "2.2",
+            "3.0",
+            "4.0"
+          ],
+          "skadnetids": [
+            "network.skadnetwork"
+          ],
+          "skoverlay": 1,
+          "productpage": 1,
+          "ext": {
+            "ask": 1
+          }
+        }
+      }
+    }
+  ],
+  "app": {
+    "id": "publisher",
+    "bundle": "123456789"
+  }
+}

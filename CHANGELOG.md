@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.14.0 (2026-10-09)
+
 ### Added
 
 - Expand exchange profiles from four vendor contracts to 26 vendor and producer profiles, with separate buyer, supplier, seller, SDK and OpenWrap CTV scopes. Sources, field inventories, independent boundary cases and remaining gaps live in `docs/exchange-profiles`.

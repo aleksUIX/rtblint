@@ -1,6 +1,6 @@
 # Exchange profiles follow documented integration directions.
 
-The 0.14.0 candidate deepens the four existing vendor profiles and adds 22 profiles across 16 additional products or integration families. There are 26 vendor and producer profiles plus `spec`. Directional profiles are separate contracts, not additional exchange companies.
+The 0.14.0 release deepens the four existing vendor profiles and adds 22 profiles across 16 additional products or integration families. There are 26 vendor and producer profiles plus `spec`. Directional profiles are separate contracts, not additional exchange companies.
 
 All profiles retain versioned canonical OpenRTB validation. Vendor checks cover retrieved public field declarations and documented local conditions. Source manifests pin official repository commits or fetched byte hashes. Independent fixtures exercise valid values, wrong types, bounds, optional absence, nulls, unknown fields and pairing context. A field-shape inventory does not certify every behavioral rule or complete exchange acceptance.
 

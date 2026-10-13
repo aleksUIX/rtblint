@@ -1,0 +1,15 @@
+{
+  "id": "extension-point-001",
+  "mutations": [
+    {
+      "intent": "SUPPRESS_DEALS",
+      "op": "OPERATION_REMOVE",
+      "path": "/imp/imp-1",
+      "ids": { "id": ["deal-standard"] }
+    }
+  ],
+  "metadata": {
+    "api_version": "1.0.0",
+    "model_version": "curation-2026.07"
+  }
+}

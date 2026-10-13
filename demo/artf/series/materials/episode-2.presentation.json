@@ -1,0 +1,354 @@
+{
+  "episode": 2,
+  "finishedAt": "2026-10-11T09:01:02.753Z",
+  "cardStyle": "Episode 1: blue edge, paper, Geist, summary panels, author portrait",
+  "openingCard": "Fully revealed from the first frame",
+  "cards": [
+    {
+      "kind": "intro",
+      "fonts": true,
+      "fits": true,
+      "children": [
+        {
+          "tag": "H1",
+          "top": 76,
+          "bottom": 252.375
+        },
+        {
+          "tag": "lede",
+          "top": 274.375,
+          "bottom": 398.546875
+        },
+        {
+          "tag": "hops",
+          "top": 446.546875,
+          "bottom": 614.546875
+        },
+        {
+          "tag": "band",
+          "top": 780.609375,
+          "bottom": 851
+        },
+        {
+          "tag": "foot",
+          "top": 897,
+          "bottom": 1008
+        }
+      ]
+    },
+    {
+      "kind": "outro",
+      "fonts": true,
+      "fits": true,
+      "children": [
+        {
+          "tag": "H1",
+          "top": 76,
+          "bottom": 139
+        },
+        {
+          "tag": "lines",
+          "top": 169,
+          "bottom": 426.546875
+        },
+        {
+          "tag": "closer",
+          "top": 716.9375,
+          "bottom": 875
+        },
+        {
+          "tag": "foot",
+          "top": 897,
+          "bottom": 1008
+        }
+      ]
+    }
+  ],
+  "captions": {
+    "cues": 53,
+    "words": 435,
+    "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+    "fontSize": 64,
+    "backgroundOpacity": 0.82,
+    "singleLineBoxHeight": 106.48,
+    "bottom": 107,
+    "mobileFontAt360CssPixels": 12,
+    "layout": "No overlap with the picture or presenter",
+    "first": 9,
+    "last": 327.727,
+    "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.captions/captions.ffconcat",
+    "frame": {
+      "width": 1920,
+      "height": 768,
+      "x": 0,
+      "y": 0,
+      "footerHeight": 312
+    },
+    "speaker": {
+      "name": "Alex Sekowski",
+      "label": "Now presenting:",
+      "portrait": "../../linkedin/author/alex.jpg",
+      "bounds": {
+        "x": 1670.296875,
+        "y": 1016,
+        "width": 217.703125,
+        "height": 56
+      },
+      "portraitSize": 56,
+      "visibility": "Throughout the video, including pauses and title cards."
+    }
+  },
+  "focusRegions": [
+    {
+      "at": 8,
+      "end": 28,
+      "overview": true
+    },
+    {
+      "at": 28,
+      "end": 48,
+      "selector": "#flyout",
+      "x": 810,
+      "y": 150.890625,
+      "width": 1080,
+      "height": 432,
+      "zoom": 2.5
+    },
+    {
+      "at": 48,
+      "end": 70,
+      "selector": "#flyout",
+      "x": 810,
+      "y": 150.890625,
+      "width": 1080,
+      "height": 432,
+      "zoom": 2.5
+    },
+    {
+      "at": 70,
+      "end": 89,
+      "selector": "#flyout",
+      "x": 757.7734375,
+      "y": 180,
+      "width": 1184.453125,
+      "height": 473.78125,
+      "zoom": 2.2795330123342787
+    },
+    {
+      "at": 89,
+      "end": 95,
+      "overview": true
+    },
+    {
+      "at": 95,
+      "end": 116,
+      "selector": "#t-segs",
+      "x": 1026.109375,
+      "y": 328.590625,
+      "width": 593.0625,
+      "height": 237.225,
+      "zoom": 4.552639898830225
+    },
+    {
+      "at": 116,
+      "end": 140,
+      "selector": "#t-deals",
+      "x": 1026.109375,
+      "y": 239.85625,
+      "width": 593.0625,
+      "height": 237.225,
+      "zoom": 4.552639898830225
+    },
+    {
+      "at": 140,
+      "end": 164,
+      "selector": "#flyout",
+      "x": 805.2734375,
+      "y": 180,
+      "width": 1089.453125,
+      "height": 435.78125,
+      "zoom": 2.4783076371459303
+    },
+    {
+      "at": 164,
+      "end": 170,
+      "overview": true
+    },
+    {
+      "at": 170,
+      "end": 193,
+      "selector": "#flyout",
+      "x": 782.01171875,
+      "y": 180,
+      "width": 1135.9765625,
+      "height": 454.390625,
+      "zoom": 2.376809600770262
+    },
+    {
+      "at": 193,
+      "end": 213,
+      "selector": "#flyout",
+      "x": 594.51171875,
+      "y": 180,
+      "width": 1510.9765625,
+      "height": 604.390625,
+      "zoom": 1.7869238127245934
+    },
+    {
+      "at": 213,
+      "end": 219,
+      "overview": true
+    },
+    {
+      "at": 219,
+      "end": 241,
+      "selector": "#flyout",
+      "x": 719.51171875,
+      "y": 180,
+      "width": 1260.9765625,
+      "height": 504.390625,
+      "zoom": 2.1411976085003563
+    },
+    {
+      "at": 241,
+      "end": 264,
+      "selector": "#flyout",
+      "x": 719.51171875,
+      "y": 180,
+      "width": 1260.9765625,
+      "height": 504.390625,
+      "zoom": 2.1411976085003563
+    },
+    {
+      "at": 264,
+      "end": 284,
+      "selector": "#flyout",
+      "x": 742.7734375,
+      "y": 180,
+      "width": 1214.453125,
+      "height": 485.78125,
+      "zoom": 2.2232229012544225
+    },
+    {
+      "at": 284,
+      "end": 290,
+      "overview": true
+    },
+    {
+      "at": 290,
+      "end": 312,
+      "selector": "#flyout",
+      "x": 805.2734375,
+      "y": 180,
+      "width": 1089.453125,
+      "height": 435.78125,
+      "zoom": 2.4783076371459303
+    },
+    {
+      "at": 312,
+      "end": 331,
+      "selector": "#flyout",
+      "x": 810,
+      "y": 150.890625,
+      "width": 1080,
+      "height": 432,
+      "zoom": 2.5
+    }
+  ],
+  "alignment": {
+    "inputFirstSceneSeconds": 8,
+    "correctedFirstSceneSeconds": 8,
+    "shiftSeconds": 0
+  },
+  "seconds": 339,
+  "master": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.picture.mp4",
+  "sha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+  "cueSha256": "0f79467afdb3f9be76c8fd3aa6df30ec29c67fccf61f83b7a71bd6e8920e4e27",
+  "subtitleSha256": "71af3e86e378231b2c69f1eb1f2e446a0fcc493c91329c29c685d1986e74b9ff",
+  "media": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/12800",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4339200,
+        "duration": "339.000000",
+        "bit_rate": "341729",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "8475",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc62.28.100 libx264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.pending.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "339.000000",
+      "size": "14582635",
+      "bit_rate": "344132",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.12.100"
+      }
+    }
+  }
+}

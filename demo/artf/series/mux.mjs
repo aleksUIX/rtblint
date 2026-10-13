@@ -1,0 +1,25 @@
+import { existsSync } from "node:fs";
+import { resolve, join } from "node:path";
+import { spawnSync } from "node:child_process";
+import { episodes, totalSeconds } from "./episodes.mjs";
+import { output } from "./build.mjs";
+
+const args = process.argv.slice(2);
+const episode = episodes[Number(args[0])];
+const voice = args[1] && resolve(args[1]);
+const offsetAt = args.indexOf("--offset");
+const offset = offsetAt >= 0 ? Number(args[offsetAt + 1]) : 0;
+const outputAt = args.indexOf("--output");
+if (!episode || !voice || !existsSync(voice) || !Number.isFinite(offset) || offset < 0 || (outputAt >= 0 && !args[outputAt + 1])) throw new Error("Use node series/mux.mjs 2|3 voice.m4a [--offset seconds] [--output file.mp4]");
+const destination = outputAt >= 0 ? resolve(args[outputAt + 1]) : join(output, `episode-${episode.number}.narrated.mp4`);
+const reel = join(output, `episode-${episode.number}.mp4`);
+if (!existsSync(reel)) throw new Error("Record the picture reel first");
+if (destination === voice || destination === reel) throw new Error("Choose an output path that preserves the voice and picture sources.");
+const probe = spawnSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", voice], { encoding: "utf8" });
+if (probe.status) throw new Error(probe.stderr);
+const voiceSeconds = Number(probe.stdout);
+if (!Number.isFinite(voiceSeconds) || voiceSeconds <= 0) throw new Error("Cannot read the voice duration.");
+if (voiceSeconds + offset > totalSeconds(episode)) throw new Error("Voice extends past the picture. Align or edit the take before muxing; it will not be silently cut.");
+const result = spawnSync("ffmpeg", ["-y", "-v", "error", "-i", reel, "-i", voice, "-filter_complex", `[1:a]adelay=${Math.round(offset * 1000)}:all=1,apad[a]`, "-map", "0:v:0", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", String(totalSeconds(episode)), "-movflags", "+faststart", destination], { encoding: "utf8" });
+if (result.status) throw new Error(result.stderr);
+console.log(`Saved episode ${episode.number} narrated reel. Voice ${voiceSeconds.toFixed(1)}s, offset ${offset}s.`);

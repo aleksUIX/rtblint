@@ -1,0 +1,321 @@
+{
+  "episode": 3,
+  "title": "Several agents can contribute to one auction.",
+  "seconds": 386,
+  "rows": [
+    {
+      "chapter": "Opening",
+      "action": {
+        "type": "card",
+        "kind": "intro"
+      },
+      "seconds": 8,
+      "cue": "Title card. No voice.",
+      "text": "",
+      "index": 0,
+      "at": 0,
+      "end": 8
+    },
+    {
+      "chapter": "One auction can use several specialists.",
+      "action": {
+        "type": "lab"
+      },
+      "text": "Last time, we checked one agent's proposals. ARTF, the Agentic Real Time Framework, lets hosts call specialist services during an auction. Now let's follow several specialists working on the same OpenRTB request.",
+      "seconds": 23,
+      "index": 1,
+      "at": 8,
+      "end": 31,
+      "voiceAt": 9,
+      "voiceEnd": 26.454545454545453
+    },
+    {
+      "chapter": "The host calls the request agents together.",
+      "action": {
+        "type": "lab-run",
+        "beat": "clean"
+      },
+      "seconds": 5,
+      "cue": "Run the clean auction. Keep the graph and the request apply table visible.",
+      "text": "",
+      "index": 2,
+      "at": 31,
+      "end": 36
+    },
+    {
+      "chapter": "Parallel calls share the request deadline.",
+      "action": {
+        "type": "lab-view",
+        "view": "apply",
+        "nodes": [
+          "ssp",
+          "audience",
+          "curator",
+          "metrics",
+          "quality",
+          "cids"
+        ]
+      },
+      "text": "The SSP, the seller's platform, calls five specialists together. Each gets the starting envelope, which wraps the auction data. They share one deadline. Parallel calls keep us from waiting for each service in sequence.",
+      "seconds": 24,
+      "index": 3,
+      "at": 36,
+      "end": 60,
+      "voiceAt": 37,
+      "voiceEnd": 55.54545454545455
+    },
+    {
+      "chapter": "The familiar curation job is split across agents.",
+      "action": {
+        "type": "lab-view",
+        "view": "ticket",
+        "nodes": [
+          "ssp",
+          "curator"
+        ]
+      },
+      "text": "Here's the request before and after. Audience adds segments; curator adds deals and raises the premium floor. Those changes can affect which campaigns consider the impression and which bids qualify. The host combines accepted proposals.",
+      "seconds": 24,
+      "index": 4,
+      "at": 60,
+      "end": 84,
+      "voiceAt": 61,
+      "voiceEnd": 80.0909090909091
+    },
+    {
+      "chapter": "Each accepted write can be traced to its agent.",
+      "action": {
+        "type": "lab-view",
+        "view": "apply",
+        "nodes": [
+          "audience",
+          "metrics",
+          "quality",
+          "cids"
+        ]
+      },
+      "text": "Metrics and quality add measurements. Content ids describe the programme, while audience segments describe viewer groups. Each accepted write names its source agent. If a buyer receives unexpected data, we can trace who proposed it.",
+      "seconds": 24,
+      "index": 5,
+      "at": 84,
+      "end": 108,
+      "voiceAt": 85,
+      "voiceEnd": 104.0909090909091
+    },
+    {
+      "chapter": "Parallel execution still needs a conflict policy.",
+      "action": {
+        "type": "lab-view",
+        "view": "apply",
+        "nodes": [
+          "ssp"
+        ]
+      },
+      "text": "What if two agents propose different floors for the same deal? This lab applies answers in configured order, mostly to separate fields. A production host needs a conflict policy. Response speed shouldn't decide a price.",
+      "seconds": 24,
+      "index": 6,
+      "at": 108,
+      "end": 132,
+      "voiceAt": 109,
+      "voiceEnd": 128.0909090909091
+    },
+    {
+      "chapter": "Each buyer applies its own shading decision.",
+      "action": {
+        "type": "lab-view",
+        "view": "bids",
+        "nodes": [
+          "dsp-alpha",
+          "dsp-beta"
+        ]
+      },
+      "text": "Now the request reaches two buyers, the DSPs. Each makes a bid and calls its own shader through GetMutations, ARTF's proposal interface. Shading adjusts the offered price before the bid returns to the exchange.",
+      "seconds": 24,
+      "index": 7,
+      "at": 132,
+      "end": 156,
+      "voiceAt": 133,
+      "voiceEnd": 151.54545454545456
+    },
+    {
+      "chapter": "The container's access follows its role.",
+      "action": {
+        "type": "lab-view",
+        "view": "hops",
+        "nodes": [
+          "shader-alpha",
+          "shader-beta"
+        ]
+      },
+      "text": "Alpha's shader and beta's shader sit on separate internal networks. The request agents sit with the seller. In this lab, one shader has no direct route to the other buyer. The host controls that access.",
+      "seconds": 24,
+      "index": 8,
+      "at": 156,
+      "end": 180,
+      "voiceAt": 157,
+      "voiceEnd": 176.0909090909091
+    },
+    {
+      "chapter": "A changed price still has to qualify for the auction.",
+      "action": {
+        "type": "lab-view",
+        "view": "bids",
+        "nodes": [
+          "ssp",
+          "dsp-alpha",
+          "dsp-beta"
+        ]
+      },
+      "text": "Alpha's shaded bid falls below the deal floor, so it's rejected. Beta remains eligible and wins this example. A shader can change the price, but the exchange still checks eligibility and selects the highest eligible bid.",
+      "seconds": 24,
+      "index": 9,
+      "at": 180,
+      "end": 204,
+      "voiceAt": 181,
+      "voiceEnd": 200.63636363636363
+    },
+    {
+      "chapter": "The host must decide what happens without an answer.",
+      "action": {
+        "type": "lab-view",
+        "view": "hops",
+        "nodes": [
+          "ssp",
+          "shader-alpha",
+          "shader-beta"
+        ]
+      },
+      "text": "A deadline needs a fallback. Here, a missing request agent's answer is skipped; a failed shader leaves the original bid. These are lab policies. If a service performs a required check, continuing may be inappropriate.",
+      "seconds": 24,
+      "index": 10,
+      "at": 204,
+      "end": 228,
+      "voiceAt": 205,
+      "voiceEnd": 224.0909090909091
+    },
+    {
+      "chapter": "The descriptor helps an operator deploy the agent.",
+      "action": {
+        "type": "lab-view",
+        "view": "manifest",
+        "nodes": [
+          "curator"
+        ]
+      },
+      "text": "This sample descriptor declares the curator's image, capabilities, and operating needs. It helps explain deployment. The envelope still limits the jobs offered on each call. Declaring a capability doesn't grant unlimited auction access.",
+      "seconds": 24,
+      "index": 11,
+      "at": 228,
+      "end": 252,
+      "voiceAt": 229,
+      "voiceEnd": 247
+    },
+    {
+      "chapter": "Delivery starts after the auction decision.",
+      "action": {
+        "type": "lab-play"
+      },
+      "seconds": 5,
+      "cue": "Play VAST once. Hold on the graph and the tracker events.",
+      "text": "",
+      "index": 12,
+      "at": 252,
+      "end": 257
+    },
+    {
+      "chapter": "Delivery begins after the ARTF auction work.",
+      "action": {
+        "type": "lab-view",
+        "view": "events",
+        "nodes": [
+          "cdn",
+          "tracker"
+        ]
+      },
+      "text": "In this demo, ARTF's auction calls are finished. VAST now describes the ad and its tracking. We fetch dummy media and fire scripted events. Those requests don't prove a real viewer watched the ad.",
+      "seconds": 24,
+      "index": 13,
+      "at": 257,
+      "end": 281,
+      "voiceAt": 258,
+      "voiceEnd": 276.54545454545456
+    },
+    {
+      "chapter": "Measure the path that this traffic driver exercises.",
+      "action": {
+        "type": "lab-traffic",
+        "qps": 20
+      },
+      "text": "Let's repeat this path under load. The driver requests twenty auctions a second; monitoring shows the rate actually achieved. One auction can call several agents, so auction rate and agent call rate measure different things.",
+      "seconds": 24,
+      "index": 14,
+      "at": 281,
+      "end": 305,
+      "voiceAt": 282,
+      "voiceEnd": 301.09090909090907
+    },
+    {
+      "chapter": "Read latency alongside the host's deadlines.",
+      "action": {
+        "type": "lab-view",
+        "view": "ops",
+        "nodes": [
+          "audience",
+          "curator",
+          "shader-alpha",
+          "shader-beta"
+        ]
+      },
+      "text": "p95 estimates the time within which ninety-five percent of measured calls finish. Read it with the auction path and buyer call failures. Fast typical calls don't tell us whether every deadline was met.",
+      "seconds": 25,
+      "index": 15,
+      "at": 305,
+      "end": 330,
+      "voiceAt": 306,
+      "voiceEnd": 324
+    },
+    {
+      "chapter": "Coordination still needs the validation from episode two.",
+      "action": {
+        "type": "lab-view",
+        "view": "ops",
+        "nodes": [
+          "ssp"
+        ]
+      },
+      "text": "Typed calls still need host checks. Here we check call identity and offered intents before combining proposals. RTBlint checks our captured request separately. A deployed host still needs OpenRTB validation before forwarding.",
+      "seconds": 24,
+      "index": 16,
+      "at": 330,
+      "end": 354,
+      "voiceAt": 331,
+      "voiceEnd": 348.45454545454544
+    },
+    {
+      "chapter": "Trace one complete auction before increasing traffic.",
+      "action": {
+        "type": "lab-stop"
+      },
+      "text": "I'd start with one auction: follow a proposal to the field the buyer receives. Then test a missing answer and a conflicting proposal. ARTF supplies the shared interface; each host remains responsible for its decisions.",
+      "seconds": 24,
+      "index": 17,
+      "at": 354,
+      "end": 378,
+      "voiceAt": 355,
+      "voiceEnd": 374.09090909090907
+    },
+    {
+      "chapter": "Closing",
+      "action": {
+        "type": "card",
+        "kind": "outro"
+      },
+      "seconds": 8,
+      "cue": "Closing card. No voice.",
+      "text": "",
+      "index": 18,
+      "at": 378,
+      "end": 386
+    }
+  ]
+}

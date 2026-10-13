@@ -1,0 +1,2713 @@
+{
+  "episode": 3,
+  "smoke": false,
+  "seconds": 386,
+  "elapsed": 386.002313834,
+  "errors": [],
+  "actual": [
+    {
+      "index": 0,
+      "plannedAt": 0,
+      "observedAt": 0.0001543340000000626,
+      "actionSeconds": 0.0000014579999999568827
+    },
+    {
+      "index": 1,
+      "plannedAt": 8,
+      "observedAt": 8.0022985,
+      "actionSeconds": 0.15021000000000095
+    },
+    {
+      "index": 2,
+      "plannedAt": 31,
+      "observedAt": 31.002372084,
+      "actionSeconds": 0.10772979099999794,
+      "evidence": {
+        "scene": "clean",
+        "result": {
+          "auction": {
+            "applicable_intents": [
+              "ACTIVATE_SEGMENTS",
+              "ACTIVATE_DEALS",
+              "ADJUST_DEAL_FLOOR",
+              "ADD_METRICS",
+              "ADD_CIDS"
+            ],
+            "applied": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "auction_id": "auc-1791709312655981545",
+            "beat": "clean",
+            "bid_request": {
+              "app": {
+                "bundle": "example.ctv.player",
+                "cat": [
+                  "IAB17"
+                ],
+                "content": {
+                  "data": [
+                    {
+                      "id": "cids",
+                      "name": "content-ids",
+                      "segment": [
+                        {
+                          "id": "cid-ctv-sports"
+                        },
+                        {
+                          "id": "cid-pg"
+                        }
+                      ]
+                    }
+                  ],
+                  "genre": "sports",
+                  "id": "content-12345",
+                  "len": 3600,
+                  "livestream": 0
+                },
+                "domain": "streaming.example",
+                "id": "app-ctv-1",
+                "name": "Example CTV",
+                "publisher": {
+                  "domain": "streaming.example",
+                  "id": "pub-1"
+                }
+              },
+              "at": 1,
+              "badv": [
+                "blocked.example"
+              ],
+              "bcat": [
+                "IAB25-3"
+              ],
+              "cur": [
+                "USD"
+              ],
+              "device": {
+                "connectiontype": 2,
+                "devicetype": 3,
+                "dnt": 0,
+                "ext": {
+                  "ifa_type": "rida"
+                },
+                "geo": {
+                  "country": "USA",
+                  "utcoffset": -480
+                },
+                "ifa": "lab-ifa-001",
+                "language": "en",
+                "lmt": 0,
+                "make": "Roku",
+                "model": "Ultra",
+                "os": "ctv",
+                "osv": "12.0",
+                "sua": {
+                  "architecture": "arm",
+                  "bitness": "64",
+                  "browsers": [
+                    {
+                      "brand": "Roku",
+                      "version": [
+                        "12"
+                      ]
+                    }
+                  ],
+                  "mobile": 0,
+                  "model": "Ultra",
+                  "platform": {
+                    "brand": "Roku",
+                    "version": [
+                      "12",
+                      "0"
+                    ]
+                  },
+                  "source": 2
+                },
+                "ua": "Mozilla/5.0"
+              },
+              "id": "auc-1791709312655981545",
+              "imp": [
+                {
+                  "bidfloor": 8,
+                  "bidfloorcur": "USD",
+                  "displaymanager": "artf-ssai",
+                  "displaymanagerver": "0.1",
+                  "exp": 300,
+                  "id": "imp-1",
+                  "instl": 0,
+                  "metric": [
+                    {
+                      "type": "viewability",
+                      "value": 0.82,
+                      "vendor": "example-measurement"
+                    },
+                    {
+                      "type": "ivt",
+                      "value": 0.01,
+                      "vendor": "lab-ivt"
+                    }
+                  ],
+                  "pmp": {
+                    "deals": [
+                      {
+                        "at": 1,
+                        "bidfloor": 14.5,
+                        "bidfloorcur": "USD",
+                        "id": "deal-premium"
+                      },
+                      {
+                        "at": 2,
+                        "bidfloor": 6,
+                        "bidfloorcur": "USD",
+                        "id": "deal-standard"
+                      },
+                      {
+                        "id": "deal-curated"
+                      }
+                    ],
+                    "private_auction": 1
+                  },
+                  "secure": 1,
+                  "ssai": 2,
+                  "tagid": "ctv-midroll-1",
+                  "video": {
+                    "api": [
+                      7
+                    ],
+                    "delivery": [
+                      2
+                    ],
+                    "h": 1080,
+                    "linearity": 1,
+                    "maxduration": 30,
+                    "maxseq": 1,
+                    "mimes": [
+                      "video/mp4"
+                    ],
+                    "mincpmpersec": 0.15,
+                    "minduration": 15,
+                    "playbackend": 1,
+                    "playbackmethod": [
+                      1
+                    ],
+                    "plcmt": 1,
+                    "podid": "pod-mid-1",
+                    "podseq": 0,
+                    "pos": 1,
+                    "protocols": [
+                      2,
+                      3,
+                      7,
+                      8,
+                      11,
+                      13
+                    ],
+                    "skip": 0,
+                    "slotinpod": 1,
+                    "startdelay": -1,
+                    "w": 1920
+                  }
+                }
+              ],
+              "regs": {
+                "coppa": 0,
+                "ext": {
+                  "us_privacy": "1YNN"
+                },
+                "gdpr": 0,
+                "gpp": "DBABLA~BVQqAAAAAAA",
+                "gpp_sid": [
+                  7
+                ]
+              },
+              "source": {
+                "fd": 1,
+                "pchain": "exchange-7",
+                "schain": {
+                  "complete": 1,
+                  "nodes": [
+                    {
+                      "asi": "streaming.example",
+                      "hp": 1,
+                      "sid": "pub-1"
+                    },
+                    {
+                      "asi": "adserver-lab.example",
+                      "hp": 1,
+                      "sid": "gateway-1"
+                    },
+                    {
+                      "asi": "exchange-7.example",
+                      "hp": 1,
+                      "sid": "ssp-1"
+                    }
+                  ],
+                  "ver": "1.0"
+                },
+                "tid": "ad-1791709312654389503"
+              },
+              "tmax": 199,
+              "user": {
+                "buyeruid": "bu-ddbbdfc1b8f09220",
+                "data": [
+                  {
+                    "id": "dmp-1",
+                    "name": "Example DMP",
+                    "segment": [
+                      {
+                        "id": "seg-sports"
+                      },
+                      {
+                        "id": "seg-cord-cutter"
+                      },
+                      {
+                        "id": "seg-premium-viewer"
+                      }
+                    ]
+                  }
+                ],
+                "eids": [
+                  {
+                    "source": "idmap-lab.example",
+                    "uids": [
+                      {
+                        "atype": 1,
+                        "id": "bu-ddbbdfc1b8f09220"
+                      }
+                    ]
+                  }
+                ],
+                "id": "user-77"
+              },
+              "wseat": [
+                "dsp-alpha",
+                "dsp-beta"
+              ]
+            },
+            "bid_request_before": {
+              "app": {
+                "bundle": "example.ctv.player",
+                "cat": [
+                  "IAB17"
+                ],
+                "content": {
+                  "genre": "sports",
+                  "id": "content-12345",
+                  "len": 3600,
+                  "livestream": 0
+                },
+                "domain": "streaming.example",
+                "id": "app-ctv-1",
+                "name": "Example CTV",
+                "publisher": {
+                  "domain": "streaming.example",
+                  "id": "pub-1"
+                }
+              },
+              "at": 1,
+              "badv": [
+                "blocked.example"
+              ],
+              "bcat": [
+                "IAB25-3"
+              ],
+              "cur": [
+                "USD"
+              ],
+              "device": {
+                "connectiontype": 2,
+                "devicetype": 3,
+                "dnt": 0,
+                "ext": {
+                  "ifa_type": "rida"
+                },
+                "geo": {
+                  "country": "USA",
+                  "utcoffset": -480
+                },
+                "ifa": "lab-ifa-001",
+                "language": "en",
+                "lmt": 0,
+                "make": "Roku",
+                "model": "Ultra",
+                "os": "ctv",
+                "osv": "12.0",
+                "sua": {
+                  "architecture": "arm",
+                  "bitness": "64",
+                  "browsers": [
+                    {
+                      "brand": "Roku",
+                      "version": [
+                        "12"
+                      ]
+                    }
+                  ],
+                  "mobile": 0,
+                  "model": "Ultra",
+                  "platform": {
+                    "brand": "Roku",
+                    "version": [
+                      "12",
+                      "0"
+                    ]
+                  },
+                  "source": 2
+                },
+                "ua": "Mozilla/5.0"
+              },
+              "id": "auc-1791709312655981545",
+              "imp": [
+                {
+                  "bidfloor": 8,
+                  "bidfloorcur": "USD",
+                  "displaymanager": "artf-ssai",
+                  "displaymanagerver": "0.1",
+                  "exp": 300,
+                  "id": "imp-1",
+                  "instl": 0,
+                  "pmp": {
+                    "deals": [
+                      {
+                        "at": 1,
+                        "bidfloor": 12,
+                        "bidfloorcur": "USD",
+                        "id": "deal-premium"
+                      },
+                      {
+                        "at": 2,
+                        "bidfloor": 6,
+                        "bidfloorcur": "USD",
+                        "id": "deal-standard"
+                      }
+                    ],
+                    "private_auction": 1
+                  },
+                  "secure": 1,
+                  "ssai": 2,
+                  "tagid": "ctv-midroll-1",
+                  "video": {
+                    "api": [
+                      7
+                    ],
+                    "delivery": [
+                      2
+                    ],
+                    "h": 1080,
+                    "linearity": 1,
+                    "maxduration": 30,
+                    "maxseq": 1,
+                    "mimes": [
+                      "video/mp4"
+                    ],
+                    "mincpmpersec": 0.15,
+                    "minduration": 15,
+                    "playbackend": 1,
+                    "playbackmethod": [
+                      1
+                    ],
+                    "plcmt": 1,
+                    "podid": "pod-mid-1",
+                    "podseq": 0,
+                    "pos": 1,
+                    "protocols": [
+                      2,
+                      3,
+                      7,
+                      8,
+                      11,
+                      13
+                    ],
+                    "skip": 0,
+                    "slotinpod": 1,
+                    "startdelay": -1,
+                    "w": 1920
+                  }
+                }
+              ],
+              "regs": {
+                "coppa": 0,
+                "ext": {
+                  "us_privacy": "1YNN"
+                },
+                "gdpr": 0,
+                "gpp": "DBABLA~BVQqAAAAAAA",
+                "gpp_sid": [
+                  7
+                ]
+              },
+              "source": {
+                "fd": 1,
+                "pchain": "exchange-7",
+                "schain": {
+                  "complete": 0,
+                  "nodes": [
+                    {
+                      "asi": "streaming.example",
+                      "hp": 1,
+                      "sid": "pub-1"
+                    },
+                    {
+                      "asi": "adserver-lab.example",
+                      "hp": 1,
+                      "sid": "gateway-1"
+                    }
+                  ],
+                  "ver": "1.0"
+                },
+                "tid": "ad-1791709312654389503"
+              },
+              "tmax": 300,
+              "user": {
+                "buyeruid": "bu-ddbbdfc1b8f09220",
+                "data": [
+                  {
+                    "id": "dmp-1",
+                    "name": "Example DMP",
+                    "segment": [
+                      {
+                        "id": "seg-sports"
+                      }
+                    ]
+                  }
+                ],
+                "eids": [
+                  {
+                    "source": "idmap-lab.example",
+                    "uids": [
+                      {
+                        "atype": 1,
+                        "id": "bu-ddbbdfc1b8f09220"
+                      }
+                    ]
+                  }
+                ],
+                "id": "user-77"
+              },
+              "wseat": [
+                "dsp-alpha",
+                "dsp-beta"
+              ]
+            },
+            "bids": [
+              {
+                "seat": "dsp-beta",
+                "bid_id": "bid-dsp-beta",
+                "imp_id": "imp-1",
+                "price": 15.725,
+                "nurl": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709312655981545&price=${AUCTION_PRICE}",
+                "burl": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=${AUCTION_PRICE}",
+                "lurl": "http://tracker:8080/loss?seat=dsp-beta&auction=auc-1791709312655981545&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+                "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-beta\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-beta</AdTitle><AdServingId>lab-dsp-beta-auc-1791709312655981545</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[${AUCTION_PRICE}]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=${AUCTION_PRICE}&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-beta\" adId=\"ad-lab-dsp-beta\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-beta-001\">lab-dsp-beta-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-beta&auction=auc-1791709312655981545]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+                "crid": "cr-lab-dsp-beta",
+                "dealid": "deal-premium",
+                "cat": [
+                  "IAB17"
+                ],
+                "adomain": [
+                  "streaming.example"
+                ]
+              }
+            ],
+            "clearing": 15.725,
+            "dropped": [
+              {
+                "bid": {
+                  "seat": "dsp-alpha",
+                  "bid_id": "bid-dsp-alpha",
+                  "imp_id": "imp-1",
+                  "price": 11.899999999999999,
+                  "nurl": "http://tracker:8080/win?seat=dsp-alpha&auction=auc-1791709312655981545&price=${AUCTION_PRICE}",
+                  "burl": "http://tracker:8080/bill?seat=dsp-alpha&auction=auc-1791709312655981545&price=${AUCTION_PRICE}",
+                  "lurl": "http://tracker:8080/loss?seat=dsp-alpha&auction=auc-1791709312655981545&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+                  "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-alpha\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-alpha</AdTitle><AdServingId>lab-dsp-alpha-auc-1791709312655981545</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[${AUCTION_PRICE}]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-alpha&auction=auc-1791709312655981545]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-alpha&auction=auc-1791709312655981545&price=${AUCTION_PRICE}&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-alpha&auction=auc-1791709312655981545]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-alpha\" adId=\"ad-lab-dsp-alpha\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-alpha-001\">lab-dsp-alpha-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-alpha&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-alpha&auction=auc-1791709312655981545]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+                  "crid": "cr-lab-dsp-alpha",
+                  "dealid": "deal-premium",
+                  "cat": [
+                    "IAB17"
+                  ],
+                  "adomain": [
+                    "streaming.example"
+                  ]
+                },
+                "loss": 100,
+                "reason": "below_floor"
+              }
+            ],
+            "elapsed_ms": 15.522,
+            "hops": [
+              {
+                "name": "audience",
+                "kind": "grpc",
+                "addr": "agent-audience:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "request-artf",
+                "ms": 1.683,
+                "detail": {
+                  "id": "ext-auc-1791709312655981545",
+                  "mutations": [
+                    {
+                      "intent": "ACTIVATE_SEGMENTS",
+                      "op": "OPERATION_ADD",
+                      "path": "/user/data/segment",
+                      "ids": {
+                        "id": [
+                          "seg-cord-cutter",
+                          "seg-premium-viewer"
+                        ]
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "api_version": "1.0.0",
+                    "model_version": "audience-lab"
+                  }
+                }
+              },
+              {
+                "name": "curator",
+                "kind": "grpc",
+                "addr": "agent-curator:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "request-artf",
+                "ms": 1.296,
+                "detail": {
+                  "id": "ext-auc-1791709312655981545",
+                  "mutations": [
+                    {
+                      "intent": "ACTIVATE_DEALS",
+                      "op": "OPERATION_ADD",
+                      "path": "/imp/imp-1",
+                      "ids": {
+                        "id": [
+                          "deal-curated"
+                        ]
+                      }
+                    },
+                    {
+                      "intent": "ADJUST_DEAL_FLOOR",
+                      "op": "OPERATION_REPLACE",
+                      "path": "/imp/imp-1/pmp/deals/deal-premium",
+                      "adjust_deal": {
+                        "bidfloor": 14.5
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "api_version": "1.0.0",
+                    "model_version": "curator-lab"
+                  }
+                }
+              },
+              {
+                "name": "metrics",
+                "kind": "grpc",
+                "addr": "agent-metrics:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "request-artf",
+                "ms": 1.919,
+                "detail": {
+                  "id": "ext-auc-1791709312655981545",
+                  "mutations": [
+                    {
+                      "intent": "ADD_METRICS",
+                      "op": "OPERATION_ADD",
+                      "path": "/imp/imp-1",
+                      "metrics": {
+                        "metric": [
+                          {
+                            "type": "viewability",
+                            "value": 0.82,
+                            "vendor": "example-measurement"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "api_version": "1.0.0",
+                    "model_version": "metrics-lab"
+                  }
+                }
+              },
+              {
+                "name": "quality",
+                "kind": "grpc",
+                "addr": "agent-quality:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "request-artf",
+                "ms": 1.859,
+                "detail": {
+                  "id": "ext-auc-1791709312655981545",
+                  "mutations": [
+                    {
+                      "intent": "ADD_METRICS",
+                      "op": "OPERATION_ADD",
+                      "path": "/imp/imp-1",
+                      "metrics": {
+                        "metric": [
+                          {
+                            "type": "ivt",
+                            "value": 0.01,
+                            "vendor": "lab-ivt"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "api_version": "1.0.0",
+                    "model_version": "quality-lab"
+                  }
+                }
+              },
+              {
+                "name": "cids",
+                "kind": "grpc",
+                "addr": "agent-cids:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "request-artf",
+                "ms": 2.214,
+                "detail": {
+                  "id": "ext-auc-1791709312655981545",
+                  "mutations": [
+                    {
+                      "intent": "ADD_CIDS",
+                      "op": "OPERATION_ADD",
+                      "path": "/content/data",
+                      "ids": {
+                        "id": [
+                          "cid-ctv-sports",
+                          "cid-pg"
+                        ]
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "api_version": "1.0.0",
+                    "model_version": "cids-lab"
+                  }
+                }
+              },
+              {
+                "name": "dsp-beta",
+                "kind": "http",
+                "addr": "http://dsp-beta:8080/openrtb/bid",
+                "stage": "openrtb",
+                "ms": 6.845
+              },
+              {
+                "name": "shader-dsp-beta",
+                "kind": "grpc",
+                "addr": "agent-shader-beta:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "response-artf",
+                "ms": 2.362,
+                "detail": {
+                  "mutations": [
+                    {
+                      "adjust_bid": {
+                        "price": 15.725
+                      },
+                      "agent": "shader-dsp-beta",
+                      "intent": "BID_SHADE",
+                      "op": "OPERATION_REPLACE",
+                      "path": "/seatbid/dsp-beta/bid/bid-dsp-beta"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "dsp-alpha",
+                "kind": "http",
+                "addr": "http://dsp-alpha:8080/openrtb/bid",
+                "stage": "openrtb",
+                "ms": 7.461
+              },
+              {
+                "name": "shader-dsp-alpha",
+                "kind": "grpc",
+                "addr": "agent-shader-alpha:50051",
+                "rpc": "RTBExtensionPoint.GetMutations",
+                "stage": "response-artf",
+                "ms": 2.342,
+                "detail": {
+                  "mutations": [
+                    {
+                      "adjust_bid": {
+                        "price": 11.899999999999999
+                      },
+                      "agent": "shader-dsp-alpha",
+                      "intent": "BID_SHADE",
+                      "op": "OPERATION_REPLACE",
+                      "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "loss-notice",
+                "kind": "http",
+                "addr": "http://tracker:8080/loss?seat=dsp-alpha&auction=auc-1791709312655981545&price=15.7250&loss=100",
+                "stage": "notice",
+                "ms": 1.496
+              },
+              {
+                "name": "win-notice",
+                "kind": "http",
+                "addr": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+                "stage": "notice",
+                "ms": 0.149
+              },
+              {
+                "name": "bill-notice",
+                "kind": "http",
+                "addr": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+                "stage": "notice",
+                "ms": 0.192
+              }
+            ],
+            "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+            "mutations": {
+              "mutations": [
+                {
+                  "agent": "audience",
+                  "ids": {
+                    "id": [
+                      "seg-cord-cutter",
+                      "seg-premium-viewer"
+                    ]
+                  },
+                  "intent": "ACTIVATE_SEGMENTS",
+                  "op": "OPERATION_ADD",
+                  "path": "/user/data/segment"
+                },
+                {
+                  "agent": "curator",
+                  "ids": {
+                    "id": [
+                      "deal-curated"
+                    ]
+                  },
+                  "intent": "ACTIVATE_DEALS",
+                  "op": "OPERATION_ADD",
+                  "path": "/imp/imp-1"
+                },
+                {
+                  "adjust_deal": {
+                    "bidfloor": 14.5
+                  },
+                  "agent": "curator",
+                  "intent": "ADJUST_DEAL_FLOOR",
+                  "op": "OPERATION_REPLACE",
+                  "path": "/imp/imp-1/pmp/deals/deal-premium"
+                },
+                {
+                  "agent": "metrics",
+                  "intent": "ADD_METRICS",
+                  "metrics": {
+                    "metric": [
+                      {
+                        "type": "viewability",
+                        "value": 0.82,
+                        "vendor": "example-measurement"
+                      }
+                    ]
+                  },
+                  "op": "OPERATION_ADD",
+                  "path": "/imp/imp-1"
+                },
+                {
+                  "agent": "quality",
+                  "intent": "ADD_METRICS",
+                  "metrics": {
+                    "metric": [
+                      {
+                        "type": "ivt",
+                        "value": 0.01,
+                        "vendor": "lab-ivt"
+                      }
+                    ]
+                  },
+                  "op": "OPERATION_ADD",
+                  "path": "/imp/imp-1"
+                },
+                {
+                  "agent": "cids",
+                  "ids": {
+                    "id": [
+                      "cid-ctv-sports",
+                      "cid-pg"
+                    ]
+                  },
+                  "intent": "ADD_CIDS",
+                  "op": "OPERATION_ADD",
+                  "path": "/content/data"
+                }
+              ]
+            },
+            "outcomes": [
+              {
+                "index": 0,
+                "intent": "ACTIVATE_SEGMENTS",
+                "result": "applied",
+                "agent": "audience",
+                "path": "/user/data/segment",
+                "writes": "user.data[].segment",
+                "side": "request"
+              },
+              {
+                "index": 1,
+                "intent": "ACTIVATE_DEALS",
+                "result": "applied",
+                "agent": "curator",
+                "path": "/imp/imp-1",
+                "writes": "imp[].pmp.deals",
+                "side": "request"
+              },
+              {
+                "index": 2,
+                "intent": "ADJUST_DEAL_FLOOR",
+                "result": "applied",
+                "agent": "curator",
+                "path": "/imp/imp-1/pmp/deals/deal-premium",
+                "writes": "deal.bidfloor",
+                "side": "request"
+              },
+              {
+                "index": 3,
+                "intent": "ADD_METRICS",
+                "result": "applied",
+                "agent": "metrics",
+                "path": "/imp/imp-1",
+                "writes": "imp[].metric",
+                "side": "request"
+              },
+              {
+                "index": 4,
+                "intent": "ADD_METRICS",
+                "result": "applied",
+                "agent": "quality",
+                "path": "/imp/imp-1",
+                "writes": "imp[].metric",
+                "side": "request"
+              },
+              {
+                "index": 5,
+                "intent": "ADD_CIDS",
+                "result": "applied",
+                "agent": "cids",
+                "path": "/content/data",
+                "writes": "app.content.data",
+                "side": "request"
+              },
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "result": "applied",
+                "agent": "shader-dsp-beta",
+                "path": "/seatbid/dsp-beta/bid/bid-dsp-beta",
+                "writes": "seatbid.bid.price",
+                "side": "response"
+              },
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "result": "applied",
+                "agent": "shader-dsp-alpha",
+                "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha",
+                "writes": "seatbid.bid.price",
+                "side": "response"
+              }
+            ],
+            "policy": "all",
+            "shade_outcomes": [
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "result": "applied",
+                "agent": "shader-dsp-beta",
+                "path": "/seatbid/dsp-beta/bid/bid-dsp-beta",
+                "writes": "seatbid.bid.price",
+                "side": "response"
+              },
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "result": "applied",
+                "agent": "shader-dsp-alpha",
+                "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha",
+                "writes": "seatbid.bid.price",
+                "side": "response"
+              }
+            ],
+            "skipped": [],
+            "story": {
+              "request": "Host applied ACTIVATE_SEGMENTS, ACTIVATE_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS, ADD_METRICS, ADD_CIDS onto the bid request after GetMutations.",
+              "response": "Host applied BID_SHADE, BID_SHADE onto the bid response."
+            },
+            "ticket_after": {
+              "ifa": "lab-ifa-001",
+              "buyeruid": "bu-ddbbdfc1b8f09220",
+              "segments": [
+                "seg-sports",
+                "seg-cord-cutter",
+                "seg-premium-viewer"
+              ],
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "bidfloor": 14.5
+                },
+                {
+                  "id": "deal-standard",
+                  "bidfloor": 6
+                },
+                {
+                  "id": "deal-curated"
+                }
+              ],
+              "floor": 14.5,
+              "metrics": [
+                {
+                  "type": "viewability",
+                  "value": 0.82,
+                  "vendor": "example-measurement"
+                },
+                {
+                  "type": "ivt",
+                  "value": 0.01,
+                  "vendor": "lab-ivt"
+                }
+              ],
+              "cids": [
+                "cid-ctv-sports",
+                "cid-pg"
+              ],
+              "eids": [
+                "bu-ddbbdfc1b8f09220"
+              ],
+              "auction_id": "auc-1791709312655981545",
+              "tmax": 199,
+              "schain": [
+                "streaming.example",
+                "adserver-lab.example",
+                "exchange-7.example"
+              ],
+              "gpp": "DBABLA~BVQqAAAAAAA",
+              "ssai": 2,
+              "podid": "pod-mid-1"
+            },
+            "ticket_before": {
+              "ifa": "lab-ifa-001",
+              "buyeruid": "bu-ddbbdfc1b8f09220",
+              "segments": [
+                "seg-sports"
+              ],
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "bidfloor": 12
+                },
+                {
+                  "id": "deal-standard",
+                  "bidfloor": 6
+                }
+              ],
+              "floor": 12,
+              "eids": [
+                "bu-ddbbdfc1b8f09220"
+              ],
+              "auction_id": "auc-1791709312655981545",
+              "tmax": 300,
+              "schain": [
+                "streaming.example",
+                "adserver-lab.example"
+              ],
+              "gpp": "DBABLA~BVQqAAAAAAA",
+              "ssai": 2,
+              "podid": "pod-mid-1"
+            },
+            "tmax_ms": 250,
+            "vast": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-beta\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-beta</AdTitle><AdServingId>lab-dsp-beta-auc-1791709312655981545</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[15.7250]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-beta\" adId=\"ad-lab-dsp-beta\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-beta-001\">lab-dsp-beta-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-beta&auction=auc-1791709312655981545]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+            "winner": {
+              "seat": "dsp-beta",
+              "bid_id": "bid-dsp-beta",
+              "imp_id": "imp-1",
+              "price": 15.725,
+              "nurl": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+              "burl": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+              "lurl": "http://tracker:8080/loss?seat=dsp-beta&auction=auc-1791709312655981545&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+              "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-beta\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-beta</AdTitle><AdServingId>lab-dsp-beta-auc-1791709312655981545</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[15.7250]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709312655981545]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-beta\" adId=\"ad-lab-dsp-beta\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-beta-001\">lab-dsp-beta-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709312655981545&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-beta&auction=auc-1791709312655981545]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+              "crid": "cr-lab-dsp-beta",
+              "dealid": "deal-premium",
+              "cat": [
+                "IAB17"
+              ],
+              "adomain": [
+                "streaming.example"
+              ]
+            }
+          },
+          "auction_id": "auc-1791709312655981545",
+          "buyeruid": "bu-ddbbdfc1b8f09220",
+          "hops": [
+            {
+              "name": "idmap",
+              "kind": "http",
+              "addr": "http://idmap:8080/sync",
+              "stage": "identity",
+              "ms": 0.82,
+              "detail": {
+                "buyeruid": "bu-ddbbdfc1b8f09220",
+                "eids": [
+                  {
+                    "source": "idmap-lab.example",
+                    "uids": [
+                      {
+                        "atype": 1,
+                        "id": "bu-ddbbdfc1b8f09220"
+                      }
+                    ]
+                  }
+                ],
+                "ifa": "lab-ifa-001",
+                "source": "idmap-lab.example"
+              }
+            },
+            {
+              "name": "consent",
+              "kind": "http",
+              "addr": "http://consent:8080/gpp",
+              "stage": "privacy",
+              "ms": 0.679,
+              "detail": {
+                "coppa": false,
+                "gdpr": false,
+                "gpp": "DBABLA~BVQqAAAAAAA",
+                "gpp_sid": [
+                  7
+                ],
+                "ifa": "lab-ifa-001",
+                "source": "consent-lab.example",
+                "us_privacy": "1YNN"
+              }
+            },
+            {
+              "name": "ssp",
+              "kind": "http",
+              "addr": "http://ssp:8080/openrtb/auction",
+              "stage": "openrtb",
+              "ms": 16.867
+            },
+            {
+              "name": "audience",
+              "kind": "grpc",
+              "addr": "agent-audience:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 1.683,
+              "detail": {
+                "id": "ext-auc-1791709312655981545",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "audience-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "seg-cord-cutter",
+                        "seg-premium-viewer"
+                      ]
+                    },
+                    "intent": "ACTIVATE_SEGMENTS",
+                    "op": "OPERATION_ADD",
+                    "path": "/user/data/segment"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "curator",
+              "kind": "grpc",
+              "addr": "agent-curator:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 1.296,
+              "detail": {
+                "id": "ext-auc-1791709312655981545",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "curator-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "deal-curated"
+                      ]
+                    },
+                    "intent": "ACTIVATE_DEALS",
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  },
+                  {
+                    "adjust_deal": {
+                      "bidfloor": 14.5
+                    },
+                    "intent": "ADJUST_DEAL_FLOOR",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/imp/imp-1/pmp/deals/deal-premium"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "metrics",
+              "kind": "grpc",
+              "addr": "agent-metrics:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 1.919,
+              "detail": {
+                "id": "ext-auc-1791709312655981545",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "metrics-lab"
+                },
+                "mutations": [
+                  {
+                    "intent": "ADD_METRICS",
+                    "metrics": {
+                      "metric": [
+                        {
+                          "type": "viewability",
+                          "value": 0.82,
+                          "vendor": "example-measurement"
+                        }
+                      ]
+                    },
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "quality",
+              "kind": "grpc",
+              "addr": "agent-quality:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 1.859,
+              "detail": {
+                "id": "ext-auc-1791709312655981545",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "quality-lab"
+                },
+                "mutations": [
+                  {
+                    "intent": "ADD_METRICS",
+                    "metrics": {
+                      "metric": [
+                        {
+                          "type": "ivt",
+                          "value": 0.01,
+                          "vendor": "lab-ivt"
+                        }
+                      ]
+                    },
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cids",
+              "kind": "grpc",
+              "addr": "agent-cids:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 2.214,
+              "detail": {
+                "id": "ext-auc-1791709312655981545",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "cids-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "cid-ctv-sports",
+                        "cid-pg"
+                      ]
+                    },
+                    "intent": "ADD_CIDS",
+                    "op": "OPERATION_ADD",
+                    "path": "/content/data"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "dsp-beta",
+              "kind": "http",
+              "addr": "http://dsp-beta:8080/openrtb/bid",
+              "stage": "openrtb",
+              "ms": 6.845
+            },
+            {
+              "name": "shader-dsp-beta",
+              "kind": "grpc",
+              "addr": "agent-shader-beta:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "response-artf",
+              "ms": 2.362,
+              "detail": {
+                "mutations": [
+                  {
+                    "adjust_bid": {
+                      "price": 15.725
+                    },
+                    "agent": "shader-dsp-beta",
+                    "intent": "BID_SHADE",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/seatbid/dsp-beta/bid/bid-dsp-beta"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "dsp-alpha",
+              "kind": "http",
+              "addr": "http://dsp-alpha:8080/openrtb/bid",
+              "stage": "openrtb",
+              "ms": 7.461
+            },
+            {
+              "name": "shader-dsp-alpha",
+              "kind": "grpc",
+              "addr": "agent-shader-alpha:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "response-artf",
+              "ms": 2.342,
+              "detail": {
+                "mutations": [
+                  {
+                    "adjust_bid": {
+                      "price": 11.899999999999999
+                    },
+                    "agent": "shader-dsp-alpha",
+                    "intent": "BID_SHADE",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "loss-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/loss?seat=dsp-alpha&auction=auc-1791709312655981545&price=15.7250&loss=100",
+              "stage": "notice",
+              "ms": 1.496
+            },
+            {
+              "name": "win-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+              "stage": "notice",
+              "ms": 0.149
+            },
+            {
+              "name": "bill-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709312655981545&price=15.7250",
+              "stage": "notice",
+              "ms": 0.192
+            }
+          ],
+          "ifa": "lab-ifa-001",
+          "intents": [
+            "ACTIVATE_SEGMENTS",
+            "ACTIVATE_DEALS",
+            "ADJUST_DEAL_FLOOR",
+            "ADD_METRICS",
+            "ADD_CIDS"
+          ],
+          "ms": 22.747,
+          "mutations": {
+            "mutations": [
+              {
+                "agent": "audience",
+                "ids": {
+                  "id": [
+                    "seg-cord-cutter",
+                    "seg-premium-viewer"
+                  ]
+                },
+                "intent": "ACTIVATE_SEGMENTS",
+                "op": "OPERATION_ADD",
+                "path": "/user/data/segment"
+              },
+              {
+                "agent": "curator",
+                "ids": {
+                  "id": [
+                    "deal-curated"
+                  ]
+                },
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "adjust_deal": {
+                  "bidfloor": 14.5
+                },
+                "agent": "curator",
+                "intent": "ADJUST_DEAL_FLOOR",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-1/pmp/deals/deal-premium"
+              },
+              {
+                "agent": "metrics",
+                "intent": "ADD_METRICS",
+                "metrics": {
+                  "metric": [
+                    {
+                      "type": "viewability",
+                      "value": 0.82,
+                      "vendor": "example-measurement"
+                    }
+                  ]
+                },
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "agent": "quality",
+                "intent": "ADD_METRICS",
+                "metrics": {
+                  "metric": [
+                    {
+                      "type": "ivt",
+                      "value": 0.01,
+                      "vendor": "lab-ivt"
+                    }
+                  ]
+                },
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "agent": "cids",
+                "ids": {
+                  "id": [
+                    "cid-ctv-sports",
+                    "cid-pg"
+                  ]
+                },
+                "intent": "ADD_CIDS",
+                "op": "OPERATION_ADD",
+                "path": "/content/data"
+              }
+            ]
+          },
+          "policy": "all",
+          "shade_outcomes": [
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-beta",
+              "path": "/seatbid/dsp-beta/bid/bid-dsp-beta",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            },
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-alpha",
+              "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            }
+          ],
+          "story": {
+            "request": "Host applied ACTIVATE_SEGMENTS, ACTIVATE_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS, ADD_METRICS, ADD_CIDS onto the bid request after GetMutations.",
+            "response": "Host applied BID_SHADE, BID_SHADE onto the bid response."
+          },
+          "ticket": {
+            "ifa": "lab-ifa-001",
+            "buyeruid": "bu-ddbbdfc1b8f09220",
+            "segments": [
+              "seg-sports",
+              "seg-cord-cutter",
+              "seg-premium-viewer"
+            ],
+            "deals": [
+              {
+                "id": "deal-premium",
+                "bidfloor": 14.5
+              },
+              {
+                "id": "deal-standard",
+                "bidfloor": 6
+              },
+              {
+                "id": "deal-curated"
+              }
+            ],
+            "floor": 14.5,
+            "metrics": [
+              {
+                "type": "viewability",
+                "value": 0.82,
+                "vendor": "example-measurement"
+              },
+              {
+                "type": "ivt",
+                "value": 0.01,
+                "vendor": "lab-ivt"
+              }
+            ],
+            "cids": [
+              "cid-ctv-sports",
+              "cid-pg"
+            ],
+            "eids": [
+              "bu-ddbbdfc1b8f09220"
+            ],
+            "auction_id": "auc-1791709312655981545",
+            "tmax": 199,
+            "schain": [
+              "streaming.example",
+              "adserver-lab.example",
+              "exchange-7.example"
+            ],
+            "gpp": "DBABLA~BVQqAAAAAAA",
+            "ssai": 2,
+            "podid": "pod-mid-1"
+          },
+          "ticket_before": {
+            "ifa": "lab-ifa-001",
+            "buyeruid": "bu-ddbbdfc1b8f09220",
+            "segments": [
+              "seg-sports"
+            ],
+            "deals": [
+              {
+                "id": "deal-premium",
+                "bidfloor": 12
+              },
+              {
+                "id": "deal-standard",
+                "bidfloor": 6
+              }
+            ],
+            "floor": 12,
+            "eids": [
+              "bu-ddbbdfc1b8f09220"
+            ],
+            "auction_id": "auc-1791709312655981545",
+            "tmax": 300,
+            "schain": [
+              "streaming.example",
+              "adserver-lab.example"
+            ],
+            "gpp": "DBABLA~BVQqAAAAAAA",
+            "ssai": 2,
+            "podid": "pod-mid-1"
+          }
+        }
+      }
+    },
+    {
+      "index": 3,
+      "plannedAt": 36,
+      "observedAt": 36.000779834,
+      "actionSeconds": 0.021463082999995095
+    },
+    {
+      "index": 4,
+      "plannedAt": 60,
+      "observedAt": 60.002307084,
+      "actionSeconds": 0.018684249999998428
+    },
+    {
+      "index": 5,
+      "plannedAt": 84,
+      "observedAt": 84.00044287499999,
+      "actionSeconds": 0.011592042000003858
+    },
+    {
+      "index": 6,
+      "plannedAt": 108,
+      "observedAt": 108.001135125,
+      "actionSeconds": 0.01350237499999639
+    },
+    {
+      "index": 7,
+      "plannedAt": 132,
+      "observedAt": 132.001546042,
+      "actionSeconds": 0.013903167000011308
+    },
+    {
+      "index": 8,
+      "plannedAt": 156,
+      "observedAt": 156.001928584,
+      "actionSeconds": 0.018721541000006253
+    },
+    {
+      "index": 9,
+      "plannedAt": 180,
+      "observedAt": 180.005518542,
+      "actionSeconds": 0.023140583000000332
+    },
+    {
+      "index": 10,
+      "plannedAt": 204,
+      "observedAt": 204.002627209,
+      "actionSeconds": 0.013422291000024416
+    },
+    {
+      "index": 11,
+      "plannedAt": 228,
+      "observedAt": 228.00431416700002,
+      "actionSeconds": 0.02624854200001573
+    },
+    {
+      "index": 12,
+      "plannedAt": 252,
+      "observedAt": 252.001393917,
+      "actionSeconds": 0.06917324999999255,
+      "evidence": {
+        "scene": "delivery",
+        "result": {
+          "auction_id": "auc-1791709533664602508",
+          "beat": "clean",
+          "bids": [
+            {
+              "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-beta\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-beta</AdTitle><AdServingId>lab-dsp-beta-auc-1791709533664602508</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[${AUCTION_PRICE}]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709533664602508]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=${AUCTION_PRICE}&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709533664602508]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-beta\" adId=\"ad-lab-dsp-beta\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-beta-001\">lab-dsp-beta-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-beta&auction=auc-1791709533664602508]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+              "adomain": [
+                "streaming.example"
+              ],
+              "bid_id": "bid-dsp-beta",
+              "burl": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=${AUCTION_PRICE}",
+              "cat": [
+                "IAB17"
+              ],
+              "crid": "cr-lab-dsp-beta",
+              "dealid": "deal-premium",
+              "imp_id": "imp-1",
+              "lurl": "http://tracker:8080/loss?seat=dsp-beta&auction=auc-1791709533664602508&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+              "nurl": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709533664602508&price=${AUCTION_PRICE}",
+              "price": 15.725,
+              "seat": "dsp-beta"
+            }
+          ],
+          "buyeruid": "bu-ddbbdfc1b8f09220",
+          "dropped": [
+            {
+              "bid": {
+                "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-alpha\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-alpha</AdTitle><AdServingId>lab-dsp-alpha-auc-1791709533664602508</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[${AUCTION_PRICE}]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-alpha&auction=auc-1791709533664602508]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-alpha&auction=auc-1791709533664602508&price=${AUCTION_PRICE}&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-alpha&auction=auc-1791709533664602508]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-alpha\" adId=\"ad-lab-dsp-alpha\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-alpha-001\">lab-dsp-alpha-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-alpha&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-alpha&auction=auc-1791709533664602508]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-alpha.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+                "adomain": [
+                  "streaming.example"
+                ],
+                "bid_id": "bid-dsp-alpha",
+                "burl": "http://tracker:8080/bill?seat=dsp-alpha&auction=auc-1791709533664602508&price=${AUCTION_PRICE}",
+                "cat": [
+                  "IAB17"
+                ],
+                "crid": "cr-lab-dsp-alpha",
+                "dealid": "deal-premium",
+                "imp_id": "imp-1",
+                "lurl": "http://tracker:8080/loss?seat=dsp-alpha&auction=auc-1791709533664602508&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+                "nurl": "http://tracker:8080/win?seat=dsp-alpha&auction=auc-1791709533664602508&price=${AUCTION_PRICE}",
+                "price": 11.899999999999999,
+                "seat": "dsp-alpha"
+              },
+              "loss": 100,
+              "reason": "below_floor"
+            }
+          ],
+          "hops": [
+            {
+              "name": "idmap",
+              "kind": "http",
+              "addr": "http://idmap:8080/sync",
+              "stage": "identity",
+              "ms": 3.194,
+              "detail": {
+                "buyeruid": "bu-ddbbdfc1b8f09220",
+                "eids": [
+                  {
+                    "source": "idmap-lab.example",
+                    "uids": [
+                      {
+                        "atype": 1,
+                        "id": "bu-ddbbdfc1b8f09220"
+                      }
+                    ]
+                  }
+                ],
+                "ifa": "lab-ifa-001",
+                "source": "idmap-lab.example"
+              }
+            },
+            {
+              "name": "consent",
+              "kind": "http",
+              "addr": "http://consent:8080/gpp",
+              "stage": "privacy",
+              "ms": 2.018,
+              "detail": {
+                "coppa": false,
+                "gdpr": false,
+                "gpp": "DBABLA~BVQqAAAAAAA",
+                "gpp_sid": [
+                  7
+                ],
+                "ifa": "lab-ifa-001",
+                "source": "consent-lab.example",
+                "us_privacy": "1YNN"
+              }
+            },
+            {
+              "name": "ssp",
+              "kind": "http",
+              "addr": "http://ssp:8080/openrtb/auction",
+              "stage": "openrtb",
+              "ms": 29.511
+            },
+            {
+              "name": "audience",
+              "kind": "grpc",
+              "addr": "agent-audience:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 5.932,
+              "detail": {
+                "id": "ext-auc-1791709533664602508",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "audience-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "seg-cord-cutter",
+                        "seg-premium-viewer"
+                      ]
+                    },
+                    "intent": "ACTIVATE_SEGMENTS",
+                    "op": "OPERATION_ADD",
+                    "path": "/user/data/segment"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "curator",
+              "kind": "grpc",
+              "addr": "agent-curator:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 5.628,
+              "detail": {
+                "id": "ext-auc-1791709533664602508",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "curator-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "deal-curated"
+                      ]
+                    },
+                    "intent": "ACTIVATE_DEALS",
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  },
+                  {
+                    "adjust_deal": {
+                      "bidfloor": 14.5
+                    },
+                    "intent": "ADJUST_DEAL_FLOOR",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/imp/imp-1/pmp/deals/deal-premium"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "metrics",
+              "kind": "grpc",
+              "addr": "agent-metrics:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 5.459,
+              "detail": {
+                "id": "ext-auc-1791709533664602508",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "metrics-lab"
+                },
+                "mutations": [
+                  {
+                    "intent": "ADD_METRICS",
+                    "metrics": {
+                      "metric": [
+                        {
+                          "type": "viewability",
+                          "value": 0.82,
+                          "vendor": "example-measurement"
+                        }
+                      ]
+                    },
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "quality",
+              "kind": "grpc",
+              "addr": "agent-quality:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 6.583,
+              "detail": {
+                "id": "ext-auc-1791709533664602508",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "quality-lab"
+                },
+                "mutations": [
+                  {
+                    "intent": "ADD_METRICS",
+                    "metrics": {
+                      "metric": [
+                        {
+                          "type": "ivt",
+                          "value": 0.01,
+                          "vendor": "lab-ivt"
+                        }
+                      ]
+                    },
+                    "op": "OPERATION_ADD",
+                    "path": "/imp/imp-1"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "cids",
+              "kind": "grpc",
+              "addr": "agent-cids:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "request-artf",
+              "ms": 7.184,
+              "detail": {
+                "id": "ext-auc-1791709533664602508",
+                "metadata": {
+                  "api_version": "1.0.0",
+                  "model_version": "cids-lab"
+                },
+                "mutations": [
+                  {
+                    "ids": {
+                      "id": [
+                        "cid-ctv-sports",
+                        "cid-pg"
+                      ]
+                    },
+                    "intent": "ADD_CIDS",
+                    "op": "OPERATION_ADD",
+                    "path": "/content/data"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "dsp-alpha",
+              "kind": "http",
+              "addr": "http://dsp-alpha:8080/openrtb/bid",
+              "stage": "openrtb",
+              "ms": 11.882
+            },
+            {
+              "name": "shader-dsp-alpha",
+              "kind": "grpc",
+              "addr": "agent-shader-alpha:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "response-artf",
+              "ms": 1.893,
+              "detail": {
+                "mutations": [
+                  {
+                    "adjust_bid": {
+                      "price": 11.899999999999999
+                    },
+                    "agent": "shader-dsp-alpha",
+                    "intent": "BID_SHADE",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "dsp-beta",
+              "kind": "http",
+              "addr": "http://dsp-beta:8080/openrtb/bid",
+              "stage": "openrtb",
+              "ms": 11.953
+            },
+            {
+              "name": "shader-dsp-beta",
+              "kind": "grpc",
+              "addr": "agent-shader-beta:50051",
+              "rpc": "RTBExtensionPoint.GetMutations",
+              "stage": "response-artf",
+              "ms": 2.802,
+              "detail": {
+                "mutations": [
+                  {
+                    "adjust_bid": {
+                      "price": 15.725
+                    },
+                    "agent": "shader-dsp-beta",
+                    "intent": "BID_SHADE",
+                    "op": "OPERATION_REPLACE",
+                    "path": "/seatbid/dsp-beta/bid/bid-dsp-beta"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "loss-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/loss?seat=dsp-alpha&auction=auc-1791709533664602508&price=15.7250&loss=100",
+              "stage": "notice",
+              "ms": 1.559
+            },
+            {
+              "name": "win-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250",
+              "stage": "notice",
+              "ms": 0.301
+            },
+            {
+              "name": "bill-notice",
+              "kind": "http",
+              "addr": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250",
+              "stage": "notice",
+              "ms": 0.253
+            },
+            {
+              "name": "cdn",
+              "kind": "http",
+              "addr": "http://cdn:8080/creative/dsp-beta/1080.mp4",
+              "ms": 2.481
+            },
+            {
+              "name": "cdn",
+              "kind": "http",
+              "addr": "http://cdn:8080/creative/dsp-beta/720.mp4",
+              "ms": 0.164
+            },
+            {
+              "name": "cdn",
+              "kind": "http",
+              "addr": "http://cdn:8080/creative/dsp-beta.mp4",
+              "ms": 0.149
+            },
+            {
+              "name": "imp",
+              "kind": "http",
+              "addr": "http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533697912508",
+              "ms": 0.921
+            },
+            {
+              "name": "bill",
+              "kind": "http",
+              "addr": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250&cb=1791709533698852133",
+              "ms": 0.149
+            },
+            {
+              "name": "start",
+              "kind": "http",
+              "addr": "http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699008216",
+              "ms": 0.105
+            },
+            {
+              "name": "q1",
+              "kind": "http",
+              "addr": "http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699117550",
+              "ms": 0.122
+            },
+            {
+              "name": "mid",
+              "kind": "http",
+              "addr": "http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699247925",
+              "ms": 0.12
+            },
+            {
+              "name": "q3",
+              "kind": "http",
+              "addr": "http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699372050",
+              "ms": 0.101
+            },
+            {
+              "name": "complete",
+              "kind": "http",
+              "addr": "http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699477466",
+              "ms": 0.19
+            },
+            {
+              "name": "viewable",
+              "kind": "http",
+              "addr": "http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699673591",
+              "ms": 0.146
+            }
+          ],
+          "ifa": "lab-ifa-001",
+          "intents": [
+            "ACTIVATE_SEGMENTS",
+            "ACTIVATE_DEALS",
+            "ADJUST_DEAL_FLOOR",
+            "ADD_METRICS",
+            "ADD_CIDS"
+          ],
+          "media": [
+            "http://cdn:8080/creative/dsp-beta/1080.mp4",
+            "http://cdn:8080/creative/dsp-beta/720.mp4",
+            "http://cdn:8080/creative/dsp-beta.mp4"
+          ],
+          "ms": 42.248,
+          "mutations": {
+            "mutations": [
+              {
+                "agent": "audience",
+                "ids": {
+                  "id": [
+                    "seg-cord-cutter",
+                    "seg-premium-viewer"
+                  ]
+                },
+                "intent": "ACTIVATE_SEGMENTS",
+                "op": "OPERATION_ADD",
+                "path": "/user/data/segment"
+              },
+              {
+                "agent": "curator",
+                "ids": {
+                  "id": [
+                    "deal-curated"
+                  ]
+                },
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "adjust_deal": {
+                  "bidfloor": 14.5
+                },
+                "agent": "curator",
+                "intent": "ADJUST_DEAL_FLOOR",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-1/pmp/deals/deal-premium"
+              },
+              {
+                "agent": "metrics",
+                "intent": "ADD_METRICS",
+                "metrics": {
+                  "metric": [
+                    {
+                      "type": "viewability",
+                      "value": 0.82,
+                      "vendor": "example-measurement"
+                    }
+                  ]
+                },
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "agent": "quality",
+                "intent": "ADD_METRICS",
+                "metrics": {
+                  "metric": [
+                    {
+                      "type": "ivt",
+                      "value": 0.01,
+                      "vendor": "lab-ivt"
+                    }
+                  ]
+                },
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1"
+              },
+              {
+                "agent": "cids",
+                "ids": {
+                  "id": [
+                    "cid-ctv-sports",
+                    "cid-pg"
+                  ]
+                },
+                "intent": "ADD_CIDS",
+                "op": "OPERATION_ADD",
+                "path": "/content/data"
+              }
+            ]
+          },
+          "outcomes": [
+            {
+              "index": 0,
+              "intent": "ACTIVATE_SEGMENTS",
+              "result": "applied",
+              "agent": "audience",
+              "path": "/user/data/segment",
+              "writes": "user.data[].segment",
+              "side": "request"
+            },
+            {
+              "index": 1,
+              "intent": "ACTIVATE_DEALS",
+              "result": "applied",
+              "agent": "curator",
+              "path": "/imp/imp-1",
+              "writes": "imp[].pmp.deals",
+              "side": "request"
+            },
+            {
+              "index": 2,
+              "intent": "ADJUST_DEAL_FLOOR",
+              "result": "applied",
+              "agent": "curator",
+              "path": "/imp/imp-1/pmp/deals/deal-premium",
+              "writes": "deal.bidfloor",
+              "side": "request"
+            },
+            {
+              "index": 3,
+              "intent": "ADD_METRICS",
+              "result": "applied",
+              "agent": "metrics",
+              "path": "/imp/imp-1",
+              "writes": "imp[].metric",
+              "side": "request"
+            },
+            {
+              "index": 4,
+              "intent": "ADD_METRICS",
+              "result": "applied",
+              "agent": "quality",
+              "path": "/imp/imp-1",
+              "writes": "imp[].metric",
+              "side": "request"
+            },
+            {
+              "index": 5,
+              "intent": "ADD_CIDS",
+              "result": "applied",
+              "agent": "cids",
+              "path": "/content/data",
+              "writes": "app.content.data",
+              "side": "request"
+            },
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-alpha",
+              "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            },
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-beta",
+              "path": "/seatbid/dsp-beta/bid/bid-dsp-beta",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            }
+          ],
+          "played": true,
+          "policy": "all",
+          "shade_outcomes": [
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-alpha",
+              "path": "/seatbid/dsp-alpha/bid/bid-dsp-alpha",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            },
+            {
+              "index": 0,
+              "intent": "BID_SHADE",
+              "result": "applied",
+              "agent": "shader-dsp-beta",
+              "path": "/seatbid/dsp-beta/bid/bid-dsp-beta",
+              "writes": "seatbid.bid.price",
+              "side": "response"
+            }
+          ],
+          "story": {
+            "request": "Host applied ACTIVATE_SEGMENTS, ACTIVATE_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS, ADD_METRICS, ADD_CIDS onto the bid request after GetMutations.",
+            "response": "Host applied BID_SHADE, BID_SHADE onto the bid response."
+          },
+          "ticket": {
+            "ifa": "lab-ifa-001",
+            "buyeruid": "bu-ddbbdfc1b8f09220",
+            "segments": [
+              "seg-sports",
+              "seg-cord-cutter",
+              "seg-premium-viewer"
+            ],
+            "deals": [
+              {
+                "id": "deal-premium",
+                "bidfloor": 14.5
+              },
+              {
+                "id": "deal-standard",
+                "bidfloor": 6
+              },
+              {
+                "id": "deal-curated"
+              }
+            ],
+            "floor": 14.5,
+            "metrics": [
+              {
+                "type": "viewability",
+                "value": 0.82,
+                "vendor": "example-measurement"
+              },
+              {
+                "type": "ivt",
+                "value": 0.01,
+                "vendor": "lab-ivt"
+              }
+            ],
+            "cids": [
+              "cid-ctv-sports",
+              "cid-pg"
+            ],
+            "eids": [
+              "bu-ddbbdfc1b8f09220"
+            ],
+            "auction_id": "auc-1791709533664602508",
+            "tmax": 199,
+            "schain": [
+              "streaming.example",
+              "adserver-lab.example",
+              "exchange-7.example"
+            ],
+            "gpp": "DBABLA~BVQqAAAAAAA",
+            "ssai": 2,
+            "podid": "pod-mid-1"
+          },
+          "ticket_before": {
+            "ifa": "lab-ifa-001",
+            "buyeruid": "bu-ddbbdfc1b8f09220",
+            "segments": [
+              "seg-sports"
+            ],
+            "deals": [
+              {
+                "id": "deal-premium",
+                "bidfloor": 12
+              },
+              {
+                "id": "deal-standard",
+                "bidfloor": 6
+              }
+            ],
+            "floor": 12,
+            "eids": [
+              "bu-ddbbdfc1b8f09220"
+            ],
+            "auction_id": "auc-1791709533664602508",
+            "tmax": 300,
+            "schain": [
+              "streaming.example",
+              "adserver-lab.example"
+            ],
+            "gpp": "DBABLA~BVQqAAAAAAA",
+            "ssai": 2,
+            "podid": "pod-mid-1"
+          },
+          "tracks": [
+            "http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533697912508",
+            "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250&cb=1791709533698852133",
+            "http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699008216",
+            "http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699117550",
+            "http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699247925",
+            "http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699372050",
+            "http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699477466",
+            "http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=1791709533699673591"
+          ],
+          "winner": {
+            "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"4.2\"><Ad id=\"lab-dsp-beta\"><InLine><AdSystem version=\"0.1\">artf-simulator</AdSystem><AdTitle>Lab mid-roll dsp-beta</AdTitle><AdServingId>lab-dsp-beta-auc-1791709533664602508</AdServingId><Advertiser>Lab Advertiser</Advertiser><Category authority=\"IAB\">IAB17</Category><Pricing model=\"CPM\" currency=\"USD\"><![CDATA[15.7250]]></Pricing><Error><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709533664602508]]></Error><Impression><![CDATA[http://tracker:8080/imp?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Impression><Impression><![CDATA[http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250&cb=[CACHEBUSTING]]]></Impression><ViewableImpression><Viewable><![CDATA[http://tracker:8080/viewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Viewable><NotViewable><![CDATA[http://tracker:8080/notviewable?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></NotViewable><ViewUndetermined><![CDATA[http://tracker:8080/viewundetermined?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></ViewUndetermined></ViewableImpression><AdVerifications><Verification vendor=\"iabtechlab.com-omid\"><JavaScriptResource apiFramework=\"omid\" browserOptional=\"true\"><![CDATA[http://tracker:8080/omid.js]]></JavaScriptResource><TrackingEvents><Tracking event=\"verificationNotExecuted\"><![CDATA[http://tracker:8080/error?seat=dsp-beta&auction=auc-1791709533664602508]]></Tracking></TrackingEvents><VerificationParameters><![CDATA[{\"lab\":true}]]></VerificationParameters></Verification></AdVerifications><Creatives><Creative id=\"cr-lab-dsp-beta\" adId=\"ad-lab-dsp-beta\"><UniversalAdId idRegistry=\"ad-id.org\" idValue=\"lab-dsp-beta-001\">lab-dsp-beta-001</UniversalAdId><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"start\"><![CDATA[http://tracker:8080/start?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[http://tracker:8080/q1?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"midpoint\"><![CDATA[http://tracker:8080/mid?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[http://tracker:8080/q3?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking><Tracking event=\"complete\"><![CDATA[http://tracker:8080/complete?seat=dsp-beta&auction=auc-1791709533664602508&cb=[CACHEBUSTING]]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://tracker:8080/click?seat=dsp-beta&auction=auc-1791709533664602508]]></ClickThrough></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/1080.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1280\" height=\"720\" bitrate=\"1200\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta/720.mp4]]></MediaFile><MediaFile delivery=\"progressive\" type=\"video/mp4\" width=\"1920\" height=\"1080\" bitrate=\"2500\" codec=\"H.264\"><![CDATA[http://cdn:8080/creative/dsp-beta.mp4]]></MediaFile></MediaFiles></Linear></Creative></Creatives></InLine></Ad></VAST>",
+            "adomain": [
+              "streaming.example"
+            ],
+            "bid_id": "bid-dsp-beta",
+            "burl": "http://tracker:8080/bill?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250",
+            "cat": [
+              "IAB17"
+            ],
+            "crid": "cr-lab-dsp-beta",
+            "dealid": "deal-premium",
+            "imp_id": "imp-1",
+            "lurl": "http://tracker:8080/loss?seat=dsp-beta&auction=auc-1791709533664602508&price=${AUCTION_PRICE}&loss=${AUCTION_LOSS}",
+            "nurl": "http://tracker:8080/win?seat=dsp-beta&auction=auc-1791709533664602508&price=15.7250",
+            "price": 15.725,
+            "seat": "dsp-beta"
+          }
+        }
+      }
+    },
+    {
+      "index": 13,
+      "plannedAt": 257,
+      "observedAt": 257.0022055,
+      "actionSeconds": 0.03515704200000619
+    },
+    {
+      "index": 14,
+      "plannedAt": 281,
+      "observedAt": 281.002424834,
+      "actionSeconds": 0.3731850410000188,
+      "evidence": {
+        "requestedAuctionsPerSecond": 20,
+        "status": "Requested 20 auctions/s · completed 1 · request errors 0"
+      }
+    },
+    {
+      "index": 15,
+      "plannedAt": 305,
+      "observedAt": 305.032497209,
+      "actionSeconds": 0.27463829100003934
+    },
+    {
+      "index": 16,
+      "plannedAt": 330,
+      "observedAt": 330.004060167,
+      "actionSeconds": 0.10788774999999441
+    },
+    {
+      "index": 17,
+      "plannedAt": 354,
+      "observedAt": 354.00749329200005,
+      "actionSeconds": 0.08768404199997895
+    },
+    {
+      "index": 18,
+      "plannedAt": 378,
+      "observedAt": 378.017610042,
+      "actionSeconds": 0.5621123329999973
+    }
+  ],
+  "videoAlignment": {
+    "inputFirstSceneSeconds": 8.28,
+    "correctedFirstSceneSeconds": 8,
+    "shiftSeconds": -0.27999999999999936
+  },
+  "presentation": {
+    "episode": 3,
+    "finishedAt": "2026-10-11T09:26:26.441Z",
+    "cardStyle": "Episode 1: blue edge, paper, Geist, summary panels, author portrait",
+    "openingCard": "Fully revealed from the first frame",
+    "cards": [
+      {
+        "kind": "intro",
+        "fonts": true,
+        "fits": true,
+        "children": [
+          {
+            "tag": "H1",
+            "top": 76,
+            "bottom": 252.375
+          },
+          {
+            "tag": "lede",
+            "top": 274.375,
+            "bottom": 398.546875
+          },
+          {
+            "tag": "hops",
+            "top": 446.546875,
+            "bottom": 614.546875
+          },
+          {
+            "tag": "band",
+            "top": 780.609375,
+            "bottom": 851
+          },
+          {
+            "tag": "foot",
+            "top": 897,
+            "bottom": 1008
+          }
+        ]
+      },
+      {
+        "kind": "outro",
+        "fonts": true,
+        "fits": true,
+        "children": [
+          {
+            "tag": "H1",
+            "top": 76,
+            "bottom": 139
+          },
+          {
+            "tag": "lines",
+            "top": 169,
+            "bottom": 426.546875
+          },
+          {
+            "tag": "closer",
+            "top": 716.9375,
+            "bottom": 875
+          },
+          {
+            "tag": "foot",
+            "top": 897,
+            "bottom": 1008
+          }
+        ]
+      }
+    ],
+    "captions": {
+      "cues": 64,
+      "words": 513,
+      "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+      "fontSize": 64,
+      "backgroundOpacity": 0.82,
+      "singleLineBoxHeight": 106.48,
+      "bottom": 107,
+      "mobileFontAt360CssPixels": 12,
+      "layout": "No overlap with the picture or presenter",
+      "first": 9,
+      "last": 374.091,
+      "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.captions/captions.ffconcat",
+      "frame": {
+        "width": 1920,
+        "height": 768,
+        "x": 0,
+        "y": 0,
+        "footerHeight": 312
+      },
+      "speaker": {
+        "name": "Alex Sekowski",
+        "label": "Now presenting:",
+        "portrait": "../../linkedin/author/alex.jpg",
+        "bounds": {
+          "x": 1670.296875,
+          "y": 1016,
+          "width": 217.703125,
+          "height": 56
+        },
+        "portraitSize": 56,
+        "visibility": "Throughout the video, including pauses and title cards."
+      }
+    },
+    "focusRegions": [
+      {
+        "at": 8,
+        "end": 31,
+        "overview": true
+      },
+      {
+        "at": 31,
+        "end": 36,
+        "overview": true
+      },
+      {
+        "at": 36,
+        "end": 60,
+        "selector": "#apply-section",
+        "x": 680.5859375,
+        "y": 140,
+        "width": 1338.828125,
+        "height": 535.53125,
+        "zoom": 2.0166890354204354
+      },
+      {
+        "at": 60,
+        "end": 84,
+        "selector": "#ticket-section",
+        "x": 659.8046875,
+        "y": 140,
+        "width": 1380.390625,
+        "height": 552.15625,
+        "zoom": 1.9559680796875885
+      },
+      {
+        "at": 84,
+        "end": 108,
+        "selector": "#apply-section",
+        "x": 680.5859375,
+        "y": 140,
+        "width": 1338.828125,
+        "height": 535.53125,
+        "zoom": 2.0166890354204354
+      },
+      {
+        "at": 108,
+        "end": 132,
+        "selector": "#apply-section",
+        "x": 680.5859375,
+        "y": 140,
+        "width": 1338.828125,
+        "height": 535.53125,
+        "zoom": 2.0166890354204354
+      },
+      {
+        "at": 132,
+        "end": 156,
+        "selector": "#bids-section",
+        "x": 760,
+        "y": 72.6953125,
+        "width": 1180,
+        "height": 472,
+        "zoom": 2.288135593220339
+      },
+      {
+        "at": 156,
+        "end": 180,
+        "selector": ".graph-pane",
+        "x": 0,
+        "y": 195.828125,
+        "width": 2203.046875,
+        "height": 881.21875,
+        "zoom": 1.2255753750132983
+      },
+      {
+        "at": 180,
+        "end": 204,
+        "selector": "#bids-section",
+        "x": 760,
+        "y": 72.6953125,
+        "width": 1180,
+        "height": 472,
+        "zoom": 2.288135593220339
+      },
+      {
+        "at": 204,
+        "end": 228,
+        "selector": ".graph-pane",
+        "x": 0,
+        "y": 195.828125,
+        "width": 2203.046875,
+        "height": 881.21875,
+        "zoom": 1.2255753750132983
+      },
+      {
+        "at": 228,
+        "end": 252,
+        "selector": "#manifest-section",
+        "x": 406.23046875,
+        "y": 140,
+        "width": 1887.5390625,
+        "height": 755.015625,
+        "zoom": 1.4304339728068542,
+        "cuts": [
+          {
+            "at": 228,
+            "end": 238,
+            "selector": "#manifest intents",
+            "x": 679.6328125,
+            "y": 347.5703125,
+            "width": 550,
+            "height": 220,
+            "zoom": 4.909090909090909
+          },
+          {
+            "at": 238,
+            "end": 252,
+            "selector": "#manifest image and resources",
+            "x": 736.2890625,
+            "y": 508.9375,
+            "width": 620.3125,
+            "height": 248.125,
+            "zoom": 4.352644836272041
+          }
+        ]
+      },
+      {
+        "at": 252,
+        "end": 257,
+        "overview": true
+      },
+      {
+        "at": 257,
+        "end": 281,
+        "selector": "#events-section",
+        "x": 639.51171875,
+        "y": 140,
+        "width": 1420.9765625,
+        "height": 568.390625,
+        "zoom": 1.900101712620612
+      },
+      {
+        "at": 281,
+        "end": 305,
+        "selector": "#feed-ops-summary",
+        "x": 785,
+        "y": 146.21875,
+        "width": 1130,
+        "height": 452,
+        "zoom": 2.3893805309734515
+      },
+      {
+        "at": 305,
+        "end": 330,
+        "selector": "#feed-ops-summary",
+        "x": 1141.65625,
+        "y": 217.553125,
+        "width": 773.328125,
+        "height": 309.33125,
+        "zoom": 3.4914028246418685
+      },
+      {
+        "at": 330,
+        "end": 354,
+        "selector": "#feed-ops-summary",
+        "x": 1141.65625,
+        "y": 217.553125,
+        "width": 773.328125,
+        "height": 309.33125,
+        "zoom": 3.4914028246418685
+      },
+      {
+        "at": 354,
+        "end": 378,
+        "overview": true
+      }
+    ],
+    "alignment": {
+      "inputFirstSceneSeconds": 8,
+      "correctedFirstSceneSeconds": 8,
+      "shiftSeconds": 0
+    },
+    "seconds": 386,
+    "master": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.picture.mp4",
+    "sha256": "54124fe8e66d107906f89150fb0b8352ae2b8e8277a0b8c70dc2470fd01ba221",
+    "cueSha256": "5f0f28105377a972947aafe256a03db8992c5045d1c75d1b4abcab7e07f6d520",
+    "subtitleSha256": "6ae26a485158ec84131126f388d01513c0c611d23a608d4e3f3ddc59c36b2b87",
+    "media": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "mime_codec_string": "avc1.640028",
+          "width": 1920,
+          "height": 1080,
+          "coded_width": 1920,
+          "coded_height": 1080,
+          "has_b_frames": 2,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "pix_fmt": "yuv420p",
+          "level": 40,
+          "color_range": "tv",
+          "color_space": "bt470bg",
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "25/1",
+          "avg_frame_rate": "25/1",
+          "time_base": "1/12800",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 4940800,
+          "duration": "386.000000",
+          "bit_rate": "333578",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "9650",
+          "extradata_size": 51,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "encoder": "Lavc62.28.100 libx264"
+          }
+        }
+      ],
+      "format": {
+        "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.pending.mp4",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "386.000000",
+        "size": "16211804",
+        "bit_rate": "335995",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "isom",
+          "minor_version": "512",
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf62.12.100"
+        }
+      }
+    }
+  },
+  "cameraRefinement": "The descriptor shot focuses its actual capabilities, then image and resources. Narration and scene timings are unchanged."
+}

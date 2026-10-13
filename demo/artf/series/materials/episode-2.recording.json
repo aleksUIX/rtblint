@@ -1,0 +1,1579 @@
+{
+  "episode": 2,
+  "smoke": false,
+  "seconds": 339,
+  "elapsed": 339.0022605,
+  "errors": [],
+  "actual": [
+    {
+      "index": 0,
+      "plannedAt": 0,
+      "observedAt": 0.00008970799999997325,
+      "actionSeconds": 0.000001125000000001819
+    },
+    {
+      "index": 1,
+      "plannedAt": 8,
+      "observedAt": 8.001219707999999,
+      "actionSeconds": 0.14705637500000013
+    },
+    {
+      "index": 2,
+      "plannedAt": 28,
+      "observedAt": 28.002066792,
+      "actionSeconds": 0.03609166600000026
+    },
+    {
+      "index": 3,
+      "plannedAt": 48,
+      "observedAt": 48.001109083,
+      "actionSeconds": 0.008844291999994312
+    },
+    {
+      "index": 4,
+      "plannedAt": 70,
+      "observedAt": 70.00161175,
+      "actionSeconds": 0.01702433299999393
+    },
+    {
+      "index": 5,
+      "plannedAt": 89,
+      "observedAt": 89.001102875,
+      "actionSeconds": 2.458445041999992,
+      "evidence": {
+        "scene": "policy",
+        "receiptBefore": 0,
+        "receiptAfter": 1,
+        "result": {
+          "beat": "policy",
+          "forwarded": true,
+          "punchline": "Independently acceptable means the host still chooses.",
+          "envelope": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "mutations": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "applied": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "skipped": [
+            4
+          ],
+          "dsp": {
+            "id": "br-408477f3",
+            "cur": "USD",
+            "seatbid": [
+              {
+                "seat": "dsp-1",
+                "bid": [
+                  {
+                    "id": "bid-1",
+                    "impid": "imp-1",
+                    "price": 16.9,
+                    "crid": "dummy-northwind",
+                    "adomain": [
+                      "northwind.example"
+                    ],
+                    "w": 1920,
+                    "h": 1080,
+                    "dur": 15,
+                    "mtype": 2
+                  }
+                ]
+              }
+            ],
+            "dummy": {
+              "id": "dummy-northwind",
+              "title": "Northwind Spark",
+              "kicker": "Sports drink · 15s mid-roll",
+              "line": "Stay in the game.",
+              "advertiser": "northwind.example",
+              "tone": "green"
+            }
+          },
+          "auction": {
+            "id": "br-408477f3",
+            "beat": "policy",
+            "outcome": "forward",
+            "gate": "forward",
+            "ms": 50.447625,
+            "rule": "",
+            "applied": 4,
+            "intents": 5,
+            "pop": "us-west-2",
+            "inv": "ctv",
+            "app": "streaming.example",
+            "hop": "PUBLISHER_BID_REQUEST",
+            "tmax": 150
+          },
+          "stage": {
+            "scene": "policy",
+            "phase": "verdict",
+            "perspective": "ssp",
+            "perspectiveLabel": "Host / SSP",
+            "hop": "request",
+            "title": "The host still chooses.",
+            "tv": "ad",
+            "punchline": "Independently acceptable means the host still chooses.",
+            "before": {
+              "id": "br-408477f3",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "after": {
+              "id": "br-408477f3",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 14.5,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                },
+                {
+                  "id": "deal-curated"
+                }
+              ],
+              "segments": [
+                "seg-sports",
+                "seg-cord-cutter",
+                "seg-premium-viewer"
+              ],
+              "metrics": [
+                {
+                  "type": "viewability",
+                  "value": 0.82,
+                  "vendor": "example-measurement"
+                }
+              ]
+            },
+            "bidBefore": null,
+            "bidAfter": null,
+            "mutations": [
+              {
+                "index": 0,
+                "intent": "ACTIVATE_SEGMENTS",
+                "op": "OPERATION_ADD",
+                "path": "/user/data/segment",
+                "payload": {
+                  "ids": {
+                    "id": [
+                      "seg-cord-cutter",
+                      "seg-premium-viewer"
+                    ]
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              },
+              {
+                "index": 1,
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1",
+                "payload": {
+                  "ids": {
+                    "id": [
+                      "deal-curated"
+                    ]
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              },
+              {
+                "index": 2,
+                "intent": "ADJUST_DEAL_FLOOR",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-1/pmp/deals/deal-premium",
+                "payload": {
+                  "adjust_deal": {
+                    "bidfloor": 14.5
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              },
+              {
+                "index": 3,
+                "intent": "ADD_METRICS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1",
+                "payload": {
+                  "metrics": {
+                    "metric": [
+                      {
+                        "type": "viewability",
+                        "value": 0.82,
+                        "vendor": "example-measurement"
+                      }
+                    ]
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              },
+              {
+                "index": 4,
+                "intent": "ADD_CIDS",
+                "op": "OPERATION_ADD",
+                "path": "/content/data",
+                "payload": {
+                  "ids": {
+                    "id": [
+                      "cid-demo"
+                    ]
+                  }
+                },
+                "status": "skipped",
+                "findings": [],
+                "reason": "not offered"
+              }
+            ],
+            "responseId": "extension-point-001",
+            "findings": [],
+            "dummy": {
+              "id": "dummy-northwind",
+              "title": "Northwind Spark",
+              "kicker": "Sports drink · 15s mid-roll",
+              "line": "Stay in the game.",
+              "advertiser": "northwind.example",
+              "tone": "green"
+            },
+            "forwarded": true,
+            "applied": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "skipped": [
+              4
+            ],
+            "envelope": {
+              "epId": "extension-point-001",
+              "tmax": 150,
+              "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+              "originatorType": "TYPE_EXCHANGE",
+              "originatorId": "exchange-7",
+              "intents": [
+                "ACTIVATE_SEGMENTS",
+                "ACTIVATE_DEALS",
+                "ADJUST_DEAL_FLOOR",
+                "ADD_METRICS"
+              ],
+              "attached": "bid_request",
+              "bidId": "br-408477f3",
+              "notOffered": [
+                "BID_SHADE"
+              ]
+            },
+            "dspPrice": 16.9
+          }
+        }
+      }
+    },
+    {
+      "index": 6,
+      "plannedAt": 95,
+      "observedAt": 95.001481208,
+      "actionSeconds": 0.008948791999995593
+    },
+    {
+      "index": 7,
+      "plannedAt": 116,
+      "observedAt": 116.000998333,
+      "actionSeconds": 0.015458125000004657
+    },
+    {
+      "index": 8,
+      "plannedAt": 140,
+      "observedAt": 140.000945208,
+      "actionSeconds": 0.014229083999991416
+    },
+    {
+      "index": 9,
+      "plannedAt": 164,
+      "observedAt": 164.001666,
+      "actionSeconds": 2.104200582999998,
+      "evidence": {
+        "scene": "illegal",
+        "receiptBefore": 1,
+        "receiptAfter": 1,
+        "result": {
+          "beat": "illegal",
+          "forwarded": false,
+          "punchline": "The framework accepted the RPC. The auction was never asked.",
+          "envelope": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "mutations": {
+            "valid": false,
+            "errors": 8,
+            "warnings": 4,
+            "issues": [
+              {
+                "id": "artf.response.id_mismatch",
+                "severity": "error",
+                "message": "RTBResponse.id \"extension-point-999\" does not echo the RTBRequest id \"extension-point-001\". The envelope id is the extension point request id, not the bid request id.",
+                "path": "id"
+              },
+              {
+                "id": "artf.response.metadata_missing",
+                "severity": "warning",
+                "message": "No metadata object: without api_version and model_version an orchestrator cannot record which agent build produced these mutations.",
+                "path": ""
+              },
+              {
+                "id": "artf.mutation.intent_not_applicable",
+                "severity": "error",
+                "message": "Intent BID_SHADE is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                "path": "mutations[0].intent"
+              },
+              {
+                "id": "artf.mutation.target_payload_missing",
+                "severity": "error",
+                "message": "path \"/seatbid/dsp-1/bid/bid-abc\" targets a bid, but the request envelope carries no bid_response to mutate.",
+                "path": "mutations[0].path"
+              },
+              {
+                "id": "artf.mutation.price_negative",
+                "severity": "error",
+                "message": "Proposed bid price -2.5 is negative.",
+                "path": "mutations[0].adjust_bid.price"
+              },
+              {
+                "id": "artf.mutation.imp_unknown",
+                "severity": "error",
+                "message": "path \"/imp/imp-404/pmp/deals/deal-premium\" names impression \"imp-404\", which is not among the impressions the bid request carries (\"imp-1\").",
+                "path": "mutations[1].path"
+              },
+              {
+                "id": "artf.mutation.deal_unknown",
+                "severity": "error",
+                "message": "path \"/imp/imp-1/pmp/deals/deal-unlisted\" names deal \"deal-unlisted\", which impression \"imp-1\" does not offer (\"deal-premium\", \"deal-standard\"). A floor or margin can only be adjusted on a deal the auction already carries.",
+                "path": "mutations[2].path"
+              },
+              {
+                "id": "artf.mutation.payload_intent_mismatch",
+                "severity": "error",
+                "message": "Intent ACTIVATE_DEALS carries \"ids\", but the mutation sets adjust_bid.",
+                "path": "mutations[3].adjust_bid"
+              },
+              {
+                "id": "artf.mutation.legacy_spec_encoding",
+                "severity": "warning",
+                "message": "This mutation uses the vocabulary of the ARTF v1.0 document's examples (intent \"adjustDeals\", op \"replace\", or a value wrapper such as IDsPayload) rather than the enum names and oneof members its .proto defines. The reference server speaks the proto encoding, so send INTENT/OPERATION enum names and top-level oneof members.",
+                "path": "mutations[4]"
+              },
+              {
+                "id": "artf.mutation.intent_not_applicable",
+                "severity": "error",
+                "message": "Intent ADJUST_DEAL_MARGIN is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                "path": "mutations[5].intent"
+              },
+              {
+                "id": "artf.mutation.margin_implausible",
+                "severity": "warning",
+                "message": "Margin 140 is a PERCENT adjustment above 100, which would take the whole bid and more.",
+                "path": "mutations[5].adjust_deal.margin.value"
+              },
+              {
+                "id": "artf.mutation.no_openrtb_target",
+                "severity": "warning",
+                "message": "ADJUST_DEAL_MARGIN has no field in OpenRTB 2.6 to write to: margin is not part of the Deal object, so the orchestrator has to apply it out of band and no validator can check the result.",
+                "path": "mutations[5]"
+              }
+            ]
+          },
+          "applied": [],
+          "skipped": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "dsp": null,
+          "auction": {
+            "id": "br-975eade2",
+            "beat": "illegal",
+            "outcome": "drop",
+            "gate": "mutations",
+            "ms": 31.166208,
+            "rule": "artf.response.id_mismatch",
+            "applied": 0,
+            "intents": 6,
+            "pop": "us-west-2",
+            "inv": "ctv",
+            "app": "streaming.example",
+            "hop": "PUBLISHER_BID_REQUEST",
+            "tmax": 150
+          },
+          "stage": {
+            "scene": "illegal",
+            "phase": "verdict",
+            "perspective": "ssp",
+            "perspectiveLabel": "SSP / publisher",
+            "hop": "request",
+            "title": "Looks legal. Is not.",
+            "tv": "unsold",
+            "punchline": "The framework accepted the RPC. The auction was never asked.",
+            "before": {
+              "id": "br-975eade2",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "after": {
+              "id": "br-975eade2",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "bidBefore": null,
+            "bidAfter": null,
+            "mutations": [
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "op": "OPERATION_REPLACE",
+                "path": "/seatbid/dsp-1/bid/bid-abc",
+                "payload": {
+                  "adjust_bid": {
+                    "price": -2.5
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.intent_not_applicable",
+                    "severity": "error",
+                    "message": "Intent BID_SHADE is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                    "path": "mutations[0].intent"
+                  },
+                  {
+                    "id": "artf.mutation.target_payload_missing",
+                    "severity": "error",
+                    "message": "path \"/seatbid/dsp-1/bid/bid-abc\" targets a bid, but the request envelope carries no bid_response to mutate.",
+                    "path": "mutations[0].path"
+                  },
+                  {
+                    "id": "artf.mutation.price_negative",
+                    "severity": "error",
+                    "message": "Proposed bid price -2.5 is negative.",
+                    "path": "mutations[0].adjust_bid.price"
+                  }
+                ],
+                "reason": "response id mismatch"
+              },
+              {
+                "index": 1,
+                "intent": "ADJUST_DEAL_FLOOR",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-404/pmp/deals/deal-premium",
+                "payload": {
+                  "adjust_deal": {
+                    "bidfloor": 3
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.imp_unknown",
+                    "severity": "error",
+                    "message": "path \"/imp/imp-404/pmp/deals/deal-premium\" names impression \"imp-404\", which is not among the impressions the bid request carries (\"imp-1\").",
+                    "path": "mutations[1].path"
+                  }
+                ],
+                "reason": "response id mismatch"
+              },
+              {
+                "index": 2,
+                "intent": "ADJUST_DEAL_FLOOR",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-1/pmp/deals/deal-unlisted",
+                "payload": {
+                  "adjust_deal": {
+                    "bidfloor": 3
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.deal_unknown",
+                    "severity": "error",
+                    "message": "path \"/imp/imp-1/pmp/deals/deal-unlisted\" names deal \"deal-unlisted\", which impression \"imp-1\" does not offer (\"deal-premium\", \"deal-standard\"). A floor or margin can only be adjusted on a deal the auction already carries.",
+                    "path": "mutations[2].path"
+                  }
+                ],
+                "reason": "response id mismatch"
+              },
+              {
+                "index": 3,
+                "intent": "ACTIVATE_DEALS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1",
+                "payload": {
+                  "adjust_bid": {
+                    "price": 4
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.payload_intent_mismatch",
+                    "severity": "error",
+                    "message": "Intent ACTIVATE_DEALS carries \"ids\", but the mutation sets adjust_bid.",
+                    "path": "mutations[3].adjust_bid"
+                  }
+                ],
+                "reason": "response id mismatch"
+              },
+              {
+                "index": 4,
+                "intent": "adjustDeals",
+                "op": "replace",
+                "path": "/imp/imp-1/deals/deal-standard",
+                "payload": {
+                  "value": {
+                    "AdjustDealPayload": {
+                      "bidfloor": 7.25
+                    }
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.legacy_spec_encoding",
+                    "severity": "warning",
+                    "message": "This mutation uses the vocabulary of the ARTF v1.0 document's examples (intent \"adjustDeals\", op \"replace\", or a value wrapper such as IDsPayload) rather than the enum names and oneof members its .proto defines. The reference server speaks the proto encoding, so send INTENT/OPERATION enum names and top-level oneof members.",
+                    "path": "mutations[4]"
+                  }
+                ],
+                "reason": "response id mismatch"
+              },
+              {
+                "index": 5,
+                "intent": "ADJUST_DEAL_MARGIN",
+                "op": "OPERATION_REPLACE",
+                "path": "/imp/imp-1/pmp/deals/deal-standard",
+                "payload": {
+                  "adjust_deal": {
+                    "margin": {
+                      "value": 140,
+                      "calculation_type": "PERCENT"
+                    }
+                  }
+                },
+                "status": "bounced",
+                "findings": [
+                  {
+                    "id": "artf.mutation.intent_not_applicable",
+                    "severity": "error",
+                    "message": "Intent ADJUST_DEAL_MARGIN is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                    "path": "mutations[5].intent"
+                  },
+                  {
+                    "id": "artf.mutation.margin_implausible",
+                    "severity": "warning",
+                    "message": "Margin 140 is a PERCENT adjustment above 100, which would take the whole bid and more.",
+                    "path": "mutations[5].adjust_deal.margin.value"
+                  },
+                  {
+                    "id": "artf.mutation.no_openrtb_target",
+                    "severity": "warning",
+                    "message": "ADJUST_DEAL_MARGIN has no field in OpenRTB 2.6 to write to: margin is not part of the Deal object, so the orchestrator has to apply it out of band and no validator can check the result.",
+                    "path": "mutations[5]"
+                  }
+                ],
+                "reason": "response id mismatch"
+              }
+            ],
+            "responseId": "extension-point-999",
+            "findings": [
+              {
+                "id": "artf.response.id_mismatch",
+                "severity": "error",
+                "message": "RTBResponse.id \"extension-point-999\" does not echo the RTBRequest id \"extension-point-001\". The envelope id is the extension point request id, not the bid request id.",
+                "path": "id"
+              },
+              {
+                "id": "artf.response.metadata_missing",
+                "severity": "warning",
+                "message": "No metadata object: without api_version and model_version an orchestrator cannot record which agent build produced these mutations.",
+                "path": ""
+              },
+              {
+                "id": "artf.mutation.intent_not_applicable",
+                "severity": "error",
+                "message": "Intent BID_SHADE is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                "path": "mutations[0].intent"
+              },
+              {
+                "id": "artf.mutation.target_payload_missing",
+                "severity": "error",
+                "message": "path \"/seatbid/dsp-1/bid/bid-abc\" targets a bid, but the request envelope carries no bid_response to mutate.",
+                "path": "mutations[0].path"
+              },
+              {
+                "id": "artf.mutation.price_negative",
+                "severity": "error",
+                "message": "Proposed bid price -2.5 is negative.",
+                "path": "mutations[0].adjust_bid.price"
+              },
+              {
+                "id": "artf.mutation.imp_unknown",
+                "severity": "error",
+                "message": "path \"/imp/imp-404/pmp/deals/deal-premium\" names impression \"imp-404\", which is not among the impressions the bid request carries (\"imp-1\").",
+                "path": "mutations[1].path"
+              },
+              {
+                "id": "artf.mutation.deal_unknown",
+                "severity": "error",
+                "message": "path \"/imp/imp-1/pmp/deals/deal-unlisted\" names deal \"deal-unlisted\", which impression \"imp-1\" does not offer (\"deal-premium\", \"deal-standard\"). A floor or margin can only be adjusted on a deal the auction already carries.",
+                "path": "mutations[2].path"
+              },
+              {
+                "id": "artf.mutation.payload_intent_mismatch",
+                "severity": "error",
+                "message": "Intent ACTIVATE_DEALS carries \"ids\", but the mutation sets adjust_bid.",
+                "path": "mutations[3].adjust_bid"
+              },
+              {
+                "id": "artf.mutation.legacy_spec_encoding",
+                "severity": "warning",
+                "message": "This mutation uses the vocabulary of the ARTF v1.0 document's examples (intent \"adjustDeals\", op \"replace\", or a value wrapper such as IDsPayload) rather than the enum names and oneof members its .proto defines. The reference server speaks the proto encoding, so send INTENT/OPERATION enum names and top-level oneof members.",
+                "path": "mutations[4]"
+              },
+              {
+                "id": "artf.mutation.intent_not_applicable",
+                "severity": "error",
+                "message": "Intent ADJUST_DEAL_MARGIN is not among the applicable_intents the request declared (ACTIVATE_SEGMENTS, ACTIVATE_DEALS, SUPPRESS_DEALS, ADJUST_DEAL_FLOOR, ADD_METRICS). The orchestrator listed what it is prepared to accept; anything else is rejected on arrival.",
+                "path": "mutations[5].intent"
+              },
+              {
+                "id": "artf.mutation.margin_implausible",
+                "severity": "warning",
+                "message": "Margin 140 is a PERCENT adjustment above 100, which would take the whole bid and more.",
+                "path": "mutations[5].adjust_deal.margin.value"
+              },
+              {
+                "id": "artf.mutation.no_openrtb_target",
+                "severity": "warning",
+                "message": "ADJUST_DEAL_MARGIN has no field in OpenRTB 2.6 to write to: margin is not part of the Deal object, so the orchestrator has to apply it out of band and no validator can check the result.",
+                "path": "mutations[5]"
+              }
+            ],
+            "dummy": null,
+            "forwarded": false,
+            "applied": [],
+            "skipped": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "envelope": {
+              "epId": "extension-point-001",
+              "tmax": 150,
+              "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+              "originatorType": "TYPE_EXCHANGE",
+              "originatorId": "exchange-7",
+              "intents": [
+                "ACTIVATE_SEGMENTS",
+                "ACTIVATE_DEALS",
+                "SUPPRESS_DEALS",
+                "ADJUST_DEAL_FLOOR",
+                "ADD_METRICS"
+              ],
+              "attached": "bid_request",
+              "bidId": "br-975eade2",
+              "notOffered": []
+            },
+            "dspPrice": null
+          }
+        }
+      }
+    },
+    {
+      "index": 10,
+      "plannedAt": 170,
+      "observedAt": 170.000185083,
+      "actionSeconds": 0.011977167000004556
+    },
+    {
+      "index": 11,
+      "plannedAt": 193,
+      "observedAt": 193.001897833,
+      "actionSeconds": 0.010314500000007684
+    },
+    {
+      "index": 12,
+      "plannedAt": 213,
+      "observedAt": 213.00110662499998,
+      "actionSeconds": 2.001931666999997,
+      "evidence": {
+        "scene": "breaking",
+        "receiptBefore": 1,
+        "receiptAfter": 1,
+        "result": {
+          "beat": "breaking",
+          "forwarded": false,
+          "punchline": "Well-formed mutation and still-valid OpenRTB are different questions.",
+          "envelope": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "mutations": {
+            "valid": false,
+            "errors": 1,
+            "warnings": 0,
+            "issues": [
+              {
+                "id": "openrtb.type.mismatch",
+                "severity": "error",
+                "message": "After applying the mutations: imp[0].metric[0].value expects number but received string.",
+                "path": "bid_request.imp[0].metric[0].value"
+              }
+            ]
+          },
+          "applied": [
+            0
+          ],
+          "skipped": [],
+          "dsp": null,
+          "auction": {
+            "id": "br-08dde9be",
+            "beat": "breaking",
+            "outcome": "drop",
+            "gate": "applied",
+            "ms": 10.250375,
+            "rule": "openrtb.type.mismatch",
+            "applied": 1,
+            "intents": 1,
+            "pop": "us-west-2",
+            "inv": "ctv",
+            "app": "streaming.example",
+            "hop": "PUBLISHER_BID_REQUEST",
+            "tmax": 150
+          },
+          "stage": {
+            "scene": "breaking",
+            "phase": "verdict",
+            "perspective": "exchange",
+            "perspectiveLabel": "Exchange engineer",
+            "hop": "request",
+            "title": "Mutation fine. Auction not.",
+            "tv": "poison",
+            "punchline": "Well-formed mutation and still-valid OpenRTB are different questions.",
+            "before": {
+              "id": "br-08dde9be",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "after": {
+              "id": "br-08dde9be",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": [
+                {
+                  "type": "viewability",
+                  "value": "high",
+                  "vendor": "example-measurement"
+                }
+              ]
+            },
+            "bidBefore": null,
+            "bidAfter": null,
+            "mutations": [
+              {
+                "index": 0,
+                "intent": "ADD_METRICS",
+                "op": "OPERATION_ADD",
+                "path": "/imp/imp-1",
+                "payload": {
+                  "metrics": {
+                    "metric": [
+                      {
+                        "type": "viewability",
+                        "value": "high",
+                        "vendor": "example-measurement"
+                      }
+                    ]
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              }
+            ],
+            "responseId": "extension-point-001",
+            "findings": [
+              {
+                "id": "openrtb.type.mismatch",
+                "severity": "error",
+                "message": "After applying the mutations: imp[0].metric[0].value expects number but received string.",
+                "path": "bid_request.imp[0].metric[0].value"
+              }
+            ],
+            "dummy": null,
+            "forwarded": false,
+            "applied": [
+              0
+            ],
+            "skipped": [],
+            "envelope": {
+              "epId": "extension-point-001",
+              "tmax": 150,
+              "lifecycle": "LIFECYCLE_PUBLISHER_BID_REQUEST",
+              "originatorType": "TYPE_EXCHANGE",
+              "originatorId": "exchange-7",
+              "intents": [
+                "ACTIVATE_SEGMENTS",
+                "ACTIVATE_DEALS",
+                "SUPPRESS_DEALS",
+                "ADJUST_DEAL_FLOOR",
+                "ADD_METRICS"
+              ],
+              "attached": "bid_request",
+              "bidId": "br-08dde9be",
+              "notOffered": []
+            },
+            "dspPrice": null
+          }
+        }
+      }
+    },
+    {
+      "index": 13,
+      "plannedAt": 219,
+      "observedAt": 218.99992849999998,
+      "actionSeconds": 0.009230833000008716
+    },
+    {
+      "index": 14,
+      "plannedAt": 241,
+      "observedAt": 241.00233112499998,
+      "actionSeconds": 0.03573354200000176
+    },
+    {
+      "index": 15,
+      "plannedAt": 264,
+      "observedAt": 264.00208529199995,
+      "actionSeconds": 0.03788079100003233
+    },
+    {
+      "index": 16,
+      "plannedAt": 284,
+      "observedAt": 284.00198674999996,
+      "actionSeconds": 2.035902208000014,
+      "evidence": {
+        "scene": "shade",
+        "receiptBefore": 1,
+        "receiptAfter": 1,
+        "result": {
+          "beat": "shade",
+          "forwarded": true,
+          "punchline": "The bid is still a bid. The price is not.",
+          "envelope": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "mutations": {
+            "valid": true,
+            "errors": 0,
+            "warnings": 0,
+            "issues": []
+          },
+          "applied": [
+            0
+          ],
+          "skipped": [],
+          "dsp": null,
+          "auction": {
+            "id": "br-a877cc6f",
+            "beat": "shade",
+            "outcome": "forward",
+            "gate": "forward",
+            "ms": 16.432624999999998,
+            "rule": "",
+            "applied": 1,
+            "intents": 1,
+            "pop": "us-west-2",
+            "inv": "ctv",
+            "app": "streaming.example",
+            "hop": "DSP_BID_RESPONSE",
+            "tmax": 150
+          },
+          "stage": {
+            "scene": "shade",
+            "phase": "verdict",
+            "perspective": "dsp",
+            "perspectiveLabel": "DSP / bid response",
+            "hop": "response",
+            "title": "The bid is shaded.",
+            "tv": "ad",
+            "punchline": "The bid is still a bid. The price is not.",
+            "before": {
+              "id": "br-a877cc6f",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "after": {
+              "id": "br-a877cc6f",
+              "domain": "streaming.example",
+              "page": "https://streaming.example/watch/12345",
+              "content": "content-12345",
+              "w": 1920,
+              "h": 1080,
+              "min": 15,
+              "max": 30,
+              "floor": 8,
+              "privateAuction": true,
+              "deals": [
+                {
+                  "id": "deal-premium",
+                  "floor": 12,
+                  "at": 1
+                },
+                {
+                  "id": "deal-standard",
+                  "floor": 6,
+                  "at": 2
+                }
+              ],
+              "segments": [
+                "seg-sports"
+              ],
+              "metrics": []
+            },
+            "bidBefore": {
+              "seat": "dsp-1",
+              "bidId": "bid-ctv",
+              "price": 18.4,
+              "crid": "dummy-northwind",
+              "dur": 15,
+              "w": 1920,
+              "h": 1080,
+              "advertiser": "northwind.example",
+              "dummy": {
+                "id": "dummy-northwind",
+                "title": "Northwind Spark",
+                "kicker": "Sports drink · 15s mid-roll",
+                "line": "Stay in the game.",
+                "advertiser": "northwind.example",
+                "tone": "green"
+              }
+            },
+            "bidAfter": {
+              "seat": "dsp-1",
+              "bidId": "bid-ctv",
+              "price": 12.88,
+              "crid": "dummy-northwind",
+              "dur": 15,
+              "w": 1920,
+              "h": 1080,
+              "advertiser": "northwind.example",
+              "dummy": {
+                "id": "dummy-northwind",
+                "title": "Northwind Spark",
+                "kicker": "Sports drink · 15s mid-roll",
+                "line": "Stay in the game.",
+                "advertiser": "northwind.example",
+                "tone": "green"
+              }
+            },
+            "mutations": [
+              {
+                "index": 0,
+                "intent": "BID_SHADE",
+                "op": "OPERATION_REPLACE",
+                "path": "/seatbid/dsp-1/bid/bid-ctv",
+                "payload": {
+                  "adjust_bid": {
+                    "price": 12.88
+                  }
+                },
+                "status": "applied",
+                "findings": []
+              }
+            ],
+            "responseId": "extension-point-010",
+            "findings": [],
+            "dummy": {
+              "id": "dummy-northwind",
+              "title": "Northwind Spark",
+              "kicker": "Sports drink · 15s mid-roll",
+              "line": "Stay in the game.",
+              "advertiser": "northwind.example",
+              "tone": "green"
+            },
+            "forwarded": true,
+            "applied": [
+              0
+            ],
+            "skipped": [],
+            "envelope": {
+              "epId": "extension-point-010",
+              "tmax": 120,
+              "lifecycle": "LIFECYCLE_DSP_BID_RESPONSE",
+              "originatorType": "TYPE_DSP",
+              "originatorId": "dsp-1",
+              "intents": [
+                "BID_SHADE"
+              ],
+              "attached": "bid_response",
+              "bidId": "br-a877cc6f",
+              "notOffered": []
+            },
+            "dspPrice": 12.88
+          }
+        }
+      }
+    },
+    {
+      "index": 17,
+      "plannedAt": 290,
+      "observedAt": 290.000561583,
+      "actionSeconds": 0.008690000000002328
+    },
+    {
+      "index": 18,
+      "plannedAt": 312,
+      "observedAt": 312.00161266699996,
+      "actionSeconds": 0.018095708000008016
+    },
+    {
+      "index": 19,
+      "plannedAt": 331,
+      "observedAt": 331.00138679199995,
+      "actionSeconds": 0.12464033300004666
+    }
+  ],
+  "videoAlignment": {
+    "inputFirstSceneSeconds": 8.36,
+    "correctedFirstSceneSeconds": 8,
+    "shiftSeconds": -0.35999999999999943
+  },
+  "presentation": {
+    "episode": 2,
+    "finishedAt": "2026-10-11T09:01:02.753Z",
+    "cardStyle": "Episode 1: blue edge, paper, Geist, summary panels, author portrait",
+    "openingCard": "Fully revealed from the first frame",
+    "cards": [
+      {
+        "kind": "intro",
+        "fonts": true,
+        "fits": true,
+        "children": [
+          {
+            "tag": "H1",
+            "top": 76,
+            "bottom": 252.375
+          },
+          {
+            "tag": "lede",
+            "top": 274.375,
+            "bottom": 398.546875
+          },
+          {
+            "tag": "hops",
+            "top": 446.546875,
+            "bottom": 614.546875
+          },
+          {
+            "tag": "band",
+            "top": 780.609375,
+            "bottom": 851
+          },
+          {
+            "tag": "foot",
+            "top": 897,
+            "bottom": 1008
+          }
+        ]
+      },
+      {
+        "kind": "outro",
+        "fonts": true,
+        "fits": true,
+        "children": [
+          {
+            "tag": "H1",
+            "top": 76,
+            "bottom": 139
+          },
+          {
+            "tag": "lines",
+            "top": 169,
+            "bottom": 426.546875
+          },
+          {
+            "tag": "closer",
+            "top": 716.9375,
+            "bottom": 875
+          },
+          {
+            "tag": "foot",
+            "top": 897,
+            "bottom": 1008
+          }
+        ]
+      }
+    ],
+    "captions": {
+      "cues": 53,
+      "words": 435,
+      "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+      "fontSize": 64,
+      "backgroundOpacity": 0.82,
+      "singleLineBoxHeight": 106.48,
+      "bottom": 107,
+      "mobileFontAt360CssPixels": 12,
+      "layout": "No overlap with the picture or presenter",
+      "first": 9,
+      "last": 327.727,
+      "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.captions/captions.ffconcat",
+      "frame": {
+        "width": 1920,
+        "height": 768,
+        "x": 0,
+        "y": 0,
+        "footerHeight": 312
+      },
+      "speaker": {
+        "name": "Alex Sekowski",
+        "label": "Now presenting:",
+        "portrait": "../../linkedin/author/alex.jpg",
+        "bounds": {
+          "x": 1670.296875,
+          "y": 1016,
+          "width": 217.703125,
+          "height": 56
+        },
+        "portraitSize": 56,
+        "visibility": "Throughout the video, including pauses and title cards."
+      }
+    },
+    "focusRegions": [
+      {
+        "at": 8,
+        "end": 28,
+        "overview": true
+      },
+      {
+        "at": 28,
+        "end": 48,
+        "selector": "#flyout",
+        "x": 810,
+        "y": 150.890625,
+        "width": 1080,
+        "height": 432,
+        "zoom": 2.5
+      },
+      {
+        "at": 48,
+        "end": 70,
+        "selector": "#flyout",
+        "x": 810,
+        "y": 150.890625,
+        "width": 1080,
+        "height": 432,
+        "zoom": 2.5
+      },
+      {
+        "at": 70,
+        "end": 89,
+        "selector": "#flyout",
+        "x": 757.7734375,
+        "y": 180,
+        "width": 1184.453125,
+        "height": 473.78125,
+        "zoom": 2.2795330123342787
+      },
+      {
+        "at": 89,
+        "end": 95,
+        "overview": true
+      },
+      {
+        "at": 95,
+        "end": 116,
+        "selector": "#t-segs",
+        "x": 1026.109375,
+        "y": 328.590625,
+        "width": 593.0625,
+        "height": 237.225,
+        "zoom": 4.552639898830225
+      },
+      {
+        "at": 116,
+        "end": 140,
+        "selector": "#t-deals",
+        "x": 1026.109375,
+        "y": 239.85625,
+        "width": 593.0625,
+        "height": 237.225,
+        "zoom": 4.552639898830225
+      },
+      {
+        "at": 140,
+        "end": 164,
+        "selector": "#flyout",
+        "x": 805.2734375,
+        "y": 180,
+        "width": 1089.453125,
+        "height": 435.78125,
+        "zoom": 2.4783076371459303
+      },
+      {
+        "at": 164,
+        "end": 170,
+        "overview": true
+      },
+      {
+        "at": 170,
+        "end": 193,
+        "selector": "#flyout",
+        "x": 782.01171875,
+        "y": 180,
+        "width": 1135.9765625,
+        "height": 454.390625,
+        "zoom": 2.376809600770262
+      },
+      {
+        "at": 193,
+        "end": 213,
+        "selector": "#flyout",
+        "x": 594.51171875,
+        "y": 180,
+        "width": 1510.9765625,
+        "height": 604.390625,
+        "zoom": 1.7869238127245934
+      },
+      {
+        "at": 213,
+        "end": 219,
+        "overview": true
+      },
+      {
+        "at": 219,
+        "end": 241,
+        "selector": "#flyout",
+        "x": 719.51171875,
+        "y": 180,
+        "width": 1260.9765625,
+        "height": 504.390625,
+        "zoom": 2.1411976085003563
+      },
+      {
+        "at": 241,
+        "end": 264,
+        "selector": "#flyout",
+        "x": 719.51171875,
+        "y": 180,
+        "width": 1260.9765625,
+        "height": 504.390625,
+        "zoom": 2.1411976085003563
+      },
+      {
+        "at": 264,
+        "end": 284,
+        "selector": "#flyout",
+        "x": 742.7734375,
+        "y": 180,
+        "width": 1214.453125,
+        "height": 485.78125,
+        "zoom": 2.2232229012544225
+      },
+      {
+        "at": 284,
+        "end": 290,
+        "overview": true
+      },
+      {
+        "at": 290,
+        "end": 312,
+        "selector": "#flyout",
+        "x": 805.2734375,
+        "y": 180,
+        "width": 1089.453125,
+        "height": 435.78125,
+        "zoom": 2.4783076371459303
+      },
+      {
+        "at": 312,
+        "end": 331,
+        "selector": "#flyout",
+        "x": 810,
+        "y": 150.890625,
+        "width": 1080,
+        "height": 432,
+        "zoom": 2.5
+      }
+    ],
+    "alignment": {
+      "inputFirstSceneSeconds": 8,
+      "correctedFirstSceneSeconds": 8,
+      "shiftSeconds": 0
+    },
+    "seconds": 339,
+    "master": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.picture.mp4",
+    "sha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+    "cueSha256": "0f79467afdb3f9be76c8fd3aa6df30ec29c67fccf61f83b7a71bd6e8920e4e27",
+    "subtitleSha256": "71af3e86e378231b2c69f1eb1f2e446a0fcc493c91329c29c685d1986e74b9ff",
+    "media": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "mime_codec_string": "avc1.640028",
+          "width": 1920,
+          "height": 1080,
+          "coded_width": 1920,
+          "coded_height": 1080,
+          "has_b_frames": 2,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "pix_fmt": "yuv420p",
+          "level": 40,
+          "color_range": "tv",
+          "color_space": "bt470bg",
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "25/1",
+          "avg_frame_rate": "25/1",
+          "time_base": "1/12800",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 4339200,
+          "duration": "339.000000",
+          "bit_rate": "341729",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "8475",
+          "extradata_size": 51,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "encoder": "Lavc62.28.100 libx264"
+          }
+        }
+      ],
+      "format": {
+        "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.pending.mp4",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "339.000000",
+        "size": "14582635",
+        "bit_rate": "344132",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "isom",
+          "minor_version": "512",
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf62.12.100"
+        }
+      }
+    }
+  }
+}

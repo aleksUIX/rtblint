@@ -1,0 +1,200 @@
+{
+  "episode": 2,
+  "checkedAt": "2026-10-11T09:33:57.767215+00:00",
+  "seconds": 339,
+  "narrationWords": 435,
+  "videoSha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+  "cueSha256": "0f79467afdb3f9be76c8fd3aa6df30ec29c67fccf61f83b7a71bd6e8920e4e27",
+  "subtitleSha256": "71af3e86e378231b2c69f1eb1f2e446a0fcc493c91329c29c685d1986e74b9ff",
+  "scriptSha256": "6068d6eabdf88d32894425377ba1489416775159ac4211c35746133453e7ff6f",
+  "wordsPerMinute": 110,
+  "minimumParagraphGapSeconds": 3,
+  "subtitleBoundaryChecks": 212,
+  "captions": {
+    "cues": 53,
+    "words": 435,
+    "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+    "fontSize": 64,
+    "backgroundOpacity": 0.82,
+    "singleLineBoxHeight": 106.48,
+    "bottom": 107,
+    "mobileFontAt360CssPixels": 12,
+    "layout": "No overlap with the picture or presenter",
+    "first": 9,
+    "last": 327.727,
+    "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.captions/captions.ffconcat",
+    "frame": {
+      "width": 1920,
+      "height": 768,
+      "x": 0,
+      "y": 0,
+      "footerHeight": 312
+    },
+    "speaker": {
+      "name": "Alex Sekowski",
+      "label": "Now presenting:",
+      "portrait": "../../linkedin/author/alex.jpg",
+      "bounds": {
+        "x": 1670.296875,
+        "y": 1016,
+        "width": 217.703125,
+        "height": 56
+      },
+      "portraitSize": 56,
+      "visibility": "Throughout the video, including pauses and title cards."
+    }
+  },
+  "opening": {
+    "fullyRevealedAtFirstFrame": true,
+    "meanPixelErrorAgainstSourceCard": 0.7542153596878052
+  },
+  "prompter": {
+    "offlineFullTakePassed": true,
+    "framesObserved": 8380,
+    "maximumClockErrorSeconds": 0,
+    "versionChecksPassed": true
+  },
+  "scenes": [
+    {
+      "scene": "policy",
+      "forwarded": true,
+      "applied": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "skipped": [
+        4
+      ],
+      "receiptsBefore": 0,
+      "receiptsAfter": 1
+    },
+    {
+      "scene": "illegal",
+      "forwarded": false,
+      "applied": [],
+      "skipped": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "receiptsBefore": 1,
+      "receiptsAfter": 1
+    },
+    {
+      "scene": "breaking",
+      "forwarded": false,
+      "applied": [
+        0
+      ],
+      "skipped": [],
+      "receiptsBefore": 1,
+      "receiptsAfter": 1
+    },
+    {
+      "scene": "shade",
+      "forwarded": true,
+      "applied": [
+        0
+      ],
+      "skipped": [],
+      "receiptsBefore": 1,
+      "receiptsAfter": 1
+    }
+  ],
+  "frames": [
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-0.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-0.4.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-174.png"
+  ],
+  "video": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/12800",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4339200,
+        "duration": "339.000000",
+        "bit_rate": "341729",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "8475",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc62.28.100 libx264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.pending.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "339.000000",
+      "size": "14582635",
+      "bit_rate": "344132",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.12.100"
+      }
+    }
+  }
+}

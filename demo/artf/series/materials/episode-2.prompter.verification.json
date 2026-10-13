@@ -1,0 +1,895 @@
+{
+  "checkedAt": "2026-10-11T09:10:26.368Z",
+  "videoSha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+  "cueSha256": "0f79467afdb3f9be76c8fd3aa6df30ec29c67fccf61f83b7a71bd6e8920e4e27",
+  "subtitleSha256": "71af3e86e378231b2c69f1eb1f2e446a0fcc493c91329c29c685d1986e74b9ff",
+  "standaloneHtmlSha256": "558dc2a1a2a525e5145e2f5939dc78b392c817e83dab1f97e687a9196484008c",
+  "episode": 2,
+  "videoSeconds": 339,
+  "narrationWords": 435,
+  "wordsPerMinute": 110,
+  "minimumGapBetweenParagraphsSeconds": 3,
+  "sectionsMatched": 20,
+  "subtitleBoundaryChecks": 212,
+  "layouts": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 1,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 2,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 3,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 4,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 6,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 7,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 8,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 10,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 11,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 13,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 14,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 15,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 17,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": true,
+      "section": 18,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 1,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 2,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 3,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 4,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 6,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 7,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 8,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 10,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 11,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 13,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 14,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 15,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 17,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "picture": false,
+      "section": 18,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 1,
+      "fontSize": 45
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 2,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 3,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 4,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 6,
+      "fontSize": 42
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 7,
+      "fontSize": 45
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 8,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 10,
+      "fontSize": 42
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 11,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 13,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 14,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 15,
+      "fontSize": 43
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 17,
+      "fontSize": 45
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": true,
+      "section": 18,
+      "fontSize": 46
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 1,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 2,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 3,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 4,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 6,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 7,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 8,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 10,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 11,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 13,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 14,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 15,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 17,
+      "fontSize": 59
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "picture": false,
+      "section": 18,
+      "fontSize": 60
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 1,
+      "fontSize": 36
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 2,
+      "fontSize": 39
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 3,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 4,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 6,
+      "fontSize": 32
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 7,
+      "fontSize": 35
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 8,
+      "fontSize": 37
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 10,
+      "fontSize": 34
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 11,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 13,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 14,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 15,
+      "fontSize": 33
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 17,
+      "fontSize": 35
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": true,
+      "section": 18,
+      "fontSize": 40
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 1,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 2,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 3,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 4,
+      "fontSize": 53
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 6,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 7,
+      "fontSize": 49
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 8,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 10,
+      "fontSize": 49
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 11,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 13,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 14,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 15,
+      "fontSize": 48
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 17,
+      "fontSize": 51
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "picture": false,
+      "section": 18,
+      "fontSize": 51
+    }
+  ],
+  "fullPreload": "passed",
+  "hiddenPictureClock": "passed",
+  "offlinePlayback": "passed",
+  "directFilePlayback": "passed",
+  "scriptWithoutJavaScript": "passed",
+  "pauseResumeResetAndRapidClicks": "passed",
+  "recordingSpeedLock": "passed",
+  "finalFadePlayback": "passed three times",
+  "changedVideoRejected": "passed",
+  "staleScriptRejected": "passed",
+  "pacing": [
+    {
+      "at": 8,
+      "words": 30,
+      "speakAt": 9,
+      "speakUntil": 25.363636363636363,
+      "wordsPerMinute": 110,
+      "nextSpeakingGapSeconds": 3.6363636363636367
+    },
+    {
+      "at": 28,
+      "words": 29,
+      "speakAt": 29,
+      "speakUntil": 44.81818181818182,
+      "wordsPerMinute": 109.99999999999999,
+      "nextSpeakingGapSeconds": 4.18181818181818
+    },
+    {
+      "at": 48,
+      "words": 33,
+      "speakAt": 49,
+      "speakUntil": 67,
+      "wordsPerMinute": 110,
+      "nextSpeakingGapSeconds": 4
+    },
+    {
+      "at": 70,
+      "words": 27,
+      "speakAt": 71,
+      "speakUntil": 85.72727272727272,
+      "wordsPerMinute": 110.00000000000006,
+      "nextSpeakingGapSeconds": 10.27272727272728
+    },
+    {
+      "at": 95,
+      "words": 33,
+      "speakAt": 96,
+      "speakUntil": 114,
+      "wordsPerMinute": 110,
+      "nextSpeakingGapSeconds": 3
+    },
+    {
+      "at": 116,
+      "words": 35,
+      "speakAt": 117,
+      "speakUntil": 136.0909090909091,
+      "wordsPerMinute": 109.99999999999999,
+      "nextSpeakingGapSeconds": 4.9090909090909065
+    },
+    {
+      "at": 140,
+      "words": 31,
+      "speakAt": 141,
+      "speakUntil": 157.9090909090909,
+      "wordsPerMinute": 110.00000000000001,
+      "nextSpeakingGapSeconds": 13.090909090909093
+    },
+    {
+      "at": 170,
+      "words": 34,
+      "speakAt": 171,
+      "speakUntil": 189.54545454545456,
+      "wordsPerMinute": 109.99999999999991,
+      "nextSpeakingGapSeconds": 4.454545454545439
+    },
+    {
+      "at": 193,
+      "words": 28,
+      "speakAt": 194,
+      "speakUntil": 209.27272727272728,
+      "wordsPerMinute": 109.99999999999994,
+      "nextSpeakingGapSeconds": 10.72727272727272
+    },
+    {
+      "at": 219,
+      "words": 31,
+      "speakAt": 220,
+      "speakUntil": 236.9090909090909,
+      "wordsPerMinute": 110.00000000000001,
+      "nextSpeakingGapSeconds": 5.0909090909090935
+    },
+    {
+      "at": 241,
+      "words": 32,
+      "speakAt": 242,
+      "speakUntil": 259.45454545454544,
+      "wordsPerMinute": 110.0000000000001,
+      "nextSpeakingGapSeconds": 5.545454545454561
+    },
+    {
+      "at": 264,
+      "words": 33,
+      "speakAt": 265,
+      "speakUntil": 283,
+      "wordsPerMinute": 110,
+      "nextSpeakingGapSeconds": 8
+    },
+    {
+      "at": 290,
+      "words": 32,
+      "speakAt": 291,
+      "speakUntil": 308.45454545454544,
+      "wordsPerMinute": 110.0000000000001,
+      "nextSpeakingGapSeconds": 4.545454545454561
+    },
+    {
+      "at": 312,
+      "words": 27,
+      "speakAt": 313,
+      "speakUntil": 327.72727272727275,
+      "wordsPerMinute": 109.99999999999984
+    }
+  ]
+}

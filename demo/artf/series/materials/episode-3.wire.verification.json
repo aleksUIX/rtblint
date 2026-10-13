@@ -1,0 +1,280 @@
+{
+  "checkedAt": "2026-10-11T09:27:01.214Z",
+  "captureFile": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.recording.json",
+  "captureSha256": "0592936ea7af05929fbd7aed8299c20f991712795498389d5b65d78037930712",
+  "payloadSha256": "e4bc622f5c6e4ced0fdc518180fc5ddacc7374af9b3fc82d5e2c1452dcf015f4",
+  "dialect": "JSON_DIALECT_SPEC",
+  "validation": {
+    "verdict": {
+      "issues": [],
+      "valid": true,
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "effective_version": "2.6-202606",
+      "provenance": {
+        "catalog_version": "0.13.5",
+        "catalog_digest": "sha256:0cb472d4ba1bc955b703f614345c5f36d27c9f9e07c93e43f24fe0cc6adc41d6",
+        "engine_version": "0.13.5"
+      }
+    }
+  },
+  "request": {
+    "app": {
+      "bundle": "example.ctv.player",
+      "cat": [
+        "IAB17"
+      ],
+      "content": {
+        "data": [
+          {
+            "id": "cids",
+            "name": "content-ids",
+            "segment": [
+              {
+                "id": "cid-ctv-sports"
+              },
+              {
+                "id": "cid-pg"
+              }
+            ]
+          }
+        ],
+        "genre": "sports",
+        "id": "content-12345",
+        "len": 3600,
+        "livestream": 0
+      },
+      "domain": "streaming.example",
+      "id": "app-ctv-1",
+      "name": "Example CTV",
+      "publisher": {
+        "domain": "streaming.example",
+        "id": "pub-1"
+      }
+    },
+    "at": 1,
+    "badv": [
+      "blocked.example"
+    ],
+    "bcat": [
+      "IAB25-3"
+    ],
+    "cur": [
+      "USD"
+    ],
+    "device": {
+      "connectiontype": 2,
+      "devicetype": 3,
+      "dnt": 0,
+      "ext": {
+        "ifa_type": "rida"
+      },
+      "geo": {
+        "country": "USA",
+        "utcoffset": -480
+      },
+      "ifa": "lab-ifa-001",
+      "language": "en",
+      "lmt": 0,
+      "make": "Roku",
+      "model": "Ultra",
+      "os": "ctv",
+      "osv": "12.0",
+      "sua": {
+        "architecture": "arm",
+        "bitness": "64",
+        "browsers": [
+          {
+            "brand": "Roku",
+            "version": [
+              "12"
+            ]
+          }
+        ],
+        "mobile": 0,
+        "model": "Ultra",
+        "platform": {
+          "brand": "Roku",
+          "version": [
+            "12",
+            "0"
+          ]
+        },
+        "source": 2
+      },
+      "ua": "Mozilla/5.0"
+    },
+    "id": "auc-1791709312655981545",
+    "imp": [
+      {
+        "bidfloor": 8,
+        "bidfloorcur": "USD",
+        "displaymanager": "artf-ssai",
+        "displaymanagerver": "0.1",
+        "exp": 300,
+        "id": "imp-1",
+        "instl": 0,
+        "metric": [
+          {
+            "type": "viewability",
+            "value": 0.82,
+            "vendor": "example-measurement"
+          },
+          {
+            "type": "ivt",
+            "value": 0.01,
+            "vendor": "lab-ivt"
+          }
+        ],
+        "pmp": {
+          "deals": [
+            {
+              "at": 1,
+              "bidfloor": 14.5,
+              "bidfloorcur": "USD",
+              "id": "deal-premium"
+            },
+            {
+              "at": 2,
+              "bidfloor": 6,
+              "bidfloorcur": "USD",
+              "id": "deal-standard"
+            },
+            {
+              "id": "deal-curated"
+            }
+          ],
+          "private_auction": 1
+        },
+        "secure": 1,
+        "ssai": 2,
+        "tagid": "ctv-midroll-1",
+        "video": {
+          "api": [
+            7
+          ],
+          "delivery": [
+            2
+          ],
+          "h": 1080,
+          "linearity": 1,
+          "maxduration": 30,
+          "maxseq": 1,
+          "mimes": [
+            "video/mp4"
+          ],
+          "mincpmpersec": 0.15,
+          "minduration": 15,
+          "playbackend": 1,
+          "playbackmethod": [
+            1
+          ],
+          "plcmt": 1,
+          "podid": "pod-mid-1",
+          "podseq": 0,
+          "pos": 1,
+          "protocols": [
+            2,
+            3,
+            7,
+            8,
+            11,
+            13
+          ],
+          "skip": 0,
+          "slotinpod": 1,
+          "startdelay": -1,
+          "w": 1920
+        }
+      }
+    ],
+    "regs": {
+      "coppa": 0,
+      "ext": {
+        "us_privacy": "1YNN"
+      },
+      "gdpr": 0,
+      "gpp": "DBABLA~BVQqAAAAAAA",
+      "gpp_sid": [
+        7
+      ]
+    },
+    "source": {
+      "fd": 1,
+      "pchain": "exchange-7",
+      "schain": {
+        "complete": 1,
+        "nodes": [
+          {
+            "asi": "streaming.example",
+            "hp": 1,
+            "sid": "pub-1"
+          },
+          {
+            "asi": "adserver-lab.example",
+            "hp": 1,
+            "sid": "gateway-1"
+          },
+          {
+            "asi": "exchange-7.example",
+            "hp": 1,
+            "sid": "ssp-1"
+          }
+        ],
+        "ver": "1.0"
+      },
+      "tid": "ad-1791709312654389503"
+    },
+    "tmax": 199,
+    "user": {
+      "buyeruid": "bu-ddbbdfc1b8f09220",
+      "data": [
+        {
+          "id": "dmp-1",
+          "name": "Example DMP",
+          "segment": [
+            {
+              "id": "seg-sports"
+            },
+            {
+              "id": "seg-cord-cutter"
+            },
+            {
+              "id": "seg-premium-viewer"
+            }
+          ]
+        }
+      ],
+      "eids": [
+        {
+          "source": "idmap-lab.example",
+          "uids": [
+            {
+              "atype": 1,
+              "id": "bu-ddbbdfc1b8f09220"
+            }
+          ]
+        }
+      ],
+      "id": "user-77"
+    },
+    "wseat": [
+      "dsp-alpha",
+      "dsp-beta"
+    ]
+  },
+  "auction": {
+    "winnerSeat": "dsp-beta",
+    "winnerPrice": 15.725,
+    "dropped": [
+      {
+        "seat": "dsp-alpha",
+        "price": 11.899999999999999,
+        "reason": "below_floor"
+      }
+    ]
+  },
+  "validatorNote": "Local RTBlint 0.13.5 build with a specification-correct Video.skip catalog. The recorded auction does not call RTBlint live."
+}

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.1 (2026-10-13)
+
+### Changed
+
+- **`tokio` 1.53.1 → 1.53.2**, **`jsonschema` 0.58.4 → 0.58.6**, **`protox` 0.9.1 → 0.10.0**: dependency updates.
+
 ## 0.14.0 (2026-10-09)
 
 ### Added

@@ -1,0 +1,159 @@
+{
+  "episode": 3,
+  "checkedAt": "2026-10-11T09:34:00.603416+00:00",
+  "seconds": 386,
+  "narrationWords": 513,
+  "videoSha256": "54124fe8e66d107906f89150fb0b8352ae2b8e8277a0b8c70dc2470fd01ba221",
+  "cueSha256": "5f0f28105377a972947aafe256a03db8992c5045d1c75d1b4abcab7e07f6d520",
+  "subtitleSha256": "6ae26a485158ec84131126f388d01513c0c611d23a608d4e3f3ddc59c36b2b87",
+  "scriptSha256": "bd53d909b12ad27680696ecc3d980d0e0cedbd3e3b1a857b0ed46b283daea56d",
+  "wordsPerMinute": 110,
+  "minimumParagraphGapSeconds": 4.363636363636374,
+  "subtitleBoundaryChecks": 256,
+  "captions": {
+    "cues": 64,
+    "words": 513,
+    "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+    "fontSize": 64,
+    "backgroundOpacity": 0.82,
+    "singleLineBoxHeight": 106.48,
+    "bottom": 107,
+    "mobileFontAt360CssPixels": 12,
+    "layout": "No overlap with the picture or presenter",
+    "first": 9,
+    "last": 374.091,
+    "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.captions/captions.ffconcat",
+    "frame": {
+      "width": 1920,
+      "height": 768,
+      "x": 0,
+      "y": 0,
+      "footerHeight": 312
+    },
+    "speaker": {
+      "name": "Alex Sekowski",
+      "label": "Now presenting:",
+      "portrait": "../../linkedin/author/alex.jpg",
+      "bounds": {
+        "x": 1670.296875,
+        "y": 1016,
+        "width": 217.703125,
+        "height": 56
+      },
+      "portraitSize": 56,
+      "visibility": "Throughout the video, including pauses and title cards."
+    }
+  },
+  "opening": {
+    "fullyRevealedAtFirstFrame": true,
+    "meanPixelErrorAgainstSourceCard": 0.717936098575592
+  },
+  "prompter": {
+    "offlineFullTakePassed": true,
+    "framesObserved": 9647,
+    "maximumClockErrorSeconds": 0,
+    "versionChecksPassed": true
+  },
+  "scenes": [
+    {
+      "scene": "clean",
+      "requestAgents": 5,
+      "requestApplied": 6,
+      "winner": "dsp-beta",
+      "price": 15.725
+    }
+  ],
+  "frames": [
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-0.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-0.4.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-310.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-234.png",
+    "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-244.png"
+  ],
+  "video": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/12800",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 4940800,
+        "duration": "386.000000",
+        "bit_rate": "333578",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "9650",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc62.28.100 libx264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.pending.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "386.000000",
+      "size": "16211804",
+      "bit_rate": "335995",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.12.100"
+      }
+    }
+  }
+}

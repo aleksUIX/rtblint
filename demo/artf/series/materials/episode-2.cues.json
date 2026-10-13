@@ -1,0 +1,280 @@
+{
+  "episode": 2,
+  "title": "The host decides which changes reach the auction.",
+  "seconds": 339,
+  "rows": [
+    {
+      "chapter": "Opening",
+      "action": {
+        "type": "card",
+        "kind": "intro"
+      },
+      "seconds": 8,
+      "cue": "Title card. No voice.",
+      "text": "",
+      "index": 0,
+      "at": 0,
+      "end": 8
+    },
+    {
+      "chapter": "The host turns proposals into auction changes.",
+      "action": {
+        "type": "console"
+      },
+      "text": "OpenRTB carries bid requests and responses. ARTF, the Agentic Real Time Framework, lets a host call specialist services during the auction. Let's see how their proposals become changes buyers see.",
+      "seconds": 20,
+      "index": 1,
+      "at": 8,
+      "end": 28,
+      "voiceAt": 9,
+      "voiceEnd": 25.363636363636363
+    },
+    {
+      "chapter": "The host gives a specialist access to the auction object.",
+      "action": {
+        "type": "env",
+        "key": "lifecycle"
+      },
+      "text": "The exchange is our host. The agent is a specialist service inside its infrastructure. Here it returns fixed proposals. The envelope wraps OpenRTB so the host can request changes.",
+      "seconds": 20,
+      "index": 2,
+      "at": 28,
+      "end": 48,
+      "voiceAt": 29,
+      "voiceEnd": 44.81818181818182
+    },
+    {
+      "chapter": "The call has an identity and a time budget.",
+      "action": {
+        "type": "env",
+        "key": "id"
+      },
+      "text": "This call id is separate from the auction id. Matching it ties the answer to the right call. The time budget is one hundred fifty milliseconds; a late answer can miss the auction.",
+      "seconds": 22,
+      "index": 3,
+      "at": 48,
+      "end": 70,
+      "voiceAt": 49,
+      "voiceEnd": 67
+    },
+    {
+      "chapter": "The host offers specific work for this stage.",
+      "action": {
+        "type": "env",
+        "key": "intents"
+      },
+      "text": "Intents name the jobs this host offers. They limit what the agent can change. Here that's segments, deals, floors, and metrics. Shading waits until there's a bid.",
+      "seconds": 19,
+      "index": 4,
+      "at": 70,
+      "end": 89,
+      "voiceAt": 71,
+      "voiceEnd": 85.72727272727272
+    },
+    {
+      "chapter": "The host evaluates the proposals.",
+      "action": {
+        "type": "scene",
+        "beat": "policy"
+      },
+      "seconds": 6,
+      "cue": "Run Host policy. Let the cards and DSP receipt finish.",
+      "text": "",
+      "index": 5,
+      "at": 89,
+      "end": 95
+    },
+    {
+      "chapter": "Audience segments can affect which campaigns consider the impression.",
+      "action": {
+        "type": "mut",
+        "index": 0
+      },
+      "text": "A mutation is a proposed change, with an operation, target, and payload. Here it adds audience segments. Those labels can affect which campaigns consider this impression. The host chooses whether to apply it.",
+      "seconds": 21,
+      "index": 6,
+      "at": 95,
+      "end": 116,
+      "voiceAt": 96,
+      "voiceEnd": 114
+    },
+    {
+      "chapter": "A higher deal floor can change which bids qualify.",
+      "action": {
+        "type": "mut",
+        "index": 2
+      },
+      "text": "This floor change raises the premium deal's minimum price from twelve dollars to fourteen fifty per thousand impressions. That changes which bids qualify. A higher floor can also leave the impression without an eligible bid.",
+      "seconds": 24,
+      "index": 7,
+      "at": 116,
+      "end": 140,
+      "voiceAt": 117,
+      "voiceEnd": 136.0909090909091
+    },
+    {
+      "chapter": "Independent acceptance lets the host keep useful proposals.",
+      "action": {
+        "type": "mut",
+        "index": 4
+      },
+      "text": "Content id wasn't offered here, so it's skipped. The DSP, the buyer's platform, still receives four accepted changes. Independent acceptance lets the host keep useful work while enforcing its own rules.",
+      "seconds": 24,
+      "index": 8,
+      "at": 140,
+      "end": 164,
+      "voiceAt": 141,
+      "voiceEnd": 157.9090909090909
+    },
+    {
+      "chapter": "A response can name the wrong call.",
+      "action": {
+        "type": "scene",
+        "beat": "illegal"
+      },
+      "seconds": 6,
+      "cue": "Run Wrong response. Wait for the rejection and the unchanged DSP receipt count.",
+      "text": "",
+      "index": 9,
+      "at": 164,
+      "end": 170
+    },
+    {
+      "chapter": "A returned response still needs to address this call.",
+      "action": {
+        "type": "mut",
+        "index": 0
+      },
+      "text": "This answer names the wrong call. The host rejects the response before applying any changes. The original auction stays unchanged, and nothing new reaches the buyer. A usable proposal can't bypass that identity check.",
+      "seconds": 23,
+      "index": 10,
+      "at": 170,
+      "end": 193,
+      "voiceAt": 171,
+      "voiceEnd": 189.54545454545456
+    },
+    {
+      "chapter": "A supported intent needs a defined apply rule.",
+      "action": {
+        "type": "mut",
+        "index": 5
+      },
+      "text": "Deal margin shows an integration gap. This host has no standard OpenRTB field for it. An intent needs an agreed mapping, or the host cannot apply the proposal.",
+      "seconds": 20,
+      "index": 11,
+      "at": 193,
+      "end": 213,
+      "voiceAt": 194,
+      "voiceEnd": 209.27272727272728
+    },
+    {
+      "chapter": "The resulting object needs its own check.",
+      "action": {
+        "type": "scene",
+        "beat": "breaking"
+      },
+      "seconds": 6,
+      "cue": "Run Applied object. Hold on the red viewability metric and the OpenRTB finding.",
+      "text": "",
+      "index": 12,
+      "at": 213,
+      "end": 219
+    },
+    {
+      "chapter": "The JSON adapter produces an invalid metric.",
+      "action": {
+        "type": "focus",
+        "selector": "#t-metrics"
+      },
+      "text": "Here, viewability is the word high. ARTF's typed metric requires a number. Our HTTP JSON fixture introduces this fault. The resulting request gives the buyer a value it cannot reliably use.",
+      "seconds": 22,
+      "index": 13,
+      "at": 219,
+      "end": 241,
+      "voiceAt": 220,
+      "voiceEnd": 236.9090909090909
+    },
+    {
+      "chapter": "Checking the assembled request contains an integration error.",
+      "action": {
+        "type": "focus",
+        "selector": "#t-metrics"
+      },
+      "text": "The mutation was applied, but the request it produced is invalid. That's why we check the assembled OpenRTB too. The host stops this error here, before a buyer has to handle it.",
+      "seconds": 23,
+      "index": 14,
+      "at": 241,
+      "end": 264,
+      "voiceAt": 242,
+      "voiceEnd": 259.45454545454544
+    },
+    {
+      "chapter": "A shared interface still needs the host's business rules.",
+      "action": {
+        "type": "focus",
+        "selector": "#n-rtblint"
+      },
+      "text": "RTBlint performs these checks in our demo. ARTF provides the shared interface. The host supplies the business rules. That allows specialists to integrate through a common contract while the platform controls the auction.",
+      "seconds": 20,
+      "index": 15,
+      "at": 264,
+      "end": 284,
+      "voiceAt": 265,
+      "voiceEnd": 283
+    },
+    {
+      "chapter": "The response stage carries a different object.",
+      "action": {
+        "type": "scene",
+        "beat": "shade"
+      },
+      "seconds": 6,
+      "cue": "Run Bid response. Let the envelope and the bid price settle.",
+      "text": "",
+      "index": 16,
+      "at": 284,
+      "end": 290
+    },
+    {
+      "chapter": "Shading changes the price competing in the auction.",
+      "action": {
+        "type": "env",
+        "key": "attached"
+      },
+      "text": "In this separate bid response example, eighteen forty becomes twelve eighty eight for the same creative. Shading changes the price competing in the auction. The exchange still decides whether the bid qualifies.",
+      "seconds": 22,
+      "index": 17,
+      "at": 290,
+      "end": 312,
+      "voiceAt": 291,
+      "voiceEnd": 308.45454545454544
+    },
+    {
+      "chapter": "Several agents will still need one host decision.",
+      "action": {
+        "type": "env",
+        "key": "intents"
+      },
+      "text": "OpenRTB carries the auction data. ARTF gives specialists a common way to propose changes, with the host in control. Next, we'll coordinate several agents around one auction.",
+      "seconds": 19,
+      "index": 18,
+      "at": 312,
+      "end": 331,
+      "voiceAt": 313,
+      "voiceEnd": 327.72727272727275
+    },
+    {
+      "chapter": "Closing",
+      "action": {
+        "type": "card",
+        "kind": "outro"
+      },
+      "seconds": 8,
+      "cue": "Closing card. No voice.",
+      "text": "",
+      "index": 19,
+      "at": 331,
+      "end": 339
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>ARTF episode 2</title><style>
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url("../../linkedin/fonts/geist-latin-400.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: Geist;
+        font-style: normal;
+        font-weight: 500;
+        font-display: block;
+        src: url("../../linkedin/fonts/geist-latin-500.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Geist Mono";
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url("../../linkedin/fonts/geist-mono-latin-400.woff2") format("woff2");
+      }
+      :root {
+        --ink: #161616;
+        --soft: #4f4f4b;
+        --muted: #8a8a84;
+        --paper: #f4f3ee;
+        --card: #fff;
+        --line: #d8d5cc;
+        --artf: #1d4ed8;
+        --artf-fill: #eef2ff;
+        --drop: #b42318;
+        --ok: #0f766e;
+        --sans: Geist, ui-sans-serif, system-ui, sans-serif;
+        --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; background: #111; }
+      .card {
+        width: 1920px;
+        height: 1080px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        overflow: hidden;
+        padding: 76px 108px 72px;
+        display: flex;
+        flex-direction: column;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 10px;
+        background: var(--artf);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 24px;
+      }
+      .kicker {
+        margin: 0;
+        font: 400 18px/1 var(--mono);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--artf);
+      }
+      .meta {
+        margin: 0;
+        font: 400 18px/1 var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      h1 {
+        margin: 28px 0 0;
+        font: 400 84px/1.05 var(--sans);
+        letter-spacing: -0.038em;
+        max-width: 14ch;
+      }
+      .lede {
+        margin: 22px 0 0;
+        font: 400 30px/1.38 var(--sans);
+        color: var(--soft);
+        max-width: 26em;
+      }
+      .hops {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .hop {
+        background: var(--card);
+        border: 1px solid var(--line);
+        padding: 20px 22px 18px;
+        min-height: 168px;
+      }
+      .hop.drop { border-color: var(--drop); }
+      .hop.ok { border-color: var(--ok); }
+      .hop.artf { border-color: var(--artf); background: var(--artf-fill); }
+      .hop b {
+        display: block;
+        font: 400 13px/1 var(--mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hop.drop b { color: var(--drop); }
+      .hop.ok b { color: var(--ok); }
+      .hop.artf b { color: var(--artf); }
+      .hop strong {
+        display: block;
+        margin-top: 10px;
+        font: 400 28px/1.15 var(--sans);
+        letter-spacing: -0.025em;
+      }
+      .hop span {
+        display: block;
+        margin-top: 8px;
+        font: 400 18px/1.35 var(--sans);
+        color: var(--soft);
+      }
+      .band {
+        margin-top: auto;
+        border: 1px solid var(--artf);
+        background: #f7f8ff;
+        padding: 18px 22px;
+        font: 400 24px/1.35 var(--sans);
+      }
+      .band .tok {
+        font: 400 16px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--artf);
+        margin-right: 14px;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font: 400 18px/1.4 var(--sans);
+        color: var(--soft);
+      }
+      .foot em {
+        font-style: normal;
+        color: var(--ink);
+      }
+      .byline {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+      }
+      .byline .who {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        text-align: right;
+      }
+      .byline .role {
+        font: 400 13px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .byline .name {
+        font: 400 22px/1.1 var(--sans);
+        color: var(--ink);
+        letter-spacing: -0.02em;
+      }
+      .byline a {
+        font: 400 16px/1.2 var(--mono);
+        color: var(--artf);
+        text-decoration: none;
+      }
+      .byline img {
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 20%;
+        border: 2px solid var(--artf);
+        background: var(--card);
+      }
+      .lines {
+        margin: 36px 0 0;
+        display: grid;
+        gap: 18px;
+        max-width: 1280px;
+      }
+      .line {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 20px;
+        align-items: baseline;
+      }
+      .line b {
+        font: 400 18px/1.2 var(--mono);
+        color: var(--artf);
+        letter-spacing: 0.06em;
+      }
+      .line p {
+        margin: 0;
+        font: 400 30px/1.28 var(--sans);
+      }
+      .closer {
+        margin-top: auto;
+        border: 1px solid var(--artf);
+        background: #f7f8ff;
+        padding: 22px 24px 20px;
+      }
+      .closer h2 {
+        margin: 0;
+        font: 400 40px/1.18 var(--sans);
+        letter-spacing: -0.03em;
+      }
+      .closer p {
+        margin: 10px 0 0;
+        font: 400 22px/1.4 var(--sans);
+        color: var(--soft);
+        max-width: 38em;
+      }
+    
+html,body{background:#111}.card h1{margin:0;max-width:1250px}.card.outro h1{font-size:60px;max-width:1500px}.hop strong{margin:0;font-size:27px}.hop{min-height:168px}.lines{margin-top:30px}.line p{font-size:29px}.episode-meta{font:400 15px/1.4 var(--mono);color:var(--artf);margin:0 0 5px}.foot .credit{max-width:1000px}.closer h2{font-size:36px}
+
+#speaker{position:fixed;right:32px;bottom:8px;height:56px;display:flex;align-items:center;gap:12px;color:#161616;font:400 22px/1.2 Geist,system-ui,sans-serif;background:#f4f3ee}
+#speaker .identity{text-align:right}#speaker .label{display:block;color:#1d4ed8;font-size:16px;line-height:1.4;margin-bottom:2px}#speaker .name{display:block;font-weight:500}#speaker img{width:56px;height:56px;border-radius:50%;border:2px solid #1d4ed8;object-fit:cover}
+.foot{min-height:111px}.presenter-link{font:400 16px/1.4 var(--mono);color:var(--artf);text-decoration:none}
+</style></head><body><main class="card outro"><h1>The host controls what reaches the next participant.</h1><div class="lines"><div class="line"><b>01</b><p>OpenRTB carries auction data; ARTF defines how agents propose changes.</p></div><div class="line"><b>02</b><p>Segments and deal floors can affect bidder decisions.</p></div><div class="line"><b>03</b><p>The host chooses which changes to apply under its own rules.</p></div><div class="line"><b>04</b><p>Checking the assembled request contains integration errors.</p></div><div class="line"><b>05</b><p>Shading changes price; the exchange still decides bid eligibility.</p></div></div><div class="closer"><h2>Next, see how the host coordinates several agents.</h2><p>Several specialists share one auction clock and contribute to the object the host forwards.</p></div><footer class="foot"><div class="credit"><p class="episode-meta">ARTF · Episode 2 of 3</p><span>Independent simulation. JSON fixture agent. <em>Real RTBlint gRPC.</em></span></div><a class="presenter-link" href="https://www.linkedin.com/in/aleksandersekowski">linkedin.com/in/aleksandersekowski</a></footer></main><aside id="speaker" aria-label="Now presenting: Alex Sekowski"><div class="identity"><span class="label">Now presenting:</span><span class="name">Alex Sekowski</span></div><img src="../../linkedin/author/alex.jpg" alt="Alex Sekowski" width="56" height="56"></aside></body></html>

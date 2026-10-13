@@ -1,0 +1,355 @@
+{
+  "cues": [
+    {
+      "start": 9,
+      "end": 12.818,
+      "text": "Last time, we checked one agent's\nproposals."
+    },
+    {
+      "start": 12.818,
+      "end": 18.273,
+      "text": "ARTF, the Agentic Real Time Framework,\nlets hosts call specialist"
+    },
+    {
+      "start": 18.273,
+      "end": 20.455,
+      "text": "services during an auction."
+    },
+    {
+      "start": 20.455,
+      "end": 26.455,
+      "text": "Now let's follow several specialists\nworking on the same OpenRTB request."
+    },
+    {
+      "start": 37,
+      "end": 41.909,
+      "text": "The SSP, the seller's platform, calls five\nspecialists together."
+    },
+    {
+      "start": 41.909,
+      "end": 47.364,
+      "text": "Each gets the starting envelope, which\nwraps the auction data."
+    },
+    {
+      "start": 47.364,
+      "end": 49.545,
+      "text": "They share one deadline."
+    },
+    {
+      "start": 49.545,
+      "end": 55.545,
+      "text": "Parallel calls keep us from waiting for\neach service in sequence."
+    },
+    {
+      "start": 61,
+      "end": 64.273,
+      "text": "Here's the request before and after."
+    },
+    {
+      "start": 64.273,
+      "end": 70.273,
+      "text": "Audience adds segments; curator adds deals\nand raises the premium floor."
+    },
+    {
+      "start": 70.273,
+      "end": 75.182,
+      "text": "Those changes can affect which campaigns\nconsider the impression"
+    },
+    {
+      "start": 75.182,
+      "end": 77.364,
+      "text": "and which bids qualify."
+    },
+    {
+      "start": 77.364,
+      "end": 80.09100000000001,
+      "text": "The host combines accepted proposals."
+    },
+    {
+      "start": 85,
+      "end": 87.727,
+      "text": "Metrics and quality add measurements."
+    },
+    {
+      "start": 87.727,
+      "end": 93.727,
+      "text": "Content ids describe the programme, while\naudience segments describe viewer groups."
+    },
+    {
+      "start": 93.727,
+      "end": 97.545,
+      "text": "Each accepted write names its source\nagent."
+    },
+    {
+      "start": 97.545,
+      "end": 104.09100000000001,
+      "text": "If a buyer receives unexpected data, we\ncan trace who proposed it."
+    },
+    {
+      "start": 109,
+      "end": 115,
+      "text": "What if two agents propose different\nfloors for the same deal?"
+    },
+    {
+      "start": 115,
+      "end": 121,
+      "text": "This lab applies answers in configured\norder, mostly to separate fields."
+    },
+    {
+      "start": 121,
+      "end": 124.818,
+      "text": "A production host needs a conflict policy."
+    },
+    {
+      "start": 124.818,
+      "end": 128.091,
+      "text": "Response speed shouldn't decide a price."
+    },
+    {
+      "start": 133,
+      "end": 137.364,
+      "text": "Now the request reaches two buyers, the\nDSPs."
+    },
+    {
+      "start": 137.364,
+      "end": 142.818,
+      "text": "Each makes a bid and calls its own shader\nthrough"
+    },
+    {
+      "start": 142.818,
+      "end": 145,
+      "text": "GetMutations, ARTF's proposal interface."
+    },
+    {
+      "start": 145,
+      "end": 151.54500000000002,
+      "text": "Shading adjusts the offered price before\nthe bid returns to the exchange."
+    },
+    {
+      "start": 157,
+      "end": 162.45499999999998,
+      "text": "Alpha's shader and beta's shader sit on\nseparate internal networks."
+    },
+    {
+      "start": 162.45499999999998,
+      "end": 166.273,
+      "text": "The request agents sit with the seller."
+    },
+    {
+      "start": 166.273,
+      "end": 173.364,
+      "text": "In this lab, one shader has no direct\nroute to the other buyer."
+    },
+    {
+      "start": 173.364,
+      "end": 176.091,
+      "text": "The host controls that access."
+    },
+    {
+      "start": 181,
+      "end": 187,
+      "text": "Alpha's shaded bid falls below the deal\nfloor, so it's rejected."
+    },
+    {
+      "start": 187,
+      "end": 190.818,
+      "text": "Beta remains eligible and wins this\nexample."
+    },
+    {
+      "start": 190.818,
+      "end": 197.909,
+      "text": "A shader can change the price, but the\nexchange still checks eligibility and"
+    },
+    {
+      "start": 197.909,
+      "end": 200.636,
+      "text": "selects the highest eligible bid."
+    },
+    {
+      "start": 205,
+      "end": 207.727,
+      "text": "A deadline needs a fallback."
+    },
+    {
+      "start": 207.727,
+      "end": 213.727,
+      "text": "Here, a missing request agent's answer is\nskipped; a failed shader"
+    },
+    {
+      "start": 213.727,
+      "end": 215.909,
+      "text": "leaves the original bid."
+    },
+    {
+      "start": 215.909,
+      "end": 218.091,
+      "text": "These are lab policies."
+    },
+    {
+      "start": 218.091,
+      "end": 224.091,
+      "text": "If a service performs a required check,\ncontinuing may be inappropriate."
+    },
+    {
+      "start": 229,
+      "end": 232.81799999999998,
+      "text": "This sample descriptor declares the\ncurator's image,"
+    },
+    {
+      "start": 232.81799999999998,
+      "end": 235,
+      "text": "capabilities, and operating needs."
+    },
+    {
+      "start": 235,
+      "end": 237.18200000000002,
+      "text": "It helps explain deployment."
+    },
+    {
+      "start": 237.18200000000002,
+      "end": 242.636,
+      "text": "The envelope still limits the jobs offered\non each call."
+    },
+    {
+      "start": 242.636,
+      "end": 247,
+      "text": "Declaring a capability doesn't grant\nunlimited auction access."
+    },
+    {
+      "start": 258,
+      "end": 262.364,
+      "text": "In this demo, ARTF's auction calls are\nfinished."
+    },
+    {
+      "start": 262.364,
+      "end": 266.727,
+      "text": "VAST now describes the ad and its\ntracking."
+    },
+    {
+      "start": 266.727,
+      "end": 271.091,
+      "text": "We fetch dummy media and fire scripted\nevents."
+    },
+    {
+      "start": 271.091,
+      "end": 276.545,
+      "text": "Those requests don't prove a real viewer\nwatched the ad."
+    },
+    {
+      "start": 282,
+      "end": 285.273,
+      "text": "Let's repeat this path under load."
+    },
+    {
+      "start": 285.273,
+      "end": 290.182,
+      "text": "The driver requests twenty auctions a\nsecond; monitoring shows"
+    },
+    {
+      "start": 290.182,
+      "end": 292.364,
+      "text": "the rate actually achieved."
+    },
+    {
+      "start": 292.364,
+      "end": 298.909,
+      "text": "One auction can call several agents, so\nauction rate and agent call"
+    },
+    {
+      "start": 298.909,
+      "end": 301.091,
+      "text": "rate measure different things."
+    },
+    {
+      "start": 306,
+      "end": 310.364,
+      "text": "p95 estimates the time within which\nninety-five percent"
+    },
+    {
+      "start": 310.364,
+      "end": 312.545,
+      "text": "of measured calls finish."
+    },
+    {
+      "start": 312.545,
+      "end": 318,
+      "text": "Read it with the auction path and buyer\ncall failures."
+    },
+    {
+      "start": 318,
+      "end": 324,
+      "text": "Fast typical calls don't tell us whether\nevery deadline was met."
+    },
+    {
+      "start": 331,
+      "end": 334.273,
+      "text": "Typed calls still need host checks."
+    },
+    {
+      "start": 334.273,
+      "end": 340.273,
+      "text": "Here we check call identity and offered\nintents before combining proposals."
+    },
+    {
+      "start": 340.273,
+      "end": 343.545,
+      "text": "RTBlint checks our captured request\nseparately."
+    },
+    {
+      "start": 343.545,
+      "end": 348.455,
+      "text": "A deployed host still needs OpenRTB\nvalidation before forwarding."
+    },
+    {
+      "start": 355,
+      "end": 362.636,
+      "text": "I'd start with one auction: follow a\nproposal to the field the buyer receives."
+    },
+    {
+      "start": 362.636,
+      "end": 367.545,
+      "text": "Then test a missing answer and a\nconflicting proposal."
+    },
+    {
+      "start": 367.545,
+      "end": 371.909,
+      "text": "ARTF supplies the shared interface; each\nhost remains"
+    },
+    {
+      "start": 371.909,
+      "end": 374.091,
+      "text": "responsible for its decisions."
+    }
+  ],
+  "words": 513,
+  "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+  "fontSize": 64,
+  "backgroundOpacity": 0.82,
+  "singleLineBoxHeight": 106.48,
+  "bottom": 107,
+  "mobileFontAt360CssPixels": 12,
+  "layout": "No overlap with the picture or presenter",
+  "first": 9,
+  "last": 374.091,
+  "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.captions/captions.ffconcat",
+  "frame": {
+    "width": 1920,
+    "height": 768,
+    "x": 0,
+    "y": 0,
+    "footerHeight": 312
+  },
+  "speaker": {
+    "name": "Alex Sekowski",
+    "label": "Now presenting:",
+    "portrait": "../../linkedin/author/alex.jpg",
+    "bounds": {
+      "x": 1670.296875,
+      "y": 1016,
+      "width": 217.703125,
+      "height": 56
+    },
+    "portraitSize": 56,
+    "visibility": "Throughout the video, including pauses and title cards."
+  }
+}

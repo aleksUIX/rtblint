@@ -1,0 +1,178 @@
+{
+  "episode": 3,
+  "seconds": 386,
+  "foci": [
+    {
+      "at": 8,
+      "end": 31,
+      "overview": true
+    },
+    {
+      "at": 31,
+      "end": 36,
+      "overview": true
+    },
+    {
+      "at": 36,
+      "end": 60,
+      "selector": "#apply-section",
+      "x": 680.5859375,
+      "y": 140,
+      "width": 1338.828125,
+      "height": 535.53125,
+      "zoom": 2.0166890354204354
+    },
+    {
+      "at": 60,
+      "end": 84,
+      "selector": "#ticket-section",
+      "x": 659.8046875,
+      "y": 140,
+      "width": 1380.390625,
+      "height": 552.15625,
+      "zoom": 1.9559680796875885
+    },
+    {
+      "at": 84,
+      "end": 108,
+      "selector": "#apply-section",
+      "x": 680.5859375,
+      "y": 140,
+      "width": 1338.828125,
+      "height": 535.53125,
+      "zoom": 2.0166890354204354
+    },
+    {
+      "at": 108,
+      "end": 132,
+      "selector": "#apply-section",
+      "x": 680.5859375,
+      "y": 140,
+      "width": 1338.828125,
+      "height": 535.53125,
+      "zoom": 2.0166890354204354
+    },
+    {
+      "at": 132,
+      "end": 156,
+      "selector": "#bids-section",
+      "x": 760,
+      "y": 72.6953125,
+      "width": 1180,
+      "height": 472,
+      "zoom": 2.288135593220339
+    },
+    {
+      "at": 156,
+      "end": 180,
+      "selector": ".graph-pane",
+      "x": 0,
+      "y": 195.828125,
+      "width": 2203.046875,
+      "height": 881.21875,
+      "zoom": 1.2255753750132983
+    },
+    {
+      "at": 180,
+      "end": 204,
+      "selector": "#bids-section",
+      "x": 760,
+      "y": 72.6953125,
+      "width": 1180,
+      "height": 472,
+      "zoom": 2.288135593220339
+    },
+    {
+      "at": 204,
+      "end": 228,
+      "selector": ".graph-pane",
+      "x": 0,
+      "y": 195.828125,
+      "width": 2203.046875,
+      "height": 881.21875,
+      "zoom": 1.2255753750132983
+    },
+    {
+      "at": 228,
+      "end": 252,
+      "selector": "#manifest-section",
+      "x": 406.23046875,
+      "y": 140,
+      "width": 1887.5390625,
+      "height": 755.015625,
+      "zoom": 1.4304339728068542,
+      "cuts": [
+        {
+          "at": 228,
+          "end": 238,
+          "selector": "#manifest intents",
+          "x": 679.6328125,
+          "y": 347.5703125,
+          "width": 550,
+          "height": 220,
+          "zoom": 4.909090909090909
+        },
+        {
+          "at": 238,
+          "end": 252,
+          "selector": "#manifest image and resources",
+          "x": 736.2890625,
+          "y": 508.9375,
+          "width": 620.3125,
+          "height": 248.125,
+          "zoom": 4.352644836272041
+        }
+      ]
+    },
+    {
+      "at": 252,
+      "end": 257,
+      "overview": true
+    },
+    {
+      "at": 257,
+      "end": 281,
+      "selector": "#events-section",
+      "x": 639.51171875,
+      "y": 140,
+      "width": 1420.9765625,
+      "height": 568.390625,
+      "zoom": 1.900101712620612
+    },
+    {
+      "at": 281,
+      "end": 305,
+      "selector": "#feed-ops-summary",
+      "x": 785,
+      "y": 146.21875,
+      "width": 1130,
+      "height": 452,
+      "zoom": 2.3893805309734515
+    },
+    {
+      "at": 305,
+      "end": 330,
+      "selector": "#feed-ops-summary",
+      "x": 1141.65625,
+      "y": 217.553125,
+      "width": 773.328125,
+      "height": 309.33125,
+      "zoom": 3.4914028246418685
+    },
+    {
+      "at": 330,
+      "end": 354,
+      "selector": "#feed-ops-summary",
+      "x": 1141.65625,
+      "y": 217.553125,
+      "width": 773.328125,
+      "height": 309.33125,
+      "zoom": 3.4914028246418685
+    },
+    {
+      "at": 354,
+      "end": 378,
+      "overview": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "extension-point-010",
+  "tmax": 120,
+  "lifecycle": "LIFECYCLE_DSP_BID_RESPONSE",
+  "originator": {
+    "type": "TYPE_DSP",
+    "id": "dsp-1"
+  },
+  "applicable_intents": ["BID_SHADE"],
+  "bid_request": {
+    "id": "auction-9010",
+    "at": 1,
+    "tmax": 300,
+    "cur": ["USD"],
+    "imp": [
+      {
+        "id": "imp-1",
+        "secure": true,
+        "instl": false,
+        "bidfloor": 8.0,
+        "bidfloorcur": "USD",
+        "video": {
+          "mimes": ["video/mp4"],
+          "minduration": 15,
+          "maxduration": 30,
+          "w": 1920,
+          "h": 1080,
+          "protocols": [2, 3, 5, 6],
+          "linearity": 1,
+          "plcmt": 1,
+          "skip": false
+        },
+        "pmp": {
+          "private_auction": true,
+          "deals": [
+            { "id": "deal-premium", "bidfloor": 12.0, "bidfloorcur": "USD", "at": 1 },
+            { "id": "deal-standard", "bidfloor": 6.0, "bidfloorcur": "USD", "at": 2 }
+          ]
+        }
+      }
+    ],
+    "site": {
+      "id": "site-42",
+      "domain": "streaming.example",
+      "page": "https://streaming.example/watch/12345",
+      "mobile": false,
+      "content": { "id": "content-12345", "livestream": false, "len": 3600 }
+    },
+    "device": { "dnt": false, "lmt": false, "ua": "Mozilla/5.0" },
+    "user": {
+      "id": "user-77",
+      "data": [
+        {
+          "id": "dmp-1",
+          "name": "Example DMP",
+          "segment": [{ "id": "seg-sports" }]
+        }
+      ]
+    },
+    "regs": { "coppa": false, "gdpr": false }
+  },
+  "bid_response": {
+    "id": "auction-9010",
+    "cur": "USD",
+    "seatbid": [
+      {
+        "seat": "dsp-1",
+        "bid": [
+          {
+            "id": "bid-ctv",
+            "impid": "imp-1",
+            "price": 18.4,
+            "adomain": ["northwind.example"],
+            "crid": "dummy-northwind",
+            "cid": "cmp-dummy-midroll",
+            "w": 1920,
+            "h": 1080,
+            "dur": 15,
+            "mtype": 2,
+            "adm": "<VAST version=\"4.2\"><Ad id=\"dummy-northwind\"><InLine><AdSystem>dsp-1</AdSystem><AdTitle>Northwind Spark</AdTitle><Impression><![CDATA[https://dsp.example/imp]]></Impression></InLine></Ad></VAST>"
+          }
+        ]
+      }
+    ]
+  }
+}

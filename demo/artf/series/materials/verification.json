@@ -1,0 +1,472 @@
+{
+  "currentExportsVerified": true,
+  "checkedAt": "2026-10-11T09:34:00.686160+00:00",
+  "episodes": [
+    {
+      "episode": 2,
+      "checkedAt": "2026-10-11T09:33:57.767215+00:00",
+      "seconds": 339,
+      "narrationWords": 435,
+      "videoSha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+      "cueSha256": "0f79467afdb3f9be76c8fd3aa6df30ec29c67fccf61f83b7a71bd6e8920e4e27",
+      "subtitleSha256": "71af3e86e378231b2c69f1eb1f2e446a0fcc493c91329c29c685d1986e74b9ff",
+      "scriptSha256": "6068d6eabdf88d32894425377ba1489416775159ac4211c35746133453e7ff6f",
+      "wordsPerMinute": 110,
+      "minimumParagraphGapSeconds": 3,
+      "subtitleBoundaryChecks": 212,
+      "captions": {
+        "cues": 53,
+        "words": 435,
+        "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+        "fontSize": 64,
+        "backgroundOpacity": 0.82,
+        "singleLineBoxHeight": 106.48,
+        "bottom": 107,
+        "mobileFontAt360CssPixels": 12,
+        "layout": "No overlap with the picture or presenter",
+        "first": 9,
+        "last": 327.727,
+        "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.captions/captions.ffconcat",
+        "frame": {
+          "width": 1920,
+          "height": 768,
+          "x": 0,
+          "y": 0,
+          "footerHeight": 312
+        },
+        "speaker": {
+          "name": "Alex Sekowski",
+          "label": "Now presenting:",
+          "portrait": "../../linkedin/author/alex.jpg",
+          "bounds": {
+            "x": 1670.296875,
+            "y": 1016,
+            "width": 217.703125,
+            "height": 56
+          },
+          "portraitSize": 56,
+          "visibility": "Throughout the video, including pauses and title cards."
+        }
+      },
+      "opening": {
+        "fullyRevealedAtFirstFrame": true,
+        "meanPixelErrorAgainstSourceCard": 0.7542153596878052
+      },
+      "prompter": {
+        "offlineFullTakePassed": true,
+        "framesObserved": 8380,
+        "maximumClockErrorSeconds": 0,
+        "versionChecksPassed": true
+      },
+      "scenes": [
+        {
+          "scene": "policy",
+          "forwarded": true,
+          "applied": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "skipped": [
+            4
+          ],
+          "receiptsBefore": 0,
+          "receiptsAfter": 1
+        },
+        {
+          "scene": "illegal",
+          "forwarded": false,
+          "applied": [],
+          "skipped": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "receiptsBefore": 1,
+          "receiptsAfter": 1
+        },
+        {
+          "scene": "breaking",
+          "forwarded": false,
+          "applied": [
+            0
+          ],
+          "skipped": [],
+          "receiptsBefore": 1,
+          "receiptsAfter": 1
+        },
+        {
+          "scene": "shade",
+          "forwarded": true,
+          "applied": [
+            0
+          ],
+          "skipped": [],
+          "receiptsBefore": 1,
+          "receiptsAfter": 1
+        }
+      ],
+      "frames": [
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-0.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-0.4.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-2-fixed-174.png"
+      ],
+      "video": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "mime_codec_string": "avc1.640028",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 4339200,
+            "duration": "339.000000",
+            "bit_rate": "341729",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "8475",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "encoder": "Lavc62.28.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.pending.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "339.000000",
+          "size": "14582635",
+          "bit_rate": "344132",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.12.100"
+          }
+        }
+      }
+    },
+    {
+      "episode": 3,
+      "checkedAt": "2026-10-11T09:34:00.603416+00:00",
+      "seconds": 386,
+      "narrationWords": 513,
+      "videoSha256": "54124fe8e66d107906f89150fb0b8352ae2b8e8277a0b8c70dc2470fd01ba221",
+      "cueSha256": "5f0f28105377a972947aafe256a03db8992c5045d1c75d1b4abcab7e07f6d520",
+      "subtitleSha256": "6ae26a485158ec84131126f388d01513c0c611d23a608d4e3f3ddc59c36b2b87",
+      "scriptSha256": "bd53d909b12ad27680696ecc3d980d0e0cedbd3e3b1a857b0ed46b283daea56d",
+      "wordsPerMinute": 110,
+      "minimumParagraphGapSeconds": 4.363636363636374,
+      "subtitleBoundaryChecks": 256,
+      "captions": {
+        "cues": 64,
+        "words": 513,
+        "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+        "fontSize": 64,
+        "backgroundOpacity": 0.82,
+        "singleLineBoxHeight": 106.48,
+        "bottom": 107,
+        "mobileFontAt360CssPixels": 12,
+        "layout": "No overlap with the picture or presenter",
+        "first": 9,
+        "last": 374.091,
+        "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.captions/captions.ffconcat",
+        "frame": {
+          "width": 1920,
+          "height": 768,
+          "x": 0,
+          "y": 0,
+          "footerHeight": 312
+        },
+        "speaker": {
+          "name": "Alex Sekowski",
+          "label": "Now presenting:",
+          "portrait": "../../linkedin/author/alex.jpg",
+          "bounds": {
+            "x": 1670.296875,
+            "y": 1016,
+            "width": 217.703125,
+            "height": 56
+          },
+          "portraitSize": 56,
+          "visibility": "Throughout the video, including pauses and title cards."
+        }
+      },
+      "opening": {
+        "fullyRevealedAtFirstFrame": true,
+        "meanPixelErrorAgainstSourceCard": 0.717936098575592
+      },
+      "prompter": {
+        "offlineFullTakePassed": true,
+        "framesObserved": 9647,
+        "maximumClockErrorSeconds": 0,
+        "versionChecksPassed": true
+      },
+      "scenes": [
+        {
+          "scene": "clean",
+          "requestAgents": 5,
+          "requestApplied": 6,
+          "winner": "dsp-beta",
+          "price": 15.725
+        }
+      ],
+      "frames": [
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-0.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-0.4.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-310.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-234.png",
+        "/Users/aleks/Documents/workspace/vast-master/output/artf-series-review-2026-10-11/episode-3-fixed-244.png"
+      ],
+      "video": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "mime_codec_string": "avc1.640028",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt470bg",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/12800",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 4940800,
+            "duration": "386.000000",
+            "bit_rate": "333578",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "9650",
+            "extradata_size": 51,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "encoder": "Lavc62.28.100 libx264"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-3.pending.mp4",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "386.000000",
+          "size": "16211804",
+          "bit_rate": "335995",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.12.100"
+          }
+        }
+      }
+    }
+  ],
+  "capturedOpenRtb": {
+    "verdict": {
+      "issues": [],
+      "valid": true,
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "effective_version": "2.6-202606",
+      "provenance": {
+        "catalog_version": "0.13.5",
+        "catalog_digest": "sha256:0cb472d4ba1bc955b703f614345c5f36d27c9f9e07c93e43f24fe0cc6adc41d6",
+        "engine_version": "0.13.5"
+      }
+    }
+  },
+  "fallbacks": {
+    "checkedAt": "2026-10-11T08:45:09.599Z",
+    "sameScopeCleanAuction": {
+      "before": {
+        "proposed": 36,
+        "applied": 36
+      },
+      "after": {
+        "proposed": 42,
+        "applied": 42
+      },
+      "proposedDelta": 6,
+      "appliedDelta": 6
+    },
+    "allRequestAgentsMissing": {
+      "failedHops": 5,
+      "applied": 0,
+      "preservedPremiumFloor": 12,
+      "winner": "dsp-beta"
+    },
+    "betaShaderMissing": {
+      "winner": "dsp-beta",
+      "preservedOriginalPrice": 18.5
+    },
+    "recovered": {
+      "errors": 0,
+      "winnerPrice": 15.725
+    },
+    "method": "Paused the actual local containers, verified the real host response, then restored every container in finally blocks."
+  },
+  "mobileVisualReview": {
+    "checkedAt": "2026-10-11T09:30:05.144060+00:00",
+    "displayWidth": 360,
+    "captionCssFontSize": 12,
+    "method": "Visual inspection of actual final MP4 sample frames at 360-pixel display width. All caption layouts also pass the complete source-resolution fit checks.",
+    "episodes": [
+      {
+        "episode": 2,
+        "videoSha256": "409a4d40baba5beefbab674f1275892c8c7d1542eea6802f1684a8b75c2f1ece",
+        "readableCaptionsAndRelevantFields": true,
+        "samples": [
+          {
+            "file": "episode-2-mobile-54.png",
+            "sha256": "84b04b66f7239559869d544c01bbffb477e4c864c83f403164b8aac8fbf06a3f"
+          },
+          {
+            "file": "episode-2-mobile-105.png",
+            "sha256": "78311d4123c44d23473995ca60e9ea54a7a5997c05710936f36064d4abf542bf"
+          },
+          {
+            "file": "episode-2-mobile-174.png",
+            "sha256": "7a787844b0d24de195af7248216e8efe7f666dc0834f6a41cad92840ea607201"
+          },
+          {
+            "file": "episode-2-mobile-244.png",
+            "sha256": "ae4bfabb0c77bec9251350e0eeab05a9ce15429b87c3b8a3e2f8bb92072ccf7b"
+          },
+          {
+            "file": "episode-2-mobile-292.png",
+            "sha256": "d88f5c01dad5585eef05d183a8e792ffcba67274f7e7c8897bbc08af094b4ac5"
+          }
+        ]
+      },
+      {
+        "episode": 3,
+        "videoSha256": "54124fe8e66d107906f89150fb0b8352ae2b8e8277a0b8c70dc2470fd01ba221",
+        "readableCaptionsAndRelevantFields": true,
+        "samples": [
+          {
+            "file": "episode-3-final-mobile-234.png",
+            "sha256": "3d64ac4692dba327fbed667a14148bba9f100e015ae1323c01ced637cf38c98b"
+          },
+          {
+            "file": "episode-3-final-mobile-244.png",
+            "sha256": "0aa7a9d3eac31a27cafc1b801403b52aaf478a0ebc69f31f4d4184948d40bca1"
+          },
+          {
+            "file": "episode-3-final-mobile-310.png",
+            "sha256": "2ff2e683ddfd56ad66c1aed1ea267ec302f7ec1215dd504a7052360efb43dbdb"
+          }
+        ]
+      }
+    ]
+  },
+  "checks": {
+    "simulatorGoSuite": "passed",
+    "validatorCoreAndGrpcTests": 316,
+    "validatorFormattingAndClippy": "passed",
+    "generatedSchemas": "34 files reproduce exactly"
+  },
+  "scope": "Silent MP4s ready for presenter narration. Future recorded speech still needs a timing check after muxing."
+}

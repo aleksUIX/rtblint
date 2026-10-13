@@ -1,0 +1,300 @@
+{
+  "cues": [
+    {
+      "start": 9,
+      "end": 12.273,
+      "text": "OpenRTB carries bid requests and\nresponses."
+    },
+    {
+      "start": 12.273,
+      "end": 18.273,
+      "text": "ARTF, the Agentic Real Time Framework,\nlets a host call specialist"
+    },
+    {
+      "start": 18.273,
+      "end": 20.455,
+      "text": "services during the auction."
+    },
+    {
+      "start": 20.455,
+      "end": 25.364,
+      "text": "Let's see how their proposals become\nchanges buyers see."
+    },
+    {
+      "start": 29,
+      "end": 31.727,
+      "text": "The exchange is our host."
+    },
+    {
+      "start": 31.727,
+      "end": 36.636,
+      "text": "The agent is a specialist service inside\nits infrastructure."
+    },
+    {
+      "start": 36.636,
+      "end": 39.364,
+      "text": "Here it returns fixed proposals."
+    },
+    {
+      "start": 39.364,
+      "end": 44.818,
+      "text": "The envelope wraps OpenRTB so the host can\nrequest changes."
+    },
+    {
+      "start": 49,
+      "end": 53.909,
+      "text": "This call id is separate from the auction\nid."
+    },
+    {
+      "start": 53.909,
+      "end": 58.818,
+      "text": "Matching it ties the answer to the right\ncall."
+    },
+    {
+      "start": 58.818,
+      "end": 64.818,
+      "text": "The time budget is one hundred fifty\nmilliseconds; a late answer"
+    },
+    {
+      "start": 64.818,
+      "end": 67,
+      "text": "can miss the auction."
+    },
+    {
+      "start": 71,
+      "end": 74.818,
+      "text": "Intents name the jobs this host offers."
+    },
+    {
+      "start": 74.818,
+      "end": 78.636,
+      "text": "They limit what the agent can change."
+    },
+    {
+      "start": 78.636,
+      "end": 82.455,
+      "text": "Here that's segments, deals, floors, and\nmetrics."
+    },
+    {
+      "start": 82.455,
+      "end": 85.727,
+      "text": "Shading waits until there's a bid."
+    },
+    {
+      "start": 96,
+      "end": 102.545,
+      "text": "A mutation is a proposed change, with an\noperation, target, and payload."
+    },
+    {
+      "start": 102.545,
+      "end": 105.273,
+      "text": "Here it adds audience segments."
+    },
+    {
+      "start": 105.273,
+      "end": 110.182,
+      "text": "Those labels can affect which campaigns\nconsider this impression."
+    },
+    {
+      "start": 110.182,
+      "end": 114,
+      "text": "The host chooses whether to apply it."
+    },
+    {
+      "start": 117,
+      "end": 123.545,
+      "text": "This floor change raises the premium\ndeal's minimum price from twelve dollars"
+    },
+    {
+      "start": 123.545,
+      "end": 126.818,
+      "text": "to fourteen fifty per thousand\nimpressions."
+    },
+    {
+      "start": 126.818,
+      "end": 129.545,
+      "text": "That changes which bids qualify."
+    },
+    {
+      "start": 129.545,
+      "end": 136.091,
+      "text": "A higher floor can also leave the\nimpression without an eligible bid."
+    },
+    {
+      "start": 141,
+      "end": 145.364,
+      "text": "Content id wasn't offered here, so it's\nskipped."
+    },
+    {
+      "start": 145.364,
+      "end": 150.818,
+      "text": "The DSP, the buyer's platform, still\nreceives four accepted changes."
+    },
+    {
+      "start": 150.818,
+      "end": 157.909,
+      "text": "Independent acceptance lets the host keep\nuseful work while enforcing its own rules."
+    },
+    {
+      "start": 171,
+      "end": 174.273,
+      "text": "This answer names the wrong call."
+    },
+    {
+      "start": 174.273,
+      "end": 179.18200000000002,
+      "text": "The host rejects the response before\napplying any changes."
+    },
+    {
+      "start": 179.18200000000002,
+      "end": 185.182,
+      "text": "The original auction stays unchanged, and\nnothing new reaches the buyer."
+    },
+    {
+      "start": 185.182,
+      "end": 189.545,
+      "text": "A usable proposal can't bypass that\nidentity check."
+    },
+    {
+      "start": 194,
+      "end": 197.273,
+      "text": "Deal margin shows an integration gap."
+    },
+    {
+      "start": 197.273,
+      "end": 202.182,
+      "text": "This host has no standard OpenRTB field\nfor it."
+    },
+    {
+      "start": 202.182,
+      "end": 209.273,
+      "text": "An intent needs an agreed mapping, or the\nhost cannot apply the proposal."
+    },
+    {
+      "start": 220,
+      "end": 223.273,
+      "text": "Here, viewability is the word high."
+    },
+    {
+      "start": 223.273,
+      "end": 226.54500000000002,
+      "text": "ARTF's typed metric requires a number."
+    },
+    {
+      "start": 226.54500000000002,
+      "end": 230.364,
+      "text": "Our HTTP JSON fixture introduces this\nfault."
+    },
+    {
+      "start": 230.364,
+      "end": 236.909,
+      "text": "The resulting request gives the buyer a\nvalue it cannot reliably use."
+    },
+    {
+      "start": 242,
+      "end": 248,
+      "text": "The mutation was applied, but the request\nit produced is invalid."
+    },
+    {
+      "start": 248,
+      "end": 252.364,
+      "text": "That's why we check the assembled OpenRTB\ntoo."
+    },
+    {
+      "start": 252.364,
+      "end": 259.455,
+      "text": "The host stops this error here, before a\nbuyer has to handle it."
+    },
+    {
+      "start": 265,
+      "end": 268.818,
+      "text": "RTBlint performs these checks in our demo."
+    },
+    {
+      "start": 268.818,
+      "end": 271.545,
+      "text": "ARTF provides the shared interface."
+    },
+    {
+      "start": 271.545,
+      "end": 274.818,
+      "text": "The host supplies the business rules."
+    },
+    {
+      "start": 274.818,
+      "end": 280.818,
+      "text": "That allows specialists to integrate\nthrough a common contract while the"
+    },
+    {
+      "start": 280.818,
+      "end": 283,
+      "text": "platform controls the auction."
+    },
+    {
+      "start": 291,
+      "end": 297.545,
+      "text": "In this separate bid response example,\neighteen forty becomes twelve eighty eight"
+    },
+    {
+      "start": 297.545,
+      "end": 299.727,
+      "text": "for the same creative."
+    },
+    {
+      "start": 299.727,
+      "end": 304.091,
+      "text": "Shading changes the price competing in the\nauction."
+    },
+    {
+      "start": 304.091,
+      "end": 308.455,
+      "text": "The exchange still decides whether the bid\nqualifies."
+    },
+    {
+      "start": 313,
+      "end": 315.727,
+      "text": "OpenRTB carries the auction data."
+    },
+    {
+      "start": 315.727,
+      "end": 323.364,
+      "text": "ARTF gives specialists a common way to\npropose changes, with the host in control."
+    },
+    {
+      "start": 323.364,
+      "end": 327.727,
+      "text": "Next, we'll coordinate several agents\naround one auction."
+    }
+  ],
+  "words": 435,
+  "style": "Helvetica or Arial, 64px, white on 82% opaque black, bottom 107px",
+  "fontSize": 64,
+  "backgroundOpacity": 0.82,
+  "singleLineBoxHeight": 106.48,
+  "bottom": 107,
+  "mobileFontAt360CssPixels": 12,
+  "layout": "No overlap with the picture or presenter",
+  "first": 9,
+  "last": 327.727,
+  "track": "/Users/aleks/Documents/workspace/vast-master/rtblint/demo/artf/series/materials/episode-2.captions/captions.ffconcat",
+  "frame": {
+    "width": 1920,
+    "height": 768,
+    "x": 0,
+    "y": 0,
+    "footerHeight": 312
+  },
+  "speaker": {
+    "name": "Alex Sekowski",
+    "label": "Now presenting:",
+    "portrait": "../../linkedin/author/alex.jpg",
+    "bounds": {
+      "x": 1670.296875,
+      "y": 1016,
+      "width": 217.703125,
+      "height": 56
+    },
+    "portraitSize": 56,
+    "visibility": "Throughout the video, including pauses and title cards."
+  }
+}

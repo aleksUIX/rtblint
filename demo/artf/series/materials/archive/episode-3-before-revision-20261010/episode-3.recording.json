@@ -1,0 +1,138 @@
+{
+  "episode": 3,
+  "smoke": false,
+  "seconds": 456,
+  "elapsed": 456.004691875,
+  "errors": [],
+  "actual": [
+    {
+      "index": 0,
+      "plannedAt": 0,
+      "observedAt": 0.00007954200000000356,
+      "actionSeconds": 0.0000010000000000331967
+    },
+    {
+      "index": 1,
+      "plannedAt": 8,
+      "observedAt": 8.000305,
+      "actionSeconds": 0.09780904200000078
+    },
+    {
+      "index": 2,
+      "plannedAt": 35,
+      "observedAt": 35.000610375,
+      "actionSeconds": 0.0834452089999977
+    },
+    {
+      "index": 3,
+      "plannedAt": 40,
+      "observedAt": 40.001414167,
+      "actionSeconds": 0.0031354579999970157
+    },
+    {
+      "index": 4,
+      "plannedAt": 69,
+      "observedAt": 69.000878417,
+      "actionSeconds": 0.003282791999998153
+    },
+    {
+      "index": 5,
+      "plannedAt": 100,
+      "observedAt": 100.002114584,
+      "actionSeconds": 0.002970541000002413
+    },
+    {
+      "index": 6,
+      "plannedAt": 124,
+      "observedAt": 124.001594417,
+      "actionSeconds": 0.008907166999997572
+    },
+    {
+      "index": 7,
+      "plannedAt": 151,
+      "observedAt": 151.00164133400003,
+      "actionSeconds": 0.00516487499998766
+    },
+    {
+      "index": 8,
+      "plannedAt": 182,
+      "observedAt": 182.03759862500002,
+      "actionSeconds": 0.018820041999977548
+    },
+    {
+      "index": 9,
+      "plannedAt": 214,
+      "observedAt": 214.001926125,
+      "actionSeconds": 0.004447459000017261
+    },
+    {
+      "index": 10,
+      "plannedAt": 246,
+      "observedAt": 246.002568,
+      "actionSeconds": 0.009104916999989655
+    },
+    {
+      "index": 11,
+      "plannedAt": 275,
+      "observedAt": 275.002111584,
+      "actionSeconds": 0.07422216599999229
+    },
+    {
+      "index": 12,
+      "plannedAt": 299,
+      "observedAt": 299.00110245900004,
+      "actionSeconds": 0.2014049159999704
+    },
+    {
+      "index": 13,
+      "plannedAt": 304,
+      "observedAt": 304.031126375,
+      "actionSeconds": 0.021695125000027474
+    },
+    {
+      "index": 14,
+      "plannedAt": 334,
+      "observedAt": 334.001572917,
+      "actionSeconds": 2.004968625000038
+    },
+    {
+      "index": 15,
+      "plannedAt": 360,
+      "observedAt": 360.005296417,
+      "actionSeconds": 0.025657707999984267
+    },
+    {
+      "index": 16,
+      "plannedAt": 392,
+      "observedAt": 392.000026125,
+      "actionSeconds": 0.002930959000019357
+    },
+    {
+      "index": 17,
+      "plannedAt": 422,
+      "observedAt": 422.003013292,
+      "actionSeconds": 0.475836249999993
+    },
+    {
+      "index": 18,
+      "plannedAt": 448,
+      "observedAt": 448.01190879200004,
+      "actionSeconds": 0.2737827919999836
+    }
+  ],
+  "videoAlignment": {
+    "inputFirstSceneSeconds": 0.28,
+    "correctedFirstSceneSeconds": 8,
+    "shiftSeconds": 7.72
+  },
+  "editorialRevision": {
+    "narrationWords": 835,
+    "cueSha256": "a2b053286d4272aa85d665fb57c19018fa4ecca80f5f959d7747b867dfb06d0d",
+    "pictureTimeline": "retained",
+    "cardRenderAlignment": {
+      "inputFirstSceneSeconds": 8,
+      "correctedFirstSceneSeconds": 8,
+      "shiftSeconds": 0
+    }
+  }
+}

@@ -99,7 +99,11 @@ jobs:
       - name: Use current npm for trusted publishing
         run: |
           set -euo pipefail
-          npm install -g npm@12.2.0
+          NPM_VERSION=12.2.0
+          NPM_SHA256=6666b48816b39b86c3febac7b51a4ee4de6c5ca589c382ad8004b6b113f86677
+          curl -fsSL "https://registry.npmjs.org/npm/-/npm-${NPM_VERSION}.tgz" -o /tmp/npm.tgz
+          echo "${NPM_SHA256}  /tmp/npm.tgz" | sha256sum -c -
+          npm install -g /tmp/npm.tgz
           echo "npm $(npm --version)"
       - name: Publish npm package
         working-directory: npm

@@ -51,6 +51,9 @@ updates:
     labels:
       - dependencies
       - javascript
+    ignore:
+      # demo/artf/stack/ssp was removed; stale security updates still target it.
+      - dependency-name: "@grpc/grpc-js"
 
   - package-ecosystem: npm
     directory: /npm

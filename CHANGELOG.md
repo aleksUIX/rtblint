@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.2 (2026-10-20)
+
+### Changed
+
+- **`sha2` 0.11.0 → 0.11.1**, **`tokio` 1.53.2 → 1.53.3**, **`serde_json` 1.0.152 → 1.0.154**: dependency updates.
+
 ## 0.14.1 (2026-10-13)
 
 ### Changed

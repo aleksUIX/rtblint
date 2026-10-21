@@ -16,3 +16,14 @@ The wire alternatives and boolean fields follow the [IAB protobuf schema](https:
 The site domain control follows [OpenRTB 2.6, section 3.2.13](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#3213---object-site).
 
 Run `cargo test -p rtblint-core --test dialect_fixtures`.
+
+Privacy fixtures also cover legacy 2.5 GDPR and consent, the 2.0/2.1 User
+extension location for US Privacy, and legacy Regs US Privacy. They pin malformed
+strings and base-spec extension types, canonical/legacy conflict precedence,
+null canonical consent, equal duplicates, legacy EIDs under COPPA and US
+Privacy, Purpose 1 checks, and the actual GPP source path. Vendor extension
+wire types remain governed by their profiles. No stored visitor values appear
+in these fixtures.
+
+The legacy locations follow the [OpenRTB 2.6 migration notes](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md)
+and [IAB US Privacy extension](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/OpenRTB%20Extension%20for%20USPrivacy.md).

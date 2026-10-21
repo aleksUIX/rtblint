@@ -6,7 +6,7 @@
 
 use serde_json::{Map, Value};
 
-use crate::{Issue, Severity};
+use crate::{Issue, OpenRtbVersion, Profile, Severity};
 
 const SECTION_GPP: &str = "GPP Consent String Specification";
 const SECTION_TCF: &str = "IAB TCF v2.2";
@@ -19,6 +19,144 @@ const KNOWN_GPP_SIDS: &[i64] = &[
 ];
 
 const TCF_MIN_LEN: usize = 19;
+
+/// A semantic view only. Validation and migration findings retain the input paths.
+/// The selected contract's location wins even when its value is empty or null.
+pub(crate) fn signal_view(
+    root: &Map<String, Value>,
+    version: OpenRtbVersion,
+    profile: Profile,
+    instance_path: &str,
+    issues: &mut Vec<Issue>,
+) -> (Map<String, Value>, Vec<(String, String)>) {
+    let mut view = root.clone();
+    let mut paths = Vec::new();
+    for (modern, legacy) in [
+        ("regs.gdpr", "regs.ext.gdpr"),
+        ("user.consent", "user.ext.consent"),
+        (
+            "regs.us_privacy",
+            if version <= OpenRtbVersion::V2_1 {
+                "user.ext.us_privacy"
+            } else {
+                "regs.ext.us_privacy"
+            },
+        ),
+        ("user.eids", "user.ext.eids"),
+    ] {
+        let modern_value = at(root, modern);
+        let legacy_value = at(root, legacy);
+        let prefer_legacy = version <= OpenRtbVersion::V2_5
+            || modern == "user.eids" && crate::canonical_field(version, "User", "eids").is_none();
+        let (preferred, alternate) = if prefer_legacy {
+            ((legacy, legacy_value), (modern, modern_value))
+        } else {
+            ((modern, modern_value), (legacy, legacy_value))
+        };
+        if let (Some(a), Some(b)) = (preferred.1, alternate.1) {
+            // These two representations carry the same GDPR flag in proto JSON.
+            let equal_flag = modern == "regs.gdpr"
+                && matches!(
+                    (a.as_bool(), b.as_i64()),
+                    (Some(false), Some(0)) | (Some(true), Some(1))
+                )
+                || modern == "regs.gdpr"
+                    && matches!(
+                        (b.as_bool(), a.as_i64()),
+                        (Some(false), Some(0)) | (Some(true), Some(1))
+                    );
+            if a != b && !equal_flag {
+                issues.push(issue(
+                    "openrtb.privacy.signal_conflict",
+                    Severity::Warning,
+                    format!("{} and {} disagree; privacy checks use {} for OpenRTB {}. Reconcile the values before removing either field.",
+                        preferred.0, alternate.0, preferred.0, version.id()),
+                    join_path(instance_path, alternate.0),
+                ));
+            }
+        }
+        if let Some(value) = legacy_value {
+            // Vendor extension typing belongs to the selected profile's wire contract.
+            if profile == Profile::Spec
+                && matches!(modern, "user.consent" | "regs.us_privacy")
+                && !value.is_string()
+            {
+                issues.push(issue(
+                    "openrtb.type.mismatch",
+                    Severity::Error,
+                    format!("{legacy} must be a string."),
+                    join_path(instance_path, legacy),
+                ));
+            } else if profile == Profile::Spec
+                && modern == "regs.gdpr"
+                && !matches!(value.as_i64(), Some(0 | 1))
+                && !value.is_boolean()
+            {
+                issues.push(issue(
+                    "openrtb.value.invalid",
+                    Severity::Error,
+                    format!("{legacy} must be a 0/1 flag (or a protobuf boolean)."),
+                    join_path(instance_path, legacy),
+                ));
+            }
+            if legacy.ends_with(".consent") {
+                if let Some(consent) = value.as_str().filter(|s| !s.is_empty()) {
+                    if let Some(message) = tcf_shape_error(consent) {
+                        issues.push(issue(
+                            "openrtb.regs.tcf_malformed",
+                            Severity::Warning,
+                            format!("{legacy} {message}"),
+                            join_path(instance_path, legacy),
+                        ));
+                    }
+                }
+            } else if legacy.ends_with(".us_privacy") {
+                if let Some(usp) = value.as_str().filter(|s| !s.is_empty()) {
+                    if !us_privacy_shape(usp) {
+                        issues.push(issue(
+                            "openrtb.regs.us_privacy_malformed",
+                            Severity::Warning,
+                            format!(
+                                "{legacy} must be 1 followed by three Y, N, or '-' characters."
+                            ),
+                            join_path(instance_path, legacy),
+                        ));
+                    }
+                }
+            }
+        }
+        let selected = if preferred.1.is_some() {
+            preferred
+        } else {
+            alternate
+        };
+        if let Some(value) = selected.1 {
+            let (object, field) = modern.split_once('.').expect("known signal path");
+            let target = view
+                .entry(object)
+                .or_insert_with(|| Value::Object(Map::new()));
+            if let Some(target) = target.as_object_mut() {
+                target.insert(field.to_owned(), value.clone());
+                if selected.0 != modern {
+                    paths.push((
+                        join_path(instance_path, modern),
+                        join_path(instance_path, selected.0),
+                    ));
+                }
+            }
+        }
+    }
+    (view, paths)
+}
+
+fn at<'a>(root: &'a Map<String, Value>, path: &str) -> Option<&'a Value> {
+    let mut keys = path.split('.');
+    let mut value = root.get(keys.next()?)?;
+    for key in keys {
+        value = value.get(key)?;
+    }
+    Some(value)
+}
 
 pub(crate) fn validate_gpp(
     gpp: &str,
@@ -361,6 +499,8 @@ fn issue(id: &'static str, severity: Severity, message: String, path: String) ->
             SECTION_TCF
         } else if id.contains("us_privacy") {
             "US Privacy String v1"
+        } else if id == "openrtb.privacy.signal_conflict" {
+            "OpenRTB privacy signals"
         } else {
             SECTION_GPP
         })),

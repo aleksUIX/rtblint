@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.14.4 (unreleased)
+
+### Fixed
+
+- Apply consent shape and cross-field privacy checks to legacy GDPR, TCF, US Privacy and EID extension locations. Preserve input paths and honor the selected version's location, including empty or null values. Warn when canonical and legacy values conflict.
+- Attribute a TCF contradiction to GPP when the decoded TCF core came from GPP rather than an unreadable user consent string.
+
 ## 0.14.3 (2026-10-20)
 
 ### Fixed

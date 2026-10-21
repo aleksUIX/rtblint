@@ -7,7 +7,7 @@
 use serde_json::{Map, Value};
 
 use crate::privacy::{decode_tcf_core, gpp_section};
-use crate::{Issue, Severity};
+use crate::{Issue, OpenRtbVersion, Profile, Severity};
 
 const SECTION_REGS: &str = "3.2.3";
 const SECTION_DEVICE: &str = "3.2.18";
@@ -18,10 +18,15 @@ const SECTION_DSA: &str = "DSA Transparency";
 
 /// Cross-field privacy checks on a 2.x BidRequest or an AdCOM Context.
 pub(crate) fn validate_privacy_signals(
+    version: OpenRtbVersion,
+    profile: Profile,
     root: &Map<String, Value>,
     instance_path: &str,
     issues: &mut Vec<Issue>,
 ) {
+    let (view, paths) = crate::privacy::signal_view(root, version, profile, instance_path, issues);
+    let start = issues.len();
+    let root = &view;
     let regs = root.get("regs").and_then(Value::as_object);
     let device = root.get("device").and_then(Value::as_object);
     let user = root.get("user").and_then(Value::as_object);
@@ -114,21 +119,17 @@ pub(crate) fn validate_privacy_signals(
             "openrtb.privacy.gdpr_without_consent",
             SECTION_REGS,
             join(instance_path, "regs.gdpr"),
-            "regs.gdpr is 1, no user.consent or GPP TCF section is present, and the \
-             request still carries identifiers or user.data segments.",
+            "the GDPR flag is set, no consent string or GPP TCF section is present, and \
+             the request still carries identifiers or user.data segments.",
         );
     }
 
-    if let Some(core) = tcf_core_from(user, regs) {
+    if let Some((core, source)) = tcf_core_from(user, regs) {
         if !core.purpose1_consent
             && !core.purpose_one_treatment
             && has_storage_identifiers(user, device)
         {
-            let path = if user.is_some_and(|user| non_empty_str(user.get("consent"))) {
-                join(instance_path, "user.consent")
-            } else {
-                join(instance_path, "regs.gpp")
-            };
+            let path = join(instance_path, source);
             push(
                 issues,
                 "openrtb.privacy.tcf_purpose1_identifiers",
@@ -154,6 +155,28 @@ pub(crate) fn validate_privacy_signals(
 
     scan_pii_email(user, site, instance_path, issues);
     validate_request_dsa(regs, instance_path, issues);
+    for issue in &mut issues[start..] {
+        if let Some(path) = issue.path.as_mut() {
+            for (modern, original) in &paths {
+                if path == modern
+                    || path
+                        .strip_prefix(modern)
+                        .is_some_and(|tail| tail.starts_with('[') || tail.starts_with('.'))
+                {
+                    *path = format!("{original}{}", &path[modern.len()..]);
+                    issue.message = issue.message.replace(
+                        modern
+                            .trim_start_matches(instance_path)
+                            .trim_start_matches('.'),
+                        original
+                            .trim_start_matches(instance_path)
+                            .trim_start_matches('.'),
+                    );
+                    break;
+                }
+            }
+        }
+    }
 }
 
 /// `bid.ext.dsa` presence: the IAB DSA Transparency fields `behalf` and `paid`.
@@ -284,13 +307,13 @@ fn scan_pii_email(
 fn tcf_core_from(
     user: Option<&Map<String, Value>>,
     regs: Option<&Map<String, Value>>,
-) -> Option<crate::privacy::TcfCore> {
+) -> Option<(crate::privacy::TcfCore, &'static str)> {
     if let Some(consent) = user
         .and_then(|user| user.get("consent"))
         .and_then(Value::as_str)
     {
         if let Some(core) = decode_tcf_core(consent) {
-            return Some(core);
+            return Some((core, "user.consent"));
         }
     }
     let gpp = regs
@@ -299,7 +322,7 @@ fn tcf_core_from(
     for sid in [2_i64, 5] {
         if let Some(section) = gpp_section(gpp, sid) {
             if let Some(core) = decode_tcf_core(section) {
-                return Some(core);
+                return Some((core, "regs.gpp"));
             }
         }
     }
@@ -587,7 +610,13 @@ mod tests {
             "device": { "ifa": "aebe4057-cebe-4301-8cc6-5e6e41c0bf47" }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.coppa_identifier"));
@@ -600,7 +629,13 @@ mod tests {
             "device": { "ifa": "00000000-0000-0000-0000-000000000000" }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(!issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.coppa_identifier"));
@@ -613,7 +648,13 @@ mod tests {
             "device": { "ifa": "abc" }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.coppa_identifier"));
@@ -623,7 +664,13 @@ mod tests {
     fn email_in_user_id() {
         let object = root(json!({ "user": { "id": "buyer@example.com" } }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.pii_email"));
@@ -636,7 +683,13 @@ mod tests {
             "user": { "eids": [{ "source": "liveramp.com", "uids": [{ "id": "abc", "atype": 3 }] }] }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.us_privacy_sale_eids"));
@@ -648,7 +701,13 @@ mod tests {
             "regs": { "ext": { "dsa": { "dsarequired": 2, "transparency": [{ "dsaparams": [1] }] } } }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.dsa_transparency_domain"));
@@ -673,7 +732,13 @@ mod tests {
             "device": { "ifa": "aebe4057-cebe-4301-8cc6-5e6e41c0bf47" }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.tcf_purpose1_identifiers"));
@@ -687,7 +752,13 @@ mod tests {
             "device": { "ifa": "aebe4057-cebe-4301-8cc6-5e6e41c0bf47" }
         }));
         let mut issues = Vec::new();
-        validate_privacy_signals(&object, "", &mut issues);
+        validate_privacy_signals(
+            OpenRtbVersion::V2_6_202606,
+            Profile::Spec,
+            &object,
+            "",
+            &mut issues,
+        );
         assert!(!issues
             .iter()
             .any(|issue| issue.id == "openrtb.privacy.tcf_purpose1_identifiers"));

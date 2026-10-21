@@ -1,0 +1,24 @@
+{
+  "id": "synthetic-privacy-fixture",
+  "imp": [
+    {
+      "id": "synthetic-imp",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ],
+  "regs": {
+    "gpp": "DBABM~CAAAAAAAAAAAAABABBENABCgAAAAAAAAAAAA",
+    "gpp_sid": [
+      2
+    ]
+  },
+  "user": {
+    "consent": "yes"
+  },
+  "device": {
+    "ifa": "synthetic-ifa"
+  }
+}

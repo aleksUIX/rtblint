@@ -1,0 +1,33 @@
+{
+  "id": "synthetic-privacy-fixture",
+  "imp": [
+    {
+      "id": "synthetic-imp",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ],
+  "regs": {
+    "coppa": 1,
+    "ext": {
+      "us_privacy": "1YYN"
+    }
+  },
+  "user": {
+    "ext": {
+      "eids": [
+        {
+          "source": "synthetic.example",
+          "uids": [
+            {
+              "id": "synthetic-uid",
+              "atype": 3
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

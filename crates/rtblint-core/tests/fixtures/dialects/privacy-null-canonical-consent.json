@@ -1,0 +1,24 @@
+{
+  "id": "synthetic-privacy-fixture",
+  "imp": [
+    {
+      "id": "synthetic-imp",
+      "banner": {
+        "w": 300,
+        "h": 250
+      }
+    }
+  ],
+  "regs": {
+    "gdpr": 1
+  },
+  "user": {
+    "consent": null,
+    "ext": {
+      "consent": "CAAAAAAAAAAAAABABBENABCgAAAAAAAAAAAA"
+    }
+  },
+  "device": {
+    "ifa": "synthetic-ifa"
+  }
+}

@@ -164,7 +164,7 @@ jobs:
             "https://rtblint.org/mcp" \
             -n "aleksander/rtblint" 2>&1) && echo "$out" && exit 0
           echo "$out"
-          echo "$out" | grep -qiE "namespace not found|already exists|duplicate" && exit 0
+          echo "$out" | grep -qiE "namespace not found|already exists|duplicate|updating servers has been removed" && exit 0
           exit 1
 
   build:

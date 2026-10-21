@@ -1,0 +1,57 @@
+{
+  "id": "native-r",
+  "imp": [
+    {
+      "id": "i",
+      "secure": true,
+      "native": {
+        "request_native": {
+          "ver": "1.2",
+          "privacy": true,
+          "aurlsupport": false,
+          "durlsupport": false,
+          "assets": [
+            {
+              "id": 1,
+              "required": true,
+              "title": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "site": {
+    "domain": "publisher.example",
+    "mobile": false
+  },
+  "device": {
+    "sua": {
+      "mobile": true,
+      "browsers": [
+        {
+          "brand": "Chromium",
+          "version": [
+            "130",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    }
+  },
+  "source": {
+    "schain": {
+      "ver": "1.0",
+      "complete": true,
+      "nodes": [
+        {
+          "asi": "exchange.example",
+          "sid": "seller",
+          "hp": true
+        }
+      ]
+    }
+  }
+}

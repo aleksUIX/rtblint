@@ -1,0 +1,17 @@
+{
+  "id": "r",
+  "imp": [
+    {
+      "id": "i",
+      "banner": {}
+    }
+  ],
+  "site": {
+    "domain": "publisher.example"
+  },
+  "regs": {
+    "ext": {
+      "gdpr": 1
+    }
+  }
+}

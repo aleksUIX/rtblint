@@ -13,6 +13,7 @@ use crate::{Issue, Severity};
 
 const SECTION_REQUEST: &str = "Native Ads 1.2 §4";
 const SECTION_RESPONSE: &str = "Native Ads 1.2 §5";
+const SECTION_PROTO: &str = "https://github.com/IABTechLab/openrtb-proto-v2/blob/master/openrtb-core/src/main/protobuf/openrtb.proto";
 const VENDOR_RANGE: i64 = 500;
 
 const DATA_TYPES: &[i64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -21,6 +22,151 @@ const EVENT_TYPES: &[i64] = &[1, 2, 3, 4];
 const EVENT_METHODS: &[i64] = &[1, 2];
 
 const ASSET_KEYS: [&str; 4] = ["title", "img", "video", "data"];
+
+/// IAB openrtb-proto-v2 openrtb.proto: Native.request_oneof and Bid.adm_oneof.
+pub(crate) fn proto_alternative(
+    object: &Map<String, Value>,
+    request: bool,
+) -> Option<(&'static str, &Value)> {
+    let names = if request {
+        ["request_native", "requestNative"]
+    } else {
+        ["adm_native", "admNative"]
+    };
+    names.into_iter().find_map(|name| {
+        object
+            .get(name)
+            .filter(|value| !value.is_null())
+            .map(|value| (name, value))
+    })
+}
+
+/// Native protobuf flags are bools. Normalize only those fields for the
+/// shared semantic checks and the required-asset index. Extensions stay opaque.
+pub(crate) fn normalize_proto_markup(root: &mut Map<String, Value>, request: bool) {
+    if request {
+        for field in ["aurlsupport", "durlsupport", "privacy"] {
+            normalize_proto_flag(root.get_mut(field));
+        }
+    }
+    if let Some(assets) = root.get_mut("assets").and_then(Value::as_array_mut) {
+        for asset in assets.iter_mut().filter_map(Value::as_object_mut) {
+            normalize_proto_flag(asset.get_mut("required"));
+        }
+    }
+}
+
+fn normalize_proto_flag(value: Option<&mut Value>) {
+    if let Some(value) = value {
+        if let Some(flag) = value.as_bool() {
+            *value = Value::from(i64::from(flag));
+        }
+    }
+}
+
+pub(crate) fn validate_proto_alternative(
+    object_name: &str,
+    object: &Map<String, Value>,
+    field: &str,
+    value: &Value,
+    path: &str,
+    require_asset_id: bool,
+    issues: &mut Vec<Issue>,
+) {
+    if value.is_null() {
+        return;
+    }
+    let request = object_name == "Native";
+    let section = if request {
+        SECTION_REQUEST
+    } else {
+        SECTION_RESPONSE
+    };
+    let string_field = if request { "request" } else { "adm" };
+    let other_name = match field {
+        "request_native" => "requestNative",
+        "requestNative" => "request_native",
+        "adm_native" => "admNative",
+        _ => "adm_native",
+    };
+    if [string_field, other_name]
+        .iter()
+        .any(|name| object.get(*name).is_some_and(|other| !other.is_null()))
+    {
+        issues.push(issue(
+            "openrtb.dialect.oneof_conflict",
+            Severity::Error,
+            format!("The {string_field} protobuf oneof accepts only one alternative and one field spelling."),
+            path.to_owned(),
+            SECTION_PROTO,
+        ));
+    }
+    let Some(mut root) = value.as_object().cloned() else {
+        issues.push(issue(
+            "openrtb.type.mismatch",
+            Severity::Error,
+            format!("{field} must be a protobuf native object."),
+            path.to_owned(),
+            section,
+        ));
+        return;
+    };
+    if request {
+        for field in ["aurlsupport", "durlsupport", "privacy"] {
+            validate_proto_flag(root.get(field), &join_path(path, field), issues);
+        }
+    }
+    if let Some(assets) = root.get("assets").and_then(Value::as_array) {
+        for (index, asset) in assets.iter().enumerate() {
+            validate_proto_flag(
+                asset.get("required"),
+                &format!("{path}.assets[{index}].required"),
+                issues,
+            );
+        }
+    }
+    normalize_proto_markup(&mut root, request);
+    if request {
+        let ver = root
+            .get("ver")
+            .and_then(Value::as_str)
+            .or_else(|| object.get("ver").and_then(Value::as_str));
+        validate_markup_request(&root, path, ver, require_asset_id, issues);
+    } else {
+        validate_markup_response(&root, path, issues);
+        if object
+            .get("mtype")
+            .and_then(Value::as_i64)
+            .is_some_and(|mtype| mtype != 4)
+        {
+            issues.push(issue(
+                "openrtb.bid.adm.media_type_mismatch",
+                Severity::Error,
+                String::from(
+                    "Protobuf native markup requires native mtype 4 when mtype is supplied.",
+                ),
+                path.to_owned(),
+                section,
+            ));
+        }
+    }
+}
+
+fn validate_proto_flag(value: Option<&Value>, path: &str, issues: &mut Vec<Issue>) {
+    if let Some(value) = value.filter(|value| !value.is_null() && !value.is_boolean()) {
+        issues.push(issue(
+            if value.is_number() {
+                "openrtb.dialect.integer_for_bool"
+            } else {
+                "openrtb.type.mismatch"
+            },
+            Severity::Error,
+            String::from("This native protobuf flag must be true or false in proto-json."),
+            path.to_owned(),
+            SECTION_PROTO,
+        ));
+    }
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub(crate) enum NativeAssetKind {

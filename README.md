@@ -93,6 +93,13 @@ cat request.json | rtblint validate --stdin
 <dir>/app-ads/<app.bundle>/app-ads.txt
 ```
 
+Protobuf JSON also supports the IAB schema's native object alternatives:
+`imp.native.request_native` (`requestNative`) and `bid.adm_native`
+(`admNative`). Their native flags use booleans. The string alternatives
+`request` and `adm` keep their JSON-encoded Native Ads markup. Supply one
+alternative per oneof. Native assets remain validated and paired against
+required request assets. See the [IAB protobuf schema](https://github.com/IABTechLab/openrtb-proto-v2/blob/master/openrtb-core/src/main/protobuf/openrtb.proto).
+
 Nothing is fetched; populate the cache yourself. `--batch` lints one JSON object per line from a file or stdin. `--summary` adds rule-frequency totals for a captured stream (`--summary bids.ndjson` for the histogram alone). See [ARTF](#artf) for `--type artf-request` and `--type artf-response`.
 
 Exit codes: 0 valid, 1 validation errors, 2 usage or I/O error.

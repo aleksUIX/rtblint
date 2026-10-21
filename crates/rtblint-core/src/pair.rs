@@ -74,8 +74,15 @@ pub(crate) fn validate_bid_response_against_request(
         return finalize_result(result.issues);
     }
 
-    let context = RequestContext::index(profile, request);
-    cross_validate(version, profile, &context, response, &mut result.issues);
+    let context = RequestContext::index(dialect, profile, request);
+    cross_validate(
+        version,
+        dialect,
+        profile,
+        &context,
+        response,
+        &mut result.issues,
+    );
     crate::profile::push_profile_pair(profile, request, response, &mut result.issues);
     finalize_result(result.issues)
 }
@@ -111,7 +118,7 @@ struct ImpContext<'a> {
 }
 
 impl<'a> RequestContext<'a> {
-    fn index(profile: Profile, request: &'a Map<String, Value>) -> Self {
+    fn index(dialect: Dialect, profile: Profile, request: &'a Map<String, Value>) -> Self {
         let mut imps = HashMap::new();
         for imp in request
             .get("imp")
@@ -137,7 +144,19 @@ impl<'a> RequestContext<'a> {
 
             let native_assets = imp
                 .get("native")
-                .and_then(|value| crate::profile::compat::native_request(profile, value))
+                .and_then(|value| {
+                    if dialect == Dialect::ProtoJson {
+                        if let Some((_, source)) = value
+                            .as_object()
+                            .and_then(|object| native::proto_alternative(object, true))
+                        {
+                            let mut root = source.as_object()?.clone();
+                            native::normalize_proto_markup(&mut root, true);
+                            return Some(root);
+                        }
+                    }
+                    crate::profile::compat::native_request(profile, value)
+                })
                 .map(|request| native::index_markup_request(&request))
                 .unwrap_or_default();
 
@@ -179,6 +198,7 @@ fn string_list(value: Option<&Value>) -> Option<Vec<&str>> {
 /// Pass two: cross-checks over the already-validated response.
 fn cross_validate(
     version: OpenRtbVersion,
+    dialect: Dialect,
     profile: Profile,
     context: &RequestContext<'_>,
     response: &Map<String, Value>,
@@ -273,6 +293,7 @@ fn cross_validate(
             };
             let bid_path = format!("seatbid[{seatbid_index}].bid[{bid_index}]");
             cross_validate_bid(
+                dialect,
                 profile,
                 context,
                 bid,
@@ -285,6 +306,7 @@ fn cross_validate(
 }
 
 fn cross_validate_bid(
+    dialect: Dialect,
     profile: Profile,
     context: &RequestContext<'_>,
     bid: &Map<String, Value>,
@@ -309,6 +331,19 @@ fn cross_validate_bid(
         });
         return;
     };
+
+    if dialect == Dialect::ProtoJson && imp.native {
+        if let Some((field, source)) = native::proto_alternative(bid, false) {
+            if let Some(response) = source.as_object() {
+                native::validate_response_against_request(
+                    &imp.native_assets,
+                    response,
+                    &format!("{bid_path}.{field}"),
+                    issues,
+                );
+            }
+        }
+    }
 
     if let Some(mtype) = bid.get("mtype").and_then(integer_value) {
         let (offered, media_label) = match mtype {
@@ -389,6 +424,7 @@ fn cross_validate_bid(
         .and_then(Value::as_str)
         .is_some_and(|markup| !markup.trim().is_empty())
         && crate::profile::compat::adm_native(profile)
+        && !(dialect == Dialect::ProtoJson && native::proto_alternative(bid, false).is_some())
     {
         if let Some(response) = crate::profile::compat::native_bid(profile, bid) {
             native::validate_response_against_request(

@@ -1,0 +1,14 @@
+{
+  "id": "r",
+  "imp": [
+    {
+      "id": "i",
+      "video": {
+        "mimes": [
+          "video/mp4"
+        ],
+        "skip": 0
+      }
+    }
+  ]
+}

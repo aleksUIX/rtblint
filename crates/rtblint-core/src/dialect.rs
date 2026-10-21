@@ -36,6 +36,16 @@ pub enum Dialect {
 }
 
 impl Dialect {
+    /// Object alternatives declared by the IAB protobuf native oneofs.
+    pub(crate) fn native_field(self, object: &str, field: &str) -> bool {
+        self == Self::ProtoJson
+            && matches!(
+                (object, field),
+                ("Native", "request_native" | "requestNative")
+                    | ("Bid", "adm_native" | "admNative")
+            )
+    }
+
     pub fn as_str(self) -> &'static str {
         match self {
             Self::SpecJson => "spec-json",

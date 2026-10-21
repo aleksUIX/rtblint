@@ -499,6 +499,8 @@ fn issue(id: &'static str, severity: Severity, message: String, path: String) ->
             SECTION_TCF
         } else if id.contains("us_privacy") {
             "US Privacy String v1"
+        } else if matches!(id, "openrtb.type.mismatch" | "openrtb.value.invalid") {
+            "OpenRTB legacy privacy extensions"
         } else if id == "openrtb.privacy.signal_conflict" {
             "OpenRTB privacy signals"
         } else {

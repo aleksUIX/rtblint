@@ -12,6 +12,151 @@ use rtblint_core::{
 
 const VERSION: OpenRtbVersion = OpenRtbVersion::V2_6_202606;
 
+fn native_request(field: &str) -> serde_json::Value {
+    serde_json::json!({
+        "id": "r", "imp": [{"id": "i", "secure": true, "native": {
+            (field): {"ver": "1.2", "privacy": true, "assets": [
+                {"id": 1, "required": true, "title": {"len": 40}}
+            ]}
+        }}]
+    })
+}
+
+#[test]
+fn proto_native_objects_accept_both_names_and_retain_asset_checks() {
+    for field in ["request_native", "requestNative"] {
+        let mut payload = native_request(field);
+        let result =
+            validate_bid_request_with_dialect(VERSION, Dialect::ProtoJson, &payload.to_string());
+        assert!(result.valid, "{field}: {:?}", result.issues);
+        assert!(result.issues.is_empty(), "{field}: {:?}", result.issues);
+        let spec = validate_bid_request_for_version(VERSION, &payload.to_string());
+        assert!(has_issue(
+            &spec,
+            "openrtb.field.required",
+            "imp[0].native.request"
+        ));
+        assert!(has_issue(
+            &spec,
+            "openrtb.field.undefined",
+            &format!("imp[0].native.{field}")
+        ));
+
+        payload["imp"][0]["native"][field]["assets"][0]["title"] = serde_json::json!({});
+        let result =
+            validate_bid_request_with_dialect(VERSION, Dialect::ProtoJson, &payload.to_string());
+        assert!(has_issue(
+            &result,
+            "openrtb.native.field_required",
+            &format!("imp[0].native.{field}.assets[0].title.len")
+        ));
+    }
+}
+
+#[test]
+fn proto_native_rejects_bad_shapes_integer_flags_and_oneof_conflicts() {
+    let mut payload = native_request("request_native");
+    payload["imp"][0]["native"]["request_native"] = serde_json::json!("{}");
+    let result =
+        validate_bid_request_with_dialect(VERSION, Dialect::ProtoJson, &payload.to_string());
+    assert!(has_issue(
+        &result,
+        "openrtb.type.mismatch",
+        "imp[0].native.request_native"
+    ));
+    payload = native_request("request_native");
+    payload["imp"][0]["native"]["request_native"]["assets"][0]["required"] = serde_json::json!(1);
+    let result =
+        validate_bid_request_with_dialect(VERSION, Dialect::ProtoJson, &payload.to_string());
+    assert!(has_issue(
+        &result,
+        "openrtb.dialect.integer_for_bool",
+        "imp[0].native.request_native.assets[0].required"
+    ));
+    payload["imp"][0]["native"]["request"] = serde_json::json!("{}");
+    let result =
+        validate_bid_request_with_dialect(VERSION, Dialect::ProtoJson, &payload.to_string());
+    assert!(has_issue(
+        &result,
+        "openrtb.dialect.oneof_conflict",
+        "imp[0].native.request_native"
+    ));
+}
+
+#[test]
+fn proto_native_responses_preserve_required_asset_pairing() {
+    use rtblint_core::{
+        validate_bid_response_against_request_with_dialect, validate_bid_response_with_dialect,
+    };
+    for field in ["adm_native", "admNative"] {
+        let request = native_request("requestNative").to_string();
+        let mut response = serde_json::json!({"id": "r", "seatbid": [{"bid": [{
+            "id": "b", "impid": "i", "price": 1.0, "mtype": 4,
+            (field): {"ver": "1.2", "link": {"url": "https://advertiser.example"}, "assets": [
+                {"id": 1, "required": true, "title": {"text": "Example"}}
+            ]}
+        }]}]});
+        let result = validate_bid_response_against_request_with_dialect(
+            VERSION,
+            Dialect::ProtoJson,
+            &request,
+            &response.to_string(),
+        );
+        assert!(result.valid, "{field}: {:?}", result.issues);
+        response["seatbid"][0]["bid"][0][field]["assets"][0]["id"] = serde_json::json!(2);
+        let result = validate_bid_response_against_request_with_dialect(
+            VERSION,
+            Dialect::ProtoJson,
+            &request,
+            &response.to_string(),
+        );
+        assert!(has_issue(
+            &result,
+            "openrtb.native.asset.required_missing",
+            &format!("seatbid[0].bid[0].{field}")
+        ));
+        response["seatbid"][0]["bid"][0][field]
+            .as_object_mut()
+            .unwrap()
+            .remove("link");
+        let result =
+            validate_bid_response_with_dialect(VERSION, Dialect::ProtoJson, &response.to_string());
+        assert!(has_issue(
+            &result,
+            "openrtb.native.field_required",
+            &format!("seatbid[0].bid[0].{field}.link.url")
+        ));
+    }
+}
+
+#[test]
+fn site_domain_warns_on_url_syntax_without_rejecting_bare_domains() {
+    for domain in [
+        "https://publisher.example/",
+        "publisher.example/path",
+        "publisher.example:443",
+        "publisher.example?x=1",
+        " publisher.example",
+    ] {
+        let payload = serde_json::json!({"id":"r", "imp":[{"id":"i", "banner":{}}], "site":{"domain": domain}});
+        let result = validate_bid_request_for_version(VERSION, &payload.to_string());
+        assert!(
+            has_issue(&result, "openrtb.site.domain_not_domain", "site.domain"),
+            "{domain}"
+        );
+    }
+    for domain in [
+        "publisher.example",
+        "news.publisher.example",
+        "xn--bcher-kva.example",
+        "PUBLISHER.example",
+    ] {
+        let payload = serde_json::json!({"id":"r", "imp":[{"id":"i", "banner":{}}], "site":{"domain": domain}});
+        let result = validate_bid_request_for_version(VERSION, &payload.to_string());
+        assert!(result.issues.is_empty(), "{domain}: {:?}", result.issues);
+    }
+}
+
 fn has_issue(result: &ValidationResult, id: &str, path: &str) -> bool {
     result
         .issues

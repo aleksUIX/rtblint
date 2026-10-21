@@ -433,6 +433,11 @@ fn validate_known_object<'a>(
     for field in definition.fields.iter().filter(|field| field.required) {
         if !object.contains_key(field.name)
             && !crate::profile::compat::required_exception(profile, object_name, field.name, object)
+            && !(object_name == "Native"
+                && field.name == "request"
+                && object.iter().any(|(name, value)| {
+                    dialect.native_field(object_name, name) && !value.is_null()
+                }))
         {
             issues.push(Issue {
                 id: String::from("openrtb.field.required"),
@@ -454,6 +459,21 @@ fn validate_known_object<'a>(
     for (field_name, value) in object {
         logical_segments.push(field_name.as_str());
         let parent_path_length = push_path_segment(instance_path, field_name);
+
+        if dialect.native_field(object_name, field_name) {
+            crate::native::validate_proto_alternative(
+                object_name,
+                object,
+                field_name,
+                value,
+                instance_path,
+                profile.native_request_asset_id_required(),
+                issues,
+            );
+            instance_path.truncate(parent_path_length);
+            logical_segments.pop();
+            continue;
+        }
 
         if object_name == "Imp"
             && field_name == "native"
@@ -944,6 +964,24 @@ fn validate_object_semantics(
         "EID" => validate_eid_semantics(object, instance_path, object_section, issues),
         "UID" => validate_uid_semantics(object, instance_path, object_section, issues),
         "UserAgent" => validate_user_agent_semantics(object, instance_path, object_section, issues),
+        "Site" if !adcom_object => {
+            if let Some(domain) = object.get("domain").and_then(Value::as_str) {
+                if domain.contains(['/', ':', '?', '#', '@'])
+                    || domain.chars().any(char::is_whitespace)
+                {
+                    issues.push(Issue {
+                        id: String::from("openrtb.site.domain_not_domain"),
+                        severity: Severity::Warning,
+                        message: String::from(
+                            "site.domain must contain a bare domain, such as publisher.example. \
+                             Put the full page URL in site.page.",
+                        ),
+                        path: Some(join_instance_path(instance_path, "domain")),
+                        section: Some(String::from(object_section)),
+                    });
+                }
+            }
+        }
         "SupplyChain" => {
             validate_supply_chain_semantics(object, instance_path, object_section, issues)
         }

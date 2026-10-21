@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.14.3 (2026-10-20)
+
+### Fixed
+
+- Accept protobuf native request and response objects (`request_native` and `adm_native`, including their camelCase spellings) in `proto-json`. Validate native assets and boolean flags, reject conflicting oneof alternatives, and retain required-asset checks in paired validation.
+- Warn when `site.domain` contains URL syntax or whitespace. Full page URLs belong in `site.page`.
+
 ## 0.14.2 (2026-10-20)
 
 ### Changed

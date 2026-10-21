@@ -1,0 +1,12 @@
+{
+  "id": "r",
+  "imp": [
+    {
+      "id": "i",
+      "banner": {}
+    }
+  ],
+  "site": {
+    "domain": "publisher.example"
+  }
+}

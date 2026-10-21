@@ -1,0 +1,455 @@
+[
+  {
+    "name": "protobuf native request",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-request.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "protobuf camelCase native request",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-request-camel.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "spec rejects protobuf native request",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "native-proto-request.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "device.sua.mobile"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "imp[0].secure"
+      },
+      {
+        "id": "openrtb.field.required",
+        "severity": "error",
+        "path": "imp[0].native.request"
+      },
+      {
+        "id": "openrtb.field.undefined",
+        "severity": "error",
+        "path": "imp[0].native.request_native"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "site.mobile"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "source.schain.complete"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "source.schain.nodes[0].hp"
+      }
+    ]
+  },
+  {
+    "name": "mixed flags remain invalid in proto",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-mixed-request.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "source.schain.complete"
+      },
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "source.schain.nodes[0].hp"
+      }
+    ]
+  },
+  {
+    "name": "mixed flags remain invalid in spec",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "native-mixed-request.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "device.sua.mobile"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "imp[0].secure"
+      },
+      {
+        "id": "openrtb.field.required",
+        "severity": "error",
+        "path": "imp[0].native.request"
+      },
+      {
+        "id": "openrtb.field.undefined",
+        "severity": "error",
+        "path": "imp[0].native.request_native"
+      },
+      {
+        "id": "openrtb.dialect.bool_for_integer",
+        "severity": "error",
+        "path": "site.mobile"
+      }
+    ]
+  },
+  {
+    "name": "native object shape",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-wrong-shape.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.type.mismatch",
+        "severity": "error",
+        "path": "imp[0].native.request_native"
+      }
+    ]
+  },
+  {
+    "name": "null native oneof leaves request missing",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-null.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.required",
+        "severity": "error",
+        "path": "imp[0].native.request"
+      }
+    ]
+  },
+  {
+    "name": "request oneof conflict",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-oneof-conflict.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.oneof_conflict",
+        "severity": "error",
+        "path": "imp[0].native.request_native"
+      }
+    ]
+  },
+  {
+    "name": "duplicate native aliases",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-duplicate-alias.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.oneof_conflict",
+        "severity": "error",
+        "path": "imp[0].native.request_native"
+      },
+      {
+        "id": "openrtb.dialect.oneof_conflict",
+        "severity": "error",
+        "path": "imp[0].native.requestNative"
+      }
+    ]
+  },
+  {
+    "name": "native flag types",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-wrong-flags.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "imp[0].native.request_native.privacy"
+      },
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "imp[0].native.request_native.aurlsupport"
+      },
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "imp[0].native.request_native.assets[0].required"
+      },
+      {
+        "id": "openrtb.type.mismatch",
+        "severity": "error",
+        "path": "imp[0].native.request_native.durlsupport"
+      }
+    ]
+  },
+  {
+    "name": "native title length required",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-request-missing-title-length.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.native.field_required",
+        "severity": "error",
+        "path": "imp[0].native.request_native.assets[0].title.len"
+      }
+    ]
+  },
+  {
+    "name": "spec string request remains valid",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "native-spec-request.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "proto accepts encoded string alternative",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-spec-request.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "imp[0].secure"
+      }
+    ]
+  },
+  {
+    "name": "protobuf native response",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-response.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "protobuf camelCase native response",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-response-camel.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "native response link required",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-response-missing-link.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.native.field_required",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native.link.url"
+      }
+    ]
+  },
+  {
+    "name": "native markup media type",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-response-wrong-media.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.bid.adm.media_type_mismatch",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native"
+      }
+    ]
+  },
+  {
+    "name": "response oneof conflict",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-response-oneof-conflict.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.oneof_conflict",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native"
+      }
+    ]
+  },
+  {
+    "name": "response native flag type",
+    "mode": "response",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-response-wrong-flag.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.dialect.integer_for_bool",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native.assets[0].required"
+      }
+    ]
+  },
+  {
+    "name": "valid native pair",
+    "mode": "pair",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-response.json",
+    "valid": true,
+    "issues": [],
+    "request": "native-proto-request.json"
+  },
+  {
+    "name": "valid camelCase native pair",
+    "mode": "pair",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-proto-response-camel.json",
+    "valid": true,
+    "issues": [],
+    "request": "native-proto-request-camel.json"
+  },
+  {
+    "name": "required boolean asset pairing",
+    "mode": "pair",
+    "version": "2.6-202606",
+    "dialect": "proto-json",
+    "payload": "native-response-missing-required-asset.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.native.asset.required_missing",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native"
+      },
+      {
+        "id": "openrtb.native.asset.id_unknown",
+        "severity": "error",
+        "path": "seatbid[0].bid[0].adm_native.assets[0].id"
+      }
+    ],
+    "request": "native-proto-request.json"
+  },
+  {
+    "name": "spec string pair remains valid",
+    "mode": "pair",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "native-spec-response.json",
+    "valid": true,
+    "issues": [],
+    "request": "native-spec-request.json"
+  },
+  {
+    "name": "URL in site domain",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "site-domain-url.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.site.domain_not_domain",
+        "severity": "warning",
+        "path": "site.domain"
+      }
+    ]
+  },
+  {
+    "name": "bare site domain",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "site-domain-bare.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "legacy GDPR stays moved on latest",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "legacy-gdpr-extension.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "legacy GDPR remains valid on 2.5",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "legacy-gdpr-extension.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "zero skip flag stays valid",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "video-skip-zero.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "malformed JSON stays invalid",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "invalid-json.txt",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.payload.invalid_json",
+        "severity": "error",
+        "path": null
+      }
+    ]
+  }
+]

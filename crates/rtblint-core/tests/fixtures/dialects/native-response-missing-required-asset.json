@@ -1,0 +1,30 @@
+{
+  "id": "native-r",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "b",
+          "impid": "i",
+          "price": 1.2,
+          "mtype": 4,
+          "adm_native": {
+            "ver": "1.2",
+            "assets": [
+              {
+                "id": 2,
+                "required": true,
+                "title": {
+                  "text": "Example"
+                }
+              }
+            ],
+            "link": {
+              "url": "https://advertiser.example"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

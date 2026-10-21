@@ -933,9 +933,14 @@ fn validate_object_semantics(
         && canonical_adcom_object(object_name).is_some();
 
     match object_name {
-        "BidRequest" => {
-            validate_bid_request_semantics(object, instance_path, object_section, issues)
-        }
+        "BidRequest" => validate_bid_request_semantics(
+            version,
+            profile,
+            object,
+            instance_path,
+            object_section,
+            issues,
+        ),
         "BidResponse" => {
             validate_bid_response_semantics(profile, object, instance_path, object_section, issues)
         }
@@ -1106,7 +1111,13 @@ fn validate_adcom_context_semantics(
         });
     }
 
-    crate::privacy_signals::validate_privacy_signals(object, instance_path, issues);
+    crate::privacy_signals::validate_privacy_signals(
+        OpenRtbVersion::V3_0,
+        Profile::Spec,
+        object,
+        instance_path,
+        issues,
+    );
 }
 
 fn validate_adcom_av_placement_semantics(
@@ -1163,6 +1174,8 @@ fn validate_generic_exclusive_pairs(
 }
 
 fn validate_bid_request_semantics(
+    version: OpenRtbVersion,
+    profile: Profile,
     object: &Map<String, Value>,
     instance_path: &str,
     section: &str,
@@ -1232,7 +1245,13 @@ fn validate_bid_request_semantics(
         }
     }
 
-    crate::privacy_signals::validate_privacy_signals(object, instance_path, issues);
+    crate::privacy_signals::validate_privacy_signals(
+        version,
+        profile,
+        object,
+        instance_path,
+        issues,
+    );
 }
 
 fn validate_bid_response_semantics(

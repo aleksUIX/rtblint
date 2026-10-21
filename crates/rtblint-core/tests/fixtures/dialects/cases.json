@@ -451,5 +451,319 @@
         "path": null
       }
     ]
+  },
+  {
+    "name": "privacy: legacy-gdpr-missing-consent",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-gdpr-missing-consent.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.privacy.gdpr_without_consent",
+        "severity": "warning",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-gdpr-missing-consent-new-contract",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-gdpr-missing-consent-new-contract.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "regs.ext.gdpr"
+      },
+      {
+        "id": "openrtb.privacy.gdpr_without_consent",
+        "severity": "warning",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-tcf-malformed",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-tcf-malformed.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.regs.tcf_malformed",
+        "severity": "warning",
+        "path": "user.ext.consent"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-tcf-malformed-new-contract",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-tcf-malformed-new-contract.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "user.ext.consent"
+      },
+      {
+        "id": "openrtb.regs.tcf_malformed",
+        "severity": "warning",
+        "path": "user.ext.consent"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-usp-malformed",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-usp-malformed.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.regs.us_privacy_malformed",
+        "severity": "warning",
+        "path": "regs.ext.us_privacy"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-usp-user-2-1",
+    "mode": "request",
+    "version": "2.1",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-usp-user-2-1.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.regs.us_privacy_malformed",
+        "severity": "warning",
+        "path": "user.ext.us_privacy"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-gdpr-type",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-gdpr-type.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.value.invalid",
+        "severity": "error",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-consent-type",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-consent-type.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.type.mismatch",
+        "severity": "error",
+        "path": "user.ext.consent"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-usp-type",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-usp-type.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.type.mismatch",
+        "severity": "error",
+        "path": "regs.ext.us_privacy"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-gdpr-conflict",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-gdpr-conflict.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.not_yet_available",
+        "severity": "error",
+        "path": "regs.gdpr"
+      },
+      {
+        "id": "openrtb.privacy.signal_conflict",
+        "severity": "warning",
+        "path": "regs.gdpr"
+      },
+      {
+        "id": "openrtb.privacy.gdpr_without_consent",
+        "severity": "warning",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: modern-gdpr-conflict",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-modern-gdpr-conflict.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "regs.ext.gdpr"
+      },
+      {
+        "id": "openrtb.privacy.signal_conflict",
+        "severity": "warning",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: equal-gdpr-duplicates",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-equal-gdpr-duplicates.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "regs.ext.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: null-canonical-consent",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-null-canonical-consent.json",
+    "valid": false,
+    "issues": [
+      {
+        "id": "openrtb.type.mismatch",
+        "severity": "error",
+        "path": "user.consent"
+      },
+      {
+        "id": "openrtb.field.moved",
+        "severity": "error",
+        "path": "user.ext.consent"
+      },
+      {
+        "id": "openrtb.privacy.signal_conflict",
+        "severity": "warning",
+        "path": "user.ext.consent"
+      },
+      {
+        "id": "openrtb.privacy.gdpr_without_consent",
+        "severity": "warning",
+        "path": "regs.gdpr"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-eids-usp",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-eids-usp.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.privacy.coppa_eids",
+        "severity": "warning",
+        "path": "user.ext.eids"
+      },
+      {
+        "id": "openrtb.privacy.us_privacy_sale_eids",
+        "severity": "warning",
+        "path": "user.ext.eids"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-tcf-purpose1-off",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-tcf-purpose1-off.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.privacy.tcf_purpose1_identifiers",
+        "severity": "warning",
+        "path": "user.ext.consent"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-gdpr-valid-consent",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "spec-json",
+    "payload": "privacy-legacy-gdpr-valid-consent.json",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "privacy: gpp-contradiction-source",
+    "mode": "request",
+    "version": "2.6-202606",
+    "dialect": "spec-json",
+    "payload": "privacy-gpp-contradiction-source.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.regs.tcf_malformed",
+        "severity": "warning",
+        "path": "user.consent"
+      },
+      {
+        "id": "openrtb.privacy.tcf_purpose1_identifiers",
+        "severity": "warning",
+        "path": "regs.gpp"
+      }
+    ]
+  },
+  {
+    "name": "privacy: legacy-proto-bool-gdpr",
+    "mode": "request",
+    "version": "2.5",
+    "dialect": "proto-json",
+    "payload": "privacy-legacy-proto-bool-gdpr.json",
+    "valid": true,
+    "issues": [
+      {
+        "id": "openrtb.privacy.gdpr_without_consent",
+        "severity": "warning",
+        "path": "regs.ext.gdpr"
+      }
+    ]
   }
 ]

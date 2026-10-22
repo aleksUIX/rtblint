@@ -18,3 +18,8 @@ authors = ["Aleks <aleks@vastlint.org>"]
 license = "Apache-2.0"
 repository = "https://github.com/aleksUIX/rtblint"
 homepage = "https://rtblint.org"
+
+# Tests inherit this profile. Keep routine builds small across release worktrees.
+[profile.dev]
+debug = 0
+incremental = false

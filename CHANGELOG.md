@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.5 (2026-10-26)
+
+### Changed
+
+- **`tokio` 1.53.3 → 1.54.1**, **`jsonschema` 0.58.6 → 0.60.0**: dependency updates.
+
 ## 0.14.4 (2026-10-20)
 
 ### Fixed

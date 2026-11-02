@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.6 (2026-11-02)
+
+### Changed
+
+- **`tonic` / `tonic-prost` / `tonic-prost-build` / `tonic-health` / `tonic-reflection` 0.14.6 → 0.14.9**, **`jsonschema` 0.60.0 → 0.60.2**: dependency updates.
+
 ## 0.14.5 (2026-10-26)
 
 ### Changed

@@ -1045,9 +1045,9 @@ dependencies = [
 
 [[package]]
 name = "pulldown-cmark"
-version = "0.13.4"
+version = "0.13.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e9f068eba8e7071c5f9511831b44f32c740d5adf574e990f946ddb53db2f314e"
+checksum = "3db2be46835f013dd3f4fa7f5f7402c537787b54ebb6fe2b94bbdd7e2669bb7b"
 dependencies = [
  "bitflags",
  "memchr",
@@ -1155,7 +1155,7 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
 name = "rtblint"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "rtblint-core",
  "rtblint-resolve",
@@ -1165,7 +1165,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-core"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "jsonschema",
  "serde",
@@ -1174,7 +1174,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-grpc"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "http",
  "mimalloc",
@@ -1196,7 +1196,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-mcp"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "rtblint-core",
  "serde_json",
@@ -1204,7 +1204,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-resolve"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "rtblint-core",
  "serde",
@@ -1213,7 +1213,7 @@ dependencies = [
 
 [[package]]
 name = "rtblint-wasm"
-version = "0.14.6"
+version = "0.14.7"
 dependencies = [
  "rtblint-core",
  "serde",

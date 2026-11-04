@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.7 (2026-11-04)
+
+### Changed
+
+- **`pulldown-cmark` 0.13.4 → 0.13.6** (transitive via `prost-build`): RUSTSEC-2026-0414 and RUSTSEC-2026-0433.
+
 ## 0.14.6 (2026-11-02)
 
 ### Changed

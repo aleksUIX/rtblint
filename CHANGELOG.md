@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Added
+
+- **`adcom_list_names()`**: lists every AdCOM list in the validator registry, so callers can export the full registry with `adcom_list_values()`.
+- **`export_site_reference` example**: writes `field-reference.json` (every OpenRTB 2.x object and field across the tracked versions, with types, markers, list references, value sets, sections, paths, and matching versioned rules) and `adcom-lists.json`. These feed the field and enumerated-list pages on rtblint.org.
+
 ## 0.14.7 (2026-11-04)
 
 ### Changed

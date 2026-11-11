@@ -252,6 +252,10 @@ Apache-2.0. See LICENSE and NOTICE.
 
 ## Research
 
+Sekowski, A. (2026). *RTBLint: Executable, Versioned Contracts for OpenRTB Interoperability*. Preprint.
+[DOI](https://doi.org/10.13140/RG.2.2.11694.06720) · [ResearchGate](https://www.researchgate.net/publication/417773206_RTBLint_Executable_Versioned_Contracts_for_OpenRTB_Interoperability) · [PDF](https://openadtech.org/papers/rtblint-executable-versioned-contracts-for-openrtb-interoperability-sekowski-2026.pdf) · [Reproducibility artifact](https://openadtech.org/papers/rtblint-systems-sekowski-2026-artifacts.zip).
+Evaluates a frozen RTBLint 0.14.7 build, a context-matched reference checker, controlled Prebid Server replay and a separately archived research candidate with an explicit admission policy.
+
 Sekowski, A. (2026). *How Machine-Checkable Is OpenRTB? Classifying the Normative Content of the Protocol That Clears Real-Time Advertising*. Preprint.
 DOI: [10.13140/RG.2.2.27937.57448](https://doi.org/10.13140/RG.2.2.27937.57448)
 

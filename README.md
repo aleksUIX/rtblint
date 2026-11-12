@@ -4,7 +4,7 @@
 
 [![Crates.io](https://img.shields.io/crates/v/rtblint.svg)](https://crates.io/crates/rtblint)
 [![CI](https://github.com/aleksUIX/rtblint/actions/workflows/rust.yml/badge.svg)](https://github.com/aleksUIX/rtblint/actions)
-[![smithery badge](https://smithery.ai/badge/aleksander/rtblint)](https://smithery.ai/servers/aleksander/rtblint)
+[![LightNow capabilities](https://lightnow.ai/badge/io.github.aleksUIX/rtblint)](https://lightnow.ai/servers/io.github.aleksUIX/rtblint)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/aleksUIX/rtblint/badge)](https://scorecard.dev/viewer/?uri=github.com/aleksUIX/rtblint)
 
 Website and playground: [rtblint.org](https://rtblint.org)

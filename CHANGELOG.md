@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.14.8 (2026-11-17)
+
+### Changed
+
+- **`prost` 0.14.4 → 0.14.6**, **`jsonschema` 0.60.2 → 0.61.2**: dependency updates.
+
 ## 0.14.7 (2026-11-04)
 
 ### Changed

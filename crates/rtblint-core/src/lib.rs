@@ -49,6 +49,12 @@ pub struct AdcomListValues {
     pub minimum_inclusive: Option<i64>,
 }
 
+/// Names of every AdCOM list the validator knows, in registry order. Pair
+/// with [`adcom_list_values`] to export the full registry.
+pub fn adcom_list_names() -> impl Iterator<Item = &'static str> {
+    adcom_lists::adcom_list_names()
+}
+
 /// Looks up an AdCOM list by the name catalogs cite (for example
 /// "List: Device Types"), so callers can resolve a field's `adcom_list`
 /// reference to concrete values.

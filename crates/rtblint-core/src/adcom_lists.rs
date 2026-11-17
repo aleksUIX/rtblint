@@ -15,6 +15,10 @@ pub(crate) fn adcom_list_value_set(description: &str) -> Option<&'static AdcomLi
     })
 }
 
+pub(crate) fn adcom_list_names() -> impl Iterator<Item = &'static str> {
+    ADCOM_LISTS.iter().map(|list| list.name)
+}
+
 pub(crate) fn adcom_list_by_name(name: &str) -> Option<&'static AdcomListValueSet> {
     ADCOM_LISTS.iter().find(|candidate| candidate.name == name)
 }
